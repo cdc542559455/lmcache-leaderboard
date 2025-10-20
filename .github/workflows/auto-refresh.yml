@@ -1,0 +1,104 @@
+name: Auto-Refresh Leaderboard
+
+on:
+  # Run every hour
+  schedule:
+    - cron: '0 * * * *'  # Every hour at minute 0
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+# Sets permissions for GitHub Pages deployment
+permissions:
+  contents: write  # Need write to commit updated data
+  pages: write
+  id-token: write
+
+jobs:
+  refresh-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Clone/Update LMCache repository
+        run: |
+          if [ -d "LMCache" ]; then
+            cd LMCache
+            git fetch origin dev
+            git reset --hard origin/dev
+            echo "✅ Updated LMCache repository"
+          else
+            git clone --branch dev https://github.com/LMCache/LMCache.git
+            echo "✅ Cloned LMCache repository"
+          fi
+          cd LMCache
+          echo "📌 Latest commit: $(git log -1 --format='%H - %s (%ci)')"
+
+      - name: Generate leaderboard data
+        run: |
+          echo "🔄 Generating leaderboard data..."
+          python3 analyze_commits.py \
+            --repo ./LMCache \
+            --output dashboard/public/leaderboard-data.json
+          echo "✅ Leaderboard data generated at $(date)"
+          ls -lh dashboard/public/leaderboard-data.json
+
+      - name: Update last-update.json
+        run: |
+          cat > dashboard/public/last-update.json << EOF
+          {
+            "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+            "latestCommit": "$(cd LMCache && git log -1 --format='%H - %s (%ci)')",
+            "success": true,
+            "source": "github-actions-hourly"
+          }
+          EOF
+          echo "✅ Updated last-update.json"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: dashboard/package-lock.json
+
+      - name: Install dashboard dependencies
+        working-directory: ./dashboard
+        run: npm ci
+
+      - name: Build dashboard
+        working-directory: ./dashboard
+        env:
+          GITHUB_PAGES: true
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dashboard/dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Log completion
+        run: |
+          echo "✅ Auto-refresh completed successfully at $(date)"
+          echo "🌐 Deployed to GitHub Pages"
