@@ -160,11 +160,35 @@ const performAutoRefresh = async () => {
       console.warn('⚠️ [AUTO-REFRESH] No AI API keys - using fallback scoring');
     }
 
+    // Load existing data for incremental update
+    let existingData = null;
+    try {
+      const existingContent = fs.readFileSync(outputPath, 'utf-8');
+      existingData = JSON.parse(existingContent);
+      console.log(`📥 [AUTO-REFRESH] Found existing data with ${existingData.total_commits_analyzed} commits`);
+    } catch (error) {
+      console.log('⚠️ [AUTO-REFRESH] No existing data found, will do full analysis');
+    }
+
     // Use GitHub API-based analyzer (no git/Python required)
     const analyzer = new CommitAnalyzer(GITHUB_TOKEN, OPENAI_API_KEY);
-    const data = await analyzer.analyze('LMCache', 'LMCache', 180); // Last 180 days
 
-    console.log(`✅ [AUTO-REFRESH] Analysis complete - ${data.contributors?.length || 0} contributors`);
+    // Use incremental update (1 day) if existing data exists, otherwise full 365 days
+    const daysToAnalyze = existingData ? 1 : 365;
+    console.log(`🔄 [AUTO-REFRESH] Analyzing last ${daysToAnalyze} day(s) of commits...`);
+
+    const newData = await analyzer.analyze('LMCache', 'LMCache', daysToAnalyze);
+
+    // Merge with existing data if doing incremental update
+    let data;
+    if (existingData && daysToAnalyze === 1) {
+      console.log('🔀 [AUTO-REFRESH] Merging new commits with existing data...');
+      data = analyzer.mergeData(existingData, newData);
+      console.log(`✅ [AUTO-REFRESH] Merged data: ${data.total_commits_analyzed} total commits`);
+    } else {
+      data = newData;
+      console.log(`✅ [AUTO-REFRESH] Analysis complete - ${data.total_commits_analyzed} commits analyzed`);
+    }
 
     // Write the data to file
     fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
