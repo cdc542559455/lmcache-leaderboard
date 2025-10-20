@@ -35,20 +35,34 @@ export default async function handler(req, res) {
     const lmcacheRepoPath = path.join(tmpDir, 'LMCache');
     const outputPath = path.join(tmpDir, 'leaderboard-data.json');
 
+    const octokit = new Octokit({ auth: GITHUB_TOKEN });
+
+    // Download the tarball of the LMCache repository using GitHub API
+    console.log('📥 [CRON] Downloading LMCache repository tarball...');
+    const { data: tarballData } = await octokit.repos.downloadTarballArchive({
+      owner: 'LMCache',
+      repo: 'LMCache',
+      ref: 'dev'
+    });
+
+    // Get latest commit info using GitHub API
+    const { data: latestCommitData } = await octokit.repos.getCommit({
+      owner: 'LMCache',
+      repo: 'LMCache',
+      ref: 'dev'
+    });
+
+    const latestCommit = `${latestCommitData.sha.substring(0, 7)} - ${latestCommitData.commit.message.split('\n')[0]} (${latestCommitData.commit.committer.date})`;
+    console.log(`📌 [CRON] Latest commit: ${latestCommit}`);
+
     // Clean and create temp directory
-    await execAsync(`rm -rf ${tmpDir} && mkdir -p ${tmpDir}`);
+    await execAsync(`rm -rf ${tmpDir} && mkdir -p ${lmcacheRepoPath}`);
 
-    // Clone LMCache repository
-    console.log('📥 [CRON] Cloning LMCache repository...');
-    await execAsync(
-      `git clone --depth 1 --branch dev https://github.com/LMCache/LMCache.git ${lmcacheRepoPath}`
-    );
-
-    // Get latest commit info
-    const { stdout: latestCommit } = await execAsync(
-      `cd ${lmcacheRepoPath} && git log -1 --format="%H - %s (%ci)"`
-    );
-    console.log(`📌 [CRON] Latest commit: ${latestCommit.trim()}`);
+    // Save tarball and extract
+    const tarballPath = path.join(tmpDir, 'lmcache.tar.gz');
+    await fs.writeFile(tarballPath, Buffer.from(tarballData));
+    await execAsync(`cd ${tmpDir} && tar -xzf lmcache.tar.gz --strip-components=1 -C LMCache`);
+    console.log('✅ [CRON] Extracted LMCache repository');
 
     // Copy analyze script and requirements to temp dir
     const scriptPath = path.join(tmpDir, 'analyze_commits.py');
@@ -83,8 +97,6 @@ export default async function handler(req, res) {
     const data = JSON.parse(leaderboardData);
 
     // Upload to GitHub repository
-    const octokit = new Octokit({ auth: GITHUB_TOKEN });
-
     // Update leaderboard-data.json in dashboard/public/
     const filePath = 'dashboard/public/leaderboard-data.json';
 
@@ -112,9 +124,9 @@ export default async function handler(req, res) {
     // Update last-update.json
     const lastUpdateData = {
       timestamp: new Date().toISOString(),
-      latestCommit: latestCommit.trim(),
+      latestCommit: latestCommit,
       success: true,
-      source: 'vercel-cron-hourly'
+      source: 'vercel-cron-daily'
     };
 
     const lastUpdatePath = 'dashboard/public/last-update.json';
@@ -139,20 +151,20 @@ export default async function handler(req, res) {
       sha: lastUpdateSha,
     });
 
-    console.log(`✅ [CRON] Hourly refresh completed at ${new Date().toISOString()}`);
+    console.log(`✅ [CRON] Daily refresh completed at ${new Date().toISOString()}`);
 
     // Clean up
     await execAsync(`rm -rf ${tmpDir}`);
 
     res.status(200).json({
       success: true,
-      message: 'Hourly refresh completed',
+      message: 'Daily refresh completed',
       timestamp: new Date().toISOString(),
-      latestCommit: latestCommit.trim()
+      latestCommit: latestCommit
     });
 
   } catch (error) {
-    console.error('❌ [CRON] Hourly refresh failed:', error);
+    console.error('❌ [CRON] Daily refresh failed:', error);
 
     // Try to log the error to GitHub
     try {
@@ -163,7 +175,7 @@ export default async function handler(req, res) {
           timestamp: new Date().toISOString(),
           error: error.message,
           success: false,
-          source: 'vercel-cron-hourly'
+          source: 'vercel-cron-daily'
         };
 
         await octokit.repos.createOrUpdateFileContents({

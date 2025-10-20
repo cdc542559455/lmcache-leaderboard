@@ -4,6 +4,7 @@ import { promisify } from 'util';
 import { Octokit } from '@octokit/rest';
 import fs from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 const execAsync = promisify(exec);
 
@@ -26,33 +27,6 @@ export default async function handler(req, res) {
   try {
     console.log('🔄 Starting pull and refresh from official LMCache repository...');
 
-    const tmpDir = '/tmp/lmcache-refresh';
-    const lmcacheRepoPath = path.join(tmpDir, 'LMCache');
-
-    // Create temp directory
-    await execAsync(`mkdir -p ${tmpDir}`);
-
-    // Clone or update LMCache repository
-    try {
-      await execAsync(`rm -rf ${lmcacheRepoPath}`);
-      await execAsync(
-        `git clone --depth 1 --branch dev https://github.com/LMCache/LMCache.git ${lmcacheRepoPath}`
-      );
-      console.log('✅ Cloned official LMCache repository');
-    } catch (error) {
-      throw new Error(`Failed to clone LMCache repo: ${error.message}`);
-    }
-
-    // Get latest commit info
-    const { stdout: latestCommit } = await execAsync(
-      `cd ${lmcacheRepoPath} && git log -1 --format="%H - %s (%ci)"`
-    );
-
-    console.log(`📌 Latest commit: ${latestCommit.trim()}`);
-
-    // Generate leaderboard data with AI analysis
-    console.log('🔄 Generating leaderboard data with AI analysis...');
-
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
     const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
@@ -67,6 +41,40 @@ export default async function handler(req, res) {
       console.warn('⚠️ No AI API keys configured - will use fallback scoring');
     }
 
+    const octokit = new Octokit({ auth: GITHUB_TOKEN });
+
+    // Download the tarball of the LMCache repository
+    console.log('📥 Downloading LMCache repository tarball...');
+    const { data: tarballData } = await octokit.repos.downloadTarballArchive({
+      owner: 'LMCache',
+      repo: 'LMCache',
+      ref: 'dev'
+    });
+
+    // Get latest commit info using GitHub API
+    const { data: latestCommitData } = await octokit.repos.getCommit({
+      owner: 'LMCache',
+      repo: 'LMCache',
+      ref: 'dev'
+    });
+
+    const latestCommit = `${latestCommitData.sha.substring(0, 7)} - ${latestCommitData.commit.message.split('\n')[0]} (${latestCommitData.commit.committer.date})`;
+    console.log(`📌 Latest commit: ${latestCommit}`);
+
+    // Create temp directory
+    const tmpDir = '/tmp/lmcache-refresh';
+    const lmcacheRepoPath = path.join(tmpDir, 'LMCache');
+    await execAsync(`rm -rf ${tmpDir} && mkdir -p ${lmcacheRepoPath}`);
+
+    // Save tarball and extract
+    const tarballPath = path.join(tmpDir, 'lmcache.tar.gz');
+    await fs.writeFile(tarballPath, Buffer.from(tarballData));
+    await execAsync(`cd ${tmpDir} && tar -xzf lmcache.tar.gz --strip-components=1 -C LMCache`);
+    console.log('✅ Extracted LMCache repository');
+
+    // Generate leaderboard data with AI analysis
+    console.log('🔄 Generating leaderboard data with AI analysis...');
+
     const outputPath = path.join(tmpDir, 'leaderboard-data.json');
 
     // Copy analyze script and requirements to temp dir
@@ -79,7 +87,7 @@ export default async function handler(req, res) {
 
     // Install Python dependencies
     console.log('📦 Installing Python dependencies...');
-    await execAsync(`pip install -r ${requirementsPath} --target ${tmpDir}/python_modules`);
+    await execAsync(`pip install -r ${requirementsPath} --target ${tmpDir}/python_modules --quiet`);
 
     // Run analysis script with OpenAI/Claude API
     console.log('🤖 Running AI-powered commit analysis...');
@@ -101,8 +109,6 @@ export default async function handler(req, res) {
     const data = JSON.parse(leaderboardData);
 
     // Upload to GitHub repository
-    const octokit = new Octokit({ auth: GITHUB_TOKEN });
-
     // Update leaderboard-data.json in dashboard/public/
     const filePath = 'dashboard/public/leaderboard-data.json';
 
@@ -130,7 +136,7 @@ export default async function handler(req, res) {
     // Update last-update.json
     const lastUpdateData = {
       timestamp: new Date().toISOString(),
-      latestCommit: latestCommit.trim(),
+      latestCommit: latestCommit,
       success: true,
       source: 'manual-refresh-admin-panel'
     };
@@ -165,7 +171,7 @@ export default async function handler(req, res) {
     res.status(200).json({
       success: true,
       message: 'Successfully pulled from official LMCache repo and regenerated leaderboard with AI analysis',
-      latestCommit: latestCommit.trim(),
+      latestCommit: latestCommit,
       timestamp: new Date().toISOString(),
       contributorsAnalyzed: data.contributors?.length || 0
     });
