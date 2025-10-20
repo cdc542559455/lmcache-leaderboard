@@ -236,13 +236,24 @@ const performAutoRefresh = async () => {
 
     console.log(`📌 [AUTO-REFRESH] Latest commit: ${latestCommit}`);
 
-    // Regenerate leaderboard data
+    // Regenerate leaderboard data with OpenAI API
+    const env = { ...process.env };
+
+    if (env.OPENAI_API_KEY) {
+      console.log('🤖 [AUTO-REFRESH] Using OpenAI for commit analysis');
+    } else if (env.ANTHROPIC_API_KEY) {
+      console.log('🤖 [AUTO-REFRESH] Using Anthropic for commit analysis');
+    } else {
+      console.warn('⚠️ [AUTO-REFRESH] No AI API keys - using fallback scoring');
+    }
+
     execSync(
       `python3 analyze_commits.py --repo ./LMCache --output ${outputPath}`,
       {
         cwd: projectRoot,
         encoding: 'utf8',
-        stdio: 'pipe'
+        stdio: 'pipe',
+        env: env
       }
     );
 

@@ -15,14 +15,20 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log('⏰ [CRON] Starting hourly leaderboard refresh...');
+    console.log('⏰ [CRON] Starting scheduled leaderboard refresh...');
 
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-    const REPO_OWNER = process.env.REPO_OWNER || 'LMCache';
+    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+    const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+    const REPO_OWNER = process.env.REPO_OWNER || 'cdc542559455';
     const REPO_NAME = process.env.REPO_NAME || 'lmcache-leaderboard';
 
     if (!GITHUB_TOKEN) {
       throw new Error('GITHUB_TOKEN not configured');
+    }
+
+    if (!OPENAI_API_KEY && !ANTHROPIC_API_KEY) {
+      console.warn('⚠️ [CRON] No AI API keys configured - will use fallback scoring');
     }
 
     const tmpDir = '/tmp/lmcache-cron';
@@ -57,10 +63,16 @@ export default async function handler(req, res) {
     console.log('📦 [CRON] Installing Python dependencies...');
     await execAsync(`pip install -r ${requirementsPath} --target ${tmpDir}/python_modules`);
 
-    // Run analysis script
-    console.log('🔄 [CRON] Generating leaderboard data...');
+    // Run analysis script with OpenAI/Claude API
+    console.log('🔄 [CRON] Generating leaderboard data with AI analysis...');
+    const envVars = `PYTHONPATH=${tmpDir}/python_modules`;
+    const apiKeys = [
+      OPENAI_API_KEY ? `OPENAI_API_KEY=${OPENAI_API_KEY}` : '',
+      ANTHROPIC_API_KEY ? `ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}` : ''
+    ].filter(Boolean).join(' ');
+
     const { stdout: analysisOutput } = await execAsync(
-      `cd ${tmpDir} && PYTHONPATH=${tmpDir}/python_modules python3 analyze_commits.py --repo ${lmcacheRepoPath} --output ${outputPath}`,
+      `cd ${tmpDir} && ${envVars} ${apiKeys} python3 analyze_commits.py --repo ${lmcacheRepoPath} --output ${outputPath}`,
       { timeout: 50000 } // 50 second timeout
     );
 
