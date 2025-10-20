@@ -194,37 +194,32 @@ Respond with ONLY a number from 0-25.`;
     const commits = await this.getCommitsSince(owner, repo, daysBack);
 
     const classifiedCommits = [];
-    const contributorStats = {};
+    const contributorCommits = {};
 
     let processed = 0;
     for (const commit of commits) {
       const classified = await this.classifyCommit(owner, repo, commit);
       classifiedCommits.push(classified);
 
-      // Aggregate by contributor
+      // Store commits by contributor
       const author = classified.author;
-      if (!contributorStats[author]) {
-        contributorStats[author] = {
+      if (!contributorCommits[author]) {
+        contributorCommits[author] = {
           name: author,
           email: classified.email,
-          commits: 0,
-          significantCommits: 0,
-          totalScore: 0,
-          totalLines: 0,
-          recentCommits: []
+          commits: []
         };
       }
 
-      const stats = contributorStats[author];
-      stats.commits++;
-      if (classified.significant) stats.significantCommits++;
-      stats.totalScore += classified.scores.total;
-      stats.totalLines += classified.stats.lines;
-      stats.recentCommits.push({
+      contributorCommits[author].commits.push({
         hash: classified.hash,
+        author: classified.author,
+        email: classified.email,
         date: classified.date,
         message: classified.message,
-        score: classified.scores.total
+        stats: classified.stats,
+        scores: classified.scores,
+        classification: classified.significant ? 'significant' : 'simple'
       });
 
       processed++;
@@ -233,23 +228,116 @@ Respond with ONLY a number from 0-25.`;
       }
     }
 
-    // Sort contributors by score
-    const contributors = Object.values(contributorStats)
-      .sort((a, b) => b.totalScore - a.totalScore)
-      .map((c, index) => ({
-        rank: index + 1,
-        ...c,
-        recentCommits: c.recentCommits.slice(0, 10) // Keep only top 10
-      }));
+    // Group commits by time period
+    const timePeriods = { weekly: {}, monthly: {}, quarterly: {} };
+
+    for (const commit of classifiedCommits) {
+      const date = new Date(commit.date);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const quarter = Math.ceil((date.getMonth() + 1) / 3);
+
+      // Get ISO week number
+      const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+      d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+      const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+      const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+      const weekKey = `${year}-W${String(weekNo).padStart(2, '0')}`;
+      const monthKey = `${year}-${month}`;
+      const quarterKey = `${year}-Q${quarter}`;
+
+      if (!timePeriods.weekly[weekKey]) timePeriods.weekly[weekKey] = [];
+      if (!timePeriods.monthly[monthKey]) timePeriods.monthly[monthKey] = [];
+      if (!timePeriods.quarterly[quarterKey]) timePeriods.quarterly[quarterKey] = [];
+
+      timePeriods.weekly[weekKey].push(commit);
+      timePeriods.monthly[monthKey].push(commit);
+      timePeriods.quarterly[quarterKey].push(commit);
+    }
+
+    // Generate leaderboards for each time period
+    const leaderboards = {};
+    for (const [periodType, periods] of Object.entries(timePeriods)) {
+      leaderboards[periodType] = {};
+
+      for (const [periodKey, periodCommits] of Object.entries(periods)) {
+        const periodContributors = {};
+
+        // Aggregate stats for this period
+        for (const commit of periodCommits) {
+          const author = commit.author;
+          if (!periodContributors[author]) {
+            const authorInfo = contributorCommits[author];
+            periodContributors[author] = {
+              name: author,
+              email: authorInfo.email,
+              total_commits: 0,
+              significant_commits: 0,
+              simple_commits: 0,
+              commit_score: 0,
+              commits: []
+            };
+          }
+
+          const contrib = periodContributors[author];
+          contrib.total_commits++;
+          if (commit.significant) {
+            contrib.significant_commits++;
+          } else {
+            contrib.simple_commits++;
+          }
+          contrib.commit_score += commit.scores.total;
+
+          // Find full commit data
+          const fullCommit = contributorCommits[author].commits.find(c => c.hash === commit.hash);
+          if (fullCommit) {
+            contrib.commits.push(fullCommit);
+          }
+        }
+
+        // Calculate final stats and assign tiers
+        const contributors = Object.values(periodContributors)
+          .map(c => ({
+            ...c,
+            avg_score: c.total_commits > 0 ? c.commit_score / c.total_commits : 0,
+            significance_ratio: c.total_commits > 0 ? c.significant_commits / c.total_commits : 0,
+            additional_contribution_score: 0
+          }))
+          .sort((a, b) => b.commit_score - a.commit_score);
+
+        // Assign tiers
+        contributors.forEach((c, index) => {
+          const rank = index + 1;
+          if (rank <= 5) {
+            c.tier = 'T0';
+            c.tier_name = 'Elite';
+          } else if (rank <= 12) {
+            c.tier = 'T1';
+            c.tier_name = 'Advanced';
+          } else if (rank <= 22) {
+            c.tier = 'T2';
+            c.tier_name = 'Intermediate';
+          } else {
+            c.tier = 'T3';
+            c.tier_name = 'Contributing';
+          }
+        });
+
+        leaderboards[periodType][periodKey] = contributors;
+      }
+    }
 
     return {
+      last_updated: new Date().toISOString(),
+      total_commits_analyzed: commits.length,
+      analysis_period_days: daysBack,
+      leaderboards,
       metadata: {
         analyzedAt: new Date().toISOString(),
         daysBack,
         totalCommits: commits.length,
-        totalContributors: contributors.length
-      },
-      contributors
+        totalContributors: Object.keys(contributorCommits).length
+      }
     };
   }
 }
