@@ -68,10 +68,14 @@ export default async function handler(req, res) {
     const scriptPath = path.join(tmpDir, 'analyze_commits.py');
     const requirementsPath = path.join(tmpDir, 'requirements.txt');
 
-    // These need to be in the repo root for Vercel to access
-    const rootDir = process.cwd();
-    await execAsync(`cp ${path.join(rootDir, 'analyze_commits.py')} ${scriptPath}`);
-    await execAsync(`cp ${path.join(rootDir, 'requirements.txt')} ${requirementsPath}`);
+    // In Vercel, files are in /var/task, use path.resolve to find them
+    const rootDir = path.resolve(process.cwd());
+    const analyzeScript = path.join(rootDir, 'analyze_commits.py');
+    const requirementsFile = path.join(rootDir, 'requirements.txt');
+
+    // Copy files using fs instead of cp command
+    await fs.copyFile(analyzeScript, scriptPath);
+    await fs.copyFile(requirementsFile, requirementsPath);
 
     // Install Python dependencies (if not cached)
     console.log('📦 [CRON] Installing Python dependencies...');
