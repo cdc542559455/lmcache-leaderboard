@@ -85,8 +85,8 @@ export default async function handler(req, res) {
     }
 
     // Generate leaderboard data with AI analysis using GitHub API
-    // Use incremental update (last 1 day) if existing data exists, otherwise full 180 days
-    const daysToAnalyze = existingData ? 1 : 180;
+    // Use incremental update (last 2 days) if existing data exists, otherwise full 365 days
+    const daysToAnalyze = existingData ? 2 : 365;
     console.log(`🔄 [CRON] Analyzing last ${daysToAnalyze} day(s) of commits...`);
 
     const analyzer = new CommitAnalyzer(GITHUB_TOKEN, OPENAI_API_KEY);
@@ -94,7 +94,7 @@ export default async function handler(req, res) {
 
     // Merge with existing data if doing incremental update
     let data;
-    if (existingData && daysToAnalyze === 1) {
+    if (existingData && daysToAnalyze === 2) {
       console.log('🔀 [CRON] Merging new commits with existing data...');
       data = analyzer.mergeData(existingData, newData);
       console.log(`✅ [CRON] Merged data: ${data.total_commits_analyzed} total commits`);
