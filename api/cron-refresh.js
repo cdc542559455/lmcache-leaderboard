@@ -6,6 +6,7 @@ import { Octokit } from '@octokit/rest';
 import fs from 'fs/promises';
 import path from 'path';
 import { extractTarball } from './_lib/extractTarball.js';
+import { CommitAnalyzer } from './_lib/analyzeCommits.js';
 
 const execAsync = promisify(exec);
 
@@ -34,7 +35,6 @@ export default async function handler(req, res) {
 
     const tmpDir = '/tmp/lmcache-cron';
     const lmcacheRepoPath = path.join(tmpDir, 'LMCache');
-    const outputPath = path.join(tmpDir, 'leaderboard-data.json');
 
     const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
@@ -64,41 +64,15 @@ export default async function handler(req, res) {
     await extractTarball(tarballData, lmcacheRepoPath);
     console.log('✅ [CRON] Extracted LMCache repository');
 
-    // Copy analyze script and requirements to temp dir
-    const scriptPath = path.join(tmpDir, 'analyze_commits.py');
-    const requirementsPath = path.join(tmpDir, 'requirements.txt');
-
-    // In Vercel, files are in /var/task, use path.resolve to find them
-    const rootDir = path.resolve(process.cwd());
-    const analyzeScript = path.join(rootDir, 'analyze_commits.py');
-    const requirementsFile = path.join(rootDir, 'requirements.txt');
-
-    // Copy files using fs instead of cp command
-    await fs.copyFile(analyzeScript, scriptPath);
-    await fs.copyFile(requirementsFile, requirementsPath);
-
-    // Install Python dependencies (if not cached)
-    console.log('📦 [CRON] Installing Python dependencies...');
-    await execAsync(`pip install -r ${requirementsPath} --target ${tmpDir}/python_modules`);
-
-    // Run analysis script with OpenAI/Claude API
+    // Generate leaderboard data with AI analysis using JavaScript
     console.log('🔄 [CRON] Generating leaderboard data with AI analysis...');
-    const envVars = `PYTHONPATH=${tmpDir}/python_modules`;
-    const apiKeys = [
-      OPENAI_API_KEY ? `OPENAI_API_KEY=${OPENAI_API_KEY}` : '',
-      ANTHROPIC_API_KEY ? `ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}` : ''
-    ].filter(Boolean).join(' ');
 
-    const { stdout: analysisOutput } = await execAsync(
-      `cd ${tmpDir} && ${envVars} ${apiKeys} python3 analyze_commits.py --repo ${lmcacheRepoPath} --output ${outputPath}`,
-      { timeout: 50000 } // 50 second timeout
-    );
+    const analyzer = new CommitAnalyzer(lmcacheRepoPath, OPENAI_API_KEY);
+    const data = await analyzer.analyze(180); // Last 180 days
 
     console.log('✅ [CRON] Leaderboard data generated');
 
-    // Read generated data
-    const leaderboardData = await fs.readFile(outputPath, 'utf-8');
-    const data = JSON.parse(leaderboardData);
+    const leaderboardData = JSON.stringify(data, null, 2);
 
     // Upload to GitHub repository
     // Update leaderboard-data.json in dashboard/public/
