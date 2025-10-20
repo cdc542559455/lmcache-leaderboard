@@ -34,6 +34,16 @@ export default async function handler(req, res) {
     const REPO_OWNER = process.env.REPO_OWNER || 'cdc542559455';
     const REPO_NAME = process.env.REPO_NAME || 'lmcache-leaderboard';
 
+    // DEBUG: Log token presence and partial value
+    console.log('🔑 [DEBUG] GITHUB_TOKEN present:', !!GITHUB_TOKEN);
+    if (GITHUB_TOKEN) {
+      console.log('🔑 [DEBUG] Token length:', GITHUB_TOKEN.length);
+      console.log('🔑 [DEBUG] Token starts with:', GITHUB_TOKEN.substring(0, 7) + '...');
+      console.log('🔑 [DEBUG] Token ends with: ...' + GITHUB_TOKEN.substring(GITHUB_TOKEN.length - 4));
+    }
+    console.log('🔑 [DEBUG] REPO_OWNER:', REPO_OWNER);
+    console.log('🔑 [DEBUG] REPO_NAME:', REPO_NAME);
+
     if (!GITHUB_TOKEN) {
       throw new Error('GITHUB_TOKEN not configured');
     }
@@ -42,6 +52,7 @@ export default async function handler(req, res) {
       console.warn('⚠️ No AI API keys configured - will use fallback scoring');
     }
 
+    console.log('🔧 [DEBUG] Initializing Octokit with token...');
     const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
     // Download the tarball of the LMCache repository
@@ -113,26 +124,56 @@ export default async function handler(req, res) {
     // Update leaderboard-data.json in dashboard/public/
     const filePath = 'dashboard/public/leaderboard-data.json';
 
+    console.log('📤 [DEBUG] Attempting to update file in GitHub...');
+    console.log('📤 [DEBUG] Target repo:', `${REPO_OWNER}/${REPO_NAME}`);
+    console.log('📤 [DEBUG] File path:', filePath);
+
     let sha;
     try {
+      console.log('🔍 [DEBUG] Fetching existing file to get SHA...');
       const { data: currentFile } = await octokit.repos.getContent({
         owner: REPO_OWNER,
         repo: REPO_NAME,
         path: filePath,
       });
       sha = currentFile.sha;
+      console.log('✅ [DEBUG] Found existing file, SHA:', sha?.substring(0, 10) + '...');
     } catch (error) {
+      console.log('⚠️ [DEBUG] File not found (will create new):', error.message);
       sha = undefined;
     }
 
-    await octokit.repos.createOrUpdateFileContents({
+    console.log('📝 [DEBUG] Calling createOrUpdateFileContents...');
+    console.log('📝 [DEBUG] Request params:', JSON.stringify({
       owner: REPO_OWNER,
       repo: REPO_NAME,
       path: filePath,
       message: `Manual refresh: Update leaderboard data - ${new Date().toISOString()}`,
-      content: Buffer.from(leaderboardData).toString('base64'),
       sha: sha,
-    });
+      contentLength: leaderboardData.length
+    }, null, 2));
+
+    try {
+      const updateResponse = await octokit.repos.createOrUpdateFileContents({
+        owner: REPO_OWNER,
+        repo: REPO_NAME,
+        path: filePath,
+        message: `Manual refresh: Update leaderboard data - ${new Date().toISOString()}`,
+        content: Buffer.from(leaderboardData).toString('base64'),
+        sha: sha,
+      });
+      console.log('✅ [DEBUG] File update successful! Response:', JSON.stringify({
+        commit: updateResponse.data.commit?.sha?.substring(0, 10),
+        content: updateResponse.data.content?.sha?.substring(0, 10)
+      }));
+    } catch (updateError) {
+      console.error('❌ [DEBUG] File update FAILED!');
+      console.error('❌ [DEBUG] Error name:', updateError.name);
+      console.error('❌ [DEBUG] Error message:', updateError.message);
+      console.error('❌ [DEBUG] Error status:', updateError.status);
+      console.error('❌ [DEBUG] Error response:', JSON.stringify(updateError.response?.data, null, 2));
+      throw updateError;
+    }
 
     // Update last-update.json
     const lastUpdateData = {
@@ -142,27 +183,38 @@ export default async function handler(req, res) {
       source: 'manual-refresh-admin-panel'
     };
 
+    console.log('📤 [DEBUG] Updating last-update.json...');
     const lastUpdatePath = 'dashboard/public/last-update.json';
     let lastUpdateSha;
     try {
+      console.log('🔍 [DEBUG] Fetching existing last-update.json...');
       const { data: currentFile } = await octokit.repos.getContent({
         owner: REPO_OWNER,
         repo: REPO_NAME,
         path: lastUpdatePath,
       });
       lastUpdateSha = currentFile.sha;
+      console.log('✅ [DEBUG] Found last-update.json, SHA:', lastUpdateSha?.substring(0, 10) + '...');
     } catch (error) {
+      console.log('⚠️ [DEBUG] last-update.json not found (will create new)');
       lastUpdateSha = undefined;
     }
 
-    await octokit.repos.createOrUpdateFileContents({
-      owner: REPO_OWNER,
-      repo: REPO_NAME,
-      path: lastUpdatePath,
-      message: `Manual refresh: Update timestamp - ${new Date().toISOString()}`,
-      content: Buffer.from(JSON.stringify(lastUpdateData, null, 2)).toString('base64'),
-      sha: lastUpdateSha,
-    });
+    try {
+      console.log('📝 [DEBUG] Updating last-update.json...');
+      await octokit.repos.createOrUpdateFileContents({
+        owner: REPO_OWNER,
+        repo: REPO_NAME,
+        path: lastUpdatePath,
+        message: `Manual refresh: Update timestamp - ${new Date().toISOString()}`,
+        content: Buffer.from(JSON.stringify(lastUpdateData, null, 2)).toString('base64'),
+        sha: lastUpdateSha,
+      });
+      console.log('✅ [DEBUG] last-update.json updated successfully');
+    } catch (lastUpdateError) {
+      console.error('❌ [DEBUG] last-update.json update FAILED:', lastUpdateError.message);
+      // Don't throw - this is not critical
+    }
 
     console.log(`✅ Manual refresh completed at ${new Date().toISOString()}`);
 
