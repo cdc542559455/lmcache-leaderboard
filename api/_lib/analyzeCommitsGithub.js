@@ -344,6 +344,37 @@ Respond with ONLY a number from 0-25.`;
   mergeData(existingData, newData) {
     console.log('🔀 Merging datasets...');
 
+    // Extract manual contributions from existing data to preserve them
+    const manualContributions = {};
+    if (existingData.leaderboards) {
+      for (const [periodType, periods] of Object.entries(existingData.leaderboards)) {
+        for (const [periodKey, contributors] of Object.entries(periods)) {
+          for (const contributor of contributors) {
+            const name = contributor.name;
+            const additionalScore = contributor.additional_contribution_score || 0;
+            const additionalContribs = contributor.additional_contributions || [];
+            const additionalNotes = contributor.additional_contribution_notes || '';
+
+            // Only save if there are manual contributions
+            if (additionalScore > 0 && additionalContribs.length > 0) {
+              if (!manualContributions[name]) {
+                manualContributions[name] = {};
+              }
+              if (!manualContributions[name][periodType]) {
+                manualContributions[name][periodType] = {};
+              }
+              manualContributions[name][periodType][periodKey] = {
+                score: additionalScore,
+                contributions: additionalContribs,
+                notes: additionalNotes
+              };
+            }
+          }
+        }
+      }
+    }
+    console.log(`📥 Preserved manual contributions for ${Object.keys(manualContributions).length} contributors`);
+
     // Collect all commits from both datasets, deduplicate by hash
     const allCommitsMap = new Map();
 
@@ -456,17 +487,28 @@ Respond with ONLY a number from 0-25.`;
           contrib.commits.push(commit);
         }
 
-        // Calculate final stats and assign tiers
+        // Calculate final stats and apply manual contributions
         const contributors = Object.values(periodContributors)
-          .map(c => ({
-            ...c,
-            avg_score: c.total_commits > 0 ? c.commit_score / c.total_commits : 0,
-            significance_ratio: c.total_commits > 0 ? c.significant_commits / c.total_commits : 0,
-            additional_contribution_score: 0
-          }))
-          .sort((a, b) => b.commit_score - a.commit_score);
+          .map(c => {
+            // Check if this contributor has manual contributions for this period
+            const manualData = manualContributions[c.name]?.[periodType]?.[periodKey] || null;
+            const additionalScore = manualData?.score || 0;
+            const additionalContribs = manualData?.contributions || [];
+            const additionalNotes = manualData?.notes || '';
 
-        // Assign tiers
+            return {
+              ...c,
+              avg_score: c.total_commits > 0 ? c.commit_score / c.total_commits : 0,
+              significance_ratio: c.total_commits > 0 ? c.significant_commits / c.total_commits : 0,
+              additional_contribution_score: additionalScore,
+              additional_contributions: additionalContribs,
+              additional_contribution_notes: additionalNotes,
+              total_score: c.commit_score + additionalScore
+            };
+          })
+          .sort((a, b) => b.total_score - a.total_score);
+
+        // Assign tiers based on ranking (not score)
         contributors.forEach((c, index) => {
           const rank = index + 1;
           if (rank <= 5) {
