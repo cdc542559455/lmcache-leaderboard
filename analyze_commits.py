@@ -135,7 +135,7 @@ class CommitAnalyzer:
         )
         return result.stdout.strip()
 
-    def get_commits_since(self, days: int = 180) -> List[Dict]:
+    def get_commits_since(self, days: int = 365) -> List[Dict]:
         """Get all commits from the last N days."""
         since_date = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
 
@@ -485,7 +485,7 @@ Respond with ONLY a number from 0-25."""
     def analyze(self, output_file: str = "leaderboard-data.json"):
         """Main analysis pipeline."""
         print("🔍 Fetching commits from last 6 months...")
-        commits = self.get_commits_since(days=180)
+        commits = self.get_commits_since(days=365)
         print(f"   Found {len(commits)} commits")
 
         print("\n📊 Classifying commits...")
@@ -505,7 +505,7 @@ Respond with ONLY a number from 0-25."""
         output = {
             "last_updated": datetime.now().isoformat(),
             "total_commits_analyzed": len(classified_commits),
-            "analysis_period_days": 180,
+            "analysis_period_days": 365,
             "leaderboards": leaderboards,
             "metadata": {
                 "scoring_system": {

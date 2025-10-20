@@ -9,7 +9,7 @@ export class CommitAnalyzer {
     this.openaiClient = this.openaiApiKey ? new OpenAI({ apiKey: this.openaiApiKey }) : null;
   }
 
-  async getCommitsSince(owner, repo, days = 180) {
+  async getCommitsSince(owner, repo, days = 365) {
     const sinceDate = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
 
     console.log(`Fetching commits from ${owner}/${repo} since ${sinceDate.toISOString()}...`);
@@ -189,7 +189,7 @@ Respond with ONLY a number from 0-25.`;
     };
   }
 
-  async analyze(owner, repo, daysBack = 180) {
+  async analyze(owner, repo, daysBack = 365) {
     console.log(`Analyzing ${owner}/${repo} for last ${daysBack} days...`);
     const commits = await this.getCommitsSince(owner, repo, daysBack);
 
