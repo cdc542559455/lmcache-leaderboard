@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
+import { CommitAnalyzer } from '../api/_lib/analyzeCommitsGithub.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -92,89 +93,41 @@ app.get('/api/export-manual-contributions', (req, res) => {
 // Endpoint to force pull from official LMCache repo and regenerate leaderboard
 app.post('/api/pull-and-refresh', async (req, res) => {
   try {
-    const projectRoot = path.join(__dirname, '..');
-    const lmcacheRepoPath = path.join(projectRoot, 'LMCache');
     const outputPath = path.join(__dirname, 'public', 'leaderboard-data.json');
 
-    console.log('🔄 Starting force pull from official LMCache repository...');
+    console.log('🔄 Starting refresh from official LMCache repository using GitHub API...');
 
-    // Check if LMCache directory exists
-    if (!fs.existsSync(lmcacheRepoPath)) {
-      console.log('📥 LMCache repo not found locally, cloning from official repo...');
-      try {
-        execSync(
-          'git clone https://github.com/LMCache/LMCache.git',
-          {
-            cwd: projectRoot,
-            stdio: 'pipe'
-          }
-        );
-        console.log('✅ Cloned official LMCache repository');
-      } catch (cloneError) {
-        throw new Error(`Failed to clone LMCache repo: ${cloneError.message}`);
-      }
-    } else {
-      // Pull latest changes from official repo
-      console.log('🔄 Pulling latest changes from official LMCache repository...');
-      try {
-        // Fetch from official remote (default branch is 'dev' for LMCache)
-        execSync(
-          'git fetch https://github.com/LMCache/LMCache.git dev',
-          {
-            cwd: lmcacheRepoPath,
-            stdio: 'pipe'
-          }
-        );
+    // Use GitHub API-based analyzer (no git/Python required)
+    const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-        // Reset to match official repo (force pull)
-        execSync(
-          'git reset --hard FETCH_HEAD',
-          {
-            cwd: lmcacheRepoPath,
-            stdio: 'pipe'
-          }
-        );
+    const analyzer = new CommitAnalyzer(GITHUB_TOKEN, OPENAI_API_KEY);
+    const data = await analyzer.analyze('LMCache', 'LMCache', 180); // Last 180 days
 
-        console.log('✅ Pulled latest changes from official LMCache repository');
-      } catch (pullError) {
-        throw new Error(`Failed to pull from LMCache repo: ${pullError.message}`);
-      }
-    }
+    console.log('✅ Analysis complete - writing to file...');
 
-    // Get the latest commit info
-    const latestCommit = execSync(
-      'git log -1 --format="%H - %s (%ci)"',
-      {
-        cwd: lmcacheRepoPath,
-        encoding: 'utf8'
-      }
-    ).trim();
+    // Write the data to file
+    fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
 
-    console.log(`📌 Latest commit: ${latestCommit}`);
+    // Update last-update.json
+    const lastUpdatePath = path.join(__dirname, 'public', 'last-update.json');
+    const lastUpdateData = {
+      timestamp: new Date().toISOString(),
+      latestCommit: `GitHub API analysis completed`,
+      success: true,
+      source: 'local-api-manual-refresh',
+      contributorsAnalyzed: data.contributors?.length || 0
+    };
+    fs.writeFileSync(lastUpdatePath, JSON.stringify(lastUpdateData, null, 2));
 
-    // Regenerate leaderboard data with fresh repo data
-    console.log('🔄 Regenerating leaderboard data with fresh repository data...');
-    try {
-      const analysisOutput = execSync(
-        `python3 analyze_commits.py --repo ./LMCache --output ${outputPath}`,
-        {
-          cwd: projectRoot,
-          encoding: 'utf8',
-          stdio: 'pipe'
-        }
-      );
+    console.log(`✅ Leaderboard data regenerated successfully - ${data.contributors?.length || 0} contributors`);
 
-      console.log('✅ Leaderboard data regenerated successfully');
-
-      res.json({
-        success: true,
-        message: 'Successfully pulled from official LMCache repo and regenerated leaderboard',
-        latestCommit: latestCommit,
-        timestamp: new Date().toISOString()
-      });
-    } catch (analysisError) {
-      throw new Error(`Analysis script failed: ${analysisError.message}`);
-    }
+    res.json({
+      success: true,
+      message: 'Successfully analyzed LMCache repo and regenerated leaderboard',
+      timestamp: new Date().toISOString(),
+      contributorsAnalyzed: data.contributors?.length || 0
+    });
   } catch (error) {
     console.error('❌ Error during pull and refresh:', error);
     res.status(500).json({
@@ -197,65 +150,24 @@ const performAutoRefresh = async () => {
   try {
     console.log('\n⏰ [AUTO-REFRESH] Starting scheduled refresh from official LMCache repository...');
 
-    const projectRoot = path.join(__dirname, '..');
-    const lmcacheRepoPath = path.join(projectRoot, 'LMCache');
     const outputPath = path.join(__dirname, 'public', 'leaderboard-data.json');
+    const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-    // Check if LMCache directory exists
-    if (!fs.existsSync(lmcacheRepoPath)) {
-      console.log('📥 [AUTO-REFRESH] LMCache repo not found, skipping auto-refresh');
-      return;
-    }
-
-    // Fetch from official remote (default branch is 'dev' for LMCache)
-    execSync(
-      'git fetch https://github.com/LMCache/LMCache.git dev',
-      {
-        cwd: lmcacheRepoPath,
-        stdio: 'pipe'
-      }
-    );
-
-    // Reset to match official repo (force pull)
-    execSync(
-      'git reset --hard FETCH_HEAD',
-      {
-        cwd: lmcacheRepoPath,
-        stdio: 'pipe'
-      }
-    );
-
-    // Get the latest commit info
-    const latestCommit = execSync(
-      'git log -1 --format="%H - %s (%ci)"',
-      {
-        cwd: lmcacheRepoPath,
-        encoding: 'utf8'
-      }
-    ).trim();
-
-    console.log(`📌 [AUTO-REFRESH] Latest commit: ${latestCommit}`);
-
-    // Regenerate leaderboard data with OpenAI API
-    const env = { ...process.env };
-
-    if (env.OPENAI_API_KEY) {
+    if (OPENAI_API_KEY) {
       console.log('🤖 [AUTO-REFRESH] Using OpenAI for commit analysis');
-    } else if (env.ANTHROPIC_API_KEY) {
-      console.log('🤖 [AUTO-REFRESH] Using Anthropic for commit analysis');
     } else {
       console.warn('⚠️ [AUTO-REFRESH] No AI API keys - using fallback scoring');
     }
 
-    execSync(
-      `python3 analyze_commits.py --repo ./LMCache --output ${outputPath}`,
-      {
-        cwd: projectRoot,
-        encoding: 'utf8',
-        stdio: 'pipe',
-        env: env
-      }
-    );
+    // Use GitHub API-based analyzer (no git/Python required)
+    const analyzer = new CommitAnalyzer(GITHUB_TOKEN, OPENAI_API_KEY);
+    const data = await analyzer.analyze('LMCache', 'LMCache', 180); // Last 180 days
+
+    console.log(`✅ [AUTO-REFRESH] Analysis complete - ${data.contributors?.length || 0} contributors`);
+
+    // Write the data to file
+    fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
 
     lastAutoRefresh = new Date().toISOString();
 
@@ -263,9 +175,10 @@ const performAutoRefresh = async () => {
     const lastUpdatePath = path.join(__dirname, 'public', 'last-update.json');
     fs.writeFileSync(lastUpdatePath, JSON.stringify({
       timestamp: lastAutoRefresh,
-      latestCommit: latestCommit,
+      latestCommit: `GitHub API analysis completed`,
       success: true,
-      source: 'auto-refresh'
+      source: 'auto-refresh',
+      contributorsAnalyzed: data.contributors?.length || 0
     }, null, 2));
 
     console.log(`✅ [AUTO-REFRESH] Completed successfully at ${lastAutoRefresh}`);
