@@ -71,13 +71,40 @@ export default async function handler(req, res) {
     await extractTarball(tarballData, lmcacheRepoPath);
     console.log('✅ Extracted LMCache repository');
 
+    // Download existing leaderboard data for incremental update
+    console.log('📥 Downloading existing leaderboard data...');
+    let existingData = null;
+    try {
+      const { data: currentFile } = await octokit.repos.getContent({
+        owner: REPO_OWNER,
+        repo: REPO_NAME,
+        path: 'dashboard/public/leaderboard-data.json',
+      });
+      const content = Buffer.from(currentFile.content, 'base64').toString('utf-8');
+      existingData = JSON.parse(content);
+      console.log(`✅ Found existing data with ${existingData.total_commits_analyzed} commits`);
+    } catch (error) {
+      console.log('⚠️ No existing data found, will do full analysis');
+    }
+
     // Generate leaderboard data with AI analysis using GitHub API
-    console.log('🔄 Generating leaderboard data with AI analysis...');
+    // Use incremental update (last 1 day) if existing data exists, otherwise full 180 days
+    const daysToAnalyze = existingData ? 1 : 180;
+    console.log(`🔄 Analyzing last ${daysToAnalyze} day(s) of commits...`);
 
     const analyzer = new CommitAnalyzer(GITHUB_TOKEN, OPENAI_API_KEY);
-    const data = await analyzer.analyze('LMCache', 'LMCache', 180); // Last 180 days
+    const newData = await analyzer.analyze('LMCache', 'LMCache', daysToAnalyze);
 
-    console.log('✅ Leaderboard data generated');
+    // Merge with existing data if doing incremental update
+    let data;
+    if (existingData && daysToAnalyze === 1) {
+      console.log('🔀 Merging new commits with existing data...');
+      data = analyzer.mergeData(existingData, newData);
+      console.log(`✅ Merged data: ${data.total_commits_analyzed} total commits`);
+    } else {
+      data = newData;
+      console.log('✅ Leaderboard data generated');
+    }
 
     const leaderboardData = JSON.stringify(data, null, 2);
 
