@@ -6,7 +6,7 @@ import { Octokit } from '@octokit/rest';
 import fs from 'fs/promises';
 import path from 'path';
 import { extractTarball } from './_lib/extractTarball.js';
-import { CommitAnalyzer } from './_lib/analyzeCommits.js';
+import { CommitAnalyzer } from './_lib/analyzeCommitsGithub.js';
 
 const execAsync = promisify(exec);
 
@@ -64,11 +64,11 @@ export default async function handler(req, res) {
     await extractTarball(tarballData, lmcacheRepoPath);
     console.log('✅ [CRON] Extracted LMCache repository');
 
-    // Generate leaderboard data with AI analysis using JavaScript
+    // Generate leaderboard data with AI analysis using GitHub API
     console.log('🔄 [CRON] Generating leaderboard data with AI analysis...');
 
-    const analyzer = new CommitAnalyzer(lmcacheRepoPath, OPENAI_API_KEY);
-    const data = await analyzer.analyze(180); // Last 180 days
+    const analyzer = new CommitAnalyzer(GITHUB_TOKEN, OPENAI_API_KEY);
+    const data = await analyzer.analyze('LMCache', 'LMCache', 180); // Last 180 days
 
     console.log('✅ [CRON] Leaderboard data generated');
 
