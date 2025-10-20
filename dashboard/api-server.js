@@ -173,19 +173,20 @@ const performAutoRefresh = async () => {
     // Use GitHub API-based analyzer (no git/Python required)
     const analyzer = new CommitAnalyzer(GITHUB_TOKEN, OPENAI_API_KEY);
 
-    // Use incremental update (2 days) if existing data exists, otherwise full 365 days
-    const daysToAnalyze = existingData ? 2 : 365;
+    // Always use 2-day incremental update
+    const daysToAnalyze = 2;
     console.log(`🔄 [AUTO-REFRESH] Analyzing last ${daysToAnalyze} day(s) of commits...`);
 
     const newData = await analyzer.analyze('LMCache', 'LMCache', daysToAnalyze);
 
-    // Merge with existing data if doing incremental update
+    // Merge with existing data if available
     let data;
-    if (existingData && daysToAnalyze === 2) {
+    if (existingData) {
       console.log('🔀 [AUTO-REFRESH] Merging new commits with existing data...');
       data = analyzer.mergeData(existingData, newData);
       console.log(`✅ [AUTO-REFRESH] Merged data: ${data.total_commits_analyzed} total commits`);
     } else {
+      console.log('⚠️ [AUTO-REFRESH] No existing data found - using 2-day window only');
       data = newData;
       console.log(`✅ [AUTO-REFRESH] Analysis complete - ${data.total_commits_analyzed} commits analyzed`);
     }
