@@ -4,7 +4,7 @@ import { promisify } from 'util';
 import { Octokit } from '@octokit/rest';
 import fs from 'fs/promises';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { extractTarball } from './_lib/extractTarball.js';
 
 const execAsync = promisify(exec);
 
@@ -61,15 +61,13 @@ export default async function handler(req, res) {
     const latestCommit = `${latestCommitData.sha.substring(0, 7)} - ${latestCommitData.commit.message.split('\n')[0]} (${latestCommitData.commit.committer.date})`;
     console.log(`📌 Latest commit: ${latestCommit}`);
 
-    // Create temp directory
+    // Create temp directory and extract tarball
     const tmpDir = '/tmp/lmcache-refresh';
     const lmcacheRepoPath = path.join(tmpDir, 'LMCache');
-    await execAsync(`rm -rf ${tmpDir} && mkdir -p ${lmcacheRepoPath}`);
+    await execAsync(`rm -rf ${tmpDir} && mkdir -p ${tmpDir}`);
 
-    // Save tarball and extract
-    const tarballPath = path.join(tmpDir, 'lmcache.tar.gz');
-    await fs.writeFile(tarballPath, Buffer.from(tarballData));
-    await execAsync(`cd ${tmpDir} && tar -xzf lmcache.tar.gz --strip-components=1 -C LMCache`);
+    console.log('📦 Extracting repository tarball...');
+    await extractTarball(tarballData, lmcacheRepoPath);
     console.log('✅ Extracted LMCache repository');
 
     // Generate leaderboard data with AI analysis

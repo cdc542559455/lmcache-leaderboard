@@ -1,10 +1,11 @@
-// Vercel Cron Job: Hourly leaderboard refresh
-// This function is triggered by Vercel Cron every hour
+// Vercel Cron Job: Daily leaderboard refresh
+// This function is triggered by Vercel Cron daily at midnight UTC
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import { Octokit } from '@octokit/rest';
 import fs from 'fs/promises';
 import path from 'path';
+import { extractTarball } from './_lib/extractTarball.js';
 
 const execAsync = promisify(exec);
 
@@ -56,12 +57,11 @@ export default async function handler(req, res) {
     console.log(`📌 [CRON] Latest commit: ${latestCommit}`);
 
     // Clean and create temp directory
-    await execAsync(`rm -rf ${tmpDir} && mkdir -p ${lmcacheRepoPath}`);
+    await execAsync(`rm -rf ${tmpDir} && mkdir -p ${tmpDir}`);
 
-    // Save tarball and extract
-    const tarballPath = path.join(tmpDir, 'lmcache.tar.gz');
-    await fs.writeFile(tarballPath, Buffer.from(tarballData));
-    await execAsync(`cd ${tmpDir} && tar -xzf lmcache.tar.gz --strip-components=1 -C LMCache`);
+    // Extract tarball using pure JavaScript
+    console.log('📦 [CRON] Extracting repository tarball...');
+    await extractTarball(tarballData, lmcacheRepoPath);
     console.log('✅ [CRON] Extracted LMCache repository');
 
     // Copy analyze script and requirements to temp dir
