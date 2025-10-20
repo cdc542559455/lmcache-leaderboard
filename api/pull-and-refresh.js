@@ -54,6 +54,7 @@ export default async function handler(req, res) {
     console.log('🔄 Generating leaderboard data with AI analysis...');
 
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
     const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
     const REPO_OWNER = process.env.REPO_OWNER || 'cdc542559455';
     const REPO_NAME = process.env.REPO_NAME || 'lmcache-leaderboard';
@@ -62,8 +63,8 @@ export default async function handler(req, res) {
       throw new Error('GITHUB_TOKEN not configured');
     }
 
-    if (!ANTHROPIC_API_KEY) {
-      console.warn('⚠️ ANTHROPIC_API_KEY not configured - AI analysis will be limited');
+    if (!OPENAI_API_KEY && !ANTHROPIC_API_KEY) {
+      console.warn('⚠️ No AI API keys configured - will use fallback scoring');
     }
 
     const outputPath = path.join(tmpDir, 'leaderboard-data.json');
@@ -80,10 +81,16 @@ export default async function handler(req, res) {
     console.log('📦 Installing Python dependencies...');
     await execAsync(`pip install -r ${requirementsPath} --target ${tmpDir}/python_modules`);
 
-    // Run analysis script with Claude API
+    // Run analysis script with OpenAI/Claude API
     console.log('🤖 Running AI-powered commit analysis...');
+    const envVars = `PYTHONPATH=${tmpDir}/python_modules`;
+    const apiKeys = [
+      OPENAI_API_KEY ? `OPENAI_API_KEY=${OPENAI_API_KEY}` : '',
+      ANTHROPIC_API_KEY ? `ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}` : ''
+    ].filter(Boolean).join(' ');
+
     const { stdout: analysisOutput } = await execAsync(
-      `cd ${tmpDir} && PYTHONPATH=${tmpDir}/python_modules ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY} python3 analyze_commits.py --repo ${lmcacheRepoPath} --output ${outputPath}`,
+      `cd ${tmpDir} && ${envVars} ${apiKeys} python3 analyze_commits.py --repo ${lmcacheRepoPath} --output ${outputPath}`,
       { timeout: 50000 } // 50 second timeout
     );
 

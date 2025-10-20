@@ -12,14 +12,41 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Tuple
-import anthropic
+
+try:
+    import anthropic
+    ANTHROPIC_AVAILABLE = True
+except ImportError:
+    ANTHROPIC_AVAILABLE = False
+
+try:
+    from openai import OpenAI
+    OPENAI_AVAILABLE = True
+except ImportError:
+    OPENAI_AVAILABLE = False
 
 
 class CommitAnalyzer:
-    def __init__(self, repo_path: str, anthropic_api_key: str = None, manual_contributions_path: str = "manual-contributions.json"):
+    def __init__(self, repo_path: str, anthropic_api_key: str = None, openai_api_key: str = None, manual_contributions_path: str = "manual-contributions.json"):
         self.repo_path = Path(repo_path)
+
+        # Try OpenAI first, then Anthropic
+        self.openai_api_key = openai_api_key or os.getenv("OPENAI_API_KEY")
         self.anthropic_api_key = anthropic_api_key or os.getenv("ANTHROPIC_API_KEY")
-        self.client = anthropic.Anthropic(api_key=self.anthropic_api_key) if self.anthropic_api_key else None
+
+        # Initialize OpenAI client if available
+        if OPENAI_AVAILABLE and self.openai_api_key:
+            self.openai_client = OpenAI(api_key=self.openai_api_key)
+            self.ai_provider = "openai"
+        # Fall back to Anthropic
+        elif ANTHROPIC_AVAILABLE and self.anthropic_api_key:
+            self.client = anthropic.Anthropic(api_key=self.anthropic_api_key)
+            self.ai_provider = "anthropic"
+        else:
+            self.openai_client = None
+            self.client = None
+            self.ai_provider = None
+
         self.manual_contributions_path = Path(manual_contributions_path)
 
         # Scoring weights
@@ -233,7 +260,7 @@ class CommitAnalyzer:
 
     def calculate_ai_score(self, commit_data: Dict) -> int:
         """Use AI to evaluate commit significance (0-25 points)."""
-        if not self.client:
+        if not self.ai_provider:
             # Fallback: simple heuristic
             return min(25, commit_data["total_lines"] // 10)
 
@@ -255,13 +282,24 @@ Diff preview:
 
 Respond with ONLY a number from 0-25."""
 
-            message = self.client.messages.create(
-                model="claude-3-5-sonnet-20241022",
-                max_tokens=10,
-                messages=[{"role": "user", "content": prompt}]
-            )
+            if self.ai_provider == "openai":
+                # Use OpenAI ChatGPT
+                response = self.openai_client.chat.completions.create(
+                    model="gpt-4o-mini",  # Fast and cost-effective
+                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=10,
+                    temperature=0
+                )
+                score_text = response.choices[0].message.content.strip()
+            else:
+                # Use Anthropic Claude
+                message = self.client.messages.create(
+                    model="claude-3-5-sonnet-latest",
+                    max_tokens=10,
+                    messages=[{"role": "user", "content": prompt}]
+                )
+                score_text = message.content[0].text.strip()
 
-            score_text = message.content[0].text.strip()
             score = int(re.search(r"\d+", score_text).group())
             return min(25, max(0, score))
 
