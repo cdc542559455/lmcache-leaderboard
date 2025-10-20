@@ -4,8 +4,9 @@
 const isDevelopment = import.meta.env.DEV;
 const isProduction = import.meta.env.PROD;
 
+// Use environment variable for API URL in development, or default to relative path
 export const API_BASE_URL = isDevelopment
-  ? 'http://localhost:3001/api'  // Local development
+  ? (import.meta.env.VITE_API_URL || 'http://localhost:3001/api')  // Development: use env var or localhost
   : '/api';  // Production (Vercel serverless functions)
 
 export const API_ENDPOINTS = {
