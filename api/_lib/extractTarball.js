@@ -46,8 +46,13 @@ export async function extractTarball(tarballBuffer, targetDir) {
     extract.on('finish', resolve);
     extract.on('error', reject);
 
+    // Convert ArrayBuffer to Buffer if needed
+    const buffer = Buffer.isBuffer(tarballBuffer)
+      ? tarballBuffer
+      : Buffer.from(tarballBuffer);
+
     // Create readable stream from buffer and pipe through gunzip
-    const readable = Readable.from(tarballBuffer);
+    const readable = Readable.from(buffer);
     const gunzip = createGunzip();
     readable.pipe(gunzip).pipe(extract);
   });
