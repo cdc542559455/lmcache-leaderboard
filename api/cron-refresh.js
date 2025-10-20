@@ -19,11 +19,11 @@ export default async function handler(req, res) {
   try {
     console.log('⏰ [CRON] Starting scheduled leaderboard refresh...');
 
-    const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-    const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-    const REPO_OWNER = process.env.REPO_OWNER || 'cdc542559455';
-    const REPO_NAME = process.env.REPO_NAME || 'lmcache-leaderboard';
+    const GITHUB_TOKEN = process.env.GITHUB_TOKEN?.trim();
+    const OPENAI_API_KEY = process.env.OPENAI_API_KEY?.trim();
+    const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY?.trim();
+    const REPO_OWNER = (process.env.REPO_OWNER || 'cdc542559455').trim();
+    const REPO_NAME = (process.env.REPO_NAME || 'lmcache-leaderboard').trim();
 
     if (!GITHUB_TOKEN) {
       throw new Error('GITHUB_TOKEN not configured');
