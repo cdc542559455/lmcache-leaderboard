@@ -152,9 +152,9 @@ function App() {
   })
 
   // Calculate total stats (from visible contributors only)
-  const totalSignificant = currentLeaderboard.reduce((sum, c) => sum + c.significant_commits, 0)
-  const totalSimple = currentLeaderboard.reduce((sum, c) => sum + c.simple_commits, 0)
-  const totalCommits = totalSignificant + totalSimple
+  const totalCommits = currentLeaderboard.reduce((sum, c) => sum + (c.total_commits || 0), 0)
+  const totalSignificant = currentLeaderboard.reduce((sum, c) => sum + (c.significant_commits || 0), 0)
+  const totalSimple = currentLeaderboard.reduce((sum, c) => sum + (c.simple_commits || 0), 0)
 
   return (
     <div className="min-h-screen bg-gray-50">
