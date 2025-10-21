@@ -23,10 +23,10 @@ export default async function handler(req, res) {
 
     console.log(`🔄 Updating manual contributions for ${Object.keys(contributors).length} contributors...`);
 
-    // Use environment variables for GitHub credentials
-    const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-    const REPO_OWNER = process.env.REPO_OWNER || 'cdc542559455';
-    const REPO_NAME = process.env.REPO_NAME || 'lmcache-leaderboard';
+    // Use environment variables for GitHub credentials (trim to remove any whitespace/newlines)
+    const GITHUB_TOKEN = process.env.GITHUB_TOKEN?.trim();
+    const REPO_OWNER = (process.env.REPO_OWNER || 'cdc542559455').trim();
+    const REPO_NAME = (process.env.REPO_NAME || 'lmcache-leaderboard').trim();
 
     if (!GITHUB_TOKEN) {
       return res.status(500).json({
