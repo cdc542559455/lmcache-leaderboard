@@ -15,48 +15,200 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
-// Endpoint to update manual-contributions.json
+// Endpoint to update manual-contributions directly in leaderboard-data.json
+// Updates weekly data, then recalculates monthly and quarterly by summing
 app.post('/api/update-manual-contributions', (req, res) => {
   try {
-    const data = req.body;
-    const jsonContent = JSON.stringify(data, null, 2);
+    const requestData = req.body;
+    const contributors = requestData.contributors || {};
 
-    // Write to BOTH locations to keep them in sync
-    // 1. ROOT file (used by analyze_commits.py)
-    const rootPath = path.join(__dirname, '..', 'manual-contributions.json');
-    fs.writeFileSync(rootPath, jsonContent);
+    // Load existing leaderboard data
+    const leaderboardPath = path.join(__dirname, 'public', 'leaderboard-data.json');
+    const leaderboardData = JSON.parse(fs.readFileSync(leaderboardPath, 'utf-8'));
 
-    // 2. Public file (served by Vite for admin panel to read)
-    const publicPath = path.join(__dirname, 'public', 'manual-contributions.json');
-    fs.writeFileSync(publicPath, jsonContent);
+    console.log(`🔄 Updating WEEKLY manual contributions for ${Object.keys(contributors).length} contributors...`);
 
-    console.log('✅ Updated manual-contributions.json in both locations');
+    // Update ONLY weekly data with manual contributions
+    const weeklyData = leaderboardData.leaderboards.weekly || {};
 
-    // 3. Automatically regenerate leaderboard data
-    console.log('🔄 Regenerating leaderboard data...');
-    const projectRoot = path.join(__dirname, '..');
-    const outputPath = path.join(__dirname, 'public', 'leaderboard-data.json');
+    // Helper function to check if a date falls within a week
+    const dateInWeek = (date, weekKey) => {
+      const match = weekKey.match(/^(\d{4})-W(\d{2})$/);
+      if (!match) return false;
 
-    try {
-      execSync(
-        `python3 analyze_commits.py --repo ./LMCache --output ${outputPath}`,
-        {
-          cwd: projectRoot,
-          stdio: 'pipe'
+      const year = parseInt(match[1]);
+      const week = parseInt(match[2]);
+
+      // Calculate Monday of this ISO week using UTC to avoid timezone issues
+      // ISO week 1 is the week containing the first Thursday of the year
+      const jan4 = new Date(Date.UTC(year, 0, 4)); // January 4th is always in week 1
+      const jan4Day = jan4.getUTCDay() || 7; // Convert Sunday (0) to 7
+      const week1Monday = new Date(jan4);
+      week1Monday.setUTCDate(jan4.getUTCDate() - jan4Day + 1);
+
+      // Calculate target week's Monday
+      const weekMonday = new Date(week1Monday);
+      weekMonday.setUTCDate(week1Monday.getUTCDate() + (week - 1) * 7);
+
+      // Week runs Monday to Sunday
+      const weekSunday = new Date(weekMonday);
+      weekSunday.setUTCDate(weekMonday.getUTCDate() + 6);
+
+      // Set time to end of Sunday for proper comparison
+      weekSunday.setUTCHours(23, 59, 59, 999);
+
+      // Parse input date and set to UTC midnight for comparison
+      const checkDate = new Date(date + 'T00:00:00Z');
+      return checkDate >= weekMonday && checkDate <= weekSunday;
+    };
+
+    // Process each week
+    for (const [weekKey, contributorsList] of Object.entries(weeklyData)) {
+      for (let i = 0; i < contributorsList.length; i++) {
+        const contributor = contributorsList[i];
+        const manualContrib = contributors[contributor.name];
+
+        if (manualContrib && manualContrib.contributions) {
+          // Filter contributions that fall within this week's date range
+          const weekContributions = manualContrib.contributions.filter(c => {
+            if (!c.start_date) return false;
+            return dateInWeek(c.start_date, weekKey);
+          });
+
+          if (weekContributions.length > 0) {
+            const additionalScore = weekContributions.reduce((sum, c) => sum + (c.score || 0), 0);
+            const additionalNotes = weekContributions.map(c => c.notes).filter(Boolean).join('; ');
+
+            contributorsList[i] = {
+              ...contributor,
+              additional_contribution_score: additionalScore,
+              additional_contributions: weekContributions,
+              additional_contribution_notes: additionalNotes,
+              total_score: (contributor.commit_score || 0) + additionalScore
+            };
+
+            console.log(`  ✓ Updated ${contributor.name} in week ${weekKey}: +${additionalScore} points`);
+          } else {
+            // Reset if no contributions for this week
+            contributorsList[i] = {
+              ...contributor,
+              additional_contribution_score: 0,
+              additional_contributions: [],
+              additional_contribution_notes: '',
+              total_score: contributor.commit_score || 0
+            };
+          }
+        } else {
+          // Reset if contributor not in manual contributions
+          contributorsList[i] = {
+            ...contributor,
+            additional_contribution_score: 0,
+            additional_contributions: [],
+            additional_contribution_notes: '',
+            total_score: contributor.commit_score || 0
+          };
         }
-      );
-      console.log('✅ Leaderboard data regenerated successfully');
-      res.json({ success: true, message: 'Files updated and leaderboard regenerated' });
-    } catch (analysisError) {
-      console.error('⚠️ Analysis script failed:', analysisError.message);
-      res.json({
-        success: true,
-        message: 'Files updated but leaderboard regeneration failed',
-        warning: analysisError.message
-      });
+      }
     }
+
+    // Recalculate monthly and quarterly by summing weekly data
+    console.log('🔄 Recalculating monthly and quarterly from weekly data...');
+
+    // Helper to aggregate weeks into month/quarter
+    const aggregateFromWeekly = (periodType) => {
+      const result = {};
+
+      for (const [weekKey, weekContributors] of Object.entries(weeklyData)) {
+        // Determine which month/quarter this week belongs to
+        // Parse ISO week format "YYYY-Www" to get actual calendar period
+        const match = weekKey.match(/^(\d{4})-W(\d{2})$/);
+        if (!match) continue; // Skip invalid week keys
+
+        const year = parseInt(match[1]);
+        const week = parseInt(match[2]);
+
+        // Calculate date for Monday of this ISO week
+        // ISO week 1 is the week containing the first Thursday of the year
+        const jan4 = new Date(year, 0, 4); // January 4th is always in week 1
+        const jan4Day = jan4.getDay() || 7; // Convert Sunday (0) to 7
+        const week1Monday = new Date(jan4);
+        week1Monday.setDate(jan4.getDate() - jan4Day + 1);
+
+        // Calculate target week's Monday
+        const weekMonday = new Date(week1Monday);
+        weekMonday.setDate(week1Monday.getDate() + (week - 1) * 7);
+
+        // Determine period key based on the week's Monday date
+        let periodKey;
+        if (periodType === 'monthly') {
+          const month = (weekMonday.getMonth() + 1).toString().padStart(2, '0');
+          periodKey = `${weekMonday.getFullYear()}-${month}`;
+        } else { // quarterly
+          const quarter = Math.floor(weekMonday.getMonth() / 3) + 1;
+          periodKey = `${weekMonday.getFullYear()}-Q${quarter}`;
+        }
+
+        if (!result[periodKey]) result[periodKey] = {};
+
+        for (const contributor of weekContributors) {
+          if (!result[periodKey][contributor.name]) {
+            result[periodKey][contributor.name] = {
+              name: contributor.name,
+              email: contributor.email,
+              total_commits: 0,
+              significant_commits: 0,
+              simple_commits: 0,
+              commit_score: 0,
+              additional_contribution_score: 0,
+              additional_contributions: [],
+              commits: []
+            };
+          }
+
+          const agg = result[periodKey][contributor.name];
+          agg.total_commits += contributor.total_commits || 0;
+          agg.significant_commits += contributor.significant_commits || 0;
+          agg.simple_commits += contributor.simple_commits || 0;
+          agg.commit_score += contributor.commit_score || 0;
+          agg.additional_contribution_score += contributor.additional_contribution_score || 0;
+          if (contributor.additional_contributions) {
+            agg.additional_contributions.push(...contributor.additional_contributions);
+          }
+          if (contributor.commits) {
+            agg.commits.push(...contributor.commits);
+          }
+        }
+      }
+
+      // Convert to sorted arrays with calculated fields
+      const periodData = {};
+      for (const [periodKey, contributorsMap] of Object.entries(result)) {
+        periodData[periodKey] = Object.values(contributorsMap).map(c => ({
+          ...c,
+          total_score: c.commit_score + c.additional_contribution_score,
+          significance_ratio: c.total_commits > 0 ? c.significant_commits / c.total_commits : 0,
+          avg_score: c.total_commits > 0 ? Math.round(c.commit_score / c.total_commits) : 0
+        })).sort((a, b) => b.total_score - a.total_score);
+      }
+
+      return periodData;
+    };
+
+    leaderboardData.leaderboards.monthly = aggregateFromWeekly('monthly');
+    leaderboardData.leaderboards.quarterly = aggregateFromWeekly('quarterly');
+
+    // Write updated leaderboard data back to file
+    fs.writeFileSync(leaderboardPath, JSON.stringify(leaderboardData, null, 2));
+
+    console.log('✅ Weekly data updated with manual contributions!');
+    console.log('✅ Monthly and quarterly recalculated from weekly data!');
+
+    res.json({
+      success: true,
+      message: 'Manual contributions saved successfully! Refresh the page to see changes.'
+    });
   } catch (error) {
-    console.error('❌ Error updating files:', error);
+    console.error('❌ Error updating leaderboard data:', error);
     res.status(500).json({ success: false, error: error.message });
   }
 });
@@ -102,7 +254,35 @@ app.post('/api/pull-and-refresh', async (req, res) => {
     const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
     const analyzer = new CommitAnalyzer(GITHUB_TOKEN, OPENAI_API_KEY);
-    const data = await analyzer.analyze('LMCache', 'LMCache', 180); // Last 180 days
+
+    // Load existing data for incremental update
+    let existingData = null;
+    try {
+      const existingContent = fs.readFileSync(outputPath, 'utf-8');
+      existingData = JSON.parse(existingContent);
+      console.log(`📥 [PULL-AND-REFRESH] Found existing data with ${existingData.total_commits_analyzed} commits`);
+    } catch (error) {
+      console.log('⚠️ [PULL-AND-REFRESH] No existing data found, will do full analysis');
+    }
+
+    // Always use 2-day incremental update
+    const daysToAnalyze = 2;
+    console.log(`🔄 [PULL-AND-REFRESH] Analyzing last ${daysToAnalyze} day(s) of commits...`);
+
+    const newData = await analyzer.analyze('LMCache', 'LMCache', daysToAnalyze);
+
+    // Merge with existing data if available
+    let data;
+    const manualContribPath = path.join(__dirname, 'public', 'manual-contributions.json');
+    if (existingData) {
+      console.log('🔀 [PULL-AND-REFRESH] Merging new commits with existing data...');
+      data = analyzer.mergeData(existingData, newData, manualContribPath);
+      console.log(`✅ [PULL-AND-REFRESH] Merged data: ${data.total_commits_analyzed} total commits`);
+    } else {
+      console.log('⚠️ [PULL-AND-REFRESH] No existing data found - using 2-day window only');
+      data = newData;
+      console.log(`✅ [PULL-AND-REFRESH] Analysis complete - ${data.total_commits_analyzed} commits analyzed`);
+    }
 
     console.log('✅ Analysis complete - writing to file...');
 
@@ -181,9 +361,10 @@ const performAutoRefresh = async () => {
 
     // Merge with existing data if available
     let data;
+    const manualContribPath = path.join(__dirname, 'public', 'manual-contributions.json');
     if (existingData) {
       console.log('🔀 [AUTO-REFRESH] Merging new commits with existing data...');
-      data = analyzer.mergeData(existingData, newData);
+      data = analyzer.mergeData(existingData, newData, manualContribPath);
       console.log(`✅ [AUTO-REFRESH] Merged data: ${data.total_commits_analyzed} total commits`);
     } else {
       console.log('⚠️ [AUTO-REFRESH] No existing data found - using 2-day window only');

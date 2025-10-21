@@ -264,57 +264,11 @@ function AdminPanel({ onClose }) {
   const loadContributors = async (token) => {
     try {
       setLoading(true)
-      const octokit = new Octokit({ auth: token })
 
+      // Initialize empty manual contributions (we'll extract from leaderboard data)
       let manualContribs = {}
 
-      // Load manual contributions first
-      try {
-        const response = await fetch('/manual-contributions.json')
-        const data = await response.json()
-        manualContribs = data.contributors || {}
-
-        // Normalize to new format (ensure each contributor has contributions array)
-        const normalized = {}
-        for (const [name, contrib] of Object.entries(manualContribs)) {
-          if (contrib.contributions) {
-            normalized[name] = contrib
-          } else if (contrib.score !== undefined) {
-            // Old format - convert to new
-            normalized[name] = {
-              contributions: [{
-                score: contrib.score || 0,
-                notes: contrib.notes || '',
-                start_date: null,
-                end_date: null
-              }]
-            }
-          }
-        }
-
-        setManualContributions(normalized)
-      } catch (e) {
-        // If local file doesn't exist, try to fetch from GitHub
-        const owner = import.meta.env.VITE_GITHUB_REPO_OWNER || 'cdc542559455'
-        const repo = import.meta.env.VITE_GITHUB_REPO_NAME || 'LMCache'
-
-        try {
-          const { data } = await octokit.repos.getContent({
-            owner,
-            repo,
-            path: 'manual-contributions.json'
-          })
-
-          const content = JSON.parse(atob(data.content))
-          manualContribs = content.contributors || {}
-          setManualContributions(manualContribs)
-        } catch (error) {
-          console.log('File not found in repo, starting with empty contributors')
-          setManualContributions({})
-        }
-      }
-
-      // Load leaderboard data to get all contributors
+      // Load leaderboard data to get all contributors AND their manual contributions
       try {
         const leaderboardResponse = await fetch('/leaderboard-data.json')
         const leaderboardJson = await leaderboardResponse.json()
@@ -329,21 +283,35 @@ function AdminPanel({ onClose }) {
           Object.values(periodData).forEach(contributors => {
             contributors.forEach(contributor => {
               contributorNames.add(contributor.name)
+
+              // Extract existing manual contributions from the weekly data
+              if (periodType === 'weekly' && contributor.additional_contributions && contributor.additional_contributions.length > 0) {
+                if (!manualContribs[contributor.name]) {
+                  manualContribs[contributor.name] = { contributions: [] }
+                }
+                // Merge contributions, avoiding duplicates
+                contributor.additional_contributions.forEach(contrib => {
+                  const exists = manualContribs[contributor.name].contributions.some(
+                    c => c.score === contrib.score &&
+                        c.notes === contrib.notes &&
+                        c.start_date === contrib.start_date
+                  )
+                  if (!exists) {
+                    manualContribs[contributor.name].contributions.push(contrib)
+                  }
+                })
+              }
             })
           })
         })
 
-        // IMPORTANT: Also add contributors from manual-contributions.json
-        // These might not be in the current leaderboard periods
-        Object.keys(manualContribs).forEach(name => {
-          contributorNames.add(name)
-        })
-
         setAllContributors(Array.from(contributorNames).sort())
+        setManualContributions(manualContribs)
       } catch (error) {
         console.error('Failed to load leaderboard data:', error)
-        // If leaderboard fails, at least show manual contributors
-        setAllContributors(Object.keys(manualContribs).sort())
+        setMessage({ type: 'error', text: 'Failed to load leaderboard data' })
+        setAllContributors([])
+        setManualContributions({})
       }
 
       setLoading(false)
@@ -361,141 +329,36 @@ function AdminPanel({ onClose }) {
       // Use provided contributions or fall back to current state
       const contributions = contributionsToSave !== null ? contributionsToSave : manualContributions
 
-      // Prepare the file content
-      const contributionsFileContent = {
-        "_instructions": "Manually assign additional contribution scores here. This file won't be overwritten by the analysis script.",
-        "_scoring_guide": {
-          "paper_publication": "20-50 points per paper",
-          "conference_talk": "15-30 points",
-          "blog_post": "10-20 points",
-          "community_advocacy": "5-15 points",
-          "mentorship": "10-25 points",
-          "issue_triage": "5-10 points"
+      setMessage({ type: 'info', text: '🔄 Saving changes and updating leaderboard data...' })
+
+      // Call the API to update leaderboard data with manual contributions
+      const apiResponse = await fetch(API_ENDPOINTS.updateManualContributions, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        "contributors": contributions
-      }
-
-      // 1. FIRST: Update local file via API (for immediate development updates)
-      let apiSuccess = false
-      try {
-        setMessage({ type: 'info', text: '🔄 Saving changes and regenerating leaderboard data... (this may take 15-20 seconds)' })
-
-        const localApiResponse = await fetch(API_ENDPOINTS.updateManualContributions, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(contributionsFileContent)
-        })
-
-        if (localApiResponse.ok) {
-          const result = await localApiResponse.json()
-          console.log('✅ Local file updated:', result.message)
-          apiSuccess = true
-          setMessage({
-            type: 'success',
-            text: '✅ Leaderboard data regenerated! Refresh the main leaderboard page to see changes.'
-          })
-        } else {
-          console.warn('⚠️ Local API not available (probably not running in dev mode)')
-        }
-      } catch (error) {
-        console.warn('⚠️ Local API not available:', error.message)
-        // This is OK - local API might not be running in production
-      }
-
-      // 2. THEN: Commit to GitHub (for version control and production)
-      const octokit = new Octokit({ auth: githubToken })
-
-      const owner = import.meta.env.VITE_GITHUB_REPO_OWNER || 'cdc542559455'
-      const repo = import.meta.env.VITE_GITHUB_REPO_NAME || 'LMCache'
-      const path = 'manual-contributions.json'
-      const branchName = 'leaderboard-updates'
-
-      // Get the default branch (usually 'main' or 'master')
-      const { data: repoData } = await octokit.repos.get({ owner, repo })
-      const defaultBranch = repoData.default_branch
-
-      // Get the SHA of the default branch
-      const { data: refData } = await octokit.git.getRef({
-        owner,
-        repo,
-        ref: `heads/${defaultBranch}`
-      })
-      const defaultBranchSha = refData.object.sha
-
-      // Try to create or update the leaderboard-updates branch
-      try {
-        // Try to get existing branch
-        await octokit.git.getRef({
-          owner,
-          repo,
-          ref: `heads/${branchName}`
-        })
-        // Branch exists, update it to point to latest default branch
-        await octokit.git.updateRef({
-          owner,
-          repo,
-          ref: `heads/${branchName}`,
-          sha: defaultBranchSha,
-          force: true
-        })
-      } catch (error) {
-        // Branch doesn't exist, create it
-        await octokit.git.createRef({
-          owner,
-          repo,
-          ref: `refs/heads/${branchName}`,
-          sha: defaultBranchSha
-        })
-      }
-
-      // Get current file SHA from the branch
-      let sha = null
-      try {
-        const { data } = await octokit.repos.getContent({
-          owner,
-          repo,
-          path,
-          ref: branchName
-        })
-        sha = data.sha
-      } catch (e) {
-        // File doesn't exist yet
-      }
-
-      // Encode file content for GitHub API
-      const content = btoa(JSON.stringify(contributionsFileContent, null, 2))
-
-      // Commit the file to the branch
-      await octokit.repos.createOrUpdateFileContents({
-        owner,
-        repo,
-        path,
-        message: `📝 Update manual contributions via admin panel\n\nUpdated by ${user.login}`,
-        content,
-        sha,
-        branch: branchName
+        body: JSON.stringify({ contributors: contributions })
       })
 
-      // Only show GitHub success message if local API didn't work
-      if (!apiSuccess) {
-        setMessage({ type: 'success', text: `✅ Changes saved to branch '${branchName}'!` })
+      if (!apiResponse.ok) {
+        throw new Error(`API request failed: ${apiResponse.statusText}`)
       }
+
+      const result = await apiResponse.json()
+      console.log('✅ Leaderboard updated:', result.message)
 
       setEditingContributor(null)
       setNewContributor({ name: '', score: 0, notes: '' })
-      setLoading(false)
 
-      // Trigger a message to inform user about PR workflow
-      setTimeout(() => {
-        if (!apiSuccess) {
-          setMessage({
-            type: 'info',
-            text: `Changes committed to '${branchName}' branch! Create a PR to merge to main.`
-          })
-        }
-      }, 2000)
+      // Reload the data IMMEDIATELY to show updated contributions
+      await loadContributors(githubToken)
+
+      setMessage({
+        type: 'success',
+        text: '✅ Manual contributions saved! The leaderboard has been updated.'
+      })
+
+      setLoading(false)
 
     } catch (error) {
       console.error('Failed to save:', error)
