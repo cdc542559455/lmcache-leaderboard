@@ -1,17 +1,98 @@
 {
-  "last_updated": "2025-10-24T00:29:56.407Z",
-  "total_commits_analyzed": 13,
+  "last_updated": "2025-10-25T00:29:59.058Z",
+  "total_commits_analyzed": 20,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
       "2025-W43": [
         {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 166,
+          "commits": [
+            {
+              "hash": "47d5ed56",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-10-22T03:05:18.000Z",
+              "message": "[core] add batched_contains interface (#1778)\n\n* [core] add batched_contains interface\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix & bug fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* add implement in instrumented and audit connector\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 219,
+                "insertions": 196,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "469143b1",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-10-24T04:56:56.000Z",
+              "message": "[optimize] reduce calls to contains for sync path (#1828)\n\n* [optimize] reduce calls to contains\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* fix ut\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 42,
+                "insertions": 39,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "45e64f4d",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-10-24T02:59:09.000Z",
+              "message": "[bugfix] fix batched_contains bug when lookup server on other rank (#1854)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 14,
+                "insertions": 14,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 55.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 166,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
+          "total_commits": 3,
+          "significant_commits": 2,
           "simple_commits": 1,
-          "commit_score": 90,
+          "commit_score": 155,
           "commits": [
             {
               "hash": "3de1434a",
@@ -54,14 +135,116 @@
                 "total": 50
               },
               "classification": "significant"
+            },
+            {
+              "hash": "b1f0980a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-10-24T03:48:13.000Z",
+              "message": "[#1839][DOC]Introduce async_loading document (#1857)\n\n* Introduce async_loading document\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the name of method from async_batch_contains to the correct batched_async_contains\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add S3Connector to the supported backends list.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add RedisConnector to the supported list\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 129,
+                "insertions": 129,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 45,
-          "significance_ratio": 0.5,
+          "avg_score": 51.666666666666664,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 90,
+          "total_score": 155,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "102553648+sammshen@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 132,
+          "commits": [
+            {
+              "hash": "7749a252",
+              "author": "Samuel Shen",
+              "email": "102553648+sammshen@users.noreply.github.com",
+              "date": "2025-10-24T23:45:18.000Z",
+              "message": "[CI]: add harden tests to publish CI (#1873)\n\nadd more allowed endpoints\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 10,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bf897e12",
+              "author": "Samuel Shen",
+              "email": "102553648+sammshen@users.noreply.github.com",
+              "date": "2025-10-24T07:18:47.000Z",
+              "message": "[Release]: Pre 0.3.9 patch (#1852)\n\n* adapt to changes in vllm.utils\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* adapt to changes in vllm.utils\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* recover changes\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 59,
+                "insertions": 49,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 62
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "acf29db1",
+              "author": "Samuel Shen",
+              "email": "102553648+sammshen@users.noreply.github.com",
+              "date": "2025-10-24T03:26:18.000Z",
+              "message": "[CI]: add new url triton dependency from latest vllm to fix integration tests (#1868)\n\n* add triton installation to integration tests\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* make the triton url in the same uv transaction\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* semicolon did not push\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 6,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 44,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 132,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -101,45 +284,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 85,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 80,
-          "commits": [
-            {
-              "hash": "47d5ed56",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2025-10-22T03:05:18.000Z",
-              "message": "[core] add batched_contains interface (#1778)\n\n* [core] add batched_contains interface\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix & bug fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* add implement in instrumented and audit connector\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 219,
-                "insertions": 196,
-                "deletions": 23
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 80,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 80,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -218,8 +362,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "dependabot[bot]",
@@ -317,6 +461,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 58,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+zerofishnoodles@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 48,
+          "commits": [
+            {
+              "hash": "41779a12",
+              "author": "Rui Zhang",
+              "email": "51696593+zerofishnoodles@users.noreply.github.com",
+              "date": "2025-10-24T22:22:37.000Z",
+              "message": "[feat] Add prompt tokens metrics (#1860)\n\n* add prompt tokens metrics\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* move update to avoid time difference\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 23,
+                "insertions": 20,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 48,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 48,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -473,20 +656,101 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 25,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
     "monthly": {
       "2025-10": [
         {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 166,
+          "commits": [
+            {
+              "hash": "47d5ed56",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-10-22T03:05:18.000Z",
+              "message": "[core] add batched_contains interface (#1778)\n\n* [core] add batched_contains interface\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix & bug fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* add implement in instrumented and audit connector\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 219,
+                "insertions": 196,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "469143b1",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-10-24T04:56:56.000Z",
+              "message": "[optimize] reduce calls to contains for sync path (#1828)\n\n* [optimize] reduce calls to contains\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* fix ut\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 42,
+                "insertions": 39,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "45e64f4d",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-10-24T02:59:09.000Z",
+              "message": "[bugfix] fix batched_contains bug when lookup server on other rank (#1854)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 14,
+                "insertions": 14,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 55.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 166,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
+          "total_commits": 3,
+          "significant_commits": 2,
           "simple_commits": 1,
-          "commit_score": 90,
+          "commit_score": 155,
           "commits": [
             {
               "hash": "3de1434a",
@@ -529,14 +793,116 @@
                 "total": 50
               },
               "classification": "significant"
+            },
+            {
+              "hash": "b1f0980a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-10-24T03:48:13.000Z",
+              "message": "[#1839][DOC]Introduce async_loading document (#1857)\n\n* Introduce async_loading document\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the name of method from async_batch_contains to the correct batched_async_contains\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add S3Connector to the supported backends list.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add RedisConnector to the supported list\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 129,
+                "insertions": 129,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 45,
-          "significance_ratio": 0.5,
+          "avg_score": 51.666666666666664,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 90,
+          "total_score": 155,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "102553648+sammshen@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 132,
+          "commits": [
+            {
+              "hash": "7749a252",
+              "author": "Samuel Shen",
+              "email": "102553648+sammshen@users.noreply.github.com",
+              "date": "2025-10-24T23:45:18.000Z",
+              "message": "[CI]: add harden tests to publish CI (#1873)\n\nadd more allowed endpoints\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 10,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bf897e12",
+              "author": "Samuel Shen",
+              "email": "102553648+sammshen@users.noreply.github.com",
+              "date": "2025-10-24T07:18:47.000Z",
+              "message": "[Release]: Pre 0.3.9 patch (#1852)\n\n* adapt to changes in vllm.utils\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* adapt to changes in vllm.utils\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* recover changes\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 59,
+                "insertions": 49,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 62
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "acf29db1",
+              "author": "Samuel Shen",
+              "email": "102553648+sammshen@users.noreply.github.com",
+              "date": "2025-10-24T03:26:18.000Z",
+              "message": "[CI]: add new url triton dependency from latest vllm to fix integration tests (#1868)\n\n* add triton installation to integration tests\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* make the triton url in the same uv transaction\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* semicolon did not push\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 6,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 44,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 132,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -576,45 +942,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 85,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 80,
-          "commits": [
-            {
-              "hash": "47d5ed56",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2025-10-22T03:05:18.000Z",
-              "message": "[core] add batched_contains interface (#1778)\n\n* [core] add batched_contains interface\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix & bug fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* add implement in instrumented and audit connector\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 219,
-                "insertions": 196,
-                "deletions": 23
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 80,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 80,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -693,8 +1020,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "dependabot[bot]",
@@ -792,6 +1119,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 58,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+zerofishnoodles@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 48,
+          "commits": [
+            {
+              "hash": "41779a12",
+              "author": "Rui Zhang",
+              "email": "51696593+zerofishnoodles@users.noreply.github.com",
+              "date": "2025-10-24T22:22:37.000Z",
+              "message": "[feat] Add prompt tokens metrics (#1860)\n\n* add prompt tokens metrics\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* move update to avoid time difference\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 23,
+                "insertions": 20,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 48,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 48,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -948,20 +1314,101 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 25,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
     "quarterly": {
       "2025-Q4": [
         {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 166,
+          "commits": [
+            {
+              "hash": "47d5ed56",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-10-22T03:05:18.000Z",
+              "message": "[core] add batched_contains interface (#1778)\n\n* [core] add batched_contains interface\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix & bug fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* add implement in instrumented and audit connector\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 219,
+                "insertions": 196,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "469143b1",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-10-24T04:56:56.000Z",
+              "message": "[optimize] reduce calls to contains for sync path (#1828)\n\n* [optimize] reduce calls to contains\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* fix ut\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 42,
+                "insertions": 39,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "45e64f4d",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-10-24T02:59:09.000Z",
+              "message": "[bugfix] fix batched_contains bug when lookup server on other rank (#1854)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 14,
+                "insertions": 14,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 55.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 166,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
+          "total_commits": 3,
+          "significant_commits": 2,
           "simple_commits": 1,
-          "commit_score": 90,
+          "commit_score": 155,
           "commits": [
             {
               "hash": "3de1434a",
@@ -1004,14 +1451,116 @@
                 "total": 50
               },
               "classification": "significant"
+            },
+            {
+              "hash": "b1f0980a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-10-24T03:48:13.000Z",
+              "message": "[#1839][DOC]Introduce async_loading document (#1857)\n\n* Introduce async_loading document\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the name of method from async_batch_contains to the correct batched_async_contains\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add S3Connector to the supported backends list.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add RedisConnector to the supported list\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 129,
+                "insertions": 129,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 45,
-          "significance_ratio": 0.5,
+          "avg_score": 51.666666666666664,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 90,
+          "total_score": 155,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "102553648+sammshen@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 132,
+          "commits": [
+            {
+              "hash": "7749a252",
+              "author": "Samuel Shen",
+              "email": "102553648+sammshen@users.noreply.github.com",
+              "date": "2025-10-24T23:45:18.000Z",
+              "message": "[CI]: add harden tests to publish CI (#1873)\n\nadd more allowed endpoints\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 10,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bf897e12",
+              "author": "Samuel Shen",
+              "email": "102553648+sammshen@users.noreply.github.com",
+              "date": "2025-10-24T07:18:47.000Z",
+              "message": "[Release]: Pre 0.3.9 patch (#1852)\n\n* adapt to changes in vllm.utils\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* adapt to changes in vllm.utils\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* recover changes\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 59,
+                "insertions": 49,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 62
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "acf29db1",
+              "author": "Samuel Shen",
+              "email": "102553648+sammshen@users.noreply.github.com",
+              "date": "2025-10-24T03:26:18.000Z",
+              "message": "[CI]: add new url triton dependency from latest vllm to fix integration tests (#1868)\n\n* add triton installation to integration tests\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* make the triton url in the same uv transaction\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* semicolon did not push\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 6,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 44,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 132,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1051,45 +1600,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 85,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 80,
-          "commits": [
-            {
-              "hash": "47d5ed56",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2025-10-22T03:05:18.000Z",
-              "message": "[core] add batched_contains interface (#1778)\n\n* [core] add batched_contains interface\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix & bug fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* add implement in instrumented and audit connector\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 219,
-                "insertions": 196,
-                "deletions": 23
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 80,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 80,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1168,8 +1678,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "dependabot[bot]",
@@ -1267,6 +1777,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 58,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+zerofishnoodles@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 48,
+          "commits": [
+            {
+              "hash": "41779a12",
+              "author": "Rui Zhang",
+              "email": "51696593+zerofishnoodles@users.noreply.github.com",
+              "date": "2025-10-24T22:22:37.000Z",
+              "message": "[feat] Add prompt tokens metrics (#1860)\n\n* add prompt tokens metrics\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* move update to avoid time difference\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 23,
+                "insertions": 20,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 48,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 48,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1423,20 +1972,20 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 25,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2025-10-24T00:29:56.407Z",
+    "analyzedAt": "2025-10-25T00:29:59.058Z",
     "daysBack": 2,
-    "totalCommits": 13,
-    "totalContributors": 11,
+    "totalCommits": 20,
+    "totalContributors": 13,
     "mergedFrom": {
-      "existing": 12,
-      "new": 2
+      "existing": 13,
+      "new": 8
     }
   }
 }
