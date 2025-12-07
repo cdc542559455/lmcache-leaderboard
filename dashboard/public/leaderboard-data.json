@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-12-06T00:30:10.727Z",
-  "total_commits_analyzed": 171,
+  "last_updated": "2025-12-07T00:30:07.384Z",
+  "total_commits_analyzed": 175,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4343,10 +4343,10 @@
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 4,
+          "total_commits": 5,
+          "significant_commits": 5,
           "simple_commits": 0,
-          "commit_score": 264,
+          "commit_score": 326,
           "commits": [
             {
               "hash": "61eb7762",
@@ -4431,14 +4431,35 @@
                 "total": 70
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7104d531",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-12-06T13:54:01.000Z",
+              "message": "[controller][optimize] catch exception when process WorkerReqMsg (#2184)\n\n* [controller][optimize] catch exception when process WorkerReqMsg\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* delete comments\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 200,
+                "insertions": 114,
+                "deletions": 86
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 62
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66,
+          "avg_score": 65.2,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 264,
+          "total_score": 326,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4670,10 +4691,10 @@
         {
           "name": "Martin Hickey",
           "email": "martin.hickey@ie.ibm.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 82,
+          "commit_score": 154,
           "commits": [
             {
               "hash": "12e7a368",
@@ -4695,16 +4716,76 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9f443452",
+              "author": "Martin Hickey",
+              "email": "martin.hickey@ie.ibm.com",
+              "date": "2025-12-06T10:14:27.000Z",
+              "message": "[Core][vLLM]: Add KV event generation (#1959)\n\n* Add KV event generation\n\nThis commit adds generation of kv events. It creates the events during\nLMCache storage operations and stores them in the cache engine.\nThe vLLM model runner and scheduler processes then handle the events and the events are\nfinally published by the vLLM scheduler process.\n\nThe overall data flow is as follows:\n- Model runner process calls `get_kv_connector_stats` which calls cache_engine to return the events\n- Model runner process sends the information to the scheduler process via `KVConnectorOutput`\n- Scheduler process calls `update_connector_output` and connector gets access to events in scheduler side now\n- Scheduler calls `take_events`, and connector returns the latest events to be published bty the scheduler\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update to use the new kv cache events property in KVConnectorOutput\n\nThis commit replaces piggybacking on the stats property.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Fix block hash value\n\nBlock hash value should be based on LMCache client key chunk_hash field.\nThis means it will be sonsistent across workers for the same events as its\nonly based on token ids.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Rollback changes to lmcache_connector_v1.py\n\nWait until changes in vLLM merge first before adding the changes\nfor the connector in LMCache repo. Otherwise, will be constantly\nchanghing and this needs to merge before vLLM PR.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/cache_engine.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/cache_engine.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/cache_engine.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Fix formatting after rebase\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Updates after reviews\n\nReview comments:\n- https://github.com/LMCache/LMCache/pull/1959#pullrequestreview-3536551111\n- https://github.com/LMCache/LMCache/pull/1959#discussion_r2587699644\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add utility function for converting tokens to list\n\nReview comment:\n- https://github.com/LMCache/LMCache/pull/1959#discussion_r2590752855\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Remove GPU optimization as not required\n\nSuggestion from Yihuan Cheng in\nhttps://github.com/LMCache/LMCache/pull/1959#discussion_r2590749505\n\nSuggests that the tensors are on CPU only and therefore don't need the\nGPU optimization. Following testing, it seems this way.\n\nThis commit removes the optimization then.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 116,
+                "insertions": 114,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 82,
+          "avg_score": 77,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 82,
+          "total_score": 154,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Mustafa YILDIRIM",
+          "email": "2341474+mustafayildirim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 63,
+          "commits": [
+            {
+              "hash": "438b5e26",
+              "author": "Mustafa YILDIRIM",
+              "email": "2341474+mustafayildirim@users.noreply.github.com",
+              "date": "2025-12-06T01:17:10.000Z",
+              "message": "fix: use served_model_name in LMCache metrics (#2176)\n\n* feat: pass served_model_name to LMCache metadata\nSigned-off-by: Mustafa YILDIRIM <mustafa@character.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 9,
+                "insertions": 8,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 20,
+                "keyword": 25,
+                "ai": 15,
+                "total": 63
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 63,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 63,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "ziruiliu",
@@ -4742,6 +4823,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 55,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yuhan Liu",
+          "email": "32589867+YuhanLiu11@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 50,
+          "commits": [
+            {
+              "hash": "d329f13c",
+              "author": "Yuhan Liu",
+              "email": "32589867+YuhanLiu11@users.noreply.github.com",
+              "date": "2025-12-06T18:07:51.000Z",
+              "message": "[Observability] Updating continuous usage context with histogram data  (#2164)\n\n* adding lifespan tracker\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* Updating lifespan tracking\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* Using a better function for list --> hist\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n---------\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\nCo-authored-by: Samuel Shen <102553648+sammshen@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 69,
+                "insertions": 59,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 50
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 50,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 50,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4937,8 +5057,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 30,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -8932,10 +9052,10 @@
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 4,
+          "total_commits": 5,
+          "significant_commits": 5,
           "simple_commits": 0,
-          "commit_score": 264,
+          "commit_score": 326,
           "commits": [
             {
               "hash": "61eb7762",
@@ -9020,14 +9140,35 @@
                 "total": 70
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7104d531",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-12-06T13:54:01.000Z",
+              "message": "[controller][optimize] catch exception when process WorkerReqMsg (#2184)\n\n* [controller][optimize] catch exception when process WorkerReqMsg\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* delete comments\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 200,
+                "insertions": 114,
+                "deletions": 86
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 62
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66,
+          "avg_score": 65.2,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 264,
+          "total_score": 326,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9259,10 +9400,10 @@
         {
           "name": "Martin Hickey",
           "email": "martin.hickey@ie.ibm.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 82,
+          "commit_score": 154,
           "commits": [
             {
               "hash": "12e7a368",
@@ -9284,16 +9425,76 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9f443452",
+              "author": "Martin Hickey",
+              "email": "martin.hickey@ie.ibm.com",
+              "date": "2025-12-06T10:14:27.000Z",
+              "message": "[Core][vLLM]: Add KV event generation (#1959)\n\n* Add KV event generation\n\nThis commit adds generation of kv events. It creates the events during\nLMCache storage operations and stores them in the cache engine.\nThe vLLM model runner and scheduler processes then handle the events and the events are\nfinally published by the vLLM scheduler process.\n\nThe overall data flow is as follows:\n- Model runner process calls `get_kv_connector_stats` which calls cache_engine to return the events\n- Model runner process sends the information to the scheduler process via `KVConnectorOutput`\n- Scheduler process calls `update_connector_output` and connector gets access to events in scheduler side now\n- Scheduler calls `take_events`, and connector returns the latest events to be published bty the scheduler\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update to use the new kv cache events property in KVConnectorOutput\n\nThis commit replaces piggybacking on the stats property.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Fix block hash value\n\nBlock hash value should be based on LMCache client key chunk_hash field.\nThis means it will be sonsistent across workers for the same events as its\nonly based on token ids.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Rollback changes to lmcache_connector_v1.py\n\nWait until changes in vLLM merge first before adding the changes\nfor the connector in LMCache repo. Otherwise, will be constantly\nchanghing and this needs to merge before vLLM PR.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/cache_engine.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/cache_engine.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/cache_engine.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Fix formatting after rebase\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Updates after reviews\n\nReview comments:\n- https://github.com/LMCache/LMCache/pull/1959#pullrequestreview-3536551111\n- https://github.com/LMCache/LMCache/pull/1959#discussion_r2587699644\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add utility function for converting tokens to list\n\nReview comment:\n- https://github.com/LMCache/LMCache/pull/1959#discussion_r2590752855\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Remove GPU optimization as not required\n\nSuggestion from Yihuan Cheng in\nhttps://github.com/LMCache/LMCache/pull/1959#discussion_r2590749505\n\nSuggests that the tensors are on CPU only and therefore don't need the\nGPU optimization. Following testing, it seems this way.\n\nThis commit removes the optimization then.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 116,
+                "insertions": 114,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 82,
+          "avg_score": 77,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 82,
+          "total_score": 154,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Mustafa YILDIRIM",
+          "email": "2341474+mustafayildirim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 63,
+          "commits": [
+            {
+              "hash": "438b5e26",
+              "author": "Mustafa YILDIRIM",
+              "email": "2341474+mustafayildirim@users.noreply.github.com",
+              "date": "2025-12-06T01:17:10.000Z",
+              "message": "fix: use served_model_name in LMCache metrics (#2176)\n\n* feat: pass served_model_name to LMCache metadata\nSigned-off-by: Mustafa YILDIRIM <mustafa@character.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 9,
+                "insertions": 8,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 20,
+                "keyword": 25,
+                "ai": 15,
+                "total": 63
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 63,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 63,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "ziruiliu",
@@ -9331,6 +9532,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 55,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yuhan Liu",
+          "email": "32589867+YuhanLiu11@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 50,
+          "commits": [
+            {
+              "hash": "d329f13c",
+              "author": "Yuhan Liu",
+              "email": "32589867+YuhanLiu11@users.noreply.github.com",
+              "date": "2025-12-06T18:07:51.000Z",
+              "message": "[Observability] Updating continuous usage context with histogram data  (#2164)\n\n* adding lifespan tracker\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* Updating lifespan tracking\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* Using a better function for list --> hist\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n---------\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\nCo-authored-by: Samuel Shen <102553648+sammshen@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 69,
+                "insertions": 59,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 50
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 50,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 50,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -9526,8 +9766,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 30,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -10394,10 +10634,10 @@
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 27,
-          "significant_commits": 16,
+          "total_commits": 28,
+          "significant_commits": 17,
           "simple_commits": 11,
-          "commit_score": 1472,
+          "commit_score": 1534,
           "commits": [
             {
               "hash": "47d5ed56",
@@ -10965,14 +11205,35 @@
                 "total": 70
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7104d531",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-12-06T13:54:01.000Z",
+              "message": "[controller][optimize] catch exception when process WorkerReqMsg (#2184)\n\n* [controller][optimize] catch exception when process WorkerReqMsg\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* delete comments\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 200,
+                "insertions": 114,
+                "deletions": 86
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 62
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 54.51851851851852,
-          "significance_ratio": 0.5925925925925926,
+          "avg_score": 54.785714285714285,
+          "significance_ratio": 0.6071428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1472,
+          "total_score": 1534,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -12201,6 +12462,87 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Martin Hickey",
+          "email": "martin.hickey@ie.ibm.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 236,
+          "commits": [
+            {
+              "hash": "95a10ef1",
+              "author": "Martin Hickey",
+              "email": "martin.hickey@ie.ibm.com",
+              "date": "2025-11-27T21:23:07.000Z",
+              "message": "[vLLM][Core]: Add shutdown to vLLM connector (#1945)\n\n* Add shutdown to vLLM connector\n\nThe vLLM connector does not shutdown LMCache gracefully. This\ncommit addsa shutdown method which calls cleanup methods for all\nthe objects that are created during the startup.\n\nThere are also updates to some of the cleanup methods of the objects\nthemselves to:\n\n- Reduce deadlock and unsafe attribute access\n- Add error handling and logging\n\nChanges as follows:\n\n1. `lmcache/integration/vllm/vllm_v1_adapter.py`\n   - Added `shutdown()` method\n   - Added timeout protection for all cleanup operations\n   - Added missing resource cleanup\n   - Added comprehensive logging\n   - Added error tracking and reporting\n\n2. `lmcache/v1/cache_engine.py`\n   - Enhanced `close()` method with comprehensive logging\n   - Enhanced `LMCacheEngineBuilder.destroy()` with detailed logging\n   - Added error handling for all operations\n\n3. `lmcache/v1/storage_backend/storage_manager.py`\n   - Rewrote `close()` method with timeout protection\n   - Added 10-second timeout to thread.join()\n   - Added individual backend closure logging\n   - Added error handling for event loop stop\n\n4. `lmcache/v1/offload_server/zmq_server.py`\n   - Enhanced `process_request()` with exception handling\n   - Rewrote `close()` method with timeout\n   - Added graceful thread termination\n   - Added detailed logging\n\n5. `lmcache/observability.py`\n   - Rewrote `LMCacheStatsLogger.shutdown()` method with timeout protection\n   - Added smart timeout calculation (log_interval + 2 seconds, minimum 5s)\n   - Added comprehensive logging for stats logger shutdown\n   - Added error handling for thread join\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 7,
+                "lines": 308,
+                "insertions": 276,
+                "deletions": 32
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "12e7a368",
+              "author": "Martin Hickey",
+              "email": "martin.hickey@ie.ibm.com",
+              "date": "2025-12-05T11:43:35.000Z",
+              "message": "[Core] Refactor storage and plugin extensibility to improve usability (#2118)\n\n* Refactor External Backend to improve usability\n\nChanging to custom storage backend because it better describes\nwhat the capability is.\n\nModifications include:\n\n- Changing ConfigurableStorageBackendInterface to StoragePluginInterface\n- Renaming create_dynamic_backends to storage_plugin_loader\n- Rename external_backend to storage_backend in configuration\n- Update documentation accordingly\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Refactor plugins to runtime plugins for better clarity and usability\n\nPlugins is very generic and doesn't quite explain the LMCache extensibility\ncapability. This commit refactors plugins to more specific naming as runtime plugins.\nThis better explains to users that want to add the custom runtime scripts.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Refactor documentation to better align runtime and storage plugins\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Fix configuration naming\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Provide backwards compatibility for old configurable external backend\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/plugin/runtime_plugin_launcher.py\n\nCo-authored-by: maobaolong <307499405@qq.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\nCo-authored-by: maobaolong <307499405@qq.com>",
+              "stats": {
+                "files": 15,
+                "lines": 370,
+                "insertions": 204,
+                "deletions": 166
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9f443452",
+              "author": "Martin Hickey",
+              "email": "martin.hickey@ie.ibm.com",
+              "date": "2025-12-06T10:14:27.000Z",
+              "message": "[Core][vLLM]: Add KV event generation (#1959)\n\n* Add KV event generation\n\nThis commit adds generation of kv events. It creates the events during\nLMCache storage operations and stores them in the cache engine.\nThe vLLM model runner and scheduler processes then handle the events and the events are\nfinally published by the vLLM scheduler process.\n\nThe overall data flow is as follows:\n- Model runner process calls `get_kv_connector_stats` which calls cache_engine to return the events\n- Model runner process sends the information to the scheduler process via `KVConnectorOutput`\n- Scheduler process calls `update_connector_output` and connector gets access to events in scheduler side now\n- Scheduler calls `take_events`, and connector returns the latest events to be published bty the scheduler\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update to use the new kv cache events property in KVConnectorOutput\n\nThis commit replaces piggybacking on the stats property.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Fix block hash value\n\nBlock hash value should be based on LMCache client key chunk_hash field.\nThis means it will be sonsistent across workers for the same events as its\nonly based on token ids.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Rollback changes to lmcache_connector_v1.py\n\nWait until changes in vLLM merge first before adding the changes\nfor the connector in LMCache repo. Otherwise, will be constantly\nchanghing and this needs to merge before vLLM PR.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/cache_engine.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/cache_engine.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/cache_engine.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Fix formatting after rebase\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Updates after reviews\n\nReview comments:\n- https://github.com/LMCache/LMCache/pull/1959#pullrequestreview-3536551111\n- https://github.com/LMCache/LMCache/pull/1959#discussion_r2587699644\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add utility function for converting tokens to list\n\nReview comment:\n- https://github.com/LMCache/LMCache/pull/1959#discussion_r2590752855\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Remove GPU optimization as not required\n\nSuggestion from Yihuan Cheng in\nhttps://github.com/LMCache/LMCache/pull/1959#discussion_r2590749505\n\nSuggests that the tensors are on CPU only and therefore don't need the\nGPU optimization. Following testing, it seems this way.\n\nThis commit removes the optimization then.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 116,
+                "insertions": 114,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 236,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Ziwen Ning",
           "email": "ziwen@ningziwen.com",
           "total_commits": 5,
@@ -12422,66 +12764,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 212,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Martin Hickey",
-          "email": "martin.hickey@ie.ibm.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 164,
-          "commits": [
-            {
-              "hash": "95a10ef1",
-              "author": "Martin Hickey",
-              "email": "martin.hickey@ie.ibm.com",
-              "date": "2025-11-27T21:23:07.000Z",
-              "message": "[vLLM][Core]: Add shutdown to vLLM connector (#1945)\n\n* Add shutdown to vLLM connector\n\nThe vLLM connector does not shutdown LMCache gracefully. This\ncommit addsa shutdown method which calls cleanup methods for all\nthe objects that are created during the startup.\n\nThere are also updates to some of the cleanup methods of the objects\nthemselves to:\n\n- Reduce deadlock and unsafe attribute access\n- Add error handling and logging\n\nChanges as follows:\n\n1. `lmcache/integration/vllm/vllm_v1_adapter.py`\n   - Added `shutdown()` method\n   - Added timeout protection for all cleanup operations\n   - Added missing resource cleanup\n   - Added comprehensive logging\n   - Added error tracking and reporting\n\n2. `lmcache/v1/cache_engine.py`\n   - Enhanced `close()` method with comprehensive logging\n   - Enhanced `LMCacheEngineBuilder.destroy()` with detailed logging\n   - Added error handling for all operations\n\n3. `lmcache/v1/storage_backend/storage_manager.py`\n   - Rewrote `close()` method with timeout protection\n   - Added 10-second timeout to thread.join()\n   - Added individual backend closure logging\n   - Added error handling for event loop stop\n\n4. `lmcache/v1/offload_server/zmq_server.py`\n   - Enhanced `process_request()` with exception handling\n   - Rewrote `close()` method with timeout\n   - Added graceful thread termination\n   - Added detailed logging\n\n5. `lmcache/observability.py`\n   - Rewrote `LMCacheStatsLogger.shutdown()` method with timeout protection\n   - Added smart timeout calculation (log_interval + 2 seconds, minimum 5s)\n   - Added comprehensive logging for stats logger shutdown\n   - Added error handling for thread join\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>",
-              "stats": {
-                "files": 7,
-                "lines": 308,
-                "insertions": 276,
-                "deletions": 32
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "12e7a368",
-              "author": "Martin Hickey",
-              "email": "martin.hickey@ie.ibm.com",
-              "date": "2025-12-05T11:43:35.000Z",
-              "message": "[Core] Refactor storage and plugin extensibility to improve usability (#2118)\n\n* Refactor External Backend to improve usability\n\nChanging to custom storage backend because it better describes\nwhat the capability is.\n\nModifications include:\n\n- Changing ConfigurableStorageBackendInterface to StoragePluginInterface\n- Renaming create_dynamic_backends to storage_plugin_loader\n- Rename external_backend to storage_backend in configuration\n- Update documentation accordingly\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Refactor plugins to runtime plugins for better clarity and usability\n\nPlugins is very generic and doesn't quite explain the LMCache extensibility\ncapability. This commit refactors plugins to more specific naming as runtime plugins.\nThis better explains to users that want to add the custom runtime scripts.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Refactor documentation to better align runtime and storage plugins\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Fix configuration naming\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Provide backwards compatibility for old configurable external backend\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/plugin/runtime_plugin_launcher.py\n\nCo-authored-by: maobaolong <307499405@qq.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\nCo-authored-by: maobaolong <307499405@qq.com>",
-              "stats": {
-                "files": 15,
-                "lines": 370,
-                "insertions": 204,
-                "deletions": 166
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 82,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 164,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -12870,6 +13152,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Yuhan Liu",
+          "email": "32589867+YuhanLiu11@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 105,
+          "commits": [
+            {
+              "hash": "69a7e99e",
+              "author": "Yuhan Liu",
+              "email": "32589867+YuhanLiu11@users.noreply.github.com",
+              "date": "2025-11-26T21:47:34.000Z",
+              "message": "[Observability] Adding lifespan tracker (#2073)\n\n* Adding lifespan tracker\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* Clearing the chunk hash dict to avoid memory leak\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* Fixing comments\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* fixing format checker\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* fixing gemini's comment\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n---------\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 67,
+                "insertions": 65,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d329f13c",
+              "author": "Yuhan Liu",
+              "email": "32589867+YuhanLiu11@users.noreply.github.com",
+              "date": "2025-12-06T18:07:51.000Z",
+              "message": "[Observability] Updating continuous usage context with histogram data  (#2164)\n\n* adding lifespan tracker\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* Updating lifespan tracking\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* Using a better function for list --> hist\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n---------\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\nCo-authored-by: Samuel Shen <102553648+sammshen@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 69,
+                "insertions": 59,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 50
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 52.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 105,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Peter Pan",
           "email": "Peter.Pan@daocloud.io",
           "total_commits": 2,
@@ -13181,8 +13523,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 70,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "zhengliyuan1987",
@@ -13241,6 +13583,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 70,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Mustafa YILDIRIM",
+          "email": "2341474+mustafayildirim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 63,
+          "commits": [
+            {
+              "hash": "438b5e26",
+              "author": "Mustafa YILDIRIM",
+              "email": "2341474+mustafayildirim@users.noreply.github.com",
+              "date": "2025-12-06T01:17:10.000Z",
+              "message": "fix: use served_model_name in LMCache metrics (#2176)\n\n* feat: pass served_model_name to LMCache metadata\nSigned-off-by: Mustafa YILDIRIM <mustafa@character.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 9,
+                "insertions": 8,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 20,
+                "keyword": 25,
+                "ai": 15,
+                "total": 63
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 63,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 63,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -13357,45 +13738,6 @@
           ],
           "avg_score": 27.5,
           "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 55,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "Yuhan Liu",
-          "email": "32589867+YuhanLiu11@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 55,
-          "commits": [
-            {
-              "hash": "69a7e99e",
-              "author": "Yuhan Liu",
-              "email": "32589867+YuhanLiu11@users.noreply.github.com",
-              "date": "2025-11-26T21:47:34.000Z",
-              "message": "[Observability] Adding lifespan tracker (#2073)\n\n* Adding lifespan tracker\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* Clearing the chunk hash dict to avoid memory leak\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* Fixing comments\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* fixing format checker\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n* fixing gemini's comment\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>\n\n---------\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 67,
-                "insertions": 65,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 55
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 55,
-          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
@@ -13758,12 +14100,12 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2025-12-06T00:30:10.727Z",
+    "analyzedAt": "2025-12-07T00:30:07.384Z",
     "daysBack": 2,
-    "totalCommits": 171,
-    "totalContributors": 35,
+    "totalCommits": 175,
+    "totalContributors": 36,
     "mergedFrom": {
-      "existing": 164,
+      "existing": 171,
       "new": 11
     }
   }
