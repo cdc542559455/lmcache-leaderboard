@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-12-09T00:30:01.766Z",
-  "total_commits_analyzed": 180,
+  "last_updated": "2025-12-10T00:30:03.038Z",
+  "total_commits_analyzed": 185,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -5125,10 +5125,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
+          "total_commits": 4,
+          "significant_commits": 3,
           "simple_commits": 1,
-          "commit_score": 112,
+          "commit_score": 277,
           "commits": [
             {
               "hash": "35649f23",
@@ -5167,18 +5167,60 @@
                 "loc": 8,
                 "files": 10,
                 "keyword": 12,
-                "ai": 15,
-                "total": 45
+                "ai": 18,
+                "total": 48
               },
               "classification": "simple"
+            },
+            {
+              "hash": "c26bc1c7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-09T16:13:14.000Z",
+              "message": "[UT] add ut for runtime plugin launcher (#2191)\n\n* [UT] add ut for runtime plugin launcher\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve test\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 1,
+                "lines": 385,
+                "insertions": 385,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e0df271a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-09T06:22:43.000Z",
+              "message": "[Controller] Refactor: Combine kv_pool and worker_node (#2187)\n\n* [Controller] Refactor: Combine kv_pool and worker_node\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment to improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 332,
+                "insertions": 185,
+                "deletions": 147
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 56,
-          "significance_ratio": 0.5,
+          "avg_score": 69.25,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 112,
+          "total_score": 277,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -5218,6 +5260,123 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 52,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Ayush Singh",
+          "email": "ayush1009208@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 38,
+          "commits": [
+            {
+              "hash": "20b32bfd",
+              "author": "Ayush Singh",
+              "email": "ayush1009208@gmail.com",
+              "date": "2025-12-09T16:18:05.000Z",
+              "message": "Fix AttributeError in layerwise mode during full cache hit (#2194)\n\n* Fix: Initialize layerwise_storers in __init__\n\nSigned-off-by: Ayush Singh <ayush1009208@gmail.com>\n\n* style: fix code formatting and linting issues\n\nSigned-off-by: Ayush Singh <ayush1009208@gmail.com>\n\n---------\n\nSigned-off-by: Ayush Singh <ayush1009208@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 38,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "yangw",
+          "email": "yang.wu@daocloud.io",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "6bb43b82",
+              "author": "yangw",
+              "email": "wuyangmuc@gmail.com",
+              "date": "2025-12-09T20:05:16.000Z",
+              "message": "Fix double ref_count_down in redis sentinel connector put (#2202)\n\nRemove redundant memory_obj.ref_count_down() call from RedisSentinelConnector.put() method. The InstrumentedRemoteConnector wrapper already handles reference counting  in its finally block, so the explicit call in RedisSentinelConnector was causing  double decrement\n\nSigned-off-by: yangw <wuyangmuc@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 0,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "ZER0921",
+          "email": "zer0921@126.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "6a5f4196",
+              "author": "ZER0921",
+              "email": "zer0921@126.com",
+              "date": "2025-12-09T07:23:17.000Z",
+              "message": "[Benchmark] multi-round-qa.py add --disable-ramp-up option (#2185)\n\n* multi-round-qa.py add --disable-ramp-up option\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n* fix code review\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n---------\n\nSigned-off-by: zer0921 <zer0921@126.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 10,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
           "tier": "T0",
           "tier_name": "Elite"
         }
@@ -9069,10 +9228,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 8,
-          "significant_commits": 6,
+          "total_commits": 10,
+          "significant_commits": 8,
           "simple_commits": 2,
-          "commit_score": 522,
+          "commit_score": 687,
           "commits": [
             {
               "hash": "f8af4aa1",
@@ -9237,18 +9396,60 @@
                 "loc": 8,
                 "files": 10,
                 "keyword": 12,
-                "ai": 15,
-                "total": 45
+                "ai": 18,
+                "total": 48
               },
               "classification": "simple"
+            },
+            {
+              "hash": "c26bc1c7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-09T16:13:14.000Z",
+              "message": "[UT] add ut for runtime plugin launcher (#2191)\n\n* [UT] add ut for runtime plugin launcher\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve test\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 1,
+                "lines": 385,
+                "insertions": 385,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e0df271a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-09T06:22:43.000Z",
+              "message": "[Controller] Refactor: Combine kv_pool and worker_node (#2187)\n\n* [Controller] Refactor: Combine kv_pool and worker_node\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment to improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 332,
+                "insertions": 185,
+                "deletions": 147
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 65.25,
-          "significance_ratio": 0.75,
+          "avg_score": 68.7,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 522,
+          "total_score": 687,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9721,6 +9922,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "yangw",
+          "email": "yang.wu@daocloud.io",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "76572504",
+              "author": "yangw",
+              "email": "yang.wu@daocloud.io",
+              "date": "2025-12-07T02:31:08.000Z",
+              "message": "Fix correct write order in RedisSentinelConnector to avoid race condition (#2186)\n\nThis aligns RedisSentinelConnector with RedisConnector and\n  RedisClusterConnector\n\nSigned-off-by: yangw <wuyangmuc@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "6bb43b82",
+              "author": "yangw",
+              "email": "wuyangmuc@gmail.com",
+              "date": "2025-12-09T20:05:16.000Z",
+              "message": "Fix double ref_count_down in redis sentinel connector put (#2202)\n\nRemove redundant memory_obj.ref_count_down() call from RedisSentinelConnector.put() method. The InstrumentedRemoteConnector wrapper already handles reference counting  in its finally block, so the explicit call in RedisSentinelConnector was causing  double decrement\n\nSigned-off-by: yangw <wuyangmuc@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 0,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Mustafa YILDIRIM",
           "email": "2341474+mustafayildirim@users.noreply.github.com",
           "total_commits": 1,
@@ -9951,45 +10212,84 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 40,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "yangw",
-          "email": "yang.wu@daocloud.io",
+          "name": "Ayush Singh",
+          "email": "ayush1009208@gmail.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 40,
+          "commit_score": 38,
           "commits": [
             {
-              "hash": "76572504",
-              "author": "yangw",
-              "email": "yang.wu@daocloud.io",
-              "date": "2025-12-07T02:31:08.000Z",
-              "message": "Fix correct write order in RedisSentinelConnector to avoid race condition (#2186)\n\nThis aligns RedisSentinelConnector with RedisConnector and\n  RedisClusterConnector\n\nSigned-off-by: yangw <wuyangmuc@gmail.com>",
+              "hash": "20b32bfd",
+              "author": "Ayush Singh",
+              "email": "ayush1009208@gmail.com",
+              "date": "2025-12-09T16:18:05.000Z",
+              "message": "Fix AttributeError in layerwise mode during full cache hit (#2194)\n\n* Fix: Initialize layerwise_storers in __init__\n\nSigned-off-by: Ayush Singh <ayush1009208@gmail.com>\n\n* style: fix code formatting and linting issues\n\nSigned-off-by: Ayush Singh <ayush1009208@gmail.com>\n\n---------\n\nSigned-off-by: Ayush Singh <ayush1009208@gmail.com>",
               "stats": {
                 "files": 1,
-                "lines": 3,
-                "insertions": 2,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 38,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "ZER0921",
+          "email": "zer0921@126.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "6a5f4196",
+              "author": "ZER0921",
+              "email": "zer0921@126.com",
+              "date": "2025-12-09T07:23:17.000Z",
+              "message": "[Benchmark] multi-round-qa.py add --disable-ramp-up option (#2185)\n\n* multi-round-qa.py add --disable-ramp-up option\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n* fix code review\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n---------\n\nSigned-off-by: zer0921 <zer0921@126.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 10,
                 "deletions": 1
               },
               "scores": {
                 "loc": 3,
                 "files": 5,
                 "keyword": 12,
-                "ai": 20,
-                "total": 40
+                "ai": 15,
+                "total": 35
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 40,
+          "avg_score": 35,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 40,
+          "total_score": 35,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -10078,10 +10378,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 42,
-          "significant_commits": 28,
+          "total_commits": 44,
+          "significant_commits": 30,
           "simple_commits": 14,
-          "commit_score": 2538,
+          "commit_score": 2703,
           "commits": [
             {
               "hash": "3de1434a",
@@ -10960,18 +11260,60 @@
                 "loc": 8,
                 "files": 10,
                 "keyword": 12,
-                "ai": 15,
-                "total": 45
+                "ai": 18,
+                "total": 48
               },
               "classification": "simple"
+            },
+            {
+              "hash": "c26bc1c7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-09T16:13:14.000Z",
+              "message": "[UT] add ut for runtime plugin launcher (#2191)\n\n* [UT] add ut for runtime plugin launcher\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve test\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 1,
+                "lines": 385,
+                "insertions": 385,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e0df271a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-09T06:22:43.000Z",
+              "message": "[Controller] Refactor: Combine kv_pool and worker_node (#2187)\n\n* [Controller] Refactor: Combine kv_pool and worker_node\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment to improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 332,
+                "insertions": 185,
+                "deletions": 147
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 60.42857142857143,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 61.43181818181818,
+          "significance_ratio": 0.6818181818181818,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2538,
+          "total_score": 2703,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -13793,6 +14135,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "yangw",
+          "email": "yang.wu@daocloud.io",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "76572504",
+              "author": "yangw",
+              "email": "yang.wu@daocloud.io",
+              "date": "2025-12-07T02:31:08.000Z",
+              "message": "Fix correct write order in RedisSentinelConnector to avoid race condition (#2186)\n\nThis aligns RedisSentinelConnector with RedisConnector and\n  RedisClusterConnector\n\nSigned-off-by: yangw <wuyangmuc@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "6bb43b82",
+              "author": "yangw",
+              "email": "wuyangmuc@gmail.com",
+              "date": "2025-12-09T20:05:16.000Z",
+              "message": "Fix double ref_count_down in redis sentinel connector put (#2202)\n\nRemove redundant memory_obj.ref_count_down() call from RedisSentinelConnector.put() method. The InstrumentedRemoteConnector wrapper already handles reference counting  in its finally block, so the explicit call in RedisSentinelConnector was causing  double decrement\n\nSigned-off-by: yangw <wuyangmuc@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 0,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "JinYan Su",
           "email": "751080330@qq.com",
           "total_commits": 1,
@@ -13828,8 +14230,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 74,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "tianlang-wq",
@@ -14267,45 +14669,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "yangw",
-          "email": "yang.wu@daocloud.io",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 40,
-          "commits": [
-            {
-              "hash": "76572504",
-              "author": "yangw",
-              "email": "yang.wu@daocloud.io",
-              "date": "2025-12-07T02:31:08.000Z",
-              "message": "Fix correct write order in RedisSentinelConnector to avoid race condition (#2186)\n\nThis aligns RedisSentinelConnector with RedisConnector and\n  RedisClusterConnector\n\nSigned-off-by: yangw <wuyangmuc@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 2,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 20,
-                "total": 40
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 40,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 40,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "Lee Yao Yang",
           "email": "75061170+yaoyanglee@users.noreply.github.com",
           "total_commits": 1,
@@ -14380,6 +14743,84 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 38,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Ayush Singh",
+          "email": "ayush1009208@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 38,
+          "commits": [
+            {
+              "hash": "20b32bfd",
+              "author": "Ayush Singh",
+              "email": "ayush1009208@gmail.com",
+              "date": "2025-12-09T16:18:05.000Z",
+              "message": "Fix AttributeError in layerwise mode during full cache hit (#2194)\n\n* Fix: Initialize layerwise_storers in __init__\n\nSigned-off-by: Ayush Singh <ayush1009208@gmail.com>\n\n* style: fix code formatting and linting issues\n\nSigned-off-by: Ayush Singh <ayush1009208@gmail.com>\n\n---------\n\nSigned-off-by: Ayush Singh <ayush1009208@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 38,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "ZER0921",
+          "email": "zer0921@126.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "6a5f4196",
+              "author": "ZER0921",
+              "email": "zer0921@126.com",
+              "date": "2025-12-09T07:23:17.000Z",
+              "message": "[Benchmark] multi-round-qa.py add --disable-ramp-up option (#2185)\n\n* multi-round-qa.py add --disable-ramp-up option\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n* fix code review\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n---------\n\nSigned-off-by: zer0921 <zer0921@126.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 10,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -14543,13 +14984,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2025-12-09T00:30:01.766Z",
+    "analyzedAt": "2025-12-10T00:30:03.038Z",
     "daysBack": 2,
-    "totalCommits": 180,
-    "totalContributors": 38,
+    "totalCommits": 185,
+    "totalContributors": 40,
     "mergedFrom": {
-      "existing": 177,
-      "new": 5
+      "existing": 180,
+      "new": 8
     }
   }
 }
