@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-12-16T00:30:02.493Z",
-  "total_commits_analyzed": 204,
+  "last_updated": "2025-12-17T00:30:07.064Z",
+  "total_commits_analyzed": 209,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -5769,10 +5769,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
+          "total_commits": 5,
+          "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 124,
+          "commit_score": 365,
           "commits": [
             {
               "hash": "c202a14a",
@@ -5815,24 +5815,87 @@
                 "total": 40
               },
               "classification": "simple"
+            },
+            {
+              "hash": "ce1141c9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-16T11:22:12.000Z",
+              "message": "[Controller] Add RWLockWithTimeout and FastLockWithTimeout, setup to RegistryTree and workerNode (#2224)\n\n* Add RWLockWithTimeout and FastLockWithTimeout, setup to RegistryTree and workerNode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Use fine-gained lock\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Use fine-gained lock\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve throughput\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix cycle dependency\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments from kuntai\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from chunxiao\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from samuel\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 10,
+                "lines": 2273,
+                "insertions": 2049,
+                "deletions": 224
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f0aa200d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-16T08:23:55.000Z",
+              "message": "Check tool for get kvcaches's checksum (#2245)\n\n* Check tool for get kvcaches's checksum\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1063,
+                "insertions": 1059,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d4ed747a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-16T07:27:23.000Z",
+              "message": "[Controller] Refactor heartbeat from PUSH to REQ-REP mode and supply heartbeat command framework (#2251)\n\n[Controller] Refactor heartbeat from PUSH to REQ-REP mode\n\n- HeartbeatMsg now inherits from WorkerReqMsg instead of RegisterMsg\n- Added HeartbeatCommandType enum and HeartbeatCommand struct for extensible commands\n- HeartbeatRetMsg now uses command pattern instead of need_full_sync field\n- Worker heartbeat handler dispatches commands via _handle_heartbeat_command\n- Updated registration_controller heartbeat to return HeartbeatCommand\n- Updated benchmark heartbeat handler for command-based response\n\nThe command abstraction allows controller to send various commands to workers\nthrough the heartbeat mechanism. New commands can be added by extending\nHeartbeatCommandType enum without changing the message structure.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 259,
+                "insertions": 230,
+                "deletions": 29
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 62,
-          "significance_ratio": 0.5,
+          "avg_score": 73,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 124,
+          "total_score": 365,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 72,
+          "commit_score": 154,
           "commits": [
             {
               "hash": "1511704c",
@@ -5854,14 +5917,35 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f8f201df",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-12-16T18:29:05.000Z",
+              "message": "[feature][core]support dsa in LocalCPUBackend (#2230)\n\n* support dsa in LocalCPUBackend\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 407,
+                "insertions": 360,
+                "deletions": 47
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 72,
+          "avg_score": 77,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 72,
+          "total_score": 154,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -5901,6 +5985,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 52,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "ZER0921",
+          "email": "zer0921@126.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "f41754a6",
+              "author": "ZER0921",
+              "email": "zer0921@126.com",
+              "date": "2025-12-16T09:23:21.000Z",
+              "message": "[Bugfix] fix duplicate log when enable verbose logging (#2199)\n\nMultiple calls to getLogger() with the same name will always return a\nreference to the same Logger object. So when enable verbose logging in\nthe multi-round-qa or rag benchmark, it will add two handlers, which\nresults in duplicate log messages.\n\nSigned-off-by: zer0921 <zer0921@126.com>",
+              "stats": {
+                "files": 3,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9791,10 +9914,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 20,
-          "significant_commits": 17,
+          "total_commits": 23,
+          "significant_commits": 20,
           "simple_commits": 3,
-          "commit_score": 1416,
+          "commit_score": 1657,
           "commits": [
             {
               "hash": "f8af4aa1",
@@ -10215,24 +10338,87 @@
                 "total": 40
               },
               "classification": "simple"
+            },
+            {
+              "hash": "ce1141c9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-16T11:22:12.000Z",
+              "message": "[Controller] Add RWLockWithTimeout and FastLockWithTimeout, setup to RegistryTree and workerNode (#2224)\n\n* Add RWLockWithTimeout and FastLockWithTimeout, setup to RegistryTree and workerNode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Use fine-gained lock\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Use fine-gained lock\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve throughput\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix cycle dependency\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments from kuntai\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from chunxiao\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from samuel\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 10,
+                "lines": 2273,
+                "insertions": 2049,
+                "deletions": 224
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f0aa200d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-16T08:23:55.000Z",
+              "message": "Check tool for get kvcaches's checksum (#2245)\n\n* Check tool for get kvcaches's checksum\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1063,
+                "insertions": 1059,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d4ed747a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-16T07:27:23.000Z",
+              "message": "[Controller] Refactor heartbeat from PUSH to REQ-REP mode and supply heartbeat command framework (#2251)\n\n[Controller] Refactor heartbeat from PUSH to REQ-REP mode\n\n- HeartbeatMsg now inherits from WorkerReqMsg instead of RegisterMsg\n- Added HeartbeatCommandType enum and HeartbeatCommand struct for extensible commands\n- HeartbeatRetMsg now uses command pattern instead of need_full_sync field\n- Worker heartbeat handler dispatches commands via _handle_heartbeat_command\n- Updated registration_controller heartbeat to return HeartbeatCommand\n- Updated benchmark heartbeat handler for command-based response\n\nThe command abstraction allows controller to send various commands to workers\nthrough the heartbeat mechanism. New commands can be added by extending\nHeartbeatCommandType enum without changing the message structure.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 259,
+                "insertions": 230,
+                "deletions": 29
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 70.8,
-          "significance_ratio": 0.85,
+          "avg_score": 72.04347826086956,
+          "significance_ratio": 0.8695652173913043,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1416,
+          "total_score": 1657,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 7,
-          "significant_commits": 7,
+          "total_commits": 8,
+          "significant_commits": 8,
           "simple_commits": 0,
-          "commit_score": 478,
+          "commit_score": 560,
           "commits": [
             {
               "hash": "61eb7762",
@@ -10380,14 +10566,35 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f8f201df",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-12-16T18:29:05.000Z",
+              "message": "[feature][core]support dsa in LocalCPUBackend (#2230)\n\n* support dsa in LocalCPUBackend\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 407,
+                "insertions": 360,
+                "deletions": 47
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 68.28571428571429,
+          "avg_score": 70,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 478,
+          "total_score": 560,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -10920,6 +11127,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "ZER0921",
+          "email": "zer0921@126.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "6a5f4196",
+              "author": "ZER0921",
+              "email": "zer0921@126.com",
+              "date": "2025-12-09T07:23:17.000Z",
+              "message": "[Benchmark] multi-round-qa.py add --disable-ramp-up option (#2185)\n\n* multi-round-qa.py add --disable-ramp-up option\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n* fix code review\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n---------\n\nSigned-off-by: zer0921 <zer0921@126.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 10,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f41754a6",
+              "author": "ZER0921",
+              "email": "zer0921@126.com",
+              "date": "2025-12-16T09:23:21.000Z",
+              "message": "[Bugfix] fix duplicate log when enable verbose logging (#2199)\n\nMultiple calls to getLogger() with the same name will always return a\nreference to the same Logger object. So when enable verbose logging in\nthe multi-round-qa or rag benchmark, it will add two handlers, which\nresults in duplicate log messages.\n\nSigned-off-by: zer0921 <zer0921@126.com>",
+              "stats": {
+                "files": 3,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Mustafa YILDIRIM",
           "email": "2341474+mustafayildirim@users.noreply.github.com",
           "total_commits": 1,
@@ -11072,8 +11339,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 45,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Ayush Singh",
@@ -11232,45 +11499,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "ZER0921",
-          "email": "zer0921@126.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 35,
-          "commits": [
-            {
-              "hash": "6a5f4196",
-              "author": "ZER0921",
-              "email": "zer0921@126.com",
-              "date": "2025-12-09T07:23:17.000Z",
-              "message": "[Benchmark] multi-round-qa.py add --disable-ramp-up option (#2185)\n\n* multi-round-qa.py add --disable-ramp-up option\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n* fix code review\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n---------\n\nSigned-off-by: zer0921 <zer0921@126.com>",
-              "stats": {
-                "files": 1,
-                "lines": 11,
-                "insertions": 10,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 35,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 35,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "wz1qqx",
           "email": "55830058+wz1qqx@users.noreply.github.com",
           "total_commits": 1,
@@ -11394,10 +11622,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 54,
-          "significant_commits": 39,
+          "total_commits": 57,
+          "significant_commits": 42,
           "simple_commits": 15,
-          "commit_score": 3432,
+          "commit_score": 3673,
           "commits": [
             {
               "hash": "3de1434a",
@@ -12532,24 +12760,87 @@
                 "total": 40
               },
               "classification": "simple"
+            },
+            {
+              "hash": "ce1141c9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-16T11:22:12.000Z",
+              "message": "[Controller] Add RWLockWithTimeout and FastLockWithTimeout, setup to RegistryTree and workerNode (#2224)\n\n* Add RWLockWithTimeout and FastLockWithTimeout, setup to RegistryTree and workerNode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Use fine-gained lock\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Use fine-gained lock\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve throughput\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix cycle dependency\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments from kuntai\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from chunxiao\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from samuel\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 10,
+                "lines": 2273,
+                "insertions": 2049,
+                "deletions": 224
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f0aa200d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-16T08:23:55.000Z",
+              "message": "Check tool for get kvcaches's checksum (#2245)\n\n* Check tool for get kvcaches's checksum\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1063,
+                "insertions": 1059,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d4ed747a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2025-12-16T07:27:23.000Z",
+              "message": "[Controller] Refactor heartbeat from PUSH to REQ-REP mode and supply heartbeat command framework (#2251)\n\n[Controller] Refactor heartbeat from PUSH to REQ-REP mode\n\n- HeartbeatMsg now inherits from WorkerReqMsg instead of RegisterMsg\n- Added HeartbeatCommandType enum and HeartbeatCommand struct for extensible commands\n- HeartbeatRetMsg now uses command pattern instead of need_full_sync field\n- Worker heartbeat handler dispatches commands via _handle_heartbeat_command\n- Updated registration_controller heartbeat to return HeartbeatCommand\n- Updated benchmark heartbeat handler for command-based response\n\nThe command abstraction allows controller to send various commands to workers\nthrough the heartbeat mechanism. New commands can be added by extending\nHeartbeatCommandType enum without changing the message structure.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 259,
+                "insertions": 230,
+                "deletions": 29
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 63.55555555555556,
-          "significance_ratio": 0.7222222222222222,
+          "avg_score": 64.43859649122807,
+          "significance_ratio": 0.7368421052631579,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 3432,
+          "total_score": 3673,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 30,
-          "significant_commits": 19,
+          "total_commits": 31,
+          "significant_commits": 20,
           "simple_commits": 11,
-          "commit_score": 1686,
+          "commit_score": 1768,
           "commits": [
             {
               "hash": "47d5ed56",
@@ -13180,14 +13471,35 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f8f201df",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2025-12-16T18:29:05.000Z",
+              "message": "[feature][core]support dsa in LocalCPUBackend (#2230)\n\n* support dsa in LocalCPUBackend\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 407,
+                "insertions": 360,
+                "deletions": 47
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 56.2,
-          "significance_ratio": 0.6333333333333333,
+          "avg_score": 57.03225806451613,
+          "significance_ratio": 0.6451612903225806,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1686,
+          "total_score": 1768,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -15649,6 +15961,66 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "ZER0921",
+          "email": "zer0921@126.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "6a5f4196",
+              "author": "ZER0921",
+              "email": "zer0921@126.com",
+              "date": "2025-12-09T07:23:17.000Z",
+              "message": "[Benchmark] multi-round-qa.py add --disable-ramp-up option (#2185)\n\n* multi-round-qa.py add --disable-ramp-up option\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n* fix code review\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n---------\n\nSigned-off-by: zer0921 <zer0921@126.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 10,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f41754a6",
+              "author": "ZER0921",
+              "email": "zer0921@126.com",
+              "date": "2025-12-16T09:23:21.000Z",
+              "message": "[Bugfix] fix duplicate log when enable verbose logging (#2199)\n\nMultiple calls to getLogger() with the same name will always return a\nreference to the same Logger object. So when enable verbose logging in\nthe multi-round-qa or rag benchmark, it will add two handlers, which\nresults in duplicate log messages.\n\nSigned-off-by: zer0921 <zer0921@126.com>",
+              "stats": {
+                "files": 3,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "JinYan Su",
           "email": "751080330@qq.com",
           "total_commits": 1,
@@ -16180,45 +16552,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "ZER0921",
-          "email": "zer0921@126.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 35,
-          "commits": [
-            {
-              "hash": "6a5f4196",
-              "author": "ZER0921",
-              "email": "zer0921@126.com",
-              "date": "2025-12-09T07:23:17.000Z",
-              "message": "[Benchmark] multi-round-qa.py add --disable-ramp-up option (#2185)\n\n* multi-round-qa.py add --disable-ramp-up option\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n* fix code review\n\nSigned-off-by: zer0921 <zer0921@126.com>\n\n---------\n\nSigned-off-by: zer0921 <zer0921@126.com>",
-              "stats": {
-                "files": 1,
-                "lines": 11,
-                "insertions": 10,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 35,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 35,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "wz1qqx",
           "email": "55830058+wz1qqx@users.noreply.github.com",
           "total_commits": 1,
@@ -16417,13 +16750,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2025-12-16T00:30:02.493Z",
+    "analyzedAt": "2025-12-17T00:30:07.064Z",
     "daysBack": 2,
-    "totalCommits": 204,
+    "totalCommits": 209,
     "totalContributors": 41,
     "mergedFrom": {
-      "existing": 200,
-      "new": 6
+      "existing": 204,
+      "new": 9
     }
   }
 }
