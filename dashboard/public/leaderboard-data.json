@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-01-07T00:30:02.610Z",
-  "total_commits_analyzed": 250,
+  "last_updated": "2026-01-08T00:30:01.931Z",
+  "total_commits_analyzed": 255,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -7286,10 +7286,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 80,
+          "commit_score": 150,
           "commits": [
             {
               "hash": "f521644d",
@@ -7311,24 +7311,45 @@
                 "total": 80
               },
               "classification": "significant"
+            },
+            {
+              "hash": "507a8b9f",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-07T04:35:09.000Z",
+              "message": "[North-bound][MP] Moving the multiprocess adapter from vLLM back to LMCache (#2360)\n\n* Moving the multiprocess adapter from vLLM\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* mark cleanup lookup result as a external function\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* re enable docker building\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 536,
+                "insertions": 527,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 75,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 80,
+          "total_score": 150,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 72,
+          "simple_commits": 1,
+          "commit_score": 107,
           "commits": [
             {
               "hash": "e2b8240b",
@@ -7350,14 +7371,134 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c4c432c0",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-01-07T02:39:32.000Z",
+              "message": "[Hotfix] Remove unnecessary MLA save_unfull_chunk enforcement (#2349)\n\nRemove the code block that enforced save_unfull_chunk=True for MLA\n(Multi-head Latent Attention) mode. This check was originally added\nthinking it was required due to a vLLM bug (vllm-project/vllm#26042),\nbut it has been confirmed that save_unfull_chunk does not affect MLA\ncache storage.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 1,
+                "lines": 16,
+                "insertions": 0,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 72,
+          "avg_score": 53.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 107,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "tunglinwood",
+          "email": "113751333+tunglinwood@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 95,
+          "commits": [
+            {
+              "hash": "dfaad07f",
+              "author": "tunglinwood",
+              "email": "113751333+tunglinwood@users.noreply.github.com",
+              "date": "2026-01-07T22:50:32.000Z",
+              "message": "[Test] Add connector discovery unit test (#2343)\n\nSigned-off-by: Tung-Lin Wu <tomwu.tunglin@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 77,
+                "insertions": 77,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 47
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0389a5a1",
+              "author": "tunglinwood",
+              "email": "113751333+tunglinwood@users.noreply.github.com",
+              "date": "2026-01-07T22:35:58.000Z",
+              "message": "Fix KV cache calculator for GLM GQA models (#2359)\n\nSigned-off-by: Tung-Lin Wu <tomwu.tunglin@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 29,
+                "insertions": 22,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 47.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 95,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 67,
+          "commits": [
+            {
+              "hash": "37b7ae13",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-01-07T02:47:06.000Z",
+              "message": "[ut] add gpu_connector_v3 ut (#2358)\n\n* [ut] add gpu_connector_v3 ut\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 160,
+                "insertions": 156,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 67
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 72,
+          "total_score": 67,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7418,8 +7559,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 60,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
@@ -13783,6 +13924,168 @@
       ],
       "2026-01": [
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 207,
+          "commits": [
+            {
+              "hash": "befd5c01",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-04T02:30:58.000Z",
+              "message": "[Core] Add multi-layer transfer kernel for ds v3.2 (#2309)\n\n[add] dsv32 kernel support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 84,
+                "insertions": 57,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 57
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f521644d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-06T21:48:45.000Z",
+              "message": "[CI/CD][chore] prepare for multi-processing mode tests (#2346)\n\n* init dummy buildkite yml\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* trigger test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* test image build\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] docker test scripts\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [add] volume mount for model loading\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix dco issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* Enlarge cpu buffer size\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 461,
+                "insertions": 461,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "507a8b9f",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-07T04:35:09.000Z",
+              "message": "[North-bound][MP] Moving the multiprocess adapter from vLLM back to LMCache (#2360)\n\n* Moving the multiprocess adapter from vLLM\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* mark cleanup lookup result as a external function\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* re enable docker building\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 536,
+                "insertions": 527,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 69,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 207,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "de25f0f6",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-01-02T21:56:57.000Z",
+              "message": "[feature][core] use shapes and dtypes in P2PBackend (#2300)\n\n[feature][core] use shapes and dtypes in p2pbackend\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 62,
+                "insertions": 37,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c2881d6c",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-01-04T09:14:33.000Z",
+              "message": "[bugfix] fix storage manager not init (#2335)\n\n* [bugfix] fix storage manager not init\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update log\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 51,
+                "insertions": 23,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 52
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "37b7ae13",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-01-07T02:47:06.000Z",
+              "message": "[ut] add gpu_connector_v3 ut (#2358)\n\n* [ut] add gpu_connector_v3 ut\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 160,
+                "insertions": 156,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 67
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 58,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
           "total_commits": 2,
@@ -13843,122 +14146,122 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
           "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 137,
-          "commits": [
-            {
-              "hash": "befd5c01",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-04T02:30:58.000Z",
-              "message": "[Core] Add multi-layer transfer kernel for ds v3.2 (#2309)\n\n[add] dsv32 kernel support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 3,
-                "lines": 84,
-                "insertions": 57,
-                "deletions": 27
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 57
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f521644d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-06T21:48:45.000Z",
-              "message": "[CI/CD][chore] prepare for multi-processing mode tests (#2346)\n\n* init dummy buildkite yml\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* trigger test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* test image build\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] docker test scripts\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [add] volume mount for model loading\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix dco issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* Enlarge cpu buffer size\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 461,
-                "insertions": 461,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 68.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 137,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
+          "significant_commits": 1,
+          "simple_commits": 1,
           "commit_score": 107,
           "commits": [
             {
-              "hash": "de25f0f6",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-01-02T21:56:57.000Z",
-              "message": "[feature][core] use shapes and dtypes in P2PBackend (#2300)\n\n[feature][core] use shapes and dtypes in p2pbackend\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "hash": "e2b8240b",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-01-05T15:23:34.000Z",
+              "message": "[Bugfix] Handle non-hex multimodal identifiers in vLLM integration (#2276)\n\n* [Bugfix] Handle non-hex multimodal identifiers in vLLM integration\n\nvLLM/OpenAI-style multimodal identifiers can be non-hex strings (e.g. chatcmpl-...-image-0). Fall back to a stable 16-bit hash instead of raising ValueError, and add unit tests covering hex/non-hex variants and placeholder application.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
               "stats": {
-                "files": 3,
-                "lines": 62,
-                "insertions": 37,
-                "deletions": 25
+                "files": 2,
+                "lines": 139,
+                "insertions": 137,
+                "deletions": 2
               },
               "scores": {
-                "loc": 15,
+                "loc": 30,
                 "files": 10,
                 "keyword": 12,
-                "ai": 18,
-                "total": 55
+                "ai": 20,
+                "total": 72
               },
               "classification": "significant"
             },
             {
-              "hash": "c2881d6c",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-01-04T09:14:33.000Z",
-              "message": "[bugfix] fix storage manager not init (#2335)\n\n* [bugfix] fix storage manager not init\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update log\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "hash": "c4c432c0",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-01-07T02:39:32.000Z",
+              "message": "[Hotfix] Remove unnecessary MLA save_unfull_chunk enforcement (#2349)\n\nRemove the code block that enforced save_unfull_chunk=True for MLA\n(Multi-head Latent Attention) mode. This check was originally added\nthinking it was required due to a vLLM bug (vllm-project/vllm#26042),\nbut it has been confirmed that save_unfull_chunk does not affect MLA\ncache storage.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
               "stats": {
-                "files": 2,
-                "lines": 51,
-                "insertions": 23,
-                "deletions": 28
+                "files": 1,
+                "lines": 16,
+                "insertions": 0,
+                "deletions": 16
               },
               "scores": {
-                "loc": 15,
-                "files": 10,
+                "loc": 3,
+                "files": 5,
                 "keyword": 12,
                 "ai": 15,
-                "total": 52
+                "total": 35
               },
-              "classification": "significant"
+              "classification": "simple"
             }
           ],
           "avg_score": 53.5,
-          "significance_ratio": 1,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 107,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "tunglinwood",
+          "email": "113751333+tunglinwood@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 95,
+          "commits": [
+            {
+              "hash": "dfaad07f",
+              "author": "tunglinwood",
+              "email": "113751333+tunglinwood@users.noreply.github.com",
+              "date": "2026-01-07T22:50:32.000Z",
+              "message": "[Test] Add connector discovery unit test (#2343)\n\nSigned-off-by: Tung-Lin Wu <tomwu.tunglin@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 77,
+                "insertions": 77,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 47
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0389a5a1",
+              "author": "tunglinwood",
+              "email": "113751333+tunglinwood@users.noreply.github.com",
+              "date": "2026-01-07T22:35:58.000Z",
+              "message": "Fix KV cache calculator for GLM GQA models (#2359)\n\nSigned-off-by: Tung-Lin Wu <tomwu.tunglin@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 29,
+                "insertions": 22,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 47.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 95,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -13998,47 +14301,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 72,
-          "commits": [
-            {
-              "hash": "e2b8240b",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-01-05T15:23:34.000Z",
-              "message": "[Bugfix] Handle non-hex multimodal identifiers in vLLM integration (#2276)\n\n* [Bugfix] Handle non-hex multimodal identifiers in vLLM integration\n\nvLLM/OpenAI-style multimodal identifiers can be non-hex strings (e.g. chatcmpl-...-image-0). Fall back to a stable 16-bit hash instead of raising ValueError, and add unit tests covering hex/non-hex variants and placeholder application.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 139,
-                "insertions": 137,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 72,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 72,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Kuntai Du",
@@ -20011,6 +20275,168 @@
       ],
       "2026-Q1": [
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 207,
+          "commits": [
+            {
+              "hash": "befd5c01",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-04T02:30:58.000Z",
+              "message": "[Core] Add multi-layer transfer kernel for ds v3.2 (#2309)\n\n[add] dsv32 kernel support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 84,
+                "insertions": 57,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 57
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f521644d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-06T21:48:45.000Z",
+              "message": "[CI/CD][chore] prepare for multi-processing mode tests (#2346)\n\n* init dummy buildkite yml\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* trigger test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* test image build\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] docker test scripts\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [add] volume mount for model loading\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix dco issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* Enlarge cpu buffer size\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 461,
+                "insertions": 461,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "507a8b9f",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-07T04:35:09.000Z",
+              "message": "[North-bound][MP] Moving the multiprocess adapter from vLLM back to LMCache (#2360)\n\n* Moving the multiprocess adapter from vLLM\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* mark cleanup lookup result as a external function\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* re enable docker building\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 536,
+                "insertions": 527,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 69,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 207,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "de25f0f6",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-01-02T21:56:57.000Z",
+              "message": "[feature][core] use shapes and dtypes in P2PBackend (#2300)\n\n[feature][core] use shapes and dtypes in p2pbackend\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 62,
+                "insertions": 37,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c2881d6c",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-01-04T09:14:33.000Z",
+              "message": "[bugfix] fix storage manager not init (#2335)\n\n* [bugfix] fix storage manager not init\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update log\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 51,
+                "insertions": 23,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 52
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "37b7ae13",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-01-07T02:47:06.000Z",
+              "message": "[ut] add gpu_connector_v3 ut (#2358)\n\n* [ut] add gpu_connector_v3 ut\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 160,
+                "insertions": 156,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 67
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 58,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
           "total_commits": 2,
@@ -20071,122 +20497,122 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
           "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 137,
-          "commits": [
-            {
-              "hash": "befd5c01",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-04T02:30:58.000Z",
-              "message": "[Core] Add multi-layer transfer kernel for ds v3.2 (#2309)\n\n[add] dsv32 kernel support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 3,
-                "lines": 84,
-                "insertions": 57,
-                "deletions": 27
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 57
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f521644d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-06T21:48:45.000Z",
-              "message": "[CI/CD][chore] prepare for multi-processing mode tests (#2346)\n\n* init dummy buildkite yml\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* trigger test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* test image build\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] docker test scripts\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [add] volume mount for model loading\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix dco issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* Enlarge cpu buffer size\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 461,
-                "insertions": 461,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 68.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 137,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
+          "significant_commits": 1,
+          "simple_commits": 1,
           "commit_score": 107,
           "commits": [
             {
-              "hash": "de25f0f6",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-01-02T21:56:57.000Z",
-              "message": "[feature][core] use shapes and dtypes in P2PBackend (#2300)\n\n[feature][core] use shapes and dtypes in p2pbackend\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "hash": "e2b8240b",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-01-05T15:23:34.000Z",
+              "message": "[Bugfix] Handle non-hex multimodal identifiers in vLLM integration (#2276)\n\n* [Bugfix] Handle non-hex multimodal identifiers in vLLM integration\n\nvLLM/OpenAI-style multimodal identifiers can be non-hex strings (e.g. chatcmpl-...-image-0). Fall back to a stable 16-bit hash instead of raising ValueError, and add unit tests covering hex/non-hex variants and placeholder application.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
               "stats": {
-                "files": 3,
-                "lines": 62,
-                "insertions": 37,
-                "deletions": 25
+                "files": 2,
+                "lines": 139,
+                "insertions": 137,
+                "deletions": 2
               },
               "scores": {
-                "loc": 15,
+                "loc": 30,
                 "files": 10,
                 "keyword": 12,
-                "ai": 18,
-                "total": 55
+                "ai": 20,
+                "total": 72
               },
               "classification": "significant"
             },
             {
-              "hash": "c2881d6c",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-01-04T09:14:33.000Z",
-              "message": "[bugfix] fix storage manager not init (#2335)\n\n* [bugfix] fix storage manager not init\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update log\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "hash": "c4c432c0",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-01-07T02:39:32.000Z",
+              "message": "[Hotfix] Remove unnecessary MLA save_unfull_chunk enforcement (#2349)\n\nRemove the code block that enforced save_unfull_chunk=True for MLA\n(Multi-head Latent Attention) mode. This check was originally added\nthinking it was required due to a vLLM bug (vllm-project/vllm#26042),\nbut it has been confirmed that save_unfull_chunk does not affect MLA\ncache storage.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
               "stats": {
-                "files": 2,
-                "lines": 51,
-                "insertions": 23,
-                "deletions": 28
+                "files": 1,
+                "lines": 16,
+                "insertions": 0,
+                "deletions": 16
               },
               "scores": {
-                "loc": 15,
-                "files": 10,
+                "loc": 3,
+                "files": 5,
                 "keyword": 12,
                 "ai": 15,
-                "total": 52
+                "total": 35
               },
-              "classification": "significant"
+              "classification": "simple"
             }
           ],
           "avg_score": 53.5,
-          "significance_ratio": 1,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 107,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "tunglinwood",
+          "email": "113751333+tunglinwood@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 95,
+          "commits": [
+            {
+              "hash": "dfaad07f",
+              "author": "tunglinwood",
+              "email": "113751333+tunglinwood@users.noreply.github.com",
+              "date": "2026-01-07T22:50:32.000Z",
+              "message": "[Test] Add connector discovery unit test (#2343)\n\nSigned-off-by: Tung-Lin Wu <tomwu.tunglin@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 77,
+                "insertions": 77,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 47
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0389a5a1",
+              "author": "tunglinwood",
+              "email": "113751333+tunglinwood@users.noreply.github.com",
+              "date": "2026-01-07T22:35:58.000Z",
+              "message": "Fix KV cache calculator for GLM GQA models (#2359)\n\nSigned-off-by: Tung-Lin Wu <tomwu.tunglin@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 29,
+                "insertions": 22,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 47.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 95,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -20226,47 +20652,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 72,
-          "commits": [
-            {
-              "hash": "e2b8240b",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-01-05T15:23:34.000Z",
-              "message": "[Bugfix] Handle non-hex multimodal identifiers in vLLM integration (#2276)\n\n* [Bugfix] Handle non-hex multimodal identifiers in vLLM integration\n\nvLLM/OpenAI-style multimodal identifiers can be non-hex strings (e.g. chatcmpl-...-image-0). Fall back to a stable 16-bit hash instead of raising ValueError, and add unit tests covering hex/non-hex variants and placeholder application.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 139,
-                "insertions": 137,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 72,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 72,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Kuntai Du",
@@ -20371,13 +20758,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-01-07T00:30:02.611Z",
+    "analyzedAt": "2026-01-08T00:30:01.931Z",
     "daysBack": 2,
-    "totalCommits": 250,
+    "totalCommits": 255,
     "totalContributors": 48,
     "mergedFrom": {
-      "existing": 248,
-      "new": 6
+      "existing": 250,
+      "new": 7
     }
   }
 }
