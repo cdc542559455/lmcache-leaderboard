@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-01-10T00:30:07.370Z",
-  "total_commits_analyzed": 267,
+  "last_updated": "2026-01-11T00:30:05.742Z",
+  "total_commits_analyzed": 268,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -7226,10 +7226,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
-          "significant_commits": 3,
+          "total_commits": 4,
+          "significant_commits": 4,
           "simple_commits": 0,
-          "commit_score": 246,
+          "commit_score": 328,
           "commits": [
             {
               "hash": "78697950",
@@ -7293,6 +7293,27 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "ad96dd80",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-01-10T08:11:21.000Z",
+              "message": "Refactor to abstract lmcacheManager from vllm_v1_adapter.py (#2348)\n\n* Refactor to abstract lmcacheManager from vllm_v1_adapter.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Refactor further\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Adjust code after #2335\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove useless ut\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Revert builder mode, use constructor directly\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Standalone relevant change\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add docstring\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 8,
+                "lines": 1838,
+                "insertions": 1344,
+                "deletions": 494
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
           "avg_score": 82,
@@ -7300,7 +7321,7 @@
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 246,
+          "total_score": 328,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -14248,6 +14269,108 @@
       ],
       "2026-01": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 4,
+          "significant_commits": 4,
+          "simple_commits": 0,
+          "commit_score": 328,
+          "commits": [
+            {
+              "hash": "78697950",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-01-05T07:14:48.000Z",
+              "message": "[Core] Add a timeout approach for last pin operation to avoid leak (#2004)\n\n* Add a timeout approach for last pin operation to avoid leak\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix unit tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Introduce pin monitor to check and unpin the leak memory object\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address the comments from yihua\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* reuse the unpin memory object.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments and add metrics\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from samuel\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 524,
+                "insertions": 522,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "64074859",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-01-06T11:58:08.000Z",
+              "message": "Introduce a remote config supplier service (#2332)\n\n* Introduce a remote config supplier service\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address gemini's comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support extra_config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move some methods to config_base.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename lmcache_app_id to app_id\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename lmcache_app_id to app_id\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add an example and demonstrate config server\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support replace part of extra_config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support override for all config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support override for all config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 1053,
+                "insertions": 1029,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3c65629a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-01-09T07:15:11.000Z",
+              "message": "[Controller] Support full sync controller-side and update all  (#2261)\n\n* [Controller] controller-side and other parts of full sync\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Avoid indentation\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment, fix the get_global_progress logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Use loopback while heartbeat ip and local ip are same\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 14,
+                "lines": 2025,
+                "insertions": 1959,
+                "deletions": 66
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ad96dd80",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-01-10T08:11:21.000Z",
+              "message": "Refactor to abstract lmcacheManager from vllm_v1_adapter.py (#2348)\n\n* Refactor to abstract lmcacheManager from vllm_v1_adapter.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Refactor further\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Adjust code after #2335\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove useless ut\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Revert builder mode, use constructor directly\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Standalone relevant change\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add docstring\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 8,
+                "lines": 1838,
+                "insertions": 1344,
+                "deletions": 494
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 328,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
           "total_commits": 5,
@@ -14469,87 +14592,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 289,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 246,
-          "commits": [
-            {
-              "hash": "78697950",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-01-05T07:14:48.000Z",
-              "message": "[Core] Add a timeout approach for last pin operation to avoid leak (#2004)\n\n* Add a timeout approach for last pin operation to avoid leak\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix unit tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Introduce pin monitor to check and unpin the leak memory object\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address the comments from yihua\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* reuse the unpin memory object.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments and add metrics\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from samuel\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 524,
-                "insertions": 522,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "64074859",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-01-06T11:58:08.000Z",
-              "message": "Introduce a remote config supplier service (#2332)\n\n* Introduce a remote config supplier service\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address gemini's comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support extra_config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move some methods to config_base.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename lmcache_app_id to app_id\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename lmcache_app_id to app_id\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add an example and demonstrate config server\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support replace part of extra_config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support override for all config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support override for all config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 9,
-                "lines": 1053,
-                "insertions": 1029,
-                "deletions": 24
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3c65629a",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-01-09T07:15:11.000Z",
-              "message": "[Controller] Support full sync controller-side and update all  (#2261)\n\n* [Controller] controller-side and other parts of full sync\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Avoid indentation\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment, fix the get_global_progress logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Use loopback while heartbeat ip and local ip are same\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 14,
-                "lines": 2025,
-                "insertions": 1959,
-                "deletions": 66
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 82,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 246,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -20905,6 +20947,108 @@
       ],
       "2026-Q1": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 4,
+          "significant_commits": 4,
+          "simple_commits": 0,
+          "commit_score": 328,
+          "commits": [
+            {
+              "hash": "78697950",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-01-05T07:14:48.000Z",
+              "message": "[Core] Add a timeout approach for last pin operation to avoid leak (#2004)\n\n* Add a timeout approach for last pin operation to avoid leak\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix unit tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Introduce pin monitor to check and unpin the leak memory object\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address the comments from yihua\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* reuse the unpin memory object.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments and add metrics\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from samuel\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 524,
+                "insertions": 522,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "64074859",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-01-06T11:58:08.000Z",
+              "message": "Introduce a remote config supplier service (#2332)\n\n* Introduce a remote config supplier service\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address gemini's comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support extra_config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move some methods to config_base.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename lmcache_app_id to app_id\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename lmcache_app_id to app_id\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add an example and demonstrate config server\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support replace part of extra_config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support override for all config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support override for all config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 1053,
+                "insertions": 1029,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3c65629a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-01-09T07:15:11.000Z",
+              "message": "[Controller] Support full sync controller-side and update all  (#2261)\n\n* [Controller] controller-side and other parts of full sync\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Avoid indentation\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment, fix the get_global_progress logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Use loopback while heartbeat ip and local ip are same\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 14,
+                "lines": 2025,
+                "insertions": 1959,
+                "deletions": 66
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ad96dd80",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-01-10T08:11:21.000Z",
+              "message": "Refactor to abstract lmcacheManager from vllm_v1_adapter.py (#2348)\n\n* Refactor to abstract lmcacheManager from vllm_v1_adapter.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Refactor further\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Adjust code after #2335\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove useless ut\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Revert builder mode, use constructor directly\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Standalone relevant change\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add docstring\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 8,
+                "lines": 1838,
+                "insertions": 1344,
+                "deletions": 494
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 328,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
           "total_commits": 5,
@@ -21126,87 +21270,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 289,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 246,
-          "commits": [
-            {
-              "hash": "78697950",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-01-05T07:14:48.000Z",
-              "message": "[Core] Add a timeout approach for last pin operation to avoid leak (#2004)\n\n* Add a timeout approach for last pin operation to avoid leak\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix unit tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Introduce pin monitor to check and unpin the leak memory object\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address the comments from yihua\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* reuse the unpin memory object.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments and add metrics\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from samuel\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 524,
-                "insertions": 522,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "64074859",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-01-06T11:58:08.000Z",
-              "message": "Introduce a remote config supplier service (#2332)\n\n* Introduce a remote config supplier service\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address gemini's comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support extra_config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move some methods to config_base.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename lmcache_app_id to app_id\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Rename lmcache_app_id to app_id\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add an example and demonstrate config server\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support replace part of extra_config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support override for all config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Support override for all config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 9,
-                "lines": 1053,
-                "insertions": 1029,
-                "deletions": 24
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3c65629a",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-01-09T07:15:11.000Z",
-              "message": "[Controller] Support full sync controller-side and update all  (#2261)\n\n* [Controller] controller-side and other parts of full sync\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Avoid indentation\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment, fix the get_global_progress logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Use loopback while heartbeat ip and local ip are same\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 14,
-                "lines": 2025,
-                "insertions": 1959,
-                "deletions": 66
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 82,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 246,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -21694,13 +21757,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-01-10T00:30:07.370Z",
+    "analyzedAt": "2026-01-11T00:30:05.742Z",
     "daysBack": 2,
-    "totalCommits": 267,
+    "totalCommits": 268,
     "totalContributors": 49,
     "mergedFrom": {
-      "existing": 262,
-      "new": 12
+      "existing": 267,
+      "new": 6
     }
   }
 }
