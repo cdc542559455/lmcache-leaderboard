@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-02-07T00:30:01.599Z",
-  "total_commits_analyzed": 70,
+  "last_updated": "2026-02-08T00:29:59.175Z",
+  "total_commits_analyzed": 72,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -1781,10 +1781,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 4,
+          "total_commits": 5,
           "significant_commits": 4,
-          "simple_commits": 0,
-          "commit_score": 293,
+          "simple_commits": 1,
+          "commit_score": 323,
           "commits": [
             {
               "hash": "235ea0f3",
@@ -1869,14 +1869,137 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "85f05c69",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-07T01:29:01.000Z",
+              "message": "[Misc][Chore] Print out locked memory objects when running L1Manager.memcheck() (#2558)\n\n[add] misc debug output with memcheck\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 17,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 73.25,
-          "significance_ratio": 1,
+          "avg_score": 64.6,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 293,
+          "total_score": 323,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Shaoting",
+          "email": "shaotingf@uchicago.edu",
+          "total_commits": 4,
+          "significant_commits": 1,
+          "simple_commits": 3,
+          "commit_score": 197,
+          "commits": [
+            {
+              "hash": "dc30c064",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-02-04T00:13:53.000Z",
+              "message": "[CI/Build] Correctly specify GPU count and usage (#2519)\n\n* Tmp test\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Increase max-time\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Disable enforce eager\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* revert max-time 600\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Add logg\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Add back build\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Change queue\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Remove queue\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Don't kill so fast\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Use vllm only and see\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Quick test\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Revert useless attempts\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Specify correct GPU utilization\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* There are 8 GPUs\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Fix comment\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9110431d",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-02-03T02:15:39.000Z",
+              "message": "[CI/Build] Update the unit test pipeline to also support AMD (#2531)\n\n* Modify the unit test pipeline for AMD also\n\n* Do not repeat has_cufile\n\n* Add global skip for mp test_cache_server\n\n* Delete coverage-test.xml\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 6,
+                "lines": 181,
+                "insertions": 176,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "100d07dc",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-02-05T02:27:19.000Z",
+              "message": "[CI/Build] Make unit tests run in a single step (#2534)\n\nInto one step\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 21,
+                "insertions": 6,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "efceac6e",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-02-07T04:44:47.000Z",
+              "message": "[CI/Build] Adapt correctness tests for Yotta Lab servers (#2560)\n\n* Remove offline requirements\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n* Trigger again\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n* Reduce limits\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n---------\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 16,
+                "insertions": 1,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 49.25,
+          "significance_ratio": 0.25,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 197,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1979,87 +2102,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 177,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Shaoting",
-          "email": "shaotingf@uchicago.edu",
-          "total_commits": 3,
-          "significant_commits": 1,
-          "simple_commits": 2,
-          "commit_score": 162,
-          "commits": [
-            {
-              "hash": "dc30c064",
-              "author": "Shaoting",
-              "email": "shaotingf@uchicago.edu",
-              "date": "2026-02-04T00:13:53.000Z",
-              "message": "[CI/Build] Correctly specify GPU count and usage (#2519)\n\n* Tmp test\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Increase max-time\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Disable enforce eager\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* revert max-time 600\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Add logg\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Add back build\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Change queue\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Remove queue\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Don't kill so fast\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Use vllm only and see\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Quick test\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Revert useless attempts\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Specify correct GPU utilization\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* There are 8 GPUs\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Fix comment\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 3,
-                "lines": 6,
-                "insertions": 3,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "9110431d",
-              "author": "Shaoting",
-              "email": "shaotingf@uchicago.edu",
-              "date": "2026-02-03T02:15:39.000Z",
-              "message": "[CI/Build] Update the unit test pipeline to also support AMD (#2531)\n\n* Modify the unit test pipeline for AMD also\n\n* Do not repeat has_cufile\n\n* Add global skip for mp test_cache_server\n\n* Delete coverage-test.xml\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 6,
-                "lines": 181,
-                "insertions": 176,
-                "deletions": 5
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "100d07dc",
-              "author": "Shaoting",
-              "email": "shaotingf@uchicago.edu",
-              "date": "2026-02-05T02:27:19.000Z",
-              "message": "[CI/Build] Make unit tests run in a single step (#2534)\n\nInto one step\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 21,
-                "insertions": 6,
-                "deletions": 15
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 54,
-          "significance_ratio": 0.3333333333333333,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 162,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3722,10 +3764,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 4,
+          "total_commits": 5,
           "significant_commits": 4,
-          "simple_commits": 0,
-          "commit_score": 293,
+          "simple_commits": 1,
+          "commit_score": 323,
           "commits": [
             {
               "hash": "235ea0f3",
@@ -3810,14 +3852,137 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "85f05c69",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-07T01:29:01.000Z",
+              "message": "[Misc][Chore] Print out locked memory objects when running L1Manager.memcheck() (#2558)\n\n[add] misc debug output with memcheck\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 17,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 73.25,
-          "significance_ratio": 1,
+          "avg_score": 64.6,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 293,
+          "total_score": 323,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Shaoting",
+          "email": "shaotingf@uchicago.edu",
+          "total_commits": 4,
+          "significant_commits": 1,
+          "simple_commits": 3,
+          "commit_score": 197,
+          "commits": [
+            {
+              "hash": "dc30c064",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-02-04T00:13:53.000Z",
+              "message": "[CI/Build] Correctly specify GPU count and usage (#2519)\n\n* Tmp test\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Increase max-time\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Disable enforce eager\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* revert max-time 600\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Add logg\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Add back build\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Change queue\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Remove queue\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Don't kill so fast\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Use vllm only and see\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Quick test\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Revert useless attempts\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Specify correct GPU utilization\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* There are 8 GPUs\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Fix comment\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9110431d",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-02-03T02:15:39.000Z",
+              "message": "[CI/Build] Update the unit test pipeline to also support AMD (#2531)\n\n* Modify the unit test pipeline for AMD also\n\n* Do not repeat has_cufile\n\n* Add global skip for mp test_cache_server\n\n* Delete coverage-test.xml\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 6,
+                "lines": 181,
+                "insertions": 176,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "100d07dc",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-02-05T02:27:19.000Z",
+              "message": "[CI/Build] Make unit tests run in a single step (#2534)\n\nInto one step\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 21,
+                "insertions": 6,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "efceac6e",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-02-07T04:44:47.000Z",
+              "message": "[CI/Build] Adapt correctness tests for Yotta Lab servers (#2560)\n\n* Remove offline requirements\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n* Trigger again\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n* Reduce limits\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n---------\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 16,
+                "insertions": 1,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 49.25,
+          "significance_ratio": 0.25,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 197,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3920,87 +4085,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 177,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Shaoting",
-          "email": "shaotingf@uchicago.edu",
-          "total_commits": 3,
-          "significant_commits": 1,
-          "simple_commits": 2,
-          "commit_score": 162,
-          "commits": [
-            {
-              "hash": "dc30c064",
-              "author": "Shaoting",
-              "email": "shaotingf@uchicago.edu",
-              "date": "2026-02-04T00:13:53.000Z",
-              "message": "[CI/Build] Correctly specify GPU count and usage (#2519)\n\n* Tmp test\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Increase max-time\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Disable enforce eager\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* revert max-time 600\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Add logg\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Add back build\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Change queue\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Remove queue\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Don't kill so fast\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Use vllm only and see\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Quick test\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Revert useless attempts\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Specify correct GPU utilization\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* There are 8 GPUs\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Fix comment\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 3,
-                "lines": 6,
-                "insertions": 3,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "9110431d",
-              "author": "Shaoting",
-              "email": "shaotingf@uchicago.edu",
-              "date": "2026-02-03T02:15:39.000Z",
-              "message": "[CI/Build] Update the unit test pipeline to also support AMD (#2531)\n\n* Modify the unit test pipeline for AMD also\n\n* Do not repeat has_cufile\n\n* Add global skip for mp test_cache_server\n\n* Delete coverage-test.xml\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 6,
-                "lines": 181,
-                "insertions": 176,
-                "deletions": 5
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "100d07dc",
-              "author": "Shaoting",
-              "email": "shaotingf@uchicago.edu",
-              "date": "2026-02-05T02:27:19.000Z",
-              "message": "[CI/Build] Make unit tests run in a single step (#2534)\n\nInto one step\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 21,
-                "insertions": 6,
-                "deletions": 15
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 54,
-          "significance_ratio": 0.3333333333333333,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 162,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4206,10 +4290,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 11,
+          "total_commits": 12,
           "significant_commits": 10,
-          "simple_commits": 1,
-          "commit_score": 813,
+          "simple_commits": 2,
+          "commit_score": 843,
           "commits": [
             {
               "hash": "6f90e221",
@@ -4441,14 +4525,35 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "85f05c69",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-07T01:29:01.000Z",
+              "message": "[Misc][Chore] Print out locked memory objects when running L1Manager.memcheck() (#2558)\n\n[add] misc debug output with memcheck\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 17,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 73.9090909090909,
-          "significance_ratio": 0.9090909090909091,
+          "avg_score": 70.25,
+          "significance_ratio": 0.8333333333333334,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 813,
+          "total_score": 843,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4890,10 +4995,10 @@
         {
           "name": "Shaoting",
           "email": "shaotingf@uchicago.edu",
-          "total_commits": 7,
+          "total_commits": 8,
           "significant_commits": 2,
-          "simple_commits": 5,
-          "commit_score": 317,
+          "simple_commits": 6,
+          "commit_score": 352,
           "commits": [
             {
               "hash": "ed561971",
@@ -5041,14 +5146,35 @@
                 "total": 40
               },
               "classification": "simple"
+            },
+            {
+              "hash": "efceac6e",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-02-07T04:44:47.000Z",
+              "message": "[CI/Build] Adapt correctness tests for Yotta Lab servers (#2560)\n\n* Remove offline requirements\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n* Trigger again\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n* Reduce limits\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n* Clean up\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>\n\n---------\n\nSigned-off-by: Shaoting-Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 16,
+                "insertions": 1,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 45.285714285714285,
-          "significance_ratio": 0.2857142857142857,
+          "avg_score": 44,
+          "significance_ratio": 0.25,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 317,
+          "total_score": 352,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6037,13 +6163,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-02-07T00:30:01.599Z",
+    "analyzedAt": "2026-02-08T00:29:59.175Z",
     "daysBack": 2,
-    "totalCommits": 70,
+    "totalCommits": 72,
     "totalContributors": 20,
     "mergedFrom": {
-      "existing": 68,
-      "new": 7
+      "existing": 70,
+      "new": 4
     }
   }
 }
