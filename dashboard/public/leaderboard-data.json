@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-02-18T00:30:04.202Z",
-  "total_commits_analyzed": 99,
+  "last_updated": "2026-02-19T00:30:03.128Z",
+  "total_commits_analyzed": 103,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -2887,6 +2887,129 @@
       ],
       "2026-W08": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 278,
+          "commits": [
+            {
+              "hash": "cf533167",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-16T10:19:04.000Z",
+              "message": "[chore]Fix rust clippy check error when dev env is macos (#2600)\n\nFix rust clippy check error when dev env is macos\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 18,
+                "insertions": 16,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b3502df5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T02:56:53.000Z",
+              "message": "Add a ut for basic check (#2612)\n\n* Add a ut for basic check\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve test code readability by replacing cryptic lambda with helper function\n\nAddress gemini-bot's feedback to enhance code maintainability:\n- Replaced the cryptic lambda expression using generator.throw() pattern\n- Introduced a clear helper function 'raiser' to raise ImportError\n- Maintains the same test behavior while improving readability\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 258,
+                "insertions": 258,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d6798cc6",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T01:58:01.000Z",
+              "message": "Add an override inner field to support override extra config (#2605)\n\n* Add an override inner field to support override extra config (merge request !23)\n\nSquash merge branch 'merge_extra_config' into 'remote-backend-0120'\n\n* Add an override inner field to support override extra config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix validate_and_set_config_value override logic\n\n- Fixed extra_config handling: now respects the override parameter correctly\n  * When override=True: completely replaces the config value\n  * When override=False: merges dict values, keeps current if new is None/empty\n- Fixed basic config handling: return True (not False) when skipping user-set keys\n  with override=False\n- All 46 test_config.py tests now pass\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 49,
+                "insertions": 33,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "695afd36",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T01:57:34.000Z",
+              "message": "Add req id to store/store_layer/retrieve/retrieve_layer log (#2604)\n\n* Add req id to store/store_layer/retrieve/retrieve_layer log (merge request !22)\n\nSquash merge branch 'logReqIdForEachLog' into 'remote-backend-0120'\nAdd req id to store/store_layer/retrieve/retrieve_layer log\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n# 自测验证\n\n<img width=\"\" src=\"/uploads/3835712155AE4BAFADC69A62CD27C792/image.png\" alt=\"image.png\" />\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Refactor: Extract req_id retrieval into helper method\n\nAs suggested by gemini-code-assist bot, extract the duplicated logic\nfor getting req_id from kwargs into a private helper method _get_req_id().\n\nThis improves maintainability and reduces code duplication across\nstore, store_layer, retrieve, and retrieve_layer methods.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* revert unrelated change\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 40,
+                "insertions": 31,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 25,
+                "ai": 18,
+                "total": 56
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6aaeaa40",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T01:56:50.000Z",
+              "message": "Introduce reset metrics api (#2602)\n\nSupport reset metrics (merge request !31)\n\nSquash merge branch 'reset_metrics' into 'remote-backend-0120'\n\n* Add thread safe annotation\n* fix\n* Reset histogram type metrics\n* Support reset metrics\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 174,
+                "insertions": 126,
+                "deletions": 48
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 55.6,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 278,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "102553648+sammshen@users.noreply.github.com",
           "total_commits": 1,
@@ -3039,45 +3162,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 40,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 35,
-          "commits": [
-            {
-              "hash": "cf533167",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-02-16T10:19:04.000Z",
-              "message": "[chore]Fix rust clippy check error when dev env is macos (#2600)\n\nFix rust clippy check error when dev env is macos\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 18,
-                "insertions": 16,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 35,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 35,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4872,10 +4956,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 6,
-          "significant_commits": 4,
+          "total_commits": 10,
+          "significant_commits": 8,
           "simple_commits": 2,
-          "commit_score": 387,
+          "commit_score": 630,
           "commits": [
             {
               "hash": "7f94363f",
@@ -5002,14 +5086,98 @@
                 "total": 35
               },
               "classification": "simple"
+            },
+            {
+              "hash": "b3502df5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T02:56:53.000Z",
+              "message": "Add a ut for basic check (#2612)\n\n* Add a ut for basic check\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve test code readability by replacing cryptic lambda with helper function\n\nAddress gemini-bot's feedback to enhance code maintainability:\n- Replaced the cryptic lambda expression using generator.throw() pattern\n- Introduced a clear helper function 'raiser' to raise ImportError\n- Maintains the same test behavior while improving readability\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 258,
+                "insertions": 258,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d6798cc6",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T01:58:01.000Z",
+              "message": "Add an override inner field to support override extra config (#2605)\n\n* Add an override inner field to support override extra config (merge request !23)\n\nSquash merge branch 'merge_extra_config' into 'remote-backend-0120'\n\n* Add an override inner field to support override extra config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix validate_and_set_config_value override logic\n\n- Fixed extra_config handling: now respects the override parameter correctly\n  * When override=True: completely replaces the config value\n  * When override=False: merges dict values, keeps current if new is None/empty\n- Fixed basic config handling: return True (not False) when skipping user-set keys\n  with override=False\n- All 46 test_config.py tests now pass\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 49,
+                "insertions": 33,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "695afd36",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T01:57:34.000Z",
+              "message": "Add req id to store/store_layer/retrieve/retrieve_layer log (#2604)\n\n* Add req id to store/store_layer/retrieve/retrieve_layer log (merge request !22)\n\nSquash merge branch 'logReqIdForEachLog' into 'remote-backend-0120'\nAdd req id to store/store_layer/retrieve/retrieve_layer log\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n# 自测验证\n\n<img width=\"\" src=\"/uploads/3835712155AE4BAFADC69A62CD27C792/image.png\" alt=\"image.png\" />\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Refactor: Extract req_id retrieval into helper method\n\nAs suggested by gemini-code-assist bot, extract the duplicated logic\nfor getting req_id from kwargs into a private helper method _get_req_id().\n\nThis improves maintainability and reduces code duplication across\nstore, store_layer, retrieve, and retrieve_layer methods.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* revert unrelated change\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 40,
+                "insertions": 31,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 25,
+                "ai": 18,
+                "total": 56
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6aaeaa40",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T01:56:50.000Z",
+              "message": "Introduce reset metrics api (#2602)\n\nSupport reset metrics (merge request !31)\n\nSquash merge branch 'reset_metrics' into 'remote-backend-0120'\n\n* Add thread safe annotation\n* fix\n* Reset histogram type metrics\n* Support reset metrics\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 174,
+                "insertions": 126,
+                "deletions": 48
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 64.5,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 63,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 387,
+          "total_score": 630,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6256,10 +6424,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 15,
-          "significant_commits": 10,
+          "total_commits": 19,
+          "significant_commits": 14,
           "simple_commits": 5,
-          "commit_score": 967,
+          "commit_score": 1210,
           "commits": [
             {
               "hash": "28e5bf7a",
@@ -6575,14 +6743,98 @@
                 "total": 35
               },
               "classification": "simple"
+            },
+            {
+              "hash": "b3502df5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T02:56:53.000Z",
+              "message": "Add a ut for basic check (#2612)\n\n* Add a ut for basic check\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve test code readability by replacing cryptic lambda with helper function\n\nAddress gemini-bot's feedback to enhance code maintainability:\n- Replaced the cryptic lambda expression using generator.throw() pattern\n- Introduced a clear helper function 'raiser' to raise ImportError\n- Maintains the same test behavior while improving readability\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 258,
+                "insertions": 258,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d6798cc6",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T01:58:01.000Z",
+              "message": "Add an override inner field to support override extra config (#2605)\n\n* Add an override inner field to support override extra config (merge request !23)\n\nSquash merge branch 'merge_extra_config' into 'remote-backend-0120'\n\n* Add an override inner field to support override extra config\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix validate_and_set_config_value override logic\n\n- Fixed extra_config handling: now respects the override parameter correctly\n  * When override=True: completely replaces the config value\n  * When override=False: merges dict values, keeps current if new is None/empty\n- Fixed basic config handling: return True (not False) when skipping user-set keys\n  with override=False\n- All 46 test_config.py tests now pass\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 49,
+                "insertions": 33,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "695afd36",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T01:57:34.000Z",
+              "message": "Add req id to store/store_layer/retrieve/retrieve_layer log (#2604)\n\n* Add req id to store/store_layer/retrieve/retrieve_layer log (merge request !22)\n\nSquash merge branch 'logReqIdForEachLog' into 'remote-backend-0120'\nAdd req id to store/store_layer/retrieve/retrieve_layer log\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n# 自测验证\n\n<img width=\"\" src=\"/uploads/3835712155AE4BAFADC69A62CD27C792/image.png\" alt=\"image.png\" />\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Refactor: Extract req_id retrieval into helper method\n\nAs suggested by gemini-code-assist bot, extract the duplicated logic\nfor getting req_id from kwargs into a private helper method _get_req_id().\n\nThis improves maintainability and reduces code duplication across\nstore, store_layer, retrieve, and retrieve_layer methods.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* revert unrelated change\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 40,
+                "insertions": 31,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 25,
+                "ai": 18,
+                "total": 56
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6aaeaa40",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-02-18T01:56:50.000Z",
+              "message": "Introduce reset metrics api (#2602)\n\nSupport reset metrics (merge request !31)\n\nSquash merge branch 'reset_metrics' into 'remote-backend-0120'\n\n* Add thread safe annotation\n* fix\n* Reset histogram type metrics\n* Support reset metrics\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 174,
+                "insertions": 126,
+                "deletions": 48
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 64.46666666666667,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 63.68421052631579,
+          "significance_ratio": 0.7368421052631579,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 967,
+          "total_score": 1210,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -8372,13 +8624,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-02-18T00:30:04.202Z",
+    "analyzedAt": "2026-02-19T00:30:03.128Z",
     "daysBack": 2,
-    "totalCommits": 99,
+    "totalCommits": 103,
     "totalContributors": 24,
     "mergedFrom": {
-      "existing": 95,
-      "new": 6
+      "existing": 99,
+      "new": 8
     }
   }
 }
