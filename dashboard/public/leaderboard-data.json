@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-02-23T00:29:57.767Z",
-  "total_commits_analyzed": 111,
+  "last_updated": "2026-02-24T00:30:03.676Z",
+  "total_commits_analyzed": 112,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3372,6 +3372,47 @@
           "tier": "T1",
           "tier_name": "Advanced"
         }
+      ],
+      "2026-W09": [
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "7e620832",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-02-23T17:03:43.000Z",
+              "message": "[Bugfix] Fix layerwise wait_for_save concurrency crash with request-scoped storers (#2613)\n\n* fix(vllm): advance current_layer during layerwise load wait\n\nIncrement current_layer in wait_for_layer_load when layerwise retrievers are active so layer progression logging and last-layer checks work as intended.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(vllm): cleanup layerwise save storers on request finish\n\nPrevent stale request-scoped layerwise store generators from accumulating when requests finish before wait_for_save is reached.\n\nAlso add unit coverage for aborted and normal request-finished cleanup paths.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(vllm): guard request_finished layerwise cleanup path\n\nUse getattr/hasattr in request_finished before touching layerwise storer state so connector teardown works even when use_layerwise is not initialized yet.\n\nAdd regression test for request_finished on partially initialized connector objects.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [vLLM] Fix layerwise save storer concurrency and align save_spec skip semantics\n\nUse request-scoped layerwise storers to avoid cross-request generator reuse under concurrent finalize paths, and align layerwise save_spec skip behavior with non-layerwise handling for kv_producer. Includes regression tests for interleaved finalize, repeated wait_for_save, and skip behavior.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [vLLM] Fix optional SaveSpec typing in layerwise save path\n\nAdd a non-null assertion for save_spec in the non-kv_producer branch before reading skip_leading_tokens, fixing mypy union-attr failure.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* style fix\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [UT] Add layerwise save coverage for multi-layer finalize and kv_producer can_save\n\nAdd two regression tests for layerwise save behavior:\n- multi-layer forward-pass style save then wait_for_save finalize\n- kv_producer path should proceed even when save_spec.can_save is false\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 198,
+                "insertions": 181,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 22,
+                "total": 74
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
+          "tier": "T0",
+          "tier_name": "Elite"
+        }
       ]
     },
     "monthly": {
@@ -5764,6 +5805,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 171,
+          "commits": [
+            {
+              "hash": "65bc0524",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-02-05T05:44:38.000Z",
+              "message": "[1/N][Feat] Simplified rust raw block backend (#2482)\n\n* feat: Add simplified Rust Raw Block Backend\n\nThis commit introduces a simplified Rust Raw Block Backend implementation\nthat focuses on core read/write functionality without complex scheduling\nor multi-queue features.\n\nKey features:\n- Direct block device I/O via Rust extension (RawBlockDevice)\n- O_DIRECT support for bypassing page cache\n- Manifest persistence for crash recovery\n- LRU eviction policy\n- Single device support (no multi-FD pools)\n- Async write operations using asyncio.to_thread\n- Blocking read operations via pread_into\n\nThe implementation is simplified compared to previous versions:\n- No RawBlockScheduler or RawBlockDevicePool\n- No prefetch implementation (batched_get_non_blocking returns empty list)\n- Single device handle per backend instance\n- Minimal configuration (no io_fds, io_workers parameters)\n\nThis backend currently supports TP=1 (single GPU) deployments only.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: Improve storage plugin launcher error handling\n\nAdd warning when storage_plugins is configured but extra_config is empty,\nproviding clearer guidance to users about required configuration.\n\nThis helps prevent silent failures when storage plugins are specified\nbut not properly configured.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* feat: Add Rust raw block I/O extension\n\nThis commit adds the core Rust extension module for direct block device\nI/O operations used by the Rust Raw Block Backend.\n\nKey components:\n- RawBlockDevice: Single-FD synchronous block device interface\n  - Direct pwrite/pread operations with O_DIRECT support\n  - Zero-copy buffer protocol integration\n  - Aligned buffer allocation for O_DIRECT I/O\n- RawBlockDevicePool: Multi-FD pool for parallel I/O\n  - Per-CPU FD selection for parallelism\n  - Multiple file descriptors per device\n- RawBlockScheduler: Async I/O scheduler with worker threads\n  - Priority-based task queues (High/Medium/Low)\n  - Worker threads with CPU pinning\n  - Completion queue with GIL-safe processing\n\nThe Rust extension provides:\n- Direct block device access via libc pwrite/pread\n- O_DIRECT support with automatic alignment handling\n- Python buffer protocol integration for zero-copy operations\n- Thread-safe I/O operations with proper GIL management\n- Error handling with proper Python exception propagation\n\nThis is the core I/O layer that the Python backend uses for all\nblock device operations.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* test: Add tests for Rust Raw Block Backend\n\nThis commit adds comprehensive tests for the Rust Raw Block Backend\nimplementation.\n\nTest coverage includes:\n- Basic store and retrieve operations\n- Manifest persistence and recovery\n- LRU eviction behavior\n- O_DIRECT alignment handling\n- Error handling for invalid configurations\n- Edge cases (empty writes, large chunks)\n\nThe tests verify both functional correctness and integration with\nthe Rust extension module.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* Improve error handling in Rust Raw Block Backend\n\n- Add try-except blocks for I/O operations with proper error logging\n- Fix test code to use correct API (torch.Size and pwrite_from_buffer)\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Simplify Rust raw block I/O: remove unused features\n\n- Remove RawBlockDevicePool (multi-FD pool)\n- Remove RawBlockScheduler (async I/O scheduler)\n- Remove batch operations and priority queue features\n- Keep only RawBlockDevice with basic pwrite_from_buffer and pread_into\n\nThis simplifies the codebase to only include features actually used by\nthe Python backend.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Clean up comments and remove unused code in RustRawBlockBackend\n\n- Fix misleading 'zero-copy' comment (actually uses bounce buffers for O_DIRECT)\n- Remove unused _decode_header method\n- Remove unimplemented batched_get_non_blocking method\n- Update remove() method comment to reflect actual behavior\n- Improve docstrings for accuracy\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix style issues and add Rust style checks\n\n- Fix ruff E501 line length errors in docstrings\n- Format Rust code with cargo fmt\n- Fix clippy warnings (unused mut, dead code, manual_div_ceil)\n- Add Rust fmt and clippy checks to pre-commit hooks\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [CI] Allow crates.io egress for Rust Clippy\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix] Defer inflight slot reuse to avoid corruption\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix style error\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Test] Update raw block tests for new metadata\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs] Add Rust raw block I/O guide\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Style] Fix rustfmt alignment\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs] Update raw block README usage\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs] Clarify raw block I/O behavior\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Bench] Add storage backend I/O benchmark\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Bench] Add sample results for I/O benchmark\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Bench] Allow output directory for JSON results\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Bench] Document output-dir sanity run\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Bench] Use same filesystem for raw block fallback\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Style] Fix ruff line length in benchmark\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Style] Wrap benchmark description string\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 11,
+                "lines": 1998,
+                "insertions": 1994,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 22,
+                "total": 97
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7e620832",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-02-23T17:03:43.000Z",
+              "message": "[Bugfix] Fix layerwise wait_for_save concurrency crash with request-scoped storers (#2613)\n\n* fix(vllm): advance current_layer during layerwise load wait\n\nIncrement current_layer in wait_for_layer_load when layerwise retrievers are active so layer progression logging and last-layer checks work as intended.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(vllm): cleanup layerwise save storers on request finish\n\nPrevent stale request-scoped layerwise store generators from accumulating when requests finish before wait_for_save is reached.\n\nAlso add unit coverage for aborted and normal request-finished cleanup paths.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(vllm): guard request_finished layerwise cleanup path\n\nUse getattr/hasattr in request_finished before touching layerwise storer state so connector teardown works even when use_layerwise is not initialized yet.\n\nAdd regression test for request_finished on partially initialized connector objects.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [vLLM] Fix layerwise save storer concurrency and align save_spec skip semantics\n\nUse request-scoped layerwise storers to avoid cross-request generator reuse under concurrent finalize paths, and align layerwise save_spec skip behavior with non-layerwise handling for kv_producer. Includes regression tests for interleaved finalize, repeated wait_for_save, and skip behavior.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [vLLM] Fix optional SaveSpec typing in layerwise save path\n\nAdd a non-null assertion for save_spec in the non-kv_producer branch before reading skip_leading_tokens, fixing mypy union-attr failure.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* style fix\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [UT] Add layerwise save coverage for multi-layer finalize and kv_producer can_save\n\nAdd two regression tests for layerwise save behavior:\n- multi-layer forward-pass style save then wait_for_save finalize\n- kv_producer path should proceed even when save_spec.can_save is false\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 198,
+                "insertions": 181,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 22,
+                "total": 74
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 171,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "hlin99",
           "email": "tony.lin@intel.com",
           "total_commits": 3,
@@ -5841,8 +5942,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 152,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Yuwei An",
@@ -6042,45 +6143,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 149,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 97,
-          "commits": [
-            {
-              "hash": "65bc0524",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-02-05T05:44:38.000Z",
-              "message": "[1/N][Feat] Simplified rust raw block backend (#2482)\n\n* feat: Add simplified Rust Raw Block Backend\n\nThis commit introduces a simplified Rust Raw Block Backend implementation\nthat focuses on core read/write functionality without complex scheduling\nor multi-queue features.\n\nKey features:\n- Direct block device I/O via Rust extension (RawBlockDevice)\n- O_DIRECT support for bypassing page cache\n- Manifest persistence for crash recovery\n- LRU eviction policy\n- Single device support (no multi-FD pools)\n- Async write operations using asyncio.to_thread\n- Blocking read operations via pread_into\n\nThe implementation is simplified compared to previous versions:\n- No RawBlockScheduler or RawBlockDevicePool\n- No prefetch implementation (batched_get_non_blocking returns empty list)\n- Single device handle per backend instance\n- Minimal configuration (no io_fds, io_workers parameters)\n\nThis backend currently supports TP=1 (single GPU) deployments only.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: Improve storage plugin launcher error handling\n\nAdd warning when storage_plugins is configured but extra_config is empty,\nproviding clearer guidance to users about required configuration.\n\nThis helps prevent silent failures when storage plugins are specified\nbut not properly configured.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* feat: Add Rust raw block I/O extension\n\nThis commit adds the core Rust extension module for direct block device\nI/O operations used by the Rust Raw Block Backend.\n\nKey components:\n- RawBlockDevice: Single-FD synchronous block device interface\n  - Direct pwrite/pread operations with O_DIRECT support\n  - Zero-copy buffer protocol integration\n  - Aligned buffer allocation for O_DIRECT I/O\n- RawBlockDevicePool: Multi-FD pool for parallel I/O\n  - Per-CPU FD selection for parallelism\n  - Multiple file descriptors per device\n- RawBlockScheduler: Async I/O scheduler with worker threads\n  - Priority-based task queues (High/Medium/Low)\n  - Worker threads with CPU pinning\n  - Completion queue with GIL-safe processing\n\nThe Rust extension provides:\n- Direct block device access via libc pwrite/pread\n- O_DIRECT support with automatic alignment handling\n- Python buffer protocol integration for zero-copy operations\n- Thread-safe I/O operations with proper GIL management\n- Error handling with proper Python exception propagation\n\nThis is the core I/O layer that the Python backend uses for all\nblock device operations.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* test: Add tests for Rust Raw Block Backend\n\nThis commit adds comprehensive tests for the Rust Raw Block Backend\nimplementation.\n\nTest coverage includes:\n- Basic store and retrieve operations\n- Manifest persistence and recovery\n- LRU eviction behavior\n- O_DIRECT alignment handling\n- Error handling for invalid configurations\n- Edge cases (empty writes, large chunks)\n\nThe tests verify both functional correctness and integration with\nthe Rust extension module.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* Improve error handling in Rust Raw Block Backend\n\n- Add try-except blocks for I/O operations with proper error logging\n- Fix test code to use correct API (torch.Size and pwrite_from_buffer)\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Simplify Rust raw block I/O: remove unused features\n\n- Remove RawBlockDevicePool (multi-FD pool)\n- Remove RawBlockScheduler (async I/O scheduler)\n- Remove batch operations and priority queue features\n- Keep only RawBlockDevice with basic pwrite_from_buffer and pread_into\n\nThis simplifies the codebase to only include features actually used by\nthe Python backend.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Clean up comments and remove unused code in RustRawBlockBackend\n\n- Fix misleading 'zero-copy' comment (actually uses bounce buffers for O_DIRECT)\n- Remove unused _decode_header method\n- Remove unimplemented batched_get_non_blocking method\n- Update remove() method comment to reflect actual behavior\n- Improve docstrings for accuracy\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix style issues and add Rust style checks\n\n- Fix ruff E501 line length errors in docstrings\n- Format Rust code with cargo fmt\n- Fix clippy warnings (unused mut, dead code, manual_div_ceil)\n- Add Rust fmt and clippy checks to pre-commit hooks\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [CI] Allow crates.io egress for Rust Clippy\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix] Defer inflight slot reuse to avoid corruption\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix style error\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Test] Update raw block tests for new metadata\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs] Add Rust raw block I/O guide\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Style] Fix rustfmt alignment\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs] Update raw block README usage\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs] Clarify raw block I/O behavior\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Bench] Add storage backend I/O benchmark\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Bench] Add sample results for I/O benchmark\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Bench] Allow output directory for JSON results\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Bench] Document output-dir sanity run\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Bench] Use same filesystem for raw block fallback\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Style] Fix ruff line length in benchmark\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Style] Wrap benchmark description string\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
-              "stats": {
-                "files": 11,
-                "lines": 1998,
-                "insertions": 1994,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 22,
-                "total": 97
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 97,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 97,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7780,10 +7842,10 @@
         {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
-          "total_commits": 5,
-          "significant_commits": 2,
+          "total_commits": 6,
+          "significant_commits": 3,
           "simple_commits": 3,
-          "commit_score": 306,
+          "commit_score": 380,
           "commits": [
             {
               "hash": "994b14dc",
@@ -7889,14 +7951,35 @@
                 "total": 97
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7e620832",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-02-23T17:03:43.000Z",
+              "message": "[Bugfix] Fix layerwise wait_for_save concurrency crash with request-scoped storers (#2613)\n\n* fix(vllm): advance current_layer during layerwise load wait\n\nIncrement current_layer in wait_for_layer_load when layerwise retrievers are active so layer progression logging and last-layer checks work as intended.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(vllm): cleanup layerwise save storers on request finish\n\nPrevent stale request-scoped layerwise store generators from accumulating when requests finish before wait_for_save is reached.\n\nAlso add unit coverage for aborted and normal request-finished cleanup paths.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(vllm): guard request_finished layerwise cleanup path\n\nUse getattr/hasattr in request_finished before touching layerwise storer state so connector teardown works even when use_layerwise is not initialized yet.\n\nAdd regression test for request_finished on partially initialized connector objects.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [vLLM] Fix layerwise save storer concurrency and align save_spec skip semantics\n\nUse request-scoped layerwise storers to avoid cross-request generator reuse under concurrent finalize paths, and align layerwise save_spec skip behavior with non-layerwise handling for kv_producer. Includes regression tests for interleaved finalize, repeated wait_for_save, and skip behavior.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [vLLM] Fix optional SaveSpec typing in layerwise save path\n\nAdd a non-null assertion for save_spec in the non-kv_producer branch before reading skip_leading_tokens, fixing mypy union-attr failure.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* style fix\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [UT] Add layerwise save coverage for multi-layer finalize and kv_producer can_save\n\nAdd two regression tests for layerwise save behavior:\n- multi-layer forward-pass style save then wait_for_save finalize\n- kv_producer path should proceed even when save_spec.can_save is false\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 198,
+                "insertions": 181,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 22,
+                "total": 74
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 61.2,
-          "significance_ratio": 0.4,
+          "avg_score": 63.333333333333336,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 306,
+          "total_score": 380,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9128,13 +9211,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-02-23T00:29:57.767Z",
+    "analyzedAt": "2026-02-24T00:30:03.676Z",
     "daysBack": 2,
-    "totalCommits": 111,
+    "totalCommits": 112,
     "totalContributors": 24,
     "mergedFrom": {
-      "existing": 108,
-      "new": 3
+      "existing": 111,
+      "new": 4
     }
   }
 }
