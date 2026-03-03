@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-03-02T00:29:59.124Z",
-  "total_commits_analyzed": 130,
+  "last_updated": "2026-03-03T00:30:00.996Z",
+  "total_commits_analyzed": 134,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3881,6 +3881,146 @@
           "tier": "T1",
           "tier_name": "Advanced"
         }
+      ],
+      "2026-W10": [
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 162,
+          "commits": [
+            {
+              "hash": "9c6368c2",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-02T03:46:32.000Z",
+              "message": "[MP] Enable layout desc in MP lookup and prefetch (#2662)\n\n* Enable layout desc in prefetch\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix unit tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* remove unused worker id in schedulr adapter\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\nCo-authored-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>",
+              "stats": {
+                "files": 12,
+                "lines": 328,
+                "insertions": 202,
+                "deletions": 126
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "94edee05",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-02T02:30:34.000Z",
+              "message": "[4/4][MP] L2 Prefetch controller foundation (#2658)\n\n* [add] backbone for prefetch controller\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] bitmap operations for better prefetch support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix precommit issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 10,
+                "lines": 1008,
+                "insertions": 995,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 162,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "9dc3ab71",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-02T05:37:35.000Z",
+              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 5,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jonas M. Kübler",
+          "email": "44084297+jmkuebler@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "51a18a4a",
+              "author": "Jonas M. Kübler",
+              "email": "44084297+jmkuebler@users.noreply.github.com",
+              "date": "2026-03-02T04:26:30.000Z",
+              "message": "Add Pythonhashseed in quickstart example (#2597)\n\nAdd Pythonhashseed\n\nIn the quickstart example, the pythonhashseed was not set. Thus, there would be no External prefix cache hits.\n\nSigned-off-by: Jonas M. Kübler <44084297+jmkuebler@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 4,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
+          "tier": "T0",
+          "tier_name": "Elite"
+        }
       ]
     },
     "monthly": {
@@ -7225,10 +7365,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 3,
-          "significant_commits": 2,
+          "total_commits": 5,
+          "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 204,
+          "commit_score": 366,
           "commits": [
             {
               "hash": "ddf8446f",
@@ -7292,14 +7432,134 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9c6368c2",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-02T03:46:32.000Z",
+              "message": "[MP] Enable layout desc in MP lookup and prefetch (#2662)\n\n* Enable layout desc in prefetch\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix unit tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* remove unused worker id in schedulr adapter\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\nCo-authored-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>",
+              "stats": {
+                "files": 12,
+                "lines": 328,
+                "insertions": 202,
+                "deletions": 126
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "94edee05",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-02T02:30:34.000Z",
+              "message": "[4/4][MP] L2 Prefetch controller foundation (#2658)\n\n* [add] backbone for prefetch controller\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] bitmap operations for better prefetch support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix precommit issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 10,
+                "lines": 1008,
+                "insertions": 995,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 68,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 73.2,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 204,
+          "total_score": 366,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "9dc3ab71",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-02T05:37:35.000Z",
+              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 5,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jonas M. Kübler",
+          "email": "44084297+jmkuebler@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "51a18a4a",
+              "author": "Jonas M. Kübler",
+              "email": "44084297+jmkuebler@users.noreply.github.com",
+              "date": "2026-03-02T04:26:30.000Z",
+              "message": "Add Pythonhashseed in quickstart example (#2597)\n\nAdd Pythonhashseed\n\nIn the quickstart example, the pythonhashseed was not set. Thus, there would be no External prefix cache hits.\n\nSigned-off-by: Jonas M. Kübler <44084297+jmkuebler@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 4,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
           "tier": "T0",
           "tier_name": "Elite"
         }
@@ -7958,10 +8218,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 26,
-          "significant_commits": 22,
+          "total_commits": 28,
+          "significant_commits": 24,
           "simple_commits": 4,
-          "commit_score": 1828,
+          "commit_score": 1990,
           "commits": [
             {
               "hash": "6f90e221",
@@ -8508,14 +8768,56 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9c6368c2",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-02T03:46:32.000Z",
+              "message": "[MP] Enable layout desc in MP lookup and prefetch (#2662)\n\n* Enable layout desc in prefetch\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix unit tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* remove unused worker id in schedulr adapter\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\nCo-authored-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>",
+              "stats": {
+                "files": 12,
+                "lines": 328,
+                "insertions": 202,
+                "deletions": 126
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "94edee05",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-02T02:30:34.000Z",
+              "message": "[4/4][MP] L2 Prefetch controller foundation (#2658)\n\n* [add] backbone for prefetch controller\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] bitmap operations for better prefetch support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix precommit issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 10,
+                "lines": 1008,
+                "insertions": 995,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 70.3076923076923,
-          "significance_ratio": 0.8461538461538461,
+          "avg_score": 71.07142857142857,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1828,
+          "total_score": 1990,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -10410,6 +10712,84 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "9dc3ab71",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-02T05:37:35.000Z",
+              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 5,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Jonas M. Kübler",
+          "email": "44084297+jmkuebler@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "51a18a4a",
+              "author": "Jonas M. Kübler",
+              "email": "44084297+jmkuebler@users.noreply.github.com",
+              "date": "2026-03-02T04:26:30.000Z",
+              "message": "Add Pythonhashseed in quickstart example (#2597)\n\nAdd Pythonhashseed\n\nIn the quickstart example, the pythonhashseed was not set. Thus, there would be no External prefix cache hits.\n\nSigned-off-by: Jonas M. Kübler <44084297+jmkuebler@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 4,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "ikasas",
           "email": "144680962+ikasas@users.noreply.github.com",
           "total_commits": 1,
@@ -10491,13 +10871,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-03-02T00:29:59.124Z",
+    "analyzedAt": "2026-03-03T00:30:00.996Z",
     "daysBack": 2,
-    "totalCommits": 130,
-    "totalContributors": 25,
+    "totalCommits": 134,
+    "totalContributors": 27,
     "mergedFrom": {
-      "existing": 128,
-      "new": 5
+      "existing": 130,
+      "new": 6
     }
   }
 }
