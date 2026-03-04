@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-03-03T00:30:00.996Z",
-  "total_commits_analyzed": 134,
+  "last_updated": "2026-03-04T00:30:03.240Z",
+  "total_commits_analyzed": 139,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3886,10 +3886,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 162,
+          "commit_score": 246,
           "commits": [
             {
               "hash": "9c6368c2",
@@ -3932,24 +3932,123 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c885a524",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-03T02:39:57.000Z",
+              "message": "[Add] L2 Prefetch Controller and StorageManager integration (#2667)\n\n* finish L2 prefetch controller\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 2191,
+                "insertions": 2177,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 81,
+          "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 162,
+          "total_score": 246,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "102553648+sammshen@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 84,
+          "commits": [
+            {
+              "hash": "e133932c",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-03T18:47:11.000Z",
+              "message": "K3 CI Refactor (#2663)\n\n* Add smoke test for new yotta-lab queues\n\n* Add K3s CI harness and test pipelines\n\nK8s-based CI infrastructure using K3s + NVIDIA GPU Operator + agent-stack-k8s:\n- k3_harness/: cluster setup, env setup, base image, teardown scripts\n- k3_tests/: comprehensive, correctness, integration, multiprocess pipelines\n\n* forgot to add target queue\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix README\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix container name\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* change image pull policy\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix relative paths\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* non-container integration run script\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* rewrite scripts\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix correctness\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* rolling 5-day baseline, HTTPS auth, priority scheduling, fix mem leak socket\n\n- Rolling baselines: nightly writes date-stamped <feature>-YYYYMMDD.json,\n  PR builds compare against worst-case (max) across 5-day window\n- upload-baselines.sh finalize step collects artifacts, prunes old files,\n  single commit to benchmarks-main\n- Switch from SSH key to GITHUB_TOKEN (HTTPS) for repo checkout and push\n- Priority 1 for 2-GPU steps (pd, p2p, multiprocess) so they schedule first\n- Fix memory leak check: override LMCACHE_INTERNAL_API_SERVER_SOCKET_PATH_PREFIX\n  to include port (replicates old Docker volume mount path mapping)\n- Fix correctness: replace col -b with sed for man page formatting\n\n* fix mp ci\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* change priority\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* change installation back to editable\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix p2p mem check\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* speed up mp\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* relative thresholds for mp long_doc_qa, parallel vllm startup\n\n* set both thresholds to 10%\n\n* skip mem leak check for p2p\n\n* revert to sequential vllm startup, --master-port doesnt help\n\n* fix parallel vllm startup by unsetting VLLM_PORT env var\n\n* add integration nightly docs, fix teardown helm name, use yq --arg\n\n* Remove health checks\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* parallellize integration tests\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* loosen MP test\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* reduce gpu util\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix correctness in MP\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* add ARCHITECTURE.md\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* add local_cpu_mla.yaml test back\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 41,
+                "lines": 2970,
+                "insertions": 2968,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 84,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 84,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "36c3e8a6",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-03T01:03:14.000Z",
+              "message": "[feat] add free_locks api to MP mode (#2656)\n\n* [feat] add free_blocks api to explicitly free locked chunks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* move free boundaries to [start chunk, end chunk)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* update test cases\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* rename request name\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 353,
+                "insertions": 353,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 35,
+          "simple_commits": 2,
+          "commit_score": 70,
           "commits": [
             {
               "hash": "9dc3ab71",
@@ -3971,6 +4070,27 @@
                 "total": 35
               },
               "classification": "simple"
+            },
+            {
+              "hash": "ed738ca1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-03T23:28:27.000Z",
+              "message": "Refactor new_block_ids handling for robustness (#2536)\n\n* Refactor new_block_ids handling for robustness\n\n- Flatten nested lists in `new_block_ids` (e.g., [[1,2],[3,4]] or mixed [1,[2,3]])\n  while preserving single-level lists.\n- Improve robustness and readability of the code.\n- Behavior is unchanged for existing valid inputs; no logic is affected.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small change to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
             }
           ],
           "avg_score": 35,
@@ -3978,7 +4098,46 @@
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 35,
+          "total_score": 70,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Kuntai Du",
+          "email": "kuntai@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "46997941",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-03-03T18:48:14.000Z",
+              "message": "Tell agent to write documentations (#2655)\n\n* edit agents.md to make it shorter\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 38,
+                "insertions": 38,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4018,8 +4177,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 35,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
@@ -7365,10 +7524,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 5,
-          "significant_commits": 4,
+          "total_commits": 6,
+          "significant_commits": 5,
           "simple_commits": 1,
-          "commit_score": 366,
+          "commit_score": 450,
           "commits": [
             {
               "hash": "ddf8446f",
@@ -7474,24 +7633,123 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c885a524",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-03T02:39:57.000Z",
+              "message": "[Add] L2 Prefetch Controller and StorageManager integration (#2667)\n\n* finish L2 prefetch controller\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 2191,
+                "insertions": 2177,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 73.2,
-          "significance_ratio": 0.8,
+          "avg_score": 75,
+          "significance_ratio": 0.8333333333333334,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 366,
+          "total_score": 450,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "102553648+sammshen@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 84,
+          "commits": [
+            {
+              "hash": "e133932c",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-03T18:47:11.000Z",
+              "message": "K3 CI Refactor (#2663)\n\n* Add smoke test for new yotta-lab queues\n\n* Add K3s CI harness and test pipelines\n\nK8s-based CI infrastructure using K3s + NVIDIA GPU Operator + agent-stack-k8s:\n- k3_harness/: cluster setup, env setup, base image, teardown scripts\n- k3_tests/: comprehensive, correctness, integration, multiprocess pipelines\n\n* forgot to add target queue\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix README\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix container name\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* change image pull policy\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix relative paths\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* non-container integration run script\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* rewrite scripts\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix correctness\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* rolling 5-day baseline, HTTPS auth, priority scheduling, fix mem leak socket\n\n- Rolling baselines: nightly writes date-stamped <feature>-YYYYMMDD.json,\n  PR builds compare against worst-case (max) across 5-day window\n- upload-baselines.sh finalize step collects artifacts, prunes old files,\n  single commit to benchmarks-main\n- Switch from SSH key to GITHUB_TOKEN (HTTPS) for repo checkout and push\n- Priority 1 for 2-GPU steps (pd, p2p, multiprocess) so they schedule first\n- Fix memory leak check: override LMCACHE_INTERNAL_API_SERVER_SOCKET_PATH_PREFIX\n  to include port (replicates old Docker volume mount path mapping)\n- Fix correctness: replace col -b with sed for man page formatting\n\n* fix mp ci\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* change priority\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* change installation back to editable\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix p2p mem check\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* speed up mp\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* relative thresholds for mp long_doc_qa, parallel vllm startup\n\n* set both thresholds to 10%\n\n* skip mem leak check for p2p\n\n* revert to sequential vllm startup, --master-port doesnt help\n\n* fix parallel vllm startup by unsetting VLLM_PORT env var\n\n* add integration nightly docs, fix teardown helm name, use yq --arg\n\n* Remove health checks\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* parallellize integration tests\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* loosen MP test\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* reduce gpu util\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix correctness in MP\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* add ARCHITECTURE.md\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* add local_cpu_mla.yaml test back\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 41,
+                "lines": 2970,
+                "insertions": 2968,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 84,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 84,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "36c3e8a6",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-03T01:03:14.000Z",
+              "message": "[feat] add free_locks api to MP mode (#2656)\n\n* [feat] add free_blocks api to explicitly free locked chunks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* move free boundaries to [start chunk, end chunk)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* update test cases\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* rename request name\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 353,
+                "insertions": 353,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 35,
+          "simple_commits": 2,
+          "commit_score": 70,
           "commits": [
             {
               "hash": "9dc3ab71",
@@ -7513,6 +7771,27 @@
                 "total": 35
               },
               "classification": "simple"
+            },
+            {
+              "hash": "ed738ca1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-03T23:28:27.000Z",
+              "message": "Refactor new_block_ids handling for robustness (#2536)\n\n* Refactor new_block_ids handling for robustness\n\n- Flatten nested lists in `new_block_ids` (e.g., [[1,2],[3,4]] or mixed [1,[2,3]])\n  while preserving single-level lists.\n- Improve robustness and readability of the code.\n- Behavior is unchanged for existing valid inputs; no logic is affected.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small change to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
             }
           ],
           "avg_score": 35,
@@ -7520,7 +7799,46 @@
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 35,
+          "total_score": 70,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Kuntai Du",
+          "email": "kuntai@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "46997941",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-03-03T18:48:14.000Z",
+              "message": "Tell agent to write documentations (#2655)\n\n* edit agents.md to make it shorter\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 38,
+                "insertions": 38,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7560,13 +7878,640 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 35,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
     "quarterly": {
       "2026-Q1": [
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 29,
+          "significant_commits": 25,
+          "simple_commits": 4,
+          "commit_score": 2074,
+          "commits": [
+            {
+              "hash": "6f90e221",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-13T07:20:54.000Z",
+              "message": "[Refactor] extract virtual address manager from TensorMemoryAllocator and disable LazyMemoryAllocator (#2380)\n\n* Refactor: extract virtual address manager from TensorMemoryAllocator\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 1716,
+                "insertions": 1091,
+                "deletions": 625
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2ead3e31",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-15T04:27:45.000Z",
+              "message": "[Core] Introduce lazy memory allocator (#2407)\n\n* [Add] introduce lazy memory allocator\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* remove old tests to pass the linter\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix non-cuda tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* address small issues identified by gemini\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skip tests in github ci\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* try to fix the import issue for local ci\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix issue in memcheck\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* address reviews from Baolong\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 8,
+                "lines": 961,
+                "insertions": 646,
+                "deletions": 315
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "94df0690",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-20T19:01:18.000Z",
+              "message": "[Core] Add new memcpy c-extensions to support LazyMemoryAllocator (#2413)\n\n* [add] new kernels to support partial memory registration\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* address comments from gemini\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [add] helper functions to adapt to the new kernels\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix the parent issue in lazy memory allocator\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* revert debug changes\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* add cuda host unregister\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix failed tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix failed tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 295,
+                "insertions": 290,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4da3d7f9",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-20T03:47:34.000Z",
+              "message": "[CI/CD][Hotfix] Fix the vllm docker image dependency (#2451)\n\nFix the vllm docker image dependency\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\nCo-authored-by: Samuel Shen <102553648+sammshen@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 5,
+                "insertions": 3,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "be5c98a5",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-21T05:17:01.000Z",
+              "message": "[Core] enable lazy memory allocator by default in multi-process mode (#2463)\n\n* enable lazy memory allocator by default in multi-process mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix failed tasks\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* add non cuda tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* add non cuda tests cont\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 81,
+                "insertions": 63,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 57
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f3cf3695",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-29T04:50:25.000Z",
+              "message": "[MP][2/N] Add native implementation for ttl lock for mp storage manager (#2505)\n\n* [Add] native implementation for ttl lock in mp storage manager\n\n* [Add] microbenchmark for ttl lock\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 6,
+                "lines": 1242,
+                "insertions": 1241,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e8e58ea0",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-01-29T04:48:55.000Z",
+              "message": "[MP][1/N] introduce new MP storage manager (#2504)\n\n* introduce the L1MemoryManager\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 1184,
+                "insertions": 1184,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "235ea0f3",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-02T05:30:32.000Z",
+              "message": "[MP] Add new L1 manager for mp storage manager (#2520)\n\n* [Add] new L1 manager and [refactor] the error codes\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 2562,
+                "insertions": 2109,
+                "deletions": 453
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "69db9c49",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-04T00:39:33.000Z",
+              "message": "[MP][3/N] Introduce new storage manager for MP mode (#2525)\n\n* [new SM] passed all unit tests and integrate with existing server\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] eviction policy and eviction controller with cmdline changes\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [fix] failed tests and unclear linter errors\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* address double free problem identified by gemini\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* remove old codes and update mp tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* address comments\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 24,
+                "lines": 2416,
+                "insertions": 2146,
+                "deletions": 270
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a9f31ca6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-06T20:06:29.000Z",
+              "message": "[Chore][Linter] Force SLF001 rule to avoid accessing private member (mp mode only) (#2548)\n\n* force no private member access in mp mode\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 5,
+                "lines": 24,
+                "insertions": 19,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 55
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "225f51c6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-06T19:06:21.000Z",
+              "message": "[Clean up] Remove outdated StorageKey and MPStorageManager (#2549)\n\n[remove] outdated StorageKey and MPStorageManager\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 1546,
+                "insertions": 41,
+                "deletions": 1505
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "85f05c69",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-07T01:29:01.000Z",
+              "message": "[Misc][Chore] Print out locked memory objects when running L1Manager.memcheck() (#2558)\n\n[add] misc debug output with memcheck\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 17,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8acbef78",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-08T22:31:13.000Z",
+              "message": "[Chore] moving the `distributed` folder to upper level (#2564)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 24,
+                "lines": 141,
+                "insertions": 71,
+                "deletions": 70
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "044dee66",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-08T21:58:39.000Z",
+              "message": "[Chore] Add pyi file for native storage ops (#2566)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 46,
+                "insertions": 46,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "608ad1e6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-10T20:39:42.000Z",
+              "message": "[CI/CD][Hotfix] re-enable cache server test and remove dead helper functions (#2582)\n\n* [hotfix] re-enable test cache engine and remove dead helper functions\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 6,
+                "lines": 277,
+                "insertions": 199,
+                "deletions": 78
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8ef796e5",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-10T01:30:03.000Z",
+              "message": "[Refactor][MP] Reorganize the code & test layout for better clarity  (#2577)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 15,
+                "lines": 1165,
+                "insertions": 833,
+                "deletions": 332
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ec8bfee2",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-11T00:32:40.000Z",
+              "message": "[Feat] Blend IPC interface in MP mode (#2580)\n\n* [Add] basic ipc interface and utils for blend\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [WIP] checkpointing the code\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [wip] checkpoint the progress\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* finish the implementation of store pre computed\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* finish the cb engine\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 14,
+                "lines": 2824,
+                "insertions": 2818,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "27c40449",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-13T21:51:37.000Z",
+              "message": "[MP] Add partial chunk support and suppress logs in blend mode (#2590)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 95,
+                "insertions": 55,
+                "deletions": 40
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "77057509",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-26T23:03:21.000Z",
+              "message": "[2/4] L2Adapter interface and implementation of MockL2Adapter (#2569)\n\n* [Add] interface for L2 adapter and the implementation for mock l2 adapter\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* add default empty l2 adapter config\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix gemini issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* update mock l2 connector to use async\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* Update with gemini's suggestion\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 1543,
+                "insertions": 1543,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "743c5a7f",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-26T18:46:51.000Z",
+              "message": "[1/4] Bitmap for L2 storage in MP mode  (#2563)\n\n* [add] bitmap module\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* adjust the cpp implementation and add pyi tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 6,
+                "lines": 605,
+                "insertions": 605,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "659bdd84",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-27T21:50:42.000Z",
+              "message": "[Chore][Admin] Create initial AGENTS.md (#2649)\n\n* Create initial AGENTS.md\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 166,
+                "insertions": 166,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 57
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "21ad1082",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-27T01:47:09.000Z",
+              "message": "[Misc] Adpot the new token matching solution  (#2599)\n\n* [add] start-end matching for mp blend\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* revert unfull chunk matching and add nemontron support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 703,
+                "insertions": 608,
+                "deletions": 95
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ddf8446f",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-01T00:03:38.000Z",
+              "message": "[CI][Temp fix] make threshold a soft fail for multiprocessing test (#2661)\n\n[temp fix] make threshhold soft fail for mp ci\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 26,
+                "insertions": 17,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "dec234a8",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-02-28T23:42:20.000Z",
+              "message": "[Observability] Relocate MP observability to lmcache/v1/mp_observability (#2657)\n\n* move the mp mode observability to lmcache/v1/mp_observability\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skip the cpu test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 21,
+                "lines": 98,
+                "insertions": 54,
+                "deletions": 44
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 62
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1985030c",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-01T03:01:25.000Z",
+              "message": "[3/4][MP] L2 Store controller for MP mode (#2646)\n\n* [Add] helper functions in l2 adapter module for storage controller and tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* add l2 store controller\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* hook with storage manager and add unit tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [add] debug log for store operation\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 1346,
+                "insertions": 1345,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ea1317ad",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-01T01:15:03.000Z",
+              "message": "Refactor PrometheusController into global singleton with self-registration (#2659)\n\n* refactor the controller to become the singleton\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix precommit issues\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* rollback the storage controller interface and remove the need of storage manager\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 15,
+                "lines": 595,
+                "insertions": 341,
+                "deletions": 254
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9c6368c2",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-02T03:46:32.000Z",
+              "message": "[MP] Enable layout desc in MP lookup and prefetch (#2662)\n\n* Enable layout desc in prefetch\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix unit tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* remove unused worker id in schedulr adapter\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\nCo-authored-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>",
+              "stats": {
+                "files": 12,
+                "lines": 328,
+                "insertions": 202,
+                "deletions": 126
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "94edee05",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-02T02:30:34.000Z",
+              "message": "[4/4][MP] L2 Prefetch controller foundation (#2658)\n\n* [add] backbone for prefetch controller\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] bitmap operations for better prefetch support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix precommit issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 10,
+                "lines": 1008,
+                "insertions": 995,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c885a524",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-03T02:39:57.000Z",
+              "message": "[Add] L2 Prefetch Controller and StorageManager integration (#2667)\n\n* finish L2 prefetch controller\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 2191,
+                "insertions": 2177,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71.51724137931035,
+          "significance_ratio": 0.8620689655172413,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 2074,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
@@ -8216,618 +9161,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 28,
-          "significant_commits": 24,
-          "simple_commits": 4,
-          "commit_score": 1990,
-          "commits": [
-            {
-              "hash": "6f90e221",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-13T07:20:54.000Z",
-              "message": "[Refactor] extract virtual address manager from TensorMemoryAllocator and disable LazyMemoryAllocator (#2380)\n\n* Refactor: extract virtual address manager from TensorMemoryAllocator\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 9,
-                "lines": 1716,
-                "insertions": 1091,
-                "deletions": 625
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 20,
-                "total": 95
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "2ead3e31",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-15T04:27:45.000Z",
-              "message": "[Core] Introduce lazy memory allocator (#2407)\n\n* [Add] introduce lazy memory allocator\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* remove old tests to pass the linter\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix non-cuda tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* address small issues identified by gemini\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skip tests in github ci\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* try to fix the import issue for local ci\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix issue in memcheck\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* address reviews from Baolong\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 8,
-                "lines": 961,
-                "insertions": 646,
-                "deletions": 315
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "94df0690",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-20T19:01:18.000Z",
-              "message": "[Core] Add new memcpy c-extensions to support LazyMemoryAllocator (#2413)\n\n* [add] new kernels to support partial memory registration\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* address comments from gemini\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [add] helper functions to adapt to the new kernels\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix the parent issue in lazy memory allocator\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* revert debug changes\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* add cuda host unregister\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix failed tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix failed tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 295,
-                "insertions": 290,
-                "deletions": 5
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "4da3d7f9",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-20T03:47:34.000Z",
-              "message": "[CI/CD][Hotfix] Fix the vllm docker image dependency (#2451)\n\nFix the vllm docker image dependency\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\nCo-authored-by: Samuel Shen <102553648+sammshen@users.noreply.github.com>",
-              "stats": {
-                "files": 2,
-                "lines": 5,
-                "insertions": 3,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "be5c98a5",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-21T05:17:01.000Z",
-              "message": "[Core] enable lazy memory allocator by default in multi-process mode (#2463)\n\n* enable lazy memory allocator by default in multi-process mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix failed tasks\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* add non cuda tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* add non cuda tests cont\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 3,
-                "lines": 81,
-                "insertions": 63,
-                "deletions": 18
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 57
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f3cf3695",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-29T04:50:25.000Z",
-              "message": "[MP][2/N] Add native implementation for ttl lock for mp storage manager (#2505)\n\n* [Add] native implementation for ttl lock in mp storage manager\n\n* [Add] microbenchmark for ttl lock\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 6,
-                "lines": 1242,
-                "insertions": 1241,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e8e58ea0",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-01-29T04:48:55.000Z",
-              "message": "[MP][1/N] introduce new MP storage manager (#2504)\n\n* introduce the L1MemoryManager\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 1184,
-                "insertions": 1184,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "235ea0f3",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-02T05:30:32.000Z",
-              "message": "[MP] Add new L1 manager for mp storage manager (#2520)\n\n* [Add] new L1 manager and [refactor] the error codes\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 2562,
-                "insertions": 2109,
-                "deletions": 453
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "69db9c49",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-04T00:39:33.000Z",
-              "message": "[MP][3/N] Introduce new storage manager for MP mode (#2525)\n\n* [new SM] passed all unit tests and integrate with existing server\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] eviction policy and eviction controller with cmdline changes\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [fix] failed tests and unclear linter errors\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* address double free problem identified by gemini\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* remove old codes and update mp tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* address comments\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 24,
-                "lines": 2416,
-                "insertions": 2146,
-                "deletions": 270
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 22,
-                "total": 84
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a9f31ca6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-06T20:06:29.000Z",
-              "message": "[Chore][Linter] Force SLF001 rule to avoid accessing private member (mp mode only) (#2548)\n\n* force no private member access in mp mode\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 5,
-                "lines": 24,
-                "insertions": 19,
-                "deletions": 5
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 55
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "225f51c6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-06T19:06:21.000Z",
-              "message": "[Clean up] Remove outdated StorageKey and MPStorageManager (#2549)\n\n[remove] outdated StorageKey and MPStorageManager\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 4,
-                "lines": 1546,
-                "insertions": 41,
-                "deletions": 1505
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "85f05c69",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-07T01:29:01.000Z",
-              "message": "[Misc][Chore] Print out locked memory objects when running L1Manager.memcheck() (#2558)\n\n[add] misc debug output with memcheck\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 17,
-                "insertions": 17,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 10,
-                "total": 30
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "8acbef78",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-08T22:31:13.000Z",
-              "message": "[Chore] moving the `distributed` folder to upper level (#2564)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 24,
-                "lines": 141,
-                "insertions": 71,
-                "deletions": 70
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "044dee66",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-08T21:58:39.000Z",
-              "message": "[Chore] Add pyi file for native storage ops (#2566)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 46,
-                "insertions": 46,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "608ad1e6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-10T20:39:42.000Z",
-              "message": "[CI/CD][Hotfix] re-enable cache server test and remove dead helper functions (#2582)\n\n* [hotfix] re-enable test cache engine and remove dead helper functions\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 6,
-                "lines": 277,
-                "insertions": 199,
-                "deletions": 78
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "8ef796e5",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-10T01:30:03.000Z",
-              "message": "[Refactor][MP] Reorganize the code & test layout for better clarity  (#2577)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 15,
-                "lines": 1165,
-                "insertions": 833,
-                "deletions": 332
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ec8bfee2",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-11T00:32:40.000Z",
-              "message": "[Feat] Blend IPC interface in MP mode (#2580)\n\n* [Add] basic ipc interface and utils for blend\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [WIP] checkpointing the code\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [wip] checkpoint the progress\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* finish the implementation of store pre computed\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* finish the cb engine\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 14,
-                "lines": 2824,
-                "insertions": 2818,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "27c40449",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-13T21:51:37.000Z",
-              "message": "[MP] Add partial chunk support and suppress logs in blend mode (#2590)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 95,
-                "insertions": 55,
-                "deletions": 40
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 55
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "77057509",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-26T23:03:21.000Z",
-              "message": "[2/4] L2Adapter interface and implementation of MockL2Adapter (#2569)\n\n* [Add] interface for L2 adapter and the implementation for mock l2 adapter\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* add default empty l2 adapter config\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix gemini issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* update mock l2 connector to use async\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* Update with gemini's suggestion\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 1543,
-                "insertions": 1543,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "743c5a7f",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-26T18:46:51.000Z",
-              "message": "[1/4] Bitmap for L2 storage in MP mode  (#2563)\n\n* [add] bitmap module\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* adjust the cpp implementation and add pyi tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 6,
-                "lines": 605,
-                "insertions": 605,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "659bdd84",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-27T21:50:42.000Z",
-              "message": "[Chore][Admin] Create initial AGENTS.md (#2649)\n\n* Create initial AGENTS.md\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 166,
-                "insertions": 166,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 12,
-                "ai": 10,
-                "total": 57
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "21ad1082",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-27T01:47:09.000Z",
-              "message": "[Misc] Adpot the new token matching solution  (#2599)\n\n* [add] start-end matching for mp blend\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* revert unfull chunk matching and add nemontron support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 703,
-                "insertions": 608,
-                "deletions": 95
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ddf8446f",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-03-01T00:03:38.000Z",
-              "message": "[CI][Temp fix] make threshold a soft fail for multiprocessing test (#2661)\n\n[temp fix] make threshhold soft fail for mp ci\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 26,
-                "insertions": 17,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "dec234a8",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-02-28T23:42:20.000Z",
-              "message": "[Observability] Relocate MP observability to lmcache/v1/mp_observability (#2657)\n\n* move the mp mode observability to lmcache/v1/mp_observability\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skip the cpu test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 21,
-                "lines": 98,
-                "insertions": 54,
-                "deletions": 44
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 62
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "1985030c",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-03-01T03:01:25.000Z",
-              "message": "[3/4][MP] L2 Store controller for MP mode (#2646)\n\n* [Add] helper functions in l2 adapter module for storage controller and tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* add l2 store controller\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* hook with storage manager and add unit tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [add] debug log for store operation\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 9,
-                "lines": 1346,
-                "insertions": 1345,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ea1317ad",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-03-01T01:15:03.000Z",
-              "message": "Refactor PrometheusController into global singleton with self-registration (#2659)\n\n* refactor the controller to become the singleton\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix precommit issues\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* rollback the storage controller interface and remove the need of storage manager\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 15,
-                "lines": 595,
-                "insertions": 341,
-                "deletions": 254
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "9c6368c2",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-03-02T03:46:32.000Z",
-              "message": "[MP] Enable layout desc in MP lookup and prefetch (#2662)\n\n* Enable layout desc in prefetch\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix unit tests\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* remove unused worker id in schedulr adapter\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\nCo-authored-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>",
-              "stats": {
-                "files": 12,
-                "lines": 328,
-                "insertions": 202,
-                "deletions": 126
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "94edee05",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-03-02T02:30:34.000Z",
-              "message": "[4/4][MP] L2 Prefetch controller foundation (#2658)\n\n* [add] backbone for prefetch controller\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] bitmap operations for better prefetch support\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix precommit issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 10,
-                "lines": 1008,
-                "insertions": 995,
-                "deletions": 13
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 71.07142857142857,
-          "significance_ratio": 0.8571428571428571,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 1990,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Samuel Shen",
           "email": "102553648+sammshen@users.noreply.github.com",
-          "total_commits": 13,
-          "significant_commits": 5,
+          "total_commits": 14,
+          "significant_commits": 6,
           "simple_commits": 8,
-          "commit_score": 671,
+          "commit_score": 755,
           "commits": [
             {
               "hash": "47181d7b",
@@ -9101,14 +9440,35 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "e133932c",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-03T18:47:11.000Z",
+              "message": "K3 CI Refactor (#2663)\n\n* Add smoke test for new yotta-lab queues\n\n* Add K3s CI harness and test pipelines\n\nK8s-based CI infrastructure using K3s + NVIDIA GPU Operator + agent-stack-k8s:\n- k3_harness/: cluster setup, env setup, base image, teardown scripts\n- k3_tests/: comprehensive, correctness, integration, multiprocess pipelines\n\n* forgot to add target queue\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix README\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix container name\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* change image pull policy\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix relative paths\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* non-container integration run script\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* rewrite scripts\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix correctness\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* rolling 5-day baseline, HTTPS auth, priority scheduling, fix mem leak socket\n\n- Rolling baselines: nightly writes date-stamped <feature>-YYYYMMDD.json,\n  PR builds compare against worst-case (max) across 5-day window\n- upload-baselines.sh finalize step collects artifacts, prunes old files,\n  single commit to benchmarks-main\n- Switch from SSH key to GITHUB_TOKEN (HTTPS) for repo checkout and push\n- Priority 1 for 2-GPU steps (pd, p2p, multiprocess) so they schedule first\n- Fix memory leak check: override LMCACHE_INTERNAL_API_SERVER_SOCKET_PATH_PREFIX\n  to include port (replicates old Docker volume mount path mapping)\n- Fix correctness: replace col -b with sed for man page formatting\n\n* fix mp ci\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* change priority\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* change installation back to editable\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix p2p mem check\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* speed up mp\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* relative thresholds for mp long_doc_qa, parallel vllm startup\n\n* set both thresholds to 10%\n\n* skip mem leak check for p2p\n\n* revert to sequential vllm startup, --master-port doesnt help\n\n* fix parallel vllm startup by unsetting VLLM_PORT env var\n\n* add integration nightly docs, fix teardown helm name, use yq --arg\n\n* Remove health checks\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* parallellize integration tests\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* loosen MP test\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* reduce gpu util\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix correctness in MP\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* add ARCHITECTURE.md\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* add local_cpu_mla.yaml test back\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 41,
+                "lines": 2970,
+                "insertions": 2968,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 51.61538461538461,
-          "significance_ratio": 0.38461538461538464,
+          "avg_score": 53.92857142857143,
+          "significance_ratio": 0.42857142857142855,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 671,
+          "total_score": 755,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9608,6 +9968,129 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Kuntai Du",
+          "email": "kuntai@uchicago.edu",
+          "total_commits": 5,
+          "significant_commits": 2,
+          "simple_commits": 3,
+          "commit_score": 277,
+          "commits": [
+            {
+              "hash": "cf8206b2",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-01-29T01:39:12.000Z",
+              "message": "[Core][Multiprocessing] Separate the data structure for IPC and for underlying storage backend (#2501)\n\n* separate IPC key and store key\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* propagate the separation between IPC key and store key into more files\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* Enforce same world size during conversion\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* add TP test\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix bug when running pytest\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* Update lmcache/v1/multiprocess/server.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>\n\n* fix linting issue\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* move type conversion logic to custom types to avoid import error\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix isort\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* make TP test end-to-end\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* skip cuda-related test when not available\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* bug fix: let vLLM send workerid==None\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix linting\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* use torch.Size for shape\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 8,
+                "lines": 977,
+                "insertions": 918,
+                "deletions": 59
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 20,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "db5a7364",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-02-10T21:42:28.000Z",
+              "message": "[Multiprocess][PD] Disaggregated prefill prototype on MP connector (#2561)\n\n* add initial disagg impl\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* add on_request_finished hanlder\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* clean up implementation\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* cursor code review diff\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* docstring fix\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* Apply suggestion from @gemini-code-assist[bot]\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>\n\n* support both chat completion and completion\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* add more doc string and address comments\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 9,
+                "lines": 844,
+                "insertions": 844,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "32046991",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-02-12T01:52:26.000Z",
+              "message": "[MP][bugfix] still sending the payload when aligned_end==0 (#2586)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 1,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ff26ad74",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-02-13T21:27:52.000Z",
+              "message": "[Chore][MP][PD disagg][ProxyServer]support /v1/models endpoint (#2589)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 17,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "46997941",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-03-03T18:48:14.000Z",
+              "message": "Tell agent to write documentations (#2655)\n\n* edit agents.md to make it shorter\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 38,
+                "insertions": 38,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 55.4,
+          "significance_ratio": 0.4,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 277,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Martin Hickey",
           "email": "martin.hickey@ie.ibm.com",
           "total_commits": 4,
@@ -9706,108 +10189,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 261,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Kuntai Du",
-          "email": "kuntai@uchicago.edu",
-          "total_commits": 4,
-          "significant_commits": 2,
-          "simple_commits": 2,
-          "commit_score": 237,
-          "commits": [
-            {
-              "hash": "cf8206b2",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-01-29T01:39:12.000Z",
-              "message": "[Core][Multiprocessing] Separate the data structure for IPC and for underlying storage backend (#2501)\n\n* separate IPC key and store key\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* propagate the separation between IPC key and store key into more files\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* Enforce same world size during conversion\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* add TP test\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix bug when running pytest\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* Update lmcache/v1/multiprocess/server.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>\n\n* fix linting issue\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* move type conversion logic to custom types to avoid import error\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix isort\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* make TP test end-to-end\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* skip cuda-related test when not available\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* bug fix: let vLLM send workerid==None\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix linting\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* use torch.Size for shape\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
-              "stats": {
-                "files": 8,
-                "lines": 977,
-                "insertions": 918,
-                "deletions": 59
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 20,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "db5a7364",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-02-10T21:42:28.000Z",
-              "message": "[Multiprocess][PD] Disaggregated prefill prototype on MP connector (#2561)\n\n* add initial disagg impl\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* add on_request_finished hanlder\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* clean up implementation\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* cursor code review diff\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* docstring fix\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* Apply suggestion from @gemini-code-assist[bot]\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>\n\n* support both chat completion and completion\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* add more doc string and address comments\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
-              "stats": {
-                "files": 9,
-                "lines": 844,
-                "insertions": 844,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "32046991",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-02-12T01:52:26.000Z",
-              "message": "[MP][bugfix] still sending the payload when aligned_end==0 (#2586)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 1,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "ff26ad74",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-02-13T21:27:52.000Z",
-              "message": "[Chore][MP][PD disagg][ProxyServer]support /v1/models endpoint (#2589)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 17,
-                "insertions": 17,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 59.25,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 237,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10058,6 +10439,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "2ff6f2bf",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-02-27T21:19:09.000Z",
+              "message": "[feat] add observability stack to MP mode (#2638)\n\n* [feat] adding storage manager listener and observability skeleton\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* remove local uv.lock and coding agent markdown\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [feat] add prometheus logger interface and prometheus controller\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* remove misleading no ops in eviction policy\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix code quality check and prometheus naming conflicts\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* refactor storage manager stats logger into stats logger per storage tier\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 26,
+                "lines": 1795,
+                "insertions": 1766,
+                "deletions": 29
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "36c3e8a6",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-03T01:03:14.000Z",
+              "message": "[feat] add free_locks api to MP mode (#2656)\n\n* [feat] add free_blocks api to explicitly free locked chunks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* move free boundaries to [start chunk, end chunk)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* update test cases\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* rename request name\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 353,
+                "insertions": 353,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
           "total_commits": 3,
@@ -10195,8 +10636,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 117,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Benjamin Bai",
@@ -10315,45 +10756,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 89,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 82,
-          "commits": [
-            {
-              "hash": "2ff6f2bf",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-02-27T21:19:09.000Z",
-              "message": "[feat] add observability stack to MP mode (#2638)\n\n* [feat] adding storage manager listener and observability skeleton\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* remove local uv.lock and coding agent markdown\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [feat] add prometheus logger interface and prometheus controller\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* remove misleading no ops in eviction policy\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix code quality check and prometheus naming conflicts\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* refactor storage manager stats logger into stats logger per storage tier\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 26,
-                "lines": 1795,
-                "insertions": 1766,
-                "deletions": 29
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 82,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 82,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -10556,6 +10958,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 70,
+          "commits": [
+            {
+              "hash": "9dc3ab71",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-02T05:37:35.000Z",
+              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 5,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ed738ca1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-03T23:28:27.000Z",
+              "message": "Refactor new_block_ids handling for robustness (#2536)\n\n* Refactor new_block_ids handling for robustness\n\n- Flatten nested lists in `new_block_ids` (e.g., [[1,2],[3,4]] or mixed [1,[2,3]])\n  while preserving single-level lists.\n- Improve robustness and readability of the code.\n- Behavior is unchanged for existing valid inputs; no logic is affected.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small change to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 70,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Haode Du",
           "email": "45687769+duhaode520@users.noreply.github.com",
           "total_commits": 1,
@@ -10669,8 +11131,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 35,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Adeline",
@@ -10691,45 +11153,6 @@
                 "lines": 10,
                 "insertions": 7,
                 "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 35,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 35,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 35,
-          "commits": [
-            {
-              "hash": "9dc3ab71",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-02T05:37:35.000Z",
-              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 5,
-                "insertions": 5,
-                "deletions": 0
               },
               "scores": {
                 "loc": 3,
@@ -10871,13 +11294,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-03-03T00:30:00.996Z",
+    "analyzedAt": "2026-03-04T00:30:03.240Z",
     "daysBack": 2,
-    "totalCommits": 134,
+    "totalCommits": 139,
     "totalContributors": 27,
     "mergedFrom": {
-      "existing": 130,
-      "new": 6
+      "existing": 134,
+      "new": 9
     }
   }
 }
