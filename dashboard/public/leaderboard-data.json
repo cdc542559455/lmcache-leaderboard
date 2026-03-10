@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-03-09T00:29:59.219Z",
-  "total_commits_analyzed": 153,
+  "last_updated": "2026-03-10T00:30:03.139Z",
+  "total_commits_analyzed": 160,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4564,6 +4564,227 @@
           "tier": "T1",
           "tier_name": "Advanced"
         }
+      ],
+      "2026-W11": [
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "fa5c5aca",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T10:10:04.000Z",
+              "message": "Refactor lookup client/server and abstract rpc layer. (#2609)\n\n* Refactor lookup client/server and abstract rpc layer.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix security vulnerabilities and improve RPC robustness\n\nAddress gemini-bot review comments:\n\n1. Fix critical DoS vulnerability in RPC server request processing\n   - Add comprehensive error handling for malformed messages\n   - Handle JSONDecodeError, UnicodeDecodeError, and other exceptions\n   - Add frame structure and data type validation\n   - Support both bytes and str for backward compatibility\n\n2. Fix request validation bug in transport layer\n   - Change minimum frame count from 2 to 3\n   - Prevent edge case when data_frames[0] == data_frames[-2]\n\n3. Improve serialization abstraction\n   - Remove redundant UTF-8 encoding in client\n   - Let transport layer handle all serialization\n   - Pass Python strings directly instead of bytes\n\nSigned-off-by: maobaolong <maobaolong@tencent.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nSigned-off-by: maobaolong <maobaolong@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 860,
+                "insertions": 575,
+                "deletions": 285
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a973aa8e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T06:43:07.000Z",
+              "message": "Fix to support mla multiple tp failed to read issue (#2697)\n\n* Fix to support mla multiple tp failed to read issue\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix style\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut and renaming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 12,
+                "lines": 610,
+                "insertions": 544,
+                "deletions": 66
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 159,
+          "commits": [
+            {
+              "hash": "98c337d1",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-09T23:13:05.000Z",
+              "message": "[MP][Debuggability] Introduce status report subsystem for MP-mode (#2699)\n\n* [Add] status report\n* [Add] tool to report status\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 16,
+                "lines": 522,
+                "insertions": 521,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ed20f7a4",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-09T18:08:00.000Z",
+              "message": "[Chore][Docs] Update docs for MP mode (#2708)\n\n* [Add] new docs for multi-process mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] docs for mp mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 1854,
+                "insertions": 1476,
+                "deletions": 378
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 79.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 159,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jiayi Yao",
+          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 112,
+          "commits": [
+            {
+              "hash": "ffeb1050",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-09T21:24:58.000Z",
+              "message": "[Misc] Fix failing unit test in blend server (#2717)\n\nfix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b86d7f9a",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-09T17:13:59.000Z",
+              "message": "[Core] Add blend_server_v2 (#2677)\n\n* add tests and fix bugs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update comment\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add harder tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 9,
+                "lines": 3088,
+                "insertions": 3086,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 56,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 112,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "liubj77",
+          "email": "liubj77@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 45,
+          "commits": [
+            {
+              "hash": "7f2df61e",
+              "author": "liubj77",
+              "email": "liubj77@gmail.com",
+              "date": "2026-03-09T17:43:35.000Z",
+              "message": "[Bugfix] fix crash in wait_for_save when retrieve fail from lmcache_engine (#2516)\n\n* [bugfix] fix crash in wait_for_save when retrieve fail from lmcache_engine\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* update\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* format code\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* format code\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n---------\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 34,
+                "insertions": 31,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 45,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 45,
+          "tier": "T0",
+          "tier_name": "Elite"
+        }
       ]
     },
     "monthly": {
@@ -7908,10 +8129,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 10,
-          "significant_commits": 8,
+          "total_commits": 12,
+          "significant_commits": 10,
           "simple_commits": 2,
-          "commit_score": 741,
+          "commit_score": 900,
           "commits": [
             {
               "hash": "ddf8446f",
@@ -8122,14 +8343,158 @@
                 "total": 43
               },
               "classification": "simple"
+            },
+            {
+              "hash": "98c337d1",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-09T23:13:05.000Z",
+              "message": "[MP][Debuggability] Introduce status report subsystem for MP-mode (#2699)\n\n* [Add] status report\n* [Add] tool to report status\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 16,
+                "lines": 522,
+                "insertions": 521,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ed20f7a4",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-09T18:08:00.000Z",
+              "message": "[Chore][Docs] Update docs for MP mode (#2708)\n\n* [Add] new docs for multi-process mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] docs for mp mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 1854,
+                "insertions": 1476,
+                "deletions": 378
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 74.1,
-          "significance_ratio": 0.8,
+          "avg_score": 75,
+          "significance_ratio": 0.8333333333333334,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 741,
+          "total_score": 900,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jiayi Yao",
+          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 246,
+          "commits": [
+            {
+              "hash": "ecd69ea6",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-06T21:53:09.000Z",
+              "message": "[1/N] Support NIXL-based L2 storage in MP mode (#2664)\n\n* initial nixl support in mp\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* Update lmcache/v1/memory_management.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* fix misc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix wrong mem allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* not using paged allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add init code\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* address several comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add design doc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* use lazy import\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove get vm space\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 13,
+                "lines": 1824,
+                "insertions": 1771,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "284176a8",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-07T04:36:35.000Z",
+              "message": "[Misc] Improve nixl perf in lmcache mp (#2711)\n\n* add file size config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* revert some logs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 3,
+                "lines": 57,
+                "insertions": 46,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 52
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ffeb1050",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-09T21:24:58.000Z",
+              "message": "[Misc] Fix failing unit test in blend server (#2717)\n\nfix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b86d7f9a",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-09T17:13:59.000Z",
+              "message": "[Core] Add blend_server_v2 (#2677)\n\n* add tests and fix bugs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update comment\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add harder tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 9,
+                "lines": 3088,
+                "insertions": 3086,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61.5,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 246,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -8275,62 +8640,62 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Jiayi Yao",
-          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 134,
+          "commit_score": 164,
           "commits": [
             {
-              "hash": "ecd69ea6",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-06T21:53:09.000Z",
-              "message": "[1/N] Support NIXL-based L2 storage in MP mode (#2664)\n\n* initial nixl support in mp\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* Update lmcache/v1/memory_management.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* fix misc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix wrong mem allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* not using paged allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add init code\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* address several comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add design doc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* use lazy import\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove get vm space\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "hash": "fa5c5aca",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T10:10:04.000Z",
+              "message": "Refactor lookup client/server and abstract rpc layer. (#2609)\n\n* Refactor lookup client/server and abstract rpc layer.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix security vulnerabilities and improve RPC robustness\n\nAddress gemini-bot review comments:\n\n1. Fix critical DoS vulnerability in RPC server request processing\n   - Add comprehensive error handling for malformed messages\n   - Handle JSONDecodeError, UnicodeDecodeError, and other exceptions\n   - Add frame structure and data type validation\n   - Support both bytes and str for backward compatibility\n\n2. Fix request validation bug in transport layer\n   - Change minimum frame count from 2 to 3\n   - Prevent edge case when data_frames[0] == data_frames[-2]\n\n3. Improve serialization abstraction\n   - Remove redundant UTF-8 encoding in client\n   - Let transport layer handle all serialization\n   - Pass Python strings directly instead of bytes\n\nSigned-off-by: maobaolong <maobaolong@tencent.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nSigned-off-by: maobaolong <maobaolong@tencent.com>",
               "stats": {
-                "files": 13,
-                "lines": 1824,
-                "insertions": 1771,
-                "deletions": 53
+                "files": 6,
+                "lines": 860,
+                "insertions": 575,
+                "deletions": 285
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 20,
-                "total": 82
+                "ai": 22,
+                "total": 84
               },
               "classification": "significant"
             },
             {
-              "hash": "284176a8",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-07T04:36:35.000Z",
-              "message": "[Misc] Improve nixl perf in lmcache mp (#2711)\n\n* add file size config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* revert some logs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "hash": "a973aa8e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T06:43:07.000Z",
+              "message": "Fix to support mla multiple tp failed to read issue (#2697)\n\n* Fix to support mla multiple tp failed to read issue\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix style\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut and renaming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
               "stats": {
-                "files": 3,
-                "lines": 57,
-                "insertions": 46,
-                "deletions": 11
+                "files": 12,
+                "lines": 610,
+                "insertions": 544,
+                "deletions": 66
               },
               "scores": {
-                "loc": 15,
-                "files": 10,
+                "loc": 30,
+                "files": 20,
                 "keyword": 12,
-                "ai": 15,
-                "total": 52
+                "ai": 18,
+                "total": 80
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 67,
+          "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 134,
+          "total_score": 164,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -8391,8 +8756,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 107,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "deng451e",
@@ -8533,6 +8898,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "liubj77",
+          "email": "liubj77@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 45,
+          "commits": [
+            {
+              "hash": "7f2df61e",
+              "author": "liubj77",
+              "email": "liubj77@gmail.com",
+              "date": "2026-03-09T17:43:35.000Z",
+              "message": "[Bugfix] fix crash in wait_for_save when retrieve fail from lmcache_engine (#2516)\n\n* [bugfix] fix crash in wait_for_save when retrieve fail from lmcache_engine\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* update\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* format code\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* format code\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n---------\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 34,
+                "insertions": 31,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 45,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 45,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "dependabot[bot]",
           "email": "49699333+dependabot[bot]@users.noreply.github.com",
           "total_commits": 1,
@@ -8646,8 +9050,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 25,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -8656,10 +9060,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 33,
-          "significant_commits": 28,
+          "total_commits": 35,
+          "significant_commits": 30,
           "simple_commits": 5,
-          "commit_score": 2365,
+          "commit_score": 2524,
           "commits": [
             {
               "hash": "6f90e221",
@@ -9353,24 +9757,66 @@
                 "total": 43
               },
               "classification": "simple"
+            },
+            {
+              "hash": "98c337d1",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-09T23:13:05.000Z",
+              "message": "[MP][Debuggability] Introduce status report subsystem for MP-mode (#2699)\n\n* [Add] status report\n* [Add] tool to report status\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 16,
+                "lines": 522,
+                "insertions": 521,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ed20f7a4",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-09T18:08:00.000Z",
+              "message": "[Chore][Docs] Update docs for MP mode (#2708)\n\n* [Add] new docs for multi-process mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* [Add] docs for mp mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 1854,
+                "insertions": 1476,
+                "deletions": 378
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 71.66666666666667,
-          "significance_ratio": 0.8484848484848485,
+          "avg_score": 72.11428571428571,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2365,
+          "total_score": 2524,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 30,
-          "significant_commits": 25,
+          "total_commits": 32,
+          "significant_commits": 27,
           "simple_commits": 5,
-          "commit_score": 2019,
+          "commit_score": 2183,
           "commits": [
             {
               "hash": "28e5bf7a",
@@ -10001,14 +10447,56 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "fa5c5aca",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T10:10:04.000Z",
+              "message": "Refactor lookup client/server and abstract rpc layer. (#2609)\n\n* Refactor lookup client/server and abstract rpc layer.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix security vulnerabilities and improve RPC robustness\n\nAddress gemini-bot review comments:\n\n1. Fix critical DoS vulnerability in RPC server request processing\n   - Add comprehensive error handling for malformed messages\n   - Handle JSONDecodeError, UnicodeDecodeError, and other exceptions\n   - Add frame structure and data type validation\n   - Support both bytes and str for backward compatibility\n\n2. Fix request validation bug in transport layer\n   - Change minimum frame count from 2 to 3\n   - Prevent edge case when data_frames[0] == data_frames[-2]\n\n3. Improve serialization abstraction\n   - Remove redundant UTF-8 encoding in client\n   - Let transport layer handle all serialization\n   - Pass Python strings directly instead of bytes\n\nSigned-off-by: maobaolong <maobaolong@tencent.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nSigned-off-by: maobaolong <maobaolong@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 860,
+                "insertions": 575,
+                "deletions": 285
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a973aa8e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T06:43:07.000Z",
+              "message": "Fix to support mla multiple tp failed to read issue (#2697)\n\n* Fix to support mla multiple tp failed to read issue\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix style\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut and renaming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 12,
+                "lines": 610,
+                "insertions": 544,
+                "deletions": 66
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 67.3,
-          "significance_ratio": 0.8333333333333334,
+          "avg_score": 68.21875,
+          "significance_ratio": 0.84375,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2019,
+          "total_score": 2183,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11210,6 +11698,108 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jiayi Yao",
+          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 246,
+          "commits": [
+            {
+              "hash": "ecd69ea6",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-06T21:53:09.000Z",
+              "message": "[1/N] Support NIXL-based L2 storage in MP mode (#2664)\n\n* initial nixl support in mp\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* Update lmcache/v1/memory_management.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* fix misc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix wrong mem allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* not using paged allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add init code\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* address several comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add design doc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* use lazy import\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove get vm space\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 13,
+                "lines": 1824,
+                "insertions": 1771,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "284176a8",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-07T04:36:35.000Z",
+              "message": "[Misc] Improve nixl perf in lmcache mp (#2711)\n\n* add file size config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* revert some logs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 3,
+                "lines": 57,
+                "insertions": 46,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 52
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ffeb1050",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-09T21:24:58.000Z",
+              "message": "[Misc] Fix failing unit test in blend server (#2717)\n\nfix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b86d7f9a",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-09T17:13:59.000Z",
+              "message": "[Core] Add blend_server_v2 (#2677)\n\n* add tests and fix bugs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update comment\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add harder tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 9,
+                "lines": 3088,
+                "insertions": 3086,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61.5,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 246,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "hlin99",
           "email": "tony.lin@intel.com",
           "total_commits": 5,
@@ -11554,66 +12144,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 193,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Jiayi Yao",
-          "email": "82156730+YaoJiayi@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 134,
-          "commits": [
-            {
-              "hash": "ecd69ea6",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-06T21:53:09.000Z",
-              "message": "[1/N] Support NIXL-based L2 storage in MP mode (#2664)\n\n* initial nixl support in mp\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* Update lmcache/v1/memory_management.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* fix misc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix wrong mem allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* not using paged allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add init code\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* address several comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add design doc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* use lazy import\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove get vm space\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
-              "stats": {
-                "files": 13,
-                "lines": 1824,
-                "insertions": 1771,
-                "deletions": 53
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "284176a8",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-07T04:36:35.000Z",
-              "message": "[Misc] Improve nixl perf in lmcache mp (#2711)\n\n* add file size config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* revert some logs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
-              "stats": {
-                "files": 3,
-                "lines": 57,
-                "insertions": 46,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 52
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 67,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 134,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -12116,6 +12646,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "liubj77",
+          "email": "liubj77@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 45,
+          "commits": [
+            {
+              "hash": "7f2df61e",
+              "author": "liubj77",
+              "email": "liubj77@gmail.com",
+              "date": "2026-03-09T17:43:35.000Z",
+              "message": "[Bugfix] fix crash in wait_for_save when retrieve fail from lmcache_engine (#2516)\n\n* [bugfix] fix crash in wait_for_save when retrieve fail from lmcache_engine\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* update\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* format code\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* format code\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n---------\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 34,
+                "insertions": 31,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 45,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 45,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Haode Du",
           "email": "45687769+duhaode520@users.noreply.github.com",
           "total_commits": 1,
@@ -12392,13 +12961,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-03-09T00:29:59.219Z",
+    "analyzedAt": "2026-03-10T00:30:03.139Z",
     "daysBack": 2,
-    "totalCommits": 153,
-    "totalContributors": 29,
+    "totalCommits": 160,
+    "totalContributors": 30,
     "mergedFrom": {
       "existing": 153,
-      "new": 4
+      "new": 7
     }
   }
 }
