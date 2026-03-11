@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-03-10T00:30:03.139Z",
-  "total_commits_analyzed": 160,
+  "last_updated": "2026-03-11T00:30:05.884Z",
+  "total_commits_analyzed": 165,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4567,72 +4567,12 @@
       ],
       "2026-W11": [
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 164,
-          "commits": [
-            {
-              "hash": "fa5c5aca",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-03-09T10:10:04.000Z",
-              "message": "Refactor lookup client/server and abstract rpc layer. (#2609)\n\n* Refactor lookup client/server and abstract rpc layer.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix security vulnerabilities and improve RPC robustness\n\nAddress gemini-bot review comments:\n\n1. Fix critical DoS vulnerability in RPC server request processing\n   - Add comprehensive error handling for malformed messages\n   - Handle JSONDecodeError, UnicodeDecodeError, and other exceptions\n   - Add frame structure and data type validation\n   - Support both bytes and str for backward compatibility\n\n2. Fix request validation bug in transport layer\n   - Change minimum frame count from 2 to 3\n   - Prevent edge case when data_frames[0] == data_frames[-2]\n\n3. Improve serialization abstraction\n   - Remove redundant UTF-8 encoding in client\n   - Let transport layer handle all serialization\n   - Pass Python strings directly instead of bytes\n\nSigned-off-by: maobaolong <maobaolong@tencent.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nSigned-off-by: maobaolong <maobaolong@tencent.com>",
-              "stats": {
-                "files": 6,
-                "lines": 860,
-                "insertions": 575,
-                "deletions": 285
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 22,
-                "total": 84
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a973aa8e",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-03-09T06:43:07.000Z",
-              "message": "Fix to support mla multiple tp failed to read issue (#2697)\n\n* Fix to support mla multiple tp failed to read issue\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix style\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut and renaming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 12,
-                "lines": 610,
-                "insertions": 544,
-                "deletions": 66
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 82,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 164,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 159,
+          "total_commits": 6,
+          "significant_commits": 5,
+          "simple_commits": 1,
+          "commit_score": 441,
           "commits": [
             {
               "hash": "98c337d1",
@@ -4675,14 +4615,179 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a13ad665",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T23:14:48.000Z",
+              "message": "[MP] Update the MP docs and pass telemetry config into http_server (#2730)\n\n* Update docs for engine type\n\n* [add] telemetry config pass to http server and blend server\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 37,
+                "insertions": 33,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c2642c95",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T20:49:39.000Z",
+              "message": "[MP][UX][Docs] Enhance http server and its docs for MP mode (#2722)\n\n* update http server for clear-cache and update docs\n\n* update docs\n\n* add config to specify engine\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 161,
+                "insertions": 125,
+                "deletions": 36
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9af5412f",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T20:48:24.000Z",
+              "message": "Revert \"[MP] Support MP Server restart (#2713)\" (#2729)\n\nThis reverts commit 55622e80991c7e7ffdd7d5a622929323f7d6b44e.\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 11,
+                "lines": 560,
+                "insertions": 53,
+                "deletions": 507
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "09b1f9ec",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T03:04:32.000Z",
+              "message": "[MP][Hotfix] add default implementation for report_status (#2723)\n\n* Hotfix: implement report_status for nixl storage\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 111,
+                "insertions": 109,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 75
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 79.5,
+          "avg_score": 73.5,
+          "significance_ratio": 0.8333333333333334,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 441,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 244,
+          "commits": [
+            {
+              "hash": "fa5c5aca",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T10:10:04.000Z",
+              "message": "Refactor lookup client/server and abstract rpc layer. (#2609)\n\n* Refactor lookup client/server and abstract rpc layer.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix security vulnerabilities and improve RPC robustness\n\nAddress gemini-bot review comments:\n\n1. Fix critical DoS vulnerability in RPC server request processing\n   - Add comprehensive error handling for malformed messages\n   - Handle JSONDecodeError, UnicodeDecodeError, and other exceptions\n   - Add frame structure and data type validation\n   - Support both bytes and str for backward compatibility\n\n2. Fix request validation bug in transport layer\n   - Change minimum frame count from 2 to 3\n   - Prevent edge case when data_frames[0] == data_frames[-2]\n\n3. Improve serialization abstraction\n   - Remove redundant UTF-8 encoding in client\n   - Let transport layer handle all serialization\n   - Pass Python strings directly instead of bytes\n\nSigned-off-by: maobaolong <maobaolong@tencent.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nSigned-off-by: maobaolong <maobaolong@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 860,
+                "insertions": 575,
+                "deletions": 285
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a973aa8e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T06:43:07.000Z",
+              "message": "Fix to support mla multiple tp failed to read issue (#2697)\n\n* Fix to support mla multiple tp failed to read issue\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix style\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut and renaming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 12,
+                "lines": 610,
+                "insertions": 544,
+                "deletions": 66
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "55622e80",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-10T11:41:35.000Z",
+              "message": "[MP] Support MP Server restart (#2713)\n\n* [MP] Support MP Server restart\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from dongdongju\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix related failed UT.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 560,
+                "insertions": 507,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81.33333333333333,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 159,
+          "total_score": 244,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -8129,10 +8234,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 12,
-          "significant_commits": 10,
-          "simple_commits": 2,
-          "commit_score": 900,
+          "total_commits": 16,
+          "significant_commits": 13,
+          "simple_commits": 3,
+          "commit_score": 1182,
           "commits": [
             {
               "hash": "ddf8446f",
@@ -8385,14 +8490,98 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a13ad665",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T23:14:48.000Z",
+              "message": "[MP] Update the MP docs and pass telemetry config into http_server (#2730)\n\n* Update docs for engine type\n\n* [add] telemetry config pass to http server and blend server\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 37,
+                "insertions": 33,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c2642c95",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T20:49:39.000Z",
+              "message": "[MP][UX][Docs] Enhance http server and its docs for MP mode (#2722)\n\n* update http server for clear-cache and update docs\n\n* update docs\n\n* add config to specify engine\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 161,
+                "insertions": 125,
+                "deletions": 36
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9af5412f",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T20:48:24.000Z",
+              "message": "Revert \"[MP] Support MP Server restart (#2713)\" (#2729)\n\nThis reverts commit 55622e80991c7e7ffdd7d5a622929323f7d6b44e.\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 11,
+                "lines": 560,
+                "insertions": 53,
+                "deletions": 507
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "09b1f9ec",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T03:04:32.000Z",
+              "message": "[MP][Hotfix] add default implementation for report_status (#2723)\n\n* Hotfix: implement report_status for nixl storage\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 111,
+                "insertions": 109,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 75
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 75,
-          "significance_ratio": 0.8333333333333334,
+          "avg_score": 73.875,
+          "significance_ratio": 0.8125,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 900,
+          "total_score": 1182,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -8495,6 +8684,87 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 246,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 244,
+          "commits": [
+            {
+              "hash": "fa5c5aca",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T10:10:04.000Z",
+              "message": "Refactor lookup client/server and abstract rpc layer. (#2609)\n\n* Refactor lookup client/server and abstract rpc layer.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix security vulnerabilities and improve RPC robustness\n\nAddress gemini-bot review comments:\n\n1. Fix critical DoS vulnerability in RPC server request processing\n   - Add comprehensive error handling for malformed messages\n   - Handle JSONDecodeError, UnicodeDecodeError, and other exceptions\n   - Add frame structure and data type validation\n   - Support both bytes and str for backward compatibility\n\n2. Fix request validation bug in transport layer\n   - Change minimum frame count from 2 to 3\n   - Prevent edge case when data_frames[0] == data_frames[-2]\n\n3. Improve serialization abstraction\n   - Remove redundant UTF-8 encoding in client\n   - Let transport layer handle all serialization\n   - Pass Python strings directly instead of bytes\n\nSigned-off-by: maobaolong <maobaolong@tencent.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nSigned-off-by: maobaolong <maobaolong@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 860,
+                "insertions": 575,
+                "deletions": 285
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a973aa8e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T06:43:07.000Z",
+              "message": "Fix to support mla multiple tp failed to read issue (#2697)\n\n* Fix to support mla multiple tp failed to read issue\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix style\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut and renaming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 12,
+                "lines": 610,
+                "insertions": 544,
+                "deletions": 66
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "55622e80",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-10T11:41:35.000Z",
+              "message": "[MP] Support MP Server restart (#2713)\n\n* [MP] Support MP Server restart\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from dongdongju\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix related failed UT.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 560,
+                "insertions": 507,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81.33333333333333,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 244,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -8636,66 +8906,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 169,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 164,
-          "commits": [
-            {
-              "hash": "fa5c5aca",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-03-09T10:10:04.000Z",
-              "message": "Refactor lookup client/server and abstract rpc layer. (#2609)\n\n* Refactor lookup client/server and abstract rpc layer.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix security vulnerabilities and improve RPC robustness\n\nAddress gemini-bot review comments:\n\n1. Fix critical DoS vulnerability in RPC server request processing\n   - Add comprehensive error handling for malformed messages\n   - Handle JSONDecodeError, UnicodeDecodeError, and other exceptions\n   - Add frame structure and data type validation\n   - Support both bytes and str for backward compatibility\n\n2. Fix request validation bug in transport layer\n   - Change minimum frame count from 2 to 3\n   - Prevent edge case when data_frames[0] == data_frames[-2]\n\n3. Improve serialization abstraction\n   - Remove redundant UTF-8 encoding in client\n   - Let transport layer handle all serialization\n   - Pass Python strings directly instead of bytes\n\nSigned-off-by: maobaolong <maobaolong@tencent.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nSigned-off-by: maobaolong <maobaolong@tencent.com>",
-              "stats": {
-                "files": 6,
-                "lines": 860,
-                "insertions": 575,
-                "deletions": 285
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 22,
-                "total": 84
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a973aa8e",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-03-09T06:43:07.000Z",
-              "message": "Fix to support mla multiple tp failed to read issue (#2697)\n\n* Fix to support mla multiple tp failed to read issue\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix style\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut and renaming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 12,
-                "lines": 610,
-                "insertions": 544,
-                "deletions": 66
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 82,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 164,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9060,10 +9270,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 35,
-          "significant_commits": 30,
-          "simple_commits": 5,
-          "commit_score": 2524,
+          "total_commits": 39,
+          "significant_commits": 33,
+          "simple_commits": 6,
+          "commit_score": 2806,
           "commits": [
             {
               "hash": "6f90e221",
@@ -9799,24 +10009,108 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a13ad665",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T23:14:48.000Z",
+              "message": "[MP] Update the MP docs and pass telemetry config into http_server (#2730)\n\n* Update docs for engine type\n\n* [add] telemetry config pass to http server and blend server\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 37,
+                "insertions": 33,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c2642c95",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T20:49:39.000Z",
+              "message": "[MP][UX][Docs] Enhance http server and its docs for MP mode (#2722)\n\n* update http server for clear-cache and update docs\n\n* update docs\n\n* add config to specify engine\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 161,
+                "insertions": 125,
+                "deletions": 36
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9af5412f",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T20:48:24.000Z",
+              "message": "Revert \"[MP] Support MP Server restart (#2713)\" (#2729)\n\nThis reverts commit 55622e80991c7e7ffdd7d5a622929323f7d6b44e.\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 11,
+                "lines": 560,
+                "insertions": 53,
+                "deletions": 507
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "09b1f9ec",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-10T03:04:32.000Z",
+              "message": "[MP][Hotfix] add default implementation for report_status (#2723)\n\n* Hotfix: implement report_status for nixl storage\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 111,
+                "insertions": 109,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 75
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 72.11428571428571,
-          "significance_ratio": 0.8571428571428571,
+          "avg_score": 71.94871794871794,
+          "significance_ratio": 0.8461538461538461,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2524,
+          "total_score": 2806,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 32,
-          "significant_commits": 27,
+          "total_commits": 33,
+          "significant_commits": 28,
           "simple_commits": 5,
-          "commit_score": 2183,
+          "commit_score": 2263,
           "commits": [
             {
               "hash": "28e5bf7a",
@@ -10489,14 +10783,35 @@
                 "total": 80
               },
               "classification": "significant"
+            },
+            {
+              "hash": "55622e80",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-10T11:41:35.000Z",
+              "message": "[MP] Support MP Server restart (#2713)\n\n* [MP] Support MP Server restart\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from dongdongju\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix related failed UT.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 560,
+                "insertions": 507,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 68.21875,
-          "significance_ratio": 0.84375,
+          "avg_score": 68.57575757575758,
+          "significance_ratio": 0.8484848484848485,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2183,
+          "total_score": 2263,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -12961,13 +13276,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-03-10T00:30:03.139Z",
+    "analyzedAt": "2026-03-11T00:30:05.884Z",
     "daysBack": 2,
-    "totalCommits": 160,
+    "totalCommits": 165,
     "totalContributors": 30,
     "mergedFrom": {
-      "existing": 153,
-      "new": 7
+      "existing": 160,
+      "new": 12
     }
   }
 }
