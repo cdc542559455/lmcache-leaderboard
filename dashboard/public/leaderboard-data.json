@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-03-13T00:30:08.389Z",
-  "total_commits_analyzed": 177,
+  "last_updated": "2026-03-14T00:30:08.481Z",
+  "total_commits_analyzed": 185,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4776,10 +4776,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 4,
+          "total_commits": 5,
+          "significant_commits": 5,
           "simple_commits": 0,
-          "commit_score": 326,
+          "commit_score": 376,
           "commits": [
             {
               "hash": "fa5c5aca",
@@ -4864,14 +4864,137 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "e4af8bc9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-13T02:37:49.000Z",
+              "message": "fix(server): guard finish_read_prefetched behind retrieve_succeeded flag (#2736)\n\n* fix(server): guard finish_read_prefetched behind retrieve_succeeded flag\n\nWhen _retrieve_loop raises an exception inside the with-block, the\nread_prefetched_results context manager already releases the read\nlocks in its finally clause. The retrieve() finally block was\nunconditionally scheduling a GPU callback to call\nfinish_read_prefetched, causing a double-free of read locks.\n\nIntroduce retrieve_succeeded flag that is only set to True when the\nwith-block exits normally. The GPU callback is now conditional on\nthis flag, forming a defense-in-depth pair with the context manager\nre-raise fix.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix(storage_manager): re-raise exception in read_prefetched_results\n\nThe context manager was swallowing exceptions raised inside the\nwith-block (e.g. TypeError from _retrieve_loop). This caused the\ncaller to continue as if the retrieve succeeded, leading to a\ndouble-free of read locks: once by the context manager's finally\nclause, and again by the caller's GPU callback.\n\nAdd 'raise' to propagate the exception so callers correctly enter\ntheir except branch and skip the redundant finish_read_prefetched.\n\nThis change was originally in PR #2737 and is now combined into\nthis PR per reviewer's suggestion to streamline the merging process.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 20,
+                "insertions": 12,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 81.5,
+          "avg_score": 75.2,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 326,
+          "total_score": 376,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "102553648+sammshen@users.noreply.github.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 251,
+          "commits": [
+            {
+              "hash": "d9b65809",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-11T17:27:29.000Z",
+              "message": "[ci]: add gpu monitoring (#2718)\n\n* add gpu monitoring\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix the nightly vllm installation\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* address gemini comments\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix lint\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 285,
+                "insertions": 274,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "01b9cc4b",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-13T21:29:13.000Z",
+              "message": "[ci]: fix k3 comprehensive test nightly baseline retrieval (#2753)\n\nfix git glob\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 6,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e97bd217",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-13T09:38:32.000Z",
+              "message": "[Southbound]: Create a Native Protocol for MP and non-MP (#2642)\n\nRefactors the C++ Redis connector into a generic storage backend\nframework and adds an L2 adapter bridge for MP mode. Follows the\nplugin/auto-discovery pattern.\n\n- Generalize csrc/redis -> csrc/storage_backends with ConnectorBase<T>\n  template, IStorageConnector interface, and pybind macro\n- Add NativeConnectorL2Adapter bridging any native connector to L2\n- Add RESPL2AdapterConfig with self-registration (plugin pattern)\n- Refactor ConnectorClientBase as generic base for non-MP mode",
+              "stats": {
+                "files": 25,
+                "lines": 5316,
+                "insertions": 4017,
+                "deletions": 1299
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0a132d41",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-13T07:19:47.000Z",
+              "message": "[Correctness]: Fix the overlapping race condition for non-MP as well (#2706)\n\n* use the previous skip_n_prefix_tokens codepath\n\n* change the chunk size of both correctnes tesets\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 24,
+                "insertions": 21,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62.75,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 251,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4938,10 +5061,10 @@
         {
           "name": "Jiayi Yao",
           "email": "82156730+YaoJiayi@users.noreply.github.com",
-          "total_commits": 2,
+          "total_commits": 3,
           "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 112,
+          "simple_commits": 2,
+          "commit_score": 160,
           "commits": [
             {
               "hash": "ffeb1050",
@@ -4984,63 +5107,45 @@
                 "total": 82
               },
               "classification": "significant"
-            }
-          ],
-          "avg_score": 56,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 112,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Samuel Shen",
-          "email": "102553648+sammshen@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 82,
-          "commits": [
+            },
             {
-              "hash": "d9b65809",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-03-11T17:27:29.000Z",
-              "message": "[ci]: add gpu monitoring (#2718)\n\n* add gpu monitoring\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix the nightly vllm installation\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* address gemini comments\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* fix lint\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "hash": "34df7674",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-13T21:46:50.000Z",
+              "message": "[Perf] Add stream priority in gpu context (#2728)\n\nadd stream priority\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
               "stats": {
-                "files": 7,
-                "lines": 285,
-                "insertions": 274,
-                "deletions": 11
+                "files": 2,
+                "lines": 34,
+                "insertions": 33,
+                "deletions": 1
               },
               "scores": {
-                "loc": 30,
-                "files": 20,
+                "loc": 8,
+                "files": 10,
                 "keyword": 12,
-                "ai": 20,
-                "total": 82
+                "ai": 18,
+                "total": 48
               },
-              "classification": "significant"
+              "classification": "simple"
             }
           ],
-          "avg_score": 82,
-          "significance_ratio": 1,
+          "avg_score": 53.333333333333336,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 82,
+          "total_score": 160,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Adeline",
           "email": "452803476@qq.com",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 72,
+          "simple_commits": 1,
+          "commit_score": 112,
           "commits": [
             {
               "hash": "038cd7c9",
@@ -5062,14 +5167,95 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "899ae648",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-03-13T05:38:35.000Z",
+              "message": "Fix[config]: replace store_true with BooleanOptionalAction for --l1-use-lazy (#2761)\n\n* fix(config): replace store_true with BooleanOptionalAction for --l1-use-lazy\n\nUse argparse.BooleanOptionalAction instead of action='store_true' so that\n--no-l1-use-lazy can be passed on the command line to explicitly disable\nlazy loading for L1 memory.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 8,
+                "insertions": 5,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 72,
-          "significance_ratio": 1,
+          "avg_score": 56,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 72,
+          "total_score": 112,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 112,
+          "commits": [
+            {
+              "hash": "4524210b",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-14T00:26:30.000Z",
+              "message": "[Docs][Operator] Fix observability metric descriptions (#2746)\n\n[Docs] Fix observability metric descriptions to match actual behavior\n\nUpdate Prometheus metric descriptions in L1 and StorageManager stats\nloggers and corresponding docs to accurately reflect what is measured.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 16,
+                "insertions": 8,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "730cb711",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-13T22:34:35.000Z",
+              "message": "[Doc] Add doc for LMCache MP mode operator (#2731)\n\n* [doc] add mp operator documentation\n\n* [doc] add operator to the index after merge\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 674,
+                "insertions": 674,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 56,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 112,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -9027,114 +9213,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 4,
-          "simple_commits": 0,
-          "commit_score": 326,
-          "commits": [
-            {
-              "hash": "fa5c5aca",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-03-09T10:10:04.000Z",
-              "message": "Refactor lookup client/server and abstract rpc layer. (#2609)\n\n* Refactor lookup client/server and abstract rpc layer.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix security vulnerabilities and improve RPC robustness\n\nAddress gemini-bot review comments:\n\n1. Fix critical DoS vulnerability in RPC server request processing\n   - Add comprehensive error handling for malformed messages\n   - Handle JSONDecodeError, UnicodeDecodeError, and other exceptions\n   - Add frame structure and data type validation\n   - Support both bytes and str for backward compatibility\n\n2. Fix request validation bug in transport layer\n   - Change minimum frame count from 2 to 3\n   - Prevent edge case when data_frames[0] == data_frames[-2]\n\n3. Improve serialization abstraction\n   - Remove redundant UTF-8 encoding in client\n   - Let transport layer handle all serialization\n   - Pass Python strings directly instead of bytes\n\nSigned-off-by: maobaolong <maobaolong@tencent.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nSigned-off-by: maobaolong <maobaolong@tencent.com>",
-              "stats": {
-                "files": 6,
-                "lines": 860,
-                "insertions": 575,
-                "deletions": 285
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 22,
-                "total": 84
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a973aa8e",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-03-09T06:43:07.000Z",
-              "message": "Fix to support mla multiple tp failed to read issue (#2697)\n\n* Fix to support mla multiple tp failed to read issue\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix style\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut and renaming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 12,
-                "lines": 610,
-                "insertions": 544,
-                "deletions": 66
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "55622e80",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-03-10T11:41:35.000Z",
-              "message": "[MP] Support MP Server restart (#2713)\n\n* [MP] Support MP Server restart\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from dongdongju\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix related failed UT.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 11,
-                "lines": 560,
-                "insertions": 507,
-                "deletions": 53
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0d23dbd5",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-03-12T17:59:29.000Z",
-              "message": "Add filesystem-backed L2 adapter with auto-discovery plugin mechanism (#2704)\n\n* Add filesystem-backed L2 adapter with auto-discovery plugin mechanism\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 16,
-                "lines": 1324,
-                "insertions": 1149,
-                "deletions": 175
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 81.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 326,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Samuel Shen",
           "email": "102553648+sammshen@users.noreply.github.com",
-          "total_commits": 4,
-          "significant_commits": 4,
-          "simple_commits": 0,
-          "commit_score": 309,
+          "total_commits": 7,
+          "significant_commits": 6,
+          "simple_commits": 1,
+          "commit_score": 478,
           "commits": [
             {
               "hash": "e133932c",
@@ -9219,24 +9303,210 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "01b9cc4b",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-13T21:29:13.000Z",
+              "message": "[ci]: fix k3 comprehensive test nightly baseline retrieval (#2753)\n\nfix git glob\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 6,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e97bd217",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-13T09:38:32.000Z",
+              "message": "[Southbound]: Create a Native Protocol for MP and non-MP (#2642)\n\nRefactors the C++ Redis connector into a generic storage backend\nframework and adds an L2 adapter bridge for MP mode. Follows the\nplugin/auto-discovery pattern.\n\n- Generalize csrc/redis -> csrc/storage_backends with ConnectorBase<T>\n  template, IStorageConnector interface, and pybind macro\n- Add NativeConnectorL2Adapter bridging any native connector to L2\n- Add RESPL2AdapterConfig with self-registration (plugin pattern)\n- Refactor ConnectorClientBase as generic base for non-MP mode",
+              "stats": {
+                "files": 25,
+                "lines": 5316,
+                "insertions": 4017,
+                "deletions": 1299
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0a132d41",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-13T07:19:47.000Z",
+              "message": "[Correctness]: Fix the overlapping race condition for non-MP as well (#2706)\n\n* use the previous skip_n_prefix_tokens codepath\n\n* change the chunk size of both correctnes tesets\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 24,
+                "insertions": 21,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 77.25,
+          "avg_score": 68.28571428571429,
+          "significance_ratio": 0.8571428571428571,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 478,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 5,
+          "significant_commits": 5,
+          "simple_commits": 0,
+          "commit_score": 376,
+          "commits": [
+            {
+              "hash": "fa5c5aca",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T10:10:04.000Z",
+              "message": "Refactor lookup client/server and abstract rpc layer. (#2609)\n\n* Refactor lookup client/server and abstract rpc layer.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix security vulnerabilities and improve RPC robustness\n\nAddress gemini-bot review comments:\n\n1. Fix critical DoS vulnerability in RPC server request processing\n   - Add comprehensive error handling for malformed messages\n   - Handle JSONDecodeError, UnicodeDecodeError, and other exceptions\n   - Add frame structure and data type validation\n   - Support both bytes and str for backward compatibility\n\n2. Fix request validation bug in transport layer\n   - Change minimum frame count from 2 to 3\n   - Prevent edge case when data_frames[0] == data_frames[-2]\n\n3. Improve serialization abstraction\n   - Remove redundant UTF-8 encoding in client\n   - Let transport layer handle all serialization\n   - Pass Python strings directly instead of bytes\n\nSigned-off-by: maobaolong <maobaolong@tencent.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nSigned-off-by: maobaolong <maobaolong@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 860,
+                "insertions": 575,
+                "deletions": 285
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a973aa8e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-09T06:43:07.000Z",
+              "message": "Fix to support mla multiple tp failed to read issue (#2697)\n\n* Fix to support mla multiple tp failed to read issue\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix style\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix ut and renaming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 12,
+                "lines": 610,
+                "insertions": 544,
+                "deletions": 66
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "55622e80",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-10T11:41:35.000Z",
+              "message": "[MP] Support MP Server restart (#2713)\n\n* [MP] Support MP Server restart\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from dongdongju\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix related failed UT.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 560,
+                "insertions": 507,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0d23dbd5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-12T17:59:29.000Z",
+              "message": "Add filesystem-backed L2 adapter with auto-discovery plugin mechanism (#2704)\n\n* Add filesystem-backed L2 adapter with auto-discovery plugin mechanism\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 16,
+                "lines": 1324,
+                "insertions": 1149,
+                "deletions": 175
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e4af8bc9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-13T02:37:49.000Z",
+              "message": "fix(server): guard finish_read_prefetched behind retrieve_succeeded flag (#2736)\n\n* fix(server): guard finish_read_prefetched behind retrieve_succeeded flag\n\nWhen _retrieve_loop raises an exception inside the with-block, the\nread_prefetched_results context manager already releases the read\nlocks in its finally clause. The retrieve() finally block was\nunconditionally scheduling a GPU callback to call\nfinish_read_prefetched, causing a double-free of read locks.\n\nIntroduce retrieve_succeeded flag that is only set to True when the\nwith-block exits normally. The GPU callback is now conditional on\nthis flag, forming a defense-in-depth pair with the context manager\nre-raise fix.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix(storage_manager): re-raise exception in read_prefetched_results\n\nThe context manager was swallowing exceptions raised inside the\nwith-block (e.g. TypeError from _retrieve_loop). This caused the\ncaller to continue as if the retrieve succeeded, leading to a\ndouble-free of read locks: once by the context manager's finally\nclause, and again by the caller's GPU callback.\n\nAdd 'raise' to propagate the exception so callers correctly enter\ntheir except branch and skip the redundant finish_read_prefetched.\n\nThis change was originally in PR #2737 and is now combined into\nthis PR per reviewer's suggestion to streamline the merging process.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 20,
+                "insertions": 12,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.2,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 309,
+          "total_score": 376,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Jiayi Yao",
           "email": "82156730+YaoJiayi@users.noreply.github.com",
-          "total_commits": 4,
+          "total_commits": 5,
           "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 246,
+          "simple_commits": 2,
+          "commit_score": 294,
           "commits": [
             {
               "hash": "ecd69ea6",
@@ -9321,14 +9591,137 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "34df7674",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-13T21:46:50.000Z",
+              "message": "[Perf] Add stream priority in gpu context (#2728)\n\nadd stream priority\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 2,
+                "lines": 34,
+                "insertions": 33,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 61.5,
+          "avg_score": 58.8,
+          "significance_ratio": 0.6,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 294,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 281,
+          "commits": [
+            {
+              "hash": "36c3e8a6",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-03T01:03:14.000Z",
+              "message": "[feat] add free_locks api to MP mode (#2656)\n\n* [feat] add free_blocks api to explicitly free locked chunks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* move free boundaries to [start chunk, end chunk)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* update test cases\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* rename request name\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 353,
+                "insertions": 353,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f6360891",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-07T00:13:54.000Z",
+              "message": "[Feat] LMCache MP mode k8s operator (#2701)\n\n* [feat] add k8s opeartor for MP mode\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [misc] remove unncessary hostPID\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix false positive errors in precommit spellchecks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix lint\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* skip python tests and builds for operator only changes\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix flaky e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 77,
+                "lines": 10936,
+                "insertions": 10936,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4524210b",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-14T00:26:30.000Z",
+              "message": "[Docs][Operator] Fix observability metric descriptions (#2746)\n\n[Docs] Fix observability metric descriptions to match actual behavior\n\nUpdate Prometheus metric descriptions in L1 and StorageManager stats\nloggers and corresponding docs to accurately reflect what is measured.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 16,
+                "insertions": 8,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "730cb711",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-13T22:34:35.000Z",
+              "message": "[Doc] Add doc for LMCache MP mode operator (#2731)\n\n* [doc] add mp operator documentation\n\n* [doc] add operator to the index after merge\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 674,
+                "insertions": 674,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70.25,
           "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 246,
+          "total_score": 281,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9410,66 +9803,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 174,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 169,
-          "commits": [
-            {
-              "hash": "36c3e8a6",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-03-03T01:03:14.000Z",
-              "message": "[feat] add free_locks api to MP mode (#2656)\n\n* [feat] add free_blocks api to explicitly free locked chunks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* move free boundaries to [start chunk, end chunk)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* update test cases\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* rename request name\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 353,
-                "insertions": 353,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f6360891",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-03-07T00:13:54.000Z",
-              "message": "[Feat] LMCache MP mode k8s operator (#2701)\n\n* [feat] add k8s opeartor for MP mode\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [misc] remove unncessary hostPID\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix false positive errors in precommit spellchecks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix lint\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* skip python tests and builds for operator only changes\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix flaky e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 77,
-                "lines": 10936,
-                "insertions": 10936,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 84.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 169,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -9536,10 +9869,10 @@
         {
           "name": "Adeline",
           "email": "452803476@qq.com",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 72,
+          "simple_commits": 1,
+          "commit_score": 112,
           "commits": [
             {
               "hash": "038cd7c9",
@@ -9561,14 +9894,35 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "899ae648",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-03-13T05:38:35.000Z",
+              "message": "Fix[config]: replace store_true with BooleanOptionalAction for --l1-use-lazy (#2761)\n\n* fix(config): replace store_true with BooleanOptionalAction for --l1-use-lazy\n\nUse argparse.BooleanOptionalAction instead of action='store_true' so that\n--no-l1-use-lazy can be passed on the command line to explicitly disable\nlazy loading for L1 memory.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 8,
+                "insertions": 5,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 72,
-          "significance_ratio": 1,
+          "avg_score": 56,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 72,
+          "total_score": 112,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10890,10 +11244,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 34,
-          "significant_commits": 29,
+          "total_commits": 35,
+          "significant_commits": 30,
           "simple_commits": 5,
-          "commit_score": 2345,
+          "commit_score": 2395,
           "commits": [
             {
               "hash": "28e5bf7a",
@@ -11608,24 +11962,45 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "e4af8bc9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-03-13T02:37:49.000Z",
+              "message": "fix(server): guard finish_read_prefetched behind retrieve_succeeded flag (#2736)\n\n* fix(server): guard finish_read_prefetched behind retrieve_succeeded flag\n\nWhen _retrieve_loop raises an exception inside the with-block, the\nread_prefetched_results context manager already releases the read\nlocks in its finally clause. The retrieve() finally block was\nunconditionally scheduling a GPU callback to call\nfinish_read_prefetched, causing a double-free of read locks.\n\nIntroduce retrieve_succeeded flag that is only set to True when the\nwith-block exits normally. The GPU callback is now conditional on\nthis flag, forming a defense-in-depth pair with the context manager\nre-raise fix.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix(storage_manager): re-raise exception in read_prefetched_results\n\nThe context manager was swallowing exceptions raised inside the\nwith-block (e.g. TypeError from _retrieve_loop). This caused the\ncaller to continue as if the retrieve succeeded, leading to a\ndouble-free of read locks: once by the context manager's finally\nclause, and again by the caller's GPU callback.\n\nAdd 'raise' to propagate the exception so callers correctly enter\ntheir except branch and skip the redundant finish_read_prefetched.\n\nThis change was originally in PR #2737 and is now combined into\nthis PR per reviewer's suggestion to streamline the merging process.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 20,
+                "insertions": 12,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 68.97058823529412,
-          "significance_ratio": 0.8529411764705882,
+          "avg_score": 68.42857142857143,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2345,
+          "total_score": 2395,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Samuel Shen",
           "email": "102553648+sammshen@users.noreply.github.com",
-          "total_commits": 17,
-          "significant_commits": 9,
-          "simple_commits": 8,
-          "commit_score": 980,
+          "total_commits": 20,
+          "significant_commits": 11,
+          "simple_commits": 9,
+          "commit_score": 1149,
           "commits": [
             {
               "hash": "47181d7b",
@@ -11983,14 +12358,77 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "01b9cc4b",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-13T21:29:13.000Z",
+              "message": "[ci]: fix k3 comprehensive test nightly baseline retrieval (#2753)\n\nfix git glob\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 6,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e97bd217",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-13T09:38:32.000Z",
+              "message": "[Southbound]: Create a Native Protocol for MP and non-MP (#2642)\n\nRefactors the C++ Redis connector into a generic storage backend\nframework and adds an L2 adapter bridge for MP mode. Follows the\nplugin/auto-discovery pattern.\n\n- Generalize csrc/redis -> csrc/storage_backends with ConnectorBase<T>\n  template, IStorageConnector interface, and pybind macro\n- Add NativeConnectorL2Adapter bridging any native connector to L2\n- Add RESPL2AdapterConfig with self-registration (plugin pattern)\n- Refactor ConnectorClientBase as generic base for non-MP mode",
+              "stats": {
+                "files": 25,
+                "lines": 5316,
+                "insertions": 4017,
+                "deletions": 1299
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0a132d41",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-13T07:19:47.000Z",
+              "message": "[Correctness]: Fix the overlapping race condition for non-MP as well (#2706)\n\n* use the previous skip_n_prefix_tokens codepath\n\n* change the chunk size of both correctnes tesets\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 24,
+                "insertions": 21,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 57.64705882352941,
-          "significance_ratio": 0.5294117647058824,
+          "avg_score": 57.45,
+          "significance_ratio": 0.55,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 980,
+          "total_score": 1149,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -12697,6 +13135,252 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 363,
+          "commits": [
+            {
+              "hash": "2ff6f2bf",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-02-27T21:19:09.000Z",
+              "message": "[feat] add observability stack to MP mode (#2638)\n\n* [feat] adding storage manager listener and observability skeleton\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* remove local uv.lock and coding agent markdown\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [feat] add prometheus logger interface and prometheus controller\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* remove misleading no ops in eviction policy\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix code quality check and prometheus naming conflicts\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* refactor storage manager stats logger into stats logger per storage tier\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 26,
+                "lines": 1795,
+                "insertions": 1766,
+                "deletions": 29
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "36c3e8a6",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-03T01:03:14.000Z",
+              "message": "[feat] add free_locks api to MP mode (#2656)\n\n* [feat] add free_blocks api to explicitly free locked chunks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* move free boundaries to [start chunk, end chunk)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* update test cases\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* rename request name\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 353,
+                "insertions": 353,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f6360891",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-07T00:13:54.000Z",
+              "message": "[Feat] LMCache MP mode k8s operator (#2701)\n\n* [feat] add k8s opeartor for MP mode\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [misc] remove unncessary hostPID\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix false positive errors in precommit spellchecks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix lint\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* skip python tests and builds for operator only changes\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix flaky e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 77,
+                "lines": 10936,
+                "insertions": 10936,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4524210b",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-14T00:26:30.000Z",
+              "message": "[Docs][Operator] Fix observability metric descriptions (#2746)\n\n[Docs] Fix observability metric descriptions to match actual behavior\n\nUpdate Prometheus metric descriptions in L1 and StorageManager stats\nloggers and corresponding docs to accurately reflect what is measured.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 16,
+                "insertions": 8,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "730cb711",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-13T22:34:35.000Z",
+              "message": "[Doc] Add doc for LMCache MP mode operator (#2731)\n\n* [doc] add mp operator documentation\n\n* [doc] add operator to the index after merge\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 674,
+                "insertions": 674,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 72.6,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 363,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Jiayi Yao",
+          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "total_commits": 5,
+          "significant_commits": 3,
+          "simple_commits": 2,
+          "commit_score": 294,
+          "commits": [
+            {
+              "hash": "ecd69ea6",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-06T21:53:09.000Z",
+              "message": "[1/N] Support NIXL-based L2 storage in MP mode (#2664)\n\n* initial nixl support in mp\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* Update lmcache/v1/memory_management.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* fix misc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix wrong mem allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* not using paged allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add init code\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* address several comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add design doc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* use lazy import\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove get vm space\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 13,
+                "lines": 1824,
+                "insertions": 1771,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "284176a8",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-07T04:36:35.000Z",
+              "message": "[Misc] Improve nixl perf in lmcache mp (#2711)\n\n* add file size config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* revert some logs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 3,
+                "lines": 57,
+                "insertions": 46,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 52
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ffeb1050",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-09T21:24:58.000Z",
+              "message": "[Misc] Fix failing unit test in blend server (#2717)\n\nfix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b86d7f9a",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-09T17:13:59.000Z",
+              "message": "[Core] Add blend_server_v2 (#2677)\n\n* add tests and fix bugs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update comment\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add harder tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 9,
+                "lines": 3088,
+                "insertions": 3086,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "34df7674",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-13T21:46:50.000Z",
+              "message": "[Perf] Add stream priority in gpu context (#2728)\n\nadd stream priority\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 2,
+                "lines": 34,
+                "insertions": 33,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 58.8,
+          "significance_ratio": 0.6,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 294,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Martin Hickey",
           "email": "martin.hickey@ie.ibm.com",
           "total_commits": 5,
@@ -12964,189 +13648,6 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 251,
-          "commits": [
-            {
-              "hash": "2ff6f2bf",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-02-27T21:19:09.000Z",
-              "message": "[feat] add observability stack to MP mode (#2638)\n\n* [feat] adding storage manager listener and observability skeleton\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* remove local uv.lock and coding agent markdown\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [feat] add prometheus logger interface and prometheus controller\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* remove misleading no ops in eviction policy\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix code quality check and prometheus naming conflicts\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* refactor storage manager stats logger into stats logger per storage tier\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 26,
-                "lines": 1795,
-                "insertions": 1766,
-                "deletions": 29
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "36c3e8a6",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-03-03T01:03:14.000Z",
-              "message": "[feat] add free_locks api to MP mode (#2656)\n\n* [feat] add free_blocks api to explicitly free locked chunks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* move free boundaries to [start chunk, end chunk)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* update test cases\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* rename request name\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 353,
-                "insertions": 353,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f6360891",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-03-07T00:13:54.000Z",
-              "message": "[Feat] LMCache MP mode k8s operator (#2701)\n\n* [feat] add k8s opeartor for MP mode\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [misc] remove unncessary hostPID\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix false positive errors in precommit spellchecks\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix lint\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* skip python tests and builds for operator only changes\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix flaky e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix e2e tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 77,
-                "lines": 10936,
-                "insertions": 10936,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 83.66666666666667,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 251,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Jiayi Yao",
-          "email": "82156730+YaoJiayi@users.noreply.github.com",
-          "total_commits": 4,
-          "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 246,
-          "commits": [
-            {
-              "hash": "ecd69ea6",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-06T21:53:09.000Z",
-              "message": "[1/N] Support NIXL-based L2 storage in MP mode (#2664)\n\n* initial nixl support in mp\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* Update lmcache/v1/memory_management.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* fix misc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix wrong mem allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* not using paged allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add init code\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* address several comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add design doc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* use lazy import\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove get vm space\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
-              "stats": {
-                "files": 13,
-                "lines": 1824,
-                "insertions": 1771,
-                "deletions": 53
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "284176a8",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-07T04:36:35.000Z",
-              "message": "[Misc] Improve nixl perf in lmcache mp (#2711)\n\n* add file size config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* revert some logs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
-              "stats": {
-                "files": 3,
-                "lines": 57,
-                "insertions": 46,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 52
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ffeb1050",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-09T21:24:58.000Z",
-              "message": "[Misc] Fix failing unit test in blend server (#2717)\n\nfix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 10,
-                "total": 30
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "b86d7f9a",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-09T17:13:59.000Z",
-              "message": "[Core] Add blend_server_v2 (#2677)\n\n* add tests and fix bugs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update comment\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add harder tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
-              "stats": {
-                "files": 9,
-                "lines": 3088,
-                "insertions": 3086,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 61.5,
-          "significance_ratio": 0.75,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 246,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "hlin99",
           "email": "tony.lin@intel.com",
           "total_commits": 5,
@@ -13372,6 +13873,87 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Adeline",
+          "email": "452803476@qq.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 147,
+          "commits": [
+            {
+              "hash": "c90a25d3",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-02-15T04:57:33.000Z",
+              "message": "[Chore][Logging]: update logs to include vLLM computed tokens (#2552)\n\nchore(logging): update logs to include vLLM computed tokens and req_length\n\n- Use req_length for accurate token reporting\n- Include vLLM computed tokens in debug/info logs\n- Ensure need_to_allocate is non-negative with max()\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 7,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "038cd7c9",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-03-11T03:19:05.000Z",
+              "message": "fix(l1_manager): propagate extra_count through prefetch path to prevent premature eviction (#2725)\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
+              "stats": {
+                "files": 4,
+                "lines": 297,
+                "insertions": 289,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "899ae648",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-03-13T05:38:35.000Z",
+              "message": "Fix[config]: replace store_true with BooleanOptionalAction for --l1-use-lazy (#2761)\n\n* fix(config): replace store_true with BooleanOptionalAction for --l1-use-lazy\n\nUse argparse.BooleanOptionalAction instead of action='store_true' so that\n--no-l1-use-lazy can be passed on the command line to explicitly disable\nlazy loading for L1 memory.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 8,
+                "insertions": 5,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 49,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 147,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Ofer Kiselov Nahman",
           "email": "ofer.kiselovnahman@weka.io",
           "total_commits": 2,
@@ -13569,66 +14151,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 114,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Adeline",
-          "email": "452803476@qq.com",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 107,
-          "commits": [
-            {
-              "hash": "c90a25d3",
-              "author": "Adeline",
-              "email": "452803476@qq.com",
-              "date": "2026-02-15T04:57:33.000Z",
-              "message": "[Chore][Logging]: update logs to include vLLM computed tokens (#2552)\n\nchore(logging): update logs to include vLLM computed tokens and req_length\n\n- Use req_length for accurate token reporting\n- Include vLLM computed tokens in debug/info logs\n- Ensure need_to_allocate is non-negative with max()\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
-              "stats": {
-                "files": 1,
-                "lines": 10,
-                "insertions": 7,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "038cd7c9",
-              "author": "Adeline",
-              "email": "452803476@qq.com",
-              "date": "2026-03-11T03:19:05.000Z",
-              "message": "fix(l1_manager): propagate extra_count through prefetch path to prevent premature eviction (#2725)\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
-              "stats": {
-                "files": 4,
-                "lines": 297,
-                "insertions": 289,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 53.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 107,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -14266,13 +14788,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-03-13T00:30:08.389Z",
+    "analyzedAt": "2026-03-14T00:30:08.481Z",
     "daysBack": 2,
-    "totalCommits": 177,
+    "totalCommits": 185,
     "totalContributors": 31,
     "mergedFrom": {
-      "existing": 171,
-      "new": 12
+      "existing": 177,
+      "new": 14
     }
   }
 }
