@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-03-16T00:30:10.367Z",
-  "total_commits_analyzed": 190,
+  "last_updated": "2026-03-17T00:30:20.307Z",
+  "total_commits_analyzed": 194,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -5577,6 +5577,164 @@
           "tier": "T2",
           "tier_name": "Intermediate"
         }
+      ],
+      "2026-W12": [
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 91,
+          "commits": [
+            {
+              "hash": "9d413181",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-16T06:48:55.000Z",
+              "message": "feat(kv_cache): enable asymmetric store/retrieve storages in PD backend (#2509)\n\n* feat(kv_cache): enable asymmetric save/remote storage in PD backend\n\nRemove the restriction that prevented using `save_decode_cache` and\n`remote_backend` simultaneously in Prefill-Decode (PD) separation scenarios.\n\nThis change introduces `pd_retrieve_locations` and `pd_store_location`\nparameters to decouple the KV cache retrieval and storage logic. This\nenables an asymmetric cache flow:\n1. Prefill nodes transmit KV cache to Decode nodes via the PDBackend.\n2. Decode nodes write back their generated KV cache to a remote backend\n   for subsequent prefill reuse.\n3. In multi-turn dialogue scenarios, subsequent\n   prefill requests retrieve historical KV cache from the remote backend,\n   significantly increasing Prefix Cache hit rates and reducing TTFT\n\nThis decoupling provides greater flexibility for cross-instance cache\nmanagement and improves overall pipeline efficiency in distributed\ninference.\n\n[ Compute Layer ]\n    +----------------------+                 +------------------+\n    |  Prefill Node        | ===============>|  Decode Node     |\n    | (Hit-Remote & GenKV) |  (1) PDBackend  | (Hit-PD & GenKV) |\n    +-------^--------------+                 +-------+----------+\n            |                                   |\n            :                                   :\n------------|-----------------------------------|------------\n[ Storage Layer ]                               |\n            |                                   | (2) pd_store_location\n            | (3) pd_retrieve_locations         |     (Decode -> Pool)\n            |     (Pool -> Prefill)             |\n            |                                   v\n    +-------+--------------------------------------------+\n    |             Distributed Storage Pool               |\n    |   [Node A]    [Node B]    [Node C]    [Node D]     |\n    |   <=======  (Object Storage / NFS / DFS)  =======> |\n    +----------------------------------------------------+\n\nWorkflow:\n1. Prefill -> Decode (PDBackend): Initial KV transfer for the current turn.\n2. Decode -> Remote (Store): Decode saves updated KV to NFS for persistence.\n3. Remote -> Prefill (Retrieve): Next-turn prefill pulls from Remote,\n   drastically increasing Prefix Cache hit rate for multi-turn dialogues.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small refactor\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config examples for pd + remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename pd_retrieve_locations/pd_store_location to retrieve_locations/store_location\n\nRemove the PD-specific prefix to make the retrieve/store locations\ngeneric instead of being limited to PD only.\n\nThis breaks the PD-only feature restriction and allows the mechanism\nto be reused by other roles/components.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move retrieve & store locations from storage manger to cache engine\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add para validation check\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config: replace hardcoded IP with placeholder in decoder remote configs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* resolve conflicts and rebase to the latest\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add description in configurations.rst\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
+              "stats": {
+                "files": 8,
+                "lines": 160,
+                "insertions": 149,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 16,
+                "total": 91
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 91,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 91,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jungwoo Song",
+          "email": "37579681+bluayer@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 47,
+          "commits": [
+            {
+              "hash": "d6661f1c",
+              "author": "Jungwoo Song",
+              "email": "37579681+bluayer@users.noreply.github.com",
+              "date": "2026-03-16T05:57:00.000Z",
+              "message": "Support database option at Valkey connector  (#2307)\n\n* feat: support clsuter-mode numbered databases\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* docs: for numbered database\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* docs: add desc for cluster-mode and numbered databases\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n---------\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 45,
+                "insertions": 43,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 25,
+                "ai": 4,
+                "total": 47
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 47,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 47,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "85bd0cda",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-16T05:43:23.000Z",
+              "message": "update torch version aligned with vllm (#2782)\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "223b5797",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-03-16T03:46:33.000Z",
+              "message": "[MP][Bugfix] fix free error when memory_objs is empty (#2768)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 8,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T0",
+          "tier_name": "Elite"
+        }
       ]
     },
     "monthly": {
@@ -9933,6 +10091,108 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 4,
+          "significant_commits": 1,
+          "simple_commits": 3,
+          "commit_score": 180,
+          "commits": [
+            {
+              "hash": "9dc3ab71",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-02T05:37:35.000Z",
+              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 5,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ed738ca1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-03T23:28:27.000Z",
+              "message": "Refactor new_block_ids handling for robustness (#2536)\n\n* Refactor new_block_ids handling for robustness\n\n- Flatten nested lists in `new_block_ids` (e.g., [[1,2],[3,4]] or mixed [1,[2,3]])\n  while preserving single-level lists.\n- Improve robustness and readability of the code.\n- Behavior is unchanged for existing valid inputs; no logic is affected.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small change to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "dedea504",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-15T04:58:07.000Z",
+              "message": "Fix regression: restore config validate() call in config.py (#2690)\n\nFix regression: Add _update_config_from_env to namespace_extras\nThe _validate_config function at line 504 was not being called after\ncommit 3d88cee because the custom _update_config_from_env method was\nremoved from namespace_extras, causing the config to use the base\nimplementation which doesn't call validate().\n\nThis commit:\n- Adds _update_config_from_env back to namespace_extras\n- Updates the method to use the new _resolve_config_aliases signature\n- Adds a regression test to verify validate() is called\n\nThe fix ensures that validation logic (like auto-setting save_unfull_chunk\nfor PD mode) is properly executed when configs are updated from env vars.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 49,
+                "insertions": 48,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9d413181",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-16T06:48:55.000Z",
+              "message": "feat(kv_cache): enable asymmetric store/retrieve storages in PD backend (#2509)\n\n* feat(kv_cache): enable asymmetric save/remote storage in PD backend\n\nRemove the restriction that prevented using `save_decode_cache` and\n`remote_backend` simultaneously in Prefill-Decode (PD) separation scenarios.\n\nThis change introduces `pd_retrieve_locations` and `pd_store_location`\nparameters to decouple the KV cache retrieval and storage logic. This\nenables an asymmetric cache flow:\n1. Prefill nodes transmit KV cache to Decode nodes via the PDBackend.\n2. Decode nodes write back their generated KV cache to a remote backend\n   for subsequent prefill reuse.\n3. In multi-turn dialogue scenarios, subsequent\n   prefill requests retrieve historical KV cache from the remote backend,\n   significantly increasing Prefix Cache hit rates and reducing TTFT\n\nThis decoupling provides greater flexibility for cross-instance cache\nmanagement and improves overall pipeline efficiency in distributed\ninference.\n\n[ Compute Layer ]\n    +----------------------+                 +------------------+\n    |  Prefill Node        | ===============>|  Decode Node     |\n    | (Hit-Remote & GenKV) |  (1) PDBackend  | (Hit-PD & GenKV) |\n    +-------^--------------+                 +-------+----------+\n            |                                   |\n            :                                   :\n------------|-----------------------------------|------------\n[ Storage Layer ]                               |\n            |                                   | (2) pd_store_location\n            | (3) pd_retrieve_locations         |     (Decode -> Pool)\n            |     (Pool -> Prefill)             |\n            |                                   v\n    +-------+--------------------------------------------+\n    |             Distributed Storage Pool               |\n    |   [Node A]    [Node B]    [Node C]    [Node D]     |\n    |   <=======  (Object Storage / NFS / DFS)  =======> |\n    +----------------------------------------------------+\n\nWorkflow:\n1. Prefill -> Decode (PDBackend): Initial KV transfer for the current turn.\n2. Decode -> Remote (Store): Decode saves updated KV to NFS for persistence.\n3. Remote -> Prefill (Retrieve): Next-turn prefill pulls from Remote,\n   drastically increasing Prefix Cache hit rate for multi-turn dialogues.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small refactor\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config examples for pd + remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename pd_retrieve_locations/pd_store_location to retrieve_locations/store_location\n\nRemove the PD-specific prefix to make the retrieve/store locations\ngeneric instead of being limited to PD only.\n\nThis breaks the PD-only feature restriction and allows the mechanism\nto be reused by other roles/components.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move retrieve & store locations from storage manger to cache engine\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add para validation check\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config: replace hardcoded IP with placeholder in decoder remote configs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* resolve conflicts and rebase to the latest\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add description in configurations.rst\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
+              "stats": {
+                "files": 8,
+                "lines": 160,
+                "insertions": 149,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 16,
+                "total": 91
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 45,
+          "significance_ratio": 0.25,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 180,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Kuntai Du",
           "email": "kuntai@uchicago.edu",
           "total_commits": 3,
@@ -10134,93 +10394,12 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 3,
-          "significant_commits": 0,
-          "simple_commits": 3,
-          "commit_score": 89,
-          "commits": [
-            {
-              "hash": "9dc3ab71",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-02T05:37:35.000Z",
-              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 5,
-                "insertions": 5,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "ed738ca1",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-03T23:28:27.000Z",
-              "message": "Refactor new_block_ids handling for robustness (#2536)\n\n* Refactor new_block_ids handling for robustness\n\n- Flatten nested lists in `new_block_ids` (e.g., [[1,2],[3,4]] or mixed [1,[2,3]])\n  while preserving single-level lists.\n- Improve robustness and readability of the code.\n- Behavior is unchanged for existing valid inputs; no logic is affected.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small change to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 8,
-                "insertions": 7,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "dedea504",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-15T04:58:07.000Z",
-              "message": "Fix regression: restore config validate() call in config.py (#2690)\n\nFix regression: Add _update_config_from_env to namespace_extras\nThe _validate_config function at line 504 was not being called after\ncommit 3d88cee because the custom _update_config_from_env method was\nremoved from namespace_extras, causing the config to use the base\nimplementation which doesn't call validate().\n\nThis commit:\n- Adds _update_config_from_env back to namespace_extras\n- Updates the method to use the new _resolve_config_aliases signature\n- Adds a regression test to verify validate() is called\n\nThe fix ensures that validation logic (like auto-setting save_unfull_chunk\nfor PD mode) is properly executed when configs are updated from env vars.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 2,
-                "lines": 49,
-                "insertions": 48,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 4,
-                "total": 34
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 29.666666666666668,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 89,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 60,
+          "simple_commits": 1,
+          "commit_score": 80,
           "commits": [
             {
               "hash": "e2adfbf7",
@@ -10242,14 +10421,95 @@
                 "total": 60
               },
               "classification": "significant"
+            },
+            {
+              "hash": "85bd0cda",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-16T05:43:23.000Z",
+              "message": "update torch version aligned with vllm (#2782)\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 60,
-          "significance_ratio": 1,
+          "avg_score": 40,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 60,
+          "total_score": 80,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "bdf4c9a9",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-03-12T04:43:09.000Z",
+              "message": "[MP][optimize] optimize evict in lru policy (#2740)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 34,
+                "insertions": 21,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "223b5797",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-03-16T03:46:33.000Z",
+              "message": "[MP][Bugfix] fix free error when memory_objs is empty (#2768)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 8,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 34,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10293,43 +10553,43 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
+          "name": "Jungwoo Song",
+          "email": "37579681+bluayer@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 48,
+          "commit_score": 47,
           "commits": [
             {
-              "hash": "bdf4c9a9",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-03-12T04:43:09.000Z",
-              "message": "[MP][optimize] optimize evict in lru policy (#2740)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "hash": "d6661f1c",
+              "author": "Jungwoo Song",
+              "email": "37579681+bluayer@users.noreply.github.com",
+              "date": "2026-03-16T05:57:00.000Z",
+              "message": "Support database option at Valkey connector  (#2307)\n\n* feat: support clsuter-mode numbered databases\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* docs: for numbered database\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* docs: add desc for cluster-mode and numbered databases\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n---------\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>",
               "stats": {
-                "files": 2,
-                "lines": 34,
-                "insertions": 21,
-                "deletions": 13
+                "files": 3,
+                "lines": 45,
+                "insertions": 43,
+                "deletions": 2
               },
               "scores": {
                 "loc": 8,
                 "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 48
+                "keyword": 25,
+                "ai": 4,
+                "total": 47
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 48,
+          "avg_score": 47,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 48,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "total_score": 47,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "JianDan0212",
@@ -13693,135 +13953,12 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Martin Hickey",
-          "email": "martin.hickey@ie.ibm.com",
-          "total_commits": 5,
-          "significant_commits": 3,
-          "simple_commits": 2,
-          "commit_score": 286,
-          "commits": [
-            {
-              "hash": "97c777dc",
-              "author": "Martin Hickey",
-              "email": "martin.hickey@ie.ibm.com",
-              "date": "2026-01-20T10:28:41.000Z",
-              "message": "[BugFix] [vLLM] Fix KV events for LMCache connector (#2402)\n\nAdd lora_name to KV events\n\nThis is to comply with addition of the property in vLLM\nin https://github.com/vllm-project/vllm/pull/27577.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>",
-              "stats": {
-                "files": 2,
-                "lines": 8,
-                "insertions": 8,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "d44390fb",
-              "author": "Martin Hickey",
-              "email": "martin.hickey@ie.ibm.com",
-              "date": "2026-01-28T10:45:52.000Z",
-              "message": "[SGLang] Enable KV events for SGLang (#2441)\n\n* [SGLang] Enable KV events for SGLang\n\nThis commit add an API to enable SGLang to retrieve KV events\nas generated by LMCache.\n\nThe KV Events help KV-cache-aware routing make more efficient decisions,\nbased on not only KV caches in GPU, but also KV caches in CPU and local disk.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add docs\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>",
-              "stats": {
-                "files": 2,
-                "lines": 166,
-                "insertions": 129,
-                "deletions": 37
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "bf900049",
-              "author": "Martin Hickey",
-              "email": "martin.hickey@ie.ibm.com",
-              "date": "2026-02-17T04:47:55.000Z",
-              "message": "[Core]: Enable remote connectors to be loaded on the fly (#2225)\n\n* Enable remote connectors to be loaded on the fly\n\nThis commit adds the hooks to load c ustom remote connectors\nin a plug and play fashion.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/storage_backend/connector/__init__.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/storage_backend/connector/__init__.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Fix formatting\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add documentation\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Change config to be external storage plugins\n\nThe reason is that it aligns better with runtime and\nstorage plugin configurations. Makes it more consistent.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add unit tests\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
-              "stats": {
-                "files": 6,
-                "lines": 843,
-                "insertions": 827,
-                "deletions": 16
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e0a7be67",
-              "author": "Martin Hickey",
-              "email": "martin.hickey@ie.ibm.com",
-              "date": "2026-02-20T18:07:40.000Z",
-              "message": "[Core] Add enum for EngineType (#2555)\n\n* Add enum for EngineType\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add EngineType enum to updatyed code\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>",
-              "stats": {
-                "files": 8,
-                "lines": 61,
-                "insertions": 38,
-                "deletions": 23
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "db8d63c7",
-              "author": "Martin Hickey",
-              "email": "martin.hickey@ie.ibm.com",
-              "date": "2026-03-04T01:51:56.000Z",
-              "message": "[CI] Fix mypy errors (#2672)\n\nFix mypy errors\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>",
-              "stats": {
-                "files": 1,
-                "lines": 1,
-                "insertions": 1,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 5,
-                "total": 25
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 57.2,
-          "significance_ratio": 0.6,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 286,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 6,
+          "total_commits": 7,
           "significant_commits": 1,
-          "simple_commits": 5,
-          "commit_score": 273,
+          "simple_commits": 6,
+          "commit_score": 293,
           "commits": [
             {
               "hash": "b6529d7e",
@@ -13948,14 +14085,158 @@
                 "total": 48
               },
               "classification": "simple"
+            },
+            {
+              "hash": "223b5797",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-03-16T03:46:33.000Z",
+              "message": "[MP][Bugfix] fix free error when memory_objs is empty (#2768)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 8,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 45.5,
-          "significance_ratio": 0.16666666666666666,
+          "avg_score": 41.857142857142854,
+          "significance_ratio": 0.14285714285714285,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 273,
+          "total_score": 293,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Martin Hickey",
+          "email": "martin.hickey@ie.ibm.com",
+          "total_commits": 5,
+          "significant_commits": 3,
+          "simple_commits": 2,
+          "commit_score": 286,
+          "commits": [
+            {
+              "hash": "97c777dc",
+              "author": "Martin Hickey",
+              "email": "martin.hickey@ie.ibm.com",
+              "date": "2026-01-20T10:28:41.000Z",
+              "message": "[BugFix] [vLLM] Fix KV events for LMCache connector (#2402)\n\nAdd lora_name to KV events\n\nThis is to comply with addition of the property in vLLM\nin https://github.com/vllm-project/vllm/pull/27577.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 2,
+                "lines": 8,
+                "insertions": 8,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "d44390fb",
+              "author": "Martin Hickey",
+              "email": "martin.hickey@ie.ibm.com",
+              "date": "2026-01-28T10:45:52.000Z",
+              "message": "[SGLang] Enable KV events for SGLang (#2441)\n\n* [SGLang] Enable KV events for SGLang\n\nThis commit add an API to enable SGLang to retrieve KV events\nas generated by LMCache.\n\nThe KV Events help KV-cache-aware routing make more efficient decisions,\nbased on not only KV caches in GPU, but also KV caches in CPU and local disk.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add docs\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 2,
+                "lines": 166,
+                "insertions": 129,
+                "deletions": 37
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "bf900049",
+              "author": "Martin Hickey",
+              "email": "martin.hickey@ie.ibm.com",
+              "date": "2026-02-17T04:47:55.000Z",
+              "message": "[Core]: Enable remote connectors to be loaded on the fly (#2225)\n\n* Enable remote connectors to be loaded on the fly\n\nThis commit adds the hooks to load c ustom remote connectors\nin a plug and play fashion.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/storage_backend/connector/__init__.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Update lmcache/v1/storage_backend/connector/__init__.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Fix formatting\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add documentation\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Change config to be external storage plugins\n\nThe reason is that it aligns better with runtime and\nstorage plugin configurations. Makes it more consistent.\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add unit tests\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 6,
+                "lines": 843,
+                "insertions": 827,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e0a7be67",
+              "author": "Martin Hickey",
+              "email": "martin.hickey@ie.ibm.com",
+              "date": "2026-02-20T18:07:40.000Z",
+              "message": "[Core] Add enum for EngineType (#2555)\n\n* Add enum for EngineType\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n* Add EngineType enum to updatyed code\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>\n\n---------\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 8,
+                "lines": 61,
+                "insertions": 38,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "db8d63c7",
+              "author": "Martin Hickey",
+              "email": "martin.hickey@ie.ibm.com",
+              "date": "2026-03-04T01:51:56.000Z",
+              "message": "[CI] Fix mypy errors (#2672)\n\nFix mypy errors\n\nSigned-off-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 57.2,
+          "significance_ratio": 0.6,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 286,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -14085,10 +14366,10 @@
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 4,
+          "total_commits": 5,
           "significant_commits": 2,
-          "simple_commits": 2,
-          "commit_score": 193,
+          "simple_commits": 3,
+          "commit_score": 213,
           "commits": [
             {
               "hash": "d63d084e",
@@ -14173,14 +14454,137 @@
                 "total": 60
               },
               "classification": "significant"
+            },
+            {
+              "hash": "85bd0cda",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-16T05:43:23.000Z",
+              "message": "update torch version aligned with vllm (#2782)\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 48.25,
-          "significance_ratio": 0.5,
+          "avg_score": 42.6,
+          "significance_ratio": 0.4,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 193,
+          "total_score": 213,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 4,
+          "significant_commits": 1,
+          "simple_commits": 3,
+          "commit_score": 180,
+          "commits": [
+            {
+              "hash": "9dc3ab71",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-02T05:37:35.000Z",
+              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 5,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ed738ca1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-03T23:28:27.000Z",
+              "message": "Refactor new_block_ids handling for robustness (#2536)\n\n* Refactor new_block_ids handling for robustness\n\n- Flatten nested lists in `new_block_ids` (e.g., [[1,2],[3,4]] or mixed [1,[2,3]])\n  while preserving single-level lists.\n- Improve robustness and readability of the code.\n- Behavior is unchanged for existing valid inputs; no logic is affected.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small change to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "dedea504",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-15T04:58:07.000Z",
+              "message": "Fix regression: restore config validate() call in config.py (#2690)\n\nFix regression: Add _update_config_from_env to namespace_extras\nThe _validate_config function at line 504 was not being called after\ncommit 3d88cee because the custom _update_config_from_env method was\nremoved from namespace_extras, causing the config to use the base\nimplementation which doesn't call validate().\n\nThis commit:\n- Adds _update_config_from_env back to namespace_extras\n- Updates the method to use the new _resolve_config_aliases signature\n- Adds a regression test to verify validate() is called\n\nThe fix ensures that validation logic (like auto-setting save_unfull_chunk\nfor PD mode) is properly executed when configs are updated from env vars.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 49,
+                "insertions": 48,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9d413181",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-16T06:48:55.000Z",
+              "message": "feat(kv_cache): enable asymmetric store/retrieve storages in PD backend (#2509)\n\n* feat(kv_cache): enable asymmetric save/remote storage in PD backend\n\nRemove the restriction that prevented using `save_decode_cache` and\n`remote_backend` simultaneously in Prefill-Decode (PD) separation scenarios.\n\nThis change introduces `pd_retrieve_locations` and `pd_store_location`\nparameters to decouple the KV cache retrieval and storage logic. This\nenables an asymmetric cache flow:\n1. Prefill nodes transmit KV cache to Decode nodes via the PDBackend.\n2. Decode nodes write back their generated KV cache to a remote backend\n   for subsequent prefill reuse.\n3. In multi-turn dialogue scenarios, subsequent\n   prefill requests retrieve historical KV cache from the remote backend,\n   significantly increasing Prefix Cache hit rates and reducing TTFT\n\nThis decoupling provides greater flexibility for cross-instance cache\nmanagement and improves overall pipeline efficiency in distributed\ninference.\n\n[ Compute Layer ]\n    +----------------------+                 +------------------+\n    |  Prefill Node        | ===============>|  Decode Node     |\n    | (Hit-Remote & GenKV) |  (1) PDBackend  | (Hit-PD & GenKV) |\n    +-------^--------------+                 +-------+----------+\n            |                                   |\n            :                                   :\n------------|-----------------------------------|------------\n[ Storage Layer ]                               |\n            |                                   | (2) pd_store_location\n            | (3) pd_retrieve_locations         |     (Decode -> Pool)\n            |     (Pool -> Prefill)             |\n            |                                   v\n    +-------+--------------------------------------------+\n    |             Distributed Storage Pool               |\n    |   [Node A]    [Node B]    [Node C]    [Node D]     |\n    |   <=======  (Object Storage / NFS / DFS)  =======> |\n    +----------------------------------------------------+\n\nWorkflow:\n1. Prefill -> Decode (PDBackend): Initial KV transfer for the current turn.\n2. Decode -> Remote (Store): Decode saves updated KV to NFS for persistence.\n3. Remote -> Prefill (Retrieve): Next-turn prefill pulls from Remote,\n   drastically increasing Prefix Cache hit rate for multi-turn dialogues.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small refactor\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config examples for pd + remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename pd_retrieve_locations/pd_store_location to retrieve_locations/store_location\n\nRemove the PD-specific prefix to make the retrieve/store locations\ngeneric instead of being limited to PD only.\n\nThis breaks the PD-only feature restriction and allows the mechanism\nto be reused by other roles/components.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move retrieve & store locations from storage manger to cache engine\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add para validation check\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config: replace hardcoded IP with placeholder in decoder remote configs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* resolve conflicts and rebase to the latest\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add description in configurations.rst\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
+              "stats": {
+                "files": 8,
+                "lines": 160,
+                "insertions": 149,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 16,
+                "total": 91
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 45,
+          "significance_ratio": 0.25,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 180,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -14587,87 +14991,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 3,
-          "significant_commits": 0,
-          "simple_commits": 3,
-          "commit_score": 89,
-          "commits": [
-            {
-              "hash": "9dc3ab71",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-02T05:37:35.000Z",
-              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 5,
-                "insertions": 5,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "ed738ca1",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-03T23:28:27.000Z",
-              "message": "Refactor new_block_ids handling for robustness (#2536)\n\n* Refactor new_block_ids handling for robustness\n\n- Flatten nested lists in `new_block_ids` (e.g., [[1,2],[3,4]] or mixed [1,[2,3]])\n  while preserving single-level lists.\n- Improve robustness and readability of the code.\n- Behavior is unchanged for existing valid inputs; no logic is affected.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small change to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 8,
-                "insertions": 7,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "dedea504",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-15T04:58:07.000Z",
-              "message": "Fix regression: restore config validate() call in config.py (#2690)\n\nFix regression: Add _update_config_from_env to namespace_extras\nThe _validate_config function at line 504 was not being called after\ncommit 3d88cee because the custom _update_config_from_env method was\nremoved from namespace_extras, causing the config to use the base\nimplementation which doesn't call validate().\n\nThis commit:\n- Adds _update_config_from_env back to namespace_extras\n- Updates the method to use the new _resolve_config_aliases signature\n- Adds a regression test to verify validate() is called\n\nThe fix ensures that validation logic (like auto-setting save_unfull_chunk\nfor PD mode) is properly executed when configs are updated from env vars.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 2,
-                "lines": 49,
-                "insertions": 48,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 4,
-                "total": 34
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 29.666666666666668,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 89,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "tunglinwood",
           "email": "113751333+tunglinwood@users.noreply.github.com",
           "total_commits": 2,
@@ -14765,6 +15088,45 @@
           "total_score": 77,
           "tier": "T2",
           "tier_name": "Intermediate"
+        },
+        {
+          "name": "Jungwoo Song",
+          "email": "37579681+bluayer@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 47,
+          "commits": [
+            {
+              "hash": "d6661f1c",
+              "author": "Jungwoo Song",
+              "email": "37579681+bluayer@users.noreply.github.com",
+              "date": "2026-03-16T05:57:00.000Z",
+              "message": "Support database option at Valkey connector  (#2307)\n\n* feat: support clsuter-mode numbered databases\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* docs: for numbered database\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* docs: add desc for cluster-mode and numbered databases\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n---------\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 45,
+                "insertions": 43,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 25,
+                "ai": 4,
+                "total": 47
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 47,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 47,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "JianDan0212",
@@ -15121,13 +15483,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-03-16T00:30:10.367Z",
+    "analyzedAt": "2026-03-17T00:30:20.307Z",
     "daysBack": 2,
-    "totalCommits": 190,
-    "totalContributors": 31,
+    "totalCommits": 194,
+    "totalContributors": 32,
     "mergedFrom": {
-      "existing": 185,
-      "new": 5
+      "existing": 190,
+      "new": 9
     }
   }
 }
