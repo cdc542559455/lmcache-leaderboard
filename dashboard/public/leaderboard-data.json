@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-03-21T00:30:21.879Z",
-  "total_commits_analyzed": 209,
+  "last_updated": "2026-03-22T00:30:05.697Z",
+  "total_commits_analyzed": 210,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -5580,6 +5580,108 @@
       ],
       "2026-W12": [
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 4,
+          "significant_commits": 2,
+          "simple_commits": 2,
+          "commit_score": 230,
+          "commits": [
+            {
+              "hash": "9d413181",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-16T06:48:55.000Z",
+              "message": "feat(kv_cache): enable asymmetric store/retrieve storages in PD backend (#2509)\n\n* feat(kv_cache): enable asymmetric save/remote storage in PD backend\n\nRemove the restriction that prevented using `save_decode_cache` and\n`remote_backend` simultaneously in Prefill-Decode (PD) separation scenarios.\n\nThis change introduces `pd_retrieve_locations` and `pd_store_location`\nparameters to decouple the KV cache retrieval and storage logic. This\nenables an asymmetric cache flow:\n1. Prefill nodes transmit KV cache to Decode nodes via the PDBackend.\n2. Decode nodes write back their generated KV cache to a remote backend\n   for subsequent prefill reuse.\n3. In multi-turn dialogue scenarios, subsequent\n   prefill requests retrieve historical KV cache from the remote backend,\n   significantly increasing Prefix Cache hit rates and reducing TTFT\n\nThis decoupling provides greater flexibility for cross-instance cache\nmanagement and improves overall pipeline efficiency in distributed\ninference.\n\n[ Compute Layer ]\n    +----------------------+                 +------------------+\n    |  Prefill Node        | ===============>|  Decode Node     |\n    | (Hit-Remote & GenKV) |  (1) PDBackend  | (Hit-PD & GenKV) |\n    +-------^--------------+                 +-------+----------+\n            |                                   |\n            :                                   :\n------------|-----------------------------------|------------\n[ Storage Layer ]                               |\n            |                                   | (2) pd_store_location\n            | (3) pd_retrieve_locations         |     (Decode -> Pool)\n            |     (Pool -> Prefill)             |\n            |                                   v\n    +-------+--------------------------------------------+\n    |             Distributed Storage Pool               |\n    |   [Node A]    [Node B]    [Node C]    [Node D]     |\n    |   <=======  (Object Storage / NFS / DFS)  =======> |\n    +----------------------------------------------------+\n\nWorkflow:\n1. Prefill -> Decode (PDBackend): Initial KV transfer for the current turn.\n2. Decode -> Remote (Store): Decode saves updated KV to NFS for persistence.\n3. Remote -> Prefill (Retrieve): Next-turn prefill pulls from Remote,\n   drastically increasing Prefix Cache hit rate for multi-turn dialogues.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small refactor\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config examples for pd + remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename pd_retrieve_locations/pd_store_location to retrieve_locations/store_location\n\nRemove the PD-specific prefix to make the retrieve/store locations\ngeneric instead of being limited to PD only.\n\nThis breaks the PD-only feature restriction and allows the mechanism\nto be reused by other roles/components.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move retrieve & store locations from storage manger to cache engine\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add para validation check\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config: replace hardcoded IP with placeholder in decoder remote configs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* resolve conflicts and rebase to the latest\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add description in configurations.rst\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
+              "stats": {
+                "files": 8,
+                "lines": 160,
+                "insertions": 149,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 16,
+                "total": 91
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "82b0d8b9",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-19T12:50:52.000Z",
+              "message": "Refactor KV cache shape/dtype extraction for robustness (#2537)\n\n* Refactor KV cache shape/dtype extraction for robustness\n\n- Support `kv_cache` as a tuple or list of tensors (e.g., HPU K/V caches).\n- Skip None tensors when extracting shape and dtype.\n- Preserve original behavior for single tensor inputs.\n- Improves robustness and maintainability without changing existing logic.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* changes to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add comments for possible kv_cache types on non cuda alike devices\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline the logic and clear comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 23,
+                "insertions": 21,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3f1c00f1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-19T03:02:55.000Z",
+              "message": "fix: add None check before stream synchronization (#2810)\n\nPrevent AttributeError by ensuring the stream object is not None before calling stream.synchronize().\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "44061191",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-21T14:19:04.000Z",
+              "message": "[Platform]: Add Intel Gaudi (HPU) Support (#2822)\n\n* feat: add Intel Gaudi (HPU) support\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 249,
+                "insertions": 249,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 24,
+                "total": 89
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 57.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 230,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "102553648+sammshen@users.noreply.github.com",
           "total_commits": 4,
@@ -5738,87 +5840,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 174,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 3,
-          "significant_commits": 1,
-          "simple_commits": 2,
-          "commit_score": 141,
-          "commits": [
-            {
-              "hash": "9d413181",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-16T06:48:55.000Z",
-              "message": "feat(kv_cache): enable asymmetric store/retrieve storages in PD backend (#2509)\n\n* feat(kv_cache): enable asymmetric save/remote storage in PD backend\n\nRemove the restriction that prevented using `save_decode_cache` and\n`remote_backend` simultaneously in Prefill-Decode (PD) separation scenarios.\n\nThis change introduces `pd_retrieve_locations` and `pd_store_location`\nparameters to decouple the KV cache retrieval and storage logic. This\nenables an asymmetric cache flow:\n1. Prefill nodes transmit KV cache to Decode nodes via the PDBackend.\n2. Decode nodes write back their generated KV cache to a remote backend\n   for subsequent prefill reuse.\n3. In multi-turn dialogue scenarios, subsequent\n   prefill requests retrieve historical KV cache from the remote backend,\n   significantly increasing Prefix Cache hit rates and reducing TTFT\n\nThis decoupling provides greater flexibility for cross-instance cache\nmanagement and improves overall pipeline efficiency in distributed\ninference.\n\n[ Compute Layer ]\n    +----------------------+                 +------------------+\n    |  Prefill Node        | ===============>|  Decode Node     |\n    | (Hit-Remote & GenKV) |  (1) PDBackend  | (Hit-PD & GenKV) |\n    +-------^--------------+                 +-------+----------+\n            |                                   |\n            :                                   :\n------------|-----------------------------------|------------\n[ Storage Layer ]                               |\n            |                                   | (2) pd_store_location\n            | (3) pd_retrieve_locations         |     (Decode -> Pool)\n            |     (Pool -> Prefill)             |\n            |                                   v\n    +-------+--------------------------------------------+\n    |             Distributed Storage Pool               |\n    |   [Node A]    [Node B]    [Node C]    [Node D]     |\n    |   <=======  (Object Storage / NFS / DFS)  =======> |\n    +----------------------------------------------------+\n\nWorkflow:\n1. Prefill -> Decode (PDBackend): Initial KV transfer for the current turn.\n2. Decode -> Remote (Store): Decode saves updated KV to NFS for persistence.\n3. Remote -> Prefill (Retrieve): Next-turn prefill pulls from Remote,\n   drastically increasing Prefix Cache hit rate for multi-turn dialogues.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small refactor\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config examples for pd + remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename pd_retrieve_locations/pd_store_location to retrieve_locations/store_location\n\nRemove the PD-specific prefix to make the retrieve/store locations\ngeneric instead of being limited to PD only.\n\nThis breaks the PD-only feature restriction and allows the mechanism\nto be reused by other roles/components.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move retrieve & store locations from storage manger to cache engine\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add para validation check\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config: replace hardcoded IP with placeholder in decoder remote configs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* resolve conflicts and rebase to the latest\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add description in configurations.rst\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
-              "stats": {
-                "files": 8,
-                "lines": 160,
-                "insertions": 149,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 16,
-                "total": 91
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "82b0d8b9",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-19T12:50:52.000Z",
-              "message": "Refactor KV cache shape/dtype extraction for robustness (#2537)\n\n* Refactor KV cache shape/dtype extraction for robustness\n\n- Support `kv_cache` as a tuple or list of tensors (e.g., HPU K/V caches).\n- Skip None tensors when extracting shape and dtype.\n- Preserve original behavior for single tensor inputs.\n- Improves robustness and maintainability without changing existing logic.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* changes to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add comments for possible kv_cache types on non cuda alike devices\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline the logic and clear comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 23,
-                "insertions": 21,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 2,
-                "total": 27
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "3f1c00f1",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-19T03:02:55.000Z",
-              "message": "fix: add None check before stream synchronization (#2810)\n\nPrevent AttributeError by ensuring the stream object is not None before calling stream.synchronize().\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 2,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 0,
-                "total": 23
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 47,
-          "significance_ratio": 0.3333333333333333,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 141,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -10601,237 +10622,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Jiayi Yao",
-          "email": "82156730+YaoJiayi@users.noreply.github.com",
-          "total_commits": 5,
-          "significant_commits": 3,
-          "simple_commits": 2,
-          "commit_score": 294,
-          "commits": [
-            {
-              "hash": "ecd69ea6",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-06T21:53:09.000Z",
-              "message": "[1/N] Support NIXL-based L2 storage in MP mode (#2664)\n\n* initial nixl support in mp\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* Update lmcache/v1/memory_management.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* fix misc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix wrong mem allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* not using paged allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add init code\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* address several comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add design doc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* use lazy import\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove get vm space\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
-              "stats": {
-                "files": 13,
-                "lines": 1824,
-                "insertions": 1771,
-                "deletions": 53
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "284176a8",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-07T04:36:35.000Z",
-              "message": "[Misc] Improve nixl perf in lmcache mp (#2711)\n\n* add file size config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* revert some logs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
-              "stats": {
-                "files": 3,
-                "lines": 57,
-                "insertions": 46,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 52
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ffeb1050",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-09T21:24:58.000Z",
-              "message": "[Misc] Fix failing unit test in blend server (#2717)\n\nfix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 10,
-                "total": 30
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "b86d7f9a",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-09T17:13:59.000Z",
-              "message": "[Core] Add blend_server_v2 (#2677)\n\n* add tests and fix bugs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update comment\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add harder tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
-              "stats": {
-                "files": 9,
-                "lines": 3088,
-                "insertions": 3086,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "34df7674",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-03-13T21:46:50.000Z",
-              "message": "[Perf] Add stream priority in gpu context (#2728)\n\nadd stream priority\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
-              "stats": {
-                "files": 2,
-                "lines": 34,
-                "insertions": 33,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 48
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 58.8,
-          "significance_ratio": 0.6,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 294,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Kuntai Du",
-          "email": "kuntai@uchicago.edu",
-          "total_commits": 4,
-          "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 261,
-          "commits": [
-            {
-              "hash": "46997941",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-03-03T18:48:14.000Z",
-              "message": "Tell agent to write documentations (#2655)\n\n* edit agents.md to make it shorter\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 38,
-                "insertions": 38,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "79edf9eb",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-03-05T01:22:21.000Z",
-              "message": "Augmenting `contributing.md` (#2654)\n\n* use logger.exception instead of logger.error to log stack trace\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* remove exception from logger.exception\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* augment contributing.md\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* revert non-CONTRIBUTING.md changes\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* make dco happy\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* trigger CI again --- git is failing\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 2,
-                "lines": 123,
-                "insertions": 121,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "40ac3e1e",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-03-12T07:23:33.000Z",
-              "message": "[RFC] Design of LMCache CLI (#2748)\n\ninitial design of LMCache CLI\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 310,
-                "insertions": 310,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 12,
-                "ai": 20,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "76ae806f",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-03-18T04:50:41.000Z",
-              "message": "[CLI] Implement initial framework of LMCache CLI (#2775)\n\n* initial commit --- implemented the CLI system\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* add sphinx doc\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* make linting happy\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix linter and clarify that url must be http\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* add formatter-handler separation, and make handler registration behavior aligned\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* update design doc\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix comments from Yihua\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* make sure that --format and --output are independent\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* clean up logic on getting the handler\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* avoid letting people add output args by themselves\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* use logging.exception\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
-              "stats": {
-                "files": 16,
-                "lines": 1411,
-                "insertions": 1397,
-                "deletions": 14
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 65.25,
-          "significance_ratio": 0.75,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 261,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 6,
-          "significant_commits": 1,
+          "total_commits": 7,
+          "significant_commits": 2,
           "simple_commits": 5,
-          "commit_score": 230,
+          "commit_score": 319,
           "commits": [
             {
               "hash": "9dc3ab71",
@@ -10958,14 +10754,260 @@
                 "total": 23
               },
               "classification": "simple"
+            },
+            {
+              "hash": "44061191",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-21T14:19:04.000Z",
+              "message": "[Platform]: Add Intel Gaudi (HPU) Support (#2822)\n\n* feat: add Intel Gaudi (HPU) support\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 249,
+                "insertions": 249,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 24,
+                "total": 89
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 38.333333333333336,
-          "significance_ratio": 0.16666666666666666,
+          "avg_score": 45.57142857142857,
+          "significance_ratio": 0.2857142857142857,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 230,
+          "total_score": 319,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jiayi Yao",
+          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "total_commits": 5,
+          "significant_commits": 3,
+          "simple_commits": 2,
+          "commit_score": 294,
+          "commits": [
+            {
+              "hash": "ecd69ea6",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-06T21:53:09.000Z",
+              "message": "[1/N] Support NIXL-based L2 storage in MP mode (#2664)\n\n* initial nixl support in mp\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* Update lmcache/v1/memory_management.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* Update lmcache/v1/distributed/l2_adapters/nixl_store_l2_adapter.py\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\n\n* fix misc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix wrong mem allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* not using paged allocator\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add init code\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* address several comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add design doc\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* use lazy import\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove get vm space\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\nSigned-off-by: Jiayi Yao <82156730+YaoJiayi@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 13,
+                "lines": 1824,
+                "insertions": 1771,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "284176a8",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-07T04:36:35.000Z",
+              "message": "[Misc] Improve nixl perf in lmcache mp (#2711)\n\n* add file size config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* revert some logs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 3,
+                "lines": 57,
+                "insertions": 46,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 52
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ffeb1050",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-09T21:24:58.000Z",
+              "message": "[Misc] Fix failing unit test in blend server (#2717)\n\nfix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b86d7f9a",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-09T17:13:59.000Z",
+              "message": "[Core] Add blend_server_v2 (#2677)\n\n* add tests and fix bugs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update comment\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* add harder tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix minor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix tests\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 9,
+                "lines": 3088,
+                "insertions": 3086,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "34df7674",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-03-13T21:46:50.000Z",
+              "message": "[Perf] Add stream priority in gpu context (#2728)\n\nadd stream priority\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 2,
+                "lines": 34,
+                "insertions": 33,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 58.8,
+          "significance_ratio": 0.6,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 294,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Kuntai Du",
+          "email": "kuntai@uchicago.edu",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 261,
+          "commits": [
+            {
+              "hash": "46997941",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-03-03T18:48:14.000Z",
+              "message": "Tell agent to write documentations (#2655)\n\n* edit agents.md to make it shorter\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nSigned-off-by: Kuntai Du <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 38,
+                "insertions": 38,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "79edf9eb",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-03-05T01:22:21.000Z",
+              "message": "Augmenting `contributing.md` (#2654)\n\n* use logger.exception instead of logger.error to log stack trace\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* remove exception from logger.exception\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* augment contributing.md\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* revert non-CONTRIBUTING.md changes\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* make dco happy\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* trigger CI again --- git is failing\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 123,
+                "insertions": 121,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "40ac3e1e",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-03-12T07:23:33.000Z",
+              "message": "[RFC] Design of LMCache CLI (#2748)\n\ninitial design of LMCache CLI\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 310,
+                "insertions": 310,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "76ae806f",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-03-18T04:50:41.000Z",
+              "message": "[CLI] Implement initial framework of LMCache CLI (#2775)\n\n* initial commit --- implemented the CLI system\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* add sphinx doc\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* make linting happy\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix linter and clarify that url must be http\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* add formatter-handler separation, and make handler registration behavior aligned\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* update design doc\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix comments from Yihua\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* make sure that --format and --output are independent\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* clean up logic on getting the handler\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* avoid letting people add output args by themselves\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* use logging.exception\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 16,
+                "lines": 1411,
+                "insertions": 1397,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65.25,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 261,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -15003,6 +15045,171 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 7,
+          "significant_commits": 2,
+          "simple_commits": 5,
+          "commit_score": 319,
+          "commits": [
+            {
+              "hash": "9dc3ab71",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-02T05:37:35.000Z",
+              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 5,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ed738ca1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-03T23:28:27.000Z",
+              "message": "Refactor new_block_ids handling for robustness (#2536)\n\n* Refactor new_block_ids handling for robustness\n\n- Flatten nested lists in `new_block_ids` (e.g., [[1,2],[3,4]] or mixed [1,[2,3]])\n  while preserving single-level lists.\n- Improve robustness and readability of the code.\n- Behavior is unchanged for existing valid inputs; no logic is affected.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small change to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "dedea504",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-15T04:58:07.000Z",
+              "message": "Fix regression: restore config validate() call in config.py (#2690)\n\nFix regression: Add _update_config_from_env to namespace_extras\nThe _validate_config function at line 504 was not being called after\ncommit 3d88cee because the custom _update_config_from_env method was\nremoved from namespace_extras, causing the config to use the base\nimplementation which doesn't call validate().\n\nThis commit:\n- Adds _update_config_from_env back to namespace_extras\n- Updates the method to use the new _resolve_config_aliases signature\n- Adds a regression test to verify validate() is called\n\nThe fix ensures that validation logic (like auto-setting save_unfull_chunk\nfor PD mode) is properly executed when configs are updated from env vars.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 49,
+                "insertions": 48,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9d413181",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-16T06:48:55.000Z",
+              "message": "feat(kv_cache): enable asymmetric store/retrieve storages in PD backend (#2509)\n\n* feat(kv_cache): enable asymmetric save/remote storage in PD backend\n\nRemove the restriction that prevented using `save_decode_cache` and\n`remote_backend` simultaneously in Prefill-Decode (PD) separation scenarios.\n\nThis change introduces `pd_retrieve_locations` and `pd_store_location`\nparameters to decouple the KV cache retrieval and storage logic. This\nenables an asymmetric cache flow:\n1. Prefill nodes transmit KV cache to Decode nodes via the PDBackend.\n2. Decode nodes write back their generated KV cache to a remote backend\n   for subsequent prefill reuse.\n3. In multi-turn dialogue scenarios, subsequent\n   prefill requests retrieve historical KV cache from the remote backend,\n   significantly increasing Prefix Cache hit rates and reducing TTFT\n\nThis decoupling provides greater flexibility for cross-instance cache\nmanagement and improves overall pipeline efficiency in distributed\ninference.\n\n[ Compute Layer ]\n    +----------------------+                 +------------------+\n    |  Prefill Node        | ===============>|  Decode Node     |\n    | (Hit-Remote & GenKV) |  (1) PDBackend  | (Hit-PD & GenKV) |\n    +-------^--------------+                 +-------+----------+\n            |                                   |\n            :                                   :\n------------|-----------------------------------|------------\n[ Storage Layer ]                               |\n            |                                   | (2) pd_store_location\n            | (3) pd_retrieve_locations         |     (Decode -> Pool)\n            |     (Pool -> Prefill)             |\n            |                                   v\n    +-------+--------------------------------------------+\n    |             Distributed Storage Pool               |\n    |   [Node A]    [Node B]    [Node C]    [Node D]     |\n    |   <=======  (Object Storage / NFS / DFS)  =======> |\n    +----------------------------------------------------+\n\nWorkflow:\n1. Prefill -> Decode (PDBackend): Initial KV transfer for the current turn.\n2. Decode -> Remote (Store): Decode saves updated KV to NFS for persistence.\n3. Remote -> Prefill (Retrieve): Next-turn prefill pulls from Remote,\n   drastically increasing Prefix Cache hit rate for multi-turn dialogues.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small refactor\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config examples for pd + remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename pd_retrieve_locations/pd_store_location to retrieve_locations/store_location\n\nRemove the PD-specific prefix to make the retrieve/store locations\ngeneric instead of being limited to PD only.\n\nThis breaks the PD-only feature restriction and allows the mechanism\nto be reused by other roles/components.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move retrieve & store locations from storage manger to cache engine\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add para validation check\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config: replace hardcoded IP with placeholder in decoder remote configs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* resolve conflicts and rebase to the latest\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add description in configurations.rst\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
+              "stats": {
+                "files": 8,
+                "lines": 160,
+                "insertions": 149,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 16,
+                "total": 91
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "82b0d8b9",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-19T12:50:52.000Z",
+              "message": "Refactor KV cache shape/dtype extraction for robustness (#2537)\n\n* Refactor KV cache shape/dtype extraction for robustness\n\n- Support `kv_cache` as a tuple or list of tensors (e.g., HPU K/V caches).\n- Skip None tensors when extracting shape and dtype.\n- Preserve original behavior for single tensor inputs.\n- Improves robustness and maintainability without changing existing logic.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* changes to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add comments for possible kv_cache types on non cuda alike devices\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline the logic and clear comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 23,
+                "insertions": 21,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3f1c00f1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-19T03:02:55.000Z",
+              "message": "fix: add None check before stream synchronization (#2810)\n\nPrevent AttributeError by ensuring the stream object is not None before calling stream.synchronize().\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "44061191",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-03-21T14:19:04.000Z",
+              "message": "[Platform]: Add Intel Gaudi (HPU) Support (#2822)\n\n* feat: add Intel Gaudi (HPU) support\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 249,
+                "insertions": 249,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 24,
+                "total": 89
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 45.57142857142857,
+          "significance_ratio": 0.2857142857142857,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 319,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Jiayi Yao",
           "email": "82156730+YaoJiayi@users.noreply.github.com",
           "total_commits": 5,
@@ -15368,150 +15575,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 235,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 6,
-          "significant_commits": 1,
-          "simple_commits": 5,
-          "commit_score": 230,
-          "commits": [
-            {
-              "hash": "9dc3ab71",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-02T05:37:35.000Z",
-              "message": "Fixes #2556: Assertion when remote backend is enabled without local CPU backend (#2557)\n\nRemove redundant role check for remote backend CPU assertion\n\nThe scheduler never reaches this code path, so the\n`metadata.role != \"scheduler\"` condition is unnecessary.\n\nRemove the redundant role check and always assert the\npresence of a local CPU backend when remote_url is set.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 5,
-                "insertions": 5,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "ed738ca1",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-03T23:28:27.000Z",
-              "message": "Refactor new_block_ids handling for robustness (#2536)\n\n* Refactor new_block_ids handling for robustness\n\n- Flatten nested lists in `new_block_ids` (e.g., [[1,2],[3,4]] or mixed [1,[2,3]])\n  while preserving single-level lists.\n- Improve robustness and readability of the code.\n- Behavior is unchanged for existing valid inputs; no logic is affected.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small change to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 8,
-                "insertions": 7,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "dedea504",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-15T04:58:07.000Z",
-              "message": "Fix regression: restore config validate() call in config.py (#2690)\n\nFix regression: Add _update_config_from_env to namespace_extras\nThe _validate_config function at line 504 was not being called after\ncommit 3d88cee because the custom _update_config_from_env method was\nremoved from namespace_extras, causing the config to use the base\nimplementation which doesn't call validate().\n\nThis commit:\n- Adds _update_config_from_env back to namespace_extras\n- Updates the method to use the new _resolve_config_aliases signature\n- Adds a regression test to verify validate() is called\n\nThe fix ensures that validation logic (like auto-setting save_unfull_chunk\nfor PD mode) is properly executed when configs are updated from env vars.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 2,
-                "lines": 49,
-                "insertions": 48,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 4,
-                "total": 34
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "9d413181",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-16T06:48:55.000Z",
-              "message": "feat(kv_cache): enable asymmetric store/retrieve storages in PD backend (#2509)\n\n* feat(kv_cache): enable asymmetric save/remote storage in PD backend\n\nRemove the restriction that prevented using `save_decode_cache` and\n`remote_backend` simultaneously in Prefill-Decode (PD) separation scenarios.\n\nThis change introduces `pd_retrieve_locations` and `pd_store_location`\nparameters to decouple the KV cache retrieval and storage logic. This\nenables an asymmetric cache flow:\n1. Prefill nodes transmit KV cache to Decode nodes via the PDBackend.\n2. Decode nodes write back their generated KV cache to a remote backend\n   for subsequent prefill reuse.\n3. In multi-turn dialogue scenarios, subsequent\n   prefill requests retrieve historical KV cache from the remote backend,\n   significantly increasing Prefix Cache hit rates and reducing TTFT\n\nThis decoupling provides greater flexibility for cross-instance cache\nmanagement and improves overall pipeline efficiency in distributed\ninference.\n\n[ Compute Layer ]\n    +----------------------+                 +------------------+\n    |  Prefill Node        | ===============>|  Decode Node     |\n    | (Hit-Remote & GenKV) |  (1) PDBackend  | (Hit-PD & GenKV) |\n    +-------^--------------+                 +-------+----------+\n            |                                   |\n            :                                   :\n------------|-----------------------------------|------------\n[ Storage Layer ]                               |\n            |                                   | (2) pd_store_location\n            | (3) pd_retrieve_locations         |     (Decode -> Pool)\n            |     (Pool -> Prefill)             |\n            |                                   v\n    +-------+--------------------------------------------+\n    |             Distributed Storage Pool               |\n    |   [Node A]    [Node B]    [Node C]    [Node D]     |\n    |   <=======  (Object Storage / NFS / DFS)  =======> |\n    +----------------------------------------------------+\n\nWorkflow:\n1. Prefill -> Decode (PDBackend): Initial KV transfer for the current turn.\n2. Decode -> Remote (Store): Decode saves updated KV to NFS for persistence.\n3. Remote -> Prefill (Retrieve): Next-turn prefill pulls from Remote,\n   drastically increasing Prefix Cache hit rate for multi-turn dialogues.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small refactor\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config examples for pd + remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename pd_retrieve_locations/pd_store_location to retrieve_locations/store_location\n\nRemove the PD-specific prefix to make the retrieve/store locations\ngeneric instead of being limited to PD only.\n\nThis breaks the PD-only feature restriction and allows the mechanism\nto be reused by other roles/components.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move retrieve & store locations from storage manger to cache engine\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add para validation check\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* config: replace hardcoded IP with placeholder in decoder remote configs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* resolve conflicts and rebase to the latest\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add description in configurations.rst\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
-              "stats": {
-                "files": 8,
-                "lines": 160,
-                "insertions": 149,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 16,
-                "total": 91
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "82b0d8b9",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-19T12:50:52.000Z",
-              "message": "Refactor KV cache shape/dtype extraction for robustness (#2537)\n\n* Refactor KV cache shape/dtype extraction for robustness\n\n- Support `kv_cache` as a tuple or list of tensors (e.g., HPU K/V caches).\n- Skip None tensors when extracting shape and dtype.\n- Preserve original behavior for single tensor inputs.\n- Improves robustness and maintainability without changing existing logic.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* changes to address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add comments for possible kv_cache types on non cuda alike devices\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline the logic and clear comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 23,
-                "insertions": 21,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 2,
-                "total": 27
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "3f1c00f1",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-03-19T03:02:55.000Z",
-              "message": "fix: add None check before stream synchronization (#2810)\n\nPrevent AttributeError by ensuring the stream object is not None before calling stream.synchronize().\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 2,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 0,
-                "total": 23
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 38.333333333333336,
-          "significance_ratio": 0.16666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 230,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -16572,13 +16635,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-03-21T00:30:21.879Z",
+    "analyzedAt": "2026-03-22T00:30:05.697Z",
     "daysBack": 2,
-    "totalCommits": 209,
+    "totalCommits": 210,
     "totalContributors": 33,
     "mergedFrom": {
-      "existing": 207,
-      "new": 11
+      "existing": 209,
+      "new": 3
     }
   }
 }
