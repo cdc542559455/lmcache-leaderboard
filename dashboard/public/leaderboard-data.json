@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-03-27T00:30:32.875Z",
-  "total_commits_analyzed": 238,
+  "last_updated": "2026-03-28T00:30:38.568Z",
+  "total_commits_analyzed": 248,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -6305,12 +6305,114 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 311,
+          "commits": [
+            {
+              "hash": "bb2043ea",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-23T22:33:48.000Z",
+              "message": "[CLI] Implement `lmcache describe kvcache` subcommand (#2825)\n\n* [CLI] Implement `lmcache describe kvcache` subcommand\n\nAdd the `describe` command (Phase 1 of the CLI roadmap) that fetches\nstatus data from the HTTP server's /api/status endpoint and presents\nit as a formatted table or JSON.\n\nChanges:\n- New `DescribeCommand` in lmcache/cli/commands/describe.py\n- Register command in commands/__init__.py\n- Change default HTTP port from 8000 to 8080\n- Use `__class__.__name__` for engine_type in report_status()\n- Design doc: docs/design/cli/describe.md\n- Unit tests: tests/cli/test_describe.py (18 tests)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* feat: add per-model KV cache layout to describe kvcache\n\nEnrich report_status() to include kv_cache_layout per GPU context\n(num_layers, block_size, hidden_dim_size, dtype, is_mla, num_blocks).\nDisplay each registered model as its own section in describe kvcache.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* feat: enhance describe kvcache with GPU KV format, L2 adapters, and list sections\n\n- Add GPU KV shape (symbolic + concrete), attention backend, and format\n  name to per-model sections via new utils (get_gpu_kv_shape_description,\n  get_attention_backend, get_concrete_gpu_kv_shape) and GPUCacheContext\n  properties\n- Add L2 adapter sections showing type, health, backend, stored objects,\n  size/capacity, and pool utilization\n- Add list section support to Metrics framework (add_list_section) so\n  models and L2 adapters render as JSON arrays instead of keyed dicts\n- Refactor describe.py into KVCacheDescriber class with composable\n  section builders (add_overview, add_l1_storage, add_models,\n  add_l2_adapters) decoupled from DescribeCommand\n- Update design doc with new output examples and server-side changes\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix: update test_describe.py for renamed public helpers and list sections\n\nRenamed _normalize_url, _fetch_json, _safe_get, _fmt_used_gb to their\npublic counterparts. Updated model section assertions to use the new\n\"models\" list format from add_list_section.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* docs: add user-facing documentation for lmcache describe kvcache\n\nAdd describe command to CLI reference with terminal and JSON output\nexamples, argument reference, per-model GPU KV shape details, L2\nadapter sections, and GPU KV shape abbreviation table.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 1419,
+                "insertions": 1366,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b67c6e90",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-25T00:25:52.000Z",
+              "message": "[CI]: use job-level path filtering so skipped tests pass required checks (#2855)\n\nfix: update CI workflow configurations\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 177,
+                "insertions": 141,
+                "deletions": 36
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 17,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "64c3ba8e",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-27T19:15:56.000Z",
+              "message": "[MP][Observability][3/3] Migrate MP server telemetry to EventBus, unify config (#2806)\n\n* [MP][Observability] Migrate MP server telemetry to EventBus, unify config, remove old telemetry system\n\n- Migrate 6 telemetry call sites in MPCacheEngine (store/retrieve/lookup)\n  from log_telemetry(make_start_event/make_end_event) to EventBus.publish(Event)\n- Add MPServerLoggingSubscriber for debug logging of all MP server events\n- Add MPServerTracingSubscriber for OTel spans from START/END event pairs\n- Replace PrometheusConfig + TelemetryConfig with unified ObservabilityConfig\n  (--disable-observability, --disable-metrics, --disable-logging,\n   --enable-tracing, --otlp-endpoint, --prometheus-port)\n- Move OTLP endpoint from env var to config option (--otlp-endpoint)\n- Wire init_otel_tracing() when tracing is enabled\n- Conditionally register subscribers based on config toggles\n- Add __all__ exports to all subscriber __init__.py files\n- Delete entire telemetry/ subdirectory and its tests\n- Rename REFACT_DESIGN.md to DESIGN.md (architecture doc only)\n- Split event metadata contracts into EVENTS.md\n- Update README.md with full config reference\n- Update METRICS.md with MP server event types\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Observability] Fix mypy: update test files to use ObservabilityConfig\n\nReplace DEFAULT_PROMETHEUS_CONFIG / prometheus_config with\nDEFAULT_OBSERVABILITY_CONFIG / obs_config in test_cache_server,\ntest_blend_server, and test_blend_server_v2.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add back the lost logging subscribers\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add event bus queue size configurable from cli args\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Observability] Address PR review comments\n\n- Move OTel LoggingHandler into init_logger so all loggers get OTel\n  forwarding automatically; remove duplicated setup from 3 subscriber\n  files. Log level now respects LMCACHE_LOG_LEVEL instead of being\n  hardcoded to DEBUG.\n- Add global observability flag (is_observability_enabled) to skip\n  launch_host_func calls in CUDA streams when observability is disabled.\n- Validate that --enable-tracing requires --otlp-endpoint at startup.\n- Create AGENTS.override.md for mp_observability module.\n- Rewrite observability docs to match new EventBus CLI args and\n  document all three modes (metrics, logging, tracing).\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Observability] Add publish_on_stream util to EventBus\n\nExtract the repeated pattern of checking observability + calling\nlaunch_host_func into EventBus.publish_on_stream(stream, event).\nCallers no longer need to manually check the flag before scheduling\nhost functions on CUDA streams.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [CLI] Update server command for new observability config API\n\nReplace removed add_prometheus_args/add_telemetry_args with\nadd_observability_args, and parse_args_to_prometheus_config/\nparse_args_to_telemetry_config with parse_args_to_observability_config.\nUpdate test assertions to match new kwarg name (obs_config).\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Core] Block id based kernel for MP mode (#2838)\n\n* add new kernels and unit tests for mp mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* change the block ids to be on gpu tensor\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 44,
+                "lines": 4129,
+                "insertions": 1349,
+                "deletions": 2780
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6e02b914",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-27T01:28:19.000Z",
+              "message": "[Fix][Operator] Add privileged mode and nvidia runtime for GPU visibility (#2749)\n\n* [Operator] Add privileged mode and nvidia runtime for GPU visibility\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 51,
+                "insertions": 36,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 77.75,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 311,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "102553648+sammshen@users.noreply.github.com",
-          "total_commits": 4,
+          "total_commits": 6,
           "significant_commits": 2,
-          "simple_commits": 2,
-          "commit_score": 232,
+          "simple_commits": 4,
+          "commit_score": 302,
           "commits": [
             {
               "hash": "dcff86a5",
@@ -6395,24 +6497,66 @@
                 "total": 38
               },
               "classification": "simple"
+            },
+            {
+              "hash": "bed02afe",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-27T02:08:18.000Z",
+              "message": "[Chore][CI]: chmod +x scripts in k3 test entrypoints  (#2886)\n\n[CI]: chmod +x scripts in k3 test entrypoints to prevent permission errors\n\nGit stores file permissions at add-time. If a contributor forgets\nchmod +x before staging a new .sh file, CI gets \"Permission denied\".\nAdding chmod +x in each run.sh entrypoint as a runtime safeguard.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 12,
+                "insertions": 12,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "85a333ad",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-27T01:17:55.000Z",
+              "message": "[Docs] Stale MP CLI and Flags (#2882)\n\nfix incorrect defaults, flags, and entry points in MP documentation\n\n- --http-port default is 8080, not 8000\n- --l2-store-policy choice is 'skip_l1', not 'noop'\n- blend_server.py renamed to blend_server_v2.py\n- use 'lmcache server' consistently instead of 'python3 -m' for non-Docker examples\n- reorder server variants table to list recommended entry point first",
+              "stats": {
+                "files": 7,
+                "lines": 47,
+                "insertions": 25,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 58,
-          "significance_ratio": 0.5,
+          "avg_score": 50.333333333333336,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 232,
+          "total_score": 302,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 3,
+          "total_commits": 6,
           "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 190,
+          "simple_commits": 4,
+          "commit_score": 269,
           "commits": [
             {
               "hash": "66439d30",
@@ -6476,84 +6620,87 @@
                 "total": 42
               },
               "classification": "simple"
-            }
-          ],
-          "avg_score": 63.333333333333336,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 190,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 182,
-          "commits": [
-            {
-              "hash": "bb2043ea",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-03-23T22:33:48.000Z",
-              "message": "[CLI] Implement `lmcache describe kvcache` subcommand (#2825)\n\n* [CLI] Implement `lmcache describe kvcache` subcommand\n\nAdd the `describe` command (Phase 1 of the CLI roadmap) that fetches\nstatus data from the HTTP server's /api/status endpoint and presents\nit as a formatted table or JSON.\n\nChanges:\n- New `DescribeCommand` in lmcache/cli/commands/describe.py\n- Register command in commands/__init__.py\n- Change default HTTP port from 8000 to 8080\n- Use `__class__.__name__` for engine_type in report_status()\n- Design doc: docs/design/cli/describe.md\n- Unit tests: tests/cli/test_describe.py (18 tests)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* feat: add per-model KV cache layout to describe kvcache\n\nEnrich report_status() to include kv_cache_layout per GPU context\n(num_layers, block_size, hidden_dim_size, dtype, is_mla, num_blocks).\nDisplay each registered model as its own section in describe kvcache.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* feat: enhance describe kvcache with GPU KV format, L2 adapters, and list sections\n\n- Add GPU KV shape (symbolic + concrete), attention backend, and format\n  name to per-model sections via new utils (get_gpu_kv_shape_description,\n  get_attention_backend, get_concrete_gpu_kv_shape) and GPUCacheContext\n  properties\n- Add L2 adapter sections showing type, health, backend, stored objects,\n  size/capacity, and pool utilization\n- Add list section support to Metrics framework (add_list_section) so\n  models and L2 adapters render as JSON arrays instead of keyed dicts\n- Refactor describe.py into KVCacheDescriber class with composable\n  section builders (add_overview, add_l1_storage, add_models,\n  add_l2_adapters) decoupled from DescribeCommand\n- Update design doc with new output examples and server-side changes\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* fix: update test_describe.py for renamed public helpers and list sections\n\nRenamed _normalize_url, _fetch_json, _safe_get, _fmt_used_gb to their\npublic counterparts. Updated model section assertions to use the new\n\"models\" list format from add_list_section.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* docs: add user-facing documentation for lmcache describe kvcache\n\nAdd describe command to CLI reference with terminal and JSON output\nexamples, argument reference, per-model GPU KV shape details, L2\nadapter sections, and GPU KV shape abbreviation table.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 12,
-                "lines": 1419,
-                "insertions": 1366,
-                "deletions": 53
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
             },
             {
-              "hash": "b67c6e90",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-03-25T00:25:52.000Z",
-              "message": "[CI]: use job-level path filtering so skipped tests pass required checks (#2855)\n\nfix: update CI workflow configurations\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "hash": "1934377c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-28T00:23:31.000Z",
+              "message": "[fix] add missing request type in blend server (#2894)\n\nadd missing request type in blend server\n\nSigned-off-by: deng451e <838677410@qq.com>",
               "stats": {
-                "files": 5,
-                "lines": 177,
-                "insertions": 141,
-                "deletions": 36
+                "files": 1,
+                "lines": 2,
+                "insertions": 2,
+                "deletions": 0
               },
               "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 17,
-                "total": 82
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
               },
-              "classification": "significant"
+              "classification": "simple"
+            },
+            {
+              "hash": "07ec1f93",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-27T23:17:47.000Z",
+              "message": "[Build] add SM120 for wheel build (#2873)\n\nadd SM120 for wheel build\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "175cd17a",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-27T22:44:34.000Z",
+              "message": "[doc] update installation compatibility doc (#2868)\n\nupdate installation compatibility doc\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 47,
+                "insertions": 35,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 91,
-          "significance_ratio": 1,
+          "avg_score": 44.833333333333336,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 182,
+          "total_score": 269,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 174,
+          "commit_score": 249,
           "commits": [
             {
               "hash": "cbc9dd8c",
@@ -6596,14 +6743,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "d48d488f",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-03-27T23:27:31.000Z",
+              "message": "[1/2] L2 CI: End to End Performance (#2884)\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 414,
+                "insertions": 412,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
+                "total": 75
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 87,
+          "avg_score": 83,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 174,
+          "total_score": 249,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6664,6 +6832,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 161,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 159,
+          "commits": [
+            {
+              "hash": "18e7a008",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-26T02:47:21.000Z",
+              "message": "Add hipFile support for AIS (AMD Infinity Storage) storage (#2799)\n\nfeat(gds): Add hipFile support for AIS (AMD Infinity Storage) storage\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 11,
+                "lines": 209,
+                "insertions": 184,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4ba991e2",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-27T06:03:33.000Z",
+              "message": "feat(gds): add multipath KV-cache offloading support (#2817)\n\nParse comma-separated gds_path and select path per GPU worker\nusing by_gpu sharding (device_id % num_paths), matching the\napproach in NIXL PR #2418. This distributes KV cache I/O across\nmultiple NVMe drives to increase aggregate bandwidth.\n\nSingle-path configs work unchanged.\n\nIncludes tests (TestGdsMultiPath) and documentation updates.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 4,
+                "lines": 454,
+                "insertions": 405,
+                "deletions": 49
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 79.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 159,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -6802,45 +7030,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Boris Glimcher",
-          "email": "36732377+glimchb@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 82,
-          "commits": [
-            {
-              "hash": "18e7a008",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-03-26T02:47:21.000Z",
-              "message": "Add hipFile support for AIS (AMD Infinity Storage) storage (#2799)\n\nfeat(gds): Add hipFile support for AIS (AMD Infinity Storage) storage\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
-              "stats": {
-                "files": 11,
-                "lines": 209,
-                "insertions": 184,
-                "deletions": 25
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 82,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 82,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7019,6 +7208,45 @@
                 "lines": 8,
                 "insertions": 8,
                 "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 23,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 23,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Jason Yao",
+          "email": "libevent@yeah.net",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 23,
+          "commits": [
+            {
+              "hash": "8d8c908f",
+              "author": "Jason Yao",
+              "email": "libevent@yeah.net",
+              "date": "2026-03-27T06:14:53.000Z",
+              "message": "fix: add missing lock protection for LRU cache policy  (#2860)\n\nfix: add missing lock protection for LRU cache policy in LocalDiskBackend\n\nSigned-off-by: syaojun <libevent@yeah.net>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
               },
               "scores": {
                 "loc": 3,
@@ -10968,10 +11196,10 @@
         {
           "name": "Samuel Shen",
           "email": "102553648+sammshen@users.noreply.github.com",
-          "total_commits": 15,
+          "total_commits": 17,
           "significant_commits": 10,
-          "simple_commits": 5,
-          "commit_score": 919,
+          "simple_commits": 7,
+          "commit_score": 989,
           "commits": [
             {
               "hash": "e133932c",
@@ -11287,14 +11515,56 @@
                 "total": 38
               },
               "classification": "simple"
+            },
+            {
+              "hash": "bed02afe",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-27T02:08:18.000Z",
+              "message": "[Chore][CI]: chmod +x scripts in k3 test entrypoints  (#2886)\n\n[CI]: chmod +x scripts in k3 test entrypoints to prevent permission errors\n\nGit stores file permissions at add-time. If a contributor forgets\nchmod +x before staging a new .sh file, CI gets \"Permission denied\".\nAdding chmod +x in each run.sh entrypoint as a runtime safeguard.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 12,
+                "insertions": 12,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "85a333ad",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-27T01:17:55.000Z",
+              "message": "[Docs] Stale MP CLI and Flags (#2882)\n\nfix incorrect defaults, flags, and entry points in MP documentation\n\n- --http-port default is 8080, not 8000\n- --l2-store-policy choice is 'skip_l1', not 'noop'\n- blend_server.py renamed to blend_server_v2.py\n- use 'lmcache server' consistently instead of 'python3 -m' for non-Docker examples\n- reorder server variants table to list recommended entry point first",
+              "stats": {
+                "files": 7,
+                "lines": 47,
+                "insertions": 25,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 61.266666666666666,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 58.1764705882353,
+          "significance_ratio": 0.5882352941176471,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 919,
+          "total_score": 989,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11571,10 +11841,10 @@
         {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
-          "total_commits": 8,
-          "significant_commits": 7,
-          "simple_commits": 1,
-          "commit_score": 637,
+          "total_commits": 10,
+          "significant_commits": 8,
+          "simple_commits": 2,
+          "commit_score": 766,
           "commits": [
             {
               "hash": "36c3e8a6",
@@ -11743,14 +12013,56 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "64c3ba8e",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-27T19:15:56.000Z",
+              "message": "[MP][Observability][3/3] Migrate MP server telemetry to EventBus, unify config (#2806)\n\n* [MP][Observability] Migrate MP server telemetry to EventBus, unify config, remove old telemetry system\n\n- Migrate 6 telemetry call sites in MPCacheEngine (store/retrieve/lookup)\n  from log_telemetry(make_start_event/make_end_event) to EventBus.publish(Event)\n- Add MPServerLoggingSubscriber for debug logging of all MP server events\n- Add MPServerTracingSubscriber for OTel spans from START/END event pairs\n- Replace PrometheusConfig + TelemetryConfig with unified ObservabilityConfig\n  (--disable-observability, --disable-metrics, --disable-logging,\n   --enable-tracing, --otlp-endpoint, --prometheus-port)\n- Move OTLP endpoint from env var to config option (--otlp-endpoint)\n- Wire init_otel_tracing() when tracing is enabled\n- Conditionally register subscribers based on config toggles\n- Add __all__ exports to all subscriber __init__.py files\n- Delete entire telemetry/ subdirectory and its tests\n- Rename REFACT_DESIGN.md to DESIGN.md (architecture doc only)\n- Split event metadata contracts into EVENTS.md\n- Update README.md with full config reference\n- Update METRICS.md with MP server event types\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Observability] Fix mypy: update test files to use ObservabilityConfig\n\nReplace DEFAULT_PROMETHEUS_CONFIG / prometheus_config with\nDEFAULT_OBSERVABILITY_CONFIG / obs_config in test_cache_server,\ntest_blend_server, and test_blend_server_v2.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add back the lost logging subscribers\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add event bus queue size configurable from cli args\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Observability] Address PR review comments\n\n- Move OTel LoggingHandler into init_logger so all loggers get OTel\n  forwarding automatically; remove duplicated setup from 3 subscriber\n  files. Log level now respects LMCACHE_LOG_LEVEL instead of being\n  hardcoded to DEBUG.\n- Add global observability flag (is_observability_enabled) to skip\n  launch_host_func calls in CUDA streams when observability is disabled.\n- Validate that --enable-tracing requires --otlp-endpoint at startup.\n- Create AGENTS.override.md for mp_observability module.\n- Rewrite observability docs to match new EventBus CLI args and\n  document all three modes (metrics, logging, tracing).\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Observability] Add publish_on_stream util to EventBus\n\nExtract the repeated pattern of checking observability + calling\nlaunch_host_func into EventBus.publish_on_stream(stream, event).\nCallers no longer need to manually check the flag before scheduling\nhost functions on CUDA streams.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [CLI] Update server command for new observability config API\n\nReplace removed add_prometheus_args/add_telemetry_args with\nadd_observability_args, and parse_args_to_prometheus_config/\nparse_args_to_telemetry_config with parse_args_to_observability_config.\nUpdate test assertions to match new kwarg name (obs_config).\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Core] Block id based kernel for MP mode (#2838)\n\n* add new kernels and unit tests for mp mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* change the block ids to be on gpu tensor\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 44,
+                "lines": 4129,
+                "insertions": 1349,
+                "deletions": 2780
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6e02b914",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-27T01:28:19.000Z",
+              "message": "[Fix][Operator] Add privileged mode and nvidia runtime for GPU visibility (#2749)\n\n* [Operator] Add privileged mode and nvidia runtime for GPU visibility\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 51,
+                "insertions": 36,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 79.625,
-          "significance_ratio": 0.875,
+          "avg_score": 76.6,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 637,
+          "total_score": 766,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11901,10 +12213,10 @@
         {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
-          "total_commits": 4,
-          "significant_commits": 4,
+          "total_commits": 5,
+          "significant_commits": 5,
           "simple_commits": 0,
-          "commit_score": 334,
+          "commit_score": 409,
           "commits": [
             {
               "hash": "dd8e6f27",
@@ -11989,14 +12301,221 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "d48d488f",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-03-27T23:27:31.000Z",
+              "message": "[1/2] L2 CI: End to End Performance (#2884)\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 414,
+                "insertions": 412,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
+                "total": 75
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 83.5,
+          "avg_score": 81.8,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 334,
+          "total_score": 409,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 8,
+          "significant_commits": 3,
+          "simple_commits": 5,
+          "commit_score": 349,
+          "commits": [
+            {
+              "hash": "e2adfbf7",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-07T02:44:40.000Z",
+              "message": "[Bugfix] Fix memory leak in asynchronous mode (#2559)\n\n* fix memory leak bug for async mode\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* Fix async pinned memory unpin\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Samuel Shen <slshen@uchicago.edu>",
+              "stats": {
+                "files": 5,
+                "lines": 42,
+                "insertions": 37,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 60
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "85bd0cda",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-16T05:43:23.000Z",
+              "message": "update torch version aligned with vllm (#2782)\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "66439d30",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-24T02:33:37.000Z",
+              "message": "[CI] Add GitHub Action to auto-sync torch version with vLLM (#2796)\n\nadd sync torch GHA workflow\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 146,
+                "insertions": 146,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 14,
+                "total": 61
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e2cc19b6",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-25T08:12:13.000Z",
+              "message": "[CLI]  lmcache query engine subcommand (#2846)\n\n* Add query-command.md\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* lmcache query CLI Command Design\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* add cli query commnad\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* split query module\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* decompose query engine module\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* cli lmcache query engine\n\nSigned-off-by: lmcache-ci-bot <lmcache-ci@example.com>\n\n* Fix command syntax in CLI usage example\n\nUpdated CLI documentation to reflect changes in command syntax.\n\nSigned-off-by: deng451e <57919305+deng451e@users.noreply.github.com>\n\n* Update query command documentation for lmcache\n\nSigned-off-by: deng451e <57919305+deng451e@users.noreply.github.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>\nSigned-off-by: lmcache-ci-bot <lmcache-ci@example.com>\nSigned-off-by: deng451e <57919305+deng451e@users.noreply.github.com>\nCo-authored-by: lmcache-ci-bot <lmcache-ci@example.com>",
+              "stats": {
+                "files": 11,
+                "lines": 1297,
+                "insertions": 1296,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4c15a242",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-26T23:32:03.000Z",
+              "message": "[CLI] update cli lmcache query engine (#2871)\n\nupdate cli lmcache query\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 53,
+                "insertions": 32,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "1934377c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-28T00:23:31.000Z",
+              "message": "[fix] add missing request type in blend server (#2894)\n\nadd missing request type in blend server\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 2,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "07ec1f93",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-27T23:17:47.000Z",
+              "message": "[Build] add SM120 for wheel build (#2873)\n\nadd SM120 for wheel build\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "175cd17a",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-27T22:44:34.000Z",
+              "message": "[doc] update installation compatibility doc (#2868)\n\nupdate installation compatibility doc\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 47,
+                "insertions": 35,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 43.625,
+          "significance_ratio": 0.375,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 349,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -12289,125 +12808,62 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "deng451e",
-          "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 5,
-          "significant_commits": 3,
-          "simple_commits": 2,
-          "commit_score": 270,
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 159,
           "commits": [
             {
-              "hash": "e2adfbf7",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-03-07T02:44:40.000Z",
-              "message": "[Bugfix] Fix memory leak in asynchronous mode (#2559)\n\n* fix memory leak bug for async mode\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* Fix async pinned memory unpin\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Samuel Shen <slshen@uchicago.edu>",
+              "hash": "18e7a008",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-26T02:47:21.000Z",
+              "message": "Add hipFile support for AIS (AMD Infinity Storage) storage (#2799)\n\nfeat(gds): Add hipFile support for AIS (AMD Infinity Storage) storage\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
               "stats": {
-                "files": 5,
-                "lines": 42,
-                "insertions": 37,
-                "deletions": 5
+                "files": 11,
+                "lines": 209,
+                "insertions": 184,
+                "deletions": 25
               },
               "scores": {
-                "loc": 8,
+                "loc": 30,
                 "files": 20,
                 "keyword": 12,
                 "ai": 20,
-                "total": 60
+                "total": 82
               },
               "classification": "significant"
             },
             {
-              "hash": "85bd0cda",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-03-16T05:43:23.000Z",
-              "message": "update torch version aligned with vllm (#2782)\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>",
+              "hash": "4ba991e2",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-27T06:03:33.000Z",
+              "message": "feat(gds): add multipath KV-cache offloading support (#2817)\n\nParse comma-separated gds_path and select path per GPU worker\nusing by_gpu sharding (device_id % num_paths), matching the\napproach in NIXL PR #2418. This distributes KV cache I/O across\nmultiple NVMe drives to increase aggregate bandwidth.\n\nSingle-path configs work unchanged.\n\nIncludes tests (TestGdsMultiPath) and documentation updates.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
               "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "66439d30",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-03-24T02:33:37.000Z",
-              "message": "[CI] Add GitHub Action to auto-sync torch version with vLLM (#2796)\n\nadd sync torch GHA workflow\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 1,
-                "lines": 146,
-                "insertions": 146,
-                "deletions": 0
+                "files": 4,
+                "lines": 454,
+                "insertions": 405,
+                "deletions": 49
               },
               "scores": {
                 "loc": 30,
-                "files": 5,
-                "keyword": 12,
-                "ai": 14,
-                "total": 61
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e2cc19b6",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-03-25T08:12:13.000Z",
-              "message": "[CLI]  lmcache query engine subcommand (#2846)\n\n* Add query-command.md\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* lmcache query CLI Command Design\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* add cli query commnad\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* split query module\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* decompose query engine module\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* cli lmcache query engine\n\nSigned-off-by: lmcache-ci-bot <lmcache-ci@example.com>\n\n* Fix command syntax in CLI usage example\n\nUpdated CLI documentation to reflect changes in command syntax.\n\nSigned-off-by: deng451e <57919305+deng451e@users.noreply.github.com>\n\n* Update query command documentation for lmcache\n\nSigned-off-by: deng451e <57919305+deng451e@users.noreply.github.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>\nSigned-off-by: lmcache-ci-bot <lmcache-ci@example.com>\nSigned-off-by: deng451e <57919305+deng451e@users.noreply.github.com>\nCo-authored-by: lmcache-ci-bot <lmcache-ci@example.com>",
-              "stats": {
-                "files": 11,
-                "lines": 1297,
-                "insertions": 1296,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "4c15a242",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-03-26T23:32:03.000Z",
-              "message": "[CLI] update cli lmcache query engine (#2871)\n\nupdate cli lmcache query\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 3,
-                "lines": 53,
-                "insertions": 32,
-                "deletions": 21
-              },
-              "scores": {
-                "loc": 15,
                 "files": 10,
                 "keyword": 12,
-                "ai": 5,
-                "total": 42
+                "ai": 25,
+                "total": 77
               },
-              "classification": "simple"
+              "classification": "significant"
             }
           ],
-          "avg_score": 54,
-          "significance_ratio": 0.6,
+          "avg_score": 79.5,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 270,
+          "total_score": 159,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -12609,8 +13065,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 112,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "omerrubi-amzn",
@@ -12687,45 +13143,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Boris Glimcher",
-          "email": "36732377+glimchb@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 82,
-          "commits": [
-            {
-              "hash": "18e7a008",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-03-26T02:47:21.000Z",
-              "message": "Add hipFile support for AIS (AMD Infinity Storage) storage (#2799)\n\nfeat(gds): Add hipFile support for AIS (AMD Infinity Storage) storage\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
-              "stats": {
-                "files": 11,
-                "lines": 209,
-                "insertions": 184,
-                "deletions": 25
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 82,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 82,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -13138,6 +13555,45 @@
                 "lines": 8,
                 "insertions": 8,
                 "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 23,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 23,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Jason Yao",
+          "email": "libevent@yeah.net",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 23,
+          "commits": [
+            {
+              "hash": "8d8c908f",
+              "author": "Jason Yao",
+              "email": "libevent@yeah.net",
+              "date": "2026-03-27T06:14:53.000Z",
+              "message": "fix: add missing lock protection for LRU cache policy  (#2860)\n\nfix: add missing lock protection for LRU cache policy in LocalDiskBackend\n\nSigned-off-by: syaojun <libevent@yeah.net>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
               },
               "scores": {
                 "loc": 3,
@@ -15172,10 +15628,10 @@
         {
           "name": "Samuel Shen",
           "email": "102553648+sammshen@users.noreply.github.com",
-          "total_commits": 28,
+          "total_commits": 30,
           "significant_commits": 15,
-          "simple_commits": 13,
-          "commit_score": 1590,
+          "simple_commits": 15,
+          "commit_score": 1660,
           "commits": [
             {
               "hash": "47181d7b",
@@ -15764,24 +16220,66 @@
                 "total": 38
               },
               "classification": "simple"
+            },
+            {
+              "hash": "bed02afe",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-27T02:08:18.000Z",
+              "message": "[Chore][CI]: chmod +x scripts in k3 test entrypoints  (#2886)\n\n[CI]: chmod +x scripts in k3 test entrypoints to prevent permission errors\n\nGit stores file permissions at add-time. If a contributor forgets\nchmod +x before staging a new .sh file, CI gets \"Permission denied\".\nAdding chmod +x in each run.sh entrypoint as a runtime safeguard.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 12,
+                "insertions": 12,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "85a333ad",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-27T01:17:55.000Z",
+              "message": "[Docs] Stale MP CLI and Flags (#2882)\n\nfix incorrect defaults, flags, and entry points in MP documentation\n\n- --http-port default is 8080, not 8000\n- --l2-store-policy choice is 'skip_l1', not 'noop'\n- blend_server.py renamed to blend_server_v2.py\n- use 'lmcache server' consistently instead of 'python3 -m' for non-Docker examples\n- reorder server variants table to list recommended entry point first",
+              "stats": {
+                "files": 7,
+                "lines": 47,
+                "insertions": 25,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 56.785714285714285,
-          "significance_ratio": 0.5357142857142857,
+          "avg_score": 55.333333333333336,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1590,
+          "total_score": 1660,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
-          "total_commits": 9,
-          "significant_commits": 8,
-          "simple_commits": 1,
-          "commit_score": 719,
+          "total_commits": 11,
+          "significant_commits": 9,
+          "simple_commits": 2,
+          "commit_score": 848,
           "commits": [
             {
               "hash": "2ff6f2bf",
@@ -15971,24 +16469,66 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "64c3ba8e",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-27T19:15:56.000Z",
+              "message": "[MP][Observability][3/3] Migrate MP server telemetry to EventBus, unify config (#2806)\n\n* [MP][Observability] Migrate MP server telemetry to EventBus, unify config, remove old telemetry system\n\n- Migrate 6 telemetry call sites in MPCacheEngine (store/retrieve/lookup)\n  from log_telemetry(make_start_event/make_end_event) to EventBus.publish(Event)\n- Add MPServerLoggingSubscriber for debug logging of all MP server events\n- Add MPServerTracingSubscriber for OTel spans from START/END event pairs\n- Replace PrometheusConfig + TelemetryConfig with unified ObservabilityConfig\n  (--disable-observability, --disable-metrics, --disable-logging,\n   --enable-tracing, --otlp-endpoint, --prometheus-port)\n- Move OTLP endpoint from env var to config option (--otlp-endpoint)\n- Wire init_otel_tracing() when tracing is enabled\n- Conditionally register subscribers based on config toggles\n- Add __all__ exports to all subscriber __init__.py files\n- Delete entire telemetry/ subdirectory and its tests\n- Rename REFACT_DESIGN.md to DESIGN.md (architecture doc only)\n- Split event metadata contracts into EVENTS.md\n- Update README.md with full config reference\n- Update METRICS.md with MP server event types\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Observability] Fix mypy: update test files to use ObservabilityConfig\n\nReplace DEFAULT_PROMETHEUS_CONFIG / prometheus_config with\nDEFAULT_OBSERVABILITY_CONFIG / obs_config in test_cache_server,\ntest_blend_server, and test_blend_server_v2.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add back the lost logging subscribers\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add event bus queue size configurable from cli args\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Observability] Address PR review comments\n\n- Move OTel LoggingHandler into init_logger so all loggers get OTel\n  forwarding automatically; remove duplicated setup from 3 subscriber\n  files. Log level now respects LMCACHE_LOG_LEVEL instead of being\n  hardcoded to DEBUG.\n- Add global observability flag (is_observability_enabled) to skip\n  launch_host_func calls in CUDA streams when observability is disabled.\n- Validate that --enable-tracing requires --otlp-endpoint at startup.\n- Create AGENTS.override.md for mp_observability module.\n- Rewrite observability docs to match new EventBus CLI args and\n  document all three modes (metrics, logging, tracing).\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Observability] Add publish_on_stream util to EventBus\n\nExtract the repeated pattern of checking observability + calling\nlaunch_host_func into EventBus.publish_on_stream(stream, event).\nCallers no longer need to manually check the flag before scheduling\nhost functions on CUDA streams.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [CLI] Update server command for new observability config API\n\nReplace removed add_prometheus_args/add_telemetry_args with\nadd_observability_args, and parse_args_to_prometheus_config/\nparse_args_to_telemetry_config with parse_args_to_observability_config.\nUpdate test assertions to match new kwarg name (obs_config).\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [MP][Core] Block id based kernel for MP mode (#2838)\n\n* add new kernels and unit tests for mp mode\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* change the block ids to be on gpu tensor\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 44,
+                "lines": 4129,
+                "insertions": 1349,
+                "deletions": 2780
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6e02b914",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-03-27T01:28:19.000Z",
+              "message": "[Fix][Operator] Add privileged mode and nvidia runtime for GPU visibility (#2749)\n\n* [Operator] Add privileged mode and nvidia runtime for GPU visibility\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 51,
+                "insertions": 36,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 79.88888888888889,
-          "significance_ratio": 0.8888888888888888,
+          "avg_score": 77.0909090909091,
+          "significance_ratio": 0.8181818181818182,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 719,
+          "total_score": 848,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
-          "total_commits": 9,
-          "significant_commits": 9,
+          "total_commits": 10,
+          "significant_commits": 10,
           "simple_commits": 0,
-          "commit_score": 718,
+          "commit_score": 793,
           "commits": [
             {
               "hash": "d1442f1d",
@@ -16178,14 +16718,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "d48d488f",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-03-27T23:27:31.000Z",
+              "message": "[1/2] L2 CI: End to End Performance (#2884)\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 414,
+                "insertions": 412,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
+                "total": 75
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 79.77777777777777,
+          "avg_score": 79.3,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 718,
+          "total_score": 793,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -16606,10 +17167,10 @@
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 8,
+          "total_commits": 11,
           "significant_commits": 4,
-          "simple_commits": 4,
-          "commit_score": 403,
+          "simple_commits": 7,
+          "commit_score": 482,
           "commits": [
             {
               "hash": "d63d084e",
@@ -16778,14 +17339,77 @@
                 "total": 42
               },
               "classification": "simple"
+            },
+            {
+              "hash": "1934377c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-28T00:23:31.000Z",
+              "message": "[fix] add missing request type in blend server (#2894)\n\nadd missing request type in blend server\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 2,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "07ec1f93",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-27T23:17:47.000Z",
+              "message": "[Build] add SM120 for wheel build (#2873)\n\nadd SM120 for wheel build\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "175cd17a",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-27T22:44:34.000Z",
+              "message": "[doc] update installation compatibility doc (#2868)\n\nupdate installation compatibility doc\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 47,
+                "insertions": 35,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 50.375,
-          "significance_ratio": 0.5,
+          "avg_score": 43.81818181818182,
+          "significance_ratio": 0.36363636363636365,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 403,
+          "total_score": 482,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -17798,6 +18422,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 159,
+          "commits": [
+            {
+              "hash": "18e7a008",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-26T02:47:21.000Z",
+              "message": "Add hipFile support for AIS (AMD Infinity Storage) storage (#2799)\n\nfeat(gds): Add hipFile support for AIS (AMD Infinity Storage) storage\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 11,
+                "lines": 209,
+                "insertions": 184,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4ba991e2",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-27T06:03:33.000Z",
+              "message": "feat(gds): add multipath KV-cache offloading support (#2817)\n\nParse comma-separated gds_path and select path per GPU worker\nusing by_gpu sharding (device_id % num_paths), matching the\napproach in NIXL PR #2418. This distributes KV cache I/O across\nmultiple NVMe drives to increase aggregate bandwidth.\n\nSingle-path configs work unchanged.\n\nIncludes tests (TestGdsMultiPath) and documentation updates.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 4,
+                "lines": 454,
+                "insertions": 405,
+                "deletions": 49
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 79.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 159,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Adeline",
           "email": "452803476@qq.com",
           "total_commits": 3,
@@ -18214,45 +18898,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Boris Glimcher",
-          "email": "36732377+glimchb@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 82,
-          "commits": [
-            {
-              "hash": "18e7a008",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-03-26T02:47:21.000Z",
-              "message": "Add hipFile support for AIS (AMD Infinity Storage) storage (#2799)\n\nfeat(gds): Add hipFile support for AIS (AMD Infinity Storage) storage\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
-              "stats": {
-                "files": 11,
-                "lines": 209,
-                "insertions": 184,
-                "deletions": 25
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 82,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 82,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -18824,6 +19469,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Jason Yao",
+          "email": "libevent@yeah.net",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 23,
+          "commits": [
+            {
+              "hash": "8d8c908f",
+              "author": "Jason Yao",
+              "email": "libevent@yeah.net",
+              "date": "2026-03-27T06:14:53.000Z",
+              "message": "fix: add missing lock protection for LRU cache policy  (#2860)\n\nfix: add missing lock protection for LRU cache policy in LocalDiskBackend\n\nSigned-off-by: syaojun <libevent@yeah.net>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 23,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 23,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "zhengliyuan1987",
           "email": "zhengliyuan1987@139.com",
           "total_commits": 1,
@@ -18905,13 +19589,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-03-27T00:30:32.875Z",
+    "analyzedAt": "2026-03-28T00:30:38.568Z",
     "daysBack": 2,
-    "totalCommits": 238,
-    "totalContributors": 39,
+    "totalCommits": 248,
+    "totalContributors": 40,
     "mergedFrom": {
-      "existing": 229,
-      "new": 16
+      "existing": 238,
+      "new": 19
     }
   }
 }
