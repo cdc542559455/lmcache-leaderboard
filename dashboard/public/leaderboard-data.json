@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-03-28T00:30:38.568Z",
-  "total_commits_analyzed": 248,
+  "last_updated": "2026-03-29T00:30:25.806Z",
+  "total_commits_analyzed": 251,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -6184,10 +6184,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 5,
-          "significant_commits": 4,
+          "total_commits": 6,
+          "significant_commits": 5,
           "simple_commits": 1,
-          "commit_score": 341,
+          "commit_score": 428,
           "commits": [
             {
               "hash": "6ff8efa7",
@@ -6293,14 +6293,35 @@
                 "total": 26
               },
               "classification": "simple"
+            },
+            {
+              "hash": "7f2554fe",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-28T05:34:03.000Z",
+              "message": "[CLI] Implementation of lmcache bench engine (#2889)\n\n* add lmcache bench engine command\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 44,
+                "lines": 8789,
+                "insertions": 8788,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 68.2,
-          "significance_ratio": 0.8,
+          "avg_score": 71.33333333333333,
+          "significance_ratio": 0.8333333333333334,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 341,
+          "total_score": 428,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6776,6 +6797,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 180,
+          "commits": [
+            {
+              "hash": "18e7a008",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-26T02:47:21.000Z",
+              "message": "Add hipFile support for AIS (AMD Infinity Storage) storage (#2799)\n\nfeat(gds): Add hipFile support for AIS (AMD Infinity Storage) storage\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 11,
+                "lines": 209,
+                "insertions": 184,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4ba991e2",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-27T06:03:33.000Z",
+              "message": "feat(gds): add multipath KV-cache offloading support (#2817)\n\nParse comma-separated gds_path and select path per GPU worker\nusing by_gpu sharding (device_id % num_paths), matching the\napproach in NIXL PR #2418. This distributes KV cache I/O across\nmultiple NVMe drives to increase aggregate bandwidth.\n\nSingle-path configs work unchanged.\n\nIncludes tests (TestGdsMultiPath) and documentation updates.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 4,
+                "lines": 454,
+                "insertions": 405,
+                "deletions": 49
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f6a99199",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-28T06:20:12.000Z",
+              "message": "feat(gds): enable parallel I/O thread pool for all cuFile filesystems (#2802)\n\n* feat(gds): enable parallel I/O thread pool for all cuFile filesystems\n\nPreviously the thread pool for batched_get_blocking was only created\non WekaFS, so cuFile on ext4, xfs, or other filesystems fell back to\nserial reads.\n\nMove `use_thread_pool` out of the WekaFS branch so it is set whenever\ncuFile is active, regardless of filesystem type. Also rename the\nthread-name prefix from \"weka-gds-io\" to \"gds-io\" to reflect the\nbroader scope.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\n\n* fix(gds): pass memory format in batched_get_blocking thread pool path\n\nThe thread pool implementation of batched_get_blocking was not passing\nthe fmt parameter to allocate(), causing all allocations to use the\ndefault memory format regardless of what was stored in the cache.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\n\n---------\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 1,
+                "lines": 14,
+                "insertions": 9,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 60,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 180,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Kuntai Du",
           "email": "kuntai@uchicago.edu",
           "total_commits": 2,
@@ -6832,66 +6934,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 161,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Boris Glimcher",
-          "email": "36732377+glimchb@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 159,
-          "commits": [
-            {
-              "hash": "18e7a008",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-03-26T02:47:21.000Z",
-              "message": "Add hipFile support for AIS (AMD Infinity Storage) storage (#2799)\n\nfeat(gds): Add hipFile support for AIS (AMD Infinity Storage) storage\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
-              "stats": {
-                "files": 11,
-                "lines": 209,
-                "insertions": 184,
-                "deletions": 25
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "4ba991e2",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-03-27T06:03:33.000Z",
-              "message": "feat(gds): add multipath KV-cache offloading support (#2817)\n\nParse comma-separated gds_path and select path per GPU worker\nusing by_gpu sharding (device_id % num_paths), matching the\napproach in NIXL PR #2418. This distributes KV cache I/O across\nmultiple NVMe drives to increase aggregate bandwidth.\n\nSingle-path configs work unchanged.\n\nIncludes tests (TestGdsMultiPath) and documentation updates.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
-              "stats": {
-                "files": 4,
-                "lines": 454,
-                "insertions": 405,
-                "deletions": 49
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 79.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 159,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7151,6 +7193,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Jason Yao",
+          "email": "libevent@yeah.net",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 55,
+          "commits": [
+            {
+              "hash": "8d8c908f",
+              "author": "Jason Yao",
+              "email": "libevent@yeah.net",
+              "date": "2026-03-27T06:14:53.000Z",
+              "message": "fix: add missing lock protection for LRU cache policy  (#2860)\n\nfix: add missing lock protection for LRU cache policy in LocalDiskBackend\n\nSigned-off-by: syaojun <libevent@yeah.net>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c806e115",
+              "author": "Jason Yao",
+              "email": "libevent@yeah.net",
+              "date": "2026-03-28T01:10:01.000Z",
+              "message": "type: Add missing return type annotations to storage backend methods (#2829)\n\nAdd missing return type annotations to storage backend methods\n\nSigned-off-by: syaojun <libevent@yeah.net>",
+              "stats": {
+                "files": 4,
+                "lines": 29,
+                "insertions": 22,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 27.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 55,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "cansun",
           "email": "80425164+can-sun@users.noreply.github.com",
           "total_commits": 1,
@@ -7208,45 +7310,6 @@
                 "lines": 8,
                 "insertions": 8,
                 "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 0,
-                "total": 23
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 23,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 23,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Jason Yao",
-          "email": "libevent@yeah.net",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 23,
-          "commits": [
-            {
-              "hash": "8d8c908f",
-              "author": "Jason Yao",
-              "email": "libevent@yeah.net",
-              "date": "2026-03-27T06:14:53.000Z",
-              "message": "fix: add missing lock protection for LRU cache policy  (#2860)\n\nfix: add missing lock protection for LRU cache policy in LocalDiskBackend\n\nSigned-off-by: syaojun <libevent@yeah.net>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
               },
               "scores": {
                 "loc": 3,
@@ -10611,10 +10674,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 27,
-          "significant_commits": 21,
+          "total_commits": 28,
+          "significant_commits": 22,
           "simple_commits": 6,
-          "commit_score": 1871,
+          "commit_score": 1958,
           "commits": [
             {
               "hash": "ddf8446f",
@@ -11182,14 +11245,35 @@
                 "total": 26
               },
               "classification": "simple"
+            },
+            {
+              "hash": "7f2554fe",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-28T05:34:03.000Z",
+              "message": "[CLI] Implementation of lmcache bench engine (#2889)\n\n* add lmcache bench engine command\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 44,
+                "lines": 8789,
+                "insertions": 8788,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 69.29629629629629,
-          "significance_ratio": 0.7777777777777778,
+          "avg_score": 69.92857142857143,
+          "significance_ratio": 0.7857142857142857,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1871,
+          "total_score": 1958,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -12810,10 +12894,10 @@
         {
           "name": "Boris Glimcher",
           "email": "36732377+glimchb@users.noreply.github.com",
-          "total_commits": 2,
+          "total_commits": 3,
           "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 159,
+          "simple_commits": 1,
+          "commit_score": 180,
           "commits": [
             {
               "hash": "18e7a008",
@@ -12856,14 +12940,35 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f6a99199",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-28T06:20:12.000Z",
+              "message": "feat(gds): enable parallel I/O thread pool for all cuFile filesystems (#2802)\n\n* feat(gds): enable parallel I/O thread pool for all cuFile filesystems\n\nPreviously the thread pool for batched_get_blocking was only created\non WekaFS, so cuFile on ext4, xfs, or other filesystems fell back to\nserial reads.\n\nMove `use_thread_pool` out of the WekaFS branch so it is set whenever\ncuFile is active, regardless of filesystem type. Also rename the\nthread-name prefix from \"weka-gds-io\" to \"gds-io\" to reflect the\nbroader scope.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\n\n* fix(gds): pass memory format in batched_get_blocking thread pool path\n\nThe thread pool implementation of batched_get_blocking was not passing\nthe fmt parameter to allocate(), causing all allocations to use the\ndefault memory format regardless of what was stored in the cache.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\n\n---------\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 1,
+                "lines": 14,
+                "insertions": 9,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 79.5,
-          "significance_ratio": 1,
+          "avg_score": 60,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 159,
+          "total_score": 180,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -13225,6 +13330,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Jason Yao",
+          "email": "libevent@yeah.net",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 55,
+          "commits": [
+            {
+              "hash": "8d8c908f",
+              "author": "Jason Yao",
+              "email": "libevent@yeah.net",
+              "date": "2026-03-27T06:14:53.000Z",
+              "message": "fix: add missing lock protection for LRU cache policy  (#2860)\n\nfix: add missing lock protection for LRU cache policy in LocalDiskBackend\n\nSigned-off-by: syaojun <libevent@yeah.net>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c806e115",
+              "author": "Jason Yao",
+              "email": "libevent@yeah.net",
+              "date": "2026-03-28T01:10:01.000Z",
+              "message": "type: Add missing return type annotations to storage backend methods (#2829)\n\nAdd missing return type annotations to storage backend methods\n\nSigned-off-by: syaojun <libevent@yeah.net>",
+              "stats": {
+                "files": 4,
+                "lines": 29,
+                "insertions": 22,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 27.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 55,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Jungwoo Song",
           "email": "37579681+bluayer@users.noreply.github.com",
           "total_commits": 1,
@@ -13416,8 +13581,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 35,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Cao Qian",
@@ -13576,45 +13741,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Jason Yao",
-          "email": "libevent@yeah.net",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 23,
-          "commits": [
-            {
-              "hash": "8d8c908f",
-              "author": "Jason Yao",
-              "email": "libevent@yeah.net",
-              "date": "2026-03-27T06:14:53.000Z",
-              "message": "fix: add missing lock protection for LRU cache policy  (#2860)\n\nfix: add missing lock protection for LRU cache policy in LocalDiskBackend\n\nSigned-off-by: syaojun <libevent@yeah.net>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 0,
-                "total": 23
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 23,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 23,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "Jason Goldschmidt",
           "email": "92800864+jgoldsch12@users.noreply.github.com",
           "total_commits": 1,
@@ -13660,10 +13786,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 50,
-          "significant_commits": 41,
+          "total_commits": 51,
+          "significant_commits": 42,
           "simple_commits": 9,
-          "commit_score": 3495,
+          "commit_score": 3582,
           "commits": [
             {
               "hash": "6f90e221",
@@ -14714,14 +14840,35 @@
                 "total": 26
               },
               "classification": "simple"
+            },
+            {
+              "hash": "7f2554fe",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-03-28T05:34:03.000Z",
+              "message": "[CLI] Implementation of lmcache bench engine (#2889)\n\n* add lmcache bench engine command\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 44,
+                "lines": 8789,
+                "insertions": 8788,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 69.9,
-          "significance_ratio": 0.82,
+          "avg_score": 70.23529411764706,
+          "significance_ratio": 0.8235294117647058,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 3495,
+          "total_score": 3582,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -18424,10 +18571,10 @@
         {
           "name": "Boris Glimcher",
           "email": "36732377+glimchb@users.noreply.github.com",
-          "total_commits": 2,
+          "total_commits": 3,
           "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 159,
+          "simple_commits": 1,
+          "commit_score": 180,
           "commits": [
             {
               "hash": "18e7a008",
@@ -18470,14 +18617,35 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f6a99199",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-03-28T06:20:12.000Z",
+              "message": "feat(gds): enable parallel I/O thread pool for all cuFile filesystems (#2802)\n\n* feat(gds): enable parallel I/O thread pool for all cuFile filesystems\n\nPreviously the thread pool for batched_get_blocking was only created\non WekaFS, so cuFile on ext4, xfs, or other filesystems fell back to\nserial reads.\n\nMove `use_thread_pool` out of the WekaFS branch so it is set whenever\ncuFile is active, regardless of filesystem type. Also rename the\nthread-name prefix from \"weka-gds-io\" to \"gds-io\" to reflect the\nbroader scope.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\n\n* fix(gds): pass memory format in batched_get_blocking thread pool path\n\nThe thread pool implementation of batched_get_blocking was not passing\nthe fmt parameter to allocate(), causing all allocations to use the\ndefault memory format regardless of what was stored in the cache.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\n\n---------\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 1,
+                "lines": 14,
+                "insertions": 9,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 79.5,
-          "significance_ratio": 1,
+          "avg_score": 60,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 159,
+          "total_score": 180,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -19040,6 +19208,66 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Jason Yao",
+          "email": "libevent@yeah.net",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 55,
+          "commits": [
+            {
+              "hash": "8d8c908f",
+              "author": "Jason Yao",
+              "email": "libevent@yeah.net",
+              "date": "2026-03-27T06:14:53.000Z",
+              "message": "fix: add missing lock protection for LRU cache policy  (#2860)\n\nfix: add missing lock protection for LRU cache policy in LocalDiskBackend\n\nSigned-off-by: syaojun <libevent@yeah.net>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c806e115",
+              "author": "Jason Yao",
+              "email": "libevent@yeah.net",
+              "date": "2026-03-28T01:10:01.000Z",
+              "message": "type: Add missing return type annotations to storage backend methods (#2829)\n\nAdd missing return type annotations to storage backend methods\n\nSigned-off-by: syaojun <libevent@yeah.net>",
+              "stats": {
+                "files": 4,
+                "lines": 29,
+                "insertions": 22,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 27.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 55,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Jungwoo Song",
           "email": "37579681+bluayer@users.noreply.github.com",
           "total_commits": 1,
@@ -19469,45 +19697,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Jason Yao",
-          "email": "libevent@yeah.net",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 23,
-          "commits": [
-            {
-              "hash": "8d8c908f",
-              "author": "Jason Yao",
-              "email": "libevent@yeah.net",
-              "date": "2026-03-27T06:14:53.000Z",
-              "message": "fix: add missing lock protection for LRU cache policy  (#2860)\n\nfix: add missing lock protection for LRU cache policy in LocalDiskBackend\n\nSigned-off-by: syaojun <libevent@yeah.net>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 0,
-                "total": 23
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 23,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 23,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "zhengliyuan1987",
           "email": "zhengliyuan1987@139.com",
           "total_commits": 1,
@@ -19589,13 +19778,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-03-28T00:30:38.568Z",
+    "analyzedAt": "2026-03-29T00:30:25.806Z",
     "daysBack": 2,
-    "totalCommits": 248,
+    "totalCommits": 251,
     "totalContributors": 40,
     "mergedFrom": {
-      "existing": 238,
-      "new": 19
+      "existing": 248,
+      "new": 13
     }
   }
 }
