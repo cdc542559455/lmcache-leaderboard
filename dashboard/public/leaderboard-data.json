@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-03T00:30:12.136Z",
-  "total_commits_analyzed": 11,
+  "last_updated": "2026-04-04T00:30:16.375Z",
+  "total_commits_analyzed": 18,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -8,10 +8,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 221,
+          "total_commits": 5,
+          "significant_commits": 3,
+          "simple_commits": 2,
+          "commit_score": 328,
           "commits": [
             {
               "hash": "62cee8b0",
@@ -75,14 +75,218 @@
                 "total": 90
               },
               "classification": "significant"
+            },
+            {
+              "hash": "ccaf38d3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T07:45:44.000Z",
+              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 860,
+                "insertions": 860,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ba3ba51b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T06:18:14.000Z",
+              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 73.66666666666667,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 65.6,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 221,
+          "total_score": 328,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 4,
+          "significant_commits": 2,
+          "simple_commits": 2,
+          "commit_score": 230,
+          "commits": [
+            {
+              "hash": "996da472",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-01T20:53:12.000Z",
+              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 428,
+                "insertions": 422,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ac52ad24",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-31T23:19:07.000Z",
+              "message": "[Chore][CI/Docs]: Switch all the documentation and CI over to `lmache cli` (#2917)\n\nswap to lmc cli\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 12,
+                "lines": 32,
+                "insertions": 17,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "45d4d366",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T07:24:13.000Z",
+              "message": "[Bugfix]: fix get_num_heads for MLA format (#2941)\n\nMLA format (NL_X_NB_BS_HS) absorbs heads into the hidden dim,\nso get_num_heads should return 1 instead of raising ValueError.\nThis was preventing all MLA models (e.g. DeepSeek-V2-Lite) from launching.",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f7c306f3",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T01:22:58.000Z",
+              "message": "[Feat]: Add eviction to L2 Native Backend (#2939)\n\n* Add submit_batch_delete to native connector stack for L2 eviction\n\nAdds a DELETE operation through all layers of the native connector\nframework (C++ IStorageConnector -> ConnectorBase -> pybind -> Python\nNativeConnectorL2Adapter) so that native remote backends (Redis, FS,\nplugins) can participate in L2 eviction.\n\nC++ layer:\n- Add BATCH_TILE_DELETE to Op enum\n- Add submit_batch_delete to IStorageConnector interface\n- Implement in ConnectorBase with tiling, per-key results, and\n  per-key error tolerance (like GET)\n- Add do_single_delete virtual with default no-op for backward compat\n- Implement for Redis (RESP DEL) and FS (std::filesystem::remove)\n\nPybind layer:\n- Add bind_submit_batch_delete template (keys-only, GIL release)\n- Update LMCACHE_BIND_CONNECTOR_METHODS macro\n\nPython layer:\n- NativeConnectorL2Adapter.delete() submits batch delete and blocks\n  on threading.Event until demux thread signals completion\n- Backward compatible: detects submit_batch_delete via hasattr\n- Fix missing super().__init__() call for listener support\n- Add warning in native_plugin_l2_adapter for plugins without delete\n\nTests:\n- Add submit_batch_delete to MockNativeConnector\n- Add TestDeleteInterface: existing key, nonexistent, empty, batch\n- Add TestDeleteBackwardCompatibility: no-op without the method\n\n* Add client-side size tracking for NativeConnectorL2Adapter.get_usage()\n\nEnables the L2EvictionController to automatically trigger eviction for\nnative remote backends by tracking stored bytes client-side.\n\n- Track per-key sizes in _key_sizes dict, populated on store completion\n- Increment _current_size_bytes on successful store, decrement on delete\n- Idempotent: duplicate stores for same key don't double-count\n- get_usage() returns usage fraction when max_capacity_bytes > 0,\n  or (-1.0, -1.0) when not configured (preserves backward compat)\n\nAdd max_capacity_bytes config parameter to:\n- NativeConnectorL2Adapter.__init__\n- RESPL2AdapterConfig, FSNativeL2AdapterConfig, NativePluginL2AdapterConfig\n- All three factory functions\n\nTests: 6 new tests covering zero-capacity, store tracking, delete\ntracking, store-delete cycles, and idempotent store deduplication.\n\n* Update docs and examples for native connector eviction support\n\n- l2_eviction.md: Update adapter support matrix to show\n  NativeConnectorL2Adapter now supports delete and get_usage;\n  add configuration example with max_capacity_bytes + eviction\n- resp.rst: Add max_capacity_bytes to L2 adapter config table;\n  add L2 Eviction section with full configuration example\n- native_connectors.rst: Add do_single_delete to connector\n  interface; add submit_batch_delete to protocol; add\n  max_capacity_bytes to config examples and native_plugin table;\n  update checklist and method counts\n- resp/README.md: Add max_capacity_bytes to config table\n- Config help() strings: Add max_capacity_bytes documentation\n  to RESP, FS native, and native plugin adapter configs\n\n* Rename max_capacity_bytes to max_capacity_gb (float) in config\n\nChange the L2 adapter capacity config from bytes (int) to GB (float)\nfor consistency with MockL2Adapter's max_size_gb and better ergonomics.\n\nThe internal _max_capacity_bytes field stays as bytes -- the conversion\nhappens once in NativeConnectorL2Adapter.__init__.\n\nUpdated: adapter configs, factories, tests, docs, and examples.\n\n* Fix eviction listener notifications and delete timeout cleanup\n\nFixes three issues found in code review:\n\n1. (Critical) Add _notify_keys_stored on store completion and\n   _notify_keys_accessed on load completion in the demux loop.\n   Without these, the LRU eviction policy never learns about\n   stored/accessed keys, making eviction non-functional.\n\n2. Clean up _pending_delete_events and _pending_ops on delete\n   timeout to prevent memory leaks.\n\n3. Add docstring to delete() method.\n\nAlso store keys in _pending_ops for load operations (was None)\nso _notify_keys_accessed can report which keys were loaded.\n\nListener notifications are fired outside the lock to avoid\npotential deadlocks with listener callbacks.",
+              "stats": {
+                "files": 20,
+                "lines": 671,
+                "insertions": 641,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 57.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 230,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "e0a33254",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-03-31T23:26:22.000Z",
+              "message": "[CI] Add CI test for CB (#2900)\n\n* [CI] ci blend test\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* correct path\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* fix gpt oss encoder issue\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* update model path\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 8,
+                "lines": 1405,
+                "insertions": 1405,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6ceed5ea",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-03T22:43:46.000Z",
+              "message": "[CLI]Add long-doc-permutator CLI bench workload (#2937)\n\n* add new workload to cli bench\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1088,
+                "insertions": 1086,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -147,66 +351,6 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 123,
-          "commits": [
-            {
-              "hash": "996da472",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-01T20:53:12.000Z",
-              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 428,
-                "insertions": 422,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 15,
-                "ai": 25,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ac52ad24",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-03-31T23:19:07.000Z",
-              "message": "[Chore][CI/Docs]: Switch all the documentation and CI over to `lmache cli` (#2917)\n\nswap to lmc cli\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 12,
-                "lines": 32,
-                "insertions": 17,
-                "deletions": 15
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 3,
-                "total": 43
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 61.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 123,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
           "total_commits": 1,
@@ -246,43 +390,43 @@
           "tier_name": "Elite"
         },
         {
-          "name": "deng451e",
-          "email": "57919305+deng451e@users.noreply.github.com",
+          "name": "jooho",
+          "email": "Jooho.lee@xcena.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 87,
+          "commit_score": 100,
           "commits": [
             {
-              "hash": "e0a33254",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-03-31T23:26:22.000Z",
-              "message": "[CI] Add CI test for CB (#2900)\n\n* [CI] ci blend test\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* correct path\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* fix gpt oss encoder issue\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* update model path\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "55024196",
+              "author": "jooho",
+              "email": "Jooho.lee@xcena.com",
+              "date": "2026-04-03T06:06:00.000Z",
+              "message": "[Connector] Maru: zero-copy KV cache sharing via CXL shared memory  (#2705)\n\n* feat: Add MaruBackend as a storage backend for CXL shared memory\n\nSigned-off-by: jooho-xcena <jooho.lee@xcena.com>\nCo-authored-by: youngrok-XCENA <yr.song@xcena.com>\nCo-authored-by: hyunyul-XCENA <hyunyul.cho@xcena.com>\nCo-authored-by: seohui-XCENA <seohui.son@xcena.com>\nCo-authored-by: kihwan-XCENA <kihwan.kim@xcena.com>\n\n* fix: capture store() return value and correct pin docstring\n\n- _async_store now uses handler.store() return value instead of\n  unconditionally setting success=True, preventing CXL memory leak\n  on server-side rejection\n- Fix batched_async_contains docstring to reflect actual batch_pin\n  RPC support\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\n\n* style: fix ruff-format in maru_backend.py\n\nSigned-off-by: jooho-xcena <jooho.lee@xcena.com>\n\n---------\n\nSigned-off-by: jooho-xcena <jooho.lee@xcena.com>\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\nCo-authored-by: youngrok-XCENA <yr.song@xcena.com>\nCo-authored-by: hyunyul-XCENA <hyunyul.cho@xcena.com>\nCo-authored-by: seohui-XCENA <seohui.son@xcena.com>\nCo-authored-by: kihwan-XCENA <kihwan.kim@xcena.com>\nCo-authored-by: Rocky Song <167060552+youngrok-XCENA@users.noreply.github.com>",
               "stats": {
                 "files": 8,
-                "lines": 1405,
-                "insertions": 1405,
-                "deletions": 0
+                "lines": 1666,
+                "insertions": 1664,
+                "deletions": 2
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
-                "keyword": 12,
+                "keyword": 25,
                 "ai": 25,
-                "total": 87
+                "total": 100
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 87,
+          "avg_score": 100,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "total_score": 100,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Jiayi Yao",
@@ -320,6 +464,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 66,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 54,
+          "commits": [
+            {
+              "hash": "8baa42d8",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-04T00:21:04.000Z",
+              "message": "feat(gds): add gds_path_sharding config for multi-path strategy (#2922)\n\nAdd a top-level `gds_path_sharding` config field (default: \"by_gpu\")\nthat controls how GPUs are assigned to storage paths when multiple\ncomma-separated paths are provided in `gds_path`. This replaces the\npreviously hardcoded by_gpu logic with an explicit, extensible setting.\n\nCurrently only \"by_gpu\" is supported (selects path via\n`device_id % num_paths`); unsupported values raise AssertionError.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 71,
+                "insertions": 62,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 7,
+                "total": 54
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 54,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 54,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -367,6 +550,189 @@
     "monthly": {
       "2026-04": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 4,
+          "significant_commits": 2,
+          "simple_commits": 2,
+          "commit_score": 238,
+          "commits": [
+            {
+              "hash": "62cee8b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T15:01:13.000Z",
+              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2556,
+                "insertions": 2297,
+                "deletions": 259
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6774d50d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T14:36:48.000Z",
+              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 40,
+                "insertions": 36,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ccaf38d3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T07:45:44.000Z",
+              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 860,
+                "insertions": 860,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ba3ba51b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T06:18:14.000Z",
+              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 59.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 238,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 187,
+          "commits": [
+            {
+              "hash": "996da472",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-01T20:53:12.000Z",
+              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 428,
+                "insertions": 422,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "45d4d366",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T07:24:13.000Z",
+              "message": "[Bugfix]: fix get_num_heads for MLA format (#2941)\n\nMLA format (NL_X_NB_BS_HS) absorbs heads into the hidden dim,\nso get_num_heads should return 1 instead of raising ValueError.\nThis was preventing all MLA models (e.g. DeepSeek-V2-Lite) from launching.",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f7c306f3",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T01:22:58.000Z",
+              "message": "[Feat]: Add eviction to L2 Native Backend (#2939)\n\n* Add submit_batch_delete to native connector stack for L2 eviction\n\nAdds a DELETE operation through all layers of the native connector\nframework (C++ IStorageConnector -> ConnectorBase -> pybind -> Python\nNativeConnectorL2Adapter) so that native remote backends (Redis, FS,\nplugins) can participate in L2 eviction.\n\nC++ layer:\n- Add BATCH_TILE_DELETE to Op enum\n- Add submit_batch_delete to IStorageConnector interface\n- Implement in ConnectorBase with tiling, per-key results, and\n  per-key error tolerance (like GET)\n- Add do_single_delete virtual with default no-op for backward compat\n- Implement for Redis (RESP DEL) and FS (std::filesystem::remove)\n\nPybind layer:\n- Add bind_submit_batch_delete template (keys-only, GIL release)\n- Update LMCACHE_BIND_CONNECTOR_METHODS macro\n\nPython layer:\n- NativeConnectorL2Adapter.delete() submits batch delete and blocks\n  on threading.Event until demux thread signals completion\n- Backward compatible: detects submit_batch_delete via hasattr\n- Fix missing super().__init__() call for listener support\n- Add warning in native_plugin_l2_adapter for plugins without delete\n\nTests:\n- Add submit_batch_delete to MockNativeConnector\n- Add TestDeleteInterface: existing key, nonexistent, empty, batch\n- Add TestDeleteBackwardCompatibility: no-op without the method\n\n* Add client-side size tracking for NativeConnectorL2Adapter.get_usage()\n\nEnables the L2EvictionController to automatically trigger eviction for\nnative remote backends by tracking stored bytes client-side.\n\n- Track per-key sizes in _key_sizes dict, populated on store completion\n- Increment _current_size_bytes on successful store, decrement on delete\n- Idempotent: duplicate stores for same key don't double-count\n- get_usage() returns usage fraction when max_capacity_bytes > 0,\n  or (-1.0, -1.0) when not configured (preserves backward compat)\n\nAdd max_capacity_bytes config parameter to:\n- NativeConnectorL2Adapter.__init__\n- RESPL2AdapterConfig, FSNativeL2AdapterConfig, NativePluginL2AdapterConfig\n- All three factory functions\n\nTests: 6 new tests covering zero-capacity, store tracking, delete\ntracking, store-delete cycles, and idempotent store deduplication.\n\n* Update docs and examples for native connector eviction support\n\n- l2_eviction.md: Update adapter support matrix to show\n  NativeConnectorL2Adapter now supports delete and get_usage;\n  add configuration example with max_capacity_bytes + eviction\n- resp.rst: Add max_capacity_bytes to L2 adapter config table;\n  add L2 Eviction section with full configuration example\n- native_connectors.rst: Add do_single_delete to connector\n  interface; add submit_batch_delete to protocol; add\n  max_capacity_bytes to config examples and native_plugin table;\n  update checklist and method counts\n- resp/README.md: Add max_capacity_bytes to config table\n- Config help() strings: Add max_capacity_bytes documentation\n  to RESP, FS native, and native plugin adapter configs\n\n* Rename max_capacity_bytes to max_capacity_gb (float) in config\n\nChange the L2 adapter capacity config from bytes (int) to GB (float)\nfor consistency with MockL2Adapter's max_size_gb and better ergonomics.\n\nThe internal _max_capacity_bytes field stays as bytes -- the conversion\nhappens once in NativeConnectorL2Adapter.__init__.\n\nUpdated: adapter configs, factories, tests, docs, and examples.\n\n* Fix eviction listener notifications and delete timeout cleanup\n\nFixes three issues found in code review:\n\n1. (Critical) Add _notify_keys_stored on store completion and\n   _notify_keys_accessed on load completion in the demux loop.\n   Without these, the LRU eviction policy never learns about\n   stored/accessed keys, making eviction non-functional.\n\n2. Clean up _pending_delete_events and _pending_ops on delete\n   timeout to prevent memory leaks.\n\n3. Add docstring to delete() method.\n\nAlso store keys in _pending_ops for load operations (was None)\nso _notify_keys_accessed can report which keys were loaded.\n\nListener notifications are fired outside the lock to avoid\npotential deadlocks with listener callbacks.",
+              "stats": {
+                "files": 20,
+                "lines": 671,
+                "insertions": 641,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62.333333333333336,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 187,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
           "total_commits": 2,
@@ -427,66 +793,6 @@
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 131,
-          "commits": [
-            {
-              "hash": "62cee8b0",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T15:01:13.000Z",
-              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 17,
-                "lines": 2556,
-                "insertions": 2297,
-                "deletions": 259
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "6774d50d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T14:36:48.000Z",
-              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 40,
-                "insertions": 36,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 4,
-                "total": 44
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 65.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 131,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
           "total_commits": 1,
@@ -526,43 +832,82 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
+          "name": "jooho",
+          "email": "Jooho.lee@xcena.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 80,
+          "commit_score": 100,
           "commits": [
             {
-              "hash": "996da472",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-01T20:53:12.000Z",
-              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "hash": "55024196",
+              "author": "jooho",
+              "email": "Jooho.lee@xcena.com",
+              "date": "2026-04-03T06:06:00.000Z",
+              "message": "[Connector] Maru: zero-copy KV cache sharing via CXL shared memory  (#2705)\n\n* feat: Add MaruBackend as a storage backend for CXL shared memory\n\nSigned-off-by: jooho-xcena <jooho.lee@xcena.com>\nCo-authored-by: youngrok-XCENA <yr.song@xcena.com>\nCo-authored-by: hyunyul-XCENA <hyunyul.cho@xcena.com>\nCo-authored-by: seohui-XCENA <seohui.son@xcena.com>\nCo-authored-by: kihwan-XCENA <kihwan.kim@xcena.com>\n\n* fix: capture store() return value and correct pin docstring\n\n- _async_store now uses handler.store() return value instead of\n  unconditionally setting success=True, preventing CXL memory leak\n  on server-side rejection\n- Fix batched_async_contains docstring to reflect actual batch_pin\n  RPC support\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\n\n* style: fix ruff-format in maru_backend.py\n\nSigned-off-by: jooho-xcena <jooho.lee@xcena.com>\n\n---------\n\nSigned-off-by: jooho-xcena <jooho.lee@xcena.com>\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\nCo-authored-by: youngrok-XCENA <yr.song@xcena.com>\nCo-authored-by: hyunyul-XCENA <hyunyul.cho@xcena.com>\nCo-authored-by: seohui-XCENA <seohui.son@xcena.com>\nCo-authored-by: kihwan-XCENA <kihwan.kim@xcena.com>\nCo-authored-by: Rocky Song <167060552+youngrok-XCENA@users.noreply.github.com>",
               "stats": {
-                "files": 2,
-                "lines": 428,
-                "insertions": 422,
-                "deletions": 6
+                "files": 8,
+                "lines": 1666,
+                "insertions": 1664,
+                "deletions": 2
               },
               "scores": {
                 "loc": 30,
-                "files": 10,
-                "keyword": 15,
+                "files": 20,
+                "keyword": 25,
                 "ai": 25,
-                "total": 80
+                "total": 100
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 100,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 80,
+          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "6ceed5ea",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-03T22:43:46.000Z",
+              "message": "[CLI]Add long-doc-permutator CLI bench workload (#2937)\n\n* add new workload to cli bench\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1088,
+                "insertions": 1086,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Jiayi Yao",
@@ -600,8 +945,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 66,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 54,
+          "commits": [
+            {
+              "hash": "8baa42d8",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-04T00:21:04.000Z",
+              "message": "feat(gds): add gds_path_sharding config for multi-path strategy (#2922)\n\nAdd a top-level `gds_path_sharding` config field (default: \"by_gpu\")\nthat controls how GPUs are assigned to storage paths when multiple\ncomma-separated paths are provided in `gds_path`. This replaces the\npreviously hardcoded by_gpu logic with an explicit, extensible setting.\n\nCurrently only \"by_gpu\" is supported (selects path via\n`device_id % num_paths`); unsupported values raise AssertionError.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 71,
+                "insertions": 62,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 7,
+                "total": 54
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 54,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 54,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "cansun",
@@ -766,6 +1150,189 @@
     "quarterly": {
       "2026-Q2": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 4,
+          "significant_commits": 2,
+          "simple_commits": 2,
+          "commit_score": 238,
+          "commits": [
+            {
+              "hash": "62cee8b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T15:01:13.000Z",
+              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2556,
+                "insertions": 2297,
+                "deletions": 259
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6774d50d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T14:36:48.000Z",
+              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 40,
+                "insertions": 36,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ccaf38d3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T07:45:44.000Z",
+              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 860,
+                "insertions": 860,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ba3ba51b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T06:18:14.000Z",
+              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 59.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 238,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 187,
+          "commits": [
+            {
+              "hash": "996da472",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-01T20:53:12.000Z",
+              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 428,
+                "insertions": 422,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "45d4d366",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T07:24:13.000Z",
+              "message": "[Bugfix]: fix get_num_heads for MLA format (#2941)\n\nMLA format (NL_X_NB_BS_HS) absorbs heads into the hidden dim,\nso get_num_heads should return 1 instead of raising ValueError.\nThis was preventing all MLA models (e.g. DeepSeek-V2-Lite) from launching.",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f7c306f3",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T01:22:58.000Z",
+              "message": "[Feat]: Add eviction to L2 Native Backend (#2939)\n\n* Add submit_batch_delete to native connector stack for L2 eviction\n\nAdds a DELETE operation through all layers of the native connector\nframework (C++ IStorageConnector -> ConnectorBase -> pybind -> Python\nNativeConnectorL2Adapter) so that native remote backends (Redis, FS,\nplugins) can participate in L2 eviction.\n\nC++ layer:\n- Add BATCH_TILE_DELETE to Op enum\n- Add submit_batch_delete to IStorageConnector interface\n- Implement in ConnectorBase with tiling, per-key results, and\n  per-key error tolerance (like GET)\n- Add do_single_delete virtual with default no-op for backward compat\n- Implement for Redis (RESP DEL) and FS (std::filesystem::remove)\n\nPybind layer:\n- Add bind_submit_batch_delete template (keys-only, GIL release)\n- Update LMCACHE_BIND_CONNECTOR_METHODS macro\n\nPython layer:\n- NativeConnectorL2Adapter.delete() submits batch delete and blocks\n  on threading.Event until demux thread signals completion\n- Backward compatible: detects submit_batch_delete via hasattr\n- Fix missing super().__init__() call for listener support\n- Add warning in native_plugin_l2_adapter for plugins without delete\n\nTests:\n- Add submit_batch_delete to MockNativeConnector\n- Add TestDeleteInterface: existing key, nonexistent, empty, batch\n- Add TestDeleteBackwardCompatibility: no-op without the method\n\n* Add client-side size tracking for NativeConnectorL2Adapter.get_usage()\n\nEnables the L2EvictionController to automatically trigger eviction for\nnative remote backends by tracking stored bytes client-side.\n\n- Track per-key sizes in _key_sizes dict, populated on store completion\n- Increment _current_size_bytes on successful store, decrement on delete\n- Idempotent: duplicate stores for same key don't double-count\n- get_usage() returns usage fraction when max_capacity_bytes > 0,\n  or (-1.0, -1.0) when not configured (preserves backward compat)\n\nAdd max_capacity_bytes config parameter to:\n- NativeConnectorL2Adapter.__init__\n- RESPL2AdapterConfig, FSNativeL2AdapterConfig, NativePluginL2AdapterConfig\n- All three factory functions\n\nTests: 6 new tests covering zero-capacity, store tracking, delete\ntracking, store-delete cycles, and idempotent store deduplication.\n\n* Update docs and examples for native connector eviction support\n\n- l2_eviction.md: Update adapter support matrix to show\n  NativeConnectorL2Adapter now supports delete and get_usage;\n  add configuration example with max_capacity_bytes + eviction\n- resp.rst: Add max_capacity_bytes to L2 adapter config table;\n  add L2 Eviction section with full configuration example\n- native_connectors.rst: Add do_single_delete to connector\n  interface; add submit_batch_delete to protocol; add\n  max_capacity_bytes to config examples and native_plugin table;\n  update checklist and method counts\n- resp/README.md: Add max_capacity_bytes to config table\n- Config help() strings: Add max_capacity_bytes documentation\n  to RESP, FS native, and native plugin adapter configs\n\n* Rename max_capacity_bytes to max_capacity_gb (float) in config\n\nChange the L2 adapter capacity config from bytes (int) to GB (float)\nfor consistency with MockL2Adapter's max_size_gb and better ergonomics.\n\nThe internal _max_capacity_bytes field stays as bytes -- the conversion\nhappens once in NativeConnectorL2Adapter.__init__.\n\nUpdated: adapter configs, factories, tests, docs, and examples.\n\n* Fix eviction listener notifications and delete timeout cleanup\n\nFixes three issues found in code review:\n\n1. (Critical) Add _notify_keys_stored on store completion and\n   _notify_keys_accessed on load completion in the demux loop.\n   Without these, the LRU eviction policy never learns about\n   stored/accessed keys, making eviction non-functional.\n\n2. Clean up _pending_delete_events and _pending_ops on delete\n   timeout to prevent memory leaks.\n\n3. Add docstring to delete() method.\n\nAlso store keys in _pending_ops for load operations (was None)\nso _notify_keys_accessed can report which keys were loaded.\n\nListener notifications are fired outside the lock to avoid\npotential deadlocks with listener callbacks.",
+              "stats": {
+                "files": 20,
+                "lines": 671,
+                "insertions": 641,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62.333333333333336,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 187,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
           "total_commits": 2,
@@ -826,66 +1393,6 @@
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 131,
-          "commits": [
-            {
-              "hash": "62cee8b0",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T15:01:13.000Z",
-              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 17,
-                "lines": 2556,
-                "insertions": 2297,
-                "deletions": 259
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "6774d50d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T14:36:48.000Z",
-              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 40,
-                "insertions": 36,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 4,
-                "total": 44
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 65.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 131,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
           "total_commits": 1,
@@ -925,43 +1432,82 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
+          "name": "jooho",
+          "email": "Jooho.lee@xcena.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 80,
+          "commit_score": 100,
           "commits": [
             {
-              "hash": "996da472",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-01T20:53:12.000Z",
-              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "hash": "55024196",
+              "author": "jooho",
+              "email": "Jooho.lee@xcena.com",
+              "date": "2026-04-03T06:06:00.000Z",
+              "message": "[Connector] Maru: zero-copy KV cache sharing via CXL shared memory  (#2705)\n\n* feat: Add MaruBackend as a storage backend for CXL shared memory\n\nSigned-off-by: jooho-xcena <jooho.lee@xcena.com>\nCo-authored-by: youngrok-XCENA <yr.song@xcena.com>\nCo-authored-by: hyunyul-XCENA <hyunyul.cho@xcena.com>\nCo-authored-by: seohui-XCENA <seohui.son@xcena.com>\nCo-authored-by: kihwan-XCENA <kihwan.kim@xcena.com>\n\n* fix: capture store() return value and correct pin docstring\n\n- _async_store now uses handler.store() return value instead of\n  unconditionally setting success=True, preventing CXL memory leak\n  on server-side rejection\n- Fix batched_async_contains docstring to reflect actual batch_pin\n  RPC support\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\n\n* style: fix ruff-format in maru_backend.py\n\nSigned-off-by: jooho-xcena <jooho.lee@xcena.com>\n\n---------\n\nSigned-off-by: jooho-xcena <jooho.lee@xcena.com>\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\nCo-authored-by: youngrok-XCENA <yr.song@xcena.com>\nCo-authored-by: hyunyul-XCENA <hyunyul.cho@xcena.com>\nCo-authored-by: seohui-XCENA <seohui.son@xcena.com>\nCo-authored-by: kihwan-XCENA <kihwan.kim@xcena.com>\nCo-authored-by: Rocky Song <167060552+youngrok-XCENA@users.noreply.github.com>",
               "stats": {
-                "files": 2,
-                "lines": 428,
-                "insertions": 422,
-                "deletions": 6
+                "files": 8,
+                "lines": 1666,
+                "insertions": 1664,
+                "deletions": 2
               },
               "scores": {
                 "loc": 30,
-                "files": 10,
-                "keyword": 15,
+                "files": 20,
+                "keyword": 25,
                 "ai": 25,
-                "total": 80
+                "total": 100
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 100,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 80,
+          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "6ceed5ea",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-03T22:43:46.000Z",
+              "message": "[CLI]Add long-doc-permutator CLI bench workload (#2937)\n\n* add new workload to cli bench\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1088,
+                "insertions": 1086,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Jiayi Yao",
@@ -999,8 +1545,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 66,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 54,
+          "commits": [
+            {
+              "hash": "8baa42d8",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-04T00:21:04.000Z",
+              "message": "feat(gds): add gds_path_sharding config for multi-path strategy (#2922)\n\nAdd a top-level `gds_path_sharding` config field (default: \"by_gpu\")\nthat controls how GPUs are assigned to storage paths when multiple\ncomma-separated paths are provided in `gds_path`. This replaces the\npreviously hardcoded by_gpu logic with an explicit, extensible setting.\n\nCurrently only \"by_gpu\" is supported (selects path via\n`device_id % num_paths`); unsupported values raise AssertionError.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 71,
+                "insertions": 62,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 7,
+                "total": 54
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 54,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 54,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "cansun",
@@ -1164,13 +1749,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-03T00:30:12.136Z",
+    "analyzedAt": "2026-04-04T00:30:16.375Z",
     "daysBack": 2,
-    "totalCommits": 11,
-    "totalContributors": 7,
+    "totalCommits": 18,
+    "totalContributors": 9,
     "mergedFrom": {
-      "existing": 10,
-      "new": 6
+      "existing": 11,
+      "new": 8
     }
   }
 }
