@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-04T00:30:16.375Z",
-  "total_commits_analyzed": 18,
+  "last_updated": "2026-04-05T00:30:18.718Z",
+  "total_commits_analyzed": 20,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -131,10 +131,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 4,
-          "significant_commits": 2,
+          "total_commits": 5,
+          "significant_commits": 3,
           "simple_commits": 2,
-          "commit_score": 230,
+          "commit_score": 317,
           "commits": [
             {
               "hash": "996da472",
@@ -219,14 +219,95 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c9d90539",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-04T01:52:02.000Z",
+              "message": "[Security][Remote Connector]: Add env var auth config for RESP (#2949)\n\n* [Feat]: Add environment variable support for RESP adapter auth\n\nSupport LMCACHE_RESP_USERNAME, LMCACHE_RESP_PASSWORD, LMCACHE_RESP_HOST,\nand LMCACHE_RESP_PORT environment variables in both MP and non-MP modes.\nEnv vars are read inside the adapter at creation time so credentials are\nnever stored in the config object or printed in startup logs.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat]: Fix env var precedence and add unit tests for RESP env vars\n\nChange precedence so config/CLI args override env vars (env vars serve\nas defaults). Add unit tests for the precedence logic in both MP and\nnon-MP modes.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 309,
+                "insertions": 290,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 57.5,
-          "significance_ratio": 0.5,
+          "avg_score": 63.4,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 230,
+          "total_score": 317,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 175,
+          "commits": [
+            {
+              "hash": "b73b69bf",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-01T06:57:05.000Z",
+              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 443,
+                "insertions": 310,
+                "deletions": 133
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2108248a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-04T02:26:03.000Z",
+              "message": "Refactor: Align pd_buffer_size to chunk size in PD backend (#2694)\n\n* Refactor: Auto-align pd_buffer_size down to nearest chunk size multiple\n\n- Add buffer size alignment logic to prevent assertion error\n- Calculate aligned_buffer_size as (origin_size // chunk_size) * chunk_size\n- Add informative logging when buffer size is adjusted\n- Release excess buffer memory that can't be aligned\n- Follows the same pattern as local_cpu_backend.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine the code per gemini's suggestions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine log msg\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline pd backend buffer alignement\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix test hang by adding backend cleanup\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* remove UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* doc update\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename function name\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 103,
+                "insertions": 95,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 10,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 175,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -347,45 +428,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 172,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 100,
-          "commits": [
-            {
-              "hash": "b73b69bf",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-01T06:57:05.000Z",
-              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 5,
-                "lines": 443,
-                "insertions": 310,
-                "deletions": 133
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 100,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -550,6 +592,108 @@
     "monthly": {
       "2026-04": [
         {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 274,
+          "commits": [
+            {
+              "hash": "996da472",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-01T20:53:12.000Z",
+              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 428,
+                "insertions": 422,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "45d4d366",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T07:24:13.000Z",
+              "message": "[Bugfix]: fix get_num_heads for MLA format (#2941)\n\nMLA format (NL_X_NB_BS_HS) absorbs heads into the hidden dim,\nso get_num_heads should return 1 instead of raising ValueError.\nThis was preventing all MLA models (e.g. DeepSeek-V2-Lite) from launching.",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f7c306f3",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T01:22:58.000Z",
+              "message": "[Feat]: Add eviction to L2 Native Backend (#2939)\n\n* Add submit_batch_delete to native connector stack for L2 eviction\n\nAdds a DELETE operation through all layers of the native connector\nframework (C++ IStorageConnector -> ConnectorBase -> pybind -> Python\nNativeConnectorL2Adapter) so that native remote backends (Redis, FS,\nplugins) can participate in L2 eviction.\n\nC++ layer:\n- Add BATCH_TILE_DELETE to Op enum\n- Add submit_batch_delete to IStorageConnector interface\n- Implement in ConnectorBase with tiling, per-key results, and\n  per-key error tolerance (like GET)\n- Add do_single_delete virtual with default no-op for backward compat\n- Implement for Redis (RESP DEL) and FS (std::filesystem::remove)\n\nPybind layer:\n- Add bind_submit_batch_delete template (keys-only, GIL release)\n- Update LMCACHE_BIND_CONNECTOR_METHODS macro\n\nPython layer:\n- NativeConnectorL2Adapter.delete() submits batch delete and blocks\n  on threading.Event until demux thread signals completion\n- Backward compatible: detects submit_batch_delete via hasattr\n- Fix missing super().__init__() call for listener support\n- Add warning in native_plugin_l2_adapter for plugins without delete\n\nTests:\n- Add submit_batch_delete to MockNativeConnector\n- Add TestDeleteInterface: existing key, nonexistent, empty, batch\n- Add TestDeleteBackwardCompatibility: no-op without the method\n\n* Add client-side size tracking for NativeConnectorL2Adapter.get_usage()\n\nEnables the L2EvictionController to automatically trigger eviction for\nnative remote backends by tracking stored bytes client-side.\n\n- Track per-key sizes in _key_sizes dict, populated on store completion\n- Increment _current_size_bytes on successful store, decrement on delete\n- Idempotent: duplicate stores for same key don't double-count\n- get_usage() returns usage fraction when max_capacity_bytes > 0,\n  or (-1.0, -1.0) when not configured (preserves backward compat)\n\nAdd max_capacity_bytes config parameter to:\n- NativeConnectorL2Adapter.__init__\n- RESPL2AdapterConfig, FSNativeL2AdapterConfig, NativePluginL2AdapterConfig\n- All three factory functions\n\nTests: 6 new tests covering zero-capacity, store tracking, delete\ntracking, store-delete cycles, and idempotent store deduplication.\n\n* Update docs and examples for native connector eviction support\n\n- l2_eviction.md: Update adapter support matrix to show\n  NativeConnectorL2Adapter now supports delete and get_usage;\n  add configuration example with max_capacity_bytes + eviction\n- resp.rst: Add max_capacity_bytes to L2 adapter config table;\n  add L2 Eviction section with full configuration example\n- native_connectors.rst: Add do_single_delete to connector\n  interface; add submit_batch_delete to protocol; add\n  max_capacity_bytes to config examples and native_plugin table;\n  update checklist and method counts\n- resp/README.md: Add max_capacity_bytes to config table\n- Config help() strings: Add max_capacity_bytes documentation\n  to RESP, FS native, and native plugin adapter configs\n\n* Rename max_capacity_bytes to max_capacity_gb (float) in config\n\nChange the L2 adapter capacity config from bytes (int) to GB (float)\nfor consistency with MockL2Adapter's max_size_gb and better ergonomics.\n\nThe internal _max_capacity_bytes field stays as bytes -- the conversion\nhappens once in NativeConnectorL2Adapter.__init__.\n\nUpdated: adapter configs, factories, tests, docs, and examples.\n\n* Fix eviction listener notifications and delete timeout cleanup\n\nFixes three issues found in code review:\n\n1. (Critical) Add _notify_keys_stored on store completion and\n   _notify_keys_accessed on load completion in the demux loop.\n   Without these, the LRU eviction policy never learns about\n   stored/accessed keys, making eviction non-functional.\n\n2. Clean up _pending_delete_events and _pending_ops on delete\n   timeout to prevent memory leaks.\n\n3. Add docstring to delete() method.\n\nAlso store keys in _pending_ops for load operations (was None)\nso _notify_keys_accessed can report which keys were loaded.\n\nListener notifications are fired outside the lock to avoid\npotential deadlocks with listener callbacks.",
+              "stats": {
+                "files": 20,
+                "lines": 671,
+                "insertions": 641,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c9d90539",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-04T01:52:02.000Z",
+              "message": "[Security][Remote Connector]: Add env var auth config for RESP (#2949)\n\n* [Feat]: Add environment variable support for RESP adapter auth\n\nSupport LMCACHE_RESP_USERNAME, LMCACHE_RESP_PASSWORD, LMCACHE_RESP_HOST,\nand LMCACHE_RESP_PORT environment variables in both MP and non-MP modes.\nEnv vars are read inside the adapter at creation time so credentials are\nnever stored in the config object or printed in startup logs.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat]: Fix env var precedence and add unit tests for RESP env vars\n\nChange precedence so config/CLI args override env vars (env vars serve\nas defaults). Add unit tests for the precedence logic in both MP and\nnon-MP modes.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 309,
+                "insertions": 290,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68.5,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 274,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
           "total_commits": 4,
@@ -652,83 +796,62 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 3,
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 2,
           "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 187,
+          "simple_commits": 0,
+          "commit_score": 175,
           "commits": [
             {
-              "hash": "996da472",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-01T20:53:12.000Z",
-              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "hash": "b73b69bf",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-01T06:57:05.000Z",
+              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
               "stats": {
-                "files": 2,
-                "lines": 428,
-                "insertions": 422,
-                "deletions": 6
+                "files": 5,
+                "lines": 443,
+                "insertions": 310,
+                "deletions": 133
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2108248a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-04T02:26:03.000Z",
+              "message": "Refactor: Align pd_buffer_size to chunk size in PD backend (#2694)\n\n* Refactor: Auto-align pd_buffer_size down to nearest chunk size multiple\n\n- Add buffer size alignment logic to prevent assertion error\n- Calculate aligned_buffer_size as (origin_size // chunk_size) * chunk_size\n- Add informative logging when buffer size is adjusted\n- Release excess buffer memory that can't be aligned\n- Follows the same pattern as local_cpu_backend.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine the code per gemini's suggestions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine log msg\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline pd backend buffer alignement\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix test hang by adding backend cleanup\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* remove UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* doc update\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename function name\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 103,
+                "insertions": 95,
+                "deletions": 8
               },
               "scores": {
                 "loc": 30,
                 "files": 10,
-                "keyword": 15,
-                "ai": 25,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "45d4d366",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-03T07:24:13.000Z",
-              "message": "[Bugfix]: fix get_num_heads for MLA format (#2941)\n\nMLA format (NL_X_NB_BS_HS) absorbs heads into the hidden dim,\nso get_num_heads should return 1 instead of raising ValueError.\nThis was preventing all MLA models (e.g. DeepSeek-V2-Lite) from launching.",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 2,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "f7c306f3",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-03T01:22:58.000Z",
-              "message": "[Feat]: Add eviction to L2 Native Backend (#2939)\n\n* Add submit_batch_delete to native connector stack for L2 eviction\n\nAdds a DELETE operation through all layers of the native connector\nframework (C++ IStorageConnector -> ConnectorBase -> pybind -> Python\nNativeConnectorL2Adapter) so that native remote backends (Redis, FS,\nplugins) can participate in L2 eviction.\n\nC++ layer:\n- Add BATCH_TILE_DELETE to Op enum\n- Add submit_batch_delete to IStorageConnector interface\n- Implement in ConnectorBase with tiling, per-key results, and\n  per-key error tolerance (like GET)\n- Add do_single_delete virtual with default no-op for backward compat\n- Implement for Redis (RESP DEL) and FS (std::filesystem::remove)\n\nPybind layer:\n- Add bind_submit_batch_delete template (keys-only, GIL release)\n- Update LMCACHE_BIND_CONNECTOR_METHODS macro\n\nPython layer:\n- NativeConnectorL2Adapter.delete() submits batch delete and blocks\n  on threading.Event until demux thread signals completion\n- Backward compatible: detects submit_batch_delete via hasattr\n- Fix missing super().__init__() call for listener support\n- Add warning in native_plugin_l2_adapter for plugins without delete\n\nTests:\n- Add submit_batch_delete to MockNativeConnector\n- Add TestDeleteInterface: existing key, nonexistent, empty, batch\n- Add TestDeleteBackwardCompatibility: no-op without the method\n\n* Add client-side size tracking for NativeConnectorL2Adapter.get_usage()\n\nEnables the L2EvictionController to automatically trigger eviction for\nnative remote backends by tracking stored bytes client-side.\n\n- Track per-key sizes in _key_sizes dict, populated on store completion\n- Increment _current_size_bytes on successful store, decrement on delete\n- Idempotent: duplicate stores for same key don't double-count\n- get_usage() returns usage fraction when max_capacity_bytes > 0,\n  or (-1.0, -1.0) when not configured (preserves backward compat)\n\nAdd max_capacity_bytes config parameter to:\n- NativeConnectorL2Adapter.__init__\n- RESPL2AdapterConfig, FSNativeL2AdapterConfig, NativePluginL2AdapterConfig\n- All three factory functions\n\nTests: 6 new tests covering zero-capacity, store tracking, delete\ntracking, store-delete cycles, and idempotent store deduplication.\n\n* Update docs and examples for native connector eviction support\n\n- l2_eviction.md: Update adapter support matrix to show\n  NativeConnectorL2Adapter now supports delete and get_usage;\n  add configuration example with max_capacity_bytes + eviction\n- resp.rst: Add max_capacity_bytes to L2 adapter config table;\n  add L2 Eviction section with full configuration example\n- native_connectors.rst: Add do_single_delete to connector\n  interface; add submit_batch_delete to protocol; add\n  max_capacity_bytes to config examples and native_plugin table;\n  update checklist and method counts\n- resp/README.md: Add max_capacity_bytes to config table\n- Config help() strings: Add max_capacity_bytes documentation\n  to RESP, FS native, and native plugin adapter configs\n\n* Rename max_capacity_bytes to max_capacity_gb (float) in config\n\nChange the L2 adapter capacity config from bytes (int) to GB (float)\nfor consistency with MockL2Adapter's max_size_gb and better ergonomics.\n\nThe internal _max_capacity_bytes field stays as bytes -- the conversion\nhappens once in NativeConnectorL2Adapter.__init__.\n\nUpdated: adapter configs, factories, tests, docs, and examples.\n\n* Fix eviction listener notifications and delete timeout cleanup\n\nFixes three issues found in code review:\n\n1. (Critical) Add _notify_keys_stored on store completion and\n   _notify_keys_accessed on load completion in the demux loop.\n   Without these, the LRU eviction policy never learns about\n   stored/accessed keys, making eviction non-functional.\n\n2. Clean up _pending_delete_events and _pending_ops on delete\n   timeout to prevent memory leaks.\n\n3. Add docstring to delete() method.\n\nAlso store keys in _pending_ops for load operations (was None)\nso _notify_keys_accessed can report which keys were loaded.\n\nListener notifications are fired outside the lock to avoid\npotential deadlocks with listener callbacks.",
-              "stats": {
-                "files": 20,
-                "lines": 671,
-                "insertions": 641,
-                "deletions": 30
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
+                "keyword": 25,
+                "ai": 10,
+                "total": 75
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 62.333333333333336,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 87.5,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 187,
+          "total_score": 175,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -789,45 +912,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 172,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 100,
-          "commits": [
-            {
-              "hash": "b73b69bf",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-01T06:57:05.000Z",
-              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 5,
-                "lines": 443,
-                "insertions": 310,
-                "deletions": 133
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 100,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1150,6 +1234,108 @@
     "quarterly": {
       "2026-Q2": [
         {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 274,
+          "commits": [
+            {
+              "hash": "996da472",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-01T20:53:12.000Z",
+              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 428,
+                "insertions": 422,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "45d4d366",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T07:24:13.000Z",
+              "message": "[Bugfix]: fix get_num_heads for MLA format (#2941)\n\nMLA format (NL_X_NB_BS_HS) absorbs heads into the hidden dim,\nso get_num_heads should return 1 instead of raising ValueError.\nThis was preventing all MLA models (e.g. DeepSeek-V2-Lite) from launching.",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f7c306f3",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T01:22:58.000Z",
+              "message": "[Feat]: Add eviction to L2 Native Backend (#2939)\n\n* Add submit_batch_delete to native connector stack for L2 eviction\n\nAdds a DELETE operation through all layers of the native connector\nframework (C++ IStorageConnector -> ConnectorBase -> pybind -> Python\nNativeConnectorL2Adapter) so that native remote backends (Redis, FS,\nplugins) can participate in L2 eviction.\n\nC++ layer:\n- Add BATCH_TILE_DELETE to Op enum\n- Add submit_batch_delete to IStorageConnector interface\n- Implement in ConnectorBase with tiling, per-key results, and\n  per-key error tolerance (like GET)\n- Add do_single_delete virtual with default no-op for backward compat\n- Implement for Redis (RESP DEL) and FS (std::filesystem::remove)\n\nPybind layer:\n- Add bind_submit_batch_delete template (keys-only, GIL release)\n- Update LMCACHE_BIND_CONNECTOR_METHODS macro\n\nPython layer:\n- NativeConnectorL2Adapter.delete() submits batch delete and blocks\n  on threading.Event until demux thread signals completion\n- Backward compatible: detects submit_batch_delete via hasattr\n- Fix missing super().__init__() call for listener support\n- Add warning in native_plugin_l2_adapter for plugins without delete\n\nTests:\n- Add submit_batch_delete to MockNativeConnector\n- Add TestDeleteInterface: existing key, nonexistent, empty, batch\n- Add TestDeleteBackwardCompatibility: no-op without the method\n\n* Add client-side size tracking for NativeConnectorL2Adapter.get_usage()\n\nEnables the L2EvictionController to automatically trigger eviction for\nnative remote backends by tracking stored bytes client-side.\n\n- Track per-key sizes in _key_sizes dict, populated on store completion\n- Increment _current_size_bytes on successful store, decrement on delete\n- Idempotent: duplicate stores for same key don't double-count\n- get_usage() returns usage fraction when max_capacity_bytes > 0,\n  or (-1.0, -1.0) when not configured (preserves backward compat)\n\nAdd max_capacity_bytes config parameter to:\n- NativeConnectorL2Adapter.__init__\n- RESPL2AdapterConfig, FSNativeL2AdapterConfig, NativePluginL2AdapterConfig\n- All three factory functions\n\nTests: 6 new tests covering zero-capacity, store tracking, delete\ntracking, store-delete cycles, and idempotent store deduplication.\n\n* Update docs and examples for native connector eviction support\n\n- l2_eviction.md: Update adapter support matrix to show\n  NativeConnectorL2Adapter now supports delete and get_usage;\n  add configuration example with max_capacity_bytes + eviction\n- resp.rst: Add max_capacity_bytes to L2 adapter config table;\n  add L2 Eviction section with full configuration example\n- native_connectors.rst: Add do_single_delete to connector\n  interface; add submit_batch_delete to protocol; add\n  max_capacity_bytes to config examples and native_plugin table;\n  update checklist and method counts\n- resp/README.md: Add max_capacity_bytes to config table\n- Config help() strings: Add max_capacity_bytes documentation\n  to RESP, FS native, and native plugin adapter configs\n\n* Rename max_capacity_bytes to max_capacity_gb (float) in config\n\nChange the L2 adapter capacity config from bytes (int) to GB (float)\nfor consistency with MockL2Adapter's max_size_gb and better ergonomics.\n\nThe internal _max_capacity_bytes field stays as bytes -- the conversion\nhappens once in NativeConnectorL2Adapter.__init__.\n\nUpdated: adapter configs, factories, tests, docs, and examples.\n\n* Fix eviction listener notifications and delete timeout cleanup\n\nFixes three issues found in code review:\n\n1. (Critical) Add _notify_keys_stored on store completion and\n   _notify_keys_accessed on load completion in the demux loop.\n   Without these, the LRU eviction policy never learns about\n   stored/accessed keys, making eviction non-functional.\n\n2. Clean up _pending_delete_events and _pending_ops on delete\n   timeout to prevent memory leaks.\n\n3. Add docstring to delete() method.\n\nAlso store keys in _pending_ops for load operations (was None)\nso _notify_keys_accessed can report which keys were loaded.\n\nListener notifications are fired outside the lock to avoid\npotential deadlocks with listener callbacks.",
+              "stats": {
+                "files": 20,
+                "lines": 671,
+                "insertions": 641,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c9d90539",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-04T01:52:02.000Z",
+              "message": "[Security][Remote Connector]: Add env var auth config for RESP (#2949)\n\n* [Feat]: Add environment variable support for RESP adapter auth\n\nSupport LMCACHE_RESP_USERNAME, LMCACHE_RESP_PASSWORD, LMCACHE_RESP_HOST,\nand LMCACHE_RESP_PORT environment variables in both MP and non-MP modes.\nEnv vars are read inside the adapter at creation time so credentials are\nnever stored in the config object or printed in startup logs.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat]: Fix env var precedence and add unit tests for RESP env vars\n\nChange precedence so config/CLI args override env vars (env vars serve\nas defaults). Add unit tests for the precedence logic in both MP and\nnon-MP modes.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 309,
+                "insertions": 290,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68.5,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 274,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
           "total_commits": 4,
@@ -1252,83 +1438,62 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 3,
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 2,
           "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 187,
+          "simple_commits": 0,
+          "commit_score": 175,
           "commits": [
             {
-              "hash": "996da472",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-01T20:53:12.000Z",
-              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "hash": "b73b69bf",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-01T06:57:05.000Z",
+              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
               "stats": {
-                "files": 2,
-                "lines": 428,
-                "insertions": 422,
-                "deletions": 6
+                "files": 5,
+                "lines": 443,
+                "insertions": 310,
+                "deletions": 133
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2108248a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-04T02:26:03.000Z",
+              "message": "Refactor: Align pd_buffer_size to chunk size in PD backend (#2694)\n\n* Refactor: Auto-align pd_buffer_size down to nearest chunk size multiple\n\n- Add buffer size alignment logic to prevent assertion error\n- Calculate aligned_buffer_size as (origin_size // chunk_size) * chunk_size\n- Add informative logging when buffer size is adjusted\n- Release excess buffer memory that can't be aligned\n- Follows the same pattern as local_cpu_backend.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine the code per gemini's suggestions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine log msg\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline pd backend buffer alignement\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix test hang by adding backend cleanup\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* remove UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* doc update\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename function name\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 103,
+                "insertions": 95,
+                "deletions": 8
               },
               "scores": {
                 "loc": 30,
                 "files": 10,
-                "keyword": 15,
-                "ai": 25,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "45d4d366",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-03T07:24:13.000Z",
-              "message": "[Bugfix]: fix get_num_heads for MLA format (#2941)\n\nMLA format (NL_X_NB_BS_HS) absorbs heads into the hidden dim,\nso get_num_heads should return 1 instead of raising ValueError.\nThis was preventing all MLA models (e.g. DeepSeek-V2-Lite) from launching.",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 2,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "f7c306f3",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-03T01:22:58.000Z",
-              "message": "[Feat]: Add eviction to L2 Native Backend (#2939)\n\n* Add submit_batch_delete to native connector stack for L2 eviction\n\nAdds a DELETE operation through all layers of the native connector\nframework (C++ IStorageConnector -> ConnectorBase -> pybind -> Python\nNativeConnectorL2Adapter) so that native remote backends (Redis, FS,\nplugins) can participate in L2 eviction.\n\nC++ layer:\n- Add BATCH_TILE_DELETE to Op enum\n- Add submit_batch_delete to IStorageConnector interface\n- Implement in ConnectorBase with tiling, per-key results, and\n  per-key error tolerance (like GET)\n- Add do_single_delete virtual with default no-op for backward compat\n- Implement for Redis (RESP DEL) and FS (std::filesystem::remove)\n\nPybind layer:\n- Add bind_submit_batch_delete template (keys-only, GIL release)\n- Update LMCACHE_BIND_CONNECTOR_METHODS macro\n\nPython layer:\n- NativeConnectorL2Adapter.delete() submits batch delete and blocks\n  on threading.Event until demux thread signals completion\n- Backward compatible: detects submit_batch_delete via hasattr\n- Fix missing super().__init__() call for listener support\n- Add warning in native_plugin_l2_adapter for plugins without delete\n\nTests:\n- Add submit_batch_delete to MockNativeConnector\n- Add TestDeleteInterface: existing key, nonexistent, empty, batch\n- Add TestDeleteBackwardCompatibility: no-op without the method\n\n* Add client-side size tracking for NativeConnectorL2Adapter.get_usage()\n\nEnables the L2EvictionController to automatically trigger eviction for\nnative remote backends by tracking stored bytes client-side.\n\n- Track per-key sizes in _key_sizes dict, populated on store completion\n- Increment _current_size_bytes on successful store, decrement on delete\n- Idempotent: duplicate stores for same key don't double-count\n- get_usage() returns usage fraction when max_capacity_bytes > 0,\n  or (-1.0, -1.0) when not configured (preserves backward compat)\n\nAdd max_capacity_bytes config parameter to:\n- NativeConnectorL2Adapter.__init__\n- RESPL2AdapterConfig, FSNativeL2AdapterConfig, NativePluginL2AdapterConfig\n- All three factory functions\n\nTests: 6 new tests covering zero-capacity, store tracking, delete\ntracking, store-delete cycles, and idempotent store deduplication.\n\n* Update docs and examples for native connector eviction support\n\n- l2_eviction.md: Update adapter support matrix to show\n  NativeConnectorL2Adapter now supports delete and get_usage;\n  add configuration example with max_capacity_bytes + eviction\n- resp.rst: Add max_capacity_bytes to L2 adapter config table;\n  add L2 Eviction section with full configuration example\n- native_connectors.rst: Add do_single_delete to connector\n  interface; add submit_batch_delete to protocol; add\n  max_capacity_bytes to config examples and native_plugin table;\n  update checklist and method counts\n- resp/README.md: Add max_capacity_bytes to config table\n- Config help() strings: Add max_capacity_bytes documentation\n  to RESP, FS native, and native plugin adapter configs\n\n* Rename max_capacity_bytes to max_capacity_gb (float) in config\n\nChange the L2 adapter capacity config from bytes (int) to GB (float)\nfor consistency with MockL2Adapter's max_size_gb and better ergonomics.\n\nThe internal _max_capacity_bytes field stays as bytes -- the conversion\nhappens once in NativeConnectorL2Adapter.__init__.\n\nUpdated: adapter configs, factories, tests, docs, and examples.\n\n* Fix eviction listener notifications and delete timeout cleanup\n\nFixes three issues found in code review:\n\n1. (Critical) Add _notify_keys_stored on store completion and\n   _notify_keys_accessed on load completion in the demux loop.\n   Without these, the LRU eviction policy never learns about\n   stored/accessed keys, making eviction non-functional.\n\n2. Clean up _pending_delete_events and _pending_ops on delete\n   timeout to prevent memory leaks.\n\n3. Add docstring to delete() method.\n\nAlso store keys in _pending_ops for load operations (was None)\nso _notify_keys_accessed can report which keys were loaded.\n\nListener notifications are fired outside the lock to avoid\npotential deadlocks with listener callbacks.",
-              "stats": {
-                "files": 20,
-                "lines": 671,
-                "insertions": 641,
-                "deletions": 30
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
+                "keyword": 25,
+                "ai": 10,
+                "total": 75
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 62.333333333333336,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 87.5,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 187,
+          "total_score": 175,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1389,45 +1554,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 172,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 100,
-          "commits": [
-            {
-              "hash": "b73b69bf",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-01T06:57:05.000Z",
-              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 5,
-                "lines": 443,
-                "insertions": 310,
-                "deletions": 133
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 100,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1749,13 +1875,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-04T00:30:16.375Z",
+    "analyzedAt": "2026-04-05T00:30:18.718Z",
     "daysBack": 2,
-    "totalCommits": 18,
+    "totalCommits": 20,
     "totalContributors": 9,
     "mergedFrom": {
-      "existing": 11,
-      "new": 8
+      "existing": 18,
+      "new": 9
     }
   }
 }
