@@ -1,10 +1,154 @@
 {
-  "last_updated": "2026-04-05T00:30:18.718Z",
-  "total_commits_analyzed": 20,
+  "last_updated": "2026-04-06T00:30:04.020Z",
+  "total_commits_analyzed": 21,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
       "2026-W14": [
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 6,
+          "significant_commits": 4,
+          "simple_commits": 2,
+          "commit_score": 374,
+          "commits": [
+            {
+              "hash": "996da472",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-01T20:53:12.000Z",
+              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 428,
+                "insertions": 422,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ac52ad24",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-03-31T23:19:07.000Z",
+              "message": "[Chore][CI/Docs]: Switch all the documentation and CI over to `lmache cli` (#2917)\n\nswap to lmc cli\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 12,
+                "lines": 32,
+                "insertions": 17,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "45d4d366",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T07:24:13.000Z",
+              "message": "[Bugfix]: fix get_num_heads for MLA format (#2941)\n\nMLA format (NL_X_NB_BS_HS) absorbs heads into the hidden dim,\nso get_num_heads should return 1 instead of raising ValueError.\nThis was preventing all MLA models (e.g. DeepSeek-V2-Lite) from launching.",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f7c306f3",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-03T01:22:58.000Z",
+              "message": "[Feat]: Add eviction to L2 Native Backend (#2939)\n\n* Add submit_batch_delete to native connector stack for L2 eviction\n\nAdds a DELETE operation through all layers of the native connector\nframework (C++ IStorageConnector -> ConnectorBase -> pybind -> Python\nNativeConnectorL2Adapter) so that native remote backends (Redis, FS,\nplugins) can participate in L2 eviction.\n\nC++ layer:\n- Add BATCH_TILE_DELETE to Op enum\n- Add submit_batch_delete to IStorageConnector interface\n- Implement in ConnectorBase with tiling, per-key results, and\n  per-key error tolerance (like GET)\n- Add do_single_delete virtual with default no-op for backward compat\n- Implement for Redis (RESP DEL) and FS (std::filesystem::remove)\n\nPybind layer:\n- Add bind_submit_batch_delete template (keys-only, GIL release)\n- Update LMCACHE_BIND_CONNECTOR_METHODS macro\n\nPython layer:\n- NativeConnectorL2Adapter.delete() submits batch delete and blocks\n  on threading.Event until demux thread signals completion\n- Backward compatible: detects submit_batch_delete via hasattr\n- Fix missing super().__init__() call for listener support\n- Add warning in native_plugin_l2_adapter for plugins without delete\n\nTests:\n- Add submit_batch_delete to MockNativeConnector\n- Add TestDeleteInterface: existing key, nonexistent, empty, batch\n- Add TestDeleteBackwardCompatibility: no-op without the method\n\n* Add client-side size tracking for NativeConnectorL2Adapter.get_usage()\n\nEnables the L2EvictionController to automatically trigger eviction for\nnative remote backends by tracking stored bytes client-side.\n\n- Track per-key sizes in _key_sizes dict, populated on store completion\n- Increment _current_size_bytes on successful store, decrement on delete\n- Idempotent: duplicate stores for same key don't double-count\n- get_usage() returns usage fraction when max_capacity_bytes > 0,\n  or (-1.0, -1.0) when not configured (preserves backward compat)\n\nAdd max_capacity_bytes config parameter to:\n- NativeConnectorL2Adapter.__init__\n- RESPL2AdapterConfig, FSNativeL2AdapterConfig, NativePluginL2AdapterConfig\n- All three factory functions\n\nTests: 6 new tests covering zero-capacity, store tracking, delete\ntracking, store-delete cycles, and idempotent store deduplication.\n\n* Update docs and examples for native connector eviction support\n\n- l2_eviction.md: Update adapter support matrix to show\n  NativeConnectorL2Adapter now supports delete and get_usage;\n  add configuration example with max_capacity_bytes + eviction\n- resp.rst: Add max_capacity_bytes to L2 adapter config table;\n  add L2 Eviction section with full configuration example\n- native_connectors.rst: Add do_single_delete to connector\n  interface; add submit_batch_delete to protocol; add\n  max_capacity_bytes to config examples and native_plugin table;\n  update checklist and method counts\n- resp/README.md: Add max_capacity_bytes to config table\n- Config help() strings: Add max_capacity_bytes documentation\n  to RESP, FS native, and native plugin adapter configs\n\n* Rename max_capacity_bytes to max_capacity_gb (float) in config\n\nChange the L2 adapter capacity config from bytes (int) to GB (float)\nfor consistency with MockL2Adapter's max_size_gb and better ergonomics.\n\nThe internal _max_capacity_bytes field stays as bytes -- the conversion\nhappens once in NativeConnectorL2Adapter.__init__.\n\nUpdated: adapter configs, factories, tests, docs, and examples.\n\n* Fix eviction listener notifications and delete timeout cleanup\n\nFixes three issues found in code review:\n\n1. (Critical) Add _notify_keys_stored on store completion and\n   _notify_keys_accessed on load completion in the demux loop.\n   Without these, the LRU eviction policy never learns about\n   stored/accessed keys, making eviction non-functional.\n\n2. Clean up _pending_delete_events and _pending_ops on delete\n   timeout to prevent memory leaks.\n\n3. Add docstring to delete() method.\n\nAlso store keys in _pending_ops for load operations (was None)\nso _notify_keys_accessed can report which keys were loaded.\n\nListener notifications are fired outside the lock to avoid\npotential deadlocks with listener callbacks.",
+              "stats": {
+                "files": 20,
+                "lines": 671,
+                "insertions": 641,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c9d90539",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-04T01:52:02.000Z",
+              "message": "[Security][Remote Connector]: Add env var auth config for RESP (#2949)\n\n* [Feat]: Add environment variable support for RESP adapter auth\n\nSupport LMCACHE_RESP_USERNAME, LMCACHE_RESP_PASSWORD, LMCACHE_RESP_HOST,\nand LMCACHE_RESP_PORT environment variables in both MP and non-MP modes.\nEnv vars are read inside the adapter at creation time so credentials are\nnever stored in the config object or printed in startup logs.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat]: Fix env var precedence and add unit tests for RESP env vars\n\nChange precedence so config/CLI args override env vars (env vars serve\nas defaults). Add unit tests for the precedence logic in both MP and\nnon-MP modes.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 309,
+                "insertions": 290,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a0d6b7ad",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-05T06:24:34.000Z",
+              "message": "[Chore] Add CODEOWNERS for automated PR review assignments (#2950)\n\n* [Chore] Add CODEOWNERS for automated PR review assignments\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add sammshen to resp L2 adapter ownership\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add sammshen to csrc/storage_backends and native connector L2 adapters\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add YaoJiayi to L2 eviction ownership\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add OasisGit to multiprocess and http_server ownership\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 105,
+                "insertions": 105,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 57
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62.333333333333336,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 374,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
@@ -125,129 +269,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 328,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 5,
-          "significant_commits": 3,
-          "simple_commits": 2,
-          "commit_score": 317,
-          "commits": [
-            {
-              "hash": "996da472",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-01T20:53:12.000Z",
-              "message": "[Bugfix]: patch save_decode_cache (#2929)\n\n[Bugfix] Fix save_decode_cache token slicing and preemption assertion\n\nTwo bugs in vllm_v1_adapter.py when save_decode_cache is enabled:\n\n1. Token slicing used num_computed_tokens as the slice start, but after\n   preemption the tracker can be longer than num_computed_tokens, causing\n   an empty or negative slice. Fix: use min(num_computed_tokens, tracker_len).\n\n2. The assertion in build_connector_meta expected num_computed_tokens to\n   exactly equal max(lmcache_cached, vllm_cached). On a full LMCache hit\n   vLLM's get_num_new_matched_tokens subtracts 1, so num_computed is one\n   less than the raw lmcache value. Fix: apply the same -1 adjustment\n   deterministically when lmcache_cached == num_tokens and lmcache > vllm.\n\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 428,
-                "insertions": 422,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 15,
-                "ai": 25,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ac52ad24",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-03-31T23:19:07.000Z",
-              "message": "[Chore][CI/Docs]: Switch all the documentation and CI over to `lmache cli` (#2917)\n\nswap to lmc cli\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 12,
-                "lines": 32,
-                "insertions": 17,
-                "deletions": 15
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 3,
-                "total": 43
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "45d4d366",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-03T07:24:13.000Z",
-              "message": "[Bugfix]: fix get_num_heads for MLA format (#2941)\n\nMLA format (NL_X_NB_BS_HS) absorbs heads into the hidden dim,\nso get_num_heads should return 1 instead of raising ValueError.\nThis was preventing all MLA models (e.g. DeepSeek-V2-Lite) from launching.",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 2,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "f7c306f3",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-03T01:22:58.000Z",
-              "message": "[Feat]: Add eviction to L2 Native Backend (#2939)\n\n* Add submit_batch_delete to native connector stack for L2 eviction\n\nAdds a DELETE operation through all layers of the native connector\nframework (C++ IStorageConnector -> ConnectorBase -> pybind -> Python\nNativeConnectorL2Adapter) so that native remote backends (Redis, FS,\nplugins) can participate in L2 eviction.\n\nC++ layer:\n- Add BATCH_TILE_DELETE to Op enum\n- Add submit_batch_delete to IStorageConnector interface\n- Implement in ConnectorBase with tiling, per-key results, and\n  per-key error tolerance (like GET)\n- Add do_single_delete virtual with default no-op for backward compat\n- Implement for Redis (RESP DEL) and FS (std::filesystem::remove)\n\nPybind layer:\n- Add bind_submit_batch_delete template (keys-only, GIL release)\n- Update LMCACHE_BIND_CONNECTOR_METHODS macro\n\nPython layer:\n- NativeConnectorL2Adapter.delete() submits batch delete and blocks\n  on threading.Event until demux thread signals completion\n- Backward compatible: detects submit_batch_delete via hasattr\n- Fix missing super().__init__() call for listener support\n- Add warning in native_plugin_l2_adapter for plugins without delete\n\nTests:\n- Add submit_batch_delete to MockNativeConnector\n- Add TestDeleteInterface: existing key, nonexistent, empty, batch\n- Add TestDeleteBackwardCompatibility: no-op without the method\n\n* Add client-side size tracking for NativeConnectorL2Adapter.get_usage()\n\nEnables the L2EvictionController to automatically trigger eviction for\nnative remote backends by tracking stored bytes client-side.\n\n- Track per-key sizes in _key_sizes dict, populated on store completion\n- Increment _current_size_bytes on successful store, decrement on delete\n- Idempotent: duplicate stores for same key don't double-count\n- get_usage() returns usage fraction when max_capacity_bytes > 0,\n  or (-1.0, -1.0) when not configured (preserves backward compat)\n\nAdd max_capacity_bytes config parameter to:\n- NativeConnectorL2Adapter.__init__\n- RESPL2AdapterConfig, FSNativeL2AdapterConfig, NativePluginL2AdapterConfig\n- All three factory functions\n\nTests: 6 new tests covering zero-capacity, store tracking, delete\ntracking, store-delete cycles, and idempotent store deduplication.\n\n* Update docs and examples for native connector eviction support\n\n- l2_eviction.md: Update adapter support matrix to show\n  NativeConnectorL2Adapter now supports delete and get_usage;\n  add configuration example with max_capacity_bytes + eviction\n- resp.rst: Add max_capacity_bytes to L2 adapter config table;\n  add L2 Eviction section with full configuration example\n- native_connectors.rst: Add do_single_delete to connector\n  interface; add submit_batch_delete to protocol; add\n  max_capacity_bytes to config examples and native_plugin table;\n  update checklist and method counts\n- resp/README.md: Add max_capacity_bytes to config table\n- Config help() strings: Add max_capacity_bytes documentation\n  to RESP, FS native, and native plugin adapter configs\n\n* Rename max_capacity_bytes to max_capacity_gb (float) in config\n\nChange the L2 adapter capacity config from bytes (int) to GB (float)\nfor consistency with MockL2Adapter's max_size_gb and better ergonomics.\n\nThe internal _max_capacity_bytes field stays as bytes -- the conversion\nhappens once in NativeConnectorL2Adapter.__init__.\n\nUpdated: adapter configs, factories, tests, docs, and examples.\n\n* Fix eviction listener notifications and delete timeout cleanup\n\nFixes three issues found in code review:\n\n1. (Critical) Add _notify_keys_stored on store completion and\n   _notify_keys_accessed on load completion in the demux loop.\n   Without these, the LRU eviction policy never learns about\n   stored/accessed keys, making eviction non-functional.\n\n2. Clean up _pending_delete_events and _pending_ops on delete\n   timeout to prevent memory leaks.\n\n3. Add docstring to delete() method.\n\nAlso store keys in _pending_ops for load operations (was None)\nso _notify_keys_accessed can report which keys were loaded.\n\nListener notifications are fired outside the lock to avoid\npotential deadlocks with listener callbacks.",
-              "stats": {
-                "files": 20,
-                "lines": 671,
-                "insertions": 641,
-                "deletions": 30
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "c9d90539",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-04T01:52:02.000Z",
-              "message": "[Security][Remote Connector]: Add env var auth config for RESP (#2949)\n\n* [Feat]: Add environment variable support for RESP adapter auth\n\nSupport LMCACHE_RESP_USERNAME, LMCACHE_RESP_PASSWORD, LMCACHE_RESP_HOST,\nand LMCACHE_RESP_PORT environment variables in both MP and non-MP modes.\nEnv vars are read inside the adapter at creation time so credentials are\nnever stored in the config object or printed in startup logs.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat]: Fix env var precedence and add unit tests for RESP env vars\n\nChange precedence so config/CLI args override env vars (env vars serve\nas defaults). Add unit tests for the precedence logic in both MP and\nnon-MP modes.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 5,
-                "lines": 309,
-                "insertions": 290,
-                "deletions": 19
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 63.4,
-          "significance_ratio": 0.6,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 317,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -594,10 +615,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 4,
-          "significant_commits": 3,
+          "total_commits": 5,
+          "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 274,
+          "commit_score": 331,
           "commits": [
             {
               "hash": "996da472",
@@ -682,14 +703,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a0d6b7ad",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-05T06:24:34.000Z",
+              "message": "[Chore] Add CODEOWNERS for automated PR review assignments (#2950)\n\n* [Chore] Add CODEOWNERS for automated PR review assignments\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add sammshen to resp L2 adapter ownership\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add sammshen to csrc/storage_backends and native connector L2 adapters\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add YaoJiayi to L2 eviction ownership\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add OasisGit to multiprocess and http_server ownership\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 105,
+                "insertions": 105,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 57
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 68.5,
-          "significance_ratio": 0.75,
+          "avg_score": 66.2,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 274,
+          "total_score": 331,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1236,10 +1278,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 4,
-          "significant_commits": 3,
+          "total_commits": 5,
+          "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 274,
+          "commit_score": 331,
           "commits": [
             {
               "hash": "996da472",
@@ -1324,14 +1366,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a0d6b7ad",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-05T06:24:34.000Z",
+              "message": "[Chore] Add CODEOWNERS for automated PR review assignments (#2950)\n\n* [Chore] Add CODEOWNERS for automated PR review assignments\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add sammshen to resp L2 adapter ownership\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add sammshen to csrc/storage_backends and native connector L2 adapters\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add YaoJiayi to L2 eviction ownership\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Chore] Add OasisGit to multiprocess and http_server ownership\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 105,
+                "insertions": 105,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 57
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 68.5,
-          "significance_ratio": 0.75,
+          "avg_score": 66.2,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 274,
+          "total_score": 331,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1875,13 +1938,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-05T00:30:18.718Z",
+    "analyzedAt": "2026-04-06T00:30:04.020Z",
     "daysBack": 2,
-    "totalCommits": 20,
+    "totalCommits": 21,
     "totalContributors": 9,
     "mergedFrom": {
-      "existing": 18,
-      "new": 9
+      "existing": 20,
+      "new": 3
     }
   }
 }
