@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-07T00:30:03.232Z",
-  "total_commits_analyzed": 22,
+  "last_updated": "2026-04-08T00:30:05.377Z",
+  "total_commits_analyzed": 24,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -611,6 +611,84 @@
       ],
       "2026-W15": [
         {
+          "name": "Adeline",
+          "email": "452803476@qq.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "28c33b91",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-04-07T13:45:27.000Z",
+              "message": "[MP]feat: support different kv cache shape and dtype across layers (#2926)\n\n* multiprocess: support per-group KV cache transfer with group_idx\n\n- gpu_ops: add group_idx param to lmcache_memcpy_async_h2d/d2h,\n  use memory_obj.get_tensor(group_idx) instead of memory_obj.tensor\n- kv_layer_groups: add build_kv_layer_groups_from_list() to group\n  layers by (shape, dtype) from a plain tensor list\n- gpu_context: introduce per-group shape_descs_, hidden_dim_sizes_,\n  group_kv_pointers_, and tmp_gpu_buffers_; update get_kv_buffer_shape,\n  get_tmp_gpu_buffer, get_tmp_gpu_buffer_batched to accept group_idx;\n  add get_shape_desc(group_idx) and get_group_kv_pointers(group_idx)\n- server: update get_layout_desc, _store_loop, _retrieve_loop to\n  iterate over all groups; fix skip_tokens_in_chunk upper bound to\n  use batch_len instead of _BATCH_SIZE\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n* fix: support vectorized KV transfer for non-16B-aligned head sizes\n\nAdd scalar type fallback hierarchy for block KV transfer kernel:\n  head_bytes % 16 == 0  -> uint4    (16B, fastest)\n  head_bytes % 4  == 0  -> uint32_t (4B)\n  head_bytes % 2  == 0  -> uint16_t (2B)\n\nThis fixes the runtime error for MLA models where head_size=132 (uint8),\ngiving head_bytes=132 which is not divisible by 16 but is divisible by 4.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n---------\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1076,
+                "insertions": 801,
+                "deletions": 275
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "aed852f3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-07T08:39:22.000Z",
+              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 524,
+                "insertions": 449,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 1,
@@ -800,10 +878,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 2,
+          "total_commits": 5,
+          "significant_commits": 3,
           "simple_commits": 2,
-          "commit_score": 238,
+          "commit_score": 325,
           "commits": [
             {
               "hash": "62cee8b0",
@@ -888,14 +966,35 @@
                 "total": 20
               },
               "classification": "simple"
+            },
+            {
+              "hash": "aed852f3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-07T08:39:22.000Z",
+              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 524,
+                "insertions": 449,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.5,
-          "significance_ratio": 0.5,
+          "avg_score": 65,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 238,
+          "total_score": 325,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1057,6 +1156,45 @@
           "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Adeline",
+          "email": "452803476@qq.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "28c33b91",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-04-07T13:45:27.000Z",
+              "message": "[MP]feat: support different kv cache shape and dtype across layers (#2926)\n\n* multiprocess: support per-group KV cache transfer with group_idx\n\n- gpu_ops: add group_idx param to lmcache_memcpy_async_h2d/d2h,\n  use memory_obj.get_tensor(group_idx) instead of memory_obj.tensor\n- kv_layer_groups: add build_kv_layer_groups_from_list() to group\n  layers by (shape, dtype) from a plain tensor list\n- gpu_context: introduce per-group shape_descs_, hidden_dim_sizes_,\n  group_kv_pointers_, and tmp_gpu_buffers_; update get_kv_buffer_shape,\n  get_tmp_gpu_buffer, get_tmp_gpu_buffer_batched to accept group_idx;\n  add get_shape_desc(group_idx) and get_group_kv_pointers(group_idx)\n- server: update get_layout_desc, _store_loop, _retrieve_loop to\n  iterate over all groups; fix skip_tokens_in_chunk upper bound to\n  use batch_len instead of _BATCH_SIZE\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n* fix: support vectorized KV transfer for non-16B-aligned head sizes\n\nAdd scalar type fallback hierarchy for block KV transfer kernel:\n  head_bytes % 16 == 0  -> uint4    (16B, fastest)\n  head_bytes % 4  == 0  -> uint32_t (4B)\n  head_bytes % 2  == 0  -> uint16_t (2B)\n\nThis fixes the runtime error for MLA models where head_size=132 (uint8),\ngiving head_bytes=132 which is not divisible by 16 but is divisible by 4.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n---------\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1076,
+                "insertions": 801,
+                "deletions": 275
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "deng451e",
@@ -1484,10 +1622,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 2,
+          "total_commits": 5,
+          "significant_commits": 3,
           "simple_commits": 2,
-          "commit_score": 238,
+          "commit_score": 325,
           "commits": [
             {
               "hash": "62cee8b0",
@@ -1572,14 +1710,35 @@
                 "total": 20
               },
               "classification": "simple"
+            },
+            {
+              "hash": "aed852f3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-07T08:39:22.000Z",
+              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 524,
+                "insertions": 449,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.5,
-          "significance_ratio": 0.5,
+          "avg_score": 65,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 238,
+          "total_score": 325,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1741,6 +1900,45 @@
           "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Adeline",
+          "email": "452803476@qq.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "28c33b91",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-04-07T13:45:27.000Z",
+              "message": "[MP]feat: support different kv cache shape and dtype across layers (#2926)\n\n* multiprocess: support per-group KV cache transfer with group_idx\n\n- gpu_ops: add group_idx param to lmcache_memcpy_async_h2d/d2h,\n  use memory_obj.get_tensor(group_idx) instead of memory_obj.tensor\n- kv_layer_groups: add build_kv_layer_groups_from_list() to group\n  layers by (shape, dtype) from a plain tensor list\n- gpu_context: introduce per-group shape_descs_, hidden_dim_sizes_,\n  group_kv_pointers_, and tmp_gpu_buffers_; update get_kv_buffer_shape,\n  get_tmp_gpu_buffer, get_tmp_gpu_buffer_batched to accept group_idx;\n  add get_shape_desc(group_idx) and get_group_kv_pointers(group_idx)\n- server: update get_layout_desc, _store_loop, _retrieve_loop to\n  iterate over all groups; fix skip_tokens_in_chunk upper bound to\n  use batch_len instead of _BATCH_SIZE\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n* fix: support vectorized KV transfer for non-16B-aligned head sizes\n\nAdd scalar type fallback hierarchy for block KV transfer kernel:\n  head_bytes % 16 == 0  -> uint4    (16B, fastest)\n  head_bytes % 4  == 0  -> uint32_t (4B)\n  head_bytes % 2  == 0  -> uint16_t (2B)\n\nThis fixes the runtime error for MLA models where head_size=132 (uint8),\ngiving head_bytes=132 which is not divisible by 16 but is divisible by 4.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n---------\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1076,
+                "insertions": 801,
+                "deletions": 275
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "deng451e",
@@ -2021,13 +2219,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-07T00:30:03.232Z",
+    "analyzedAt": "2026-04-08T00:30:05.378Z",
     "daysBack": 2,
-    "totalCommits": 22,
-    "totalContributors": 9,
+    "totalCommits": 24,
+    "totalContributors": 10,
     "mergedFrom": {
-      "existing": 21,
-      "new": 2
+      "existing": 22,
+      "new": 3
     }
   }
 }
