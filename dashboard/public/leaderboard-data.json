@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-11T00:30:03.135Z",
-  "total_commits_analyzed": 36,
+  "last_updated": "2026-04-12T00:30:03.690Z",
+  "total_commits_analyzed": 39,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -692,6 +692,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 122,
+          "commits": [
+            {
+              "hash": "aed852f3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-07T08:39:22.000Z",
+              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 524,
+                "insertions": 449,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0e0dc12e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-11T01:13:36.000Z",
+              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 9,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 61,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 122,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
           "total_commits": 2,
@@ -872,30 +932,30 @@
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 87,
           "commits": [
             {
-              "hash": "aed852f3",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-07T08:39:22.000Z",
-              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "hash": "e7dfb09a",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-04-11T03:53:18.000Z",
+              "message": "[Feat][RawBlock] Add TP>1 support and compact batched retrieval path (#2948)\n\n* feat: Add TP > 1 support for RustRawBlockBackend\n\nAdd support for Tensor Parallelism (TP > 1) in RustRawBlockBackend\nby allowing explicit per-TP device path configuration.\n\nChanges:\n- Remove TP > 1 restriction that blocked multi-GPU deployments\n- Add support for explicit per-TP device paths via\n  rust_raw_block.per_tp_device_paths configuration\n- Add comprehensive TP=4 test suite to test_rust_raw_block_backend.py\n\nConfiguration example:\n  extra_config:\n    rust_raw_block.per_tp_device_paths:\n      \"0\": \"/dev/nvme0n1p1\"\n      \"1\": \"/dev/nvme0n1p2\"\n      \"2\": \"/dev/nvme0n1p3\"\n      \"3\": \"/dev/nvme0n1p4\"\n\nEach TP worker now uses its own partition to avoid metadata\nconflicts and data corruption. Partitions must be pre-created\non the device before use.\n\nTests:\n- test_rust_raw_block_backend_tp4_initialization: Tests TP=4 initialization\n  with per-TP device paths\n- test_rust_raw_block_backend_tp4_comprehensive_io: Comprehensive TP=4 I/O\n  test covering roundtrip, multiple operations, and TP isolation\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSource-Commit: d1209638d2c587b0750d1e95bead75389448769b\n\n* fix: validate duplicate per-TP raw block device paths\n\nAdd error when a device path is mapped to multiple TP workers.\n\nTests:\n- test_rust_raw_block_backend_tp_paths_must_be_unique: Tests TP=2 with\n  the same device paths\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: eeba57c1930ea114fd928afe0fe72ddfb6702ca2\n\n* fix: warn on cross-rank metadata load in raw block backend\n\nAdd warning when the raw block backend already has an entry of another rank.\n\nTests:\n- test_rust_raw_block_backend_warns_on_cross_rank_metadata_load: Tests\n  cross-rank device load\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: 2f59d3da371f6a509126e54d96f01f1e5aef5e4b\n\n* perf: streamline raw block batched retrieval\n\nUse one shared raw-block prefix read path for blocking and async retrieval, and keep the added TP/raw-block tests compact by sharing the setup helper.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: harden raw block batched get cleanup\n\nAddress review feedback for batched raw-block retrieval by ensuring inflight IO accounting is released when raw device setup fails, handling allocator exhaustion without asserts, and releasing allocated MemoryObj instances on read failures. Add regression tests for each case.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* docs: describe raw block batched get semantics\n\nAddress review feedback by documenting the raw-block batched retrieval overrides, including their prefix-stop return behavior and the raw-device initialization failure they may propagate.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: preserve raw block read errors and TP key lookup\n\nAddress review feedback by accepting integer YAML keys in rust_raw_block.per_tp_device_paths and restoring propagation of raw-device read failures while keeping the cleanup path intact. Add regression coverage for integer-key TP init and read-error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: release partial raw block batch on read error\n\nAddress review feedback by releasing any already-loaded MemoryObj instances when a later raw-block read in the same batch fails. Add regression coverage for a two-key batch that succeeds on the first read and fails on the second while preserving error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* refactor: tighten raw block TP device path typing\n\nAddress review feedback by replacing broad Any typing around rust_raw_block.per_tp_device_paths with an explicit mapping alias and validating the config value before use. This keeps the TP rank lookup logic robust for both string and integer YAML keys while making the helper signatures clearer.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Daejun Park <daejun7.park@samsung.com>\nCo-authored-by: Dongjin Kim <dongjin_.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
               "stats": {
-                "files": 9,
-                "lines": 524,
-                "insertions": 449,
-                "deletions": 75
+                "files": 2,
+                "lines": 1178,
+                "insertions": 1102,
+                "deletions": 76
               },
               "scores": {
                 "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
+                "files": 10,
+                "keyword": 25,
+                "ai": 22,
                 "total": 87
               },
               "classification": "significant"
@@ -907,8 +967,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Boris Glimcher",
@@ -946,6 +1006,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 82,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "456aa16c",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-11T02:48:22.000Z",
+              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1316,
+                "insertions": 1191,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 22,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1298,10 +1397,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 5,
+          "total_commits": 6,
           "significant_commits": 3,
-          "simple_commits": 2,
-          "commit_score": 325,
+          "simple_commits": 3,
+          "commit_score": 360,
           "commits": [
             {
               "hash": "62cee8b0",
@@ -1407,14 +1506,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "0e0dc12e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-11T01:13:36.000Z",
+              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 9,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 65,
-          "significance_ratio": 0.6,
+          "avg_score": 60,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 325,
+          "total_score": 360,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1839,6 +1959,84 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "e7dfb09a",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-04-11T03:53:18.000Z",
+              "message": "[Feat][RawBlock] Add TP>1 support and compact batched retrieval path (#2948)\n\n* feat: Add TP > 1 support for RustRawBlockBackend\n\nAdd support for Tensor Parallelism (TP > 1) in RustRawBlockBackend\nby allowing explicit per-TP device path configuration.\n\nChanges:\n- Remove TP > 1 restriction that blocked multi-GPU deployments\n- Add support for explicit per-TP device paths via\n  rust_raw_block.per_tp_device_paths configuration\n- Add comprehensive TP=4 test suite to test_rust_raw_block_backend.py\n\nConfiguration example:\n  extra_config:\n    rust_raw_block.per_tp_device_paths:\n      \"0\": \"/dev/nvme0n1p1\"\n      \"1\": \"/dev/nvme0n1p2\"\n      \"2\": \"/dev/nvme0n1p3\"\n      \"3\": \"/dev/nvme0n1p4\"\n\nEach TP worker now uses its own partition to avoid metadata\nconflicts and data corruption. Partitions must be pre-created\non the device before use.\n\nTests:\n- test_rust_raw_block_backend_tp4_initialization: Tests TP=4 initialization\n  with per-TP device paths\n- test_rust_raw_block_backend_tp4_comprehensive_io: Comprehensive TP=4 I/O\n  test covering roundtrip, multiple operations, and TP isolation\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSource-Commit: d1209638d2c587b0750d1e95bead75389448769b\n\n* fix: validate duplicate per-TP raw block device paths\n\nAdd error when a device path is mapped to multiple TP workers.\n\nTests:\n- test_rust_raw_block_backend_tp_paths_must_be_unique: Tests TP=2 with\n  the same device paths\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: eeba57c1930ea114fd928afe0fe72ddfb6702ca2\n\n* fix: warn on cross-rank metadata load in raw block backend\n\nAdd warning when the raw block backend already has an entry of another rank.\n\nTests:\n- test_rust_raw_block_backend_warns_on_cross_rank_metadata_load: Tests\n  cross-rank device load\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: 2f59d3da371f6a509126e54d96f01f1e5aef5e4b\n\n* perf: streamline raw block batched retrieval\n\nUse one shared raw-block prefix read path for blocking and async retrieval, and keep the added TP/raw-block tests compact by sharing the setup helper.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: harden raw block batched get cleanup\n\nAddress review feedback for batched raw-block retrieval by ensuring inflight IO accounting is released when raw device setup fails, handling allocator exhaustion without asserts, and releasing allocated MemoryObj instances on read failures. Add regression tests for each case.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* docs: describe raw block batched get semantics\n\nAddress review feedback by documenting the raw-block batched retrieval overrides, including their prefix-stop return behavior and the raw-device initialization failure they may propagate.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: preserve raw block read errors and TP key lookup\n\nAddress review feedback by accepting integer YAML keys in rust_raw_block.per_tp_device_paths and restoring propagation of raw-device read failures while keeping the cleanup path intact. Add regression coverage for integer-key TP init and read-error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: release partial raw block batch on read error\n\nAddress review feedback by releasing any already-loaded MemoryObj instances when a later raw-block read in the same batch fails. Add regression coverage for a two-key batch that succeeds on the first read and fails on the second while preserving error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* refactor: tighten raw block TP device path typing\n\nAddress review feedback by replacing broad Any typing around rust_raw_block.per_tp_device_paths with an explicit mapping alias and validating the config value before use. This keeps the TP rank lookup logic robust for both string and integer YAML keys while making the helper signatures clearer.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Daejun Park <daejun7.park@samsung.com>\nCo-authored-by: Dongjin Kim <dongjin_.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 1178,
+                "insertions": 1102,
+                "deletions": 76
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 22,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "456aa16c",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-11T02:48:22.000Z",
+              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1316,
+                "insertions": 1191,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 22,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
           "total_commits": 1,
@@ -1913,8 +2111,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 66,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "汪志鹏",
@@ -1952,8 +2150,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Ziwen Ning",
@@ -2384,10 +2582,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 5,
+          "total_commits": 6,
           "significant_commits": 3,
-          "simple_commits": 2,
-          "commit_score": 325,
+          "simple_commits": 3,
+          "commit_score": 360,
           "commits": [
             {
               "hash": "62cee8b0",
@@ -2493,14 +2691,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "0e0dc12e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-11T01:13:36.000Z",
+              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 9,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 65,
-          "significance_ratio": 0.6,
+          "avg_score": 60,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 325,
+          "total_score": 360,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -2925,6 +3144,84 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "e7dfb09a",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-04-11T03:53:18.000Z",
+              "message": "[Feat][RawBlock] Add TP>1 support and compact batched retrieval path (#2948)\n\n* feat: Add TP > 1 support for RustRawBlockBackend\n\nAdd support for Tensor Parallelism (TP > 1) in RustRawBlockBackend\nby allowing explicit per-TP device path configuration.\n\nChanges:\n- Remove TP > 1 restriction that blocked multi-GPU deployments\n- Add support for explicit per-TP device paths via\n  rust_raw_block.per_tp_device_paths configuration\n- Add comprehensive TP=4 test suite to test_rust_raw_block_backend.py\n\nConfiguration example:\n  extra_config:\n    rust_raw_block.per_tp_device_paths:\n      \"0\": \"/dev/nvme0n1p1\"\n      \"1\": \"/dev/nvme0n1p2\"\n      \"2\": \"/dev/nvme0n1p3\"\n      \"3\": \"/dev/nvme0n1p4\"\n\nEach TP worker now uses its own partition to avoid metadata\nconflicts and data corruption. Partitions must be pre-created\non the device before use.\n\nTests:\n- test_rust_raw_block_backend_tp4_initialization: Tests TP=4 initialization\n  with per-TP device paths\n- test_rust_raw_block_backend_tp4_comprehensive_io: Comprehensive TP=4 I/O\n  test covering roundtrip, multiple operations, and TP isolation\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSource-Commit: d1209638d2c587b0750d1e95bead75389448769b\n\n* fix: validate duplicate per-TP raw block device paths\n\nAdd error when a device path is mapped to multiple TP workers.\n\nTests:\n- test_rust_raw_block_backend_tp_paths_must_be_unique: Tests TP=2 with\n  the same device paths\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: eeba57c1930ea114fd928afe0fe72ddfb6702ca2\n\n* fix: warn on cross-rank metadata load in raw block backend\n\nAdd warning when the raw block backend already has an entry of another rank.\n\nTests:\n- test_rust_raw_block_backend_warns_on_cross_rank_metadata_load: Tests\n  cross-rank device load\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: 2f59d3da371f6a509126e54d96f01f1e5aef5e4b\n\n* perf: streamline raw block batched retrieval\n\nUse one shared raw-block prefix read path for blocking and async retrieval, and keep the added TP/raw-block tests compact by sharing the setup helper.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: harden raw block batched get cleanup\n\nAddress review feedback for batched raw-block retrieval by ensuring inflight IO accounting is released when raw device setup fails, handling allocator exhaustion without asserts, and releasing allocated MemoryObj instances on read failures. Add regression tests for each case.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* docs: describe raw block batched get semantics\n\nAddress review feedback by documenting the raw-block batched retrieval overrides, including their prefix-stop return behavior and the raw-device initialization failure they may propagate.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: preserve raw block read errors and TP key lookup\n\nAddress review feedback by accepting integer YAML keys in rust_raw_block.per_tp_device_paths and restoring propagation of raw-device read failures while keeping the cleanup path intact. Add regression coverage for integer-key TP init and read-error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: release partial raw block batch on read error\n\nAddress review feedback by releasing any already-loaded MemoryObj instances when a later raw-block read in the same batch fails. Add regression coverage for a two-key batch that succeeds on the first read and fails on the second while preserving error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* refactor: tighten raw block TP device path typing\n\nAddress review feedback by replacing broad Any typing around rust_raw_block.per_tp_device_paths with an explicit mapping alias and validating the config value before use. This keeps the TP rank lookup logic robust for both string and integer YAML keys while making the helper signatures clearer.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Daejun Park <daejun7.park@samsung.com>\nCo-authored-by: Dongjin Kim <dongjin_.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 1178,
+                "insertions": 1102,
+                "deletions": 76
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 22,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "456aa16c",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-11T02:48:22.000Z",
+              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1316,
+                "insertions": 1191,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 22,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
           "total_commits": 1,
@@ -2999,8 +3296,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 66,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "汪志鹏",
@@ -3038,8 +3335,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Ziwen Ning",
@@ -3281,12 +3578,12 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-11T00:30:03.135Z",
+    "analyzedAt": "2026-04-12T00:30:03.690Z",
     "daysBack": 2,
-    "totalCommits": 36,
-    "totalContributors": 15,
+    "totalCommits": 39,
+    "totalContributors": 17,
     "mergedFrom": {
-      "existing": 32,
+      "existing": 36,
       "new": 7
     }
   }
