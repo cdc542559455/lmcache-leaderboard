@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-13T00:30:00.885Z",
-  "total_commits_analyzed": 43,
+  "last_updated": "2026-04-14T00:30:01.868Z",
+  "total_commits_analyzed": 45,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -1288,6 +1288,86 @@
           "tier": "T1",
           "tier_name": "Advanced"
         }
+      ],
+      "2026-W16": [
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "41b669ea",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-13T23:48:42.000Z",
+              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 16,
+                "lines": 3553,
+                "insertions": 3484,
+                "deletions": 69
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "6450c740",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-13T03:35:45.000Z",
+              "message": "[Chore][CI] Skip k3 builds when only docs/trivial files changed (#2993)\n\n* [CI] Skip k3 builds when only docs/trivial files changed\n\nAdds a path-based skip wrapper used by all 5 k3 test pipelines\n(correctness, integration, comprehensive, multiprocess, blend) so docs-only\nPRs auto-pass without spinning up GPU pods. Builds always run when any\nfile under .github/ or .buildkite/ changes. Set K3_PATH_FILTER_DISABLE=1\nto bypass.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Treat .github/ as trivial in k3 path filter\n\nk3 tests run on Buildkite, not GitHub Actions, so changes under .github/\n(workflows, CODEOWNERS, PR templates, dependabot) have no effect on what\nthe k3 tests do. Move .github/* from the always-trigger list to the\ntrivial list. .buildkite/* stays force-trigger since it does drive the\nk3 tests.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Move k3 path filter into pipeline.yml shim (no UI changes needed)\n\nRestructure each k3 test so the path-filter logic lives entirely in the\nrepo. The Buildkite Web UI's upload command stays the literal\n`buildkite-agent pipeline upload .buildkite/k3_tests/<test>/pipeline.yml`\nit has always been -- but pipeline.yml is now a tiny one-step shim that\nruns upload-pipeline.sh on steps.yml. The real test steps moved verbatim\ninto steps.yml.\n\nLayout per test:\n  pipeline.yml -- 1-step path-filter shim (was: full test pipeline)\n  steps.yml    -- the actual test steps   (was: pipeline.yml content)\n\nBecause pipeline.yml is fetched fresh from the repo on every build,\nedits to the filter / steps / shim now take effect on the next push\nwithout anyone re-pasting anything in the Buildkite UI.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Fix path filter: never skip scheduled builds, clean up shell\n\n- Never skip when BUILDKITE_SOURCE=schedule (nightly baseline builds\n  with NEED_UPLOAD=true would silently not run if the latest commit\n  on dev only touched docs).\n- Simplify PR detection: use -n test instead of double != check.\n- Remove redundant >&2 before 2>/dev/null on git fetch.\n\nAddresses review feedback on PR #2993.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [BugFix] Fix test_l2 crash on HistogramDataPoint without .value\n\n_read_counters() iterates all metrics from the InMemoryMetricReader,\nnot just counters. When another library registers a histogram on the\nsame MeterProvider, the reader returns HistogramDataPoint objects\nwhich lack .value (they have .sum/.count instead). Guard with hasattr.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* Revert \"[BugFix] Fix test_l2 crash on HistogramDataPoint without .value\"\n\nThis reverts commit 7c3c32b0f97208a9198f3961d42029ec582019f2.\n\n* [CI] Fix path filter SSH host key prompt in ephemeral pods\n\nThe filter step's git fetch hangs on GitHub's SSH host key verification\nprompt because ephemeral K8s pods have no known_hosts entry. Set\nGIT_SSH_COMMAND with StrictHostKeyChecking=accept-new so the fetch\nauto-accepts new host keys without blocking.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Run path filter in upload step, drop pipeline.yml shim\n\nThe pipeline.yml shim approach added an extra pod-provisioning wait to\nevery build. Instead, run the path filter directly in the upload step\nby having buildkite-pipeline.yml call upload-pipeline.sh (which the\nuser pastes into the Buildkite UI once).\n\nThis restores the original 2-step flow: upload → test steps.\nSkipped builds finish with just the upload pod (no GPU pod).\n\nRequires a one-time re-paste of each test's buildkite-pipeline.yml\ninto the Buildkite UI Steps editor after merging.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Remove migration notes from permanent docs\n\nMove one-time UI re-paste instructions to the PR description where\nthey belong instead of cluttering the README and BK_WEB_SETUP files.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Replace K3_PATH_FILTER_DISABLE env var with force-ci PR label\n\nContributors can now add a \"force-ci\" label on the GitHub PR to bypass\nthe path filter and force a full k3 CI run. This replaces the\nK3_PATH_FILTER_DISABLE env var which required access to the Buildkite\nUI. Buildkite exposes PR labels via BUILDKITE_PULL_REQUEST_LABELS.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 13,
+                "lines": 273,
+                "insertions": 263,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 20,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T0",
+          "tier_name": "Elite"
+        }
       ]
     },
     "monthly": {
@@ -1502,10 +1582,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 8,
-          "significant_commits": 4,
+          "total_commits": 9,
+          "significant_commits": 5,
           "simple_commits": 4,
-          "commit_score": 433,
+          "commit_score": 513,
           "commits": [
             {
               "hash": "996da472",
@@ -1674,14 +1754,35 @@
                 "total": 30
               },
               "classification": "simple"
+            },
+            {
+              "hash": "6450c740",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-13T03:35:45.000Z",
+              "message": "[Chore][CI] Skip k3 builds when only docs/trivial files changed (#2993)\n\n* [CI] Skip k3 builds when only docs/trivial files changed\n\nAdds a path-based skip wrapper used by all 5 k3 test pipelines\n(correctness, integration, comprehensive, multiprocess, blend) so docs-only\nPRs auto-pass without spinning up GPU pods. Builds always run when any\nfile under .github/ or .buildkite/ changes. Set K3_PATH_FILTER_DISABLE=1\nto bypass.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Treat .github/ as trivial in k3 path filter\n\nk3 tests run on Buildkite, not GitHub Actions, so changes under .github/\n(workflows, CODEOWNERS, PR templates, dependabot) have no effect on what\nthe k3 tests do. Move .github/* from the always-trigger list to the\ntrivial list. .buildkite/* stays force-trigger since it does drive the\nk3 tests.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Move k3 path filter into pipeline.yml shim (no UI changes needed)\n\nRestructure each k3 test so the path-filter logic lives entirely in the\nrepo. The Buildkite Web UI's upload command stays the literal\n`buildkite-agent pipeline upload .buildkite/k3_tests/<test>/pipeline.yml`\nit has always been -- but pipeline.yml is now a tiny one-step shim that\nruns upload-pipeline.sh on steps.yml. The real test steps moved verbatim\ninto steps.yml.\n\nLayout per test:\n  pipeline.yml -- 1-step path-filter shim (was: full test pipeline)\n  steps.yml    -- the actual test steps   (was: pipeline.yml content)\n\nBecause pipeline.yml is fetched fresh from the repo on every build,\nedits to the filter / steps / shim now take effect on the next push\nwithout anyone re-pasting anything in the Buildkite UI.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Fix path filter: never skip scheduled builds, clean up shell\n\n- Never skip when BUILDKITE_SOURCE=schedule (nightly baseline builds\n  with NEED_UPLOAD=true would silently not run if the latest commit\n  on dev only touched docs).\n- Simplify PR detection: use -n test instead of double != check.\n- Remove redundant >&2 before 2>/dev/null on git fetch.\n\nAddresses review feedback on PR #2993.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [BugFix] Fix test_l2 crash on HistogramDataPoint without .value\n\n_read_counters() iterates all metrics from the InMemoryMetricReader,\nnot just counters. When another library registers a histogram on the\nsame MeterProvider, the reader returns HistogramDataPoint objects\nwhich lack .value (they have .sum/.count instead). Guard with hasattr.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* Revert \"[BugFix] Fix test_l2 crash on HistogramDataPoint without .value\"\n\nThis reverts commit 7c3c32b0f97208a9198f3961d42029ec582019f2.\n\n* [CI] Fix path filter SSH host key prompt in ephemeral pods\n\nThe filter step's git fetch hangs on GitHub's SSH host key verification\nprompt because ephemeral K8s pods have no known_hosts entry. Set\nGIT_SSH_COMMAND with StrictHostKeyChecking=accept-new so the fetch\nauto-accepts new host keys without blocking.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Run path filter in upload step, drop pipeline.yml shim\n\nThe pipeline.yml shim approach added an extra pod-provisioning wait to\nevery build. Instead, run the path filter directly in the upload step\nby having buildkite-pipeline.yml call upload-pipeline.sh (which the\nuser pastes into the Buildkite UI once).\n\nThis restores the original 2-step flow: upload → test steps.\nSkipped builds finish with just the upload pod (no GPU pod).\n\nRequires a one-time re-paste of each test's buildkite-pipeline.yml\ninto the Buildkite UI Steps editor after merging.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Remove migration notes from permanent docs\n\nMove one-time UI re-paste instructions to the PR description where\nthey belong instead of cluttering the README and BK_WEB_SETUP files.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Replace K3_PATH_FILTER_DISABLE env var with force-ci PR label\n\nContributors can now add a \"force-ci\" label on the GitHub PR to bypass\nthe path filter and force a full k3 CI run. This replaces the\nK3_PATH_FILTER_DISABLE env var which required access to the Buildkite\nUI. Buildkite exposes PR labels via BUILDKITE_PULL_REQUEST_LABELS.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 13,
+                "lines": 273,
+                "insertions": 263,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 20,
+                "total": 80
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 54.125,
-          "significance_ratio": 0.5,
+          "avg_score": 57,
+          "significance_ratio": 0.5555555555555556,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 433,
+          "total_score": 513,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1811,10 +1912,10 @@
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 175,
+          "commit_score": 257,
           "commits": [
             {
               "hash": "b73b69bf",
@@ -1857,14 +1958,35 @@
                 "total": 75
               },
               "classification": "significant"
+            },
+            {
+              "hash": "41b669ea",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-13T23:48:42.000Z",
+              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 16,
+                "lines": 3553,
+                "insertions": 3484,
+                "deletions": 69
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 87.5,
+          "avg_score": 85.66666666666667,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 175,
+          "total_score": 257,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -2771,10 +2893,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 8,
-          "significant_commits": 4,
+          "total_commits": 9,
+          "significant_commits": 5,
           "simple_commits": 4,
-          "commit_score": 433,
+          "commit_score": 513,
           "commits": [
             {
               "hash": "996da472",
@@ -2943,14 +3065,35 @@
                 "total": 30
               },
               "classification": "simple"
+            },
+            {
+              "hash": "6450c740",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-13T03:35:45.000Z",
+              "message": "[Chore][CI] Skip k3 builds when only docs/trivial files changed (#2993)\n\n* [CI] Skip k3 builds when only docs/trivial files changed\n\nAdds a path-based skip wrapper used by all 5 k3 test pipelines\n(correctness, integration, comprehensive, multiprocess, blend) so docs-only\nPRs auto-pass without spinning up GPU pods. Builds always run when any\nfile under .github/ or .buildkite/ changes. Set K3_PATH_FILTER_DISABLE=1\nto bypass.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Treat .github/ as trivial in k3 path filter\n\nk3 tests run on Buildkite, not GitHub Actions, so changes under .github/\n(workflows, CODEOWNERS, PR templates, dependabot) have no effect on what\nthe k3 tests do. Move .github/* from the always-trigger list to the\ntrivial list. .buildkite/* stays force-trigger since it does drive the\nk3 tests.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Move k3 path filter into pipeline.yml shim (no UI changes needed)\n\nRestructure each k3 test so the path-filter logic lives entirely in the\nrepo. The Buildkite Web UI's upload command stays the literal\n`buildkite-agent pipeline upload .buildkite/k3_tests/<test>/pipeline.yml`\nit has always been -- but pipeline.yml is now a tiny one-step shim that\nruns upload-pipeline.sh on steps.yml. The real test steps moved verbatim\ninto steps.yml.\n\nLayout per test:\n  pipeline.yml -- 1-step path-filter shim (was: full test pipeline)\n  steps.yml    -- the actual test steps   (was: pipeline.yml content)\n\nBecause pipeline.yml is fetched fresh from the repo on every build,\nedits to the filter / steps / shim now take effect on the next push\nwithout anyone re-pasting anything in the Buildkite UI.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Fix path filter: never skip scheduled builds, clean up shell\n\n- Never skip when BUILDKITE_SOURCE=schedule (nightly baseline builds\n  with NEED_UPLOAD=true would silently not run if the latest commit\n  on dev only touched docs).\n- Simplify PR detection: use -n test instead of double != check.\n- Remove redundant >&2 before 2>/dev/null on git fetch.\n\nAddresses review feedback on PR #2993.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [BugFix] Fix test_l2 crash on HistogramDataPoint without .value\n\n_read_counters() iterates all metrics from the InMemoryMetricReader,\nnot just counters. When another library registers a histogram on the\nsame MeterProvider, the reader returns HistogramDataPoint objects\nwhich lack .value (they have .sum/.count instead). Guard with hasattr.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* Revert \"[BugFix] Fix test_l2 crash on HistogramDataPoint without .value\"\n\nThis reverts commit 7c3c32b0f97208a9198f3961d42029ec582019f2.\n\n* [CI] Fix path filter SSH host key prompt in ephemeral pods\n\nThe filter step's git fetch hangs on GitHub's SSH host key verification\nprompt because ephemeral K8s pods have no known_hosts entry. Set\nGIT_SSH_COMMAND with StrictHostKeyChecking=accept-new so the fetch\nauto-accepts new host keys without blocking.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Run path filter in upload step, drop pipeline.yml shim\n\nThe pipeline.yml shim approach added an extra pod-provisioning wait to\nevery build. Instead, run the path filter directly in the upload step\nby having buildkite-pipeline.yml call upload-pipeline.sh (which the\nuser pastes into the Buildkite UI once).\n\nThis restores the original 2-step flow: upload → test steps.\nSkipped builds finish with just the upload pod (no GPU pod).\n\nRequires a one-time re-paste of each test's buildkite-pipeline.yml\ninto the Buildkite UI Steps editor after merging.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Remove migration notes from permanent docs\n\nMove one-time UI re-paste instructions to the PR description where\nthey belong instead of cluttering the README and BK_WEB_SETUP files.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Replace K3_PATH_FILTER_DISABLE env var with force-ci PR label\n\nContributors can now add a \"force-ci\" label on the GitHub PR to bypass\nthe path filter and force a full k3 CI run. This replaces the\nK3_PATH_FILTER_DISABLE env var which required access to the Buildkite\nUI. Buildkite exposes PR labels via BUILDKITE_PULL_REQUEST_LABELS.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 13,
+                "lines": 273,
+                "insertions": 263,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 20,
+                "total": 80
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 54.125,
-          "significance_ratio": 0.5,
+          "avg_score": 57,
+          "significance_ratio": 0.5555555555555556,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 433,
+          "total_score": 513,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3080,10 +3223,10 @@
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 175,
+          "commit_score": 257,
           "commits": [
             {
               "hash": "b73b69bf",
@@ -3126,14 +3269,35 @@
                 "total": 75
               },
               "classification": "significant"
+            },
+            {
+              "hash": "41b669ea",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-13T23:48:42.000Z",
+              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 16,
+                "lines": 3553,
+                "insertions": 3484,
+                "deletions": 69
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 87.5,
+          "avg_score": 85.66666666666667,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 175,
+          "total_score": 257,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3830,13 +3994,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-13T00:30:00.885Z",
+    "analyzedAt": "2026-04-14T00:30:01.868Z",
     "daysBack": 2,
-    "totalCommits": 43,
+    "totalCommits": 45,
     "totalContributors": 17,
     "mergedFrom": {
-      "existing": 39,
-      "new": 7
+      "existing": 43,
+      "new": 6
     }
   }
 }
