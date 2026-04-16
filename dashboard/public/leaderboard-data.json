@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-15T00:30:05.546Z",
-  "total_commits_analyzed": 53,
+  "last_updated": "2026-04-16T00:30:09.132Z",
+  "total_commits_analyzed": 60,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -1293,10 +1293,10 @@
         {
           "name": "kumaneko",
           "email": "crclq2018@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 177,
+          "commit_score": 259,
           "commits": [
             {
               "hash": "cfb5c52a",
@@ -1339,24 +1339,45 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "e64b6e31",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-04-15T01:33:58.000Z",
+              "message": "feat(tools): add LRU cache simulator for lookup-hash JSONL logs (#3021)\n\n* Add LRU cache simulator for lookup-hash JSONL logs\n\n* Adds lmcache/tools/cache_simulator/ with four modules:\n\nSigned-off-by: crclq2018 <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
+              "stats": {
+                "files": 14,
+                "lines": 2411,
+                "insertions": 2411,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 88.5,
+          "avg_score": 86.33333333333333,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 177,
+          "total_score": 259,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 132,
+          "commit_score": 214,
           "commits": [
             {
               "hash": "6450c740",
@@ -1399,14 +1420,155 @@
                 "total": 52
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c075e85f",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-15T18:00:17.000Z",
+              "message": "[Chore] Remove v0 code  (#2968)\n\n[Chore] Remove v0 code\n\nDelete legacy v0 modules that are no longer used by the v1 runtime:\n\n- lmcache/server/ (v0 server; v1 server lives at lmcache/v1/server/)\n- lmcache/config.py, lmcache/protocol.py (v0 equivalents in lmcache/v1/)\n- lmcache/storage_backend/evictor/ (only used by the v0 server)\n- lmcache/storage_backend/serde/{fast,safe,torch}_serde.py (v0-only serializers)\n- tests/test_protocol.py and the unused lmserver_process fixture in\n  tests/conftest.py\n- pyproject.toml: drop the lmcache_v0_server entry point\n- .github/CODEOWNERS: drop the /lmcache/server/ entry\n\nKeep lmcache/storage_backend/serde/cachegen_* and serde.py because they\nare still imported by lmcache/v1/storage_backend/naive_serde. Flattening\nlmcache/v1/ into lmcache/ (and the remaining cleanup that enables) will\nfollow in a separate PR.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 18,
+                "lines": 1033,
+                "insertions": 3,
+                "deletions": 1030
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66,
+          "avg_score": 71.33333333333333,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 132,
+          "total_score": 214,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yuwei An",
+          "email": "ayw.sirius19@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "a6ee9136",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-14T02:33:25.000Z",
+              "message": "[Feat] L0 KV cache lifecycle event subscriber  (#2974)\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
+              "stats": {
+                "files": 11,
+                "lines": 833,
+                "insertions": 819,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e9f8ec26",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-15T03:10:38.000Z",
+              "message": "[Feat] L1 Subscriber (#2986)\n\n* [Feat] L0 Subscriber: GPU KV cache block lifecycle metrics\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
+              "stats": {
+                "files": 7,
+                "lines": 670,
+                "insertions": 669,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 120,
+          "commits": [
+            {
+              "hash": "01771795",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-15T04:26:05.000Z",
+              "message": "[Feat] Add is_user_level property and cache_salt param to EvictionPolicy (#3032)\n\n* [Feat] Add is_user_level property and cache_salt param to EvictionPolicy\n\nAdd is_user_level property to EvictionPolicy base class (default False).\nThe eviction controller uses this to decide whether to check per-user\nquotas or aggregate usage — no isinstance checks needed.\n\nAdd cache_salt optional parameter to get_eviction_actions(). When set,\nuser-level policies scope eviction to keys belonging to that user.\nNon-user-level policies (LRU, NoOp) accept and ignore the parameter.\n\nThis is an interface extension only — no new policies or behavioral\nchanges. UserLRUEvictionPolicy (follow-up PR) will override\nis_user_level to return True and use cache_salt for scoped eviction.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 23,
+                "insertions": 23,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e69b6848",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-15T04:18:19.000Z",
+              "message": "[Feat] Add cache_salt parameter to MP adapter interfaces (#3029)\n\n* [Feat] Add cache_salt parameter to MP adapter interfaces\n\nAdd cache_salt=\"\" default parameter to scheduler and worker adapter\nmethods to prepare for per-user cache isolation. This is a no-op\nchange — all defaults are empty string, preserving existing behavior.\n\nScheduler adapter:\n- maybe_submit_lookup_request: add cache_salt param\n- free_lookup_locks: add cache_salt param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\nWorker adapter:\n- submit_store_request: add cache_salt param\n- submit_retrieve_request: add cache_salt param\n- batched_submit_store_requests: add cache_salts list param\n- batched_submit_retrieve_requests: add cache_salts list param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\ncache_salt will be forwarded to IPCCacheEngineKey once that field is\nadded in a follow-up PR.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add per user l2 usage design docs\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 953,
+                "insertions": 942,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 60,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 120,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1485,8 +1647,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 82,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "chunxiaozheng",
@@ -1524,8 +1686,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 82,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "maobaolong",
@@ -1567,41 +1729,80 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Yuwei An",
-          "email": "ayw.sirius19@gmail.com",
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 82,
+          "commit_score": 77,
           "commits": [
             {
-              "hash": "a6ee9136",
-              "author": "Yuwei An",
-              "email": "ayw.sirius19@gmail.com",
-              "date": "2026-04-14T02:33:25.000Z",
-              "message": "[Feat] L0 KV cache lifecycle event subscriber  (#2974)\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
+              "hash": "7b09ac9d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-15T23:37:23.000Z",
+              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
               "stats": {
-                "files": 11,
-                "lines": 833,
-                "insertions": 819,
-                "deletions": 14
+                "files": 7,
+                "lines": 972,
+                "insertions": 971,
+                "deletions": 1
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 20,
-                "total": 82
+                "ai": 15,
+                "total": 77
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 82,
+          "avg_score": 77,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 82,
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "2cedbea8",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-04-15T13:22:22.000Z",
+              "message": "[Feat][DAX] Optimize staged batched restore path and document modification (#2904)\n\n* Add a native batched memcpy helper and switch the DAX backend batched retrieve path to a persistent staged restore pipeline with region workers, a reusable staging slab, and broader correctness coverage.\n\n* docs: add DAX batched restore usage notes\n\n* [DAX] Remove dead restore cleanup parameter\n\n* [DAX] Share restore dispatch path for blocking get\n\n* [DAX] Document restore helper behavior\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1394,
+                "insertions": 1378,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 22,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1879,10 +2080,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 10,
-          "significant_commits": 6,
+          "total_commits": 11,
+          "significant_commits": 7,
           "simple_commits": 4,
-          "commit_score": 565,
+          "commit_score": 647,
           "commits": [
             {
               "hash": "996da472",
@@ -2093,14 +2294,137 @@
                 "total": 52
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c075e85f",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-15T18:00:17.000Z",
+              "message": "[Chore] Remove v0 code  (#2968)\n\n[Chore] Remove v0 code\n\nDelete legacy v0 modules that are no longer used by the v1 runtime:\n\n- lmcache/server/ (v0 server; v1 server lives at lmcache/v1/server/)\n- lmcache/config.py, lmcache/protocol.py (v0 equivalents in lmcache/v1/)\n- lmcache/storage_backend/evictor/ (only used by the v0 server)\n- lmcache/storage_backend/serde/{fast,safe,torch}_serde.py (v0-only serializers)\n- tests/test_protocol.py and the unused lmserver_process fixture in\n  tests/conftest.py\n- pyproject.toml: drop the lmcache_v0_server entry point\n- .github/CODEOWNERS: drop the /lmcache/server/ entry\n\nKeep lmcache/storage_backend/serde/cachegen_* and serde.py because they\nare still imported by lmcache/v1/storage_backend/naive_serde. Flattening\nlmcache/v1/ into lmcache/ (and the remaining cleanup that enables) will\nfollow in a separate PR.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 18,
+                "lines": 1033,
+                "insertions": 3,
+                "deletions": 1030
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 56.5,
-          "significance_ratio": 0.6,
+          "avg_score": 58.81818181818182,
+          "significance_ratio": 0.6363636363636364,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 565,
+          "total_score": 647,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yuwei An",
+          "email": "ayw.sirius19@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 4,
+          "simple_commits": 0,
+          "commit_score": 336,
+          "commits": [
+            {
+              "hash": "11068230",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-01T00:16:02.000Z",
+              "message": "[2/2] L2 CI: Telemetry Test (#2913)\n\n* performance ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* l2 cache ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* lint\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n---------\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 779,
+                "insertions": 777,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a060b4ba",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-02T22:40:04.000Z",
+              "message": "vllm block event (#2930)\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n---------\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 310,
+                "insertions": 307,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a6ee9136",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-14T02:33:25.000Z",
+              "message": "[Feat] L0 KV cache lifecycle event subscriber  (#2974)\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
+              "stats": {
+                "files": 11,
+                "lines": 833,
+                "insertions": 819,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e9f8ec26",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-15T03:10:38.000Z",
+              "message": "[Feat] L1 Subscriber (#2986)\n\n* [Feat] L0 Subscriber: GPU KV cache block lifecycle metrics\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
+              "stats": {
+                "files": 7,
+                "lines": 670,
+                "insertions": 669,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 84,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 336,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -2228,6 +2552,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "kumaneko",
+          "email": "crclq2018@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 259,
+          "commits": [
+            {
+              "hash": "cfb5c52a",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-04-14T11:34:19.000Z",
+              "message": "feat: add chunk hashes logger to MP server for offline data analysis (#2928)\n\n* feat: add chunk hash logger as EventBus subscriber\n\nAdd JSONL-based chunk hash logging to the multiprocess server for\noffline analysis of KV cache behavior. Implemented as a\nChunkHashLoggingSubscriber on the EventBus — no extra queue or\nworker thread needed. Includes configurable log rotation, chunk\nmetadata (chunk_size, seq_len, dtypes, shapes), and CLI args.\n\nSigned-off-by: Ryan <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* refactor: rename ChunkHashLogger to LookupHashLogger\n\nRename the chunk hash logging subscriber to lookup hash logger to better\nreflect that it logs hashes observed during lookup operations.\n\n- chunk_hash.py → lookup_hash.py\n- ChunkHashLogConfig → LookupHashLogConfig\n- ChunkHashLoggingSubscriber → LookupHashLoggingSubscriber\n- --chunk-hash-log-* CLI args → --lookup-hash-log-*\n- lookup_hashes_*.jsonl file name pattern\n- Update docs and tests accordingly\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* Use tell to get the accurate file size\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* perf(mp): skip MP_LOOKUP event construction when no subscriber is listening\n\nAdd EventBus.has_subscribers() to cheaply check if any callback is\nregistered for a given EventType. Gate the MP_LOOKUP publish in\nMPCacheEngine.lookup() behind this check so that the metadata dict\n(including dtype/shape list comprehensions) is never allocated when\nthe lookup hash logger is disabled.\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* docs(mp): document MP_LOOKUP event metadata contract in EVENTS.md\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* test(mp): move lookup hash logger tests to correct directory\n\nMove tests/v1/multiprocess/test_lookup_hash_logger.py to\ntests/v1/mp_observability/subscribers/logging/ to match the source\nfile structure and ensure tests run under the standard CI suite.\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n---------\n\nSigned-off-by: Ryan <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nSigned-off-by: kumaneko <71458228+yoo-kumaneko@users.noreply.github.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 9,
+                "lines": 672,
+                "insertions": 671,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0784a72d",
+              "author": "kumaneko",
+              "email": "71458228+yoo-kumaneko@users.noreply.github.com",
+              "date": "2026-04-14T03:06:28.000Z",
+              "message": "refactor(mp): replace job_id with request_id in query_prefetch_status (#2996)\n\n* refactor(mp): replace job_id with request_id in query_prefetch_status\n\nThe server-internal integer job_id was unnecessarily leaked to the vLLM\nadapter via _lookup_job_ids / _finished_lookup_jobs, adding a redundant\nlayer of indirection. The external request_id (str) is the natural key\nand is already stored in every _PrefetchJob.\n\nChanges:\n- _prefetch_jobs is now keyed by request_id (str) instead of job_id (int)\n- _next_prefetch_job_id removed; _register_prefetch_job() stores by request_id\n- lookup() now returns None; job tracking is entirely server-side\n- query_prefetch_status(request_id: str) replaces the int-based version\n- query_prefetch_lookup_hits removed: it was only called internally by\n  sync_lookup (feature branch) and had no external callers on dev; the\n  QUERY_PREFETCH_LOOKUP_HITS RPC endpoint is removed accordingly\n- Adapter simplified: _lookup_job_ids replaced by _pending_lookups: set[str]\n  and _finished_lookup_results: dict[str, int] (cache keyed by request_id);\n  polls QUERY_PREFETCH_STATUS by request_id; cached result handles repeated\n  calls to check_lookup_result after the server has popped the job\n- Protocol updated: LOOKUP response_class=None, QUERY_PREFETCH_STATUS\n  payload_classes=[str], QUERY_PREFETCH_LOOKUP_HITS removed\n- tests/v1/multiprocess/test_query_lookup_hits.py deleted\n- All other affected tests updated\n\nNo changes to storage_manager.py or prefetch_controller.py; the internal\nprefetch_request_id (int) inside PrefetchHandle is unaffected.\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* fix(mp): return 0 for unknown request_id to prevent infinite polling\n\nWhen query_prefetch_status or query_prefetch_lookup_hits is called with\nan unknown request_id, returning None would cause the caller to\ninterpret it as \"still in progress\" and spin forever. Return 0 instead\nto signal no hits and allow the caller to terminate.\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n---------\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 255,
+                "insertions": 126,
+                "deletions": 129
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e64b6e31",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-04-15T01:33:58.000Z",
+              "message": "feat(tools): add LRU cache simulator for lookup-hash JSONL logs (#3021)\n\n* Add LRU cache simulator for lookup-hash JSONL logs\n\n* Adds lmcache/tools/cache_simulator/ with four modules:\n\nSigned-off-by: crclq2018 <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
+              "stats": {
+                "files": 14,
+                "lines": 2411,
+                "insertions": 2411,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 86.33333333333333,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 259,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
           "total_commits": 3,
@@ -2305,89 +2710,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 257,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Yuwei An",
-          "email": "ayw.sirius19@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 254,
-          "commits": [
-            {
-              "hash": "11068230",
-              "author": "Yuwei An",
-              "email": "ayw.sirius19@gmail.com",
-              "date": "2026-04-01T00:16:02.000Z",
-              "message": "[2/2] L2 CI: Telemetry Test (#2913)\n\n* performance ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* l2 cache ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* lint\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n---------\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 10,
-                "lines": 779,
-                "insertions": 777,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 10,
-                "ai": 25,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a060b4ba",
-              "author": "Yuwei An",
-              "email": "ayw.sirius19@gmail.com",
-              "date": "2026-04-02T22:40:04.000Z",
-              "message": "vllm block event (#2930)\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n---------\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>",
-              "stats": {
-                "files": 12,
-                "lines": 310,
-                "insertions": 307,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a6ee9136",
-              "author": "Yuwei An",
-              "email": "ayw.sirius19@gmail.com",
-              "date": "2026-04-14T02:33:25.000Z",
-              "message": "[Feat] L0 KV cache lifecycle event subscriber  (#2974)\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
-              "stats": {
-                "files": 11,
-                "lines": 833,
-                "insertions": 819,
-                "deletions": 14
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 84.66666666666667,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 254,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Boris Glimcher",
@@ -2471,45 +2795,105 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "kumaneko",
-          "email": "crclq2018@gmail.com",
-          "total_commits": 2,
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 3,
           "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 177,
+          "simple_commits": 1,
+          "commit_score": 197,
           "commits": [
             {
-              "hash": "cfb5c52a",
-              "author": "kumaneko",
-              "email": "crclq2018@gmail.com",
-              "date": "2026-04-14T11:34:19.000Z",
-              "message": "feat: add chunk hashes logger to MP server for offline data analysis (#2928)\n\n* feat: add chunk hash logger as EventBus subscriber\n\nAdd JSONL-based chunk hash logging to the multiprocess server for\noffline analysis of KV cache behavior. Implemented as a\nChunkHashLoggingSubscriber on the EventBus — no extra queue or\nworker thread needed. Includes configurable log rotation, chunk\nmetadata (chunk_size, seq_len, dtypes, shapes), and CLI args.\n\nSigned-off-by: Ryan <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* refactor: rename ChunkHashLogger to LookupHashLogger\n\nRename the chunk hash logging subscriber to lookup hash logger to better\nreflect that it logs hashes observed during lookup operations.\n\n- chunk_hash.py → lookup_hash.py\n- ChunkHashLogConfig → LookupHashLogConfig\n- ChunkHashLoggingSubscriber → LookupHashLoggingSubscriber\n- --chunk-hash-log-* CLI args → --lookup-hash-log-*\n- lookup_hashes_*.jsonl file name pattern\n- Update docs and tests accordingly\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* Use tell to get the accurate file size\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* perf(mp): skip MP_LOOKUP event construction when no subscriber is listening\n\nAdd EventBus.has_subscribers() to cheaply check if any callback is\nregistered for a given EventType. Gate the MP_LOOKUP publish in\nMPCacheEngine.lookup() behind this check so that the metadata dict\n(including dtype/shape list comprehensions) is never allocated when\nthe lookup hash logger is disabled.\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* docs(mp): document MP_LOOKUP event metadata contract in EVENTS.md\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* test(mp): move lookup hash logger tests to correct directory\n\nMove tests/v1/multiprocess/test_lookup_hash_logger.py to\ntests/v1/mp_observability/subscribers/logging/ to match the source\nfile structure and ensure tests run under the standard CI suite.\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n---------\n\nSigned-off-by: Ryan <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nSigned-off-by: kumaneko <71458228+yoo-kumaneko@users.noreply.github.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>",
+              "hash": "456aa16c",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-11T02:48:22.000Z",
+              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
               "stats": {
-                "files": 9,
-                "lines": 672,
-                "insertions": 671,
-                "deletions": 1
+                "files": 20,
+                "lines": 1316,
+                "insertions": 1191,
+                "deletions": 125
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
-                "keyword": 25,
-                "ai": 20,
-                "total": 95
+                "keyword": 5,
+                "ai": 22,
+                "total": 77
               },
               "classification": "significant"
             },
             {
-              "hash": "0784a72d",
-              "author": "kumaneko",
-              "email": "71458228+yoo-kumaneko@users.noreply.github.com",
-              "date": "2026-04-14T03:06:28.000Z",
-              "message": "refactor(mp): replace job_id with request_id in query_prefetch_status (#2996)\n\n* refactor(mp): replace job_id with request_id in query_prefetch_status\n\nThe server-internal integer job_id was unnecessarily leaked to the vLLM\nadapter via _lookup_job_ids / _finished_lookup_jobs, adding a redundant\nlayer of indirection. The external request_id (str) is the natural key\nand is already stored in every _PrefetchJob.\n\nChanges:\n- _prefetch_jobs is now keyed by request_id (str) instead of job_id (int)\n- _next_prefetch_job_id removed; _register_prefetch_job() stores by request_id\n- lookup() now returns None; job tracking is entirely server-side\n- query_prefetch_status(request_id: str) replaces the int-based version\n- query_prefetch_lookup_hits removed: it was only called internally by\n  sync_lookup (feature branch) and had no external callers on dev; the\n  QUERY_PREFETCH_LOOKUP_HITS RPC endpoint is removed accordingly\n- Adapter simplified: _lookup_job_ids replaced by _pending_lookups: set[str]\n  and _finished_lookup_results: dict[str, int] (cache keyed by request_id);\n  polls QUERY_PREFETCH_STATUS by request_id; cached result handles repeated\n  calls to check_lookup_result after the server has popped the job\n- Protocol updated: LOOKUP response_class=None, QUERY_PREFETCH_STATUS\n  payload_classes=[str], QUERY_PREFETCH_LOOKUP_HITS removed\n- tests/v1/multiprocess/test_query_lookup_hits.py deleted\n- All other affected tests updated\n\nNo changes to storage_manager.py or prefetch_controller.py; the internal\nprefetch_request_id (int) inside PrefetchHandle is unaffected.\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* fix(mp): return 0 for unknown request_id to prevent infinite polling\n\nWhen query_prefetch_status or query_prefetch_lookup_hits is called with\nan unknown request_id, returning None would cause the caller to\ninterpret it as \"still in progress\" and spin forever. Return 0 instead\nto signal no hits and allow the caller to terminate.\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n---------\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
+              "hash": "01771795",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-15T04:26:05.000Z",
+              "message": "[Feat] Add is_user_level property and cache_salt param to EvictionPolicy (#3032)\n\n* [Feat] Add is_user_level property and cache_salt param to EvictionPolicy\n\nAdd is_user_level property to EvictionPolicy base class (default False).\nThe eviction controller uses this to decide whether to check per-user\nquotas or aggregate usage — no isinstance checks needed.\n\nAdd cache_salt optional parameter to get_eviction_actions(). When set,\nuser-level policies scope eviction to keys belonging to that user.\nNon-user-level policies (LRU, NoOp) accept and ignore the parameter.\n\nThis is an interface extension only — no new policies or behavioral\nchanges. UserLRUEvictionPolicy (follow-up PR) will override\nis_user_level to return True and use cache_salt for scoped eviction.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
               "stats": {
-                "files": 9,
-                "lines": 255,
-                "insertions": 126,
-                "deletions": 129
+                "files": 3,
+                "lines": 23,
+                "insertions": 23,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e69b6848",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-15T04:18:19.000Z",
+              "message": "[Feat] Add cache_salt parameter to MP adapter interfaces (#3029)\n\n* [Feat] Add cache_salt parameter to MP adapter interfaces\n\nAdd cache_salt=\"\" default parameter to scheduler and worker adapter\nmethods to prepare for per-user cache isolation. This is a no-op\nchange — all defaults are empty string, preserving existing behavior.\n\nScheduler adapter:\n- maybe_submit_lookup_request: add cache_salt param\n- free_lookup_locks: add cache_salt param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\nWorker adapter:\n- submit_store_request: add cache_salt param\n- submit_retrieve_request: add cache_salt param\n- batched_submit_store_requests: add cache_salts list param\n- batched_submit_retrieve_requests: add cache_salts list param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\ncache_salt will be forwarded to IPCCacheEngineKey once that field is\nadded in a follow-up PR.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add per user l2 usage design docs\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 953,
+                "insertions": 942,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65.66666666666667,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 197,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 194,
+          "commits": [
+            {
+              "hash": "801b0169",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-09T01:22:40.000Z",
+              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 11,
+                "lines": 608,
+                "insertions": 587,
+                "deletions": 21
               },
               "scores": {
                 "loc": 30,
@@ -2519,14 +2903,116 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "b02289e5",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-10T21:22:43.000Z",
+              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7b09ac9d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-15T23:37:23.000Z",
+              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 972,
+                "insertions": 971,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 88.5,
+          "avg_score": 64.66666666666667,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 194,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "e7dfb09a",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-04-11T03:53:18.000Z",
+              "message": "[Feat][RawBlock] Add TP>1 support and compact batched retrieval path (#2948)\n\n* feat: Add TP > 1 support for RustRawBlockBackend\n\nAdd support for Tensor Parallelism (TP > 1) in RustRawBlockBackend\nby allowing explicit per-TP device path configuration.\n\nChanges:\n- Remove TP > 1 restriction that blocked multi-GPU deployments\n- Add support for explicit per-TP device paths via\n  rust_raw_block.per_tp_device_paths configuration\n- Add comprehensive TP=4 test suite to test_rust_raw_block_backend.py\n\nConfiguration example:\n  extra_config:\n    rust_raw_block.per_tp_device_paths:\n      \"0\": \"/dev/nvme0n1p1\"\n      \"1\": \"/dev/nvme0n1p2\"\n      \"2\": \"/dev/nvme0n1p3\"\n      \"3\": \"/dev/nvme0n1p4\"\n\nEach TP worker now uses its own partition to avoid metadata\nconflicts and data corruption. Partitions must be pre-created\non the device before use.\n\nTests:\n- test_rust_raw_block_backend_tp4_initialization: Tests TP=4 initialization\n  with per-TP device paths\n- test_rust_raw_block_backend_tp4_comprehensive_io: Comprehensive TP=4 I/O\n  test covering roundtrip, multiple operations, and TP isolation\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSource-Commit: d1209638d2c587b0750d1e95bead75389448769b\n\n* fix: validate duplicate per-TP raw block device paths\n\nAdd error when a device path is mapped to multiple TP workers.\n\nTests:\n- test_rust_raw_block_backend_tp_paths_must_be_unique: Tests TP=2 with\n  the same device paths\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: eeba57c1930ea114fd928afe0fe72ddfb6702ca2\n\n* fix: warn on cross-rank metadata load in raw block backend\n\nAdd warning when the raw block backend already has an entry of another rank.\n\nTests:\n- test_rust_raw_block_backend_warns_on_cross_rank_metadata_load: Tests\n  cross-rank device load\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: 2f59d3da371f6a509126e54d96f01f1e5aef5e4b\n\n* perf: streamline raw block batched retrieval\n\nUse one shared raw-block prefix read path for blocking and async retrieval, and keep the added TP/raw-block tests compact by sharing the setup helper.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: harden raw block batched get cleanup\n\nAddress review feedback for batched raw-block retrieval by ensuring inflight IO accounting is released when raw device setup fails, handling allocator exhaustion without asserts, and releasing allocated MemoryObj instances on read failures. Add regression tests for each case.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* docs: describe raw block batched get semantics\n\nAddress review feedback by documenting the raw-block batched retrieval overrides, including their prefix-stop return behavior and the raw-device initialization failure they may propagate.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: preserve raw block read errors and TP key lookup\n\nAddress review feedback by accepting integer YAML keys in rust_raw_block.per_tp_device_paths and restoring propagation of raw-device read failures while keeping the cleanup path intact. Add regression coverage for integer-key TP init and read-error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: release partial raw block batch on read error\n\nAddress review feedback by releasing any already-loaded MemoryObj instances when a later raw-block read in the same batch fails. Add regression coverage for a two-key batch that succeeds on the first read and fails on the second while preserving error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* refactor: tighten raw block TP device path typing\n\nAddress review feedback by replacing broad Any typing around rust_raw_block.per_tp_device_paths with an explicit mapping alias and validating the config value before use. This keeps the TP rank lookup logic robust for both string and integer YAML keys while making the helper signatures clearer.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Daejun Park <daejun7.park@samsung.com>\nCo-authored-by: Dongjin Kim <dongjin_.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 1178,
+                "insertions": 1102,
+                "deletions": 76
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 22,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2cedbea8",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-04-15T13:22:22.000Z",
+              "message": "[Feat][DAX] Optimize staged batched restore path and document modification (#2904)\n\n* Add a native batched memcpy helper and switch the DAX backend batched retrieve path to a persistent staged restore pipeline with region workers, a reusable staging slab, and broader correctness coverage.\n\n* docs: add DAX batched restore usage notes\n\n* [DAX] Remove dead restore cleanup parameter\n\n* [DAX] Share restore dispatch path for blocking get\n\n* [DAX] Document restore helper behavior\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1394,
+                "insertions": 1378,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 22,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 177,
+          "total_score": 164,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2587,66 +3073,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 152,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 117,
-          "commits": [
-            {
-              "hash": "801b0169",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-09T01:22:40.000Z",
-              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 11,
-                "lines": 608,
-                "insertions": 587,
-                "deletions": 21
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b02289e5",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-10T21:22:43.000Z",
-              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 6,
-                "insertions": 3,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 58.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 117,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2725,84 +3151,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 100,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "e7dfb09a",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-04-11T03:53:18.000Z",
-              "message": "[Feat][RawBlock] Add TP>1 support and compact batched retrieval path (#2948)\n\n* feat: Add TP > 1 support for RustRawBlockBackend\n\nAdd support for Tensor Parallelism (TP > 1) in RustRawBlockBackend\nby allowing explicit per-TP device path configuration.\n\nChanges:\n- Remove TP > 1 restriction that blocked multi-GPU deployments\n- Add support for explicit per-TP device paths via\n  rust_raw_block.per_tp_device_paths configuration\n- Add comprehensive TP=4 test suite to test_rust_raw_block_backend.py\n\nConfiguration example:\n  extra_config:\n    rust_raw_block.per_tp_device_paths:\n      \"0\": \"/dev/nvme0n1p1\"\n      \"1\": \"/dev/nvme0n1p2\"\n      \"2\": \"/dev/nvme0n1p3\"\n      \"3\": \"/dev/nvme0n1p4\"\n\nEach TP worker now uses its own partition to avoid metadata\nconflicts and data corruption. Partitions must be pre-created\non the device before use.\n\nTests:\n- test_rust_raw_block_backend_tp4_initialization: Tests TP=4 initialization\n  with per-TP device paths\n- test_rust_raw_block_backend_tp4_comprehensive_io: Comprehensive TP=4 I/O\n  test covering roundtrip, multiple operations, and TP isolation\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSource-Commit: d1209638d2c587b0750d1e95bead75389448769b\n\n* fix: validate duplicate per-TP raw block device paths\n\nAdd error when a device path is mapped to multiple TP workers.\n\nTests:\n- test_rust_raw_block_backend_tp_paths_must_be_unique: Tests TP=2 with\n  the same device paths\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: eeba57c1930ea114fd928afe0fe72ddfb6702ca2\n\n* fix: warn on cross-rank metadata load in raw block backend\n\nAdd warning when the raw block backend already has an entry of another rank.\n\nTests:\n- test_rust_raw_block_backend_warns_on_cross_rank_metadata_load: Tests\n  cross-rank device load\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: 2f59d3da371f6a509126e54d96f01f1e5aef5e4b\n\n* perf: streamline raw block batched retrieval\n\nUse one shared raw-block prefix read path for blocking and async retrieval, and keep the added TP/raw-block tests compact by sharing the setup helper.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: harden raw block batched get cleanup\n\nAddress review feedback for batched raw-block retrieval by ensuring inflight IO accounting is released when raw device setup fails, handling allocator exhaustion without asserts, and releasing allocated MemoryObj instances on read failures. Add regression tests for each case.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* docs: describe raw block batched get semantics\n\nAddress review feedback by documenting the raw-block batched retrieval overrides, including their prefix-stop return behavior and the raw-device initialization failure they may propagate.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: preserve raw block read errors and TP key lookup\n\nAddress review feedback by accepting integer YAML keys in rust_raw_block.per_tp_device_paths and restoring propagation of raw-device read failures while keeping the cleanup path intact. Add regression coverage for integer-key TP init and read-error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: release partial raw block batch on read error\n\nAddress review feedback by releasing any already-loaded MemoryObj instances when a later raw-block read in the same batch fails. Add regression coverage for a two-key batch that succeeds on the first read and fails on the second while preserving error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* refactor: tighten raw block TP device path typing\n\nAddress review feedback by replacing broad Any typing around rust_raw_block.per_tp_device_paths with an explicit mapping alias and validating the config value before use. This keeps the TP rank lookup logic robust for both string and integer YAML keys while making the helper signatures clearer.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Daejun Park <daejun7.park@samsung.com>\nCo-authored-by: Dongjin Kim <dongjin_.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 1178,
-                "insertions": 1102,
-                "deletions": 76
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 22,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 77,
-          "commits": [
-            {
-              "hash": "456aa16c",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-04-11T02:48:22.000Z",
-              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 1316,
-                "insertions": 1191,
-                "deletions": 125
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 5,
-                "ai": 22,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 77,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 77,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -3394,10 +3742,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 10,
-          "significant_commits": 6,
+          "total_commits": 11,
+          "significant_commits": 7,
           "simple_commits": 4,
-          "commit_score": 565,
+          "commit_score": 647,
           "commits": [
             {
               "hash": "996da472",
@@ -3608,14 +3956,137 @@
                 "total": 52
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c075e85f",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-15T18:00:17.000Z",
+              "message": "[Chore] Remove v0 code  (#2968)\n\n[Chore] Remove v0 code\n\nDelete legacy v0 modules that are no longer used by the v1 runtime:\n\n- lmcache/server/ (v0 server; v1 server lives at lmcache/v1/server/)\n- lmcache/config.py, lmcache/protocol.py (v0 equivalents in lmcache/v1/)\n- lmcache/storage_backend/evictor/ (only used by the v0 server)\n- lmcache/storage_backend/serde/{fast,safe,torch}_serde.py (v0-only serializers)\n- tests/test_protocol.py and the unused lmserver_process fixture in\n  tests/conftest.py\n- pyproject.toml: drop the lmcache_v0_server entry point\n- .github/CODEOWNERS: drop the /lmcache/server/ entry\n\nKeep lmcache/storage_backend/serde/cachegen_* and serde.py because they\nare still imported by lmcache/v1/storage_backend/naive_serde. Flattening\nlmcache/v1/ into lmcache/ (and the remaining cleanup that enables) will\nfollow in a separate PR.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 18,
+                "lines": 1033,
+                "insertions": 3,
+                "deletions": 1030
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 56.5,
-          "significance_ratio": 0.6,
+          "avg_score": 58.81818181818182,
+          "significance_ratio": 0.6363636363636364,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 565,
+          "total_score": 647,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yuwei An",
+          "email": "ayw.sirius19@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 4,
+          "simple_commits": 0,
+          "commit_score": 336,
+          "commits": [
+            {
+              "hash": "11068230",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-01T00:16:02.000Z",
+              "message": "[2/2] L2 CI: Telemetry Test (#2913)\n\n* performance ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* l2 cache ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* lint\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n---------\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 779,
+                "insertions": 777,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a060b4ba",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-02T22:40:04.000Z",
+              "message": "vllm block event (#2930)\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n---------\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 310,
+                "insertions": 307,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a6ee9136",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-14T02:33:25.000Z",
+              "message": "[Feat] L0 KV cache lifecycle event subscriber  (#2974)\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
+              "stats": {
+                "files": 11,
+                "lines": 833,
+                "insertions": 819,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e9f8ec26",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-15T03:10:38.000Z",
+              "message": "[Feat] L1 Subscriber (#2986)\n\n* [Feat] L0 Subscriber: GPU KV cache block lifecycle metrics\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
+              "stats": {
+                "files": 7,
+                "lines": 670,
+                "insertions": 669,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 84,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 336,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3743,6 +4214,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "kumaneko",
+          "email": "crclq2018@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 259,
+          "commits": [
+            {
+              "hash": "cfb5c52a",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-04-14T11:34:19.000Z",
+              "message": "feat: add chunk hashes logger to MP server for offline data analysis (#2928)\n\n* feat: add chunk hash logger as EventBus subscriber\n\nAdd JSONL-based chunk hash logging to the multiprocess server for\noffline analysis of KV cache behavior. Implemented as a\nChunkHashLoggingSubscriber on the EventBus — no extra queue or\nworker thread needed. Includes configurable log rotation, chunk\nmetadata (chunk_size, seq_len, dtypes, shapes), and CLI args.\n\nSigned-off-by: Ryan <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* refactor: rename ChunkHashLogger to LookupHashLogger\n\nRename the chunk hash logging subscriber to lookup hash logger to better\nreflect that it logs hashes observed during lookup operations.\n\n- chunk_hash.py → lookup_hash.py\n- ChunkHashLogConfig → LookupHashLogConfig\n- ChunkHashLoggingSubscriber → LookupHashLoggingSubscriber\n- --chunk-hash-log-* CLI args → --lookup-hash-log-*\n- lookup_hashes_*.jsonl file name pattern\n- Update docs and tests accordingly\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* Use tell to get the accurate file size\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* perf(mp): skip MP_LOOKUP event construction when no subscriber is listening\n\nAdd EventBus.has_subscribers() to cheaply check if any callback is\nregistered for a given EventType. Gate the MP_LOOKUP publish in\nMPCacheEngine.lookup() behind this check so that the metadata dict\n(including dtype/shape list comprehensions) is never allocated when\nthe lookup hash logger is disabled.\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* docs(mp): document MP_LOOKUP event metadata contract in EVENTS.md\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* test(mp): move lookup hash logger tests to correct directory\n\nMove tests/v1/multiprocess/test_lookup_hash_logger.py to\ntests/v1/mp_observability/subscribers/logging/ to match the source\nfile structure and ensure tests run under the standard CI suite.\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n---------\n\nSigned-off-by: Ryan <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nSigned-off-by: kumaneko <71458228+yoo-kumaneko@users.noreply.github.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 9,
+                "lines": 672,
+                "insertions": 671,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0784a72d",
+              "author": "kumaneko",
+              "email": "71458228+yoo-kumaneko@users.noreply.github.com",
+              "date": "2026-04-14T03:06:28.000Z",
+              "message": "refactor(mp): replace job_id with request_id in query_prefetch_status (#2996)\n\n* refactor(mp): replace job_id with request_id in query_prefetch_status\n\nThe server-internal integer job_id was unnecessarily leaked to the vLLM\nadapter via _lookup_job_ids / _finished_lookup_jobs, adding a redundant\nlayer of indirection. The external request_id (str) is the natural key\nand is already stored in every _PrefetchJob.\n\nChanges:\n- _prefetch_jobs is now keyed by request_id (str) instead of job_id (int)\n- _next_prefetch_job_id removed; _register_prefetch_job() stores by request_id\n- lookup() now returns None; job tracking is entirely server-side\n- query_prefetch_status(request_id: str) replaces the int-based version\n- query_prefetch_lookup_hits removed: it was only called internally by\n  sync_lookup (feature branch) and had no external callers on dev; the\n  QUERY_PREFETCH_LOOKUP_HITS RPC endpoint is removed accordingly\n- Adapter simplified: _lookup_job_ids replaced by _pending_lookups: set[str]\n  and _finished_lookup_results: dict[str, int] (cache keyed by request_id);\n  polls QUERY_PREFETCH_STATUS by request_id; cached result handles repeated\n  calls to check_lookup_result after the server has popped the job\n- Protocol updated: LOOKUP response_class=None, QUERY_PREFETCH_STATUS\n  payload_classes=[str], QUERY_PREFETCH_LOOKUP_HITS removed\n- tests/v1/multiprocess/test_query_lookup_hits.py deleted\n- All other affected tests updated\n\nNo changes to storage_manager.py or prefetch_controller.py; the internal\nprefetch_request_id (int) inside PrefetchHandle is unaffected.\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* fix(mp): return 0 for unknown request_id to prevent infinite polling\n\nWhen query_prefetch_status or query_prefetch_lookup_hits is called with\nan unknown request_id, returning None would cause the caller to\ninterpret it as \"still in progress\" and spin forever. Return 0 instead\nto signal no hits and allow the caller to terminate.\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n---------\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 255,
+                "insertions": 126,
+                "deletions": 129
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e64b6e31",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-04-15T01:33:58.000Z",
+              "message": "feat(tools): add LRU cache simulator for lookup-hash JSONL logs (#3021)\n\n* Add LRU cache simulator for lookup-hash JSONL logs\n\n* Adds lmcache/tools/cache_simulator/ with four modules:\n\nSigned-off-by: crclq2018 <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
+              "stats": {
+                "files": 14,
+                "lines": 2411,
+                "insertions": 2411,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 86.33333333333333,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 259,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
           "total_commits": 3,
@@ -3820,89 +4372,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 257,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Yuwei An",
-          "email": "ayw.sirius19@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 254,
-          "commits": [
-            {
-              "hash": "11068230",
-              "author": "Yuwei An",
-              "email": "ayw.sirius19@gmail.com",
-              "date": "2026-04-01T00:16:02.000Z",
-              "message": "[2/2] L2 CI: Telemetry Test (#2913)\n\n* performance ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* l2 cache ci\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* lint\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n---------\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 10,
-                "lines": 779,
-                "insertions": 777,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 10,
-                "ai": 25,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a060b4ba",
-              "author": "Yuwei An",
-              "email": "ayw.sirius19@gmail.com",
-              "date": "2026-04-02T22:40:04.000Z",
-              "message": "vllm block event (#2930)\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n* fix\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\n\n---------\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>",
-              "stats": {
-                "files": 12,
-                "lines": 310,
-                "insertions": 307,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a6ee9136",
-              "author": "Yuwei An",
-              "email": "ayw.sirius19@gmail.com",
-              "date": "2026-04-14T02:33:25.000Z",
-              "message": "[Feat] L0 KV cache lifecycle event subscriber  (#2974)\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
-              "stats": {
-                "files": 11,
-                "lines": 833,
-                "insertions": 819,
-                "deletions": 14
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 84.66666666666667,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 254,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Boris Glimcher",
@@ -3986,45 +4457,105 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "kumaneko",
-          "email": "crclq2018@gmail.com",
-          "total_commits": 2,
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 3,
           "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 177,
+          "simple_commits": 1,
+          "commit_score": 197,
           "commits": [
             {
-              "hash": "cfb5c52a",
-              "author": "kumaneko",
-              "email": "crclq2018@gmail.com",
-              "date": "2026-04-14T11:34:19.000Z",
-              "message": "feat: add chunk hashes logger to MP server for offline data analysis (#2928)\n\n* feat: add chunk hash logger as EventBus subscriber\n\nAdd JSONL-based chunk hash logging to the multiprocess server for\noffline analysis of KV cache behavior. Implemented as a\nChunkHashLoggingSubscriber on the EventBus — no extra queue or\nworker thread needed. Includes configurable log rotation, chunk\nmetadata (chunk_size, seq_len, dtypes, shapes), and CLI args.\n\nSigned-off-by: Ryan <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* refactor: rename ChunkHashLogger to LookupHashLogger\n\nRename the chunk hash logging subscriber to lookup hash logger to better\nreflect that it logs hashes observed during lookup operations.\n\n- chunk_hash.py → lookup_hash.py\n- ChunkHashLogConfig → LookupHashLogConfig\n- ChunkHashLoggingSubscriber → LookupHashLoggingSubscriber\n- --chunk-hash-log-* CLI args → --lookup-hash-log-*\n- lookup_hashes_*.jsonl file name pattern\n- Update docs and tests accordingly\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* Use tell to get the accurate file size\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* perf(mp): skip MP_LOOKUP event construction when no subscriber is listening\n\nAdd EventBus.has_subscribers() to cheaply check if any callback is\nregistered for a given EventType. Gate the MP_LOOKUP publish in\nMPCacheEngine.lookup() behind this check so that the metadata dict\n(including dtype/shape list comprehensions) is never allocated when\nthe lookup hash logger is disabled.\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* docs(mp): document MP_LOOKUP event metadata contract in EVENTS.md\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* test(mp): move lookup hash logger tests to correct directory\n\nMove tests/v1/multiprocess/test_lookup_hash_logger.py to\ntests/v1/mp_observability/subscribers/logging/ to match the source\nfile structure and ensure tests run under the standard CI suite.\n\nCo-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n---------\n\nSigned-off-by: Ryan <crclq2018@gmail.com>\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nSigned-off-by: kumaneko <71458228+yoo-kumaneko@users.noreply.github.com>\nSigned-off-by: kumaneko <crclq2018@gmail.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>",
+              "hash": "456aa16c",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-11T02:48:22.000Z",
+              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
               "stats": {
-                "files": 9,
-                "lines": 672,
-                "insertions": 671,
-                "deletions": 1
+                "files": 20,
+                "lines": 1316,
+                "insertions": 1191,
+                "deletions": 125
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
-                "keyword": 25,
-                "ai": 20,
-                "total": 95
+                "keyword": 5,
+                "ai": 22,
+                "total": 77
               },
               "classification": "significant"
             },
             {
-              "hash": "0784a72d",
-              "author": "kumaneko",
-              "email": "71458228+yoo-kumaneko@users.noreply.github.com",
-              "date": "2026-04-14T03:06:28.000Z",
-              "message": "refactor(mp): replace job_id with request_id in query_prefetch_status (#2996)\n\n* refactor(mp): replace job_id with request_id in query_prefetch_status\n\nThe server-internal integer job_id was unnecessarily leaked to the vLLM\nadapter via _lookup_job_ids / _finished_lookup_jobs, adding a redundant\nlayer of indirection. The external request_id (str) is the natural key\nand is already stored in every _PrefetchJob.\n\nChanges:\n- _prefetch_jobs is now keyed by request_id (str) instead of job_id (int)\n- _next_prefetch_job_id removed; _register_prefetch_job() stores by request_id\n- lookup() now returns None; job tracking is entirely server-side\n- query_prefetch_status(request_id: str) replaces the int-based version\n- query_prefetch_lookup_hits removed: it was only called internally by\n  sync_lookup (feature branch) and had no external callers on dev; the\n  QUERY_PREFETCH_LOOKUP_HITS RPC endpoint is removed accordingly\n- Adapter simplified: _lookup_job_ids replaced by _pending_lookups: set[str]\n  and _finished_lookup_results: dict[str, int] (cache keyed by request_id);\n  polls QUERY_PREFETCH_STATUS by request_id; cached result handles repeated\n  calls to check_lookup_result after the server has popped the job\n- Protocol updated: LOOKUP response_class=None, QUERY_PREFETCH_STATUS\n  payload_classes=[str], QUERY_PREFETCH_LOOKUP_HITS removed\n- tests/v1/multiprocess/test_query_lookup_hits.py deleted\n- All other affected tests updated\n\nNo changes to storage_manager.py or prefetch_controller.py; the internal\nprefetch_request_id (int) inside PrefetchHandle is unaffected.\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n* fix(mp): return 0 for unknown request_id to prevent infinite polling\n\nWhen query_prefetch_status or query_prefetch_lookup_hits is called with\nan unknown request_id, returning None would cause the caller to\ninterpret it as \"still in progress\" and spin forever. Return 0 instead\nto signal no hits and allow the caller to terminate.\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\n\n---------\n\nSigned-off-by: crclq2018@gmail.com\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
+              "hash": "01771795",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-15T04:26:05.000Z",
+              "message": "[Feat] Add is_user_level property and cache_salt param to EvictionPolicy (#3032)\n\n* [Feat] Add is_user_level property and cache_salt param to EvictionPolicy\n\nAdd is_user_level property to EvictionPolicy base class (default False).\nThe eviction controller uses this to decide whether to check per-user\nquotas or aggregate usage — no isinstance checks needed.\n\nAdd cache_salt optional parameter to get_eviction_actions(). When set,\nuser-level policies scope eviction to keys belonging to that user.\nNon-user-level policies (LRU, NoOp) accept and ignore the parameter.\n\nThis is an interface extension only — no new policies or behavioral\nchanges. UserLRUEvictionPolicy (follow-up PR) will override\nis_user_level to return True and use cache_salt for scoped eviction.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
               "stats": {
-                "files": 9,
-                "lines": 255,
-                "insertions": 126,
-                "deletions": 129
+                "files": 3,
+                "lines": 23,
+                "insertions": 23,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e69b6848",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-15T04:18:19.000Z",
+              "message": "[Feat] Add cache_salt parameter to MP adapter interfaces (#3029)\n\n* [Feat] Add cache_salt parameter to MP adapter interfaces\n\nAdd cache_salt=\"\" default parameter to scheduler and worker adapter\nmethods to prepare for per-user cache isolation. This is a no-op\nchange — all defaults are empty string, preserving existing behavior.\n\nScheduler adapter:\n- maybe_submit_lookup_request: add cache_salt param\n- free_lookup_locks: add cache_salt param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\nWorker adapter:\n- submit_store_request: add cache_salt param\n- submit_retrieve_request: add cache_salt param\n- batched_submit_store_requests: add cache_salts list param\n- batched_submit_retrieve_requests: add cache_salts list param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\ncache_salt will be forwarded to IPCCacheEngineKey once that field is\nadded in a follow-up PR.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add per user l2 usage design docs\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 953,
+                "insertions": 942,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65.66666666666667,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 197,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 194,
+          "commits": [
+            {
+              "hash": "801b0169",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-09T01:22:40.000Z",
+              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 11,
+                "lines": 608,
+                "insertions": 587,
+                "deletions": 21
               },
               "scores": {
                 "loc": 30,
@@ -4034,14 +4565,116 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "b02289e5",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-10T21:22:43.000Z",
+              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7b09ac9d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-15T23:37:23.000Z",
+              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 972,
+                "insertions": 971,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 88.5,
+          "avg_score": 64.66666666666667,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 194,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "e7dfb09a",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-04-11T03:53:18.000Z",
+              "message": "[Feat][RawBlock] Add TP>1 support and compact batched retrieval path (#2948)\n\n* feat: Add TP > 1 support for RustRawBlockBackend\n\nAdd support for Tensor Parallelism (TP > 1) in RustRawBlockBackend\nby allowing explicit per-TP device path configuration.\n\nChanges:\n- Remove TP > 1 restriction that blocked multi-GPU deployments\n- Add support for explicit per-TP device paths via\n  rust_raw_block.per_tp_device_paths configuration\n- Add comprehensive TP=4 test suite to test_rust_raw_block_backend.py\n\nConfiguration example:\n  extra_config:\n    rust_raw_block.per_tp_device_paths:\n      \"0\": \"/dev/nvme0n1p1\"\n      \"1\": \"/dev/nvme0n1p2\"\n      \"2\": \"/dev/nvme0n1p3\"\n      \"3\": \"/dev/nvme0n1p4\"\n\nEach TP worker now uses its own partition to avoid metadata\nconflicts and data corruption. Partitions must be pre-created\non the device before use.\n\nTests:\n- test_rust_raw_block_backend_tp4_initialization: Tests TP=4 initialization\n  with per-TP device paths\n- test_rust_raw_block_backend_tp4_comprehensive_io: Comprehensive TP=4 I/O\n  test covering roundtrip, multiple operations, and TP isolation\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSource-Commit: d1209638d2c587b0750d1e95bead75389448769b\n\n* fix: validate duplicate per-TP raw block device paths\n\nAdd error when a device path is mapped to multiple TP workers.\n\nTests:\n- test_rust_raw_block_backend_tp_paths_must_be_unique: Tests TP=2 with\n  the same device paths\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: eeba57c1930ea114fd928afe0fe72ddfb6702ca2\n\n* fix: warn on cross-rank metadata load in raw block backend\n\nAdd warning when the raw block backend already has an entry of another rank.\n\nTests:\n- test_rust_raw_block_backend_warns_on_cross_rank_metadata_load: Tests\n  cross-rank device load\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: 2f59d3da371f6a509126e54d96f01f1e5aef5e4b\n\n* perf: streamline raw block batched retrieval\n\nUse one shared raw-block prefix read path for blocking and async retrieval, and keep the added TP/raw-block tests compact by sharing the setup helper.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: harden raw block batched get cleanup\n\nAddress review feedback for batched raw-block retrieval by ensuring inflight IO accounting is released when raw device setup fails, handling allocator exhaustion without asserts, and releasing allocated MemoryObj instances on read failures. Add regression tests for each case.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* docs: describe raw block batched get semantics\n\nAddress review feedback by documenting the raw-block batched retrieval overrides, including their prefix-stop return behavior and the raw-device initialization failure they may propagate.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: preserve raw block read errors and TP key lookup\n\nAddress review feedback by accepting integer YAML keys in rust_raw_block.per_tp_device_paths and restoring propagation of raw-device read failures while keeping the cleanup path intact. Add regression coverage for integer-key TP init and read-error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: release partial raw block batch on read error\n\nAddress review feedback by releasing any already-loaded MemoryObj instances when a later raw-block read in the same batch fails. Add regression coverage for a two-key batch that succeeds on the first read and fails on the second while preserving error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* refactor: tighten raw block TP device path typing\n\nAddress review feedback by replacing broad Any typing around rust_raw_block.per_tp_device_paths with an explicit mapping alias and validating the config value before use. This keeps the TP rank lookup logic robust for both string and integer YAML keys while making the helper signatures clearer.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Daejun Park <daejun7.park@samsung.com>\nCo-authored-by: Dongjin Kim <dongjin_.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 1178,
+                "insertions": 1102,
+                "deletions": 76
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 22,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2cedbea8",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-04-15T13:22:22.000Z",
+              "message": "[Feat][DAX] Optimize staged batched restore path and document modification (#2904)\n\n* Add a native batched memcpy helper and switch the DAX backend batched retrieve path to a persistent staged restore pipeline with region workers, a reusable staging slab, and broader correctness coverage.\n\n* docs: add DAX batched restore usage notes\n\n* [DAX] Remove dead restore cleanup parameter\n\n* [DAX] Share restore dispatch path for blocking get\n\n* [DAX] Document restore helper behavior\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1394,
+                "insertions": 1378,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 22,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 177,
+          "total_score": 164,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4102,66 +4735,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 152,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 117,
-          "commits": [
-            {
-              "hash": "801b0169",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-09T01:22:40.000Z",
-              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 11,
-                "lines": 608,
-                "insertions": 587,
-                "deletions": 21
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b02289e5",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-10T21:22:43.000Z",
-              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 6,
-                "insertions": 3,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 58.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 117,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4240,84 +4813,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 100,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "e7dfb09a",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-04-11T03:53:18.000Z",
-              "message": "[Feat][RawBlock] Add TP>1 support and compact batched retrieval path (#2948)\n\n* feat: Add TP > 1 support for RustRawBlockBackend\n\nAdd support for Tensor Parallelism (TP > 1) in RustRawBlockBackend\nby allowing explicit per-TP device path configuration.\n\nChanges:\n- Remove TP > 1 restriction that blocked multi-GPU deployments\n- Add support for explicit per-TP device paths via\n  rust_raw_block.per_tp_device_paths configuration\n- Add comprehensive TP=4 test suite to test_rust_raw_block_backend.py\n\nConfiguration example:\n  extra_config:\n    rust_raw_block.per_tp_device_paths:\n      \"0\": \"/dev/nvme0n1p1\"\n      \"1\": \"/dev/nvme0n1p2\"\n      \"2\": \"/dev/nvme0n1p3\"\n      \"3\": \"/dev/nvme0n1p4\"\n\nEach TP worker now uses its own partition to avoid metadata\nconflicts and data corruption. Partitions must be pre-created\non the device before use.\n\nTests:\n- test_rust_raw_block_backend_tp4_initialization: Tests TP=4 initialization\n  with per-TP device paths\n- test_rust_raw_block_backend_tp4_comprehensive_io: Comprehensive TP=4 I/O\n  test covering roundtrip, multiple operations, and TP isolation\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSource-Commit: d1209638d2c587b0750d1e95bead75389448769b\n\n* fix: validate duplicate per-TP raw block device paths\n\nAdd error when a device path is mapped to multiple TP workers.\n\nTests:\n- test_rust_raw_block_backend_tp_paths_must_be_unique: Tests TP=2 with\n  the same device paths\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: eeba57c1930ea114fd928afe0fe72ddfb6702ca2\n\n* fix: warn on cross-rank metadata load in raw block backend\n\nAdd warning when the raw block backend already has an entry of another rank.\n\nTests:\n- test_rust_raw_block_backend_warns_on_cross_rank_metadata_load: Tests\n  cross-rank device load\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: 2f59d3da371f6a509126e54d96f01f1e5aef5e4b\n\n* perf: streamline raw block batched retrieval\n\nUse one shared raw-block prefix read path for blocking and async retrieval, and keep the added TP/raw-block tests compact by sharing the setup helper.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: harden raw block batched get cleanup\n\nAddress review feedback for batched raw-block retrieval by ensuring inflight IO accounting is released when raw device setup fails, handling allocator exhaustion without asserts, and releasing allocated MemoryObj instances on read failures. Add regression tests for each case.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* docs: describe raw block batched get semantics\n\nAddress review feedback by documenting the raw-block batched retrieval overrides, including their prefix-stop return behavior and the raw-device initialization failure they may propagate.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: preserve raw block read errors and TP key lookup\n\nAddress review feedback by accepting integer YAML keys in rust_raw_block.per_tp_device_paths and restoring propagation of raw-device read failures while keeping the cleanup path intact. Add regression coverage for integer-key TP init and read-error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: release partial raw block batch on read error\n\nAddress review feedback by releasing any already-loaded MemoryObj instances when a later raw-block read in the same batch fails. Add regression coverage for a two-key batch that succeeds on the first read and fails on the second while preserving error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* refactor: tighten raw block TP device path typing\n\nAddress review feedback by replacing broad Any typing around rust_raw_block.per_tp_device_paths with an explicit mapping alias and validating the config value before use. This keeps the TP rank lookup logic robust for both string and integer YAML keys while making the helper signatures clearer.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Daejun Park <daejun7.park@samsung.com>\nCo-authored-by: Dongjin Kim <dongjin_.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 1178,
-                "insertions": 1102,
-                "deletions": 76
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 22,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 77,
-          "commits": [
-            {
-              "hash": "456aa16c",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-04-11T02:48:22.000Z",
-              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 1316,
-                "insertions": 1191,
-                "deletions": 125
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 5,
-                "ai": 22,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 77,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 77,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -4678,13 +5173,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-15T00:30:05.546Z",
+    "analyzedAt": "2026-04-16T00:30:09.132Z",
     "daysBack": 2,
-    "totalCommits": 53,
+    "totalCommits": 60,
     "totalContributors": 19,
     "mergedFrom": {
-      "existing": 45,
-      "new": 10
+      "existing": 53,
+      "new": 15
     }
   }
 }
