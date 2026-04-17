@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-16T00:30:09.132Z",
-  "total_commits_analyzed": 60,
+  "last_updated": "2026-04-17T00:30:09.031Z",
+  "total_commits_analyzed": 68,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -1291,6 +1291,108 @@
       ],
       "2026-W16": [
         {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 4,
+          "significant_commits": 4,
+          "simple_commits": 0,
+          "commit_score": 269,
+          "commits": [
+            {
+              "hash": "6450c740",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-13T03:35:45.000Z",
+              "message": "[Chore][CI] Skip k3 builds when only docs/trivial files changed (#2993)\n\n* [CI] Skip k3 builds when only docs/trivial files changed\n\nAdds a path-based skip wrapper used by all 5 k3 test pipelines\n(correctness, integration, comprehensive, multiprocess, blend) so docs-only\nPRs auto-pass without spinning up GPU pods. Builds always run when any\nfile under .github/ or .buildkite/ changes. Set K3_PATH_FILTER_DISABLE=1\nto bypass.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Treat .github/ as trivial in k3 path filter\n\nk3 tests run on Buildkite, not GitHub Actions, so changes under .github/\n(workflows, CODEOWNERS, PR templates, dependabot) have no effect on what\nthe k3 tests do. Move .github/* from the always-trigger list to the\ntrivial list. .buildkite/* stays force-trigger since it does drive the\nk3 tests.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Move k3 path filter into pipeline.yml shim (no UI changes needed)\n\nRestructure each k3 test so the path-filter logic lives entirely in the\nrepo. The Buildkite Web UI's upload command stays the literal\n`buildkite-agent pipeline upload .buildkite/k3_tests/<test>/pipeline.yml`\nit has always been -- but pipeline.yml is now a tiny one-step shim that\nruns upload-pipeline.sh on steps.yml. The real test steps moved verbatim\ninto steps.yml.\n\nLayout per test:\n  pipeline.yml -- 1-step path-filter shim (was: full test pipeline)\n  steps.yml    -- the actual test steps   (was: pipeline.yml content)\n\nBecause pipeline.yml is fetched fresh from the repo on every build,\nedits to the filter / steps / shim now take effect on the next push\nwithout anyone re-pasting anything in the Buildkite UI.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Fix path filter: never skip scheduled builds, clean up shell\n\n- Never skip when BUILDKITE_SOURCE=schedule (nightly baseline builds\n  with NEED_UPLOAD=true would silently not run if the latest commit\n  on dev only touched docs).\n- Simplify PR detection: use -n test instead of double != check.\n- Remove redundant >&2 before 2>/dev/null on git fetch.\n\nAddresses review feedback on PR #2993.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [BugFix] Fix test_l2 crash on HistogramDataPoint without .value\n\n_read_counters() iterates all metrics from the InMemoryMetricReader,\nnot just counters. When another library registers a histogram on the\nsame MeterProvider, the reader returns HistogramDataPoint objects\nwhich lack .value (they have .sum/.count instead). Guard with hasattr.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* Revert \"[BugFix] Fix test_l2 crash on HistogramDataPoint without .value\"\n\nThis reverts commit 7c3c32b0f97208a9198f3961d42029ec582019f2.\n\n* [CI] Fix path filter SSH host key prompt in ephemeral pods\n\nThe filter step's git fetch hangs on GitHub's SSH host key verification\nprompt because ephemeral K8s pods have no known_hosts entry. Set\nGIT_SSH_COMMAND with StrictHostKeyChecking=accept-new so the fetch\nauto-accepts new host keys without blocking.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Run path filter in upload step, drop pipeline.yml shim\n\nThe pipeline.yml shim approach added an extra pod-provisioning wait to\nevery build. Instead, run the path filter directly in the upload step\nby having buildkite-pipeline.yml call upload-pipeline.sh (which the\nuser pastes into the Buildkite UI once).\n\nThis restores the original 2-step flow: upload → test steps.\nSkipped builds finish with just the upload pod (no GPU pod).\n\nRequires a one-time re-paste of each test's buildkite-pipeline.yml\ninto the Buildkite UI Steps editor after merging.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Remove migration notes from permanent docs\n\nMove one-time UI re-paste instructions to the PR description where\nthey belong instead of cluttering the README and BK_WEB_SETUP files.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Replace K3_PATH_FILTER_DISABLE env var with force-ci PR label\n\nContributors can now add a \"force-ci\" label on the GitHub PR to bypass\nthe path filter and force a full k3 CI run. This replaces the\nK3_PATH_FILTER_DISABLE env var which required access to the Buildkite\nUI. Buildkite exposes PR labels via BUILDKITE_PULL_REQUEST_LABELS.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 13,
+                "lines": 273,
+                "insertions": 263,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 20,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9cb6322d",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-14T23:55:32.000Z",
+              "message": "[Chore][CI]: K3 MP output token quantity tolerance (#3030)\n\n[CI] Allow 1% tolerance on vllm_bench total_input_tokens check\n\nvLLM's RandomDataset decodes and re-encodes generated token sequences\n(vllm/benchmarks/datasets.py) to avoid string-level drift, but the\nroundtrip is not guaranteed to preserve exact token counts — the\nbenchmark itself only warns when token_mismatch != 0. The strict -eq\nassertion against NUM_PROMPTS * RANDOM_INPUT_LEN was failing with a\n0.08% overage (500400 vs 500000) on Qwen3-14B after a vLLM upgrade.\n\nSwitch to a ±1% tolerance check, which matches the benchmark's own\nsemantics while still catching real workload-size regressions.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 68,
+                "insertions": 40,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 52
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c075e85f",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-15T18:00:17.000Z",
+              "message": "[Chore] Remove v0 code  (#2968)\n\n[Chore] Remove v0 code\n\nDelete legacy v0 modules that are no longer used by the v1 runtime:\n\n- lmcache/server/ (v0 server; v1 server lives at lmcache/v1/server/)\n- lmcache/config.py, lmcache/protocol.py (v0 equivalents in lmcache/v1/)\n- lmcache/storage_backend/evictor/ (only used by the v0 server)\n- lmcache/storage_backend/serde/{fast,safe,torch}_serde.py (v0-only serializers)\n- tests/test_protocol.py and the unused lmserver_process fixture in\n  tests/conftest.py\n- pyproject.toml: drop the lmcache_v0_server entry point\n- .github/CODEOWNERS: drop the /lmcache/server/ entry\n\nKeep lmcache/storage_backend/serde/cachegen_* and serde.py because they\nare still imported by lmcache/v1/storage_backend/naive_serde. Flattening\nlmcache/v1/ into lmcache/ (and the remaining cleanup that enables) will\nfollow in a separate PR.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 18,
+                "lines": 1033,
+                "insertions": 3,
+                "deletions": 1030
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "10fd636e",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-16T09:55:33.000Z",
+              "message": "[Hotfix][CI] Unblock CI: pandas          auto-heal + CUDA 12 build toolchain (#3055)",
+              "stats": {
+                "files": 3,
+                "lines": 83,
+                "insertions": 80,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 10,
+                "ai": 20,
+                "total": 55
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67.25,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 269,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "kumaneko",
           "email": "crclq2018@gmail.com",
           "total_commits": 3,
@@ -1372,93 +1474,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
+          "name": "Yuwei An",
+          "email": "ayw.sirius19@gmail.com",
           "total_commits": 3,
           "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 214,
-          "commits": [
-            {
-              "hash": "6450c740",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-13T03:35:45.000Z",
-              "message": "[Chore][CI] Skip k3 builds when only docs/trivial files changed (#2993)\n\n* [CI] Skip k3 builds when only docs/trivial files changed\n\nAdds a path-based skip wrapper used by all 5 k3 test pipelines\n(correctness, integration, comprehensive, multiprocess, blend) so docs-only\nPRs auto-pass without spinning up GPU pods. Builds always run when any\nfile under .github/ or .buildkite/ changes. Set K3_PATH_FILTER_DISABLE=1\nto bypass.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Treat .github/ as trivial in k3 path filter\n\nk3 tests run on Buildkite, not GitHub Actions, so changes under .github/\n(workflows, CODEOWNERS, PR templates, dependabot) have no effect on what\nthe k3 tests do. Move .github/* from the always-trigger list to the\ntrivial list. .buildkite/* stays force-trigger since it does drive the\nk3 tests.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Move k3 path filter into pipeline.yml shim (no UI changes needed)\n\nRestructure each k3 test so the path-filter logic lives entirely in the\nrepo. The Buildkite Web UI's upload command stays the literal\n`buildkite-agent pipeline upload .buildkite/k3_tests/<test>/pipeline.yml`\nit has always been -- but pipeline.yml is now a tiny one-step shim that\nruns upload-pipeline.sh on steps.yml. The real test steps moved verbatim\ninto steps.yml.\n\nLayout per test:\n  pipeline.yml -- 1-step path-filter shim (was: full test pipeline)\n  steps.yml    -- the actual test steps   (was: pipeline.yml content)\n\nBecause pipeline.yml is fetched fresh from the repo on every build,\nedits to the filter / steps / shim now take effect on the next push\nwithout anyone re-pasting anything in the Buildkite UI.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Fix path filter: never skip scheduled builds, clean up shell\n\n- Never skip when BUILDKITE_SOURCE=schedule (nightly baseline builds\n  with NEED_UPLOAD=true would silently not run if the latest commit\n  on dev only touched docs).\n- Simplify PR detection: use -n test instead of double != check.\n- Remove redundant >&2 before 2>/dev/null on git fetch.\n\nAddresses review feedback on PR #2993.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [BugFix] Fix test_l2 crash on HistogramDataPoint without .value\n\n_read_counters() iterates all metrics from the InMemoryMetricReader,\nnot just counters. When another library registers a histogram on the\nsame MeterProvider, the reader returns HistogramDataPoint objects\nwhich lack .value (they have .sum/.count instead). Guard with hasattr.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* Revert \"[BugFix] Fix test_l2 crash on HistogramDataPoint without .value\"\n\nThis reverts commit 7c3c32b0f97208a9198f3961d42029ec582019f2.\n\n* [CI] Fix path filter SSH host key prompt in ephemeral pods\n\nThe filter step's git fetch hangs on GitHub's SSH host key verification\nprompt because ephemeral K8s pods have no known_hosts entry. Set\nGIT_SSH_COMMAND with StrictHostKeyChecking=accept-new so the fetch\nauto-accepts new host keys without blocking.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Run path filter in upload step, drop pipeline.yml shim\n\nThe pipeline.yml shim approach added an extra pod-provisioning wait to\nevery build. Instead, run the path filter directly in the upload step\nby having buildkite-pipeline.yml call upload-pipeline.sh (which the\nuser pastes into the Buildkite UI once).\n\nThis restores the original 2-step flow: upload → test steps.\nSkipped builds finish with just the upload pod (no GPU pod).\n\nRequires a one-time re-paste of each test's buildkite-pipeline.yml\ninto the Buildkite UI Steps editor after merging.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Remove migration notes from permanent docs\n\nMove one-time UI re-paste instructions to the PR description where\nthey belong instead of cluttering the README and BK_WEB_SETUP files.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [CI] Replace K3_PATH_FILTER_DISABLE env var with force-ci PR label\n\nContributors can now add a \"force-ci\" label on the GitHub PR to bypass\nthe path filter and force a full k3 CI run. This replaces the\nK3_PATH_FILTER_DISABLE env var which required access to the Buildkite\nUI. Buildkite exposes PR labels via BUILDKITE_PULL_REQUEST_LABELS.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 13,
-                "lines": 273,
-                "insertions": 263,
-                "deletions": 10
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 10,
-                "ai": 20,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "9cb6322d",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-14T23:55:32.000Z",
-              "message": "[Chore][CI]: K3 MP output token quantity tolerance (#3030)\n\n[CI] Allow 1% tolerance on vllm_bench total_input_tokens check\n\nvLLM's RandomDataset decodes and re-encodes generated token sequences\n(vllm/benchmarks/datasets.py) to avoid string-level drift, but the\nroundtrip is not guaranteed to preserve exact token counts — the\nbenchmark itself only warns when token_mismatch != 0. The strict -eq\nassertion against NUM_PROMPTS * RANDOM_INPUT_LEN was failing with a\n0.08% overage (500400 vs 500000) on Qwen3-14B after a vLLM upgrade.\n\nSwitch to a ±1% tolerance check, which matches the benchmark's own\nsemantics while still catching real workload-size regressions.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 68,
-                "insertions": 40,
-                "deletions": 28
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 52
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "c075e85f",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-04-15T18:00:17.000Z",
-              "message": "[Chore] Remove v0 code  (#2968)\n\n[Chore] Remove v0 code\n\nDelete legacy v0 modules that are no longer used by the v1 runtime:\n\n- lmcache/server/ (v0 server; v1 server lives at lmcache/v1/server/)\n- lmcache/config.py, lmcache/protocol.py (v0 equivalents in lmcache/v1/)\n- lmcache/storage_backend/evictor/ (only used by the v0 server)\n- lmcache/storage_backend/serde/{fast,safe,torch}_serde.py (v0-only serializers)\n- tests/test_protocol.py and the unused lmserver_process fixture in\n  tests/conftest.py\n- pyproject.toml: drop the lmcache_v0_server entry point\n- .github/CODEOWNERS: drop the /lmcache/server/ entry\n\nKeep lmcache/storage_backend/serde/cachegen_* and serde.py because they\nare still imported by lmcache/v1/storage_backend/naive_serde. Flattening\nlmcache/v1/ into lmcache/ (and the remaining cleanup that enables) will\nfollow in a separate PR.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 18,
-                "lines": 1033,
-                "insertions": 3,
-                "deletions": 1030
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 71.33333333333333,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 214,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Yuwei An",
-          "email": "ayw.sirius19@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 164,
+          "commit_score": 246,
           "commits": [
             {
               "hash": "a6ee9136",
@@ -1501,6 +1522,27 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c92323f8",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-16T22:53:54.000Z",
+              "message": "Add scheduler instance_id and model_name to L0 KV lifecycle tracking (#3043)\n\n- Adapter sends os.getpid() and self.model_name in\n  report_block_allocations — no vLLM change needed\n- Protocol: [int, str, list[BlockAllocationRecord]]\n- Server passes instance_id and model_name to EventBus\n- L0LifecycleSubscriber keys shadow map by (instance_id, block_id)\n- Emit OTel histograms with instance_id and model_name attributes\n  for per-instance, per-model Prometheus metric slicing\n- Update EVENTS.md, METRICS.md, and observability.rst docs\n- Add test verifying OTel attributes on histogram data points\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
+              "stats": {
+                "files": 10,
+                "lines": 193,
+                "insertions": 143,
+                "deletions": 50
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
           "avg_score": 82,
@@ -1508,7 +1550,88 @@
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 164,
+          "total_score": 246,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 226,
+          "commits": [
+            {
+              "hash": "7b09ac9d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-15T23:37:23.000Z",
+              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 972,
+                "insertions": 971,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9b3f27b6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T19:41:06.000Z",
+              "message": "[Docs] Mirror lmcache/ layout in docs/design/ for discoverability (#3040)\n\n* moving the docs to docs/design/ and reorganize the docs/design folder\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 24,
+                "lines": 129,
+                "insertions": 109,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "43b62feb",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T18:14:23.000Z",
+              "message": "[Hotfix][CI] Pin vLLM nightly to cu130 index to match CUDA 13 base image (#3061)\n\nThe base image was bumped to nvidia/cuda:13.0.2-devel-ubuntu24.04 in\n#2981, but setup-env.sh installs vLLM from the generic nightly index\n(wheels.vllm.ai/nightly/vllm/), which resolves non-deterministically to\neither a cu128 or a cu130 torch wheel. When the resolver picks cu128,\ntorch.utils.cpp_extension._check_cuda_version aborts the LMCache\neditable install with:\n\n    RuntimeError: The detected CUDA version (13.0) mismatches the\n    version that was used to compile PyTorch (12.8).\n\n#3055 tried to paper over this at runtime by apt-installing\ncuda-compiler-12-8 on mismatch and pointing CUDA_HOME at\n/usr/local/cuda-12.8, but cuda-compiler-*-* only ships nvcc -- not the\nCUDA math-library dev headers (cusparse.h, cublas.h, etc.). The build\nthen fails deeper with a cryptic:\n\n    fatal error: cusparse.h: No such file or directory\n\nEvery k3 build on dev since 10fd636e (2026-04-16 09:55 UTC) has failed\nthis way because vLLM nightly happens to be publishing cu128 torch\ntoday. Extending the apt install list is a band-aid; the real fix is\nto stop resolving torch non-deterministically.\n\nPin the install to vLLM's per-CUDA-major cu130 sub-index per the\nofficial vllm.ai install instructions. torch.version.cuda is now\ndeterministically \"13.0\" and matches system nvcc 13, so\n_check_cuda_version passes with the system toolchain -- no CUDA_HOME\noverride, no apt install, no HTML scraping.\n\nAlso drop the HTML index scraper (no longer needed with the proper\n--extra-index-url flags) and replace the runtime alignment block with\na small Python sanity check that fails with a clear message if the\npin ever drifts again, so future breakage surfaces here instead of\ninside ninja.\n\n- Unblocks every k3 pipeline on dev.\n- Removes ~40 lines of CUDA version-alignment logic.\n- Keeps the pandas auto-heal loop from #3055 (that problem is\n  independent of this one).\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 112,
+                "insertions": 44,
+                "deletions": 68
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 22,
+                "total": 69
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.33333333333333,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 226,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1573,6 +1696,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 120,
+          "commits": [
+            {
+              "hash": "41b669ea",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-13T23:48:42.000Z",
+              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 16,
+                "lines": 3553,
+                "insertions": 3484,
+                "deletions": 69
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "facdc4e9",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-16T23:46:45.000Z",
+              "message": "chore: expose package version via __init__.py (#3034)\n\n* chore: expose package version via __init__.py\n\nImport __version__ so that users can access\nthe version string via `lmcache.__version__`.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: guard _version import to handle missing build-generated file\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 7,
+                "insertions": 7,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 60,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 120,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Boris Glimcher",
           "email": "36732377+glimchb@users.noreply.github.com",
           "total_commits": 1,
@@ -1608,45 +1791,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 95,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 82,
+          "commit_score": 84,
           "commits": [
             {
-              "hash": "41b669ea",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-13T23:48:42.000Z",
-              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "hash": "5035e1de",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-16T05:42:17.000Z",
+              "message": " [Observability] Per-request root OTel span and SpanRegistry for MP server tracing (#3033)\n\n* request root span for capture events\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Claude Sonnet 4.6 <noreply@anthropic.com>",
               "stats": {
-                "files": 16,
-                "lines": 3553,
-                "insertions": 3484,
-                "deletions": 69
+                "files": 18,
+                "lines": 1792,
+                "insertions": 1705,
+                "deletions": 87
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 20,
-                "total": 82
+                "ai": 22,
+                "total": 84
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 82,
+          "avg_score": 84,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 82,
+          "total_score": 84,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1729,51 +1912,12 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 77,
-          "commits": [
-            {
-              "hash": "7b09ac9d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-15T23:37:23.000Z",
-              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 972,
-                "insertions": 971,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 77,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 77,
+          "commit_score": 75,
           "commits": [
             {
               "hash": "2cedbea8",
@@ -1791,18 +1935,18 @@
                 "loc": 30,
                 "files": 20,
                 "keyword": 5,
-                "ai": 22,
-                "total": 77
+                "ai": 20,
+                "total": 75
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 77,
+          "avg_score": 75,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 77,
+          "total_score": 75,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1844,198 +1988,26 @@
           "total_score": 75,
           "tier": "T1",
           "tier_name": "Advanced"
-        }
-      ]
-    },
-    "monthly": {
-      "2026-04": [
+        },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 10,
-          "significant_commits": 7,
-          "simple_commits": 3,
-          "commit_score": 661,
+          "name": "liubj77",
+          "email": "liubj77@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 72,
           "commits": [
             {
-              "hash": "62cee8b0",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T15:01:13.000Z",
-              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 17,
-                "lines": 2556,
-                "insertions": 2297,
-                "deletions": 259
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "6774d50d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T14:36:48.000Z",
-              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 40,
-                "insertions": 36,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 4,
-                "total": 44
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "ccaf38d3",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-03T07:45:44.000Z",
-              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 860,
-                "insertions": 860,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ba3ba51b",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-03T06:18:14.000Z",
-              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "aed852f3",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-07T08:39:22.000Z",
-              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 9,
-                "lines": 524,
-                "insertions": 449,
-                "deletions": 75
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0e0dc12e",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-11T01:13:36.000Z",
-              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 17,
-                "insertions": 9,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "755362ae",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T07:29:41.000Z",
-              "message": "[MP] Add a new argument to specify whether retain_in_l1 (#2813)\n\n* [MP] Add a new argument to specify whether retain_in_l1\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove redundant override method.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 154,
-                "insertions": 153,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3f71b41d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T04:57:44.000Z",
-              "message": "Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0 (#2887)\n\n* Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "hash": "ab3a30cf",
+              "author": "liubj77",
+              "email": "liubj77@gmail.com",
+              "date": "2026-04-16T07:36:25.000Z",
+              "message": "[Bugfix] fix some memory leak in cache_engine and eic connector (#2544)\n\n* [Bugfix] fix some memory leak in cache_engine and eic connector\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* [Bugfix] fix some memory leak in cache_engine and eic connector\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* format code\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* optmize and add tests\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n---------\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
               "stats": {
                 "files": 3,
-                "lines": 1059,
-                "insertions": 1058,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f7ae4e1d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T00:51:37.000Z",
-              "message": "[MP] Introduce a simple way to register_gauge metrics. (#2906)\n\nIntroduce a simple way to register_gauge metrics.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 4,
-                "lines": 203,
-                "insertions": 203,
-                "deletions": 0
+                "lines": 319,
+                "insertions": 300,
+                "deletions": 19
               },
               "scores": {
                 "loc": 30,
@@ -2045,45 +2017,67 @@
                 "total": 72
               },
               "classification": "significant"
-            },
+            }
+          ],
+          "avg_score": 72,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Ziwen Ning",
+          "email": "ningziwe@amazon.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 50,
+          "commits": [
             {
-              "hash": "96e0be28",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-14T07:42:35.000Z",
-              "message": "[MP] Support lazy import built-in l2 adapter (#2905)\n\n* Support lazy import built-in l2 adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UTs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "hash": "3444bdb5",
+              "author": "Ziwen Ning",
+              "email": "ziwen@ningziwen.com",
+              "date": "2026-04-16T06:07:51.000Z",
+              "message": "feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification (#2874)\n\n* feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification\n\nThe sender role (prefiller) currently requires pd_proxy_host and\npd_proxy_port to be configured, and unconditionally creates a ZMQ PUSH\nsocket to the proxy. This tight coupling prevents using LMCache DPD\nwith external routers that manage the prefill-decode flow via HTTP.\n\nWhen pd_skip_proxy_notification is true, the sender skips the proxy\nconfig requirement, does not create the ZMQ PUSH socket, and does not\nsend ProxyNotif after KV transfer. This allows LMCache DPD to work\nwith any HTTP-based orchestrator that uses the prefill response as the\nKV transfer completion signal.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* address review comments\n\n- Make pd_proxy_host/pd_proxy_port assertions conditional on\n  pd_skip_proxy_notification being False, so the sender can start\n  without proxy config when notification is skipped.\n- Remove redundant self.skip_proxy_notification instance attribute;\n  use self.config.pd_skip_proxy_notification directly.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* docs: clarify pd_skip_proxy_notification is for external orchestrators only\n\nUpdate documentation and log message to explicitly state that\npd_skip_proxy_notification=true is intended for external orchestrators\n(e.g., vLLM Production Stack router) and must not be used with\nLMCache's built-in disaggregation proxy (disagg_proxy_server.py),\nwhich depends on ZMQ notifications to coordinate prefill-decode flow.\n\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n---------\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>",
               "stats": {
-                "files": 5,
-                "lines": 391,
-                "insertions": 365,
-                "deletions": 26
+                "files": 3,
+                "lines": 54,
+                "insertions": 38,
+                "deletions": 16
               },
               "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
+                "loc": 15,
+                "files": 10,
+                "keyword": 5,
                 "ai": 20,
-                "total": 82
+                "total": 50
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 66.1,
-          "significance_ratio": 0.7,
+          "avg_score": 50,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 661,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
+          "total_score": 50,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        }
+      ]
+    },
+    "monthly": {
+      "2026-04": [
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 11,
-          "significant_commits": 7,
+          "total_commits": 12,
+          "significant_commits": 8,
           "simple_commits": 4,
-          "commit_score": 647,
+          "commit_score": 702,
           "commits": [
             {
               "hash": "996da472",
@@ -2315,24 +2309,273 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "10fd636e",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-16T09:55:33.000Z",
+              "message": "[Hotfix][CI] Unblock CI: pandas          auto-heal + CUDA 12 build toolchain (#3055)",
+              "stats": {
+                "files": 3,
+                "lines": 83,
+                "insertions": 80,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 10,
+                "ai": 20,
+                "total": 55
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 58.81818181818182,
-          "significance_ratio": 0.6363636363636364,
+          "avg_score": 58.5,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 647,
+          "total_score": 702,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 10,
+          "significant_commits": 7,
+          "simple_commits": 3,
+          "commit_score": 661,
+          "commits": [
+            {
+              "hash": "62cee8b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T15:01:13.000Z",
+              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2556,
+                "insertions": 2297,
+                "deletions": 259
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6774d50d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T14:36:48.000Z",
+              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 40,
+                "insertions": 36,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ccaf38d3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T07:45:44.000Z",
+              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 860,
+                "insertions": 860,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ba3ba51b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T06:18:14.000Z",
+              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "aed852f3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-07T08:39:22.000Z",
+              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 524,
+                "insertions": 449,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0e0dc12e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-11T01:13:36.000Z",
+              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 9,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "755362ae",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T07:29:41.000Z",
+              "message": "[MP] Add a new argument to specify whether retain_in_l1 (#2813)\n\n* [MP] Add a new argument to specify whether retain_in_l1\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove redundant override method.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 154,
+                "insertions": 153,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3f71b41d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T04:57:44.000Z",
+              "message": "Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0 (#2887)\n\n* Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 1059,
+                "insertions": 1058,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f7ae4e1d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T00:51:37.000Z",
+              "message": "[MP] Introduce a simple way to register_gauge metrics. (#2906)\n\nIntroduce a simple way to register_gauge metrics.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 203,
+                "insertions": 203,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "96e0be28",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-14T07:42:35.000Z",
+              "message": "[MP] Support lazy import built-in l2 adapter (#2905)\n\n* Support lazy import built-in l2 adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UTs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 391,
+                "insertions": 365,
+                "deletions": 26
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 66.1,
+          "significance_ratio": 0.7,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 661,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
-          "total_commits": 4,
-          "significant_commits": 4,
+          "total_commits": 5,
+          "significant_commits": 5,
           "simple_commits": 0,
-          "commit_score": 336,
+          "commit_score": 418,
           "commits": [
             {
               "hash": "11068230",
@@ -2417,24 +2660,45 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c92323f8",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-16T22:53:54.000Z",
+              "message": "Add scheduler instance_id and model_name to L0 KV lifecycle tracking (#3043)\n\n- Adapter sends os.getpid() and self.model_name in\n  report_block_allocations — no vLLM change needed\n- Protocol: [int, str, list[BlockAllocationRecord]]\n- Server passes instance_id and model_name to EventBus\n- L0LifecycleSubscriber keys shadow map by (instance_id, block_id)\n- Emit OTel histograms with instance_id and model_name attributes\n  for per-instance, per-model Prometheus metric slicing\n- Update EVENTS.md, METRICS.md, and observability.rst docs\n- Add test verifying OTel attributes on histogram data points\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
+              "stats": {
+                "files": 10,
+                "lines": 193,
+                "insertions": 143,
+                "deletions": 50
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 84,
+          "avg_score": 83.6,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 336,
+          "total_score": 418,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 5,
-          "significant_commits": 3,
+          "total_commits": 6,
+          "significant_commits": 4,
           "simple_commits": 2,
-          "commit_score": 333,
+          "commit_score": 417,
           "commits": [
             {
               "hash": "6ceed5ea",
@@ -2540,16 +2804,262 @@
                 "total": 80
               },
               "classification": "significant"
+            },
+            {
+              "hash": "5035e1de",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-16T05:42:17.000Z",
+              "message": " [Observability] Per-request root OTel span and SpanRegistry for MP server tracing (#3033)\n\n* request root span for capture events\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Claude Sonnet 4.6 <noreply@anthropic.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1792,
+                "insertions": 1705,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66.6,
-          "significance_ratio": 0.6,
+          "avg_score": 69.5,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 333,
+          "total_score": 417,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 343,
+          "commits": [
+            {
+              "hash": "801b0169",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-09T01:22:40.000Z",
+              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 11,
+                "lines": 608,
+                "insertions": 587,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b02289e5",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-10T21:22:43.000Z",
+              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7b09ac9d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-15T23:37:23.000Z",
+              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 972,
+                "insertions": 971,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9b3f27b6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T19:41:06.000Z",
+              "message": "[Docs] Mirror lmcache/ layout in docs/design/ for discoverability (#3040)\n\n* moving the docs to docs/design/ and reorganize the docs/design folder\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 24,
+                "lines": 129,
+                "insertions": 109,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "43b62feb",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T18:14:23.000Z",
+              "message": "[Hotfix][CI] Pin vLLM nightly to cu130 index to match CUDA 13 base image (#3061)\n\nThe base image was bumped to nvidia/cuda:13.0.2-devel-ubuntu24.04 in\n#2981, but setup-env.sh installs vLLM from the generic nightly index\n(wheels.vllm.ai/nightly/vllm/), which resolves non-deterministically to\neither a cu128 or a cu130 torch wheel. When the resolver picks cu128,\ntorch.utils.cpp_extension._check_cuda_version aborts the LMCache\neditable install with:\n\n    RuntimeError: The detected CUDA version (13.0) mismatches the\n    version that was used to compile PyTorch (12.8).\n\n#3055 tried to paper over this at runtime by apt-installing\ncuda-compiler-12-8 on mismatch and pointing CUDA_HOME at\n/usr/local/cuda-12.8, but cuda-compiler-*-* only ships nvcc -- not the\nCUDA math-library dev headers (cusparse.h, cublas.h, etc.). The build\nthen fails deeper with a cryptic:\n\n    fatal error: cusparse.h: No such file or directory\n\nEvery k3 build on dev since 10fd636e (2026-04-16 09:55 UTC) has failed\nthis way because vLLM nightly happens to be publishing cu128 torch\ntoday. Extending the apt install list is a band-aid; the real fix is\nto stop resolving torch non-deterministically.\n\nPin the install to vLLM's per-CUDA-major cu130 sub-index per the\nofficial vllm.ai install instructions. torch.version.cuda is now\ndeterministically \"13.0\" and matches system nvcc 13, so\n_check_cuda_version passes with the system toolchain -- no CUDA_HOME\noverride, no apt install, no HTML scraping.\n\nAlso drop the HTML index scraper (no longer needed with the proper\n--extra-index-url flags) and replace the runtime alignment block with\na small Python sanity check that fails with a clear message if the\npin ever drifts again, so future breakage surfaces here instead of\ninside ninja.\n\n- Unblocks every k3 pipeline on dev.\n- Removes ~40 lines of CUDA version-alignment logic.\n- Keeps the pandas auto-heal loop from #3055 (that problem is\n  independent of this one).\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 112,
+                "insertions": 44,
+                "deletions": 68
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 22,
+                "total": 69
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68.6,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 343,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 295,
+          "commits": [
+            {
+              "hash": "b73b69bf",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-01T06:57:05.000Z",
+              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 443,
+                "insertions": 310,
+                "deletions": 133
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2108248a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-04T02:26:03.000Z",
+              "message": "Refactor: Align pd_buffer_size to chunk size in PD backend (#2694)\n\n* Refactor: Auto-align pd_buffer_size down to nearest chunk size multiple\n\n- Add buffer size alignment logic to prevent assertion error\n- Calculate aligned_buffer_size as (origin_size // chunk_size) * chunk_size\n- Add informative logging when buffer size is adjusted\n- Release excess buffer memory that can't be aligned\n- Follows the same pattern as local_cpu_backend.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine the code per gemini's suggestions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine log msg\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline pd backend buffer alignement\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix test hang by adding backend cleanup\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* remove UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* doc update\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename function name\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 103,
+                "insertions": 95,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 10,
+                "total": 75
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "41b669ea",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-13T23:48:42.000Z",
+              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 16,
+                "lines": 3553,
+                "insertions": 3484,
+                "deletions": 69
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "facdc4e9",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-16T23:46:45.000Z",
+              "message": "chore: expose package version via __init__.py (#3034)\n\n* chore: expose package version via __init__.py\n\nImport __version__ so that users can access\nthe version string via `lmcache.__version__`.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: guard _version import to handle missing build-generated file\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 7,
+                "insertions": 7,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 73.75,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 295,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "kumaneko",
@@ -2629,87 +3139,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 259,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 257,
-          "commits": [
-            {
-              "hash": "b73b69bf",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-01T06:57:05.000Z",
-              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 5,
-                "lines": 443,
-                "insertions": 310,
-                "deletions": 133
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "2108248a",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-04T02:26:03.000Z",
-              "message": "Refactor: Align pd_buffer_size to chunk size in PD backend (#2694)\n\n* Refactor: Auto-align pd_buffer_size down to nearest chunk size multiple\n\n- Add buffer size alignment logic to prevent assertion error\n- Calculate aligned_buffer_size as (origin_size // chunk_size) * chunk_size\n- Add informative logging when buffer size is adjusted\n- Release excess buffer memory that can't be aligned\n- Follows the same pattern as local_cpu_backend.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine the code per gemini's suggestions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine log msg\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline pd backend buffer alignement\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix test hang by adding backend cleanup\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* remove UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* doc update\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename function name\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 4,
-                "lines": 103,
-                "insertions": 95,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 10,
-                "total": 75
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "41b669ea",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-13T23:48:42.000Z",
-              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
-              "stats": {
-                "files": 16,
-                "lines": 3553,
-                "insertions": 3484,
-                "deletions": 69
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 85.66666666666667,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 257,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2876,93 +3305,12 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 194,
-          "commits": [
-            {
-              "hash": "801b0169",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-09T01:22:40.000Z",
-              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 11,
-                "lines": 608,
-                "insertions": 587,
-                "deletions": 21
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b02289e5",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-10T21:22:43.000Z",
-              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 6,
-                "insertions": 3,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "7b09ac9d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-15T23:37:23.000Z",
-              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 972,
-                "insertions": 971,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 64.66666666666667,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 194,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 164,
+          "commit_score": 162,
           "commits": [
             {
               "hash": "e7dfb09a",
@@ -3001,18 +3349,18 @@
                 "loc": 30,
                 "files": 20,
                 "keyword": 5,
-                "ai": 22,
-                "total": 77
+                "ai": 20,
+                "total": 75
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 82,
+          "avg_score": 81,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 164,
+          "total_score": 162,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -3155,6 +3503,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Ziwen Ning",
+          "email": "ningziwe@amazon.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 88,
+          "commits": [
+            {
+              "hash": "b4d95dce",
+              "author": "Ziwen Ning",
+              "email": "ningziwe@amazon.com",
+              "date": "2026-04-08T02:32:49.000Z",
+              "message": "fix: use pin=False in _allocate_and_put to prevent pd_buffer leak (#2847)\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3444bdb5",
+              "author": "Ziwen Ning",
+              "email": "ziwen@ningziwen.com",
+              "date": "2026-04-16T06:07:51.000Z",
+              "message": "feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification (#2874)\n\n* feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification\n\nThe sender role (prefiller) currently requires pd_proxy_host and\npd_proxy_port to be configured, and unconditionally creates a ZMQ PUSH\nsocket to the proxy. This tight coupling prevents using LMCache DPD\nwith external routers that manage the prefill-decode flow via HTTP.\n\nWhen pd_skip_proxy_notification is true, the sender skips the proxy\nconfig requirement, does not create the ZMQ PUSH socket, and does not\nsend ProxyNotif after KV transfer. This allows LMCache DPD to work\nwith any HTTP-based orchestrator that uses the prefill response as the\nKV transfer completion signal.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* address review comments\n\n- Make pd_proxy_host/pd_proxy_port assertions conditional on\n  pd_skip_proxy_notification being False, so the sender can start\n  without proxy config when notification is skipped.\n- Remove redundant self.skip_proxy_notification instance attribute;\n  use self.config.pd_skip_proxy_notification directly.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* docs: clarify pd_skip_proxy_notification is for external orchestrators only\n\nUpdate documentation and log message to explicitly state that\npd_skip_proxy_notification=true is intended for external orchestrators\n(e.g., vLLM Production Stack router) and must not be used with\nLMCache's built-in disaggregation proxy (disagg_proxy_server.py),\nwhich depends on ZMQ notifications to coordinate prefill-decode flow.\n\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n---------\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>",
+              "stats": {
+                "files": 3,
+                "lines": 54,
+                "insertions": 38,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 5,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 44,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 88,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Yiyang \"Ian\" Liu",
           "email": "yiyangiliu@gmail.com",
           "total_commits": 1,
@@ -3190,6 +3598,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 75,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "liubj77",
+          "email": "liubj77@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 72,
+          "commits": [
+            {
+              "hash": "ab3a30cf",
+              "author": "liubj77",
+              "email": "liubj77@gmail.com",
+              "date": "2026-04-16T07:36:25.000Z",
+              "message": "[Bugfix] fix some memory leak in cache_engine and eic connector (#2544)\n\n* [Bugfix] fix some memory leak in cache_engine and eic connector\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* [Bugfix] fix some memory leak in cache_engine and eic connector\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* format code\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* optmize and add tests\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n---------\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 319,
+                "insertions": 300,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 72,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -3268,45 +3715,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Ziwen Ning",
-          "email": "ningziwe@amazon.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 38,
-          "commits": [
-            {
-              "hash": "b4d95dce",
-              "author": "Ziwen Ning",
-              "email": "ningziwe@amazon.com",
-              "date": "2026-04-08T02:32:49.000Z",
-              "message": "fix: use pin=False in _allocate_and_put to prevent pd_buffer leak (#2847)\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 15,
-                "total": 38
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 38,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 38,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -3512,240 +3920,12 @@
     "quarterly": {
       "2026-Q2": [
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 10,
-          "significant_commits": 7,
-          "simple_commits": 3,
-          "commit_score": 661,
-          "commits": [
-            {
-              "hash": "62cee8b0",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T15:01:13.000Z",
-              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 17,
-                "lines": 2556,
-                "insertions": 2297,
-                "deletions": 259
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "6774d50d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T14:36:48.000Z",
-              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 40,
-                "insertions": 36,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 4,
-                "total": 44
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "ccaf38d3",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-03T07:45:44.000Z",
-              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 860,
-                "insertions": 860,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ba3ba51b",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-03T06:18:14.000Z",
-              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "aed852f3",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-07T08:39:22.000Z",
-              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 9,
-                "lines": 524,
-                "insertions": 449,
-                "deletions": 75
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0e0dc12e",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-11T01:13:36.000Z",
-              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 17,
-                "insertions": 9,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "755362ae",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T07:29:41.000Z",
-              "message": "[MP] Add a new argument to specify whether retain_in_l1 (#2813)\n\n* [MP] Add a new argument to specify whether retain_in_l1\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove redundant override method.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 154,
-                "insertions": 153,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3f71b41d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T04:57:44.000Z",
-              "message": "Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0 (#2887)\n\n* Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 3,
-                "lines": 1059,
-                "insertions": 1058,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f7ae4e1d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T00:51:37.000Z",
-              "message": "[MP] Introduce a simple way to register_gauge metrics. (#2906)\n\nIntroduce a simple way to register_gauge metrics.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 4,
-                "lines": 203,
-                "insertions": 203,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "96e0be28",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-14T07:42:35.000Z",
-              "message": "[MP] Support lazy import built-in l2 adapter (#2905)\n\n* Support lazy import built-in l2 adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UTs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 391,
-                "insertions": 365,
-                "deletions": 26
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 66.1,
-          "significance_ratio": 0.7,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 661,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 11,
-          "significant_commits": 7,
+          "total_commits": 12,
+          "significant_commits": 8,
           "simple_commits": 4,
-          "commit_score": 647,
+          "commit_score": 702,
           "commits": [
             {
               "hash": "996da472",
@@ -3977,24 +4157,273 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "10fd636e",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-16T09:55:33.000Z",
+              "message": "[Hotfix][CI] Unblock CI: pandas          auto-heal + CUDA 12 build toolchain (#3055)",
+              "stats": {
+                "files": 3,
+                "lines": 83,
+                "insertions": 80,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 10,
+                "ai": 20,
+                "total": 55
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 58.81818181818182,
-          "significance_ratio": 0.6363636363636364,
+          "avg_score": 58.5,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 647,
+          "total_score": 702,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 10,
+          "significant_commits": 7,
+          "simple_commits": 3,
+          "commit_score": 661,
+          "commits": [
+            {
+              "hash": "62cee8b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T15:01:13.000Z",
+              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2556,
+                "insertions": 2297,
+                "deletions": 259
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6774d50d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T14:36:48.000Z",
+              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 40,
+                "insertions": 36,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ccaf38d3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T07:45:44.000Z",
+              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 860,
+                "insertions": 860,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ba3ba51b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T06:18:14.000Z",
+              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "aed852f3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-07T08:39:22.000Z",
+              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 524,
+                "insertions": 449,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0e0dc12e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-11T01:13:36.000Z",
+              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 9,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "755362ae",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T07:29:41.000Z",
+              "message": "[MP] Add a new argument to specify whether retain_in_l1 (#2813)\n\n* [MP] Add a new argument to specify whether retain_in_l1\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove redundant override method.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 154,
+                "insertions": 153,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3f71b41d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T04:57:44.000Z",
+              "message": "Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0 (#2887)\n\n* Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 1059,
+                "insertions": 1058,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f7ae4e1d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T00:51:37.000Z",
+              "message": "[MP] Introduce a simple way to register_gauge metrics. (#2906)\n\nIntroduce a simple way to register_gauge metrics.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 203,
+                "insertions": 203,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "96e0be28",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-14T07:42:35.000Z",
+              "message": "[MP] Support lazy import built-in l2 adapter (#2905)\n\n* Support lazy import built-in l2 adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UTs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 391,
+                "insertions": 365,
+                "deletions": 26
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 66.1,
+          "significance_ratio": 0.7,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 661,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
-          "total_commits": 4,
-          "significant_commits": 4,
+          "total_commits": 5,
+          "significant_commits": 5,
           "simple_commits": 0,
-          "commit_score": 336,
+          "commit_score": 418,
           "commits": [
             {
               "hash": "11068230",
@@ -4079,24 +4508,45 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c92323f8",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-16T22:53:54.000Z",
+              "message": "Add scheduler instance_id and model_name to L0 KV lifecycle tracking (#3043)\n\n- Adapter sends os.getpid() and self.model_name in\n  report_block_allocations — no vLLM change needed\n- Protocol: [int, str, list[BlockAllocationRecord]]\n- Server passes instance_id and model_name to EventBus\n- L0LifecycleSubscriber keys shadow map by (instance_id, block_id)\n- Emit OTel histograms with instance_id and model_name attributes\n  for per-instance, per-model Prometheus metric slicing\n- Update EVENTS.md, METRICS.md, and observability.rst docs\n- Add test verifying OTel attributes on histogram data points\n\nSigned-off-by: yuwei <yuwei@dev.local>\nCo-authored-by: yuwei <yuwei@dev.local>",
+              "stats": {
+                "files": 10,
+                "lines": 193,
+                "insertions": 143,
+                "deletions": 50
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 84,
+          "avg_score": 83.6,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 336,
+          "total_score": 418,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 5,
-          "significant_commits": 3,
+          "total_commits": 6,
+          "significant_commits": 4,
           "simple_commits": 2,
-          "commit_score": 333,
+          "commit_score": 417,
           "commits": [
             {
               "hash": "6ceed5ea",
@@ -4202,16 +4652,262 @@
                 "total": 80
               },
               "classification": "significant"
+            },
+            {
+              "hash": "5035e1de",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-16T05:42:17.000Z",
+              "message": " [Observability] Per-request root OTel span and SpanRegistry for MP server tracing (#3033)\n\n* request root span for capture events\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Claude Sonnet 4.6 <noreply@anthropic.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1792,
+                "insertions": 1705,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66.6,
-          "significance_ratio": 0.6,
+          "avg_score": 69.5,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 333,
+          "total_score": 417,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 343,
+          "commits": [
+            {
+              "hash": "801b0169",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-09T01:22:40.000Z",
+              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 11,
+                "lines": 608,
+                "insertions": 587,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b02289e5",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-10T21:22:43.000Z",
+              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7b09ac9d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-15T23:37:23.000Z",
+              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 972,
+                "insertions": 971,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9b3f27b6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T19:41:06.000Z",
+              "message": "[Docs] Mirror lmcache/ layout in docs/design/ for discoverability (#3040)\n\n* moving the docs to docs/design/ and reorganize the docs/design folder\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 24,
+                "lines": 129,
+                "insertions": 109,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "43b62feb",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T18:14:23.000Z",
+              "message": "[Hotfix][CI] Pin vLLM nightly to cu130 index to match CUDA 13 base image (#3061)\n\nThe base image was bumped to nvidia/cuda:13.0.2-devel-ubuntu24.04 in\n#2981, but setup-env.sh installs vLLM from the generic nightly index\n(wheels.vllm.ai/nightly/vllm/), which resolves non-deterministically to\neither a cu128 or a cu130 torch wheel. When the resolver picks cu128,\ntorch.utils.cpp_extension._check_cuda_version aborts the LMCache\neditable install with:\n\n    RuntimeError: The detected CUDA version (13.0) mismatches the\n    version that was used to compile PyTorch (12.8).\n\n#3055 tried to paper over this at runtime by apt-installing\ncuda-compiler-12-8 on mismatch and pointing CUDA_HOME at\n/usr/local/cuda-12.8, but cuda-compiler-*-* only ships nvcc -- not the\nCUDA math-library dev headers (cusparse.h, cublas.h, etc.). The build\nthen fails deeper with a cryptic:\n\n    fatal error: cusparse.h: No such file or directory\n\nEvery k3 build on dev since 10fd636e (2026-04-16 09:55 UTC) has failed\nthis way because vLLM nightly happens to be publishing cu128 torch\ntoday. Extending the apt install list is a band-aid; the real fix is\nto stop resolving torch non-deterministically.\n\nPin the install to vLLM's per-CUDA-major cu130 sub-index per the\nofficial vllm.ai install instructions. torch.version.cuda is now\ndeterministically \"13.0\" and matches system nvcc 13, so\n_check_cuda_version passes with the system toolchain -- no CUDA_HOME\noverride, no apt install, no HTML scraping.\n\nAlso drop the HTML index scraper (no longer needed with the proper\n--extra-index-url flags) and replace the runtime alignment block with\na small Python sanity check that fails with a clear message if the\npin ever drifts again, so future breakage surfaces here instead of\ninside ninja.\n\n- Unblocks every k3 pipeline on dev.\n- Removes ~40 lines of CUDA version-alignment logic.\n- Keeps the pandas auto-heal loop from #3055 (that problem is\n  independent of this one).\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 112,
+                "insertions": 44,
+                "deletions": 68
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 22,
+                "total": 69
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68.6,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 343,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 295,
+          "commits": [
+            {
+              "hash": "b73b69bf",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-01T06:57:05.000Z",
+              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 443,
+                "insertions": 310,
+                "deletions": 133
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2108248a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-04T02:26:03.000Z",
+              "message": "Refactor: Align pd_buffer_size to chunk size in PD backend (#2694)\n\n* Refactor: Auto-align pd_buffer_size down to nearest chunk size multiple\n\n- Add buffer size alignment logic to prevent assertion error\n- Calculate aligned_buffer_size as (origin_size // chunk_size) * chunk_size\n- Add informative logging when buffer size is adjusted\n- Release excess buffer memory that can't be aligned\n- Follows the same pattern as local_cpu_backend.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine the code per gemini's suggestions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine log msg\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline pd backend buffer alignement\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix test hang by adding backend cleanup\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* remove UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* doc update\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename function name\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 103,
+                "insertions": 95,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 10,
+                "total": 75
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "41b669ea",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-13T23:48:42.000Z",
+              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 16,
+                "lines": 3553,
+                "insertions": 3484,
+                "deletions": 69
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "facdc4e9",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-16T23:46:45.000Z",
+              "message": "chore: expose package version via __init__.py (#3034)\n\n* chore: expose package version via __init__.py\n\nImport __version__ so that users can access\nthe version string via `lmcache.__version__`.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: guard _version import to handle missing build-generated file\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 7,
+                "insertions": 7,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 73.75,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 295,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "kumaneko",
@@ -4291,87 +4987,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 259,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 257,
-          "commits": [
-            {
-              "hash": "b73b69bf",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-01T06:57:05.000Z",
-              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 5,
-                "lines": 443,
-                "insertions": 310,
-                "deletions": 133
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "2108248a",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-04T02:26:03.000Z",
-              "message": "Refactor: Align pd_buffer_size to chunk size in PD backend (#2694)\n\n* Refactor: Auto-align pd_buffer_size down to nearest chunk size multiple\n\n- Add buffer size alignment logic to prevent assertion error\n- Calculate aligned_buffer_size as (origin_size // chunk_size) * chunk_size\n- Add informative logging when buffer size is adjusted\n- Release excess buffer memory that can't be aligned\n- Follows the same pattern as local_cpu_backend.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine the code per gemini's suggestions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine log msg\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline pd backend buffer alignement\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix test hang by adding backend cleanup\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* remove UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* doc update\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename function name\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 4,
-                "lines": 103,
-                "insertions": 95,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 10,
-                "total": 75
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "41b669ea",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-13T23:48:42.000Z",
-              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
-              "stats": {
-                "files": 16,
-                "lines": 3553,
-                "insertions": 3484,
-                "deletions": 69
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 85.66666666666667,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 257,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4538,93 +5153,12 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 194,
-          "commits": [
-            {
-              "hash": "801b0169",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-09T01:22:40.000Z",
-              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 11,
-                "lines": 608,
-                "insertions": 587,
-                "deletions": 21
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b02289e5",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-10T21:22:43.000Z",
-              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 6,
-                "insertions": 3,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "7b09ac9d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-15T23:37:23.000Z",
-              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 972,
-                "insertions": 971,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 64.66666666666667,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 194,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 164,
+          "commit_score": 162,
           "commits": [
             {
               "hash": "e7dfb09a",
@@ -4663,18 +5197,18 @@
                 "loc": 30,
                 "files": 20,
                 "keyword": 5,
-                "ai": 22,
-                "total": 77
+                "ai": 20,
+                "total": 75
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 82,
+          "avg_score": 81,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 164,
+          "total_score": 162,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4817,6 +5351,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Ziwen Ning",
+          "email": "ningziwe@amazon.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 88,
+          "commits": [
+            {
+              "hash": "b4d95dce",
+              "author": "Ziwen Ning",
+              "email": "ningziwe@amazon.com",
+              "date": "2026-04-08T02:32:49.000Z",
+              "message": "fix: use pin=False in _allocate_and_put to prevent pd_buffer leak (#2847)\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3444bdb5",
+              "author": "Ziwen Ning",
+              "email": "ziwen@ningziwen.com",
+              "date": "2026-04-16T06:07:51.000Z",
+              "message": "feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification (#2874)\n\n* feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification\n\nThe sender role (prefiller) currently requires pd_proxy_host and\npd_proxy_port to be configured, and unconditionally creates a ZMQ PUSH\nsocket to the proxy. This tight coupling prevents using LMCache DPD\nwith external routers that manage the prefill-decode flow via HTTP.\n\nWhen pd_skip_proxy_notification is true, the sender skips the proxy\nconfig requirement, does not create the ZMQ PUSH socket, and does not\nsend ProxyNotif after KV transfer. This allows LMCache DPD to work\nwith any HTTP-based orchestrator that uses the prefill response as the\nKV transfer completion signal.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* address review comments\n\n- Make pd_proxy_host/pd_proxy_port assertions conditional on\n  pd_skip_proxy_notification being False, so the sender can start\n  without proxy config when notification is skipped.\n- Remove redundant self.skip_proxy_notification instance attribute;\n  use self.config.pd_skip_proxy_notification directly.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* docs: clarify pd_skip_proxy_notification is for external orchestrators only\n\nUpdate documentation and log message to explicitly state that\npd_skip_proxy_notification=true is intended for external orchestrators\n(e.g., vLLM Production Stack router) and must not be used with\nLMCache's built-in disaggregation proxy (disagg_proxy_server.py),\nwhich depends on ZMQ notifications to coordinate prefill-decode flow.\n\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n---------\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>",
+              "stats": {
+                "files": 3,
+                "lines": 54,
+                "insertions": 38,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 5,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 44,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 88,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Yiyang \"Ian\" Liu",
           "email": "yiyangiliu@gmail.com",
           "total_commits": 1,
@@ -4852,6 +5446,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 75,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "liubj77",
+          "email": "liubj77@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 72,
+          "commits": [
+            {
+              "hash": "ab3a30cf",
+              "author": "liubj77",
+              "email": "liubj77@gmail.com",
+              "date": "2026-04-16T07:36:25.000Z",
+              "message": "[Bugfix] fix some memory leak in cache_engine and eic connector (#2544)\n\n* [Bugfix] fix some memory leak in cache_engine and eic connector\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* [Bugfix] fix some memory leak in cache_engine and eic connector\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* format code\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n* optmize and add tests\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\n\n---------\n\nSigned-off-by: liubj77 <liubj77@gmail.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 319,
+                "insertions": 300,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 72,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -4930,45 +5563,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Ziwen Ning",
-          "email": "ningziwe@amazon.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 38,
-          "commits": [
-            {
-              "hash": "b4d95dce",
-              "author": "Ziwen Ning",
-              "email": "ningziwe@amazon.com",
-              "date": "2026-04-08T02:32:49.000Z",
-              "message": "fix: use pin=False in _allocate_and_put to prevent pd_buffer leak (#2847)\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 15,
-                "total": 38
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 38,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 38,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -5173,12 +5767,12 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-16T00:30:09.132Z",
+    "analyzedAt": "2026-04-17T00:30:09.031Z",
     "daysBack": 2,
-    "totalCommits": 60,
-    "totalContributors": 19,
+    "totalCommits": 68,
+    "totalContributors": 20,
     "mergedFrom": {
-      "existing": 53,
+      "existing": 60,
       "new": 15
     }
   }
