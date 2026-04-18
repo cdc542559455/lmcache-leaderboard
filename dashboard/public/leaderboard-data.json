@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-17T00:30:09.031Z",
-  "total_commits_analyzed": 68,
+  "last_updated": "2026-04-18T00:30:07.685Z",
+  "total_commits_analyzed": 74,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -1291,6 +1291,129 @@
       ],
       "2026-W16": [
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 345,
+          "commits": [
+            {
+              "hash": "7b09ac9d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-15T23:37:23.000Z",
+              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 972,
+                "insertions": 971,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9b3f27b6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T19:41:06.000Z",
+              "message": "[Docs] Mirror lmcache/ layout in docs/design/ for discoverability (#3040)\n\n* moving the docs to docs/design/ and reorganize the docs/design folder\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 24,
+                "lines": 129,
+                "insertions": 109,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "43b62feb",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T18:14:23.000Z",
+              "message": "[Hotfix][CI] Pin vLLM nightly to cu130 index to match CUDA 13 base image (#3061)\n\nThe base image was bumped to nvidia/cuda:13.0.2-devel-ubuntu24.04 in\n#2981, but setup-env.sh installs vLLM from the generic nightly index\n(wheels.vllm.ai/nightly/vllm/), which resolves non-deterministically to\neither a cu128 or a cu130 torch wheel. When the resolver picks cu128,\ntorch.utils.cpp_extension._check_cuda_version aborts the LMCache\neditable install with:\n\n    RuntimeError: The detected CUDA version (13.0) mismatches the\n    version that was used to compile PyTorch (12.8).\n\n#3055 tried to paper over this at runtime by apt-installing\ncuda-compiler-12-8 on mismatch and pointing CUDA_HOME at\n/usr/local/cuda-12.8, but cuda-compiler-*-* only ships nvcc -- not the\nCUDA math-library dev headers (cusparse.h, cublas.h, etc.). The build\nthen fails deeper with a cryptic:\n\n    fatal error: cusparse.h: No such file or directory\n\nEvery k3 build on dev since 10fd636e (2026-04-16 09:55 UTC) has failed\nthis way because vLLM nightly happens to be publishing cu128 torch\ntoday. Extending the apt install list is a band-aid; the real fix is\nto stop resolving torch non-deterministically.\n\nPin the install to vLLM's per-CUDA-major cu130 sub-index per the\nofficial vllm.ai install instructions. torch.version.cuda is now\ndeterministically \"13.0\" and matches system nvcc 13, so\n_check_cuda_version passes with the system toolchain -- no CUDA_HOME\noverride, no apt install, no HTML scraping.\n\nAlso drop the HTML index scraper (no longer needed with the proper\n--extra-index-url flags) and replace the runtime alignment block with\na small Python sanity check that fails with a clear message if the\npin ever drifts again, so future breakage surfaces here instead of\ninside ninja.\n\n- Unblocks every k3 pipeline on dev.\n- Removes ~40 lines of CUDA version-alignment logic.\n- Keeps the pandas auto-heal loop from #3055 (that problem is\n  independent of this one).\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 112,
+                "insertions": 44,
+                "deletions": 68
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 22,
+                "total": 69
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0c4f03d6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-18T00:16:46.000Z",
+              "message": "[MP] Add tracing functionality for storage manager (#3063)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 21,
+                "lines": 2335,
+                "insertions": 2315,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ea84d4e9",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-17T20:54:39.000Z",
+              "message": "[Misc] Reduce the logs generated by lazy memory allocator (#3068)\n\n[add] reduce the mp mode lazy alloc logs\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 24,
+                "insertions": 22,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 69,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 345,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 4,
@@ -1555,93 +1678,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 226,
-          "commits": [
-            {
-              "hash": "7b09ac9d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-15T23:37:23.000Z",
-              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 972,
-                "insertions": 971,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "9b3f27b6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-16T19:41:06.000Z",
-              "message": "[Docs] Mirror lmcache/ layout in docs/design/ for discoverability (#3040)\n\n* moving the docs to docs/design/ and reorganize the docs/design folder\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 24,
-                "lines": 129,
-                "insertions": 109,
-                "deletions": 20
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "43b62feb",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-16T18:14:23.000Z",
-              "message": "[Hotfix][CI] Pin vLLM nightly to cu130 index to match CUDA 13 base image (#3061)\n\nThe base image was bumped to nvidia/cuda:13.0.2-devel-ubuntu24.04 in\n#2981, but setup-env.sh installs vLLM from the generic nightly index\n(wheels.vllm.ai/nightly/vllm/), which resolves non-deterministically to\neither a cu128 or a cu130 torch wheel. When the resolver picks cu128,\ntorch.utils.cpp_extension._check_cuda_version aborts the LMCache\neditable install with:\n\n    RuntimeError: The detected CUDA version (13.0) mismatches the\n    version that was used to compile PyTorch (12.8).\n\n#3055 tried to paper over this at runtime by apt-installing\ncuda-compiler-12-8 on mismatch and pointing CUDA_HOME at\n/usr/local/cuda-12.8, but cuda-compiler-*-* only ships nvcc -- not the\nCUDA math-library dev headers (cusparse.h, cublas.h, etc.). The build\nthen fails deeper with a cryptic:\n\n    fatal error: cusparse.h: No such file or directory\n\nEvery k3 build on dev since 10fd636e (2026-04-16 09:55 UTC) has failed\nthis way because vLLM nightly happens to be publishing cu128 torch\ntoday. Extending the apt install list is a band-aid; the real fix is\nto stop resolving torch non-deterministically.\n\nPin the install to vLLM's per-CUDA-major cu130 sub-index per the\nofficial vllm.ai install instructions. torch.version.cuda is now\ndeterministically \"13.0\" and matches system nvcc 13, so\n_check_cuda_version passes with the system toolchain -- no CUDA_HOME\noverride, no apt install, no HTML scraping.\n\nAlso drop the HTML index scraper (no longer needed with the proper\n--extra-index-url flags) and replace the runtime alignment block with\na small Python sanity check that fails with a clear message if the\npin ever drifts again, so future breakage surfaces here instead of\ninside ninja.\n\n- Unblocks every k3 pipeline on dev.\n- Removes ~40 lines of CUDA version-alignment logic.\n- Keeps the pandas auto-heal loop from #3055 (that problem is\n  independent of this one).\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 112,
-                "insertions": 44,
-                "deletions": 68
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 12,
-                "ai": 22,
-                "total": 69
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 75.33333333333333,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 226,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 1,
+          "total_commits": 3,
+          "significant_commits": 2,
           "simple_commits": 1,
-          "commit_score": 120,
+          "commit_score": 204,
           "commits": [
             {
               "hash": "01771795",
@@ -1684,24 +1726,45 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "408d6df5",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-17T22:54:56.000Z",
+              "message": "[MP][Feat] Add cache_salt to ObjectKey for cache isolation (#3042)\n\n* [Feat] Add cache_salt to ObjectKey for per-user cache isolation\n\nAdds a ``cache_salt: str = \"\"`` field to ``ObjectKey`` and\n``IPCCacheEngineKey`` so same-content/different-user cache entries\nproduce distinct keys. This is the data-model piece of the per-user\nL2 cache quota feature (PR2 of 6). PR1a (#3029) wired cache_salt\nthrough the adapter surface but left it a no-op until the data model\nlanded; this PR makes it load-bearing.\n\nKey changes:\n\n- ``ObjectKey`` and ``IPCCacheEngineKey`` gain ``cache_salt`` field\n  participating in eq/hash. ``__post_init__`` on both rejects ``@`` in\n  the salt — this is the invariant the L2 adapter parsers rely on.\n- ``ipc_key_to_object_keys(ipc_key, chunk_hashes)`` reads\n  ``ipc_key.cache_salt`` internally. No separate parameter, so callers\n  cannot accidentally drop the salt.\n- Native connector, FS adapter Python, and FS adapter C++ all use a\n  leading ``@@`` marker to disambiguate salted from legacy keys. Legacy\n  files and wire payloads (empty salt) remain readable — existing\n  stored data is preserved.\n- msgspec encodes dataclasses as maps, so an old 7-field\n  ``IPCCacheEngineKey`` payload decodes on new code with ``cache_salt``\n  defaulting to ``\"\"``. New-on-old works because msgspec ignores\n  unknown map keys by default.\n\nTests: 32 new cases covering serialization roundtrip (native + FS),\nvalidation (``@`` rejection), isolation semantics (eq/hash per salt),\nmsgspec wire compat (old→new, new→new), and the FS C++ parser's\nlegacy/salted/``@``-in-model paths.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Fix] Expand cache_salt validation: reject /, \\, NUL; add length cap\n\nAddresses review feedback on #3042:\n\n- cache_salt must not contain '/', '\\', or NUL (in addition to '@').\n  The FS adapter embeds salt into filenames — '/' would inject directory\n  separators; '\\' is a Windows path separator; NUL terminates C strings\n  in the C++ connector.\n- Max length capped at 128 chars to stay within NAME_MAX (255) after\n  model_name, kv_rank, chunk_hash, and the .data extension are added.\n- Updated example external connector template\n  (examples/lmc_external_native_connector) to handle the @@ salted\n  key format, matching the in-tree csrc/storage_backends/fs/connector.cpp.\n- Added tests for /, \\, NUL rejection and length cap on both ObjectKey\n  and IPCCacheEngineKey.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Refactor] Always use @@-prefixed key format; deprecate legacy\n\nAll new writes use the unified @@-prefixed format for both salted and\nunsalted keys:\n\n    @@<cache_salt>@<model>@<rank>@<hash>\n\nFor empty cache_salt this becomes @@@model@rank@hash. The legacy\n3-field format (no @@ prefix) is still readable by all parsers for\nbackward compatibility but emits a deprecation warning on the FS\nadapter read path. Re-storing a legacy entry automatically migrates\nit to the new format.\n\nThis simplifies parsing — the @@ prefix is always present so there\nis no need to disambiguate based on field count (model_name may\ncontain @ and would otherwise be ambiguous).\n\nUpdated Python (native_connector + fs_l2_adapter), C++ (in-tree\nfs/connector.cpp), and the example external connector template.\nTests updated: serialization format assertions reflect the @@@\nprefix for empty salt, and roundtrip tests verify the parser still\nhandles legacy filenames.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Refactor] Example connector: always emit @@-prefixed filename\n\nAligns the example external native connector template with the\nin-tree csrc/storage_backends/fs/connector.cpp convention from the\nprevious commit.\n\nPreviously the example only emitted the @@ prefix when cache_salt\nwas non-empty, leaving empty-salt keys in the legacy 3-field format.\nNow all files on disk use the unified @@-prefixed format (empty\nsalt produces @@@model@...), and legacy inputs without @@ are still\naccepted on the read path for backward compatibility.\n\nThird-party connectors cloned from this template will produce\nmigrate-compatible filenames out of the box.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 822,
+                "insertions": 688,
+                "deletions": 134
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 60,
-          "significance_ratio": 0.5,
+          "avg_score": 68,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 120,
+          "total_score": 204,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 2,
-          "significant_commits": 1,
+          "total_commits": 3,
+          "significant_commits": 2,
           "simple_commits": 1,
-          "commit_score": 120,
+          "commit_score": 203,
           "commits": [
             {
               "hash": "41b669ea",
@@ -1744,14 +1807,35 @@
                 "total": 38
               },
               "classification": "simple"
+            },
+            {
+              "hash": "575a7456",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-17T00:31:19.000Z",
+              "message": "Fix: Safely handle layerwise cache shape dimensions in remote backend (#2751)\n\n* Fix: Handle layerwise cache shape dimensions for remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix mla + remote backend\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fixes according to cursor review\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* additional fix\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add assert if the shape has dimension with 0,\nwhich can't be properly handled by design\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: avoid warning noise from zero-placeholder shapes in pad_shape_to_4d\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* minor change to fix CI\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add default value for backward compatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 6,
+                "lines": 223,
+                "insertions": 200,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 18,
+                "total": 83
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 60,
-          "significance_ratio": 0.5,
+          "avg_score": 67.66666666666667,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 120,
+          "total_score": 203,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1800,7 +1884,7 @@
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 84,
+          "commit_score": 82,
           "commits": [
             {
               "hash": "5035e1de",
@@ -1818,18 +1902,18 @@
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 22,
-                "total": 84
+                "ai": 20,
+                "total": 82
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 84,
+          "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 84,
+          "total_score": 82,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1891,6 +1975,45 @@
                 "lines": 391,
                 "insertions": 365,
                 "deletions": 26
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Jiayi Yao",
+          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "69787b87",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-04-17T03:31:36.000Z",
+              "message": "[Core] Add persistence interfaces and nixl persistence (#2938)\n\n* add persistence interfaces and nixl persistence\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update tests and docs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix cursor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix cursor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix race\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove redundant config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix usage double count\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 7,
+                "lines": 1948,
+                "insertions": 1936,
+                "deletions": 12
               },
               "scores": {
                 "loc": 30,
@@ -1986,8 +2109,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 75,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "liubj77",
@@ -2025,6 +2148,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Shaoting",
+          "email": "stfeng@uw.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 67,
+          "commits": [
+            {
+              "hash": "cae196ca",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-18T00:15:19.000Z",
+              "message": "[ROCm] Make bare-host ROCm install self-sufficient (#3070)\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 85,
+                "insertions": 74,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 67,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -2570,6 +2732,171 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 7,
+          "significant_commits": 5,
+          "simple_commits": 2,
+          "commit_score": 462,
+          "commits": [
+            {
+              "hash": "801b0169",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-09T01:22:40.000Z",
+              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 11,
+                "lines": 608,
+                "insertions": 587,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b02289e5",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-10T21:22:43.000Z",
+              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7b09ac9d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-15T23:37:23.000Z",
+              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 972,
+                "insertions": 971,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9b3f27b6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T19:41:06.000Z",
+              "message": "[Docs] Mirror lmcache/ layout in docs/design/ for discoverability (#3040)\n\n* moving the docs to docs/design/ and reorganize the docs/design folder\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 24,
+                "lines": 129,
+                "insertions": 109,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "43b62feb",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T18:14:23.000Z",
+              "message": "[Hotfix][CI] Pin vLLM nightly to cu130 index to match CUDA 13 base image (#3061)\n\nThe base image was bumped to nvidia/cuda:13.0.2-devel-ubuntu24.04 in\n#2981, but setup-env.sh installs vLLM from the generic nightly index\n(wheels.vllm.ai/nightly/vllm/), which resolves non-deterministically to\neither a cu128 or a cu130 torch wheel. When the resolver picks cu128,\ntorch.utils.cpp_extension._check_cuda_version aborts the LMCache\neditable install with:\n\n    RuntimeError: The detected CUDA version (13.0) mismatches the\n    version that was used to compile PyTorch (12.8).\n\n#3055 tried to paper over this at runtime by apt-installing\ncuda-compiler-12-8 on mismatch and pointing CUDA_HOME at\n/usr/local/cuda-12.8, but cuda-compiler-*-* only ships nvcc -- not the\nCUDA math-library dev headers (cusparse.h, cublas.h, etc.). The build\nthen fails deeper with a cryptic:\n\n    fatal error: cusparse.h: No such file or directory\n\nEvery k3 build on dev since 10fd636e (2026-04-16 09:55 UTC) has failed\nthis way because vLLM nightly happens to be publishing cu128 torch\ntoday. Extending the apt install list is a band-aid; the real fix is\nto stop resolving torch non-deterministically.\n\nPin the install to vLLM's per-CUDA-major cu130 sub-index per the\nofficial vllm.ai install instructions. torch.version.cuda is now\ndeterministically \"13.0\" and matches system nvcc 13, so\n_check_cuda_version passes with the system toolchain -- no CUDA_HOME\noverride, no apt install, no HTML scraping.\n\nAlso drop the HTML index scraper (no longer needed with the proper\n--extra-index-url flags) and replace the runtime alignment block with\na small Python sanity check that fails with a clear message if the\npin ever drifts again, so future breakage surfaces here instead of\ninside ninja.\n\n- Unblocks every k3 pipeline on dev.\n- Removes ~40 lines of CUDA version-alignment logic.\n- Keeps the pandas auto-heal loop from #3055 (that problem is\n  independent of this one).\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 112,
+                "insertions": 44,
+                "deletions": 68
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 22,
+                "total": 69
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0c4f03d6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-18T00:16:46.000Z",
+              "message": "[MP] Add tracing functionality for storage manager (#3063)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 21,
+                "lines": 2335,
+                "insertions": 2315,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ea84d4e9",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-17T20:54:39.000Z",
+              "message": "[Misc] Reduce the logs generated by lazy memory allocator (#3068)\n\n[add] reduce the mp mode lazy alloc logs\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 24,
+                "insertions": 22,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 66,
+          "significance_ratio": 0.7142857142857143,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 462,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
           "total_commits": 5,
@@ -2698,7 +3025,7 @@
           "total_commits": 6,
           "significant_commits": 4,
           "simple_commits": 2,
-          "commit_score": 417,
+          "commit_score": 415,
           "commits": [
             {
               "hash": "6ceed5ea",
@@ -2821,151 +3148,28 @@
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 22,
-                "total": 84
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 69.5,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 417,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 5,
-          "significant_commits": 4,
-          "simple_commits": 1,
-          "commit_score": 343,
-          "commits": [
-            {
-              "hash": "801b0169",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-09T01:22:40.000Z",
-              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 11,
-                "lines": 608,
-                "insertions": 587,
-                "deletions": 21
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
                 "ai": 20,
                 "total": 82
               },
               "classification": "significant"
-            },
-            {
-              "hash": "b02289e5",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-10T21:22:43.000Z",
-              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 6,
-                "insertions": 3,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "7b09ac9d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-15T23:37:23.000Z",
-              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 972,
-                "insertions": 971,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "9b3f27b6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-16T19:41:06.000Z",
-              "message": "[Docs] Mirror lmcache/ layout in docs/design/ for discoverability (#3040)\n\n* moving the docs to docs/design/ and reorganize the docs/design folder\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 24,
-                "lines": 129,
-                "insertions": 109,
-                "deletions": 20
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "43b62feb",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-16T18:14:23.000Z",
-              "message": "[Hotfix][CI] Pin vLLM nightly to cu130 index to match CUDA 13 base image (#3061)\n\nThe base image was bumped to nvidia/cuda:13.0.2-devel-ubuntu24.04 in\n#2981, but setup-env.sh installs vLLM from the generic nightly index\n(wheels.vllm.ai/nightly/vllm/), which resolves non-deterministically to\neither a cu128 or a cu130 torch wheel. When the resolver picks cu128,\ntorch.utils.cpp_extension._check_cuda_version aborts the LMCache\neditable install with:\n\n    RuntimeError: The detected CUDA version (13.0) mismatches the\n    version that was used to compile PyTorch (12.8).\n\n#3055 tried to paper over this at runtime by apt-installing\ncuda-compiler-12-8 on mismatch and pointing CUDA_HOME at\n/usr/local/cuda-12.8, but cuda-compiler-*-* only ships nvcc -- not the\nCUDA math-library dev headers (cusparse.h, cublas.h, etc.). The build\nthen fails deeper with a cryptic:\n\n    fatal error: cusparse.h: No such file or directory\n\nEvery k3 build on dev since 10fd636e (2026-04-16 09:55 UTC) has failed\nthis way because vLLM nightly happens to be publishing cu128 torch\ntoday. Extending the apt install list is a band-aid; the real fix is\nto stop resolving torch non-deterministically.\n\nPin the install to vLLM's per-CUDA-major cu130 sub-index per the\nofficial vllm.ai install instructions. torch.version.cuda is now\ndeterministically \"13.0\" and matches system nvcc 13, so\n_check_cuda_version passes with the system toolchain -- no CUDA_HOME\noverride, no apt install, no HTML scraping.\n\nAlso drop the HTML index scraper (no longer needed with the proper\n--extra-index-url flags) and replace the runtime alignment block with\na small Python sanity check that fails with a clear message if the\npin ever drifts again, so future breakage surfaces here instead of\ninside ninja.\n\n- Unblocks every k3 pipeline on dev.\n- Removes ~40 lines of CUDA version-alignment logic.\n- Keeps the pandas auto-heal loop from #3055 (that problem is\n  independent of this one).\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 112,
-                "insertions": 44,
-                "deletions": 68
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 12,
-                "ai": 22,
-                "total": 69
-              },
-              "classification": "significant"
             }
           ],
-          "avg_score": 68.6,
-          "significance_ratio": 0.8,
+          "avg_score": 69.16666666666667,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 343,
+          "total_score": 415,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 4,
-          "significant_commits": 3,
+          "total_commits": 5,
+          "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 295,
+          "commit_score": 378,
           "commits": [
             {
               "hash": "b73b69bf",
@@ -3050,14 +3254,137 @@
                 "total": 38
               },
               "classification": "simple"
+            },
+            {
+              "hash": "575a7456",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-17T00:31:19.000Z",
+              "message": "Fix: Safely handle layerwise cache shape dimensions in remote backend (#2751)\n\n* Fix: Handle layerwise cache shape dimensions for remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix mla + remote backend\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fixes according to cursor review\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* additional fix\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add assert if the shape has dimension with 0,\nwhich can't be properly handled by design\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: avoid warning noise from zero-placeholder shapes in pad_shape_to_4d\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* minor change to fix CI\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add default value for backward compatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 6,
+                "lines": 223,
+                "insertions": 200,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 18,
+                "total": 83
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 73.75,
+          "avg_score": 75.6,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 378,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 281,
+          "commits": [
+            {
+              "hash": "456aa16c",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-11T02:48:22.000Z",
+              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1316,
+                "insertions": 1191,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 22,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "01771795",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-15T04:26:05.000Z",
+              "message": "[Feat] Add is_user_level property and cache_salt param to EvictionPolicy (#3032)\n\n* [Feat] Add is_user_level property and cache_salt param to EvictionPolicy\n\nAdd is_user_level property to EvictionPolicy base class (default False).\nThe eviction controller uses this to decide whether to check per-user\nquotas or aggregate usage — no isinstance checks needed.\n\nAdd cache_salt optional parameter to get_eviction_actions(). When set,\nuser-level policies scope eviction to keys belonging to that user.\nNon-user-level policies (LRU, NoOp) accept and ignore the parameter.\n\nThis is an interface extension only — no new policies or behavioral\nchanges. UserLRUEvictionPolicy (follow-up PR) will override\nis_user_level to return True and use cache_salt for scoped eviction.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 23,
+                "insertions": 23,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e69b6848",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-15T04:18:19.000Z",
+              "message": "[Feat] Add cache_salt parameter to MP adapter interfaces (#3029)\n\n* [Feat] Add cache_salt parameter to MP adapter interfaces\n\nAdd cache_salt=\"\" default parameter to scheduler and worker adapter\nmethods to prepare for per-user cache isolation. This is a no-op\nchange — all defaults are empty string, preserving existing behavior.\n\nScheduler adapter:\n- maybe_submit_lookup_request: add cache_salt param\n- free_lookup_locks: add cache_salt param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\nWorker adapter:\n- submit_store_request: add cache_salt param\n- submit_retrieve_request: add cache_salt param\n- batched_submit_store_requests: add cache_salts list param\n- batched_submit_retrieve_requests: add cache_salts list param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\ncache_salt will be forwarded to IPCCacheEngineKey once that field is\nadded in a follow-up PR.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add per user l2 usage design docs\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 953,
+                "insertions": 942,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "408d6df5",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-17T22:54:56.000Z",
+              "message": "[MP][Feat] Add cache_salt to ObjectKey for cache isolation (#3042)\n\n* [Feat] Add cache_salt to ObjectKey for per-user cache isolation\n\nAdds a ``cache_salt: str = \"\"`` field to ``ObjectKey`` and\n``IPCCacheEngineKey`` so same-content/different-user cache entries\nproduce distinct keys. This is the data-model piece of the per-user\nL2 cache quota feature (PR2 of 6). PR1a (#3029) wired cache_salt\nthrough the adapter surface but left it a no-op until the data model\nlanded; this PR makes it load-bearing.\n\nKey changes:\n\n- ``ObjectKey`` and ``IPCCacheEngineKey`` gain ``cache_salt`` field\n  participating in eq/hash. ``__post_init__`` on both rejects ``@`` in\n  the salt — this is the invariant the L2 adapter parsers rely on.\n- ``ipc_key_to_object_keys(ipc_key, chunk_hashes)`` reads\n  ``ipc_key.cache_salt`` internally. No separate parameter, so callers\n  cannot accidentally drop the salt.\n- Native connector, FS adapter Python, and FS adapter C++ all use a\n  leading ``@@`` marker to disambiguate salted from legacy keys. Legacy\n  files and wire payloads (empty salt) remain readable — existing\n  stored data is preserved.\n- msgspec encodes dataclasses as maps, so an old 7-field\n  ``IPCCacheEngineKey`` payload decodes on new code with ``cache_salt``\n  defaulting to ``\"\"``. New-on-old works because msgspec ignores\n  unknown map keys by default.\n\nTests: 32 new cases covering serialization roundtrip (native + FS),\nvalidation (``@`` rejection), isolation semantics (eq/hash per salt),\nmsgspec wire compat (old→new, new→new), and the FS C++ parser's\nlegacy/salted/``@``-in-model paths.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Fix] Expand cache_salt validation: reject /, \\, NUL; add length cap\n\nAddresses review feedback on #3042:\n\n- cache_salt must not contain '/', '\\', or NUL (in addition to '@').\n  The FS adapter embeds salt into filenames — '/' would inject directory\n  separators; '\\' is a Windows path separator; NUL terminates C strings\n  in the C++ connector.\n- Max length capped at 128 chars to stay within NAME_MAX (255) after\n  model_name, kv_rank, chunk_hash, and the .data extension are added.\n- Updated example external connector template\n  (examples/lmc_external_native_connector) to handle the @@ salted\n  key format, matching the in-tree csrc/storage_backends/fs/connector.cpp.\n- Added tests for /, \\, NUL rejection and length cap on both ObjectKey\n  and IPCCacheEngineKey.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Refactor] Always use @@-prefixed key format; deprecate legacy\n\nAll new writes use the unified @@-prefixed format for both salted and\nunsalted keys:\n\n    @@<cache_salt>@<model>@<rank>@<hash>\n\nFor empty cache_salt this becomes @@@model@rank@hash. The legacy\n3-field format (no @@ prefix) is still readable by all parsers for\nbackward compatibility but emits a deprecation warning on the FS\nadapter read path. Re-storing a legacy entry automatically migrates\nit to the new format.\n\nThis simplifies parsing — the @@ prefix is always present so there\nis no need to disambiguate based on field count (model_name may\ncontain @ and would otherwise be ambiguous).\n\nUpdated Python (native_connector + fs_l2_adapter), C++ (in-tree\nfs/connector.cpp), and the example external connector template.\nTests updated: serialization format assertions reflect the @@@\nprefix for empty salt, and roundtrip tests verify the parser still\nhandles legacy filenames.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Refactor] Example connector: always emit @@-prefixed filename\n\nAligns the example external native connector template with the\nin-tree csrc/storage_backends/fs/connector.cpp convention from the\nprevious commit.\n\nPreviously the example only emitted the @@ prefix when cache_salt\nwas non-empty, leaving empty-salt keys in the legacy 3-field format.\nNow all files on disk use the unified @@-prefixed format (empty\nsalt produces @@@model@...), and legacy inputs without @@ are still\naccepted on the read path for backward compatibility.\n\nThird-party connectors cloned from this template will produce\nmigrate-compatible filenames out of the box.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 822,
+                "insertions": 688,
+                "deletions": 134
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70.25,
           "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 295,
+          "total_score": 281,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -3224,87 +3551,6 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 197,
-          "commits": [
-            {
-              "hash": "456aa16c",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-04-11T02:48:22.000Z",
-              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 1316,
-                "insertions": 1191,
-                "deletions": 125
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 5,
-                "ai": 22,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "01771795",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-04-15T04:26:05.000Z",
-              "message": "[Feat] Add is_user_level property and cache_salt param to EvictionPolicy (#3032)\n\n* [Feat] Add is_user_level property and cache_salt param to EvictionPolicy\n\nAdd is_user_level property to EvictionPolicy base class (default False).\nThe eviction controller uses this to decide whether to check per-user\nquotas or aggregate usage — no isinstance checks needed.\n\nAdd cache_salt optional parameter to get_eviction_actions(). When set,\nuser-level policies scope eviction to keys belonging to that user.\nNon-user-level policies (LRU, NoOp) accept and ignore the parameter.\n\nThis is an interface extension only — no new policies or behavioral\nchanges. UserLRUEvictionPolicy (follow-up PR) will override\nis_user_level to return True and use cache_salt for scoped eviction.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 3,
-                "lines": 23,
-                "insertions": 23,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 48
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "e69b6848",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-04-15T04:18:19.000Z",
-              "message": "[Feat] Add cache_salt parameter to MP adapter interfaces (#3029)\n\n* [Feat] Add cache_salt parameter to MP adapter interfaces\n\nAdd cache_salt=\"\" default parameter to scheduler and worker adapter\nmethods to prepare for per-user cache isolation. This is a no-op\nchange — all defaults are empty string, preserving existing behavior.\n\nScheduler adapter:\n- maybe_submit_lookup_request: add cache_salt param\n- free_lookup_locks: add cache_salt param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\nWorker adapter:\n- submit_store_request: add cache_salt param\n- submit_retrieve_request: add cache_salt param\n- batched_submit_store_requests: add cache_salts list param\n- batched_submit_retrieve_requests: add cache_salts list param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\ncache_salt will be forwarded to IPCCacheEngineKey once that field is\nadded in a follow-up PR.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add per user l2 usage design docs\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 953,
-                "insertions": 942,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 65.66666666666667,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 197,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -3425,6 +3671,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jiayi Yao",
+          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 148,
+          "commits": [
+            {
+              "hash": "0f51fab4",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-04-01T00:18:24.000Z",
+              "message": "[Core] Add eviction for Blend server v2 (#2893)\n\nadd eviction for cb\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 2,
+                "lines": 143,
+                "insertions": 131,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 14,
+                "total": 66
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "69787b87",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-04-17T03:31:36.000Z",
+              "message": "[Core] Add persistence interfaces and nixl persistence (#2938)\n\n* add persistence interfaces and nixl persistence\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update tests and docs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix cursor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix cursor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix race\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove redundant config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix usage double count\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 7,
+                "lines": 1948,
+                "insertions": 1936,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 148,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "jooho",
           "email": "Jooho.lee@xcena.com",
           "total_commits": 1,
@@ -3460,8 +3766,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 100,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Adeline",
@@ -3641,41 +3947,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Jiayi Yao",
-          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "name": "Shaoting",
+          "email": "stfeng@uw.edu",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 66,
+          "commit_score": 67,
           "commits": [
             {
-              "hash": "0f51fab4",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-04-01T00:18:24.000Z",
-              "message": "[Core] Add eviction for Blend server v2 (#2893)\n\nadd eviction for cb\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "hash": "cae196ca",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-18T00:15:19.000Z",
+              "message": "[ROCm] Make bare-host ROCm install self-sufficient (#3070)\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>",
               "stats": {
-                "files": 2,
-                "lines": 143,
-                "insertions": 131,
-                "deletions": 12
+                "files": 7,
+                "lines": 85,
+                "insertions": 74,
+                "deletions": 11
               },
               "scores": {
-                "loc": 30,
-                "files": 10,
+                "loc": 15,
+                "files": 20,
                 "keyword": 12,
-                "ai": 14,
-                "total": 66
+                "ai": 20,
+                "total": 67
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 66,
+          "avg_score": 67,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 66,
+          "total_score": 67,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -4418,6 +4724,171 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 7,
+          "significant_commits": 5,
+          "simple_commits": 2,
+          "commit_score": 462,
+          "commits": [
+            {
+              "hash": "801b0169",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-09T01:22:40.000Z",
+              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 11,
+                "lines": 608,
+                "insertions": 587,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b02289e5",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-10T21:22:43.000Z",
+              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7b09ac9d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-15T23:37:23.000Z",
+              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 972,
+                "insertions": 971,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9b3f27b6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T19:41:06.000Z",
+              "message": "[Docs] Mirror lmcache/ layout in docs/design/ for discoverability (#3040)\n\n* moving the docs to docs/design/ and reorganize the docs/design folder\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 24,
+                "lines": 129,
+                "insertions": 109,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "43b62feb",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-16T18:14:23.000Z",
+              "message": "[Hotfix][CI] Pin vLLM nightly to cu130 index to match CUDA 13 base image (#3061)\n\nThe base image was bumped to nvidia/cuda:13.0.2-devel-ubuntu24.04 in\n#2981, but setup-env.sh installs vLLM from the generic nightly index\n(wheels.vllm.ai/nightly/vllm/), which resolves non-deterministically to\neither a cu128 or a cu130 torch wheel. When the resolver picks cu128,\ntorch.utils.cpp_extension._check_cuda_version aborts the LMCache\neditable install with:\n\n    RuntimeError: The detected CUDA version (13.0) mismatches the\n    version that was used to compile PyTorch (12.8).\n\n#3055 tried to paper over this at runtime by apt-installing\ncuda-compiler-12-8 on mismatch and pointing CUDA_HOME at\n/usr/local/cuda-12.8, but cuda-compiler-*-* only ships nvcc -- not the\nCUDA math-library dev headers (cusparse.h, cublas.h, etc.). The build\nthen fails deeper with a cryptic:\n\n    fatal error: cusparse.h: No such file or directory\n\nEvery k3 build on dev since 10fd636e (2026-04-16 09:55 UTC) has failed\nthis way because vLLM nightly happens to be publishing cu128 torch\ntoday. Extending the apt install list is a band-aid; the real fix is\nto stop resolving torch non-deterministically.\n\nPin the install to vLLM's per-CUDA-major cu130 sub-index per the\nofficial vllm.ai install instructions. torch.version.cuda is now\ndeterministically \"13.0\" and matches system nvcc 13, so\n_check_cuda_version passes with the system toolchain -- no CUDA_HOME\noverride, no apt install, no HTML scraping.\n\nAlso drop the HTML index scraper (no longer needed with the proper\n--extra-index-url flags) and replace the runtime alignment block with\na small Python sanity check that fails with a clear message if the\npin ever drifts again, so future breakage surfaces here instead of\ninside ninja.\n\n- Unblocks every k3 pipeline on dev.\n- Removes ~40 lines of CUDA version-alignment logic.\n- Keeps the pandas auto-heal loop from #3055 (that problem is\n  independent of this one).\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 112,
+                "insertions": 44,
+                "deletions": 68
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 22,
+                "total": 69
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0c4f03d6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-18T00:16:46.000Z",
+              "message": "[MP] Add tracing functionality for storage manager (#3063)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 21,
+                "lines": 2335,
+                "insertions": 2315,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ea84d4e9",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-04-17T20:54:39.000Z",
+              "message": "[Misc] Reduce the logs generated by lazy memory allocator (#3068)\n\n[add] reduce the mp mode lazy alloc logs\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 24,
+                "insertions": 22,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 66,
+          "significance_ratio": 0.7142857142857143,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 462,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
           "total_commits": 5,
@@ -4546,7 +5017,7 @@
           "total_commits": 6,
           "significant_commits": 4,
           "simple_commits": 2,
-          "commit_score": 417,
+          "commit_score": 415,
           "commits": [
             {
               "hash": "6ceed5ea",
@@ -4669,151 +5140,28 @@
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 22,
-                "total": 84
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 69.5,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 417,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 5,
-          "significant_commits": 4,
-          "simple_commits": 1,
-          "commit_score": 343,
-          "commits": [
-            {
-              "hash": "801b0169",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-09T01:22:40.000Z",
-              "message": "[MP][Bugfix] Fix deadlock caused by cuda launch host func (#2952)\n\n* update csrc to support native launch host func\n\n* add deadlock ci test\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 11,
-                "lines": 608,
-                "insertions": 587,
-                "deletions": 21
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
                 "ai": 20,
                 "total": 82
               },
               "classification": "significant"
-            },
-            {
-              "hash": "b02289e5",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-10T21:22:43.000Z",
-              "message": "[hotfix] fix prometheus version for UT failure (#3000)\n\n* update prometheus version to fix ut\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* fix otel sdk version\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 6,
-                "insertions": 3,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "7b09ac9d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-15T23:37:23.000Z",
-              "message": "[Chore] add coding standard and PR review instructions (#3039)\n\n* [Add] coding standard and ai skills\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n* skill for create PR\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>\n\n---------\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 972,
-                "insertions": 971,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "9b3f27b6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-16T19:41:06.000Z",
-              "message": "[Docs] Mirror lmcache/ layout in docs/design/ for discoverability (#3040)\n\n* moving the docs to docs/design/ and reorganize the docs/design folder\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 24,
-                "lines": 129,
-                "insertions": 109,
-                "deletions": 20
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "43b62feb",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-04-16T18:14:23.000Z",
-              "message": "[Hotfix][CI] Pin vLLM nightly to cu130 index to match CUDA 13 base image (#3061)\n\nThe base image was bumped to nvidia/cuda:13.0.2-devel-ubuntu24.04 in\n#2981, but setup-env.sh installs vLLM from the generic nightly index\n(wheels.vllm.ai/nightly/vllm/), which resolves non-deterministically to\neither a cu128 or a cu130 torch wheel. When the resolver picks cu128,\ntorch.utils.cpp_extension._check_cuda_version aborts the LMCache\neditable install with:\n\n    RuntimeError: The detected CUDA version (13.0) mismatches the\n    version that was used to compile PyTorch (12.8).\n\n#3055 tried to paper over this at runtime by apt-installing\ncuda-compiler-12-8 on mismatch and pointing CUDA_HOME at\n/usr/local/cuda-12.8, but cuda-compiler-*-* only ships nvcc -- not the\nCUDA math-library dev headers (cusparse.h, cublas.h, etc.). The build\nthen fails deeper with a cryptic:\n\n    fatal error: cusparse.h: No such file or directory\n\nEvery k3 build on dev since 10fd636e (2026-04-16 09:55 UTC) has failed\nthis way because vLLM nightly happens to be publishing cu128 torch\ntoday. Extending the apt install list is a band-aid; the real fix is\nto stop resolving torch non-deterministically.\n\nPin the install to vLLM's per-CUDA-major cu130 sub-index per the\nofficial vllm.ai install instructions. torch.version.cuda is now\ndeterministically \"13.0\" and matches system nvcc 13, so\n_check_cuda_version passes with the system toolchain -- no CUDA_HOME\noverride, no apt install, no HTML scraping.\n\nAlso drop the HTML index scraper (no longer needed with the proper\n--extra-index-url flags) and replace the runtime alignment block with\na small Python sanity check that fails with a clear message if the\npin ever drifts again, so future breakage surfaces here instead of\ninside ninja.\n\n- Unblocks every k3 pipeline on dev.\n- Removes ~40 lines of CUDA version-alignment logic.\n- Keeps the pandas auto-heal loop from #3055 (that problem is\n  independent of this one).\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 112,
-                "insertions": 44,
-                "deletions": 68
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 12,
-                "ai": 22,
-                "total": 69
-              },
-              "classification": "significant"
             }
           ],
-          "avg_score": 68.6,
-          "significance_ratio": 0.8,
+          "avg_score": 69.16666666666667,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 343,
+          "total_score": 415,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 4,
-          "significant_commits": 3,
+          "total_commits": 5,
+          "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 295,
+          "commit_score": 378,
           "commits": [
             {
               "hash": "b73b69bf",
@@ -4898,14 +5246,137 @@
                 "total": 38
               },
               "classification": "simple"
+            },
+            {
+              "hash": "575a7456",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-17T00:31:19.000Z",
+              "message": "Fix: Safely handle layerwise cache shape dimensions in remote backend (#2751)\n\n* Fix: Handle layerwise cache shape dimensions for remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix mla + remote backend\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fixes according to cursor review\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* additional fix\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add assert if the shape has dimension with 0,\nwhich can't be properly handled by design\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: avoid warning noise from zero-placeholder shapes in pad_shape_to_4d\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* minor change to fix CI\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add default value for backward compatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 6,
+                "lines": 223,
+                "insertions": 200,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 18,
+                "total": 83
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 73.75,
+          "avg_score": 75.6,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 378,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 281,
+          "commits": [
+            {
+              "hash": "456aa16c",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-11T02:48:22.000Z",
+              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1316,
+                "insertions": 1191,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 22,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "01771795",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-15T04:26:05.000Z",
+              "message": "[Feat] Add is_user_level property and cache_salt param to EvictionPolicy (#3032)\n\n* [Feat] Add is_user_level property and cache_salt param to EvictionPolicy\n\nAdd is_user_level property to EvictionPolicy base class (default False).\nThe eviction controller uses this to decide whether to check per-user\nquotas or aggregate usage — no isinstance checks needed.\n\nAdd cache_salt optional parameter to get_eviction_actions(). When set,\nuser-level policies scope eviction to keys belonging to that user.\nNon-user-level policies (LRU, NoOp) accept and ignore the parameter.\n\nThis is an interface extension only — no new policies or behavioral\nchanges. UserLRUEvictionPolicy (follow-up PR) will override\nis_user_level to return True and use cache_salt for scoped eviction.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 23,
+                "insertions": 23,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e69b6848",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-15T04:18:19.000Z",
+              "message": "[Feat] Add cache_salt parameter to MP adapter interfaces (#3029)\n\n* [Feat] Add cache_salt parameter to MP adapter interfaces\n\nAdd cache_salt=\"\" default parameter to scheduler and worker adapter\nmethods to prepare for per-user cache isolation. This is a no-op\nchange — all defaults are empty string, preserving existing behavior.\n\nScheduler adapter:\n- maybe_submit_lookup_request: add cache_salt param\n- free_lookup_locks: add cache_salt param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\nWorker adapter:\n- submit_store_request: add cache_salt param\n- submit_retrieve_request: add cache_salt param\n- batched_submit_store_requests: add cache_salts list param\n- batched_submit_retrieve_requests: add cache_salts list param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\ncache_salt will be forwarded to IPCCacheEngineKey once that field is\nadded in a follow-up PR.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add per user l2 usage design docs\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 953,
+                "insertions": 942,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "408d6df5",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-17T22:54:56.000Z",
+              "message": "[MP][Feat] Add cache_salt to ObjectKey for cache isolation (#3042)\n\n* [Feat] Add cache_salt to ObjectKey for per-user cache isolation\n\nAdds a ``cache_salt: str = \"\"`` field to ``ObjectKey`` and\n``IPCCacheEngineKey`` so same-content/different-user cache entries\nproduce distinct keys. This is the data-model piece of the per-user\nL2 cache quota feature (PR2 of 6). PR1a (#3029) wired cache_salt\nthrough the adapter surface but left it a no-op until the data model\nlanded; this PR makes it load-bearing.\n\nKey changes:\n\n- ``ObjectKey`` and ``IPCCacheEngineKey`` gain ``cache_salt`` field\n  participating in eq/hash. ``__post_init__`` on both rejects ``@`` in\n  the salt — this is the invariant the L2 adapter parsers rely on.\n- ``ipc_key_to_object_keys(ipc_key, chunk_hashes)`` reads\n  ``ipc_key.cache_salt`` internally. No separate parameter, so callers\n  cannot accidentally drop the salt.\n- Native connector, FS adapter Python, and FS adapter C++ all use a\n  leading ``@@`` marker to disambiguate salted from legacy keys. Legacy\n  files and wire payloads (empty salt) remain readable — existing\n  stored data is preserved.\n- msgspec encodes dataclasses as maps, so an old 7-field\n  ``IPCCacheEngineKey`` payload decodes on new code with ``cache_salt``\n  defaulting to ``\"\"``. New-on-old works because msgspec ignores\n  unknown map keys by default.\n\nTests: 32 new cases covering serialization roundtrip (native + FS),\nvalidation (``@`` rejection), isolation semantics (eq/hash per salt),\nmsgspec wire compat (old→new, new→new), and the FS C++ parser's\nlegacy/salted/``@``-in-model paths.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Fix] Expand cache_salt validation: reject /, \\, NUL; add length cap\n\nAddresses review feedback on #3042:\n\n- cache_salt must not contain '/', '\\', or NUL (in addition to '@').\n  The FS adapter embeds salt into filenames — '/' would inject directory\n  separators; '\\' is a Windows path separator; NUL terminates C strings\n  in the C++ connector.\n- Max length capped at 128 chars to stay within NAME_MAX (255) after\n  model_name, kv_rank, chunk_hash, and the .data extension are added.\n- Updated example external connector template\n  (examples/lmc_external_native_connector) to handle the @@ salted\n  key format, matching the in-tree csrc/storage_backends/fs/connector.cpp.\n- Added tests for /, \\, NUL rejection and length cap on both ObjectKey\n  and IPCCacheEngineKey.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Refactor] Always use @@-prefixed key format; deprecate legacy\n\nAll new writes use the unified @@-prefixed format for both salted and\nunsalted keys:\n\n    @@<cache_salt>@<model>@<rank>@<hash>\n\nFor empty cache_salt this becomes @@@model@rank@hash. The legacy\n3-field format (no @@ prefix) is still readable by all parsers for\nbackward compatibility but emits a deprecation warning on the FS\nadapter read path. Re-storing a legacy entry automatically migrates\nit to the new format.\n\nThis simplifies parsing — the @@ prefix is always present so there\nis no need to disambiguate based on field count (model_name may\ncontain @ and would otherwise be ambiguous).\n\nUpdated Python (native_connector + fs_l2_adapter), C++ (in-tree\nfs/connector.cpp), and the example external connector template.\nTests updated: serialization format assertions reflect the @@@\nprefix for empty salt, and roundtrip tests verify the parser still\nhandles legacy filenames.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Refactor] Example connector: always emit @@-prefixed filename\n\nAligns the example external native connector template with the\nin-tree csrc/storage_backends/fs/connector.cpp convention from the\nprevious commit.\n\nPreviously the example only emitted the @@ prefix when cache_salt\nwas non-empty, leaving empty-salt keys in the legacy 3-field format.\nNow all files on disk use the unified @@-prefixed format (empty\nsalt produces @@@model@...), and legacy inputs without @@ are still\naccepted on the read path for backward compatibility.\n\nThird-party connectors cloned from this template will produce\nmigrate-compatible filenames out of the box.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 822,
+                "insertions": 688,
+                "deletions": 134
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70.25,
           "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 295,
+          "total_score": 281,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -5072,87 +5543,6 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 197,
-          "commits": [
-            {
-              "hash": "456aa16c",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-04-11T02:48:22.000Z",
-              "message": "[Operator] Add L2 RESP (Redis/Valkey) adapter support (#2967)\n\n* [Operator] Add L2 RESP (Redis/Valkey) adapter support\n\nAdd first-class support for Redis/Valkey as an L2 storage backend in the\nLMCache operator, with cross-namespace secret management and Buildkite CI\nskip logic for operator-only PRs.\n\nL2 Backend:\n- Replace generic l2Backends list with typed l2Backend (single adapter)\n- Add RESPL2AdapterSpec with host, port, numWorkers, maxCapacityGB, authSecretRef\n- Add RawL2AdapterSpec as escape hatch for other adapter types (nixl_store, fs, mock)\n- Add storePolicy, prefetchPolicy, prefetchMaxInFlight to L2BackendSpec\n- CRD validation for RESP fields and exactly-one-of constraint\n\nAuth Secret Management:\n- Cross-namespace SecretReference (name + optional namespace)\n- Controller copies source secret to engine namespace as managed secret with ownerRef\n- DaemonSet references local copy via secretKeyRef (credentials never in pod args)\n- Username is optional (Optional: true) for password-only Redis Enterprise auth\n\nServer:\n- Switch entrypoint from python3 -m to lmcache server CLI\n- Add httpPort to ServerSpec (default 8080) for HTTP frontend\n- Expose both ZMQ and HTTP ports in lookup Service and DaemonSet\n\nReconciler Fixes:\n- Re-fetch engine before status update to avoid resourceVersion conflicts\n- Return done=true after finalizer addition to prevent stale object usage\n\nBuildkite CI:\n- Add is-operator-only.sh script to skip Python/CUDA tests for operator-only PRs\n- Steps still trigger and report green so GitHub required checks pass\n- Add operator/ as safe path in should-run-comprehensive.sh\n\nDocs:\n- Update README with L2 Redis examples, raw escape hatch, single-adapter caveat\n- Add /dev/shm warning for both LMCache and vLLM pods\n- Add full reference sample CR with all fields commented out\n- Update DESIGN.md L2 section\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Address review feedback from Gemini and Cursor bots\n\n- Validate source secret has required 'password' key before copying\n- Set ownerRef on existing secret during patch (not just on desired)\n- Handle json.Marshal errors in L2 adapter JSON builders\n- Add Owns(&corev1.Secret{}) watch so secret changes trigger reconcile\n- Remove unused NeedsCrossNamespaceSecret function\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* [Operator] Revert Buildkite CI changes (will be in separate PR)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 1316,
-                "insertions": 1191,
-                "deletions": 125
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 5,
-                "ai": 22,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "01771795",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-04-15T04:26:05.000Z",
-              "message": "[Feat] Add is_user_level property and cache_salt param to EvictionPolicy (#3032)\n\n* [Feat] Add is_user_level property and cache_salt param to EvictionPolicy\n\nAdd is_user_level property to EvictionPolicy base class (default False).\nThe eviction controller uses this to decide whether to check per-user\nquotas or aggregate usage — no isinstance checks needed.\n\nAdd cache_salt optional parameter to get_eviction_actions(). When set,\nuser-level policies scope eviction to keys belonging to that user.\nNon-user-level policies (LRU, NoOp) accept and ignore the parameter.\n\nThis is an interface extension only — no new policies or behavioral\nchanges. UserLRUEvictionPolicy (follow-up PR) will override\nis_user_level to return True and use cache_salt for scoped eviction.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 3,
-                "lines": 23,
-                "insertions": 23,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 48
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "e69b6848",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-04-15T04:18:19.000Z",
-              "message": "[Feat] Add cache_salt parameter to MP adapter interfaces (#3029)\n\n* [Feat] Add cache_salt parameter to MP adapter interfaces\n\nAdd cache_salt=\"\" default parameter to scheduler and worker adapter\nmethods to prepare for per-user cache isolation. This is a no-op\nchange — all defaults are empty string, preserving existing behavior.\n\nScheduler adapter:\n- maybe_submit_lookup_request: add cache_salt param\n- free_lookup_locks: add cache_salt param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\nWorker adapter:\n- submit_store_request: add cache_salt param\n- submit_retrieve_request: add cache_salt param\n- batched_submit_store_requests: add cache_salts list param\n- batched_submit_retrieve_requests: add cache_salts list param\n- _create_key: add cache_salt param (accepted, not yet forwarded)\n\ncache_salt will be forwarded to IPCCacheEngineKey once that field is\nadded in a follow-up PR.\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* add per user l2 usage design docs\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n* address comments\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\n\n---------\n\nSigned-off-by: royyhuang <royyhuang@gmail.com>\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 953,
-                "insertions": 942,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 65.66666666666667,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 197,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -5273,6 +5663,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jiayi Yao",
+          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 148,
+          "commits": [
+            {
+              "hash": "0f51fab4",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-04-01T00:18:24.000Z",
+              "message": "[Core] Add eviction for Blend server v2 (#2893)\n\nadd eviction for cb\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 2,
+                "lines": 143,
+                "insertions": 131,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 14,
+                "total": 66
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "69787b87",
+              "author": "Jiayi Yao",
+              "email": "82156730+YaoJiayi@users.noreply.github.com",
+              "date": "2026-04-17T03:31:36.000Z",
+              "message": "[Core] Add persistence interfaces and nixl persistence (#2938)\n\n* add persistence interfaces and nixl persistence\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update tests and docs\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix cursor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix cursor comments\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* update\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix race\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* remove redundant config\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n* fix usage double count\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>\n\n---------\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "stats": {
+                "files": 7,
+                "lines": 1948,
+                "insertions": 1936,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 148,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "jooho",
           "email": "Jooho.lee@xcena.com",
           "total_commits": 1,
@@ -5308,8 +5758,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 100,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Adeline",
@@ -5489,41 +5939,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Jiayi Yao",
-          "email": "82156730+YaoJiayi@users.noreply.github.com",
+          "name": "Shaoting",
+          "email": "stfeng@uw.edu",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 66,
+          "commit_score": 67,
           "commits": [
             {
-              "hash": "0f51fab4",
-              "author": "Jiayi Yao",
-              "email": "82156730+YaoJiayi@users.noreply.github.com",
-              "date": "2026-04-01T00:18:24.000Z",
-              "message": "[Core] Add eviction for Blend server v2 (#2893)\n\nadd eviction for cb\n\nSigned-off-by: YaoJiayi <120040070@link.cuhk.edu.cn>",
+              "hash": "cae196ca",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-18T00:15:19.000Z",
+              "message": "[ROCm] Make bare-host ROCm install self-sufficient (#3070)\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>",
               "stats": {
-                "files": 2,
-                "lines": 143,
-                "insertions": 131,
-                "deletions": 12
+                "files": 7,
+                "lines": 85,
+                "insertions": 74,
+                "deletions": 11
               },
               "scores": {
-                "loc": 30,
-                "files": 10,
+                "loc": 15,
+                "files": 20,
                 "keyword": 12,
-                "ai": 14,
-                "total": 66
+                "ai": 20,
+                "total": 67
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 66,
+          "avg_score": 67,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 66,
+          "total_score": 67,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -5767,13 +6217,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-17T00:30:09.031Z",
+    "analyzedAt": "2026-04-18T00:30:07.685Z",
     "daysBack": 2,
-    "totalCommits": 68,
-    "totalContributors": 20,
+    "totalCommits": 74,
+    "totalContributors": 21,
     "mergedFrom": {
-      "existing": 60,
-      "new": 15
+      "existing": 68,
+      "new": 14
     }
   }
 }
