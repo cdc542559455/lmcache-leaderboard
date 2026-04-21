@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-20T00:29:59.138Z",
-  "total_commits_analyzed": 77,
+  "last_updated": "2026-04-21T00:30:01.153Z",
+  "total_commits_analyzed": 81,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -2292,6 +2292,146 @@
           "tier": "T2",
           "tier_name": "Intermediate"
         }
+      ],
+      "2026-W17": [
+        {
+          "name": "Shaoting",
+          "email": "stfeng@uw.edu",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 85,
+          "commits": [
+            {
+              "hash": "0b443774",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-20T22:54:11.000Z",
+              "message": "[ROCm][MP] Fix HIP invalid-argument on lazy host buffer past 2 GB (#3079)\n\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 5,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "853faf34",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-20T22:53:32.000Z",
+              "message": "[CI] Run the same test set on AMD as on NVIDIA (#3071)\n\n* [ROCm] Make bare-host ROCm install self-sufficient\n\nMoves GPU-vendor-specific runtime deps out of common.txt into\nrequirements/cuda_core.txt and requirements/rocm_core.txt. setup.py\nreads common.txt plus whichever core file matches BUILD_WITH_HIP so\n`pip install -e .` Just Works on both CUDA and ROCm hosts.\n\n- Drop cupy-cuda12x and nixl from common.txt (both are CUDA-only on PyPI;\n  the nixl meta-package unconditionally pulls nixl-cu12, which installs\n  nixl_ep/ and breaks ROCm runtime).\n- cuda.txt now -r cuda_core.txt so Dockerfile's `pip install -r cuda.txt`\n  still pulls the same set.\n- Remove the [tool.setuptools.dynamic] dependencies block from\n  pyproject.toml; install_requires is driven by setup.py now.\n- Add a second \"Without vLLM docker base image\" subsection to the\n  ROCm install docs, mirroring the CUDA from-source flow line-for-line\n  (uv venv -> -r build.txt -> torch from ROCm wheel index -> build).\n  The existing rocm/vllm-dev flow stays as-is.\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* [CI] Run the same test set on AMD as on NVIDIA\n\nThe AMD pytest invocation was ignoring tests/v1/multiprocess and\ntests/v1/mp_observability/test_event_recorder.py on top of the\ncommon --ignore set. Those were skipped because cupy-cuda12x ended\nup installed on ROCm hosts (via common.txt and via nixl->nixl-cu12),\nwhich broke the cupy.cuda.ExternalStream / event-recorder paths at\nimport time.\n\nWith #<install-pr> merged, BUILD_WITH_HIP=1 pulls cupy-rocm-7-0 and\nomits nixl, so those suites can run on AMD. Collapse the two pytest\nbranches in pipeline.yml into one identical invocation.\n\nDepends on: #<install-pr>  (without it, the unignored suites will\nfail at import on AMD because cupy-cuda12x is not ROCm-compatible.)\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Claude Opus 4.7 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 29,
+                "insertions": 8,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "9a5cc886",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-20T20:18:46.000Z",
+              "message": "[CI] Add cu13.0 wheel + container builds and nightly wheel releases (#3069)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 832,
+                "insertions": 572,
+                "deletions": 260
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "40adcc9b",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-20T14:40:54.000Z",
+              "message": "[refactor]: Replace use_cufile with use_gds/gds_backend config flags (#2858)\n\nFollow up work post #2799 (AMD hipFile AIS support).\n\nRefactor the GDS backend configuration to be backend-agnostic:\n- Replace extra_config[\"use_cufile\"] with top-level use_gds (bool) config\n- Add gds_backend config field (\"cufile\" default) to select GDS library\n- Rename cufile_buffer_size to gds_buffer_size\n- Rename internal attributes: self.cufile -> self.gds_module,\n  self._cufile_driver -> self._gds_driver,\n  self.cufile_base_pointer -> self.gds_base_pointer\n- Update tests and documentation accordingly\n\nNew env vars: LMCACHE_USE_GDS, LMCACHE_GDS_BACKEND, LMCACHE_GDS_BUFFER_SIZE\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 13,
+                "lines": 285,
+                "insertions": 161,
+                "deletions": 124
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T0",
+          "tier_name": "Elite"
+        }
       ]
     },
     "monthly": {
@@ -2816,6 +2956,171 @@
           "tier_name": "Elite"
         },
         {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 7,
+          "significant_commits": 5,
+          "simple_commits": 2,
+          "commit_score": 497,
+          "commits": [
+            {
+              "hash": "6ceed5ea",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-03T22:43:46.000Z",
+              "message": "[CLI]Add long-doc-permutator CLI bench workload (#2937)\n\n* add new workload to cli bench\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1088,
+                "insertions": 1086,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "51556631",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-08T23:43:49.000Z",
+              "message": "[doc] document long-doc-permutator workload in cli bench (#2963)\n\ndocument long-doc-permutator workload\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 64,
+                "insertions": 58,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 47
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3810ae7f",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-09T21:34:11.000Z",
+              "message": "[CI] Pin cu128 nightly wheel for blend ci test  (#2987)\n\n* pin version\n* pin cu128 wheel\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 63,
+                "insertions": 31,
+                "deletions": 32
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 47
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "5ce42e6c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-11T00:16:51.000Z",
+              "message": "[fix] Limit proxy in-flight requests to prevent PD buffer deadlock (#2957)\n\n* add  concurrency limit for pd\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* fix\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* change input type\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* update input flag\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 171,
+                "insertions": 163,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f70fd147",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-12T01:00:07.000Z",
+              "message": "[Build] Add lmcache-cli lightweight wheel (#2959)\n\n* cli wheel build and release\n\n* add openai in cli dependency\n\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 6,
+                "lines": 389,
+                "insertions": 370,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5035e1de",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-16T05:42:17.000Z",
+              "message": " [Observability] Per-request root OTel span and SpanRegistry for MP server tracing (#3033)\n\n* request root span for capture events\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Claude Sonnet 4.6 <noreply@anthropic.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1792,
+                "insertions": 1705,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9a5cc886",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-20T20:18:46.000Z",
+              "message": "[CI] Add cu13.0 wheel + container builds and nightly wheel releases (#3069)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 832,
+                "insertions": 572,
+                "deletions": 260
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 0.7142857142857143,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 497,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
           "total_commits": 7,
@@ -3104,150 +3409,6 @@
           "tier_name": "Elite"
         },
         {
-          "name": "deng451e",
-          "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 6,
-          "significant_commits": 4,
-          "simple_commits": 2,
-          "commit_score": 415,
-          "commits": [
-            {
-              "hash": "6ceed5ea",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-03T22:43:46.000Z",
-              "message": "[CLI]Add long-doc-permutator CLI bench workload (#2937)\n\n* add new workload to cli bench\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 6,
-                "lines": 1088,
-                "insertions": 1086,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "51556631",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-08T23:43:49.000Z",
-              "message": "[doc] document long-doc-permutator workload in cli bench (#2963)\n\ndocument long-doc-permutator workload\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 1,
-                "lines": 64,
-                "insertions": 58,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 15,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 47
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "3810ae7f",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-09T21:34:11.000Z",
-              "message": "[CI] Pin cu128 nightly wheel for blend ci test  (#2987)\n\n* pin version\n* pin cu128 wheel\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 2,
-                "lines": 63,
-                "insertions": 31,
-                "deletions": 32
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 10,
-                "total": 47
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "5ce42e6c",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-11T00:16:51.000Z",
-              "message": "[fix] Limit proxy in-flight requests to prevent PD buffer deadlock (#2957)\n\n* add  concurrency limit for pd\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* fix\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* change input type\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* update input flag\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 3,
-                "lines": 171,
-                "insertions": 163,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f70fd147",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-12T01:00:07.000Z",
-              "message": "[Build] Add lmcache-cli lightweight wheel (#2959)\n\n* cli wheel build and release\n\n* add openai in cli dependency\n\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 6,
-                "lines": 389,
-                "insertions": 370,
-                "deletions": 19
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "5035e1de",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-16T05:42:17.000Z",
-              "message": " [Observability] Per-request root OTel span and SpanRegistry for MP server tracing (#3033)\n\n* request root span for capture events\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Claude Sonnet 4.6 <noreply@anthropic.com>",
-              "stats": {
-                "files": 18,
-                "lines": 1792,
-                "insertions": 1705,
-                "deletions": 87
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 69.16666666666667,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 415,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
           "total_commits": 5,
@@ -3367,6 +3528,108 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 380,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 4,
+          "significant_commits": 4,
+          "simple_commits": 0,
+          "commit_score": 313,
+          "commits": [
+            {
+              "hash": "8baa42d8",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-04T00:21:04.000Z",
+              "message": "feat(gds): add gds_path_sharding config for multi-path strategy (#2922)\n\nAdd a top-level `gds_path_sharding` config field (default: \"by_gpu\")\nthat controls how GPUs are assigned to storage paths when multiple\ncomma-separated paths are provided in `gds_path`. This replaces the\npreviously hardcoded by_gpu logic with an explicit, extensible setting.\n\nCurrently only \"by_gpu\" is supported (selects path via\n`device_id % num_paths`); unsupported values raise AssertionError.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 71,
+                "insertions": 62,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 7,
+                "total": 54
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "155179c2",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-08T15:34:57.000Z",
+              "message": "feat(disk): support multi-path local disk backend for multi-device I/O (#2801)\n\nfeat(disk): support multi-path local disk backend with path sharding\n\nAllow `local_disk` to accept comma-separated paths (e.g.\n\"/mnt/nvme0/,/mnt/nvme1/\") to use multiple NVMe devices.  Each GPU\nworker selects one path at init time via the `local_disk_path_sharding`\nstrategy (currently only \"by_gpu\": device_id % num_paths), matching\nthe GDS backend approach #2817 and NIXL approach #2418.\n\n- Path selected once in __init__; _key_to_path, write_file, read_file\n  unchanged from upstream\n- _parse_local_disk now uses startswith(\"file://\") instead of regex,\n  fixing file:// URIs without a trailing slash\n- All directories created at startup\n- Added local_disk_path_sharding config field (default: \"by_gpu\")\n- Added tests and updated docs\n\nBefore this change the only way to increase performance was to use\nany of the linux multi-pathing technologies to aggregate IOs.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 6,
+                "lines": 343,
+                "insertions": 323,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3c9a29cb",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-14T02:50:23.000Z",
+              "message": "refactor: extract PathSharder module for shared multi-path selection (#2982)\n\nMove the duplicated path-sharding logic (CSV parsing, device ID\nextraction, by_gpu strategy) from LocalDiskBackend and GdsBackend\ninto a new PathSharder class in path_sharder.py.\n\nBoth backends now delegate to PathSharder, keeping the policy in\none place.  The _resolve_device_id helper handles cuda:N, bare\ncuda, and cpu devices gracefully.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
+              "stats": {
+                "files": 6,
+                "lines": 377,
+                "insertions": 325,
+                "deletions": 52
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "40adcc9b",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-20T14:40:54.000Z",
+              "message": "[refactor]: Replace use_cufile with use_gds/gds_backend config flags (#2858)\n\nFollow up work post #2799 (AMD hipFile AIS support).\n\nRefactor the GDS backend configuration to be backend-agnostic:\n- Replace extra_config[\"use_cufile\"] with top-level use_gds (bool) config\n- Add gds_backend config field (\"cufile\" default) to select GDS library\n- Rename cufile_buffer_size to gds_buffer_size\n- Rename internal attributes: self.cufile -> self.gds_module,\n  self._cufile_driver -> self._gds_driver,\n  self.cufile_base_pointer -> self.gds_base_pointer\n- Update tests and documentation accordingly\n\nNew env vars: LMCACHE_USE_GDS, LMCACHE_GDS_BACKEND, LMCACHE_GDS_BUFFER_SIZE\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 13,
+                "lines": 285,
+                "insertions": 161,
+                "deletions": 124
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78.25,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 313,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -3656,87 +3919,6 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Boris Glimcher",
-          "email": "36732377+glimchb@users.noreply.github.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 231,
-          "commits": [
-            {
-              "hash": "8baa42d8",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-04-04T00:21:04.000Z",
-              "message": "feat(gds): add gds_path_sharding config for multi-path strategy (#2922)\n\nAdd a top-level `gds_path_sharding` config field (default: \"by_gpu\")\nthat controls how GPUs are assigned to storage paths when multiple\ncomma-separated paths are provided in `gds_path`. This replaces the\npreviously hardcoded by_gpu logic with an explicit, extensible setting.\n\nCurrently only \"by_gpu\" is supported (selects path via\n`device_id % num_paths`); unsupported values raise AssertionError.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
-              "stats": {
-                "files": 5,
-                "lines": 71,
-                "insertions": 62,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 7,
-                "total": 54
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "155179c2",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-04-08T15:34:57.000Z",
-              "message": "feat(disk): support multi-path local disk backend for multi-device I/O (#2801)\n\nfeat(disk): support multi-path local disk backend with path sharding\n\nAllow `local_disk` to accept comma-separated paths (e.g.\n\"/mnt/nvme0/,/mnt/nvme1/\") to use multiple NVMe devices.  Each GPU\nworker selects one path at init time via the `local_disk_path_sharding`\nstrategy (currently only \"by_gpu\": device_id % num_paths), matching\nthe GDS backend approach #2817 and NIXL approach #2418.\n\n- Path selected once in __init__; _key_to_path, write_file, read_file\n  unchanged from upstream\n- _parse_local_disk now uses startswith(\"file://\") instead of regex,\n  fixing file:// URIs without a trailing slash\n- All directories created at startup\n- Added local_disk_path_sharding config field (default: \"by_gpu\")\n- Added tests and updated docs\n\nBefore this change the only way to increase performance was to use\nany of the linux multi-pathing technologies to aggregate IOs.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
-              "stats": {
-                "files": 6,
-                "lines": 343,
-                "insertions": 323,
-                "deletions": 20
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3c9a29cb",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-04-14T02:50:23.000Z",
-              "message": "refactor: extract PathSharder module for shared multi-path selection (#2982)\n\nMove the duplicated path-sharding logic (CSV parsing, device ID\nextraction, by_gpu strategy) from LocalDiskBackend and GdsBackend\ninto a new PathSharder class in path_sharder.py.\n\nBoth backends now delegate to PathSharder, keeping the policy in\none place.  The _resolve_device_id helper handles cuda:N, bare\ncuda, and cpu devices gracefully.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
-              "stats": {
-                "files": 6,
-                "lines": 377,
-                "insertions": 325,
-                "deletions": 52
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 20,
-                "total": 95
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 77,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 231,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -3797,6 +3979,87 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Shaoting",
+          "email": "stfeng@uw.edu",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 152,
+          "commits": [
+            {
+              "hash": "cae196ca",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-18T00:15:19.000Z",
+              "message": "[ROCm] Make bare-host ROCm install self-sufficient (#3070)\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 85,
+                "insertions": 74,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0b443774",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-20T22:54:11.000Z",
+              "message": "[ROCm][MP] Fix HIP invalid-argument on lazy host buffer past 2 GB (#3079)\n\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 5,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "853faf34",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-20T22:53:32.000Z",
+              "message": "[CI] Run the same test set on AMD as on NVIDIA (#3071)\n\n* [ROCm] Make bare-host ROCm install self-sufficient\n\nMoves GPU-vendor-specific runtime deps out of common.txt into\nrequirements/cuda_core.txt and requirements/rocm_core.txt. setup.py\nreads common.txt plus whichever core file matches BUILD_WITH_HIP so\n`pip install -e .` Just Works on both CUDA and ROCm hosts.\n\n- Drop cupy-cuda12x and nixl from common.txt (both are CUDA-only on PyPI;\n  the nixl meta-package unconditionally pulls nixl-cu12, which installs\n  nixl_ep/ and breaks ROCm runtime).\n- cuda.txt now -r cuda_core.txt so Dockerfile's `pip install -r cuda.txt`\n  still pulls the same set.\n- Remove the [tool.setuptools.dynamic] dependencies block from\n  pyproject.toml; install_requires is driven by setup.py now.\n- Add a second \"Without vLLM docker base image\" subsection to the\n  ROCm install docs, mirroring the CUDA from-source flow line-for-line\n  (uv venv -> -r build.txt -> torch from ROCm wheel index -> build).\n  The existing rocm/vllm-dev flow stays as-is.\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* [CI] Run the same test set on AMD as on NVIDIA\n\nThe AMD pytest invocation was ignoring tests/v1/multiprocess and\ntests/v1/mp_observability/test_event_recorder.py on top of the\ncommon --ignore set. Those were skipped because cupy-cuda12x ended\nup installed on ROCm hosts (via common.txt and via nixl->nixl-cu12),\nwhich broke the cupy.cuda.ExternalStream / event-recorder paths at\nimport time.\n\nWith #<install-pr> merged, BUILD_WITH_HIP=1 pulls cupy-rocm-7-0 and\nomits nixl, so those suites can run on AMD. Collapse the two pytest\nbranches in pipeline.yml into one identical invocation.\n\nDepends on: #<install-pr>  (without it, the unignored suites will\nfail at import on AMD because cupy-cuda12x is not ROCm-compatible.)\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Claude Opus 4.7 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 29,
+                "insertions": 8,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 50.666666666666664,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 152,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Jiayi Yao",
           "email": "82156730+YaoJiayi@users.noreply.github.com",
           "total_commits": 2,
@@ -3853,8 +4116,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 148,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "jooho",
@@ -4069,45 +4332,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Shaoting",
-          "email": "stfeng@uw.edu",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 67,
-          "commits": [
-            {
-              "hash": "cae196ca",
-              "author": "Shaoting",
-              "email": "stfeng@uw.edu",
-              "date": "2026-04-18T00:15:19.000Z",
-              "message": "[ROCm] Make bare-host ROCm install self-sufficient (#3070)\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 85,
-                "insertions": 74,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 67
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 67,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 67,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -4871,6 +5095,171 @@
           "tier_name": "Elite"
         },
         {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 7,
+          "significant_commits": 5,
+          "simple_commits": 2,
+          "commit_score": 497,
+          "commits": [
+            {
+              "hash": "6ceed5ea",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-03T22:43:46.000Z",
+              "message": "[CLI]Add long-doc-permutator CLI bench workload (#2937)\n\n* add new workload to cli bench\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1088,
+                "insertions": 1086,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "51556631",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-08T23:43:49.000Z",
+              "message": "[doc] document long-doc-permutator workload in cli bench (#2963)\n\ndocument long-doc-permutator workload\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 64,
+                "insertions": 58,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 47
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3810ae7f",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-09T21:34:11.000Z",
+              "message": "[CI] Pin cu128 nightly wheel for blend ci test  (#2987)\n\n* pin version\n* pin cu128 wheel\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 63,
+                "insertions": 31,
+                "deletions": 32
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 47
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "5ce42e6c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-11T00:16:51.000Z",
+              "message": "[fix] Limit proxy in-flight requests to prevent PD buffer deadlock (#2957)\n\n* add  concurrency limit for pd\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* fix\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* change input type\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* update input flag\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 171,
+                "insertions": 163,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f70fd147",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-12T01:00:07.000Z",
+              "message": "[Build] Add lmcache-cli lightweight wheel (#2959)\n\n* cli wheel build and release\n\n* add openai in cli dependency\n\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 6,
+                "lines": 389,
+                "insertions": 370,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5035e1de",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-16T05:42:17.000Z",
+              "message": " [Observability] Per-request root OTel span and SpanRegistry for MP server tracing (#3033)\n\n* request root span for capture events\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Claude Sonnet 4.6 <noreply@anthropic.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1792,
+                "insertions": 1705,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9a5cc886",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-04-20T20:18:46.000Z",
+              "message": "[CI] Add cu13.0 wheel + container builds and nightly wheel releases (#3069)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 832,
+                "insertions": 572,
+                "deletions": 260
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 0.7142857142857143,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 497,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
           "total_commits": 7,
@@ -5159,150 +5548,6 @@
           "tier_name": "Elite"
         },
         {
-          "name": "deng451e",
-          "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 6,
-          "significant_commits": 4,
-          "simple_commits": 2,
-          "commit_score": 415,
-          "commits": [
-            {
-              "hash": "6ceed5ea",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-03T22:43:46.000Z",
-              "message": "[CLI]Add long-doc-permutator CLI bench workload (#2937)\n\n* add new workload to cli bench\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 6,
-                "lines": 1088,
-                "insertions": 1086,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "51556631",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-08T23:43:49.000Z",
-              "message": "[doc] document long-doc-permutator workload in cli bench (#2963)\n\ndocument long-doc-permutator workload\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 1,
-                "lines": 64,
-                "insertions": 58,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 15,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 47
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "3810ae7f",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-09T21:34:11.000Z",
-              "message": "[CI] Pin cu128 nightly wheel for blend ci test  (#2987)\n\n* pin version\n* pin cu128 wheel\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 2,
-                "lines": 63,
-                "insertions": 31,
-                "deletions": 32
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 10,
-                "total": 47
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "5ce42e6c",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-11T00:16:51.000Z",
-              "message": "[fix] Limit proxy in-flight requests to prevent PD buffer deadlock (#2957)\n\n* add  concurrency limit for pd\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* fix\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* change input type\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* update input flag\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 3,
-                "lines": 171,
-                "insertions": 163,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f70fd147",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-12T01:00:07.000Z",
-              "message": "[Build] Add lmcache-cli lightweight wheel (#2959)\n\n* cli wheel build and release\n\n* add openai in cli dependency\n\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 6,
-                "lines": 389,
-                "insertions": 370,
-                "deletions": 19
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "5035e1de",
-              "author": "deng451e",
-              "email": "57919305+deng451e@users.noreply.github.com",
-              "date": "2026-04-16T05:42:17.000Z",
-              "message": " [Observability] Per-request root OTel span and SpanRegistry for MP server tracing (#3033)\n\n* request root span for capture events\n\nSigned-off-by: deng451e <838677410@qq.com>\nCo-authored-by: Claude Sonnet 4.6 <noreply@anthropic.com>",
-              "stats": {
-                "files": 18,
-                "lines": 1792,
-                "insertions": 1705,
-                "deletions": 87
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 69.16666666666667,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 415,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
           "total_commits": 5,
@@ -5422,6 +5667,108 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 380,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 4,
+          "significant_commits": 4,
+          "simple_commits": 0,
+          "commit_score": 313,
+          "commits": [
+            {
+              "hash": "8baa42d8",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-04T00:21:04.000Z",
+              "message": "feat(gds): add gds_path_sharding config for multi-path strategy (#2922)\n\nAdd a top-level `gds_path_sharding` config field (default: \"by_gpu\")\nthat controls how GPUs are assigned to storage paths when multiple\ncomma-separated paths are provided in `gds_path`. This replaces the\npreviously hardcoded by_gpu logic with an explicit, extensible setting.\n\nCurrently only \"by_gpu\" is supported (selects path via\n`device_id % num_paths`); unsupported values raise AssertionError.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 71,
+                "insertions": 62,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 7,
+                "total": 54
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "155179c2",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-08T15:34:57.000Z",
+              "message": "feat(disk): support multi-path local disk backend for multi-device I/O (#2801)\n\nfeat(disk): support multi-path local disk backend with path sharding\n\nAllow `local_disk` to accept comma-separated paths (e.g.\n\"/mnt/nvme0/,/mnt/nvme1/\") to use multiple NVMe devices.  Each GPU\nworker selects one path at init time via the `local_disk_path_sharding`\nstrategy (currently only \"by_gpu\": device_id % num_paths), matching\nthe GDS backend approach #2817 and NIXL approach #2418.\n\n- Path selected once in __init__; _key_to_path, write_file, read_file\n  unchanged from upstream\n- _parse_local_disk now uses startswith(\"file://\") instead of regex,\n  fixing file:// URIs without a trailing slash\n- All directories created at startup\n- Added local_disk_path_sharding config field (default: \"by_gpu\")\n- Added tests and updated docs\n\nBefore this change the only way to increase performance was to use\nany of the linux multi-pathing technologies to aggregate IOs.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 6,
+                "lines": 343,
+                "insertions": 323,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3c9a29cb",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-14T02:50:23.000Z",
+              "message": "refactor: extract PathSharder module for shared multi-path selection (#2982)\n\nMove the duplicated path-sharding logic (CSV parsing, device ID\nextraction, by_gpu strategy) from LocalDiskBackend and GdsBackend\ninto a new PathSharder class in path_sharder.py.\n\nBoth backends now delegate to PathSharder, keeping the policy in\none place.  The _resolve_device_id helper handles cuda:N, bare\ncuda, and cpu devices gracefully.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
+              "stats": {
+                "files": 6,
+                "lines": 377,
+                "insertions": 325,
+                "deletions": 52
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "40adcc9b",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-04-20T14:40:54.000Z",
+              "message": "[refactor]: Replace use_cufile with use_gds/gds_backend config flags (#2858)\n\nFollow up work post #2799 (AMD hipFile AIS support).\n\nRefactor the GDS backend configuration to be backend-agnostic:\n- Replace extra_config[\"use_cufile\"] with top-level use_gds (bool) config\n- Add gds_backend config field (\"cufile\" default) to select GDS library\n- Rename cufile_buffer_size to gds_buffer_size\n- Rename internal attributes: self.cufile -> self.gds_module,\n  self._cufile_driver -> self._gds_driver,\n  self.cufile_base_pointer -> self.gds_base_pointer\n- Update tests and documentation accordingly\n\nNew env vars: LMCACHE_USE_GDS, LMCACHE_GDS_BACKEND, LMCACHE_GDS_BUFFER_SIZE\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
+              "stats": {
+                "files": 13,
+                "lines": 285,
+                "insertions": 161,
+                "deletions": 124
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78.25,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 313,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -5711,87 +6058,6 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Boris Glimcher",
-          "email": "36732377+glimchb@users.noreply.github.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 231,
-          "commits": [
-            {
-              "hash": "8baa42d8",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-04-04T00:21:04.000Z",
-              "message": "feat(gds): add gds_path_sharding config for multi-path strategy (#2922)\n\nAdd a top-level `gds_path_sharding` config field (default: \"by_gpu\")\nthat controls how GPUs are assigned to storage paths when multiple\ncomma-separated paths are provided in `gds_path`. This replaces the\npreviously hardcoded by_gpu logic with an explicit, extensible setting.\n\nCurrently only \"by_gpu\" is supported (selects path via\n`device_id % num_paths`); unsupported values raise AssertionError.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
-              "stats": {
-                "files": 5,
-                "lines": 71,
-                "insertions": 62,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 7,
-                "total": 54
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "155179c2",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-04-08T15:34:57.000Z",
-              "message": "feat(disk): support multi-path local disk backend for multi-device I/O (#2801)\n\nfeat(disk): support multi-path local disk backend with path sharding\n\nAllow `local_disk` to accept comma-separated paths (e.g.\n\"/mnt/nvme0/,/mnt/nvme1/\") to use multiple NVMe devices.  Each GPU\nworker selects one path at init time via the `local_disk_path_sharding`\nstrategy (currently only \"by_gpu\": device_id % num_paths), matching\nthe GDS backend approach #2817 and NIXL approach #2418.\n\n- Path selected once in __init__; _key_to_path, write_file, read_file\n  unchanged from upstream\n- _parse_local_disk now uses startswith(\"file://\") instead of regex,\n  fixing file:// URIs without a trailing slash\n- All directories created at startup\n- Added local_disk_path_sharding config field (default: \"by_gpu\")\n- Added tests and updated docs\n\nBefore this change the only way to increase performance was to use\nany of the linux multi-pathing technologies to aggregate IOs.\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>",
-              "stats": {
-                "files": 6,
-                "lines": 343,
-                "insertions": 323,
-                "deletions": 20
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3c9a29cb",
-              "author": "Boris Glimcher",
-              "email": "36732377+glimchb@users.noreply.github.com",
-              "date": "2026-04-14T02:50:23.000Z",
-              "message": "refactor: extract PathSharder module for shared multi-path selection (#2982)\n\nMove the duplicated path-sharding logic (CSV parsing, device ID\nextraction, by_gpu strategy) from LocalDiskBackend and GdsBackend\ninto a new PathSharder class in path_sharder.py.\n\nBoth backends now delegate to PathSharder, keeping the policy in\none place.  The _resolve_device_id helper handles cuda:N, bare\ncuda, and cpu devices gracefully.\n\nGenerated with [Devin](https://cli.devin.ai/docs)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <noreply@cognition.ai>",
-              "stats": {
-                "files": 6,
-                "lines": 377,
-                "insertions": 325,
-                "deletions": 52
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 20,
-                "total": 95
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 77,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 231,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -5852,6 +6118,87 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Shaoting",
+          "email": "stfeng@uw.edu",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 152,
+          "commits": [
+            {
+              "hash": "cae196ca",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-18T00:15:19.000Z",
+              "message": "[ROCm] Make bare-host ROCm install self-sufficient (#3070)\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 85,
+                "insertions": 74,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0b443774",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-20T22:54:11.000Z",
+              "message": "[ROCm][MP] Fix HIP invalid-argument on lazy host buffer past 2 GB (#3079)\n\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 5,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "853faf34",
+              "author": "Shaoting",
+              "email": "stfeng@uw.edu",
+              "date": "2026-04-20T22:53:32.000Z",
+              "message": "[CI] Run the same test set on AMD as on NVIDIA (#3071)\n\n* [ROCm] Make bare-host ROCm install self-sufficient\n\nMoves GPU-vendor-specific runtime deps out of common.txt into\nrequirements/cuda_core.txt and requirements/rocm_core.txt. setup.py\nreads common.txt plus whichever core file matches BUILD_WITH_HIP so\n`pip install -e .` Just Works on both CUDA and ROCm hosts.\n\n- Drop cupy-cuda12x and nixl from common.txt (both are CUDA-only on PyPI;\n  the nixl meta-package unconditionally pulls nixl-cu12, which installs\n  nixl_ep/ and breaks ROCm runtime).\n- cuda.txt now -r cuda_core.txt so Dockerfile's `pip install -r cuda.txt`\n  still pulls the same set.\n- Remove the [tool.setuptools.dynamic] dependencies block from\n  pyproject.toml; install_requires is driven by setup.py now.\n- Add a second \"Without vLLM docker base image\" subsection to the\n  ROCm install docs, mirroring the CUDA from-source flow line-for-line\n  (uv venv -> -r build.txt -> torch from ROCm wheel index -> build).\n  The existing rocm/vllm-dev flow stays as-is.\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n* [CI] Run the same test set on AMD as on NVIDIA\n\nThe AMD pytest invocation was ignoring tests/v1/multiprocess and\ntests/v1/mp_observability/test_event_recorder.py on top of the\ncommon --ignore set. Those were skipped because cupy-cuda12x ended\nup installed on ROCm hosts (via common.txt and via nixl->nixl-cu12),\nwhich broke the cupy.cuda.ExternalStream / event-recorder paths at\nimport time.\n\nWith #<install-pr> merged, BUILD_WITH_HIP=1 pulls cupy-rocm-7-0 and\nomits nixl, so those suites can run on AMD. Collapse the two pytest\nbranches in pipeline.yml into one identical invocation.\n\nDepends on: #<install-pr>  (without it, the unignored suites will\nfail at import on AMD because cupy-cuda12x is not ROCm-compatible.)\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\n\n---------\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Claude Opus 4.7 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 29,
+                "insertions": 8,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 50.666666666666664,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 152,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Jiayi Yao",
           "email": "82156730+YaoJiayi@users.noreply.github.com",
           "total_commits": 2,
@@ -5908,8 +6255,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 148,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "jooho",
@@ -6124,45 +6471,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Shaoting",
-          "email": "stfeng@uw.edu",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 67,
-          "commits": [
-            {
-              "hash": "cae196ca",
-              "author": "Shaoting",
-              "email": "stfeng@uw.edu",
-              "date": "2026-04-18T00:15:19.000Z",
-              "message": "[ROCm] Make bare-host ROCm install self-sufficient (#3070)\n\nSigned-off-by: Shaoting Feng <shaotingf@uchicago.edu>\nCo-authored-by: Shaoting Feng <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 85,
-                "insertions": 74,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 67
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 67,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 67,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -6406,13 +6714,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-20T00:29:59.138Z",
+    "analyzedAt": "2026-04-21T00:30:01.153Z",
     "daysBack": 2,
-    "totalCommits": 77,
+    "totalCommits": 81,
     "totalContributors": 21,
     "mergedFrom": {
-      "existing": 76,
-      "new": 3
+      "existing": 77,
+      "new": 5
     }
   }
 }
