@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-27T00:30:10.200Z",
-  "total_commits_analyzed": 124,
+  "last_updated": "2026-04-28T00:30:09.130Z",
+  "total_commits_analyzed": 127,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3023,7 +3023,7 @@
           "total_commits": 3,
           "significant_commits": 2,
           "simple_commits": 1,
-          "commit_score": 212,
+          "commit_score": 195,
           "commits": [
             {
               "hash": "6fbec463",
@@ -3083,18 +3083,18 @@
                 "loc": 3,
                 "files": 5,
                 "keyword": 12,
-                "ai": 18,
-                "total": 38
+                "ai": 1,
+                "total": 21
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 70.66666666666667,
+          "avg_score": 65,
           "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 212,
+          "total_score": 195,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3532,6 +3532,125 @@
           "total_score": 20,
           "tier": "T2",
           "tier_name": "Intermediate"
+        }
+      ],
+      "2026-W18": [
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "c87d9984",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-28T00:01:52.000Z",
+              "message": "[MP][Observability] Add L1/L2 failure health monitoring metrics (#3112)\n\n* [Observability] Add L1/L2 failure health monitoring metrics\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1065,
+                "insertions": 1065,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Ziwen Ning",
+          "email": "ningziwe@amazon.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "7f60057c",
+              "author": "Ziwen Ning",
+              "email": "ningziwe@amazon.com",
+              "date": "2026-04-27T03:13:22.000Z",
+              "message": "feat(pd_backend): add bidirectional NIXL cache probe (#2972)",
+              "stats": {
+                "files": 6,
+                "lines": 1117,
+                "insertions": 1078,
+                "deletions": 39
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Ankit Kumar",
+          "email": "33925670+ankit-sam@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "2621c440",
+              "author": "Ankit Kumar",
+              "email": "33925670+ankit-sam@users.noreply.github.com",
+              "date": "2026-04-28T00:01:35.000Z",
+              "message": "[6/N][Feat] This PR adds io_uring support to the Rust raw block backend. (#2635)\n\n* use PagedTensorMemoryAllocator for io_uring\n\nThis is a prep patch for io_uring support to the RUST raw\nblock plugin. The io_uring backend will used fixed buffers\nfor zero copy support (user to kernel) and vice-versa. This\nenables aligned paged buffers.\n\nThe checks for local cpu allocator alignment now considers\nio_uring, and always enables alignment in this case.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* [Feat][rust]: add io_uring backend for rust raw block\n\nImplement Linux io_uring asynchronous I/O backend for the raw\nblock device extension, providing high-performance I/O with\nreduced syscall overhead.\n\nKey Features:\n- Adds io_uring backend with dedicated worker thread for\n  submission/completion loop\n- Implicit write and read batching to reduce io_uring_enter\n  syscalls, and GIL release.\n- Also supports synchonous Read path.\n- Uses PagedTensorMemoryAllocator if io_uring is enabled, for\n  paged buffers which is registered for zero copy support.\n\nImplementation Details:\n- IoCompletion struct for async completion signaling via Condvar\n- IoSubmission struct representing queued I/O requests\n- Worker thread batches requests and processes completions out-of-order\n- batched_write() submits multiple writes at once. Returns a unique\n  batch id for handling completion for concurrent requests.\n- batched_read() submits multiple reads at once. Returns a unique\n  batch id for handling completion for concurrent requests.\n- wait_iouring() wait for completion of all the submitted requests\n  in that batch. In case of an error for the particular batch, the\n  first error information is transmitted to the python plugin.\n- read_uring() Synchronous read for blocking path\n\nNote: The memory object buffers are always aligned (default 4k,\n  or rust_raw_block.block_align), so there is no need for bounce\n  buffers in this scenario.\n\nFixed Buffer Registration Process:\n- Build an iovec array describing the buffers to register\n- Call register_buffers() to notify the kernel of these buffers\n- Store buffer addresses in a HashMap for O(1) lookup during I/O\n- Set fixed_buffers_registered flag to enable zero-copy mode\n\nConfiguration:\n- use_iouring: Enable io_uring backend (default: false)\n- alignment: Buffer alignment (default: 4096)\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* docs: update rust/raw_block/README.md for io_uring support\n\n- Document new io_uring I/O backend with batching\n- Add zero-copy fixed buffer registration documentation\n- Expand data path diagrams for sync and async paths\n- Update limitations section\n- Add usage examples for write/read and register_fixed_buffers\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* bench: io_uring with fixed buffer modes for RustRawBlockBackend\n\nUpdate the benchmarking script for the newly added io_uring async\nI/O with fixed buffer support. This essentially modifies the\n_bench_rust_raw_block, and introduces new CLI options\n(--use-uring, --chunk-size) and documentation.\n\nAdditionally add _bench_rust_raw_block_read, to compare read\nperformance. This first writes memory objects to the raw block device,\nthen performs read with concurrent batched blocking reads.\nOptionally it can also perform data integrity via a new CLI option\n--verify-integrity.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* tests: tests for io_uring rust raw block\n\nThese include\n * Data integrity tests\n * In case of close() all queued/in-flight requests\n   are handled gracefully\n * Tests batched blocking, non blocking with io_uring\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* example: add rust raw block device support\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* [Fix]: storage benchmark test\n\nFor non-uring path with O_DIRECT, use aligned buffers\nFor uring path, memory allocator always handles alignment internally.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* short write and reads for io_uring rust\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* [Fix] cursor bot review comments\n\nFix memory obj cleanup during allocate failure.\nFix invalid batch_id issue with sync writes and reads\nFix double decrement of _inflight_io_count\nFix ref_count decrement in case of slot exhaustion\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n---------\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>",
+              "stats": {
+                "files": 11,
+                "lines": 3129,
+                "insertions": 3049,
+                "deletions": 80
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T0",
+          "tier_name": "Elite"
         }
       ]
     },
@@ -4689,7 +4808,7 @@
           "total_commits": 14,
           "significant_commits": 9,
           "simple_commits": 5,
-          "commit_score": 916,
+          "commit_score": 899,
           "commits": [
             {
               "hash": "62cee8b0",
@@ -4980,18 +5099,18 @@
                 "loc": 3,
                 "files": 5,
                 "keyword": 12,
-                "ai": 18,
-                "total": 38
+                "ai": 1,
+                "total": 21
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 65.42857142857143,
+          "avg_score": 64.21428571428571,
           "significance_ratio": 0.6428571428571429,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 916,
+          "total_score": 899,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -5163,10 +5282,10 @@
         {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
-          "total_commits": 6,
-          "significant_commits": 4,
+          "total_commits": 7,
+          "significant_commits": 5,
           "simple_commits": 2,
-          "commit_score": 388,
+          "commit_score": 475,
           "commits": [
             {
               "hash": "456aa16c",
@@ -5293,14 +5412,35 @@
                 "total": 20
               },
               "classification": "simple"
+            },
+            {
+              "hash": "c87d9984",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-28T00:01:52.000Z",
+              "message": "[MP][Observability] Add L1/L2 failure health monitoring metrics (#3112)\n\n* [Observability] Add L1/L2 failure health monitoring metrics\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1065,
+                "insertions": 1065,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 64.66666666666667,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 67.85714285714286,
+          "significance_ratio": 0.7142857142857143,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 388,
+          "total_score": 475,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -5878,6 +6018,87 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Ziwen Ning",
+          "email": "ningziwe@amazon.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 175,
+          "commits": [
+            {
+              "hash": "b4d95dce",
+              "author": "Ziwen Ning",
+              "email": "ningziwe@amazon.com",
+              "date": "2026-04-08T02:32:49.000Z",
+              "message": "fix: use pin=False in _allocate_and_put to prevent pd_buffer leak (#2847)\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3444bdb5",
+              "author": "Ziwen Ning",
+              "email": "ziwen@ningziwen.com",
+              "date": "2026-04-16T06:07:51.000Z",
+              "message": "feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification (#2874)\n\n* feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification\n\nThe sender role (prefiller) currently requires pd_proxy_host and\npd_proxy_port to be configured, and unconditionally creates a ZMQ PUSH\nsocket to the proxy. This tight coupling prevents using LMCache DPD\nwith external routers that manage the prefill-decode flow via HTTP.\n\nWhen pd_skip_proxy_notification is true, the sender skips the proxy\nconfig requirement, does not create the ZMQ PUSH socket, and does not\nsend ProxyNotif after KV transfer. This allows LMCache DPD to work\nwith any HTTP-based orchestrator that uses the prefill response as the\nKV transfer completion signal.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* address review comments\n\n- Make pd_proxy_host/pd_proxy_port assertions conditional on\n  pd_skip_proxy_notification being False, so the sender can start\n  without proxy config when notification is skipped.\n- Remove redundant self.skip_proxy_notification instance attribute;\n  use self.config.pd_skip_proxy_notification directly.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* docs: clarify pd_skip_proxy_notification is for external orchestrators only\n\nUpdate documentation and log message to explicitly state that\npd_skip_proxy_notification=true is intended for external orchestrators\n(e.g., vLLM Production Stack router) and must not be used with\nLMCache's built-in disaggregation proxy (disagg_proxy_server.py),\nwhich depends on ZMQ notifications to coordinate prefill-decode flow.\n\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n---------\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>",
+              "stats": {
+                "files": 3,
+                "lines": 54,
+                "insertions": 38,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 5,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7f60057c",
+              "author": "Ziwen Ning",
+              "email": "ningziwe@amazon.com",
+              "date": "2026-04-27T03:13:22.000Z",
+              "message": "feat(pd_backend): add bidirectional NIXL cache probe (#2972)",
+              "stats": {
+                "files": 6,
+                "lines": 1117,
+                "insertions": 1078,
+                "deletions": 39
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 58.333333333333336,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 175,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -5934,8 +6155,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 162,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Jiayi Yao",
@@ -6175,62 +6396,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Ziwen Ning",
-          "email": "ningziwe@amazon.com",
-          "total_commits": 2,
+          "name": "Ankit Kumar",
+          "email": "33925670+ankit-sam@users.noreply.github.com",
+          "total_commits": 1,
           "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 88,
+          "simple_commits": 0,
+          "commit_score": 80,
           "commits": [
             {
-              "hash": "b4d95dce",
-              "author": "Ziwen Ning",
-              "email": "ningziwe@amazon.com",
-              "date": "2026-04-08T02:32:49.000Z",
-              "message": "fix: use pin=False in _allocate_and_put to prevent pd_buffer leak (#2847)\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>",
+              "hash": "2621c440",
+              "author": "Ankit Kumar",
+              "email": "33925670+ankit-sam@users.noreply.github.com",
+              "date": "2026-04-28T00:01:35.000Z",
+              "message": "[6/N][Feat] This PR adds io_uring support to the Rust raw block backend. (#2635)\n\n* use PagedTensorMemoryAllocator for io_uring\n\nThis is a prep patch for io_uring support to the RUST raw\nblock plugin. The io_uring backend will used fixed buffers\nfor zero copy support (user to kernel) and vice-versa. This\nenables aligned paged buffers.\n\nThe checks for local cpu allocator alignment now considers\nio_uring, and always enables alignment in this case.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* [Feat][rust]: add io_uring backend for rust raw block\n\nImplement Linux io_uring asynchronous I/O backend for the raw\nblock device extension, providing high-performance I/O with\nreduced syscall overhead.\n\nKey Features:\n- Adds io_uring backend with dedicated worker thread for\n  submission/completion loop\n- Implicit write and read batching to reduce io_uring_enter\n  syscalls, and GIL release.\n- Also supports synchonous Read path.\n- Uses PagedTensorMemoryAllocator if io_uring is enabled, for\n  paged buffers which is registered for zero copy support.\n\nImplementation Details:\n- IoCompletion struct for async completion signaling via Condvar\n- IoSubmission struct representing queued I/O requests\n- Worker thread batches requests and processes completions out-of-order\n- batched_write() submits multiple writes at once. Returns a unique\n  batch id for handling completion for concurrent requests.\n- batched_read() submits multiple reads at once. Returns a unique\n  batch id for handling completion for concurrent requests.\n- wait_iouring() wait for completion of all the submitted requests\n  in that batch. In case of an error for the particular batch, the\n  first error information is transmitted to the python plugin.\n- read_uring() Synchronous read for blocking path\n\nNote: The memory object buffers are always aligned (default 4k,\n  or rust_raw_block.block_align), so there is no need for bounce\n  buffers in this scenario.\n\nFixed Buffer Registration Process:\n- Build an iovec array describing the buffers to register\n- Call register_buffers() to notify the kernel of these buffers\n- Store buffer addresses in a HashMap for O(1) lookup during I/O\n- Set fixed_buffers_registered flag to enable zero-copy mode\n\nConfiguration:\n- use_iouring: Enable io_uring backend (default: false)\n- alignment: Buffer alignment (default: 4096)\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* docs: update rust/raw_block/README.md for io_uring support\n\n- Document new io_uring I/O backend with batching\n- Add zero-copy fixed buffer registration documentation\n- Expand data path diagrams for sync and async paths\n- Update limitations section\n- Add usage examples for write/read and register_fixed_buffers\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* bench: io_uring with fixed buffer modes for RustRawBlockBackend\n\nUpdate the benchmarking script for the newly added io_uring async\nI/O with fixed buffer support. This essentially modifies the\n_bench_rust_raw_block, and introduces new CLI options\n(--use-uring, --chunk-size) and documentation.\n\nAdditionally add _bench_rust_raw_block_read, to compare read\nperformance. This first writes memory objects to the raw block device,\nthen performs read with concurrent batched blocking reads.\nOptionally it can also perform data integrity via a new CLI option\n--verify-integrity.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* tests: tests for io_uring rust raw block\n\nThese include\n * Data integrity tests\n * In case of close() all queued/in-flight requests\n   are handled gracefully\n * Tests batched blocking, non blocking with io_uring\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* example: add rust raw block device support\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* [Fix]: storage benchmark test\n\nFor non-uring path with O_DIRECT, use aligned buffers\nFor uring path, memory allocator always handles alignment internally.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* short write and reads for io_uring rust\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* [Fix] cursor bot review comments\n\nFix memory obj cleanup during allocate failure.\nFix invalid batch_id issue with sync writes and reads\nFix double decrement of _inflight_io_count\nFix ref_count decrement in case of slot exhaustion\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n---------\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>",
               "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
+                "files": 11,
+                "lines": 3129,
+                "insertions": 3049,
+                "deletions": 80
               },
               "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 15,
-                "total": 38
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "3444bdb5",
-              "author": "Ziwen Ning",
-              "email": "ziwen@ningziwen.com",
-              "date": "2026-04-16T06:07:51.000Z",
-              "message": "feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification (#2874)\n\n* feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification\n\nThe sender role (prefiller) currently requires pd_proxy_host and\npd_proxy_port to be configured, and unconditionally creates a ZMQ PUSH\nsocket to the proxy. This tight coupling prevents using LMCache DPD\nwith external routers that manage the prefill-decode flow via HTTP.\n\nWhen pd_skip_proxy_notification is true, the sender skips the proxy\nconfig requirement, does not create the ZMQ PUSH socket, and does not\nsend ProxyNotif after KV transfer. This allows LMCache DPD to work\nwith any HTTP-based orchestrator that uses the prefill response as the\nKV transfer completion signal.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* address review comments\n\n- Make pd_proxy_host/pd_proxy_port assertions conditional on\n  pd_skip_proxy_notification being False, so the sender can start\n  without proxy config when notification is skipped.\n- Remove redundant self.skip_proxy_notification instance attribute;\n  use self.config.pd_skip_proxy_notification directly.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* docs: clarify pd_skip_proxy_notification is for external orchestrators only\n\nUpdate documentation and log message to explicitly state that\npd_skip_proxy_notification=true is intended for external orchestrators\n(e.g., vLLM Production Stack router) and must not be used with\nLMCache's built-in disaggregation proxy (disagg_proxy_server.py),\nwhich depends on ZMQ notifications to coordinate prefill-decode flow.\n\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n---------\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>",
-              "stats": {
-                "files": 3,
-                "lines": 54,
-                "insertions": 38,
-                "deletions": 16
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
+                "loc": 30,
+                "files": 20,
                 "keyword": 5,
-                "ai": 20,
-                "total": 50
+                "ai": 25,
+                "total": 80
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 44,
-          "significance_ratio": 0.5,
+          "avg_score": 80,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 88,
+          "total_score": 80,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -6387,8 +6587,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "cansun",
@@ -7821,7 +8021,7 @@
           "total_commits": 14,
           "significant_commits": 9,
           "simple_commits": 5,
-          "commit_score": 916,
+          "commit_score": 899,
           "commits": [
             {
               "hash": "62cee8b0",
@@ -8112,18 +8312,18 @@
                 "loc": 3,
                 "files": 5,
                 "keyword": 12,
-                "ai": 18,
-                "total": 38
+                "ai": 1,
+                "total": 21
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 65.42857142857143,
+          "avg_score": 64.21428571428571,
           "significance_ratio": 0.6428571428571429,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 916,
+          "total_score": 899,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -8295,10 +8495,10 @@
         {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
-          "total_commits": 6,
-          "significant_commits": 4,
+          "total_commits": 7,
+          "significant_commits": 5,
           "simple_commits": 2,
-          "commit_score": 388,
+          "commit_score": 475,
           "commits": [
             {
               "hash": "456aa16c",
@@ -8425,14 +8625,35 @@
                 "total": 20
               },
               "classification": "simple"
+            },
+            {
+              "hash": "c87d9984",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-04-28T00:01:52.000Z",
+              "message": "[MP][Observability] Add L1/L2 failure health monitoring metrics (#3112)\n\n* [Observability] Add L1/L2 failure health monitoring metrics\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1065,
+                "insertions": 1065,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 64.66666666666667,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 67.85714285714286,
+          "significance_ratio": 0.7142857142857143,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 388,
+          "total_score": 475,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -9010,6 +9231,87 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Ziwen Ning",
+          "email": "ningziwe@amazon.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 175,
+          "commits": [
+            {
+              "hash": "b4d95dce",
+              "author": "Ziwen Ning",
+              "email": "ningziwe@amazon.com",
+              "date": "2026-04-08T02:32:49.000Z",
+              "message": "fix: use pin=False in _allocate_and_put to prevent pd_buffer leak (#2847)\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3444bdb5",
+              "author": "Ziwen Ning",
+              "email": "ziwen@ningziwen.com",
+              "date": "2026-04-16T06:07:51.000Z",
+              "message": "feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification (#2874)\n\n* feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification\n\nThe sender role (prefiller) currently requires pd_proxy_host and\npd_proxy_port to be configured, and unconditionally creates a ZMQ PUSH\nsocket to the proxy. This tight coupling prevents using LMCache DPD\nwith external routers that manage the prefill-decode flow via HTTP.\n\nWhen pd_skip_proxy_notification is true, the sender skips the proxy\nconfig requirement, does not create the ZMQ PUSH socket, and does not\nsend ProxyNotif after KV transfer. This allows LMCache DPD to work\nwith any HTTP-based orchestrator that uses the prefill response as the\nKV transfer completion signal.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* address review comments\n\n- Make pd_proxy_host/pd_proxy_port assertions conditional on\n  pd_skip_proxy_notification being False, so the sender can start\n  without proxy config when notification is skipped.\n- Remove redundant self.skip_proxy_notification instance attribute;\n  use self.config.pd_skip_proxy_notification directly.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* docs: clarify pd_skip_proxy_notification is for external orchestrators only\n\nUpdate documentation and log message to explicitly state that\npd_skip_proxy_notification=true is intended for external orchestrators\n(e.g., vLLM Production Stack router) and must not be used with\nLMCache's built-in disaggregation proxy (disagg_proxy_server.py),\nwhich depends on ZMQ notifications to coordinate prefill-decode flow.\n\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n---------\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>",
+              "stats": {
+                "files": 3,
+                "lines": 54,
+                "insertions": 38,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 5,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7f60057c",
+              "author": "Ziwen Ning",
+              "email": "ningziwe@amazon.com",
+              "date": "2026-04-27T03:13:22.000Z",
+              "message": "feat(pd_backend): add bidirectional NIXL cache probe (#2972)",
+              "stats": {
+                "files": 6,
+                "lines": 1117,
+                "insertions": 1078,
+                "deletions": 39
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 58.333333333333336,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 175,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -9066,8 +9368,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 162,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Jiayi Yao",
@@ -9307,62 +9609,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Ziwen Ning",
-          "email": "ningziwe@amazon.com",
-          "total_commits": 2,
+          "name": "Ankit Kumar",
+          "email": "33925670+ankit-sam@users.noreply.github.com",
+          "total_commits": 1,
           "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 88,
+          "simple_commits": 0,
+          "commit_score": 80,
           "commits": [
             {
-              "hash": "b4d95dce",
-              "author": "Ziwen Ning",
-              "email": "ningziwe@amazon.com",
-              "date": "2026-04-08T02:32:49.000Z",
-              "message": "fix: use pin=False in _allocate_and_put to prevent pd_buffer leak (#2847)\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>",
+              "hash": "2621c440",
+              "author": "Ankit Kumar",
+              "email": "33925670+ankit-sam@users.noreply.github.com",
+              "date": "2026-04-28T00:01:35.000Z",
+              "message": "[6/N][Feat] This PR adds io_uring support to the Rust raw block backend. (#2635)\n\n* use PagedTensorMemoryAllocator for io_uring\n\nThis is a prep patch for io_uring support to the RUST raw\nblock plugin. The io_uring backend will used fixed buffers\nfor zero copy support (user to kernel) and vice-versa. This\nenables aligned paged buffers.\n\nThe checks for local cpu allocator alignment now considers\nio_uring, and always enables alignment in this case.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* [Feat][rust]: add io_uring backend for rust raw block\n\nImplement Linux io_uring asynchronous I/O backend for the raw\nblock device extension, providing high-performance I/O with\nreduced syscall overhead.\n\nKey Features:\n- Adds io_uring backend with dedicated worker thread for\n  submission/completion loop\n- Implicit write and read batching to reduce io_uring_enter\n  syscalls, and GIL release.\n- Also supports synchonous Read path.\n- Uses PagedTensorMemoryAllocator if io_uring is enabled, for\n  paged buffers which is registered for zero copy support.\n\nImplementation Details:\n- IoCompletion struct for async completion signaling via Condvar\n- IoSubmission struct representing queued I/O requests\n- Worker thread batches requests and processes completions out-of-order\n- batched_write() submits multiple writes at once. Returns a unique\n  batch id for handling completion for concurrent requests.\n- batched_read() submits multiple reads at once. Returns a unique\n  batch id for handling completion for concurrent requests.\n- wait_iouring() wait for completion of all the submitted requests\n  in that batch. In case of an error for the particular batch, the\n  first error information is transmitted to the python plugin.\n- read_uring() Synchronous read for blocking path\n\nNote: The memory object buffers are always aligned (default 4k,\n  or rust_raw_block.block_align), so there is no need for bounce\n  buffers in this scenario.\n\nFixed Buffer Registration Process:\n- Build an iovec array describing the buffers to register\n- Call register_buffers() to notify the kernel of these buffers\n- Store buffer addresses in a HashMap for O(1) lookup during I/O\n- Set fixed_buffers_registered flag to enable zero-copy mode\n\nConfiguration:\n- use_iouring: Enable io_uring backend (default: false)\n- alignment: Buffer alignment (default: 4096)\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* docs: update rust/raw_block/README.md for io_uring support\n\n- Document new io_uring I/O backend with batching\n- Add zero-copy fixed buffer registration documentation\n- Expand data path diagrams for sync and async paths\n- Update limitations section\n- Add usage examples for write/read and register_fixed_buffers\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* bench: io_uring with fixed buffer modes for RustRawBlockBackend\n\nUpdate the benchmarking script for the newly added io_uring async\nI/O with fixed buffer support. This essentially modifies the\n_bench_rust_raw_block, and introduces new CLI options\n(--use-uring, --chunk-size) and documentation.\n\nAdditionally add _bench_rust_raw_block_read, to compare read\nperformance. This first writes memory objects to the raw block device,\nthen performs read with concurrent batched blocking reads.\nOptionally it can also perform data integrity via a new CLI option\n--verify-integrity.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* tests: tests for io_uring rust raw block\n\nThese include\n * Data integrity tests\n * In case of close() all queued/in-flight requests\n   are handled gracefully\n * Tests batched blocking, non blocking with io_uring\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* example: add rust raw block device support\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* [Fix]: storage benchmark test\n\nFor non-uring path with O_DIRECT, use aligned buffers\nFor uring path, memory allocator always handles alignment internally.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* short write and reads for io_uring rust\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n* [Fix] cursor bot review comments\n\nFix memory obj cleanup during allocate failure.\nFix invalid batch_id issue with sync writes and reads\nFix double decrement of _inflight_io_count\nFix ref_count decrement in case of slot exhaustion\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\n\n---------\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>",
               "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
+                "files": 11,
+                "lines": 3129,
+                "insertions": 3049,
+                "deletions": 80
               },
               "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 15,
-                "total": 38
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "3444bdb5",
-              "author": "Ziwen Ning",
-              "email": "ziwen@ningziwen.com",
-              "date": "2026-04-16T06:07:51.000Z",
-              "message": "feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification (#2874)\n\n* feat(pd_backend): add pd_skip_proxy_notification to skip ZMQ proxy notification\n\nThe sender role (prefiller) currently requires pd_proxy_host and\npd_proxy_port to be configured, and unconditionally creates a ZMQ PUSH\nsocket to the proxy. This tight coupling prevents using LMCache DPD\nwith external routers that manage the prefill-decode flow via HTTP.\n\nWhen pd_skip_proxy_notification is true, the sender skips the proxy\nconfig requirement, does not create the ZMQ PUSH socket, and does not\nsend ProxyNotif after KV transfer. This allows LMCache DPD to work\nwith any HTTP-based orchestrator that uses the prefill response as the\nKV transfer completion signal.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* address review comments\n\n- Make pd_proxy_host/pd_proxy_port assertions conditional on\n  pd_skip_proxy_notification being False, so the sender can start\n  without proxy config when notification is skipped.\n- Remove redundant self.skip_proxy_notification instance attribute;\n  use self.config.pd_skip_proxy_notification directly.\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n* docs: clarify pd_skip_proxy_notification is for external orchestrators only\n\nUpdate documentation and log message to explicitly state that\npd_skip_proxy_notification=true is intended for external orchestrators\n(e.g., vLLM Production Stack router) and must not be used with\nLMCache's built-in disaggregation proxy (disagg_proxy_server.py),\nwhich depends on ZMQ notifications to coordinate prefill-decode flow.\n\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>\n\n---------\n\nSigned-off-by: Ziwen Ning <ningziwe@amazon.com>\nSigned-off-by: Ziwen Ning <ziwen@ningziwen.com>",
-              "stats": {
-                "files": 3,
-                "lines": 54,
-                "insertions": 38,
-                "deletions": 16
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
+                "loc": 30,
+                "files": 20,
                 "keyword": 5,
-                "ai": 20,
-                "total": 50
+                "ai": 25,
+                "total": 80
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 44,
-          "significance_ratio": 0.5,
+          "avg_score": 80,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 88,
+          "total_score": 80,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -9519,8 +9800,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "cansun",
@@ -9801,13 +10082,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-27T00:30:10.200Z",
+    "analyzedAt": "2026-04-28T00:30:09.130Z",
     "daysBack": 2,
-    "totalCommits": 124,
-    "totalContributors": 26,
+    "totalCommits": 127,
+    "totalContributors": 27,
     "mergedFrom": {
-      "existing": 122,
-      "new": 3
+      "existing": 124,
+      "new": 5
     }
   }
 }
