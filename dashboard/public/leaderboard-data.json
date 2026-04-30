@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-29T00:30:08.912Z",
-  "total_commits_analyzed": 129,
+  "last_updated": "2026-04-30T00:30:12.885Z",
+  "total_commits_analyzed": 134,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3538,10 +3538,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 174,
+          "commit_score": 251,
           "commits": [
             {
               "hash": "f8ffd8f0",
@@ -3584,14 +3584,95 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "ee2518fa",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-29T08:33:27.000Z",
+              "message": "Update the MooncakestoreConnector to use the new store.setup(dict) api (#2631)\n\n* Update the MooncakestoreConnector to use the new store.setup(dict) api\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix suggestion\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove useless constant\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 368,
+                "insertions": 296,
+                "deletions": 72
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 87,
+          "avg_score": 83.66666666666667,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 174,
+          "total_score": 251,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 170,
+          "commits": [
+            {
+              "hash": "ee7935d4",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-29T22:54:31.000Z",
+              "message": "[Observability] Add L1/L2 state metrics for MP mode (#3150)\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 666,
+                "insertions": 663,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "71e05949",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-29T17:45:38.000Z",
+              "message": "[Refactor] Unify discover+normalize and add EngineType to REGISTER (#3162)\n\n* [Refactor] Unify discover+normalize, thread EngineType through MP registration\n\nRename `discover_gpu_kv_format` to `normalize_kv_and_discover_format`. The\nunified entry point now returns `(GPUKVFormat, DiscoverableKVCache)` and\nabsorbs the previously-separate `attempt_permute_to_contiguous_view`\ncall, so callers no longer have to remember to permute their copy of the\nkv_caches before discovery. Migrates all 9 call sites (V3, layerwise\nvLLM, SGLang, HPU, XPU, MP gpu_context).\n\n`attempt_permute_to_contiguous_view` stays public for the standalone\nnon-discover callers (`GPUConnectorInterface.initialize_kvcaches_ptr`,\n`CudaIPCWrapper.__init__`).\n\nThreads `EngineType` through MP registration:\n- `REGISTER_KV_CACHE` payload gains an `EngineType` positional field\n  (between `world_size` and `LayoutHints`).\n- `MPCacheEngine.register_kv_cache` and `GPUCacheContext.__init__` accept\n  `engine_type`, defaulting to `EngineType.VLLM` on the latter so\n  in-process callers are unchanged.\n- The vLLM MP adapter sends `EngineType.VLLM` explicitly.\n\nThis is wire-incompatible with older clients of `REGISTER_KV_CACHE` —\nintentional, since the new field is required to support non-vLLM\nserving engines (TRT-LLM next).\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Refactor] Update layout-invariant design doc for normalize_kv_and_discover_format\n\nMirror the function rename and tuple-return contract in the\nsingle-source-of-truth doc. Note that `attempt_permute_to_contiguous_view`\nremains public for callers outside the discover flow\n(`GPUConnectorInterface.initialize_kvcaches_ptr`,\n`CudaIPCWrapper.__init__`) and is otherwise now invoked internally.\n\nAlso extend the \"Adding a new format\" section to cover engine-keyed\nreshape-via-hints (e.g. TRT-LLM 4-D → 6-D) inside the unified function.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 14,
+                "lines": 211,
+                "insertions": 133,
+                "deletions": 78
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 21,
+                "total": 83
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 170,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3674,6 +3755,84 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "140990dc",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-04-29T23:09:47.000Z",
+              "message": "[MP][Feat] Real-reuse gap metrics (#3114)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 568,
+                "insertions": 568,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yuwei An",
+          "email": "ayw.sirius19@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "02c402b1",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-29T22:59:20.000Z",
+              "message": "[Observability] num_chunks_loaded counter (#3139)\n\n* [Observability] Add lmcache_mp.num_chunks_loaded counter\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 571,
+                "insertions": 560,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Ankit Kumar",
           "email": "33925670+ankit-sam@users.noreply.github.com",
           "total_commits": 1,
@@ -3709,374 +3868,20 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 80,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
     "monthly": {
       "2026-04": [
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 16,
-          "significant_commits": 11,
-          "simple_commits": 5,
-          "commit_score": 1073,
-          "commits": [
-            {
-              "hash": "62cee8b0",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T15:01:13.000Z",
-              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 17,
-                "lines": 2556,
-                "insertions": 2297,
-                "deletions": 259
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "6774d50d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T14:36:48.000Z",
-              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 40,
-                "insertions": 36,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 4,
-                "total": 44
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "ccaf38d3",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-03T07:45:44.000Z",
-              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 860,
-                "insertions": 860,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ba3ba51b",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-03T06:18:14.000Z",
-              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "aed852f3",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-07T08:39:22.000Z",
-              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 9,
-                "lines": 524,
-                "insertions": 449,
-                "deletions": 75
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0e0dc12e",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-11T01:13:36.000Z",
-              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 17,
-                "insertions": 9,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "755362ae",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T07:29:41.000Z",
-              "message": "[MP] Add a new argument to specify whether retain_in_l1 (#2813)\n\n* [MP] Add a new argument to specify whether retain_in_l1\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove redundant override method.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 154,
-                "insertions": 153,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3f71b41d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T04:57:44.000Z",
-              "message": "Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0 (#2887)\n\n* Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 3,
-                "lines": 1059,
-                "insertions": 1058,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f7ae4e1d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T00:51:37.000Z",
-              "message": "[MP] Introduce a simple way to register_gauge metrics. (#2906)\n\nIntroduce a simple way to register_gauge metrics.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 4,
-                "lines": 203,
-                "insertions": 203,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "96e0be28",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-14T07:42:35.000Z",
-              "message": "[MP] Support lazy import built-in l2 adapter (#2905)\n\n* Support lazy import built-in l2 adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UTs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 391,
-                "insertions": 365,
-                "deletions": 26
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f1e0db7d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-19T04:12:35.000Z",
-              "message": "fix(mp): correct store cached requests in lmcache_mp_connector (#3012)\n\n* fix(mp): correct store bookkeeping for cached requests in lmcache_mp_connector_0180\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 28,
-                "insertions": 25,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 18,
-                "total": 43
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "6fbec463",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-22T22:33:58.000Z",
-              "message": "[MP] Introduce MP runtime plugin framework (#2956)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 10,
-                "lines": 1050,
-                "insertions": 1037,
-                "deletions": 13
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b605369c",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-23T05:15:38.000Z",
-              "message": "[MP]: Refactor http server to make it extensible (#3017)\n\n* [MP]: Refactor http server to make it extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move doc to the correct place\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove intermediate code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 11,
-                "lines": 594,
-                "insertions": 522,
-                "deletions": 72
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a1a49771",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-26T02:26:31.000Z",
-              "message": "[MP]: Use unified c_ops backend import and fix gpu_kv_format_name property (#3142)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 12,
-                "insertions": 7,
-                "deletions": 5
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "f8ffd8f0",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-28T11:31:45.000Z",
-              "message": "[MP] Introduce EventNotifier to replace direct os.eventfd usage (#3144)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 26,
-                "lines": 1072,
-                "insertions": 901,
-                "deletions": 171
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "c39346c9",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-28T10:51:33.000Z",
-              "message": "[MP] Introduce common http apis (#3128)\n\n* [MP] Introduce common http apis\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bots\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* set allow_nan=False\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add docs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 14,
-                "lines": 893,
-                "insertions": 860,
-                "deletions": 33
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 67.0625,
-          "significance_ratio": 0.6875,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 1073,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 18,
-          "significant_commits": 12,
+          "total_commits": 20,
+          "significant_commits": 14,
           "simple_commits": 6,
-          "commit_score": 1052,
+          "commit_score": 1222,
           "commits": [
             {
               "hash": "996da472",
@@ -4455,14 +4260,431 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "ee7935d4",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-29T22:54:31.000Z",
+              "message": "[Observability] Add L1/L2 state metrics for MP mode (#3150)\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 666,
+                "insertions": 663,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "71e05949",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-29T17:45:38.000Z",
+              "message": "[Refactor] Unify discover+normalize and add EngineType to REGISTER (#3162)\n\n* [Refactor] Unify discover+normalize, thread EngineType through MP registration\n\nRename `discover_gpu_kv_format` to `normalize_kv_and_discover_format`. The\nunified entry point now returns `(GPUKVFormat, DiscoverableKVCache)` and\nabsorbs the previously-separate `attempt_permute_to_contiguous_view`\ncall, so callers no longer have to remember to permute their copy of the\nkv_caches before discovery. Migrates all 9 call sites (V3, layerwise\nvLLM, SGLang, HPU, XPU, MP gpu_context).\n\n`attempt_permute_to_contiguous_view` stays public for the standalone\nnon-discover callers (`GPUConnectorInterface.initialize_kvcaches_ptr`,\n`CudaIPCWrapper.__init__`).\n\nThreads `EngineType` through MP registration:\n- `REGISTER_KV_CACHE` payload gains an `EngineType` positional field\n  (between `world_size` and `LayoutHints`).\n- `MPCacheEngine.register_kv_cache` and `GPUCacheContext.__init__` accept\n  `engine_type`, defaulting to `EngineType.VLLM` on the latter so\n  in-process callers are unchanged.\n- The vLLM MP adapter sends `EngineType.VLLM` explicitly.\n\nThis is wire-incompatible with older clients of `REGISTER_KV_CACHE` —\nintentional, since the new field is required to support non-vLLM\nserving engines (TRT-LLM next).\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Refactor] Update layout-invariant design doc for normalize_kv_and_discover_format\n\nMirror the function rename and tuple-return contract in the\nsingle-source-of-truth doc. Note that `attempt_permute_to_contiguous_view`\nremains public for callers outside the discover flow\n(`GPUConnectorInterface.initialize_kvcaches_ptr`,\n`CudaIPCWrapper.__init__`) and is otherwise now invoked internally.\n\nAlso extend the \"Adding a new format\" section to cover engine-keyed\nreshape-via-hints (e.g. TRT-LLM 4-D → 6-D) inside the unified function.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 14,
+                "lines": 211,
+                "insertions": 133,
+                "deletions": 78
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 21,
+                "total": 83
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 58.44444444444444,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 61.1,
+          "significance_ratio": 0.7,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1052,
+          "total_score": 1222,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 17,
+          "significant_commits": 12,
+          "simple_commits": 5,
+          "commit_score": 1150,
+          "commits": [
+            {
+              "hash": "62cee8b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T15:01:13.000Z",
+              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2556,
+                "insertions": 2297,
+                "deletions": 259
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6774d50d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T14:36:48.000Z",
+              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 40,
+                "insertions": 36,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ccaf38d3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T07:45:44.000Z",
+              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 860,
+                "insertions": 860,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ba3ba51b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T06:18:14.000Z",
+              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "aed852f3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-07T08:39:22.000Z",
+              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 524,
+                "insertions": 449,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0e0dc12e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-11T01:13:36.000Z",
+              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 9,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "755362ae",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T07:29:41.000Z",
+              "message": "[MP] Add a new argument to specify whether retain_in_l1 (#2813)\n\n* [MP] Add a new argument to specify whether retain_in_l1\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove redundant override method.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 154,
+                "insertions": 153,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3f71b41d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T04:57:44.000Z",
+              "message": "Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0 (#2887)\n\n* Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 1059,
+                "insertions": 1058,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f7ae4e1d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T00:51:37.000Z",
+              "message": "[MP] Introduce a simple way to register_gauge metrics. (#2906)\n\nIntroduce a simple way to register_gauge metrics.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 203,
+                "insertions": 203,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "96e0be28",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-14T07:42:35.000Z",
+              "message": "[MP] Support lazy import built-in l2 adapter (#2905)\n\n* Support lazy import built-in l2 adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UTs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 391,
+                "insertions": 365,
+                "deletions": 26
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f1e0db7d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-19T04:12:35.000Z",
+              "message": "fix(mp): correct store cached requests in lmcache_mp_connector (#3012)\n\n* fix(mp): correct store bookkeeping for cached requests in lmcache_mp_connector_0180\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 28,
+                "insertions": 25,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "6fbec463",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-22T22:33:58.000Z",
+              "message": "[MP] Introduce MP runtime plugin framework (#2956)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 10,
+                "lines": 1050,
+                "insertions": 1037,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b605369c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-23T05:15:38.000Z",
+              "message": "[MP]: Refactor http server to make it extensible (#3017)\n\n* [MP]: Refactor http server to make it extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move doc to the correct place\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove intermediate code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 594,
+                "insertions": 522,
+                "deletions": 72
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a1a49771",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-26T02:26:31.000Z",
+              "message": "[MP]: Use unified c_ops backend import and fix gpu_kv_format_name property (#3142)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 12,
+                "insertions": 7,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f8ffd8f0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-28T11:31:45.000Z",
+              "message": "[MP] Introduce EventNotifier to replace direct os.eventfd usage (#3144)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 26,
+                "lines": 1072,
+                "insertions": 901,
+                "deletions": 171
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c39346c9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-28T10:51:33.000Z",
+              "message": "[MP] Introduce common http apis (#3128)\n\n* [MP] Introduce common http apis\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bots\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* set allow_nan=False\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add docs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 14,
+                "lines": 893,
+                "insertions": 860,
+                "deletions": 33
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ee2518fa",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-29T08:33:27.000Z",
+              "message": "Update the MooncakestoreConnector to use the new store.setup(dict) api (#2631)\n\n* Update the MooncakestoreConnector to use the new store.setup(dict) api\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix suggestion\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove useless constant\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 368,
+                "insertions": 296,
+                "deletions": 72
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67.6470588235294,
+          "significance_ratio": 0.7058823529411765,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 1150,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -5219,10 +5441,10 @@
         {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
-          "total_commits": 7,
-          "significant_commits": 7,
+          "total_commits": 8,
+          "significant_commits": 8,
           "simple_commits": 0,
-          "commit_score": 592,
+          "commit_score": 679,
           "commits": [
             {
               "hash": "11068230",
@@ -5370,14 +5592,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "02c402b1",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-29T22:59:20.000Z",
+              "message": "[Observability] num_chunks_loaded counter (#3139)\n\n* [Observability] Add lmcache_mp.num_chunks_loaded counter\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 571,
+                "insertions": 560,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 84.57142857142857,
+          "avg_score": 84.875,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 592,
+          "total_score": 679,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6201,6 +6444,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 163,
+          "commits": [
+            {
+              "hash": "25c30d79",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-04-23T18:09:10.000Z",
+              "message": "[MP][Feat] Attach service.instance.id to OTel Resource (#3116)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 146,
+                "insertions": 138,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 14,
+                "total": 76
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "140990dc",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-04-29T23:09:47.000Z",
+              "message": "[MP][Feat] Real-reuse gap metrics (#3114)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 568,
+                "insertions": 568,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 163,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -6533,45 +6836,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 80,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 76,
-          "commits": [
-            {
-              "hash": "25c30d79",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-04-23T18:09:10.000Z",
-              "message": "[MP][Feat] Attach service.instance.id to OTel Resource (#3116)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 146,
-                "insertions": 138,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 14,
-                "total": 76
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 76,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 76,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -6972,366 +7236,12 @@
     "quarterly": {
       "2026-Q2": [
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 16,
-          "significant_commits": 11,
-          "simple_commits": 5,
-          "commit_score": 1073,
-          "commits": [
-            {
-              "hash": "62cee8b0",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T15:01:13.000Z",
-              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 17,
-                "lines": 2556,
-                "insertions": 2297,
-                "deletions": 259
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "6774d50d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-01T14:36:48.000Z",
-              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 40,
-                "insertions": 36,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 4,
-                "total": 44
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "ccaf38d3",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-03T07:45:44.000Z",
-              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 860,
-                "insertions": 860,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ba3ba51b",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-03T06:18:14.000Z",
-              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "aed852f3",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-07T08:39:22.000Z",
-              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 9,
-                "lines": 524,
-                "insertions": 449,
-                "deletions": 75
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0e0dc12e",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-11T01:13:36.000Z",
-              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 17,
-                "insertions": 9,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "755362ae",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T07:29:41.000Z",
-              "message": "[MP] Add a new argument to specify whether retain_in_l1 (#2813)\n\n* [MP] Add a new argument to specify whether retain_in_l1\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove redundant override method.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 154,
-                "insertions": 153,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3f71b41d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T04:57:44.000Z",
-              "message": "Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0 (#2887)\n\n* Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 3,
-                "lines": 1059,
-                "insertions": 1058,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f7ae4e1d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-12T00:51:37.000Z",
-              "message": "[MP] Introduce a simple way to register_gauge metrics. (#2906)\n\nIntroduce a simple way to register_gauge metrics.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 4,
-                "lines": 203,
-                "insertions": 203,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "96e0be28",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-14T07:42:35.000Z",
-              "message": "[MP] Support lazy import built-in l2 adapter (#2905)\n\n* Support lazy import built-in l2 adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UTs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 391,
-                "insertions": 365,
-                "deletions": 26
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f1e0db7d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-19T04:12:35.000Z",
-              "message": "fix(mp): correct store cached requests in lmcache_mp_connector (#3012)\n\n* fix(mp): correct store bookkeeping for cached requests in lmcache_mp_connector_0180\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 28,
-                "insertions": 25,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 18,
-                "total": 43
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "6fbec463",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-22T22:33:58.000Z",
-              "message": "[MP] Introduce MP runtime plugin framework (#2956)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 10,
-                "lines": 1050,
-                "insertions": 1037,
-                "deletions": 13
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b605369c",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-23T05:15:38.000Z",
-              "message": "[MP]: Refactor http server to make it extensible (#3017)\n\n* [MP]: Refactor http server to make it extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move doc to the correct place\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove intermediate code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 11,
-                "lines": 594,
-                "insertions": 522,
-                "deletions": 72
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a1a49771",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-26T02:26:31.000Z",
-              "message": "[MP]: Use unified c_ops backend import and fix gpu_kv_format_name property (#3142)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 12,
-                "insertions": 7,
-                "deletions": 5
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "f8ffd8f0",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-28T11:31:45.000Z",
-              "message": "[MP] Introduce EventNotifier to replace direct os.eventfd usage (#3144)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 26,
-                "lines": 1072,
-                "insertions": 901,
-                "deletions": 171
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "c39346c9",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-04-28T10:51:33.000Z",
-              "message": "[MP] Introduce common http apis (#3128)\n\n* [MP] Introduce common http apis\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bots\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* set allow_nan=False\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add docs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 14,
-                "lines": 893,
-                "insertions": 860,
-                "deletions": 33
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 67.0625,
-          "significance_ratio": 0.6875,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 1073,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 18,
-          "significant_commits": 12,
+          "total_commits": 20,
+          "significant_commits": 14,
           "simple_commits": 6,
-          "commit_score": 1052,
+          "commit_score": 1222,
           "commits": [
             {
               "hash": "996da472",
@@ -7710,14 +7620,431 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "ee7935d4",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-29T22:54:31.000Z",
+              "message": "[Observability] Add L1/L2 state metrics for MP mode (#3150)\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 666,
+                "insertions": 663,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "71e05949",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-04-29T17:45:38.000Z",
+              "message": "[Refactor] Unify discover+normalize and add EngineType to REGISTER (#3162)\n\n* [Refactor] Unify discover+normalize, thread EngineType through MP registration\n\nRename `discover_gpu_kv_format` to `normalize_kv_and_discover_format`. The\nunified entry point now returns `(GPUKVFormat, DiscoverableKVCache)` and\nabsorbs the previously-separate `attempt_permute_to_contiguous_view`\ncall, so callers no longer have to remember to permute their copy of the\nkv_caches before discovery. Migrates all 9 call sites (V3, layerwise\nvLLM, SGLang, HPU, XPU, MP gpu_context).\n\n`attempt_permute_to_contiguous_view` stays public for the standalone\nnon-discover callers (`GPUConnectorInterface.initialize_kvcaches_ptr`,\n`CudaIPCWrapper.__init__`).\n\nThreads `EngineType` through MP registration:\n- `REGISTER_KV_CACHE` payload gains an `EngineType` positional field\n  (between `world_size` and `LayoutHints`).\n- `MPCacheEngine.register_kv_cache` and `GPUCacheContext.__init__` accept\n  `engine_type`, defaulting to `EngineType.VLLM` on the latter so\n  in-process callers are unchanged.\n- The vLLM MP adapter sends `EngineType.VLLM` explicitly.\n\nThis is wire-incompatible with older clients of `REGISTER_KV_CACHE` —\nintentional, since the new field is required to support non-vLLM\nserving engines (TRT-LLM next).\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [Refactor] Update layout-invariant design doc for normalize_kv_and_discover_format\n\nMirror the function rename and tuple-return contract in the\nsingle-source-of-truth doc. Note that `attempt_permute_to_contiguous_view`\nremains public for callers outside the discover flow\n(`GPUConnectorInterface.initialize_kvcaches_ptr`,\n`CudaIPCWrapper.__init__`) and is otherwise now invoked internally.\n\nAlso extend the \"Adding a new format\" section to cover engine-keyed\nreshape-via-hints (e.g. TRT-LLM 4-D → 6-D) inside the unified function.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 14,
+                "lines": 211,
+                "insertions": 133,
+                "deletions": 78
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 21,
+                "total": 83
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 58.44444444444444,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 61.1,
+          "significance_ratio": 0.7,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1052,
+          "total_score": 1222,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 17,
+          "significant_commits": 12,
+          "simple_commits": 5,
+          "commit_score": 1150,
+          "commits": [
+            {
+              "hash": "62cee8b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T15:01:13.000Z",
+              "message": "[MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector (#2851)\n\n* [MP] Refactor l2 plugin framework to support dynamic load third-party native l2 connector\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix the suggestion from gemini-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update related documents\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2556,
+                "insertions": 2297,
+                "deletions": 259
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6774d50d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-01T14:36:48.000Z",
+              "message": "Add argument --prefetch-max-in-flight to fix hardcode (#2789)\n\n* Add argument --prefetch-max-in-flight to fix hardcode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add l2 prefix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 40,
+                "insertions": 36,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ccaf38d3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T07:45:44.000Z",
+              "message": "[MP] Introduce l2 mooncake adapter (#2911)\n\n* Introduce l2 mooncake adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove extra files\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Reduce redundant code with setup.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 860,
+                "insertions": 860,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ba3ba51b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-03T06:18:14.000Z",
+              "message": "[MP] Fix UT after merge #2851 (#2931)\n\nFix UT after merge #2851\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "aed852f3",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-07T08:39:22.000Z",
+              "message": "Refactor remote plugin to accept multiply connector (#2666)\n\n* Refactor remote plugin to accept multiply connector.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Skip module_path/class_name check for built-in adapters\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add document related\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix to use DynamicConnectorAdapter to load external connector plugin\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 524,
+                "insertions": 449,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0e0dc12e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-11T01:13:36.000Z",
+              "message": "[MP] Lazy start heartbeat thread when first req coming (#2943)\n\n* [MP] Lazy start heartbeat thread when first req coming\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 17,
+                "insertions": 9,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "755362ae",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T07:29:41.000Z",
+              "message": "[MP] Add a new argument to specify whether retain_in_l1 (#2813)\n\n* [MP] Add a new argument to specify whether retain_in_l1\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove redundant override method.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 154,
+                "insertions": 153,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3f71b41d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T04:57:44.000Z",
+              "message": "Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0 (#2887)\n\n* Copy a snapshot of lmcache_mp_connector.py for vllm 0.18.0\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 1059,
+                "insertions": 1058,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f7ae4e1d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-12T00:51:37.000Z",
+              "message": "[MP] Introduce a simple way to register_gauge metrics. (#2906)\n\nIntroduce a simple way to register_gauge metrics.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 203,
+                "insertions": 203,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "96e0be28",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-14T07:42:35.000Z",
+              "message": "[MP] Support lazy import built-in l2 adapter (#2905)\n\n* Support lazy import built-in l2 adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Update doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UTs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 391,
+                "insertions": 365,
+                "deletions": 26
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f1e0db7d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-19T04:12:35.000Z",
+              "message": "fix(mp): correct store cached requests in lmcache_mp_connector (#3012)\n\n* fix(mp): correct store bookkeeping for cached requests in lmcache_mp_connector_0180\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 28,
+                "insertions": 25,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "6fbec463",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-22T22:33:58.000Z",
+              "message": "[MP] Introduce MP runtime plugin framework (#2956)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 10,
+                "lines": 1050,
+                "insertions": 1037,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b605369c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-23T05:15:38.000Z",
+              "message": "[MP]: Refactor http server to make it extensible (#3017)\n\n* [MP]: Refactor http server to make it extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bot\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move doc to the correct place\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove intermediate code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 594,
+                "insertions": 522,
+                "deletions": 72
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a1a49771",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-26T02:26:31.000Z",
+              "message": "[MP]: Use unified c_ops backend import and fix gpu_kv_format_name property (#3142)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 12,
+                "insertions": 7,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f8ffd8f0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-28T11:31:45.000Z",
+              "message": "[MP] Introduce EventNotifier to replace direct os.eventfd usage (#3144)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 26,
+                "lines": 1072,
+                "insertions": 901,
+                "deletions": 171
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c39346c9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-28T10:51:33.000Z",
+              "message": "[MP] Introduce common http apis (#3128)\n\n* [MP] Introduce common http apis\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix suggestion from ai-bots\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix doc\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* set allow_nan=False\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Add docs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 14,
+                "lines": 893,
+                "insertions": 860,
+                "deletions": 33
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ee2518fa",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-04-29T08:33:27.000Z",
+              "message": "Update the MooncakestoreConnector to use the new store.setup(dict) api (#2631)\n\n* Update the MooncakestoreConnector to use the new store.setup(dict) api\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix suggestion\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove useless constant\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 368,
+                "insertions": 296,
+                "deletions": 72
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67.6470588235294,
+          "significance_ratio": 0.7058823529411765,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 1150,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -8474,10 +8801,10 @@
         {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
-          "total_commits": 7,
-          "significant_commits": 7,
+          "total_commits": 8,
+          "significant_commits": 8,
           "simple_commits": 0,
-          "commit_score": 592,
+          "commit_score": 679,
           "commits": [
             {
               "hash": "11068230",
@@ -8625,14 +8952,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "02c402b1",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-04-29T22:59:20.000Z",
+              "message": "[Observability] num_chunks_loaded counter (#3139)\n\n* [Observability] Add lmcache_mp.num_chunks_loaded counter\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 571,
+                "insertions": 560,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 84.57142857142857,
+          "avg_score": 84.875,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 592,
+          "total_score": 679,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9456,6 +9804,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 163,
+          "commits": [
+            {
+              "hash": "25c30d79",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-04-23T18:09:10.000Z",
+              "message": "[MP][Feat] Attach service.instance.id to OTel Resource (#3116)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 146,
+                "insertions": 138,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 14,
+                "total": 76
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "140990dc",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-04-29T23:09:47.000Z",
+              "message": "[MP][Feat] Real-reuse gap metrics (#3114)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 568,
+                "insertions": 568,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 163,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -9788,45 +10196,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 80,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 76,
-          "commits": [
-            {
-              "hash": "25c30d79",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-04-23T18:09:10.000Z",
-              "message": "[MP][Feat] Attach service.instance.id to OTel Resource (#3116)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 146,
-                "insertions": 138,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 14,
-                "total": 76
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 76,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 76,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -10226,13 +10595,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-04-29T00:30:08.912Z",
+    "analyzedAt": "2026-04-30T00:30:12.885Z",
     "daysBack": 2,
-    "totalCommits": 129,
+    "totalCommits": 134,
     "totalContributors": 27,
     "mergedFrom": {
-      "existing": 127,
-      "new": 5
+      "existing": 129,
+      "new": 7
     }
   }
 }
