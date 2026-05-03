@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-02T00:30:11.948Z",
-  "total_commits_analyzed": 141,
+  "last_updated": "2026-05-03T00:30:06.583Z",
+  "total_commits_analyzed": 142,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3538,10 +3538,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 5,
-          "significant_commits": 3,
+          "total_commits": 6,
+          "significant_commits": 4,
           "simple_commits": 2,
-          "commit_score": 311,
+          "commit_score": 388,
           "commits": [
             {
               "hash": "ee7935d4",
@@ -3647,14 +3647,35 @@
                 "total": 28
               },
               "classification": "simple"
+            },
+            {
+              "hash": "4d74fcee",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-03T00:12:11.000Z",
+              "message": "[Docs] Move TensorRT-LLM into quickstart as a tab (#3182)\n\nPromote TRT-LLM from its own \"Serving engine integrations\" section to\na third tab alongside vLLM and SGLang in the main quickstart, so all\nthree engines surface at the same level. Trim the page to install +\nmode-picker (in-process / MP) launch snippets; the deeper material\n(CUDA-IPC internals, explicit connector_module pinning, hit\nverification recipe) was implementation detail that doesn't belong\nin a quickstart and is dropped here.\n\nRemoves docs/source/integrations/ and its toctree entry in index.rst.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 315,
+                "insertions": 124,
+                "deletions": 191
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 62.2,
-          "significance_ratio": 0.6,
+          "avg_score": 64.66666666666667,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 311,
+          "total_score": 388,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7555,51 +7576,12 @@
       ],
       "2026-05": [
         {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 63,
-          "commits": [
-            {
-              "hash": "89c48d8e",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-05-01T18:50:38.000Z",
-              "message": "[MP][Fix] S3L2Adapter: support container credentials via boto3 delegate (#3170)\n\n* [MP][Fix] S3L2Adapter: support container credentials via boto3 delegate\n\nawscrt's AwsCredentialsProvider.new_default_chain in the currently shipped\nPython binding does not accept a tls_ctx, so the container-credentials\nprovider in the chain cannot complete an HTTPS handshake to credential\nendpoints like CoreWeave's https://api.coreweave.com/...\n(injected via AWS_CONTAINER_CREDENTIALS_FULL_URI by the CKS Pod Identity\nWebhook). The signing layer then surfaces:\n\n  AWS_AUTH_SIGNING_NO_CREDENTIALS: Attempt to sign an http request without credentials\n\nWhen AWS_CONTAINER_CREDENTIALS_FULL_URI is present, resolve credentials\nthrough boto3's RefreshableCredentials and republish them to awscrt via\nAwsCredentialsProvider.new_delegate. Each sign call invokes\nget_frozen_credentials(), which refreshes before expiry, so rotating\ntemp creds (CoreWeave WIF, ECS task roles, etc.) keep working. Static\nkeys and the awscrt default chain remain the other two branches.\n\nScope is limited to the MP-mode L2 adapter; s3_connector.py is\nunchanged in this PR.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* modify comment\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [Test] Stub S3L2Adapter credentials provider in unit tests\n\nMock _make_credentials_provider in the patch_s3_request fixture so the\nS3 L2 adapter unit tests do not depend on boto3 being installed or AWS\ncredentials being present in the environment. The mocked S3Request\nnever reaches a real signer, so a static-key stub is sufficient.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 115,
-                "insertions": 95,
-                "deletions": 20
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 11,
-                "total": 63
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 63,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 63,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 2,
-          "significant_commits": 0,
+          "total_commits": 3,
+          "significant_commits": 1,
           "simple_commits": 2,
-          "commit_score": 54,
+          "commit_score": 131,
           "commits": [
             {
               "hash": "67e9a786",
@@ -7642,14 +7624,74 @@
                 "total": 28
               },
               "classification": "simple"
+            },
+            {
+              "hash": "4d74fcee",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-03T00:12:11.000Z",
+              "message": "[Docs] Move TensorRT-LLM into quickstart as a tab (#3182)\n\nPromote TRT-LLM from its own \"Serving engine integrations\" section to\na third tab alongside vLLM and SGLang in the main quickstart, so all\nthree engines surface at the same level. Trim the page to install +\nmode-picker (in-process / MP) launch snippets; the deeper material\n(CUDA-IPC internals, explicit connector_module pinning, hit\nverification recipe) was implementation detail that doesn't belong\nin a quickstart and is dropped here.\n\nRemoves docs/source/integrations/ and its toctree entry in index.rst.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 315,
+                "insertions": 124,
+                "deletions": 191
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 27,
-          "significance_ratio": 0,
+          "avg_score": 43.666666666666664,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 54,
+          "total_score": 131,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 63,
+          "commits": [
+            {
+              "hash": "89c48d8e",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-05-01T18:50:38.000Z",
+              "message": "[MP][Fix] S3L2Adapter: support container credentials via boto3 delegate (#3170)\n\n* [MP][Fix] S3L2Adapter: support container credentials via boto3 delegate\n\nawscrt's AwsCredentialsProvider.new_default_chain in the currently shipped\nPython binding does not accept a tls_ctx, so the container-credentials\nprovider in the chain cannot complete an HTTPS handshake to credential\nendpoints like CoreWeave's https://api.coreweave.com/...\n(injected via AWS_CONTAINER_CREDENTIALS_FULL_URI by the CKS Pod Identity\nWebhook). The signing layer then surfaces:\n\n  AWS_AUTH_SIGNING_NO_CREDENTIALS: Attempt to sign an http request without credentials\n\nWhen AWS_CONTAINER_CREDENTIALS_FULL_URI is present, resolve credentials\nthrough boto3's RefreshableCredentials and republish them to awscrt via\nAwsCredentialsProvider.new_delegate. Each sign call invokes\nget_frozen_credentials(), which refreshes before expiry, so rotating\ntemp creds (CoreWeave WIF, ECS task roles, etc.) keep working. Static\nkeys and the awscrt default chain remain the other two branches.\n\nScope is limited to the MP-mode L2 adapter; s3_connector.py is\nunchanged in this PR.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* modify comment\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [Test] Stub S3L2Adapter credentials provider in unit tests\n\nMock _make_credentials_provider in the patch_s3_request fixture so the\nS3 L2 adapter unit tests do not depend on boto3 being installed or AWS\ncredentials being present in the environment. The mocked S3Request\nnever reaches a real signer, so a static-key stub is sufficient.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 115,
+                "insertions": 95,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 11,
+                "total": 63
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 63,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 63,
           "tier": "T0",
           "tier_name": "Elite"
         }
@@ -7660,10 +7702,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 23,
-          "significant_commits": 15,
+          "total_commits": 24,
+          "significant_commits": 16,
           "simple_commits": 8,
-          "commit_score": 1363,
+          "commit_score": 1440,
           "commits": [
             {
               "hash": "996da472",
@@ -8147,14 +8189,35 @@
                 "total": 28
               },
               "classification": "simple"
+            },
+            {
+              "hash": "4d74fcee",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-03T00:12:11.000Z",
+              "message": "[Docs] Move TensorRT-LLM into quickstart as a tab (#3182)\n\nPromote TRT-LLM from its own \"Serving engine integrations\" section to\na third tab alongside vLLM and SGLang in the main quickstart, so all\nthree engines surface at the same level. Trim the page to install +\nmode-picker (in-process / MP) launch snippets; the deeper material\n(CUDA-IPC internals, explicit connector_module pinning, hit\nverification recipe) was implementation detail that doesn't belong\nin a quickstart and is dropped here.\n\nRemoves docs/source/integrations/ and its toctree entry in index.rst.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 315,
+                "insertions": 124,
+                "deletions": 191
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.26086956521739,
-          "significance_ratio": 0.6521739130434783,
+          "avg_score": 60,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1363,
+          "total_score": 1440,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11200,13 +11263,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-05-02T00:30:11.948Z",
+    "analyzedAt": "2026-05-03T00:30:06.583Z",
     "daysBack": 2,
-    "totalCommits": 141,
+    "totalCommits": 142,
     "totalContributors": 29,
     "mergedFrom": {
-      "existing": 138,
-      "new": 7
+      "existing": 141,
+      "new": 4
     }
   }
 }
