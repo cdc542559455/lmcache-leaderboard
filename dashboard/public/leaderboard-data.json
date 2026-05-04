@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-03T00:30:06.583Z",
-  "total_commits_analyzed": 142,
+  "last_updated": "2026-05-04T00:30:07.054Z",
+  "total_commits_analyzed": 145,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3538,10 +3538,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 6,
-          "significant_commits": 4,
+          "total_commits": 7,
+          "significant_commits": 5,
           "simple_commits": 2,
-          "commit_score": 388,
+          "commit_score": 475,
           "commits": [
             {
               "hash": "ee7935d4",
@@ -3668,14 +3668,35 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7e4139b7",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-03T07:36:45.000Z",
+              "message": "[MP][Observability] Add EventBus self-monitoring metrics (#3167)\n\n* [MP][Observability] Add EventBus self-monitoring metrics\n\nSurface four metrics that observe the EventBus itself, so operators can\ndetect bus backpressure or dispatch failures (per #3108):\n\n- ``lmcache_mp.event_bus.queue_depth`` (gauge): events waiting for dispatch.\n- ``lmcache_mp.event_bus.drain_lag_seconds`` (gauge): age of the oldest\n  queued event; rises when the drain thread falls behind.\n- ``lmcache_mp.event_bus.dropped_events_total`` (counter): cumulative\n  events dropped because the queue was at ``max_queue_size``.\n- ``lmcache_mp.event_bus.subscriber_exceptions`` (counter): cumulative\n  callback exceptions during dispatch, tagged by ``subscriber_name``.\n\nEventBus exposes ``queue_depth``, ``oldest_event_lag_seconds``,\n``dropped_events_count`` and ``subscriber_exception_counts`` as public\naccessors and tracks per-subscriber exception counts in ``_drain_all``.\nThe OTel registration lives in\n``subscribers/metrics/event_bus.py::init_event_bus_self_metrics`` and is\nwired up from ``mp_observability.config`` alongside the other metrics\nsubscribers.  ``event_bus.py`` stays free of OTel imports.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [MP][Observability] Simplify event-bus self-metrics; add design + user docs\n\nRefactor the EventBus self-metrics to match the existing subscriber\npattern, and document them under docs/design and the package README.\n\n- Convert the standalone ``init_event_bus_self_metrics`` function into\n  ``EventBusSelfMetricsSubscriber(EventSubscriber)``.  ``__init__`` does\n  the OTel registration; ``get_subscriptions`` returns ``{}`` because\n  these metrics are polled from bus state, not driven by events.  The\n  call site in ``mp_observability.config`` now uses the same\n  ``bus.register_subscriber(...)`` line as every other metrics\n  subscriber.\n- Drop the configurable ``meter_name`` parameter — hardcode\n  ``\"lmcache.event_bus\"`` like the other subscribers.\n- Inline the ``_subscriber_name`` helper at its single use site in\n  ``EventBus._drain_all`` and remove the standalone function.\n- Drop the ``register_gauge`` indirection inside the subscriber; call\n  ``meter.create_observable_gauge`` / ``create_observable_counter``\n  directly with one-line lambdas, matching ``L1FailureMetricsSubscriber``\n  et al.\n- Add an ``EventBus Self-Monitoring`` section to METRICS.md with the\n  four metric names, types, and source accessors.\n- Note the self-monitoring accessors and decoupling rationale in\n  event-bus.md.\n- Add ``EventBusSelfMetricsSubscriber`` to the architecture diagram in\n  the package README.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 407,
+                "insertions": 406,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 64.66666666666667,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 67.85714285714286,
+          "significance_ratio": 0.7142857142857143,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 388,
+          "total_score": 475,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4034,6 +4055,84 @@
                 "lines": 1169,
                 "insertions": 1166,
                 "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Adarsh Shirawalmath",
+          "email": "114558126+adarshxs@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "6e0edff2",
+              "author": "Adarsh Shirawalmath",
+              "email": "114558126+adarshxs@users.noreply.github.com",
+              "date": "2026-05-03T23:40:26.000Z",
+              "message": "[Remote Backend] Add Hugging Face Buckets as a built-in remote storage backend (#3060)\n\n* init\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* lint\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* fix\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* use lowercase generics\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* fix\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\nCo-authored-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 7,
+                "lines": 1656,
+                "insertions": 1653,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Kuntai Du",
+          "email": "kuntai@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "f104ee4c",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-05-03T05:26:44.000Z",
+              "message": "[Core] Implement serialization / deserialization (#3140)\n\n* initial implementation of serde\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* refactor serde support to make it a wrapper around L2 adapter\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* update visualization\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* tighten user-facing doc\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix cursor comments\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* remove unnecessary assert\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* use event notifier instead of eventfd\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* move fp8 init to its own file\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 23,
+                "lines": 3536,
+                "insertions": 3531,
+                "deletions": 5
               },
               "scores": {
                 "loc": 30,
@@ -7578,10 +7677,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 3,
-          "significant_commits": 1,
+          "total_commits": 4,
+          "significant_commits": 2,
           "simple_commits": 2,
-          "commit_score": 131,
+          "commit_score": 218,
           "commits": [
             {
               "hash": "67e9a786",
@@ -7645,14 +7744,113 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7e4139b7",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-03T07:36:45.000Z",
+              "message": "[MP][Observability] Add EventBus self-monitoring metrics (#3167)\n\n* [MP][Observability] Add EventBus self-monitoring metrics\n\nSurface four metrics that observe the EventBus itself, so operators can\ndetect bus backpressure or dispatch failures (per #3108):\n\n- ``lmcache_mp.event_bus.queue_depth`` (gauge): events waiting for dispatch.\n- ``lmcache_mp.event_bus.drain_lag_seconds`` (gauge): age of the oldest\n  queued event; rises when the drain thread falls behind.\n- ``lmcache_mp.event_bus.dropped_events_total`` (counter): cumulative\n  events dropped because the queue was at ``max_queue_size``.\n- ``lmcache_mp.event_bus.subscriber_exceptions`` (counter): cumulative\n  callback exceptions during dispatch, tagged by ``subscriber_name``.\n\nEventBus exposes ``queue_depth``, ``oldest_event_lag_seconds``,\n``dropped_events_count`` and ``subscriber_exception_counts`` as public\naccessors and tracks per-subscriber exception counts in ``_drain_all``.\nThe OTel registration lives in\n``subscribers/metrics/event_bus.py::init_event_bus_self_metrics`` and is\nwired up from ``mp_observability.config`` alongside the other metrics\nsubscribers.  ``event_bus.py`` stays free of OTel imports.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [MP][Observability] Simplify event-bus self-metrics; add design + user docs\n\nRefactor the EventBus self-metrics to match the existing subscriber\npattern, and document them under docs/design and the package README.\n\n- Convert the standalone ``init_event_bus_self_metrics`` function into\n  ``EventBusSelfMetricsSubscriber(EventSubscriber)``.  ``__init__`` does\n  the OTel registration; ``get_subscriptions`` returns ``{}`` because\n  these metrics are polled from bus state, not driven by events.  The\n  call site in ``mp_observability.config`` now uses the same\n  ``bus.register_subscriber(...)`` line as every other metrics\n  subscriber.\n- Drop the configurable ``meter_name`` parameter — hardcode\n  ``\"lmcache.event_bus\"`` like the other subscribers.\n- Inline the ``_subscriber_name`` helper at its single use site in\n  ``EventBus._drain_all`` and remove the standalone function.\n- Drop the ``register_gauge`` indirection inside the subscriber; call\n  ``meter.create_observable_gauge`` / ``create_observable_counter``\n  directly with one-line lambdas, matching ``L1FailureMetricsSubscriber``\n  et al.\n- Add an ``EventBus Self-Monitoring`` section to METRICS.md with the\n  four metric names, types, and source accessors.\n- Note the self-monitoring accessors and decoupling rationale in\n  event-bus.md.\n- Add ``EventBusSelfMetricsSubscriber`` to the architecture diagram in\n  the package README.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 407,
+                "insertions": 406,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 43.666666666666664,
-          "significance_ratio": 0.3333333333333333,
+          "avg_score": 54.5,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 131,
+          "total_score": 218,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Adarsh Shirawalmath",
+          "email": "114558126+adarshxs@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "6e0edff2",
+              "author": "Adarsh Shirawalmath",
+              "email": "114558126+adarshxs@users.noreply.github.com",
+              "date": "2026-05-03T23:40:26.000Z",
+              "message": "[Remote Backend] Add Hugging Face Buckets as a built-in remote storage backend (#3060)\n\n* init\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* lint\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* fix\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* use lowercase generics\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* fix\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\nCo-authored-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 7,
+                "lines": 1656,
+                "insertions": 1653,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Kuntai Du",
+          "email": "kuntai@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "f104ee4c",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-05-03T05:26:44.000Z",
+              "message": "[Core] Implement serialization / deserialization (#3140)\n\n* initial implementation of serde\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* refactor serde support to make it a wrapper around L2 adapter\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* update visualization\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* tighten user-facing doc\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix cursor comments\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* remove unnecessary assert\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* use event notifier instead of eventfd\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* move fp8 init to its own file\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 23,
+                "lines": 3536,
+                "insertions": 3531,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7702,10 +7900,10 @@
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 24,
-          "significant_commits": 16,
+          "total_commits": 25,
+          "significant_commits": 17,
           "simple_commits": 8,
-          "commit_score": 1440,
+          "commit_score": 1527,
           "commits": [
             {
               "hash": "996da472",
@@ -8210,14 +8408,35 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7e4139b7",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-03T07:36:45.000Z",
+              "message": "[MP][Observability] Add EventBus self-monitoring metrics (#3167)\n\n* [MP][Observability] Add EventBus self-monitoring metrics\n\nSurface four metrics that observe the EventBus itself, so operators can\ndetect bus backpressure or dispatch failures (per #3108):\n\n- ``lmcache_mp.event_bus.queue_depth`` (gauge): events waiting for dispatch.\n- ``lmcache_mp.event_bus.drain_lag_seconds`` (gauge): age of the oldest\n  queued event; rises when the drain thread falls behind.\n- ``lmcache_mp.event_bus.dropped_events_total`` (counter): cumulative\n  events dropped because the queue was at ``max_queue_size``.\n- ``lmcache_mp.event_bus.subscriber_exceptions`` (counter): cumulative\n  callback exceptions during dispatch, tagged by ``subscriber_name``.\n\nEventBus exposes ``queue_depth``, ``oldest_event_lag_seconds``,\n``dropped_events_count`` and ``subscriber_exception_counts`` as public\naccessors and tracks per-subscriber exception counts in ``_drain_all``.\nThe OTel registration lives in\n``subscribers/metrics/event_bus.py::init_event_bus_self_metrics`` and is\nwired up from ``mp_observability.config`` alongside the other metrics\nsubscribers.  ``event_bus.py`` stays free of OTel imports.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [MP][Observability] Simplify event-bus self-metrics; add design + user docs\n\nRefactor the EventBus self-metrics to match the existing subscriber\npattern, and document them under docs/design and the package README.\n\n- Convert the standalone ``init_event_bus_self_metrics`` function into\n  ``EventBusSelfMetricsSubscriber(EventSubscriber)``.  ``__init__`` does\n  the OTel registration; ``get_subscriptions`` returns ``{}`` because\n  these metrics are polled from bus state, not driven by events.  The\n  call site in ``mp_observability.config`` now uses the same\n  ``bus.register_subscriber(...)`` line as every other metrics\n  subscriber.\n- Drop the configurable ``meter_name`` parameter — hardcode\n  ``\"lmcache.event_bus\"`` like the other subscribers.\n- Inline the ``_subscriber_name`` helper at its single use site in\n  ``EventBus._drain_all`` and remove the standalone function.\n- Drop the ``register_gauge`` indirection inside the subscriber; call\n  ``meter.create_observable_gauge`` / ``create_observable_counter``\n  directly with one-line lambdas, matching ``L1FailureMetricsSubscriber``\n  et al.\n- Add an ``EventBus Self-Monitoring`` section to METRICS.md with the\n  four metric names, types, and source accessors.\n- Note the self-monitoring accessors and decoupling rationale in\n  event-bus.md.\n- Add ``EventBusSelfMetricsSubscriber`` to the architecture diagram in\n  the package README.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 407,
+                "insertions": 406,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 60,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 61.08,
+          "significance_ratio": 0.68,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1440,
+          "total_score": 1527,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -10292,6 +10511,87 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Kuntai Du",
+          "email": "kuntai@uchicago.edu",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 234,
+          "commits": [
+            {
+              "hash": "0ab20e1b",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-04-23T21:27:24.000Z",
+              "message": "[Core] Make sure `submit_store_task` sees key from the same model when handling multiple model. (#3074)\n\n* make sure submit_store_task has single layout\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* reduce code change by introducing a helper func\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* introduce _group_keys_by_shape\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 184,
+                "insertions": 179,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5eaea03a",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-04-24T04:58:19.000Z",
+              "message": "[Core] Implement advance_request for store/prefetch controller (#3088)\n\n* initial impl of advanced request\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* simplify\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* incorporate Yihuas design\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* minimize code diff\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* allow adding more phases without expanding parameters\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* implement signaled also to store controller\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* reduce diff\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* shrink the scope of try-except so that one request failure does not affect others\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* rename signaled to signaled adapter\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix cursor comment\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 375,
+                "insertions": 250,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f104ee4c",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-05-03T05:26:44.000Z",
+              "message": "[Core] Implement serialization / deserialization (#3140)\n\n* initial implementation of serde\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* refactor serde support to make it a wrapper around L2 adapter\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* update visualization\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* tighten user-facing doc\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix cursor comments\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* remove unnecessary assert\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* use event notifier instead of eventfd\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* move fp8 init to its own file\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 23,
+                "lines": 3536,
+                "insertions": 3531,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 234,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
           "total_commits": 3,
@@ -10369,8 +10669,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 226,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Ziwen Ning",
@@ -10574,66 +10874,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Kuntai Du",
-          "email": "kuntai@uchicago.edu",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 147,
-          "commits": [
-            {
-              "hash": "0ab20e1b",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-04-23T21:27:24.000Z",
-              "message": "[Core] Make sure `submit_store_task` sees key from the same model when handling multiple model. (#3074)\n\n* make sure submit_store_task has single layout\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* reduce code change by introducing a helper func\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* introduce _group_keys_by_shape\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
-              "stats": {
-                "files": 3,
-                "lines": 184,
-                "insertions": 179,
-                "deletions": 5
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 70
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "5eaea03a",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-04-24T04:58:19.000Z",
-              "message": "[Core] Implement advance_request for store/prefetch controller (#3088)\n\n* initial impl of advanced request\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* simplify\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* incorporate Yihuas design\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* minimize code diff\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* allow adding more phases without expanding parameters\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* implement signaled also to store controller\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* reduce diff\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* shrink the scope of try-except so that one request failure does not affect others\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* rename signaled to signaled adapter\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n* fix cursor comment\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>\n\n---------\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
-              "stats": {
-                "files": 4,
-                "lines": 375,
-                "insertions": 250,
-                "deletions": 125
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 73.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 147,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "jooho",
           "email": "Jooho.lee@xcena.com",
           "total_commits": 1,
@@ -10829,6 +11069,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Adarsh Shirawalmath",
+          "email": "114558126+adarshxs@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "6e0edff2",
+              "author": "Adarsh Shirawalmath",
+              "email": "114558126+adarshxs@users.noreply.github.com",
+              "date": "2026-05-03T23:40:26.000Z",
+              "message": "[Remote Backend] Add Hugging Face Buckets as a built-in remote storage backend (#3060)\n\n* init\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* lint\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* fix\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* use lowercase generics\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n* fix\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\nCo-authored-by: Adarsh Shirawalmath <adarsh@Adarshs-MacBook-Pro.local>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 7,
+                "lines": 1656,
+                "insertions": 1653,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Ankit Kumar",
           "email": "33925670+ankit-sam@users.noreply.github.com",
           "total_commits": 1,
@@ -10864,8 +11143,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 80,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Yiyang \"Ian\" Liu",
@@ -11263,12 +11542,12 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-05-03T00:30:06.583Z",
+    "analyzedAt": "2026-05-04T00:30:07.054Z",
     "daysBack": 2,
-    "totalCommits": 142,
-    "totalContributors": 29,
+    "totalCommits": 145,
+    "totalContributors": 30,
     "mergedFrom": {
-      "existing": 141,
+      "existing": 142,
       "new": 4
     }
   }
