@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-04T00:30:07.054Z",
-  "total_commits_analyzed": 145,
+  "last_updated": "2026-05-05T00:30:17.358Z",
+  "total_commits_analyzed": 151,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4192,6 +4192,242 @@
           "tier": "T1",
           "tier_name": "Advanced"
         }
+      ],
+      "2026-W19": [
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "87829d20",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-05-04T19:51:05.000Z",
+              "message": "[MP][Feat] Add IsolatedLRU eviction policy + per-cache_salt quotas (#3137)\n\n* [MP][Feat] Add IsolatedLRU eviction policy + per-cache_salt quotas\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 16,
+                "lines": 1534,
+                "insertions": 1503,
+                "deletions": 31
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "ed3fa706",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-04T18:56:52.000Z",
+              "message": "[MP]: Disable Prometheus HTTP server for http_server entrypoint (#3164)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 128,
+                "insertions": 118,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 12,
+                "total": 74
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 71,
+          "commits": [
+            {
+              "hash": "0a4de1d4",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-05-04T23:46:27.000Z",
+              "message": "[ROCm] Add Dockerfiles for AMD Instinct GPUs (#3101)\n\n* [ROCm] Add ROCm Dockerfiles for AMD Instinct GPUs\n\n- Dockerfile.rocm: Full build with vLLM-ROCm, HIP extensions\n  (BUILD_WITH_HIP=1), skips flashinfer/NIXL (CUDA-only)\n- Dockerfile.rocm-lightweight: One-liner install on vllm-openai-rocm\n- Targets: MI300X/MI325X (gfx942), MI350X/MI355X (gfx950)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address Gemini review: fix ROCm index URLs and BUILD_WITH_HIP\n\n- image-release: add ROCm index URL, install build deps for HIP compile\n- image-build: use dynamic ROCM_TAG from ROCM_VERSION ARG (not hardcoded)\n- image-build stable: add ROCm index URL for non-nightly vLLM\n- lightweight: add BUILD_WITH_HIP=1 for source builds\n- Redeclare ARG ROCM_VERSION after FROM in each stage\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address cursor review: fix all 5 high/medium issues\n\n- PYTORCH_ROCM_ARCH instead of AMDGPU_TARGETS (PyTorch env var)\n- CXX=hipcc added to all build commands (required by setup.py)\n- --no-build-isolation for release/lightweight (use ROCm torch)\n- Dynamic ROCM_TAG for both nightly and stable vLLM installs\n- ROCm index URL added to all vLLM install commands\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add --no-binary lmcache to force source build with HIP\n\nWithout --no-binary, uv may install pre-built CUDA wheels from\nPyPI, silently ignoring BUILD_WITH_HIP=1. Force source build to\nensure HIP extensions are compiled for ROCm.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add build deps to lightweight, add docs update reminder\n\n- Lightweight: install ninja, setuptools, wheel before source build\n  (required when using --no-build-isolation)\n- Dockerfile.rocm: add comment listing docs that need updating\n  (matching pattern from existing Dockerfile)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Match build dep versions with requirements/build.txt\n\nAlign setuptools, packaging, and setuptools_scm version constraints\nwith the canonical requirements/build.txt to prevent version drift.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Use build.txt instead of inline deps, add PYTORCH_ROCM_ARCH\n\n- COPY requirements/build.txt to avoid version drift (cursor review)\n- Set PYTORCH_ROCM_ARCH=gfx942,gfx950 for build-time compilation\n  (no GPU present during docker build)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix ROCm Dockerfiles: build lmcache from source instead of PyPI wheel\n\nPyPI lmcache>=0.4 ships only binary wheels (no sdist), so\n`--no-binary lmcache` with uv silently installs the CUDA wheel.\nThis caused the ROCm images to contain CUDA-built c_ops that fail\nat runtime on AMD GPUs.\n\nFix: clone the LMCache repo at build time and build from source\nwith BUILD_WITH_HIP=1 CXX=hipcc, ensuring HIP extensions are\ncompiled against the ROCm PyTorch in the base image.\n\nBoth image-release (Dockerfile.rocm) and Dockerfile.rocm-lightweight\nare fixed. The image-build stage was already correct (uses COPY + setup.py).\n\nVerified: lightweight image builds successfully and loads c_ops\nwith cupy-rocm-7-0 (not cupy-cuda).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build instructions: run from repo root for COPY context\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix version mismatch: install build deps from cloned source\n\nUse requirements/build.txt from the git-cloned LMCache source instead\nof COPY from build context. This ensures build deps always match the\nlmcache version being compiled, and removes the need for repo context\nentirely — the lightweight Dockerfile is now fully self-contained.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build dep mismatch: install from cloned source's build.txt\n\nInstead of COPY-ing local requirements/build.txt (which may be a\ndifferent version than the git-cloned LMCache source), install build\ndeps from the cloned repo's requirements/build.txt. This ensures\nbuild dependencies always match the LMCache version being built.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Set MAX_JOBS=2 in release and lightweight ROCm stages\n\nThe image-build stage already limits parallel compilation via MAX_JOBS=2,\nbut the image-release stage and Dockerfile.rocm-lightweight were missing\nthis limit. On build servers with many cores, unlimited ninja workers\ncan exhaust memory during HIP kernel compilation.\n\nAdd the same MAX_JOBS=2 default (configurable via --build-arg max_jobs=N)\nto both stages for consistency.\n\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\n\n---------\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Andy Luo <andyluo7@users.noreply.github.com>\nCo-authored-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Shaoting <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 169,
+                "insertions": 169,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 16,
+                "total": 71
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 71,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Leoy",
+          "email": "leiyu.cs@outlook.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "ba92e7b2",
+              "author": "Leoy",
+              "email": "leiyu.cs@outlook.com",
+              "date": "2026-05-04T18:44:30.000Z",
+              "message": "fix(disk): defer cache-policy hit update until load succeeds in get_blocking() (#3149)\n\nSigned-off-by: supermario_leo <leo.stack@outlook.com>",
+              "stats": {
+                "files": 2,
+                "lines": 139,
+                "insertions": 122,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 21,
+          "commits": [
+            {
+              "hash": "16c815ab",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-04T22:38:26.000Z",
+              "message": "  [CI] skip test PyPI publish on stable release (#3134)\n\nskip test pypi in stable release\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 12,
+                "insertions": 4,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "4857db86",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-05-04T22:02:25.000Z",
+              "message": "[Bugfix] Fix S3 L2 adapter listener race (#3188)\n\nFix S3 L2 listener notification race\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -7855,6 +8091,162 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "87829d20",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-05-04T19:51:05.000Z",
+              "message": "[MP][Feat] Add IsolatedLRU eviction policy + per-cache_salt quotas (#3137)\n\n* [MP][Feat] Add IsolatedLRU eviction policy + per-cache_salt quotas\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 16,
+                "lines": 1534,
+                "insertions": 1503,
+                "deletions": 31
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "ed3fa706",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-04T18:56:52.000Z",
+              "message": "[MP]: Disable Prometheus HTTP server for http_server entrypoint (#3164)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 128,
+                "insertions": 118,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 12,
+                "total": 74
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 71,
+          "commits": [
+            {
+              "hash": "0a4de1d4",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-05-04T23:46:27.000Z",
+              "message": "[ROCm] Add Dockerfiles for AMD Instinct GPUs (#3101)\n\n* [ROCm] Add ROCm Dockerfiles for AMD Instinct GPUs\n\n- Dockerfile.rocm: Full build with vLLM-ROCm, HIP extensions\n  (BUILD_WITH_HIP=1), skips flashinfer/NIXL (CUDA-only)\n- Dockerfile.rocm-lightweight: One-liner install on vllm-openai-rocm\n- Targets: MI300X/MI325X (gfx942), MI350X/MI355X (gfx950)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address Gemini review: fix ROCm index URLs and BUILD_WITH_HIP\n\n- image-release: add ROCm index URL, install build deps for HIP compile\n- image-build: use dynamic ROCM_TAG from ROCM_VERSION ARG (not hardcoded)\n- image-build stable: add ROCm index URL for non-nightly vLLM\n- lightweight: add BUILD_WITH_HIP=1 for source builds\n- Redeclare ARG ROCM_VERSION after FROM in each stage\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address cursor review: fix all 5 high/medium issues\n\n- PYTORCH_ROCM_ARCH instead of AMDGPU_TARGETS (PyTorch env var)\n- CXX=hipcc added to all build commands (required by setup.py)\n- --no-build-isolation for release/lightweight (use ROCm torch)\n- Dynamic ROCM_TAG for both nightly and stable vLLM installs\n- ROCm index URL added to all vLLM install commands\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add --no-binary lmcache to force source build with HIP\n\nWithout --no-binary, uv may install pre-built CUDA wheels from\nPyPI, silently ignoring BUILD_WITH_HIP=1. Force source build to\nensure HIP extensions are compiled for ROCm.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add build deps to lightweight, add docs update reminder\n\n- Lightweight: install ninja, setuptools, wheel before source build\n  (required when using --no-build-isolation)\n- Dockerfile.rocm: add comment listing docs that need updating\n  (matching pattern from existing Dockerfile)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Match build dep versions with requirements/build.txt\n\nAlign setuptools, packaging, and setuptools_scm version constraints\nwith the canonical requirements/build.txt to prevent version drift.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Use build.txt instead of inline deps, add PYTORCH_ROCM_ARCH\n\n- COPY requirements/build.txt to avoid version drift (cursor review)\n- Set PYTORCH_ROCM_ARCH=gfx942,gfx950 for build-time compilation\n  (no GPU present during docker build)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix ROCm Dockerfiles: build lmcache from source instead of PyPI wheel\n\nPyPI lmcache>=0.4 ships only binary wheels (no sdist), so\n`--no-binary lmcache` with uv silently installs the CUDA wheel.\nThis caused the ROCm images to contain CUDA-built c_ops that fail\nat runtime on AMD GPUs.\n\nFix: clone the LMCache repo at build time and build from source\nwith BUILD_WITH_HIP=1 CXX=hipcc, ensuring HIP extensions are\ncompiled against the ROCm PyTorch in the base image.\n\nBoth image-release (Dockerfile.rocm) and Dockerfile.rocm-lightweight\nare fixed. The image-build stage was already correct (uses COPY + setup.py).\n\nVerified: lightweight image builds successfully and loads c_ops\nwith cupy-rocm-7-0 (not cupy-cuda).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build instructions: run from repo root for COPY context\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix version mismatch: install build deps from cloned source\n\nUse requirements/build.txt from the git-cloned LMCache source instead\nof COPY from build context. This ensures build deps always match the\nlmcache version being compiled, and removes the need for repo context\nentirely — the lightweight Dockerfile is now fully self-contained.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build dep mismatch: install from cloned source's build.txt\n\nInstead of COPY-ing local requirements/build.txt (which may be a\ndifferent version than the git-cloned LMCache source), install build\ndeps from the cloned repo's requirements/build.txt. This ensures\nbuild dependencies always match the LMCache version being built.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Set MAX_JOBS=2 in release and lightweight ROCm stages\n\nThe image-build stage already limits parallel compilation via MAX_JOBS=2,\nbut the image-release stage and Dockerfile.rocm-lightweight were missing\nthis limit. On build servers with many cores, unlimited ninja workers\ncan exhaust memory during HIP kernel compilation.\n\nAdd the same MAX_JOBS=2 default (configurable via --build-arg max_jobs=N)\nto both stages for consistency.\n\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\n\n---------\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Andy Luo <andyluo7@users.noreply.github.com>\nCo-authored-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Shaoting <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 169,
+                "insertions": 169,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 16,
+                "total": 71
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 71,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Leoy",
+          "email": "leiyu.cs@outlook.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "ba92e7b2",
+              "author": "Leoy",
+              "email": "leiyu.cs@outlook.com",
+              "date": "2026-05-04T18:44:30.000Z",
+              "message": "fix(disk): defer cache-policy hit update until load succeeds in get_blocking() (#3149)\n\nSigned-off-by: supermario_leo <leo.stack@outlook.com>",
+              "stats": {
+                "files": 2,
+                "lines": 139,
+                "insertions": 122,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
           "total_commits": 1,
@@ -7890,8 +8282,86 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 63,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 21,
+          "commits": [
+            {
+              "hash": "16c815ab",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-04T22:38:26.000Z",
+              "message": "  [CI] skip test PyPI publish on stable release (#3134)\n\nskip test pypi in stable release\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 12,
+                "insertions": 4,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "4857db86",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-05-04T22:02:25.000Z",
+              "message": "[Bugfix] Fix S3 L2 adapter listener race (#3188)\n\nFix S3 L2 listener notification race\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
@@ -8443,10 +8913,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 17,
-          "significant_commits": 12,
+          "total_commits": 18,
+          "significant_commits": 13,
           "simple_commits": 5,
-          "commit_score": 1150,
+          "commit_score": 1224,
           "commits": [
             {
               "hash": "62cee8b0",
@@ -8804,24 +9274,45 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "ed3fa706",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-04T18:56:52.000Z",
+              "message": "[MP]: Disable Prometheus HTTP server for http_server entrypoint (#3164)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 128,
+                "insertions": 118,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 12,
+                "total": 74
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 67.6470588235294,
-          "significance_ratio": 0.7058823529411765,
+          "avg_score": 68,
+          "significance_ratio": 0.7222222222222222,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1150,
+          "total_score": 1224,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 21,
+          "total_commits": 22,
           "significant_commits": 8,
-          "simple_commits": 13,
-          "commit_score": 1067,
+          "simple_commits": 14,
+          "commit_score": 1088,
           "commits": [
             {
               "hash": "6ceed5ea",
@@ -9263,14 +9754,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "16c815ab",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-04T22:38:26.000Z",
+              "message": "  [CI] skip test PyPI publish on stable release (#3134)\n\nskip test pypi in stable release\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 12,
+                "insertions": 4,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 50.80952380952381,
-          "significance_ratio": 0.38095238095238093,
+          "avg_score": 49.45454545454545,
+          "significance_ratio": 0.36363636363636365,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1067,
+          "total_score": 1088,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9775,10 +10287,10 @@
         {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
-          "total_commits": 7,
-          "significant_commits": 5,
+          "total_commits": 8,
+          "significant_commits": 6,
           "simple_commits": 2,
-          "commit_score": 475,
+          "commit_score": 562,
           "commits": [
             {
               "hash": "456aa16c",
@@ -9926,14 +10438,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "87829d20",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-05-04T19:51:05.000Z",
+              "message": "[MP][Feat] Add IsolatedLRU eviction policy + per-cache_salt quotas (#3137)\n\n* [MP][Feat] Add IsolatedLRU eviction policy + per-cache_salt quotas\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 16,
+                "lines": 1534,
+                "insertions": 1503,
+                "deletions": 31
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 67.85714285714286,
-          "significance_ratio": 0.7142857142857143,
+          "avg_score": 70.25,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 475,
+          "total_score": 562,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10673,6 +11206,87 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 182,
+          "commits": [
+            {
+              "hash": "e7dfb09a",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-04-11T03:53:18.000Z",
+              "message": "[Feat][RawBlock] Add TP>1 support and compact batched retrieval path (#2948)\n\n* feat: Add TP > 1 support for RustRawBlockBackend\n\nAdd support for Tensor Parallelism (TP > 1) in RustRawBlockBackend\nby allowing explicit per-TP device path configuration.\n\nChanges:\n- Remove TP > 1 restriction that blocked multi-GPU deployments\n- Add support for explicit per-TP device paths via\n  rust_raw_block.per_tp_device_paths configuration\n- Add comprehensive TP=4 test suite to test_rust_raw_block_backend.py\n\nConfiguration example:\n  extra_config:\n    rust_raw_block.per_tp_device_paths:\n      \"0\": \"/dev/nvme0n1p1\"\n      \"1\": \"/dev/nvme0n1p2\"\n      \"2\": \"/dev/nvme0n1p3\"\n      \"3\": \"/dev/nvme0n1p4\"\n\nEach TP worker now uses its own partition to avoid metadata\nconflicts and data corruption. Partitions must be pre-created\non the device before use.\n\nTests:\n- test_rust_raw_block_backend_tp4_initialization: Tests TP=4 initialization\n  with per-TP device paths\n- test_rust_raw_block_backend_tp4_comprehensive_io: Comprehensive TP=4 I/O\n  test covering roundtrip, multiple operations, and TP isolation\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSource-Commit: d1209638d2c587b0750d1e95bead75389448769b\n\n* fix: validate duplicate per-TP raw block device paths\n\nAdd error when a device path is mapped to multiple TP workers.\n\nTests:\n- test_rust_raw_block_backend_tp_paths_must_be_unique: Tests TP=2 with\n  the same device paths\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: eeba57c1930ea114fd928afe0fe72ddfb6702ca2\n\n* fix: warn on cross-rank metadata load in raw block backend\n\nAdd warning when the raw block backend already has an entry of another rank.\n\nTests:\n- test_rust_raw_block_backend_warns_on_cross_rank_metadata_load: Tests\n  cross-rank device load\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: 2f59d3da371f6a509126e54d96f01f1e5aef5e4b\n\n* perf: streamline raw block batched retrieval\n\nUse one shared raw-block prefix read path for blocking and async retrieval, and keep the added TP/raw-block tests compact by sharing the setup helper.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: harden raw block batched get cleanup\n\nAddress review feedback for batched raw-block retrieval by ensuring inflight IO accounting is released when raw device setup fails, handling allocator exhaustion without asserts, and releasing allocated MemoryObj instances on read failures. Add regression tests for each case.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* docs: describe raw block batched get semantics\n\nAddress review feedback by documenting the raw-block batched retrieval overrides, including their prefix-stop return behavior and the raw-device initialization failure they may propagate.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: preserve raw block read errors and TP key lookup\n\nAddress review feedback by accepting integer YAML keys in rust_raw_block.per_tp_device_paths and restoring propagation of raw-device read failures while keeping the cleanup path intact. Add regression coverage for integer-key TP init and read-error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: release partial raw block batch on read error\n\nAddress review feedback by releasing any already-loaded MemoryObj instances when a later raw-block read in the same batch fails. Add regression coverage for a two-key batch that succeeds on the first read and fails on the second while preserving error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* refactor: tighten raw block TP device path typing\n\nAddress review feedback by replacing broad Any typing around rust_raw_block.per_tp_device_paths with an explicit mapping alias and validating the config value before use. This keeps the TP rank lookup logic robust for both string and integer YAML keys while making the helper signatures clearer.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Daejun Park <daejun7.park@samsung.com>\nCo-authored-by: Dongjin Kim <dongjin_.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 1178,
+                "insertions": 1102,
+                "deletions": 76
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 22,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2cedbea8",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-04-15T13:22:22.000Z",
+              "message": "[Feat][DAX] Optimize staged batched restore path and document modification (#2904)\n\n* Add a native batched memcpy helper and switch the DAX backend batched retrieve path to a persistent staged restore pipeline with region workers, a reusable staging slab, and broader correctness coverage.\n\n* docs: add DAX batched restore usage notes\n\n* [DAX] Remove dead restore cleanup parameter\n\n* [DAX] Share restore dispatch path for blocking get\n\n* [DAX] Document restore helper behavior\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1394,
+                "insertions": 1378,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 20,
+                "total": 75
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4857db86",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-05-04T22:02:25.000Z",
+              "message": "[Bugfix] Fix S3 L2 adapter listener race (#3188)\n\nFix S3 L2 listener notification race\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 60.666666666666664,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 182,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Ziwen Ning",
           "email": "ningziwe@amazon.com",
           "total_commits": 3,
@@ -10750,66 +11364,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 175,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 162,
-          "commits": [
-            {
-              "hash": "e7dfb09a",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-04-11T03:53:18.000Z",
-              "message": "[Feat][RawBlock] Add TP>1 support and compact batched retrieval path (#2948)\n\n* feat: Add TP > 1 support for RustRawBlockBackend\n\nAdd support for Tensor Parallelism (TP > 1) in RustRawBlockBackend\nby allowing explicit per-TP device path configuration.\n\nChanges:\n- Remove TP > 1 restriction that blocked multi-GPU deployments\n- Add support for explicit per-TP device paths via\n  rust_raw_block.per_tp_device_paths configuration\n- Add comprehensive TP=4 test suite to test_rust_raw_block_backend.py\n\nConfiguration example:\n  extra_config:\n    rust_raw_block.per_tp_device_paths:\n      \"0\": \"/dev/nvme0n1p1\"\n      \"1\": \"/dev/nvme0n1p2\"\n      \"2\": \"/dev/nvme0n1p3\"\n      \"3\": \"/dev/nvme0n1p4\"\n\nEach TP worker now uses its own partition to avoid metadata\nconflicts and data corruption. Partitions must be pre-created\non the device before use.\n\nTests:\n- test_rust_raw_block_backend_tp4_initialization: Tests TP=4 initialization\n  with per-TP device paths\n- test_rust_raw_block_backend_tp4_comprehensive_io: Comprehensive TP=4 I/O\n  test covering roundtrip, multiple operations, and TP isolation\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSource-Commit: d1209638d2c587b0750d1e95bead75389448769b\n\n* fix: validate duplicate per-TP raw block device paths\n\nAdd error when a device path is mapped to multiple TP workers.\n\nTests:\n- test_rust_raw_block_backend_tp_paths_must_be_unique: Tests TP=2 with\n  the same device paths\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: eeba57c1930ea114fd928afe0fe72ddfb6702ca2\n\n* fix: warn on cross-rank metadata load in raw block backend\n\nAdd warning when the raw block backend already has an entry of another rank.\n\nTests:\n- test_rust_raw_block_backend_warns_on_cross_rank_metadata_load: Tests\n  cross-rank device load\n\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSource-Commit: 2f59d3da371f6a509126e54d96f01f1e5aef5e4b\n\n* perf: streamline raw block batched retrieval\n\nUse one shared raw-block prefix read path for blocking and async retrieval, and keep the added TP/raw-block tests compact by sharing the setup helper.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: harden raw block batched get cleanup\n\nAddress review feedback for batched raw-block retrieval by ensuring inflight IO accounting is released when raw device setup fails, handling allocator exhaustion without asserts, and releasing allocated MemoryObj instances on read failures. Add regression tests for each case.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* docs: describe raw block batched get semantics\n\nAddress review feedback by documenting the raw-block batched retrieval overrides, including their prefix-stop return behavior and the raw-device initialization failure they may propagate.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: preserve raw block read errors and TP key lookup\n\nAddress review feedback by accepting integer YAML keys in rust_raw_block.per_tp_device_paths and restoring propagation of raw-device read failures while keeping the cleanup path intact. Add regression coverage for integer-key TP init and read-error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* fix: release partial raw block batch on read error\n\nAddress review feedback by releasing any already-loaded MemoryObj instances when a later raw-block read in the same batch fails. Add regression coverage for a two-key batch that succeeds on the first read and fails on the second while preserving error propagation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* refactor: tighten raw block TP device path typing\n\nAddress review feedback by replacing broad Any typing around rust_raw_block.per_tp_device_paths with an explicit mapping alias and validating the config value before use. This keeps the TP rank lookup logic robust for both string and integer YAML keys while making the helper signatures clearer.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: Daejun Park <daejun7.park@samsung.com>\nSigned-off-by: Dongjin Kim <dongjin_.kim@samsung.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nCo-authored-by: Daejun Park <daejun7.park@samsung.com>\nCo-authored-by: Dongjin Kim <dongjin_.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 1178,
-                "insertions": 1102,
-                "deletions": 76
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 22,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "2cedbea8",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-04-15T13:22:22.000Z",
-              "message": "[Feat][DAX] Optimize staged batched restore path and document modification (#2904)\n\n* Add a native batched memcpy helper and switch the DAX backend batched retrieve path to a persistent staged restore pipeline with region workers, a reusable staging slab, and broader correctness coverage.\n\n* docs: add DAX batched restore usage notes\n\n* [DAX] Remove dead restore cleanup parameter\n\n* [DAX] Share restore dispatch path for blocking get\n\n* [DAX] Document restore helper behavior\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 7,
-                "lines": 1394,
-                "insertions": 1378,
-                "deletions": 16
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 5,
-                "ai": 20,
-                "total": 75
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 81,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 162,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -11225,6 +11779,84 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 71,
+          "commits": [
+            {
+              "hash": "0a4de1d4",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-05-04T23:46:27.000Z",
+              "message": "[ROCm] Add Dockerfiles for AMD Instinct GPUs (#3101)\n\n* [ROCm] Add ROCm Dockerfiles for AMD Instinct GPUs\n\n- Dockerfile.rocm: Full build with vLLM-ROCm, HIP extensions\n  (BUILD_WITH_HIP=1), skips flashinfer/NIXL (CUDA-only)\n- Dockerfile.rocm-lightweight: One-liner install on vllm-openai-rocm\n- Targets: MI300X/MI325X (gfx942), MI350X/MI355X (gfx950)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address Gemini review: fix ROCm index URLs and BUILD_WITH_HIP\n\n- image-release: add ROCm index URL, install build deps for HIP compile\n- image-build: use dynamic ROCM_TAG from ROCM_VERSION ARG (not hardcoded)\n- image-build stable: add ROCm index URL for non-nightly vLLM\n- lightweight: add BUILD_WITH_HIP=1 for source builds\n- Redeclare ARG ROCM_VERSION after FROM in each stage\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address cursor review: fix all 5 high/medium issues\n\n- PYTORCH_ROCM_ARCH instead of AMDGPU_TARGETS (PyTorch env var)\n- CXX=hipcc added to all build commands (required by setup.py)\n- --no-build-isolation for release/lightweight (use ROCm torch)\n- Dynamic ROCM_TAG for both nightly and stable vLLM installs\n- ROCm index URL added to all vLLM install commands\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add --no-binary lmcache to force source build with HIP\n\nWithout --no-binary, uv may install pre-built CUDA wheels from\nPyPI, silently ignoring BUILD_WITH_HIP=1. Force source build to\nensure HIP extensions are compiled for ROCm.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add build deps to lightweight, add docs update reminder\n\n- Lightweight: install ninja, setuptools, wheel before source build\n  (required when using --no-build-isolation)\n- Dockerfile.rocm: add comment listing docs that need updating\n  (matching pattern from existing Dockerfile)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Match build dep versions with requirements/build.txt\n\nAlign setuptools, packaging, and setuptools_scm version constraints\nwith the canonical requirements/build.txt to prevent version drift.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Use build.txt instead of inline deps, add PYTORCH_ROCM_ARCH\n\n- COPY requirements/build.txt to avoid version drift (cursor review)\n- Set PYTORCH_ROCM_ARCH=gfx942,gfx950 for build-time compilation\n  (no GPU present during docker build)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix ROCm Dockerfiles: build lmcache from source instead of PyPI wheel\n\nPyPI lmcache>=0.4 ships only binary wheels (no sdist), so\n`--no-binary lmcache` with uv silently installs the CUDA wheel.\nThis caused the ROCm images to contain CUDA-built c_ops that fail\nat runtime on AMD GPUs.\n\nFix: clone the LMCache repo at build time and build from source\nwith BUILD_WITH_HIP=1 CXX=hipcc, ensuring HIP extensions are\ncompiled against the ROCm PyTorch in the base image.\n\nBoth image-release (Dockerfile.rocm) and Dockerfile.rocm-lightweight\nare fixed. The image-build stage was already correct (uses COPY + setup.py).\n\nVerified: lightweight image builds successfully and loads c_ops\nwith cupy-rocm-7-0 (not cupy-cuda).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build instructions: run from repo root for COPY context\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix version mismatch: install build deps from cloned source\n\nUse requirements/build.txt from the git-cloned LMCache source instead\nof COPY from build context. This ensures build deps always match the\nlmcache version being compiled, and removes the need for repo context\nentirely — the lightweight Dockerfile is now fully self-contained.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build dep mismatch: install from cloned source's build.txt\n\nInstead of COPY-ing local requirements/build.txt (which may be a\ndifferent version than the git-cloned LMCache source), install build\ndeps from the cloned repo's requirements/build.txt. This ensures\nbuild dependencies always match the LMCache version being built.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Set MAX_JOBS=2 in release and lightweight ROCm stages\n\nThe image-build stage already limits parallel compilation via MAX_JOBS=2,\nbut the image-release stage and Dockerfile.rocm-lightweight were missing\nthis limit. On build servers with many cores, unlimited ninja workers\ncan exhaust memory during HIP kernel compilation.\n\nAdd the same MAX_JOBS=2 default (configurable via --build-arg max_jobs=N)\nto both stages for consistency.\n\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\n\n---------\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Andy Luo <andyluo7@users.noreply.github.com>\nCo-authored-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Shaoting <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 169,
+                "insertions": 169,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 16,
+                "total": 71
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 71,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Leoy",
+          "email": "leiyu.cs@outlook.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "ba92e7b2",
+              "author": "Leoy",
+              "email": "leiyu.cs@outlook.com",
+              "date": "2026-05-04T18:44:30.000Z",
+              "message": "fix(disk): defer cache-policy hit update until load succeeds in get_blocking() (#3149)\n\nSigned-off-by: supermario_leo <leo.stack@outlook.com>",
+              "stats": {
+                "files": 2,
+                "lines": 139,
+                "insertions": 122,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "汪志鹏",
           "email": "wangzhipeng628@gmail.com",
           "total_commits": 1,
@@ -11542,13 +12174,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-05-04T00:30:07.054Z",
+    "analyzedAt": "2026-05-05T00:30:17.358Z",
     "daysBack": 2,
-    "totalCommits": 145,
-    "totalContributors": 30,
+    "totalCommits": 151,
+    "totalContributors": 32,
     "mergedFrom": {
-      "existing": 142,
-      "new": 4
+      "existing": 145,
+      "new": 9
     }
   }
 }
