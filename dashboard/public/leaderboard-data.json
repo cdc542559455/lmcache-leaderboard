@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-09T00:30:26.645Z",
-  "total_commits_analyzed": 179,
+  "last_updated": "2026-05-10T00:30:20.401Z",
+  "total_commits_analyzed": 181,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4483,6 +4483,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 220,
+          "commits": [
+            {
+              "hash": "ed3fa706",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-04T18:56:52.000Z",
+              "message": "[MP]: Disable Prometheus HTTP server for http_server entrypoint (#3164)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 128,
+                "insertions": 118,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 12,
+                "total": 74
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "24817dba",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-08T03:53:59.000Z",
+              "message": "fix(#3104): use per-instance FastAPI app to fix 503 on cache endpoints in TP=1 non-MP mode (#3146)\n\n* fix(#3104): use per-instance FastAPI app to fix 503 on cache endpoints in TP=1 non-MP mode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 138,
+                "insertions": 132,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d945fbb7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-10T00:13:44.000Z",
+              "message": "[MP] Remove the middle `/api/` in all endpoints of http_server (#3185)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 25,
+                "lines": 190,
+                "insertions": 95,
+                "deletions": 95
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73.33333333333333,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 220,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
           "total_commits": 4,
@@ -4666,64 +4747,64 @@
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 139,
+          "commit_score": 158,
           "commits": [
             {
-              "hash": "ed3fa706",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-05-04T18:56:52.000Z",
-              "message": "[MP]: Disable Prometheus HTTP server for http_server entrypoint (#3164)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "hash": "0a4de1d4",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-05-04T23:46:27.000Z",
+              "message": "[ROCm] Add Dockerfiles for AMD Instinct GPUs (#3101)\n\n* [ROCm] Add ROCm Dockerfiles for AMD Instinct GPUs\n\n- Dockerfile.rocm: Full build with vLLM-ROCm, HIP extensions\n  (BUILD_WITH_HIP=1), skips flashinfer/NIXL (CUDA-only)\n- Dockerfile.rocm-lightweight: One-liner install on vllm-openai-rocm\n- Targets: MI300X/MI325X (gfx942), MI350X/MI355X (gfx950)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address Gemini review: fix ROCm index URLs and BUILD_WITH_HIP\n\n- image-release: add ROCm index URL, install build deps for HIP compile\n- image-build: use dynamic ROCM_TAG from ROCM_VERSION ARG (not hardcoded)\n- image-build stable: add ROCm index URL for non-nightly vLLM\n- lightweight: add BUILD_WITH_HIP=1 for source builds\n- Redeclare ARG ROCM_VERSION after FROM in each stage\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address cursor review: fix all 5 high/medium issues\n\n- PYTORCH_ROCM_ARCH instead of AMDGPU_TARGETS (PyTorch env var)\n- CXX=hipcc added to all build commands (required by setup.py)\n- --no-build-isolation for release/lightweight (use ROCm torch)\n- Dynamic ROCM_TAG for both nightly and stable vLLM installs\n- ROCm index URL added to all vLLM install commands\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add --no-binary lmcache to force source build with HIP\n\nWithout --no-binary, uv may install pre-built CUDA wheels from\nPyPI, silently ignoring BUILD_WITH_HIP=1. Force source build to\nensure HIP extensions are compiled for ROCm.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add build deps to lightweight, add docs update reminder\n\n- Lightweight: install ninja, setuptools, wheel before source build\n  (required when using --no-build-isolation)\n- Dockerfile.rocm: add comment listing docs that need updating\n  (matching pattern from existing Dockerfile)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Match build dep versions with requirements/build.txt\n\nAlign setuptools, packaging, and setuptools_scm version constraints\nwith the canonical requirements/build.txt to prevent version drift.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Use build.txt instead of inline deps, add PYTORCH_ROCM_ARCH\n\n- COPY requirements/build.txt to avoid version drift (cursor review)\n- Set PYTORCH_ROCM_ARCH=gfx942,gfx950 for build-time compilation\n  (no GPU present during docker build)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix ROCm Dockerfiles: build lmcache from source instead of PyPI wheel\n\nPyPI lmcache>=0.4 ships only binary wheels (no sdist), so\n`--no-binary lmcache` with uv silently installs the CUDA wheel.\nThis caused the ROCm images to contain CUDA-built c_ops that fail\nat runtime on AMD GPUs.\n\nFix: clone the LMCache repo at build time and build from source\nwith BUILD_WITH_HIP=1 CXX=hipcc, ensuring HIP extensions are\ncompiled against the ROCm PyTorch in the base image.\n\nBoth image-release (Dockerfile.rocm) and Dockerfile.rocm-lightweight\nare fixed. The image-build stage was already correct (uses COPY + setup.py).\n\nVerified: lightweight image builds successfully and loads c_ops\nwith cupy-rocm-7-0 (not cupy-cuda).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build instructions: run from repo root for COPY context\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix version mismatch: install build deps from cloned source\n\nUse requirements/build.txt from the git-cloned LMCache source instead\nof COPY from build context. This ensures build deps always match the\nlmcache version being compiled, and removes the need for repo context\nentirely — the lightweight Dockerfile is now fully self-contained.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build dep mismatch: install from cloned source's build.txt\n\nInstead of COPY-ing local requirements/build.txt (which may be a\ndifferent version than the git-cloned LMCache source), install build\ndeps from the cloned repo's requirements/build.txt. This ensures\nbuild dependencies always match the LMCache version being built.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Set MAX_JOBS=2 in release and lightweight ROCm stages\n\nThe image-build stage already limits parallel compilation via MAX_JOBS=2,\nbut the image-release stage and Dockerfile.rocm-lightweight were missing\nthis limit. On build servers with many cores, unlimited ninja workers\ncan exhaust memory during HIP kernel compilation.\n\nAdd the same MAX_JOBS=2 default (configurable via --build-arg max_jobs=N)\nto both stages for consistency.\n\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\n\n---------\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Andy Luo <andyluo7@users.noreply.github.com>\nCo-authored-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Shaoting <shaotingf@uchicago.edu>",
               "stats": {
-                "files": 6,
-                "lines": 128,
-                "insertions": 118,
+                "files": 2,
+                "lines": 169,
+                "insertions": 169,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 16,
+                "total": 71
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f35456e1",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-05-09T01:19:35.000Z",
+              "message": "[ROCm] Add Triton block-sparse attention backend for CacheBlend (#3092)\n\n* [ROCm] Add Triton block-sparse attention backend for CacheBlend\n\nAdds LMCTritonSparseBackend as a drop-in replacement for\nLMCFlashInferSparseBackend that works on both CUDA and ROCm\nvia Triton kernels (no flashinfer dependency).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>",
+              "stats": {
+                "files": 10,
+                "lines": 1404,
+                "insertions": 1394,
                 "deletions": 10
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 12,
-                "total": 74
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "24817dba",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-05-08T03:53:59.000Z",
-              "message": "fix(#3104): use per-instance FastAPI app to fix 503 on cache endpoints in TP=1 non-MP mode (#3146)\n\n* fix(#3104): use per-instance FastAPI app to fix 503 on cache endpoints in TP=1 non-MP mode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 2,
-                "lines": 138,
-                "insertions": 132,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 13,
-                "total": 65
+                "ai": 25,
+                "total": 87
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 69.5,
+          "avg_score": 79,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 139,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "total_score": 158,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Roy Huang",
@@ -4956,45 +5037,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "andyluo7",
-          "email": "43718156+andyluo7@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 71,
-          "commits": [
-            {
-              "hash": "0a4de1d4",
-              "author": "andyluo7",
-              "email": "43718156+andyluo7@users.noreply.github.com",
-              "date": "2026-05-04T23:46:27.000Z",
-              "message": "[ROCm] Add Dockerfiles for AMD Instinct GPUs (#3101)\n\n* [ROCm] Add ROCm Dockerfiles for AMD Instinct GPUs\n\n- Dockerfile.rocm: Full build with vLLM-ROCm, HIP extensions\n  (BUILD_WITH_HIP=1), skips flashinfer/NIXL (CUDA-only)\n- Dockerfile.rocm-lightweight: One-liner install on vllm-openai-rocm\n- Targets: MI300X/MI325X (gfx942), MI350X/MI355X (gfx950)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address Gemini review: fix ROCm index URLs and BUILD_WITH_HIP\n\n- image-release: add ROCm index URL, install build deps for HIP compile\n- image-build: use dynamic ROCM_TAG from ROCM_VERSION ARG (not hardcoded)\n- image-build stable: add ROCm index URL for non-nightly vLLM\n- lightweight: add BUILD_WITH_HIP=1 for source builds\n- Redeclare ARG ROCM_VERSION after FROM in each stage\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address cursor review: fix all 5 high/medium issues\n\n- PYTORCH_ROCM_ARCH instead of AMDGPU_TARGETS (PyTorch env var)\n- CXX=hipcc added to all build commands (required by setup.py)\n- --no-build-isolation for release/lightweight (use ROCm torch)\n- Dynamic ROCM_TAG for both nightly and stable vLLM installs\n- ROCm index URL added to all vLLM install commands\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add --no-binary lmcache to force source build with HIP\n\nWithout --no-binary, uv may install pre-built CUDA wheels from\nPyPI, silently ignoring BUILD_WITH_HIP=1. Force source build to\nensure HIP extensions are compiled for ROCm.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add build deps to lightweight, add docs update reminder\n\n- Lightweight: install ninja, setuptools, wheel before source build\n  (required when using --no-build-isolation)\n- Dockerfile.rocm: add comment listing docs that need updating\n  (matching pattern from existing Dockerfile)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Match build dep versions with requirements/build.txt\n\nAlign setuptools, packaging, and setuptools_scm version constraints\nwith the canonical requirements/build.txt to prevent version drift.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Use build.txt instead of inline deps, add PYTORCH_ROCM_ARCH\n\n- COPY requirements/build.txt to avoid version drift (cursor review)\n- Set PYTORCH_ROCM_ARCH=gfx942,gfx950 for build-time compilation\n  (no GPU present during docker build)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix ROCm Dockerfiles: build lmcache from source instead of PyPI wheel\n\nPyPI lmcache>=0.4 ships only binary wheels (no sdist), so\n`--no-binary lmcache` with uv silently installs the CUDA wheel.\nThis caused the ROCm images to contain CUDA-built c_ops that fail\nat runtime on AMD GPUs.\n\nFix: clone the LMCache repo at build time and build from source\nwith BUILD_WITH_HIP=1 CXX=hipcc, ensuring HIP extensions are\ncompiled against the ROCm PyTorch in the base image.\n\nBoth image-release (Dockerfile.rocm) and Dockerfile.rocm-lightweight\nare fixed. The image-build stage was already correct (uses COPY + setup.py).\n\nVerified: lightweight image builds successfully and loads c_ops\nwith cupy-rocm-7-0 (not cupy-cuda).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build instructions: run from repo root for COPY context\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix version mismatch: install build deps from cloned source\n\nUse requirements/build.txt from the git-cloned LMCache source instead\nof COPY from build context. This ensures build deps always match the\nlmcache version being compiled, and removes the need for repo context\nentirely — the lightweight Dockerfile is now fully self-contained.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build dep mismatch: install from cloned source's build.txt\n\nInstead of COPY-ing local requirements/build.txt (which may be a\ndifferent version than the git-cloned LMCache source), install build\ndeps from the cloned repo's requirements/build.txt. This ensures\nbuild dependencies always match the LMCache version being built.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Set MAX_JOBS=2 in release and lightweight ROCm stages\n\nThe image-build stage already limits parallel compilation via MAX_JOBS=2,\nbut the image-release stage and Dockerfile.rocm-lightweight were missing\nthis limit. On build servers with many cores, unlimited ninja workers\ncan exhaust memory during HIP kernel compilation.\n\nAdd the same MAX_JOBS=2 default (configurable via --build-arg max_jobs=N)\nto both stages for consistency.\n\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\n\n---------\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Andy Luo <andyluo7@users.noreply.github.com>\nCo-authored-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Shaoting <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 169,
-                "insertions": 169,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 15,
-                "ai": 16,
-                "total": 71
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 71,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 71,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -9087,6 +9129,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 220,
+          "commits": [
+            {
+              "hash": "ed3fa706",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-04T18:56:52.000Z",
+              "message": "[MP]: Disable Prometheus HTTP server for http_server entrypoint (#3164)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 6,
+                "lines": 128,
+                "insertions": 118,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 12,
+                "total": 74
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "24817dba",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-08T03:53:59.000Z",
+              "message": "fix(#3104): use per-instance FastAPI app to fix 503 on cache endpoints in TP=1 non-MP mode (#3146)\n\n* fix(#3104): use per-instance FastAPI app to fix 503 on cache endpoints in TP=1 non-MP mode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 138,
+                "insertions": 132,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d945fbb7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-10T00:13:44.000Z",
+              "message": "[MP] Remove the middle `/api/` in all endpoints of http_server (#3185)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 25,
+                "lines": 190,
+                "insertions": 95,
+                "deletions": 95
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73.33333333333333,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 220,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
           "total_commits": 4,
@@ -9270,64 +9393,64 @@
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 139,
+          "commit_score": 158,
           "commits": [
             {
-              "hash": "ed3fa706",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-05-04T18:56:52.000Z",
-              "message": "[MP]: Disable Prometheus HTTP server for http_server entrypoint (#3164)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "hash": "0a4de1d4",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-05-04T23:46:27.000Z",
+              "message": "[ROCm] Add Dockerfiles for AMD Instinct GPUs (#3101)\n\n* [ROCm] Add ROCm Dockerfiles for AMD Instinct GPUs\n\n- Dockerfile.rocm: Full build with vLLM-ROCm, HIP extensions\n  (BUILD_WITH_HIP=1), skips flashinfer/NIXL (CUDA-only)\n- Dockerfile.rocm-lightweight: One-liner install on vllm-openai-rocm\n- Targets: MI300X/MI325X (gfx942), MI350X/MI355X (gfx950)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address Gemini review: fix ROCm index URLs and BUILD_WITH_HIP\n\n- image-release: add ROCm index URL, install build deps for HIP compile\n- image-build: use dynamic ROCM_TAG from ROCM_VERSION ARG (not hardcoded)\n- image-build stable: add ROCm index URL for non-nightly vLLM\n- lightweight: add BUILD_WITH_HIP=1 for source builds\n- Redeclare ARG ROCM_VERSION after FROM in each stage\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address cursor review: fix all 5 high/medium issues\n\n- PYTORCH_ROCM_ARCH instead of AMDGPU_TARGETS (PyTorch env var)\n- CXX=hipcc added to all build commands (required by setup.py)\n- --no-build-isolation for release/lightweight (use ROCm torch)\n- Dynamic ROCM_TAG for both nightly and stable vLLM installs\n- ROCm index URL added to all vLLM install commands\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add --no-binary lmcache to force source build with HIP\n\nWithout --no-binary, uv may install pre-built CUDA wheels from\nPyPI, silently ignoring BUILD_WITH_HIP=1. Force source build to\nensure HIP extensions are compiled for ROCm.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add build deps to lightweight, add docs update reminder\n\n- Lightweight: install ninja, setuptools, wheel before source build\n  (required when using --no-build-isolation)\n- Dockerfile.rocm: add comment listing docs that need updating\n  (matching pattern from existing Dockerfile)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Match build dep versions with requirements/build.txt\n\nAlign setuptools, packaging, and setuptools_scm version constraints\nwith the canonical requirements/build.txt to prevent version drift.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Use build.txt instead of inline deps, add PYTORCH_ROCM_ARCH\n\n- COPY requirements/build.txt to avoid version drift (cursor review)\n- Set PYTORCH_ROCM_ARCH=gfx942,gfx950 for build-time compilation\n  (no GPU present during docker build)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix ROCm Dockerfiles: build lmcache from source instead of PyPI wheel\n\nPyPI lmcache>=0.4 ships only binary wheels (no sdist), so\n`--no-binary lmcache` with uv silently installs the CUDA wheel.\nThis caused the ROCm images to contain CUDA-built c_ops that fail\nat runtime on AMD GPUs.\n\nFix: clone the LMCache repo at build time and build from source\nwith BUILD_WITH_HIP=1 CXX=hipcc, ensuring HIP extensions are\ncompiled against the ROCm PyTorch in the base image.\n\nBoth image-release (Dockerfile.rocm) and Dockerfile.rocm-lightweight\nare fixed. The image-build stage was already correct (uses COPY + setup.py).\n\nVerified: lightweight image builds successfully and loads c_ops\nwith cupy-rocm-7-0 (not cupy-cuda).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build instructions: run from repo root for COPY context\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix version mismatch: install build deps from cloned source\n\nUse requirements/build.txt from the git-cloned LMCache source instead\nof COPY from build context. This ensures build deps always match the\nlmcache version being compiled, and removes the need for repo context\nentirely — the lightweight Dockerfile is now fully self-contained.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build dep mismatch: install from cloned source's build.txt\n\nInstead of COPY-ing local requirements/build.txt (which may be a\ndifferent version than the git-cloned LMCache source), install build\ndeps from the cloned repo's requirements/build.txt. This ensures\nbuild dependencies always match the LMCache version being built.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Set MAX_JOBS=2 in release and lightweight ROCm stages\n\nThe image-build stage already limits parallel compilation via MAX_JOBS=2,\nbut the image-release stage and Dockerfile.rocm-lightweight were missing\nthis limit. On build servers with many cores, unlimited ninja workers\ncan exhaust memory during HIP kernel compilation.\n\nAdd the same MAX_JOBS=2 default (configurable via --build-arg max_jobs=N)\nto both stages for consistency.\n\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\n\n---------\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Andy Luo <andyluo7@users.noreply.github.com>\nCo-authored-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Shaoting <shaotingf@uchicago.edu>",
               "stats": {
-                "files": 6,
-                "lines": 128,
-                "insertions": 118,
+                "files": 2,
+                "lines": 169,
+                "insertions": 169,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 16,
+                "total": 71
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f35456e1",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-05-09T01:19:35.000Z",
+              "message": "[ROCm] Add Triton block-sparse attention backend for CacheBlend (#3092)\n\n* [ROCm] Add Triton block-sparse attention backend for CacheBlend\n\nAdds LMCTritonSparseBackend as a drop-in replacement for\nLMCFlashInferSparseBackend that works on both CUDA and ROCm\nvia Triton kernels (no flashinfer dependency).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>",
+              "stats": {
+                "files": 10,
+                "lines": 1404,
+                "insertions": 1394,
                 "deletions": 10
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 12,
-                "total": 74
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "24817dba",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-05-08T03:53:59.000Z",
-              "message": "fix(#3104): use per-instance FastAPI app to fix 503 on cache endpoints in TP=1 non-MP mode (#3146)\n\n* fix(#3104): use per-instance FastAPI app to fix 503 on cache endpoints in TP=1 non-MP mode\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 2,
-                "lines": 138,
-                "insertions": 132,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 13,
-                "total": 65
+                "ai": 25,
+                "total": 87
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 69.5,
+          "avg_score": 79,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 139,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "total_score": 158,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Adarsh Shirawalmath",
@@ -9599,8 +9722,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "chunxiaozheng",
@@ -9638,45 +9761,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "andyluo7",
-          "email": "43718156+andyluo7@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 71,
-          "commits": [
-            {
-              "hash": "0a4de1d4",
-              "author": "andyluo7",
-              "email": "43718156+andyluo7@users.noreply.github.com",
-              "date": "2026-05-04T23:46:27.000Z",
-              "message": "[ROCm] Add Dockerfiles for AMD Instinct GPUs (#3101)\n\n* [ROCm] Add ROCm Dockerfiles for AMD Instinct GPUs\n\n- Dockerfile.rocm: Full build with vLLM-ROCm, HIP extensions\n  (BUILD_WITH_HIP=1), skips flashinfer/NIXL (CUDA-only)\n- Dockerfile.rocm-lightweight: One-liner install on vllm-openai-rocm\n- Targets: MI300X/MI325X (gfx942), MI350X/MI355X (gfx950)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address Gemini review: fix ROCm index URLs and BUILD_WITH_HIP\n\n- image-release: add ROCm index URL, install build deps for HIP compile\n- image-build: use dynamic ROCM_TAG from ROCM_VERSION ARG (not hardcoded)\n- image-build stable: add ROCm index URL for non-nightly vLLM\n- lightweight: add BUILD_WITH_HIP=1 for source builds\n- Redeclare ARG ROCM_VERSION after FROM in each stage\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address cursor review: fix all 5 high/medium issues\n\n- PYTORCH_ROCM_ARCH instead of AMDGPU_TARGETS (PyTorch env var)\n- CXX=hipcc added to all build commands (required by setup.py)\n- --no-build-isolation for release/lightweight (use ROCm torch)\n- Dynamic ROCM_TAG for both nightly and stable vLLM installs\n- ROCm index URL added to all vLLM install commands\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add --no-binary lmcache to force source build with HIP\n\nWithout --no-binary, uv may install pre-built CUDA wheels from\nPyPI, silently ignoring BUILD_WITH_HIP=1. Force source build to\nensure HIP extensions are compiled for ROCm.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add build deps to lightweight, add docs update reminder\n\n- Lightweight: install ninja, setuptools, wheel before source build\n  (required when using --no-build-isolation)\n- Dockerfile.rocm: add comment listing docs that need updating\n  (matching pattern from existing Dockerfile)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Match build dep versions with requirements/build.txt\n\nAlign setuptools, packaging, and setuptools_scm version constraints\nwith the canonical requirements/build.txt to prevent version drift.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Use build.txt instead of inline deps, add PYTORCH_ROCM_ARCH\n\n- COPY requirements/build.txt to avoid version drift (cursor review)\n- Set PYTORCH_ROCM_ARCH=gfx942,gfx950 for build-time compilation\n  (no GPU present during docker build)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix ROCm Dockerfiles: build lmcache from source instead of PyPI wheel\n\nPyPI lmcache>=0.4 ships only binary wheels (no sdist), so\n`--no-binary lmcache` with uv silently installs the CUDA wheel.\nThis caused the ROCm images to contain CUDA-built c_ops that fail\nat runtime on AMD GPUs.\n\nFix: clone the LMCache repo at build time and build from source\nwith BUILD_WITH_HIP=1 CXX=hipcc, ensuring HIP extensions are\ncompiled against the ROCm PyTorch in the base image.\n\nBoth image-release (Dockerfile.rocm) and Dockerfile.rocm-lightweight\nare fixed. The image-build stage was already correct (uses COPY + setup.py).\n\nVerified: lightweight image builds successfully and loads c_ops\nwith cupy-rocm-7-0 (not cupy-cuda).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build instructions: run from repo root for COPY context\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix version mismatch: install build deps from cloned source\n\nUse requirements/build.txt from the git-cloned LMCache source instead\nof COPY from build context. This ensures build deps always match the\nlmcache version being compiled, and removes the need for repo context\nentirely — the lightweight Dockerfile is now fully self-contained.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build dep mismatch: install from cloned source's build.txt\n\nInstead of COPY-ing local requirements/build.txt (which may be a\ndifferent version than the git-cloned LMCache source), install build\ndeps from the cloned repo's requirements/build.txt. This ensures\nbuild dependencies always match the LMCache version being built.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Set MAX_JOBS=2 in release and lightweight ROCm stages\n\nThe image-build stage already limits parallel compilation via MAX_JOBS=2,\nbut the image-release stage and Dockerfile.rocm-lightweight were missing\nthis limit. On build servers with many cores, unlimited ninja workers\ncan exhaust memory during HIP kernel compilation.\n\nAdd the same MAX_JOBS=2 default (configurable via --build-arg max_jobs=N)\nto both stages for consistency.\n\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\n\n---------\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Andy Luo <andyluo7@users.noreply.github.com>\nCo-authored-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Shaoting <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 169,
-                "insertions": 169,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 15,
-                "ai": 16,
-                "total": 71
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 71,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 71,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -10566,10 +10650,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 19,
-          "significant_commits": 14,
+          "total_commits": 20,
+          "significant_commits": 15,
           "simple_commits": 5,
-          "commit_score": 1289,
+          "commit_score": 1370,
           "commits": [
             {
               "hash": "62cee8b0",
@@ -10969,14 +11053,35 @@
                 "total": 65
               },
               "classification": "significant"
+            },
+            {
+              "hash": "d945fbb7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-10T00:13:44.000Z",
+              "message": "[MP] Remove the middle `/api/` in all endpoints of http_server (#3185)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 25,
+                "lines": 190,
+                "insertions": 95,
+                "deletions": 95
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 67.84210526315789,
-          "significance_ratio": 0.7368421052631579,
+          "avg_score": 68.5,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1289,
+          "total_score": 1370,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -13519,6 +13624,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 158,
+          "commits": [
+            {
+              "hash": "0a4de1d4",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-05-04T23:46:27.000Z",
+              "message": "[ROCm] Add Dockerfiles for AMD Instinct GPUs (#3101)\n\n* [ROCm] Add ROCm Dockerfiles for AMD Instinct GPUs\n\n- Dockerfile.rocm: Full build with vLLM-ROCm, HIP extensions\n  (BUILD_WITH_HIP=1), skips flashinfer/NIXL (CUDA-only)\n- Dockerfile.rocm-lightweight: One-liner install on vllm-openai-rocm\n- Targets: MI300X/MI325X (gfx942), MI350X/MI355X (gfx950)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address Gemini review: fix ROCm index URLs and BUILD_WITH_HIP\n\n- image-release: add ROCm index URL, install build deps for HIP compile\n- image-build: use dynamic ROCM_TAG from ROCM_VERSION ARG (not hardcoded)\n- image-build stable: add ROCm index URL for non-nightly vLLM\n- lightweight: add BUILD_WITH_HIP=1 for source builds\n- Redeclare ARG ROCM_VERSION after FROM in each stage\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address cursor review: fix all 5 high/medium issues\n\n- PYTORCH_ROCM_ARCH instead of AMDGPU_TARGETS (PyTorch env var)\n- CXX=hipcc added to all build commands (required by setup.py)\n- --no-build-isolation for release/lightweight (use ROCm torch)\n- Dynamic ROCM_TAG for both nightly and stable vLLM installs\n- ROCm index URL added to all vLLM install commands\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add --no-binary lmcache to force source build with HIP\n\nWithout --no-binary, uv may install pre-built CUDA wheels from\nPyPI, silently ignoring BUILD_WITH_HIP=1. Force source build to\nensure HIP extensions are compiled for ROCm.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add build deps to lightweight, add docs update reminder\n\n- Lightweight: install ninja, setuptools, wheel before source build\n  (required when using --no-build-isolation)\n- Dockerfile.rocm: add comment listing docs that need updating\n  (matching pattern from existing Dockerfile)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Match build dep versions with requirements/build.txt\n\nAlign setuptools, packaging, and setuptools_scm version constraints\nwith the canonical requirements/build.txt to prevent version drift.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Use build.txt instead of inline deps, add PYTORCH_ROCM_ARCH\n\n- COPY requirements/build.txt to avoid version drift (cursor review)\n- Set PYTORCH_ROCM_ARCH=gfx942,gfx950 for build-time compilation\n  (no GPU present during docker build)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix ROCm Dockerfiles: build lmcache from source instead of PyPI wheel\n\nPyPI lmcache>=0.4 ships only binary wheels (no sdist), so\n`--no-binary lmcache` with uv silently installs the CUDA wheel.\nThis caused the ROCm images to contain CUDA-built c_ops that fail\nat runtime on AMD GPUs.\n\nFix: clone the LMCache repo at build time and build from source\nwith BUILD_WITH_HIP=1 CXX=hipcc, ensuring HIP extensions are\ncompiled against the ROCm PyTorch in the base image.\n\nBoth image-release (Dockerfile.rocm) and Dockerfile.rocm-lightweight\nare fixed. The image-build stage was already correct (uses COPY + setup.py).\n\nVerified: lightweight image builds successfully and loads c_ops\nwith cupy-rocm-7-0 (not cupy-cuda).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build instructions: run from repo root for COPY context\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix version mismatch: install build deps from cloned source\n\nUse requirements/build.txt from the git-cloned LMCache source instead\nof COPY from build context. This ensures build deps always match the\nlmcache version being compiled, and removes the need for repo context\nentirely — the lightweight Dockerfile is now fully self-contained.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build dep mismatch: install from cloned source's build.txt\n\nInstead of COPY-ing local requirements/build.txt (which may be a\ndifferent version than the git-cloned LMCache source), install build\ndeps from the cloned repo's requirements/build.txt. This ensures\nbuild dependencies always match the LMCache version being built.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Set MAX_JOBS=2 in release and lightweight ROCm stages\n\nThe image-build stage already limits parallel compilation via MAX_JOBS=2,\nbut the image-release stage and Dockerfile.rocm-lightweight were missing\nthis limit. On build servers with many cores, unlimited ninja workers\ncan exhaust memory during HIP kernel compilation.\n\nAdd the same MAX_JOBS=2 default (configurable via --build-arg max_jobs=N)\nto both stages for consistency.\n\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\n\n---------\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Andy Luo <andyluo7@users.noreply.github.com>\nCo-authored-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Shaoting <shaotingf@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 169,
+                "insertions": 169,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 16,
+                "total": 71
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f35456e1",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-05-09T01:19:35.000Z",
+              "message": "[ROCm] Add Triton block-sparse attention backend for CacheBlend (#3092)\n\n* [ROCm] Add Triton block-sparse attention backend for CacheBlend\n\nAdds LMCTritonSparseBackend as a drop-in replacement for\nLMCFlashInferSparseBackend that works on both CUDA and ROCm\nvia Triton kernels (no flashinfer dependency).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>",
+              "stats": {
+                "files": 10,
+                "lines": 1404,
+                "insertions": 1394,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 79,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 158,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "jooho",
           "email": "Jooho.lee@xcena.com",
           "total_commits": 1,
@@ -13731,8 +13896,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Adarsh Shirawalmath",
@@ -13965,45 +14130,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "andyluo7",
-          "email": "43718156+andyluo7@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 71,
-          "commits": [
-            {
-              "hash": "0a4de1d4",
-              "author": "andyluo7",
-              "email": "43718156+andyluo7@users.noreply.github.com",
-              "date": "2026-05-04T23:46:27.000Z",
-              "message": "[ROCm] Add Dockerfiles for AMD Instinct GPUs (#3101)\n\n* [ROCm] Add ROCm Dockerfiles for AMD Instinct GPUs\n\n- Dockerfile.rocm: Full build with vLLM-ROCm, HIP extensions\n  (BUILD_WITH_HIP=1), skips flashinfer/NIXL (CUDA-only)\n- Dockerfile.rocm-lightweight: One-liner install on vllm-openai-rocm\n- Targets: MI300X/MI325X (gfx942), MI350X/MI355X (gfx950)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address Gemini review: fix ROCm index URLs and BUILD_WITH_HIP\n\n- image-release: add ROCm index URL, install build deps for HIP compile\n- image-build: use dynamic ROCM_TAG from ROCM_VERSION ARG (not hardcoded)\n- image-build stable: add ROCm index URL for non-nightly vLLM\n- lightweight: add BUILD_WITH_HIP=1 for source builds\n- Redeclare ARG ROCM_VERSION after FROM in each stage\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Address cursor review: fix all 5 high/medium issues\n\n- PYTORCH_ROCM_ARCH instead of AMDGPU_TARGETS (PyTorch env var)\n- CXX=hipcc added to all build commands (required by setup.py)\n- --no-build-isolation for release/lightweight (use ROCm torch)\n- Dynamic ROCM_TAG for both nightly and stable vLLM installs\n- ROCm index URL added to all vLLM install commands\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add --no-binary lmcache to force source build with HIP\n\nWithout --no-binary, uv may install pre-built CUDA wheels from\nPyPI, silently ignoring BUILD_WITH_HIP=1. Force source build to\nensure HIP extensions are compiled for ROCm.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Add build deps to lightweight, add docs update reminder\n\n- Lightweight: install ninja, setuptools, wheel before source build\n  (required when using --no-build-isolation)\n- Dockerfile.rocm: add comment listing docs that need updating\n  (matching pattern from existing Dockerfile)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Match build dep versions with requirements/build.txt\n\nAlign setuptools, packaging, and setuptools_scm version constraints\nwith the canonical requirements/build.txt to prevent version drift.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Use build.txt instead of inline deps, add PYTORCH_ROCM_ARCH\n\n- COPY requirements/build.txt to avoid version drift (cursor review)\n- Set PYTORCH_ROCM_ARCH=gfx942,gfx950 for build-time compilation\n  (no GPU present during docker build)\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix ROCm Dockerfiles: build lmcache from source instead of PyPI wheel\n\nPyPI lmcache>=0.4 ships only binary wheels (no sdist), so\n`--no-binary lmcache` with uv silently installs the CUDA wheel.\nThis caused the ROCm images to contain CUDA-built c_ops that fail\nat runtime on AMD GPUs.\n\nFix: clone the LMCache repo at build time and build from source\nwith BUILD_WITH_HIP=1 CXX=hipcc, ensuring HIP extensions are\ncompiled against the ROCm PyTorch in the base image.\n\nBoth image-release (Dockerfile.rocm) and Dockerfile.rocm-lightweight\nare fixed. The image-build stage was already correct (uses COPY + setup.py).\n\nVerified: lightweight image builds successfully and loads c_ops\nwith cupy-rocm-7-0 (not cupy-cuda).\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build instructions: run from repo root for COPY context\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix version mismatch: install build deps from cloned source\n\nUse requirements/build.txt from the git-cloned LMCache source instead\nof COPY from build context. This ensures build deps always match the\nlmcache version being compiled, and removes the need for repo context\nentirely — the lightweight Dockerfile is now fully self-contained.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Fix build dep mismatch: install from cloned source's build.txt\n\nInstead of COPY-ing local requirements/build.txt (which may be a\ndifferent version than the git-cloned LMCache source), install build\ndeps from the cloned repo's requirements/build.txt. This ensures\nbuild dependencies always match the LMCache version being built.\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\n\n* Set MAX_JOBS=2 in release and lightweight ROCm stages\n\nThe image-build stage already limits parallel compilation via MAX_JOBS=2,\nbut the image-release stage and Dockerfile.rocm-lightweight were missing\nthis limit. On build servers with many cores, unlimited ninja workers\ncan exhaust memory during HIP kernel compilation.\n\nAdd the same MAX_JOBS=2 default (configurable via --build-arg max_jobs=N)\nto both stages for consistency.\n\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\n\n---------\n\nSigned-off-by: Andy Luo <andyluo7@users.noreply.github.com>\nSigned-off-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Andy Luo <andyluo7@users.noreply.github.com>\nCo-authored-by: Andy Luo <andy.linluo@gmail.com>\nCo-authored-by: Shaoting <shaotingf@uchicago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 169,
-                "insertions": 169,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 15,
-                "ai": 16,
-                "total": 71
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 71,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 71,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -14442,13 +14568,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-05-09T00:30:26.645Z",
+    "analyzedAt": "2026-05-10T00:30:20.401Z",
     "daysBack": 2,
-    "totalCommits": 179,
+    "totalCommits": 181,
     "totalContributors": 37,
     "mergedFrom": {
-      "existing": 170,
-      "new": 15
+      "existing": 179,
+      "new": 11
     }
   }
 }
