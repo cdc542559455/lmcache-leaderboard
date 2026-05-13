@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-12T00:30:21.294Z",
-  "total_commits_analyzed": 193,
+  "last_updated": "2026-05-13T00:30:26.138Z",
+  "total_commits_analyzed": 197,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -5442,6 +5442,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "588ee83c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-11T02:37:42.000Z",
+              "message": "feat(pd_backend): fully async PD backend (#3038)\n\n* feat(pd_backend): fully async PD KV transfer backend\n\nReplace sync PDBackend with async implementation:\n- Non-blocking transfer: batched_submit_put_task returns immediately\n  (fire-and-forget enqueue) instead of blocking vLLM worker thread\n  until remote alloc + RDMA write complete\n- Event-driven flow control: replace time.sleep busy-wait polling\n  with Condition-based notification, waking immediately when\n  resources are freed\n- Self-contained resource release: remove() internally calls\n  ref_count_down() and decrements inflight counter, eliminating\n  caller responsibility for manual cleanup. cache_engine.py\n  updated with _is_sync_pd_backend() guard to prevent double-free\n- Startup capacity validation: new pd_max_prefill_len config raises\n  ValueError at init if buffer cannot hold the max prefill length,\n  catching misconfiguration before runtime\n- Configurable timeouts: pd_allocation_timeout_sec,\n  pd_shutdown_timeout_sec, pd_condition_poll_interval_sec replace\n  scattered hardcoded constants\n- Backward compatible: split into pd_backend.py (sync) and\n  pd_backend_async.py (async), selectable per-instance via\n  pd_backend_mode config (default: \"async\"). Sync and async\n  instances can coexist in the same cluster — e.g. sender on\n  async while receiver on sync, or vice versa — with no wire\n  protocol incompatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 21,
+                "lines": 3469,
+                "insertions": 3444,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "834619a8",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-12T05:47:56.000Z",
+              "message": "feat(infra): Global abstraction of torch.device for multi-device support (#3091)\n\nInitial step towards platform-agnostic, by using `torch_dev` to substitute `torch.cuda`\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 52,
+                "lines": 901,
+                "insertions": 613,
+                "deletions": 288
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
           "total_commits": 2,
@@ -5502,24 +5562,24 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
+          "name": "Wenwen-Chen",
+          "email": "wenwen.chen@samsung.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 87,
           "commits": [
             {
-              "hash": "588ee83c",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-11T02:37:42.000Z",
-              "message": "feat(pd_backend): fully async PD backend (#3038)\n\n* feat(pd_backend): fully async PD KV transfer backend\n\nReplace sync PDBackend with async implementation:\n- Non-blocking transfer: batched_submit_put_task returns immediately\n  (fire-and-forget enqueue) instead of blocking vLLM worker thread\n  until remote alloc + RDMA write complete\n- Event-driven flow control: replace time.sleep busy-wait polling\n  with Condition-based notification, waking immediately when\n  resources are freed\n- Self-contained resource release: remove() internally calls\n  ref_count_down() and decrements inflight counter, eliminating\n  caller responsibility for manual cleanup. cache_engine.py\n  updated with _is_sync_pd_backend() guard to prevent double-free\n- Startup capacity validation: new pd_max_prefill_len config raises\n  ValueError at init if buffer cannot hold the max prefill length,\n  catching misconfiguration before runtime\n- Configurable timeouts: pd_allocation_timeout_sec,\n  pd_shutdown_timeout_sec, pd_condition_poll_interval_sec replace\n  scattered hardcoded constants\n- Backward compatible: split into pd_backend.py (sync) and\n  pd_backend_async.py (async), selectable per-instance via\n  pd_backend_mode config (default: \"async\"). Sync and async\n  instances can coexist in the same cluster — e.g. sender on\n  async while receiver on sync, or vice versa — with no wire\n  protocol incompatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "hash": "70399c6c",
+              "author": "Wenwen-Chen",
+              "email": "wenwen.chen@samsung.com",
+              "date": "2026-05-12T21:31:18.000Z",
+              "message": "[Feat]Support 3FS storage backend by using its Usrbio(native) APIs  (#3120)\n\nSigned-off-by: Wenwen Chen <wenwen.chen@samsung.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
               "stats": {
-                "files": 21,
-                "lines": 3469,
-                "insertions": 3444,
-                "deletions": 25
+                "files": 6,
+                "lines": 1960,
+                "insertions": 1960,
+                "deletions": 0
               },
               "scores": {
                 "loc": 30,
@@ -5539,6 +5599,84 @@
           "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "b86d20a9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-12T02:24:32.000Z",
+              "message": "[MP] Add test-cache CLI command for GPU mode (#3013)\n\n* [MP] Add `lmcache bench kvcache`\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 13,
+                "lines": 2838,
+                "insertions": 2817,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yuwei An",
+          "email": "ayw.sirius19@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 85,
+          "commits": [
+            {
+              "hash": "ae24dad7",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-05-12T00:30:52.000Z",
+              "message": "[MP][Observability] Drop inflated L2 store throughput on fast-path (#3257)\n\nSome L2 adapters (mock, fs, nixl_store) skip the write when a key is\nalready present in the backend.  That fast-path collapses the time\nbetween L2_STORE_SUBMITTED and L2_STORE_COMPLETED to near-zero, while\nthe submitted-bytes count carried on SUBMITTED stays unchanged.  The\nL2 throughput subscriber computes ``bytes / dt`` and the result blows\nup -- locally I saw mean store throughput at 52.9 GB/s on a mock\nadapter pinned to 4 GB/s, with bimodal samples in the 100-250 GB/s\nbucket from duplicate-store batches.\n\nPlumb the bytes actually transferred per task from the adapter through\nto the subscriber so the histogram reflects real work:\n\n  * ``L2AdapterInterface.pop_completed_store_task_bytes`` (default ``{}``)\n    lets adapters opt-in to per-task transfer reporting.  Adapters\n    without a fast-path keep the current behavior.\n  * mock / fs / nixl_store override it and accumulate ``total_bytes``\n    over actually-written keys in their existing store coroutines.\n  * ``SerdeWrapper`` forwards inner reports, preserving \"unknown\" when\n    the inner adapter doesn't track.\n  * ``StoreController`` queries both maps when draining and surfaces\n    ``bytes_transferred`` on ``L2_STORE_COMPLETED`` when known.\n  * ``L2ThroughputSubscriber._on_store_completed`` prefers the override\n    when present: ``>0`` records ``bytes_transferred / dt``, ``0`` drops\n    the sample (no useful throughput from a no-op), absent falls back\n    to submitted-bytes / dt.\n\nAfter the change the local script shows mean store throughput 3.98 GB/s\n(matching the mock's ``--mock-bandwidth-gb 4``) and the 100-250 GB/s\noutlier bucket is empty.\n\nSigned-off-by: yuwei <ayw.sirius19@gmail.com>\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 233,
+                "insertions": 214,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 23,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Jinhwan Suk (석진환)",
@@ -5576,8 +5714,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Samuel Shen",
@@ -5615,8 +5753,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 26,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
@@ -9787,10 +9925,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
-          "significant_commits": 3,
+          "total_commits": 4,
+          "significant_commits": 4,
           "simple_commits": 0,
-          "commit_score": 220,
+          "commit_score": 307,
           "commits": [
             {
               "hash": "ed3fa706",
@@ -9854,14 +9992,35 @@
                 "total": 81
               },
               "classification": "significant"
+            },
+            {
+              "hash": "b86d20a9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-12T02:24:32.000Z",
+              "message": "[MP] Add test-cache CLI command for GPU mode (#3013)\n\n* [MP] Add `lmcache bench kvcache`\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 13,
+                "lines": 2838,
+                "insertions": 2817,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 73.33333333333333,
+          "avg_score": 76.75,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 220,
+          "total_score": 307,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9947,6 +10106,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "588ee83c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-11T02:37:42.000Z",
+              "message": "feat(pd_backend): fully async PD backend (#3038)\n\n* feat(pd_backend): fully async PD KV transfer backend\n\nReplace sync PDBackend with async implementation:\n- Non-blocking transfer: batched_submit_put_task returns immediately\n  (fire-and-forget enqueue) instead of blocking vLLM worker thread\n  until remote alloc + RDMA write complete\n- Event-driven flow control: replace time.sleep busy-wait polling\n  with Condition-based notification, waking immediately when\n  resources are freed\n- Self-contained resource release: remove() internally calls\n  ref_count_down() and decrements inflight counter, eliminating\n  caller responsibility for manual cleanup. cache_engine.py\n  updated with _is_sync_pd_backend() guard to prevent double-free\n- Startup capacity validation: new pd_max_prefill_len config raises\n  ValueError at init if buffer cannot hold the max prefill length,\n  catching misconfiguration before runtime\n- Configurable timeouts: pd_allocation_timeout_sec,\n  pd_shutdown_timeout_sec, pd_condition_poll_interval_sec replace\n  scattered hardcoded constants\n- Backward compatible: split into pd_backend.py (sync) and\n  pd_backend_async.py (async), selectable per-instance via\n  pd_backend_mode config (default: \"async\"). Sync and async\n  instances can coexist in the same cluster — e.g. sender on\n  async while receiver on sync, or vice versa — with no wire\n  protocol incompatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 21,
+                "lines": 3469,
+                "insertions": 3444,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "834619a8",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-12T05:47:56.000Z",
+              "message": "feat(infra): Global abstraction of torch.device for multi-device support (#3091)\n\nInitial step towards platform-agnostic, by using `torch_dev` to substitute `torch.cuda`\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 52,
+                "lines": 901,
+                "insertions": 613,
+                "deletions": 288
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "andyluo7",
           "email": "43718156+andyluo7@users.noreply.github.com",
           "total_commits": 2,
@@ -10003,6 +10222,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 158,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yuwei An",
+          "email": "ayw.sirius19@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 150,
+          "commits": [
+            {
+              "hash": "7b43b6db",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-05-05T22:56:03.000Z",
+              "message": "[CI] Verify full MP observability surface in long_doc_qa_l2 (#3194)\n\nReuses the existing L2 long_doc_qa step instead of paying for a second\nmodel load. Two changes to that script:\n\n1. Bump --metrics-sample-rate to 1.0 on the L2 relaunch so the\n   histograms record on every event. The default 0.01 would leave them\n   empty in this short workload and flake the assertions.\n\n2. After the existing L2 data-flow checks, add a \"Step 5\" block that\n   asserts every metric we publish from MP mode actually advances:\n   - newer counters with label dimensions advance > 0 and carry the\n     expected label (l2_store_completed/l2_load_completed by l2_name,\n     lookup_requested_tokens/lookup_hit_tokens by model_name,\n     num_chunks_loaded by worker_id)\n   - the four throughput histograms record at least one observation\n     (lmcache_mp_l0_l1_*_throughput_gbs and lmcache_mp_l2_*_throughput_gbs)\n\nThe label-presence check catches the case where a counter fires but the\nattribute plumbing broke — e.g. a future refactor that drops the\nattribute at emit time but still ticks the counter.\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\nCo-authored-by: Claude Opus 4.7 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 182,
+                "insertions": 173,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ae24dad7",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-05-12T00:30:52.000Z",
+              "message": "[MP][Observability] Drop inflated L2 store throughput on fast-path (#3257)\n\nSome L2 adapters (mock, fs, nixl_store) skip the write when a key is\nalready present in the backend.  That fast-path collapses the time\nbetween L2_STORE_SUBMITTED and L2_STORE_COMPLETED to near-zero, while\nthe submitted-bytes count carried on SUBMITTED stays unchanged.  The\nL2 throughput subscriber computes ``bytes / dt`` and the result blows\nup -- locally I saw mean store throughput at 52.9 GB/s on a mock\nadapter pinned to 4 GB/s, with bimodal samples in the 100-250 GB/s\nbucket from duplicate-store batches.\n\nPlumb the bytes actually transferred per task from the adapter through\nto the subscriber so the histogram reflects real work:\n\n  * ``L2AdapterInterface.pop_completed_store_task_bytes`` (default ``{}``)\n    lets adapters opt-in to per-task transfer reporting.  Adapters\n    without a fast-path keep the current behavior.\n  * mock / fs / nixl_store override it and accumulate ``total_bytes``\n    over actually-written keys in their existing store coroutines.\n  * ``SerdeWrapper`` forwards inner reports, preserving \"unknown\" when\n    the inner adapter doesn't track.\n  * ``StoreController`` queries both maps when draining and surfaces\n    ``bytes_transferred`` on ``L2_STORE_COMPLETED`` when known.\n  * ``L2ThroughputSubscriber._on_store_completed`` prefers the override\n    when present: ``>0`` records ``bytes_transferred / dt``, ``0`` drops\n    the sample (no useful throughput from a no-op), absent falls back\n    to submitted-bytes / dt.\n\nAfter the change the local script shows mean store throughput 3.98 GB/s\n(matching the mock's ``--mock-bandwidth-gb 4``) and the 100-250 GB/s\noutlier bucket is empty.\n\nSigned-off-by: yuwei <ayw.sirius19@gmail.com>\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 233,
+                "insertions": 214,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 23,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 150,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10163,24 +10442,24 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
+          "name": "Wenwen-Chen",
+          "email": "wenwen.chen@samsung.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 87,
           "commits": [
             {
-              "hash": "588ee83c",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-11T02:37:42.000Z",
-              "message": "feat(pd_backend): fully async PD backend (#3038)\n\n* feat(pd_backend): fully async PD KV transfer backend\n\nReplace sync PDBackend with async implementation:\n- Non-blocking transfer: batched_submit_put_task returns immediately\n  (fire-and-forget enqueue) instead of blocking vLLM worker thread\n  until remote alloc + RDMA write complete\n- Event-driven flow control: replace time.sleep busy-wait polling\n  with Condition-based notification, waking immediately when\n  resources are freed\n- Self-contained resource release: remove() internally calls\n  ref_count_down() and decrements inflight counter, eliminating\n  caller responsibility for manual cleanup. cache_engine.py\n  updated with _is_sync_pd_backend() guard to prevent double-free\n- Startup capacity validation: new pd_max_prefill_len config raises\n  ValueError at init if buffer cannot hold the max prefill length,\n  catching misconfiguration before runtime\n- Configurable timeouts: pd_allocation_timeout_sec,\n  pd_shutdown_timeout_sec, pd_condition_poll_interval_sec replace\n  scattered hardcoded constants\n- Backward compatible: split into pd_backend.py (sync) and\n  pd_backend_async.py (async), selectable per-instance via\n  pd_backend_mode config (default: \"async\"). Sync and async\n  instances can coexist in the same cluster — e.g. sender on\n  async while receiver on sync, or vice versa — with no wire\n  protocol incompatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "hash": "70399c6c",
+              "author": "Wenwen-Chen",
+              "email": "wenwen.chen@samsung.com",
+              "date": "2026-05-12T21:31:18.000Z",
+              "message": "[Feat]Support 3FS storage backend by using its Usrbio(native) APIs  (#3120)\n\nSigned-off-by: Wenwen Chen <wenwen.chen@samsung.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
               "stats": {
-                "files": 21,
-                "lines": 3469,
-                "insertions": 3444,
-                "deletions": 25
+                "files": 6,
+                "lines": 1960,
+                "insertions": 1960,
+                "deletions": 0
               },
               "scores": {
                 "loc": 30,
@@ -10198,8 +10477,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "elliotz-ai",
@@ -10237,8 +10516,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 80,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Chizheng Fang",
@@ -10382,45 +10661,6 @@
                 "files": 10,
                 "keyword": 12,
                 "ai": 13,
-                "total": 65
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 65,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 65,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Yuwei An",
-          "email": "ayw.sirius19@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 65,
-          "commits": [
-            {
-              "hash": "7b43b6db",
-              "author": "Yuwei An",
-              "email": "ayw.sirius19@gmail.com",
-              "date": "2026-05-05T22:56:03.000Z",
-              "message": "[CI] Verify full MP observability surface in long_doc_qa_l2 (#3194)\n\nReuses the existing L2 long_doc_qa step instead of paying for a second\nmodel load. Two changes to that script:\n\n1. Bump --metrics-sample-rate to 1.0 on the L2 relaunch so the\n   histograms record on every event. The default 0.01 would leave them\n   empty in this short workload and flake the assertions.\n\n2. After the existing L2 data-flow checks, add a \"Step 5\" block that\n   asserts every metric we publish from MP mode actually advances:\n   - newer counters with label dimensions advance > 0 and carry the\n     expected label (l2_store_completed/l2_load_completed by l2_name,\n     lookup_requested_tokens/lookup_hit_tokens by model_name,\n     num_chunks_loaded by worker_id)\n   - the four throughput histograms record at least one observation\n     (lmcache_mp_l0_l1_*_throughput_gbs and lmcache_mp_l2_*_throughput_gbs)\n\nThe label-presence check catches the case where a counter fires but the\nattribute plumbing broke — e.g. a future refactor that drops the\nattribute at emit time but still ticks the counter.\n\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>\nCo-authored-by: Claude Opus 4.7 (1M context) <noreply@anthropic.com>",
-              "stats": {
-                "files": 1,
-                "lines": 182,
-                "insertions": 173,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 12,
-                "ai": 18,
                 "total": 65
               },
               "classification": "significant"
@@ -10627,8 +10867,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 40,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "weizhoublue",
@@ -11993,10 +12233,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 20,
-          "significant_commits": 15,
+          "total_commits": 21,
+          "significant_commits": 16,
           "simple_commits": 5,
-          "commit_score": 1370,
+          "commit_score": 1457,
           "commits": [
             {
               "hash": "62cee8b0",
@@ -12417,14 +12657,35 @@
                 "total": 81
               },
               "classification": "significant"
+            },
+            {
+              "hash": "b86d20a9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-12T02:24:32.000Z",
+              "message": "[MP] Add test-cache CLI command for GPU mode (#3013)\n\n* [MP] Add `lmcache bench kvcache`\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 13,
+                "lines": 2838,
+                "insertions": 2817,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 68.5,
-          "significance_ratio": 0.75,
+          "avg_score": 69.38095238095238,
+          "significance_ratio": 0.7619047619047619,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1370,
+          "total_score": 1457,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -12974,10 +13235,10 @@
         {
           "name": "Yuwei An",
           "email": "ayw.sirius19@gmail.com",
-          "total_commits": 9,
-          "significant_commits": 9,
+          "total_commits": 10,
+          "significant_commits": 10,
           "simple_commits": 0,
-          "commit_score": 744,
+          "commit_score": 829,
           "commits": [
             {
               "hash": "11068230",
@@ -13167,14 +13428,35 @@
                 "total": 65
               },
               "classification": "significant"
+            },
+            {
+              "hash": "ae24dad7",
+              "author": "Yuwei An",
+              "email": "ayw.sirius19@gmail.com",
+              "date": "2026-05-12T00:30:52.000Z",
+              "message": "[MP][Observability] Drop inflated L2 store throughput on fast-path (#3257)\n\nSome L2 adapters (mock, fs, nixl_store) skip the write when a key is\nalready present in the backend.  That fast-path collapses the time\nbetween L2_STORE_SUBMITTED and L2_STORE_COMPLETED to near-zero, while\nthe submitted-bytes count carried on SUBMITTED stays unchanged.  The\nL2 throughput subscriber computes ``bytes / dt`` and the result blows\nup -- locally I saw mean store throughput at 52.9 GB/s on a mock\nadapter pinned to 4 GB/s, with bimodal samples in the 100-250 GB/s\nbucket from duplicate-store batches.\n\nPlumb the bytes actually transferred per task from the adapter through\nto the subscriber so the histogram reflects real work:\n\n  * ``L2AdapterInterface.pop_completed_store_task_bytes`` (default ``{}``)\n    lets adapters opt-in to per-task transfer reporting.  Adapters\n    without a fast-path keep the current behavior.\n  * mock / fs / nixl_store override it and accumulate ``total_bytes``\n    over actually-written keys in their existing store coroutines.\n  * ``SerdeWrapper`` forwards inner reports, preserving \"unknown\" when\n    the inner adapter doesn't track.\n  * ``StoreController`` queries both maps when draining and surfaces\n    ``bytes_transferred`` on ``L2_STORE_COMPLETED`` when known.\n  * ``L2ThroughputSubscriber._on_store_completed`` prefers the override\n    when present: ``>0`` records ``bytes_transferred / dt``, ``0`` drops\n    the sample (no useful throughput from a no-op), absent falls back\n    to submitted-bytes / dt.\n\nAfter the change the local script shows mean store throughput 3.98 GB/s\n(matching the mock's ``--mock-bandwidth-gb 4``) and the 100-250 GB/s\noutlier bucket is empty.\n\nSigned-off-by: yuwei <ayw.sirius19@gmail.com>\nSigned-off-by: Oasis-Git <ayw.sirius19@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 233,
+                "insertions": 214,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 23,
+                "total": 85
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 82.66666666666667,
+          "avg_score": 82.9,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 744,
+          "total_score": 829,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -13367,10 +13649,10 @@
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 6,
-          "significant_commits": 5,
+          "total_commits": 7,
+          "significant_commits": 6,
           "simple_commits": 1,
-          "commit_score": 467,
+          "commit_score": 554,
           "commits": [
             {
               "hash": "b73b69bf",
@@ -13497,14 +13779,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "834619a8",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-12T05:47:56.000Z",
+              "message": "feat(infra): Global abstraction of torch.device for multi-device support (#3091)\n\nInitial step towards platform-agnostic, by using `torch_dev` to substitute `torch.cuda`\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 52,
+                "lines": 901,
+                "insertions": 613,
+                "deletions": 288
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 77.83333333333333,
-          "significance_ratio": 0.8333333333333334,
+          "avg_score": 79.14285714285714,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 467,
+          "total_score": 554,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -14841,6 +15144,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Wenwen-Chen",
+          "email": "wenwen.chen@samsung.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "70399c6c",
+              "author": "Wenwen-Chen",
+              "email": "wenwen.chen@samsung.com",
+              "date": "2026-05-12T21:31:18.000Z",
+              "message": "[Feat]Support 3FS storage backend by using its Usrbio(native) APIs  (#3120)\n\nSigned-off-by: Wenwen Chen <wenwen.chen@samsung.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 6,
+                "lines": 1960,
+                "insertions": 1960,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Ankit Kumar",
           "email": "33925670+ankit-sam@users.noreply.github.com",
           "total_commits": 1,
@@ -15470,13 +15812,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-05-12T00:30:21.294Z",
+    "analyzedAt": "2026-05-13T00:30:26.138Z",
     "daysBack": 2,
-    "totalCommits": 193,
-    "totalContributors": 38,
+    "totalCommits": 197,
+    "totalContributors": 39,
     "mergedFrom": {
-      "existing": 182,
-      "new": 12
+      "existing": 193,
+      "new": 15
     }
   }
 }
