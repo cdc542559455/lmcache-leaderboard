@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-14T00:30:12.368Z",
-  "total_commits_analyzed": 201,
+  "last_updated": "2026-05-15T00:30:19.876Z",
+  "total_commits_analyzed": 209,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -5300,10 +5300,10 @@
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 6,
-          "significant_commits": 2,
-          "simple_commits": 4,
-          "commit_score": 258,
+          "total_commits": 9,
+          "significant_commits": 3,
+          "simple_commits": 6,
+          "commit_score": 433,
           "commits": [
             {
               "hash": "6f85bd74",
@@ -5430,24 +5430,168 @@
                 "total": 62
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8cfac668",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-14T23:26:42.000Z",
+              "message": "Revert \"[CLI][CB] propagate CLI kvcache clear to CB fingerprint tabe\" (#3276)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 68,
+                "insertions": 0,
+                "deletions": 68
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 6,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "80813a14",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-14T22:04:45.000Z",
+              "message": "[CI] swap default to cu13 wheels and cu12.9 secondary (#3275)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 380,
+                "insertions": 216,
+                "deletions": 164
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "63ba5399",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-14T22:00:54.000Z",
+              "message": "[CLI] Fix slim install imports and smoke-test wheel in CI (#3279)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 86,
+                "insertions": 70,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 43,
+          "avg_score": 48.111111111111114,
           "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 258,
+          "total_score": 433,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jason Goldschmidt",
+          "email": "92800864+jgoldsch12@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 251,
+          "commits": [
+            {
+              "hash": "d16c9aa7",
+              "author": "Jason Goldschmidt",
+              "email": "92800864+jgoldsch12@users.noreply.github.com",
+              "date": "2026-05-13T04:42:20.000Z",
+              "message": "feat: Add batched_contains() override for NixlDynamicStorageBackend (#2966)\n\nAdd batched_contains() override for NixlDynamicStorageBackend\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
+              "stats": {
+                "files": 3,
+                "lines": 445,
+                "insertions": 436,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f02ad538",
+              "author": "Jason Goldschmidt",
+              "email": "92800864+jgoldsch12@users.noreply.github.com",
+              "date": "2026-05-15T00:18:00.000Z",
+              "message": "[CORE] Add nixl_endpoint_list for per-worker object-storage endpoint distribution (#2861)\n\n* Add nixl_endpoint_list for per-worker object-storage endpoint distribution\n\nAllow TP workers to target different object-storage endpoints when using\nthe NIXL OBJ backend. When nixl_endpoint_list is set in extra_config,\neach worker selects an endpoint round-robin by worker_id, overriding any\nnixl_backend_params.endpoint_override (with a logged warning).\n\nAlso copies nixl_backend_params into a new dict before mutating it to\navoid modifying the original config.\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>\n\n* Use local_worker_id instead of worker_id is correct for multi-host\ndeployments because:\n\n  • worker_id is the global worker ID across all hosts (e.g., host 0 has\n  workers 0-7, host 1 has workers 8-15)\n  • local_worker_id is the worker ID within the local host (e.g., workers\n  0-7 on each host)\n  • For endpoint distribution, each host should distribute its local\n  workers across endpoints independently\n  • This ensures proper load balancing in multi-host scenarios where each\n  host may have its own set of endpoints\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>\n\n---------\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
+              "stats": {
+                "files": 5,
+                "lines": 240,
+                "insertions": 232,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 24,
+                "total": 86
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "168bbb97",
+              "author": "Jason Goldschmidt",
+              "email": "92800864+jgoldsch12@users.noreply.github.com",
+              "date": "2026-05-14T23:33:17.000Z",
+              "message": "fix: use unique device_id per OBJ register/deregister cycle (#2989)\n\nWhen nixl_async_put is enabled, the async PUT cleanup thread\n(deregister_memory) and the sync GET worker thread (register_memory +\nprepXfer) both use device_id = 0, 1, 2, ... for every call.  NIXL's OBJ\nbackend tracks registrations in a flat unordered_map<uint64, string>\nkeyed by devId with no reference counting.  The PUT's deregister erases\ndevId=0, which deletes the GET's registration, causing postXfer to fail\nwith NIXL_ERR_INVALID_PARAM and crashing the EngineCore.\n\nFix: replace the per-call sequential device_id (idx) with a\nmonotonically increasing counter protected by a threading.Lock.  Each\nregister/deregister cycle now gets globally unique IDs, so concurrent\noperations never collide in devIdToObjKey_.\n\nFixes https://github.com/LMCache/LMCache/issues/2983\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
+              "stats": {
+                "files": 3,
+                "lines": 208,
+                "insertions": 206,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 251,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 2,
+          "total_commits": 3,
           "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 174,
+          "simple_commits": 1,
+          "commit_score": 195,
           "commits": [
             {
               "hash": "588ee83c",
@@ -5490,14 +5634,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "478a53ce",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-15T00:15:35.000Z",
+              "message": "fix(hpu): implement device-specific initialize_kvcaches_ptr for HPU connector (#3287)\n\n* fix(hpu): implement device-specific initialize_kvcaches_ptr for HPU connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 13,
+                "insertions": 11,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 87,
-          "significance_ratio": 1,
+          "avg_score": 65,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 174,
+          "total_score": 195,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -5562,45 +5727,6 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Jason Goldschmidt",
-          "email": "92800864+jgoldsch12@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 90,
-          "commits": [
-            {
-              "hash": "d16c9aa7",
-              "author": "Jason Goldschmidt",
-              "email": "92800864+jgoldsch12@users.noreply.github.com",
-              "date": "2026-05-13T04:42:20.000Z",
-              "message": "feat: Add batched_contains() override for NixlDynamicStorageBackend (#2966)\n\nAdd batched_contains() override for NixlDynamicStorageBackend\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
-              "stats": {
-                "files": 3,
-                "lines": 445,
-                "insertions": 436,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 90,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 90,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Wenwen-Chen",
           "email": "wenwen.chen@samsung.com",
           "total_commits": 1,
@@ -5658,6 +5784,84 @@
                 "lines": 2838,
                 "insertions": 2817,
                 "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Adeline",
+          "email": "452803476@qq.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "384d79df",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-05-14T09:34:16.000Z",
+              "message": "[MP][Feat] Support DeepSeek V4 (#3171)\n\n[MP][Feat] Support DeepSeek V4 with per-group compressed KV layout\n\nIntroduce per-KV-layer-group compress_ratio and physical_chunk_size in KVLayerGroupInfo so that compressed groups (e.g. DSv4 indexer) can coexist with plain groups under a single GPUCacheContext. KVLayerGroupsManager now derives the layout from vllm_logical_block_size and per-group layout hints; GPU connector utils and MP server/protocols are updated accordingly. Tests are adapted to the new API.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
+              "stats": {
+                "files": 18,
+                "lines": 904,
+                "insertions": 787,
+                "deletions": 117
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Chizheng Fang",
+          "email": "93508110+fcczzz@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "8b4adad1",
+              "author": "Chizheng Fang",
+              "email": "93508110+fcczzz@users.noreply.github.com",
+              "date": "2026-05-14T02:26:22.000Z",
+              "message": "[MP]: Add per-operation dedicated worker pools to Mooncake L2 connector (#3227)\n\n* [Feat]: Implement batch operations in MooncakeConnector for multi-task queue support\n\nAdd do_batch_get/do_batch_set/do_batch_exists/do_batch_delete methods to\nMooncakeConnector and connector_base, enabling efficient multi-task queue\nprocessing via Mooncake's native batch APIs.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Feat]: Add batch operations to Mooncake L2 adapter\n\nWire batch_get/batch_set/batch_exists/batch_delete through the Python L2\nadapter, with comprehensive tests covering success and failure paths.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Generalize worker pool config to a per-op key map\n\nReplace the hardcoded lookup_workers / retrieve_workers / store_workers\ntriplet with a flexible per_op_workers dict that maps lane keys\n(\"lookup\", \"retrieve\", \"store\", \"delete\") to dedicated worker counts.\nUnmentioned keys fall back to the shared num_workers pool, removing the\n\"all must be set together\" constraint and making it easy to add new\noperation lanes without changing the API surface.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Store WorkerLane via unique_ptr in lanes_ map\n\nWorkerLane contains std::mutex and std::condition_variable, which are\nnon-movable, making WorkerLane itself non-movable. Using it as a value\nin std::unordered_map violates the container's movable requirement.\nSwitch to std::unordered_map<std::string, std::unique_ptr<WorkerLane>>\nto fix this.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Make lane_key_for_op's static reverse map thread-safe\n\nThe manual if (reverse.empty()) + population pattern had a data race when\nmultiple threads called lane_key_for_op concurrently. Use an IIFE to\nbuild the map during static initialization, which C++11 guarantees\nthread-safe exactly-once. Also include the unknown Op value in the\nexception message.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Include per_op_workers in native client kwargs for Mooncake L2 adapter\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Test]: Add `per_op_workers=None` to `FakeClient`\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Simplified arguments passing to LMCacheMooncakeClient\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Move per_op_workers parse/validate to shared interfaces\n\nPromote `parse_per_op_workers` from mooncake/pybind.cpp to\nconnector_pybind_utils.h (C++) and `_validate_per_op_workers` /\n`_parse_per_op_workers_from_dict` from MooncakeStoreL2AdapterConfig\nto L2AdapterConfigBase (Python), so all backends can reuse them.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n---------\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>",
+              "stats": {
+                "files": 9,
+                "lines": 550,
+                "insertions": 487,
+                "deletions": 63
               },
               "scores": {
                 "loc": 30,
@@ -5870,8 +6074,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Samuel Shen",
@@ -5909,8 +6113,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 26,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -9395,219 +9599,12 @@
       ],
       "2026-05": [
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 9,
-          "significant_commits": 5,
-          "simple_commits": 4,
-          "commit_score": 528,
-          "commits": [
-            {
-              "hash": "67e9a786",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-01T04:06:48.000Z",
-              "message": "[Chore][HotFix]: EC UT (#3178)\n\n[Fix] EC connector test on CPU-only CI + index.rst toctree rendering\n\n- tests/v1/test_ec_connector.py: pin device to \"cpu\" via patching\n  get_vllm_device_type for the load step. On CPU-only CI runners vLLM's\n  UnspecifiedPlatform returns \"\" for device_type, which made\n  tensor.to(device=\"\") raise inside ECCacheEngine.get.\n- docs/source/index.rst: add the missing blank lines between the\n  toctree entries and the trailing :raw-html: directive for the \"KV\n  Cache offloading and sharing\" and \"Non-KV caching\" sections. Sphinx\n  was warning \"Explicit markup ends without a blank line\" and the\n  Non-KV caching section did not render reliably.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 2,
-                "lines": 13,
-                "insertions": 12,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 1,
-                "total": 26
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "90e80f5b",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-01T01:31:34.000Z",
-              "message": "Revert \"[CI]: add full tag selectively\" (#2969)\n\nRevert \"[CI]: add full tag selectively (#2820)\"\n\nThis reverts commit 097209645a473140205e12e49b96c0d6e853ec43.",
-              "stats": {
-                "files": 1,
-                "lines": 32,
-                "insertions": 1,
-                "deletions": 31
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 3,
-                "total": 28
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "4d74fcee",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-03T00:12:11.000Z",
-              "message": "[Docs] Move TensorRT-LLM into quickstart as a tab (#3182)\n\nPromote TRT-LLM from its own \"Serving engine integrations\" section to\na third tab alongside vLLM and SGLang in the main quickstart, so all\nthree engines surface at the same level. Trim the page to install +\nmode-picker (in-process / MP) launch snippets; the deeper material\n(CUDA-IPC internals, explicit connector_module pinning, hit\nverification recipe) was implementation detail that doesn't belong\nin a quickstart and is dropped here.\n\nRemoves docs/source/integrations/ and its toctree entry in index.rst.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 4,
-                "lines": 315,
-                "insertions": 124,
-                "deletions": 191
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "7e4139b7",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-03T07:36:45.000Z",
-              "message": "[MP][Observability] Add EventBus self-monitoring metrics (#3167)\n\n* [MP][Observability] Add EventBus self-monitoring metrics\n\nSurface four metrics that observe the EventBus itself, so operators can\ndetect bus backpressure or dispatch failures (per #3108):\n\n- ``lmcache_mp.event_bus.queue_depth`` (gauge): events waiting for dispatch.\n- ``lmcache_mp.event_bus.drain_lag_seconds`` (gauge): age of the oldest\n  queued event; rises when the drain thread falls behind.\n- ``lmcache_mp.event_bus.dropped_events_total`` (counter): cumulative\n  events dropped because the queue was at ``max_queue_size``.\n- ``lmcache_mp.event_bus.subscriber_exceptions`` (counter): cumulative\n  callback exceptions during dispatch, tagged by ``subscriber_name``.\n\nEventBus exposes ``queue_depth``, ``oldest_event_lag_seconds``,\n``dropped_events_count`` and ``subscriber_exception_counts`` as public\naccessors and tracks per-subscriber exception counts in ``_drain_all``.\nThe OTel registration lives in\n``subscribers/metrics/event_bus.py::init_event_bus_self_metrics`` and is\nwired up from ``mp_observability.config`` alongside the other metrics\nsubscribers.  ``event_bus.py`` stays free of OTel imports.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [MP][Observability] Simplify event-bus self-metrics; add design + user docs\n\nRefactor the EventBus self-metrics to match the existing subscriber\npattern, and document them under docs/design and the package README.\n\n- Convert the standalone ``init_event_bus_self_metrics`` function into\n  ``EventBusSelfMetricsSubscriber(EventSubscriber)``.  ``__init__`` does\n  the OTel registration; ``get_subscriptions`` returns ``{}`` because\n  these metrics are polled from bus state, not driven by events.  The\n  call site in ``mp_observability.config`` now uses the same\n  ``bus.register_subscriber(...)`` line as every other metrics\n  subscriber.\n- Drop the configurable ``meter_name`` parameter — hardcode\n  ``\"lmcache.event_bus\"`` like the other subscribers.\n- Inline the ``_subscriber_name`` helper at its single use site in\n  ``EventBus._drain_all`` and remove the standalone function.\n- Drop the ``register_gauge`` indirection inside the subscriber; call\n  ``meter.create_observable_gauge`` / ``create_observable_counter``\n  directly with one-line lambdas, matching ``L1FailureMetricsSubscriber``\n  et al.\n- Add an ``EventBus Self-Monitoring`` section to METRICS.md with the\n  four metric names, types, and source accessors.\n- Note the self-monitoring accessors and decoupling rationale in\n  event-bus.md.\n- Add ``EventBusSelfMetricsSubscriber`` to the architecture diagram in\n  the package README.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 9,
-                "lines": 407,
-                "insertions": 406,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a5df0abc",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-05T18:55:50.000Z",
-              "message": "[CLI[[Bench] Add prefix-suffix-tuner workload for tiered + Blending KV-cache (#3195)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 9,
-                "lines": 1867,
-                "insertions": 1862,
-                "deletions": 5
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "dd8c2e1d",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-05T18:33:14.000Z",
-              "message": "[Docs] Add Recipes section with MiniMax-M2 as first entry (#3199)\n\nIntroduce a Recipes section under docs/source/recipes/ that catalogs\nmodel architectures validated end-to-end with LMCache. Each recipe page\nuses synced engine tabs (vLLM / SGLang / TRT-LLM) so the format scales\nas more architectures are validated. MiniMax-M2 is the first entry.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 3,
-                "lines": 155,
-                "insertions": 155,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "375243fd",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-07T21:56:51.000Z",
-              "message": "[Observability] Expose blend token-level hit-rate counters (#3196)\n\n* [Obs] Expose blend token-level hit-rate counters\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 13,
-                "lines": 620,
-                "insertions": 613,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "775d18c0",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-10T02:15:13.000Z",
-              "message": "[CI]: route unit job to k8s queue (#3239)\n\nci(k3-unit-tests): route unit job to k8s queue\n\nThe k3-unit-tests pipeline-level config targets the k8s queue for the\nupload step, but the inner job spec still pinned agents.queue to\nk3-h200-local. With no agents on k3-h200-local, every spawned unit-test\njob sat indefinitely as 'waiting'. Align with the other k3 pipelines\n(blend, multiprocess, integration, comprehensive, correctness) which\nall run on k8s.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 69,
-                "insertions": 66,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 6,
-                "total": 43
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "a7bc968f",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-11T00:42:21.000Z",
-              "message": "[CI]: expose prefiller/decoder/proxy logs as artifacts (#3240)\n\nci(comprehensive/pd): write prefiller/decoder/proxy logs to repo root\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 14,
-                "insertions": 7,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 1,
-                "total": 26
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 58.666666666666664,
-          "significance_ratio": 0.5555555555555556,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 528,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 10,
-          "significant_commits": 4,
-          "simple_commits": 6,
-          "commit_score": 458,
+          "total_commits": 13,
+          "significant_commits": 5,
+          "simple_commits": 8,
+          "commit_score": 633,
           "commits": [
             {
               "hash": "16c815ab",
@@ -9818,14 +9815,284 @@
                 "total": 62
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8cfac668",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-14T23:26:42.000Z",
+              "message": "Revert \"[CLI][CB] propagate CLI kvcache clear to CB fingerprint tabe\" (#3276)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 68,
+                "insertions": 0,
+                "deletions": 68
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 6,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "80813a14",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-14T22:04:45.000Z",
+              "message": "[CI] swap default to cu13 wheels and cu12.9 secondary (#3275)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 380,
+                "insertions": 216,
+                "deletions": 164
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "63ba5399",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-14T22:00:54.000Z",
+              "message": "[CLI] Fix slim install imports and smoke-test wheel in CI (#3279)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 86,
+                "insertions": 70,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 45.8,
-          "significance_ratio": 0.4,
+          "avg_score": 48.69230769230769,
+          "significance_ratio": 0.38461538461538464,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 458,
+          "total_score": 633,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 9,
+          "significant_commits": 5,
+          "simple_commits": 4,
+          "commit_score": 528,
+          "commits": [
+            {
+              "hash": "67e9a786",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-01T04:06:48.000Z",
+              "message": "[Chore][HotFix]: EC UT (#3178)\n\n[Fix] EC connector test on CPU-only CI + index.rst toctree rendering\n\n- tests/v1/test_ec_connector.py: pin device to \"cpu\" via patching\n  get_vllm_device_type for the load step. On CPU-only CI runners vLLM's\n  UnspecifiedPlatform returns \"\" for device_type, which made\n  tensor.to(device=\"\") raise inside ECCacheEngine.get.\n- docs/source/index.rst: add the missing blank lines between the\n  toctree entries and the trailing :raw-html: directive for the \"KV\n  Cache offloading and sharing\" and \"Non-KV caching\" sections. Sphinx\n  was warning \"Explicit markup ends without a blank line\" and the\n  Non-KV caching section did not render reliably.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 13,
+                "insertions": 12,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "90e80f5b",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-01T01:31:34.000Z",
+              "message": "Revert \"[CI]: add full tag selectively\" (#2969)\n\nRevert \"[CI]: add full tag selectively (#2820)\"\n\nThis reverts commit 097209645a473140205e12e49b96c0d6e853ec43.",
+              "stats": {
+                "files": 1,
+                "lines": 32,
+                "insertions": 1,
+                "deletions": 31
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "4d74fcee",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-03T00:12:11.000Z",
+              "message": "[Docs] Move TensorRT-LLM into quickstart as a tab (#3182)\n\nPromote TRT-LLM from its own \"Serving engine integrations\" section to\na third tab alongside vLLM and SGLang in the main quickstart, so all\nthree engines surface at the same level. Trim the page to install +\nmode-picker (in-process / MP) launch snippets; the deeper material\n(CUDA-IPC internals, explicit connector_module pinning, hit\nverification recipe) was implementation detail that doesn't belong\nin a quickstart and is dropped here.\n\nRemoves docs/source/integrations/ and its toctree entry in index.rst.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 315,
+                "insertions": 124,
+                "deletions": 191
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7e4139b7",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-03T07:36:45.000Z",
+              "message": "[MP][Observability] Add EventBus self-monitoring metrics (#3167)\n\n* [MP][Observability] Add EventBus self-monitoring metrics\n\nSurface four metrics that observe the EventBus itself, so operators can\ndetect bus backpressure or dispatch failures (per #3108):\n\n- ``lmcache_mp.event_bus.queue_depth`` (gauge): events waiting for dispatch.\n- ``lmcache_mp.event_bus.drain_lag_seconds`` (gauge): age of the oldest\n  queued event; rises when the drain thread falls behind.\n- ``lmcache_mp.event_bus.dropped_events_total`` (counter): cumulative\n  events dropped because the queue was at ``max_queue_size``.\n- ``lmcache_mp.event_bus.subscriber_exceptions`` (counter): cumulative\n  callback exceptions during dispatch, tagged by ``subscriber_name``.\n\nEventBus exposes ``queue_depth``, ``oldest_event_lag_seconds``,\n``dropped_events_count`` and ``subscriber_exception_counts`` as public\naccessors and tracks per-subscriber exception counts in ``_drain_all``.\nThe OTel registration lives in\n``subscribers/metrics/event_bus.py::init_event_bus_self_metrics`` and is\nwired up from ``mp_observability.config`` alongside the other metrics\nsubscribers.  ``event_bus.py`` stays free of OTel imports.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n* [MP][Observability] Simplify event-bus self-metrics; add design + user docs\n\nRefactor the EventBus self-metrics to match the existing subscriber\npattern, and document them under docs/design and the package README.\n\n- Convert the standalone ``init_event_bus_self_metrics`` function into\n  ``EventBusSelfMetricsSubscriber(EventSubscriber)``.  ``__init__`` does\n  the OTel registration; ``get_subscriptions`` returns ``{}`` because\n  these metrics are polled from bus state, not driven by events.  The\n  call site in ``mp_observability.config`` now uses the same\n  ``bus.register_subscriber(...)`` line as every other metrics\n  subscriber.\n- Drop the configurable ``meter_name`` parameter — hardcode\n  ``\"lmcache.event_bus\"`` like the other subscribers.\n- Inline the ``_subscriber_name`` helper at its single use site in\n  ``EventBus._drain_all`` and remove the standalone function.\n- Drop the ``register_gauge`` indirection inside the subscriber; call\n  ``meter.create_observable_gauge`` / ``create_observable_counter``\n  directly with one-line lambdas, matching ``L1FailureMetricsSubscriber``\n  et al.\n- Add an ``EventBus Self-Monitoring`` section to METRICS.md with the\n  four metric names, types, and source accessors.\n- Note the self-monitoring accessors and decoupling rationale in\n  event-bus.md.\n- Add ``EventBusSelfMetricsSubscriber`` to the architecture diagram in\n  the package README.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 407,
+                "insertions": 406,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a5df0abc",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-05T18:55:50.000Z",
+              "message": "[CLI[[Bench] Add prefix-suffix-tuner workload for tiered + Blending KV-cache (#3195)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 9,
+                "lines": 1867,
+                "insertions": 1862,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "dd8c2e1d",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-05T18:33:14.000Z",
+              "message": "[Docs] Add Recipes section with MiniMax-M2 as first entry (#3199)\n\nIntroduce a Recipes section under docs/source/recipes/ that catalogs\nmodel architectures validated end-to-end with LMCache. Each recipe page\nuses synced engine tabs (vLLM / SGLang / TRT-LLM) so the format scales\nas more architectures are validated. MiniMax-M2 is the first entry.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 155,
+                "insertions": 155,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "375243fd",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-07T21:56:51.000Z",
+              "message": "[Observability] Expose blend token-level hit-rate counters (#3196)\n\n* [Obs] Expose blend token-level hit-rate counters\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 13,
+                "lines": 620,
+                "insertions": 613,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "775d18c0",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-10T02:15:13.000Z",
+              "message": "[CI]: route unit job to k8s queue (#3239)\n\nci(k3-unit-tests): route unit job to k8s queue\n\nThe k3-unit-tests pipeline-level config targets the k8s queue for the\nupload step, but the inner job spec still pinned agents.queue to\nk3-h200-local. With no agents on k3-h200-local, every spawned unit-test\njob sat indefinitely as 'waiting'. Align with the other k3 pipelines\n(blend, multiprocess, integration, comprehensive, correctness) which\nall run on k8s.\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 69,
+                "insertions": 66,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 6,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "a7bc968f",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-11T00:42:21.000Z",
+              "message": "[CI]: expose prefiller/decoder/proxy logs as artifacts (#3240)\n\nci(comprehensive/pd): write prefiller/decoder/proxy logs to repo root\n\nSigned-off-by: Samuel Shen <slshen@uchciago.edu>\nCo-authored-by: Samuel Shen <slshen@uchciago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 14,
+                "insertions": 7,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 58.666666666666664,
+          "significance_ratio": 0.5555555555555556,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 528,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -10181,6 +10448,168 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Jason Goldschmidt",
+          "email": "92800864+jgoldsch12@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 251,
+          "commits": [
+            {
+              "hash": "d16c9aa7",
+              "author": "Jason Goldschmidt",
+              "email": "92800864+jgoldsch12@users.noreply.github.com",
+              "date": "2026-05-13T04:42:20.000Z",
+              "message": "feat: Add batched_contains() override for NixlDynamicStorageBackend (#2966)\n\nAdd batched_contains() override for NixlDynamicStorageBackend\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
+              "stats": {
+                "files": 3,
+                "lines": 445,
+                "insertions": 436,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f02ad538",
+              "author": "Jason Goldschmidt",
+              "email": "92800864+jgoldsch12@users.noreply.github.com",
+              "date": "2026-05-15T00:18:00.000Z",
+              "message": "[CORE] Add nixl_endpoint_list for per-worker object-storage endpoint distribution (#2861)\n\n* Add nixl_endpoint_list for per-worker object-storage endpoint distribution\n\nAllow TP workers to target different object-storage endpoints when using\nthe NIXL OBJ backend. When nixl_endpoint_list is set in extra_config,\neach worker selects an endpoint round-robin by worker_id, overriding any\nnixl_backend_params.endpoint_override (with a logged warning).\n\nAlso copies nixl_backend_params into a new dict before mutating it to\navoid modifying the original config.\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>\n\n* Use local_worker_id instead of worker_id is correct for multi-host\ndeployments because:\n\n  • worker_id is the global worker ID across all hosts (e.g., host 0 has\n  workers 0-7, host 1 has workers 8-15)\n  • local_worker_id is the worker ID within the local host (e.g., workers\n  0-7 on each host)\n  • For endpoint distribution, each host should distribute its local\n  workers across endpoints independently\n  • This ensures proper load balancing in multi-host scenarios where each\n  host may have its own set of endpoints\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>\n\n---------\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
+              "stats": {
+                "files": 5,
+                "lines": 240,
+                "insertions": 232,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 24,
+                "total": 86
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "168bbb97",
+              "author": "Jason Goldschmidt",
+              "email": "92800864+jgoldsch12@users.noreply.github.com",
+              "date": "2026-05-14T23:33:17.000Z",
+              "message": "fix: use unique device_id per OBJ register/deregister cycle (#2989)\n\nWhen nixl_async_put is enabled, the async PUT cleanup thread\n(deregister_memory) and the sync GET worker thread (register_memory +\nprepXfer) both use device_id = 0, 1, 2, ... for every call.  NIXL's OBJ\nbackend tracks registrations in a flat unordered_map<uint64, string>\nkeyed by devId with no reference counting.  The PUT's deregister erases\ndevId=0, which deletes the GET's registration, causing postXfer to fail\nwith NIXL_ERR_INVALID_PARAM and crashing the EngineCore.\n\nFix: replace the per-call sequential device_id (idx) with a\nmonotonically increasing counter protected by a threading.Lock.  Each\nregister/deregister cycle now gets globally unique IDs, so concurrent\noperations never collide in devIdToObjKey_.\n\nFixes https://github.com/LMCache/LMCache/issues/2983\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
+              "stats": {
+                "files": 3,
+                "lines": 208,
+                "insertions": 206,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 251,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 195,
+          "commits": [
+            {
+              "hash": "588ee83c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-11T02:37:42.000Z",
+              "message": "feat(pd_backend): fully async PD backend (#3038)\n\n* feat(pd_backend): fully async PD KV transfer backend\n\nReplace sync PDBackend with async implementation:\n- Non-blocking transfer: batched_submit_put_task returns immediately\n  (fire-and-forget enqueue) instead of blocking vLLM worker thread\n  until remote alloc + RDMA write complete\n- Event-driven flow control: replace time.sleep busy-wait polling\n  with Condition-based notification, waking immediately when\n  resources are freed\n- Self-contained resource release: remove() internally calls\n  ref_count_down() and decrements inflight counter, eliminating\n  caller responsibility for manual cleanup. cache_engine.py\n  updated with _is_sync_pd_backend() guard to prevent double-free\n- Startup capacity validation: new pd_max_prefill_len config raises\n  ValueError at init if buffer cannot hold the max prefill length,\n  catching misconfiguration before runtime\n- Configurable timeouts: pd_allocation_timeout_sec,\n  pd_shutdown_timeout_sec, pd_condition_poll_interval_sec replace\n  scattered hardcoded constants\n- Backward compatible: split into pd_backend.py (sync) and\n  pd_backend_async.py (async), selectable per-instance via\n  pd_backend_mode config (default: \"async\"). Sync and async\n  instances can coexist in the same cluster — e.g. sender on\n  async while receiver on sync, or vice versa — with no wire\n  protocol incompatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 21,
+                "lines": 3469,
+                "insertions": 3444,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "834619a8",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-12T05:47:56.000Z",
+              "message": "feat(infra): Global abstraction of torch.device for multi-device support (#3091)\n\nInitial step towards platform-agnostic, by using `torch_dev` to substitute `torch.cuda`\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 52,
+                "lines": 901,
+                "insertions": 613,
+                "deletions": 288
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "478a53ce",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-15T00:15:35.000Z",
+              "message": "fix(hpu): implement device-specific initialize_kvcaches_ptr for HPU connector (#3287)\n\n* fix(hpu): implement device-specific initialize_kvcaches_ptr for HPU connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 13,
+                "insertions": 11,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 195,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 3,
@@ -10258,49 +10687,49 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 194,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
+          "name": "Chizheng Fang",
+          "email": "93508110+fcczzz@users.noreply.github.com",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 174,
+          "commit_score": 164,
           "commits": [
             {
-              "hash": "588ee83c",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-11T02:37:42.000Z",
-              "message": "feat(pd_backend): fully async PD backend (#3038)\n\n* feat(pd_backend): fully async PD KV transfer backend\n\nReplace sync PDBackend with async implementation:\n- Non-blocking transfer: batched_submit_put_task returns immediately\n  (fire-and-forget enqueue) instead of blocking vLLM worker thread\n  until remote alloc + RDMA write complete\n- Event-driven flow control: replace time.sleep busy-wait polling\n  with Condition-based notification, waking immediately when\n  resources are freed\n- Self-contained resource release: remove() internally calls\n  ref_count_down() and decrements inflight counter, eliminating\n  caller responsibility for manual cleanup. cache_engine.py\n  updated with _is_sync_pd_backend() guard to prevent double-free\n- Startup capacity validation: new pd_max_prefill_len config raises\n  ValueError at init if buffer cannot hold the max prefill length,\n  catching misconfiguration before runtime\n- Configurable timeouts: pd_allocation_timeout_sec,\n  pd_shutdown_timeout_sec, pd_condition_poll_interval_sec replace\n  scattered hardcoded constants\n- Backward compatible: split into pd_backend.py (sync) and\n  pd_backend_async.py (async), selectable per-instance via\n  pd_backend_mode config (default: \"async\"). Sync and async\n  instances can coexist in the same cluster — e.g. sender on\n  async while receiver on sync, or vice versa — with no wire\n  protocol incompatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "hash": "7657836e",
+              "author": "Chizheng Fang",
+              "email": "93508110+fcczzz@users.noreply.github.com",
+              "date": "2026-05-07T04:56:38.000Z",
+              "message": "[MP]: Add batch operations to Mooncake L2 adapter  (#3172)\n\n* [Feat]: Implement batch operations in MooncakeConnector for improved efficiency and error handling\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Test]: isolate Mooncake RDMA adapter integration test\n\nClose the default TCP adapter before creating the RDMA adapter in the\nbuffer-backed Mooncake integration test so Mooncake master does not allocate\ntest replicas on a TCP segment. Also use the native `rdma_devices` config key\nexpected by Mooncake.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Treat Mooncake exists errors as misses\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Feat]: Implement delete operations in MooncakeConnector\n\nAdd do_single_delete and do_batch_delete to the Mooncake storage\nbackend, with integration tests covering key deletion, mixed\nexisting/missing batch deletes, and usage tracking updates.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: resolve ruff F841 and minor formatting cleanups\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n---------\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
               "stats": {
-                "files": 21,
-                "lines": 3469,
-                "insertions": 3444,
-                "deletions": 25
+                "files": 4,
+                "lines": 361,
+                "insertions": 317,
+                "deletions": 44
               },
               "scores": {
                 "loc": 30,
-                "files": 20,
+                "files": 10,
                 "keyword": 12,
                 "ai": 25,
-                "total": 87
+                "total": 77
               },
               "classification": "significant"
             },
             {
-              "hash": "834619a8",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-12T05:47:56.000Z",
-              "message": "feat(infra): Global abstraction of torch.device for multi-device support (#3091)\n\nInitial step towards platform-agnostic, by using `torch_dev` to substitute `torch.cuda`\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "hash": "8b4adad1",
+              "author": "Chizheng Fang",
+              "email": "93508110+fcczzz@users.noreply.github.com",
+              "date": "2026-05-14T02:26:22.000Z",
+              "message": "[MP]: Add per-operation dedicated worker pools to Mooncake L2 connector (#3227)\n\n* [Feat]: Implement batch operations in MooncakeConnector for multi-task queue support\n\nAdd do_batch_get/do_batch_set/do_batch_exists/do_batch_delete methods to\nMooncakeConnector and connector_base, enabling efficient multi-task queue\nprocessing via Mooncake's native batch APIs.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Feat]: Add batch operations to Mooncake L2 adapter\n\nWire batch_get/batch_set/batch_exists/batch_delete through the Python L2\nadapter, with comprehensive tests covering success and failure paths.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Generalize worker pool config to a per-op key map\n\nReplace the hardcoded lookup_workers / retrieve_workers / store_workers\ntriplet with a flexible per_op_workers dict that maps lane keys\n(\"lookup\", \"retrieve\", \"store\", \"delete\") to dedicated worker counts.\nUnmentioned keys fall back to the shared num_workers pool, removing the\n\"all must be set together\" constraint and making it easy to add new\noperation lanes without changing the API surface.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Store WorkerLane via unique_ptr in lanes_ map\n\nWorkerLane contains std::mutex and std::condition_variable, which are\nnon-movable, making WorkerLane itself non-movable. Using it as a value\nin std::unordered_map violates the container's movable requirement.\nSwitch to std::unordered_map<std::string, std::unique_ptr<WorkerLane>>\nto fix this.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Make lane_key_for_op's static reverse map thread-safe\n\nThe manual if (reverse.empty()) + population pattern had a data race when\nmultiple threads called lane_key_for_op concurrently. Use an IIFE to\nbuild the map during static initialization, which C++11 guarantees\nthread-safe exactly-once. Also include the unknown Op value in the\nexception message.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Include per_op_workers in native client kwargs for Mooncake L2 adapter\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Test]: Add `per_op_workers=None` to `FakeClient`\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Simplified arguments passing to LMCacheMooncakeClient\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Move per_op_workers parse/validate to shared interfaces\n\nPromote `parse_per_op_workers` from mooncake/pybind.cpp to\nconnector_pybind_utils.h (C++) and `_validate_per_op_workers` /\n`_parse_per_op_workers_from_dict` from MooncakeStoreL2AdapterConfig\nto L2AdapterConfigBase (Python), so all backends can reuse them.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n---------\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>",
               "stats": {
-                "files": 52,
-                "lines": 901,
-                "insertions": 613,
-                "deletions": 288
+                "files": 9,
+                "lines": 550,
+                "insertions": 487,
+                "deletions": 63
               },
               "scores": {
                 "loc": 30,
@@ -10312,12 +10741,12 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 87,
+          "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 174,
+          "total_score": 164,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10502,45 +10931,6 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Jason Goldschmidt",
-          "email": "92800864+jgoldsch12@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 90,
-          "commits": [
-            {
-              "hash": "d16c9aa7",
-              "author": "Jason Goldschmidt",
-              "email": "92800864+jgoldsch12@users.noreply.github.com",
-              "date": "2026-05-13T04:42:20.000Z",
-              "message": "feat: Add batched_contains() override for NixlDynamicStorageBackend (#2966)\n\nAdd batched_contains() override for NixlDynamicStorageBackend\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
-              "stats": {
-                "files": 3,
-                "lines": 445,
-                "insertions": 436,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 90,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 90,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Adarsh Shirawalmath",
           "email": "114558126+adarshxs@users.noreply.github.com",
           "total_commits": 1,
@@ -10615,8 +11005,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Roy Huang",
@@ -10736,6 +11126,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Adeline",
+          "email": "452803476@qq.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "384d79df",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-05-14T09:34:16.000Z",
+              "message": "[MP][Feat] Support DeepSeek V4 (#3171)\n\n[MP][Feat] Support DeepSeek V4 with per-group compressed KV layout\n\nIntroduce per-KV-layer-group compress_ratio and physical_chunk_size in KVLayerGroupInfo so that compressed groups (e.g. DSv4 indexer) can coexist with plain groups under a single GPUCacheContext. KVLayerGroupsManager now derives the layout from vllm_logical_block_size and per-group layout hints; GPU connector utils and MP server/protocols are updated accordingly. Tests are adapted to the new API.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
+              "stats": {
+                "files": 18,
+                "lines": 904,
+                "insertions": 787,
+                "deletions": 117
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "weizhoublue",
           "email": "45163302+weizhoublue@users.noreply.github.com",
           "total_commits": 2,
@@ -10831,45 +11260,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 80,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Chizheng Fang",
-          "email": "93508110+fcczzz@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 77,
-          "commits": [
-            {
-              "hash": "7657836e",
-              "author": "Chizheng Fang",
-              "email": "93508110+fcczzz@users.noreply.github.com",
-              "date": "2026-05-07T04:56:38.000Z",
-              "message": "[MP]: Add batch operations to Mooncake L2 adapter  (#3172)\n\n* [Feat]: Implement batch operations in MooncakeConnector for improved efficiency and error handling\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Test]: isolate Mooncake RDMA adapter integration test\n\nClose the default TCP adapter before creating the RDMA adapter in the\nbuffer-backed Mooncake integration test so Mooncake master does not allocate\ntest replicas on a TCP segment. Also use the native `rdma_devices` config key\nexpected by Mooncake.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Treat Mooncake exists errors as misses\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Feat]: Implement delete operations in MooncakeConnector\n\nAdd do_single_delete and do_batch_delete to the Mooncake storage\nbackend, with integration tests covering key deletion, mixed\nexisting/missing batch deletes, and usage tracking updates.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: resolve ruff F841 and minor formatting cleanups\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n---------\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 4,
-                "lines": 361,
-                "insertions": 317,
-                "deletions": 44
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 77,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 77,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -11026,8 +11416,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 63,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Ilya Yanok",
@@ -11840,10 +12230,10 @@
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 31,
-          "significant_commits": 12,
-          "simple_commits": 19,
-          "commit_score": 1525,
+          "total_commits": 34,
+          "significant_commits": 13,
+          "simple_commits": 21,
+          "commit_score": 1700,
           "commits": [
             {
               "hash": "6ceed5ea",
@@ -12495,14 +12885,77 @@
                 "total": 62
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8cfac668",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-14T23:26:42.000Z",
+              "message": "Revert \"[CLI][CB] propagate CLI kvcache clear to CB fingerprint tabe\" (#3276)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 68,
+                "insertions": 0,
+                "deletions": 68
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 6,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "80813a14",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-14T22:04:45.000Z",
+              "message": "[CI] swap default to cu13 wheels and cu12.9 secondary (#3275)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 380,
+                "insertions": 216,
+                "deletions": 164
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "63ba5399",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-14T22:00:54.000Z",
+              "message": "[CLI] Fix slim install imports and smoke-test wheel in CI (#3279)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 86,
+                "insertions": 70,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 49.193548387096776,
-          "significance_ratio": 0.3870967741935484,
+          "avg_score": 50,
+          "significance_ratio": 0.38235294117647056,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1525,
+          "total_score": 1700,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -13737,6 +14190,192 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 8,
+          "significant_commits": 6,
+          "simple_commits": 2,
+          "commit_score": 575,
+          "commits": [
+            {
+              "hash": "b73b69bf",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-01T06:57:05.000Z",
+              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 443,
+                "insertions": 310,
+                "deletions": 133
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2108248a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-04T02:26:03.000Z",
+              "message": "Refactor: Align pd_buffer_size to chunk size in PD backend (#2694)\n\n* Refactor: Auto-align pd_buffer_size down to nearest chunk size multiple\n\n- Add buffer size alignment logic to prevent assertion error\n- Calculate aligned_buffer_size as (origin_size // chunk_size) * chunk_size\n- Add informative logging when buffer size is adjusted\n- Release excess buffer memory that can't be aligned\n- Follows the same pattern as local_cpu_backend.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine the code per gemini's suggestions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine log msg\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline pd backend buffer alignement\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix test hang by adding backend cleanup\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* remove UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* doc update\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename function name\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 103,
+                "insertions": 95,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 10,
+                "total": 75
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "41b669ea",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-13T23:48:42.000Z",
+              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
+              "stats": {
+                "files": 16,
+                "lines": 3553,
+                "insertions": 3484,
+                "deletions": 69
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "facdc4e9",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-16T23:46:45.000Z",
+              "message": "chore: expose package version via __init__.py (#3034)\n\n* chore: expose package version via __init__.py\n\nImport __version__ so that users can access\nthe version string via `lmcache.__version__`.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: guard _version import to handle missing build-generated file\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 7,
+                "insertions": 7,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 15,
+                "total": 38
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "575a7456",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-04-17T00:31:19.000Z",
+              "message": "Fix: Safely handle layerwise cache shape dimensions in remote backend (#2751)\n\n* Fix: Handle layerwise cache shape dimensions for remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix mla + remote backend\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fixes according to cursor review\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* additional fix\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add assert if the shape has dimension with 0,\nwhich can't be properly handled by design\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: avoid warning noise from zero-placeholder shapes in pad_shape_to_4d\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* minor change to fix CI\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add default value for backward compatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 6,
+                "lines": 223,
+                "insertions": 200,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 20,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "588ee83c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-11T02:37:42.000Z",
+              "message": "feat(pd_backend): fully async PD backend (#3038)\n\n* feat(pd_backend): fully async PD KV transfer backend\n\nReplace sync PDBackend with async implementation:\n- Non-blocking transfer: batched_submit_put_task returns immediately\n  (fire-and-forget enqueue) instead of blocking vLLM worker thread\n  until remote alloc + RDMA write complete\n- Event-driven flow control: replace time.sleep busy-wait polling\n  with Condition-based notification, waking immediately when\n  resources are freed\n- Self-contained resource release: remove() internally calls\n  ref_count_down() and decrements inflight counter, eliminating\n  caller responsibility for manual cleanup. cache_engine.py\n  updated with _is_sync_pd_backend() guard to prevent double-free\n- Startup capacity validation: new pd_max_prefill_len config raises\n  ValueError at init if buffer cannot hold the max prefill length,\n  catching misconfiguration before runtime\n- Configurable timeouts: pd_allocation_timeout_sec,\n  pd_shutdown_timeout_sec, pd_condition_poll_interval_sec replace\n  scattered hardcoded constants\n- Backward compatible: split into pd_backend.py (sync) and\n  pd_backend_async.py (async), selectable per-instance via\n  pd_backend_mode config (default: \"async\"). Sync and async\n  instances can coexist in the same cluster — e.g. sender on\n  async while receiver on sync, or vice versa — with no wire\n  protocol incompatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 21,
+                "lines": 3469,
+                "insertions": 3444,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "834619a8",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-12T05:47:56.000Z",
+              "message": "feat(infra): Global abstraction of torch.device for multi-device support (#3091)\n\nInitial step towards platform-agnostic, by using `torch_dev` to substitute `torch.cuda`\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 52,
+                "lines": 901,
+                "insertions": 613,
+                "deletions": 288
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "478a53ce",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-15T00:15:35.000Z",
+              "message": "fix(hpu): implement device-specific initialize_kvcaches_ptr for HPU connector (#3287)\n\n* fix(hpu): implement device-specific initialize_kvcaches_ptr for HPU connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 13,
+                "insertions": 11,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 71.875,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 575,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
           "total_commits": 8,
@@ -13919,171 +14558,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 562,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 7,
-          "significant_commits": 6,
-          "simple_commits": 1,
-          "commit_score": 554,
-          "commits": [
-            {
-              "hash": "b73b69bf",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-01T06:57:05.000Z",
-              "message": "Refactor: Generalize utils.py for all devices by lifting the CUDA limitation (#2848)\n\n* Refactor: Generalize utils.py for all devices by lifting the CUDA limitation\n\nPreviously, these utilities were restricted to CUDA devices. This commit\nbreaks that limitation and generalizes the implementation so it can be\nseamlessly applied to any general device.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* xpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* hpu: get attributes from utils.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: fix code formatting according to pre-commit\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* UT change according to new signature.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add new formats to align with latest c ops\n\nNL_X_TWO_NB_NH_BS_HS = 6\nNL_X_NB_TWO_NH_BS_HS = 7\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 5,
-                "lines": 443,
-                "insertions": 310,
-                "deletions": 133
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "2108248a",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-04T02:26:03.000Z",
-              "message": "Refactor: Align pd_buffer_size to chunk size in PD backend (#2694)\n\n* Refactor: Auto-align pd_buffer_size down to nearest chunk size multiple\n\n- Add buffer size alignment logic to prevent assertion error\n- Calculate aligned_buffer_size as (origin_size // chunk_size) * chunk_size\n- Add informative logging when buffer size is adjusted\n- Release excess buffer memory that can't be aligned\n- Follows the same pattern as local_cpu_backend.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine the code per gemini's suggestions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refine log msg\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* streamline pd backend buffer alignement\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix test hang by adding backend cleanup\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* remove UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* doc update\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename function name\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 4,
-                "lines": 103,
-                "insertions": 95,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 10,
-                "total": 75
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "41b669ea",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-13T23:48:42.000Z",
-              "message": "[ops][refactor] Add full list of Python fallbacks to run without compiled CUDA extensions (#2591)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>\nCo-authored-by: Martin Hickey <martin.hickey@ie.ibm.com>",
-              "stats": {
-                "files": 16,
-                "lines": 3553,
-                "insertions": 3484,
-                "deletions": 69
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "facdc4e9",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-16T23:46:45.000Z",
-              "message": "chore: expose package version via __init__.py (#3034)\n\n* chore: expose package version via __init__.py\n\nImport __version__ so that users can access\nthe version string via `lmcache.__version__`.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: guard _version import to handle missing build-generated file\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 7,
-                "insertions": 7,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 15,
-                "total": 38
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "575a7456",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-04-17T00:31:19.000Z",
-              "message": "Fix: Safely handle layerwise cache shape dimensions in remote backend (#2751)\n\n* Fix: Handle layerwise cache shape dimensions for remote backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Fix mla + remote backend\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fixes according to cursor review\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* additional fix\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add assert if the shape has dimension with 0,\nwhich can't be properly handled by design\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: avoid warning noise from zero-placeholder shapes in pad_shape_to_4d\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* minor change to fix CI\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add default value for backward compatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address cursor's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 6,
-                "lines": 223,
-                "insertions": 200,
-                "deletions": 23
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 20,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "588ee83c",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-11T02:37:42.000Z",
-              "message": "feat(pd_backend): fully async PD backend (#3038)\n\n* feat(pd_backend): fully async PD KV transfer backend\n\nReplace sync PDBackend with async implementation:\n- Non-blocking transfer: batched_submit_put_task returns immediately\n  (fire-and-forget enqueue) instead of blocking vLLM worker thread\n  until remote alloc + RDMA write complete\n- Event-driven flow control: replace time.sleep busy-wait polling\n  with Condition-based notification, waking immediately when\n  resources are freed\n- Self-contained resource release: remove() internally calls\n  ref_count_down() and decrements inflight counter, eliminating\n  caller responsibility for manual cleanup. cache_engine.py\n  updated with _is_sync_pd_backend() guard to prevent double-free\n- Startup capacity validation: new pd_max_prefill_len config raises\n  ValueError at init if buffer cannot hold the max prefill length,\n  catching misconfiguration before runtime\n- Configurable timeouts: pd_allocation_timeout_sec,\n  pd_shutdown_timeout_sec, pd_condition_poll_interval_sec replace\n  scattered hardcoded constants\n- Backward compatible: split into pd_backend.py (sync) and\n  pd_backend_async.py (async), selectable per-instance via\n  pd_backend_mode config (default: \"async\"). Sync and async\n  instances can coexist in the same cluster — e.g. sender on\n  async while receiver on sync, or vice versa — with no wire\n  protocol incompatibility\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 21,
-                "lines": 3469,
-                "insertions": 3444,
-                "deletions": 25
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "834619a8",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-12T05:47:56.000Z",
-              "message": "feat(infra): Global abstraction of torch.device for multi-device support (#3091)\n\nInitial step towards platform-agnostic, by using `torch_dev` to substitute `torch.cuda`\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 52,
-                "lines": 901,
-                "insertions": 613,
-                "deletions": 288
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 79.14285714285714,
-          "significance_ratio": 0.8571428571428571,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 554,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -14703,6 +15177,168 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Chizheng Fang",
+          "email": "93508110+fcczzz@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 254,
+          "commits": [
+            {
+              "hash": "19acf22c",
+              "author": "Chizheng Fang",
+              "email": "93508110+fcczzz@users.noreply.github.com",
+              "date": "2026-04-22T23:17:49.000Z",
+              "message": "[Feat] Add RDMA L1 memory preregistration support for MooncakeStore L2 adapter (#3018)\n\n* [Feat]: Enhance MooncakeConnector with pre-registration of L1 memory and update L2 adapter configuration\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Feat]: Add tests for preregister_l1_memory factory behavior in MooncakeStoreL2Adapter\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Simplify MooncakeConnector by removing owned_real_client_ and using a single client_ instance\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Clean up imports and update variable name in MooncakeStoreL2Adapter tests\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* Fix: Updated the library name in the Mooncake extension to \"mooncake_store\".\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Reorder includes in connector.cpp and connector.h for better organization\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Enhance buffer registration logic and update registered buffer state management\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Update MooncakeStoreL2AdapterConfig to include preregister_l1_memory as a specific knob and add related tests\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Update lazy registration logic to prevent resizing of existing buffer registrations and add corresponding test\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Enhance error handling in ensure_registered to manage buffer registration failures\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Update MooncakeConnector to use L1RegistrationConfig for L1 memory registration and adjust related l，ogic in adapter configuration\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Enhance Mooncake connector and documentation for RDMA support, ensuring valid L1 memory descriptor is required for adapter creation\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Docs]: add note in RDMA protocol section recommending disabling lazy L1 allocation to ensure L1 buffers are fully allocated before registration\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Simplify close logic in MooncakeConnector and implement on_workers_stopped for buffer cleanup\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Tests]: gate Mooncake RDMA buffer-backed integration coverage\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* Refine Mooncake region boundary checks\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Improve buffer unregistration logic in MooncakeConnector to handle exceptions gracefully\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Enhance error handling in preregister_l1_memory to ensure buffer unregistration failures do not obscure registration errors\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Reject zero-length buffers in Mooncake registration check\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n---------\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 10,
+                "lines": 574,
+                "insertions": 554,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7657836e",
+              "author": "Chizheng Fang",
+              "email": "93508110+fcczzz@users.noreply.github.com",
+              "date": "2026-05-07T04:56:38.000Z",
+              "message": "[MP]: Add batch operations to Mooncake L2 adapter  (#3172)\n\n* [Feat]: Implement batch operations in MooncakeConnector for improved efficiency and error handling\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Test]: isolate Mooncake RDMA adapter integration test\n\nClose the default TCP adapter before creating the RDMA adapter in the\nbuffer-backed Mooncake integration test so Mooncake master does not allocate\ntest replicas on a TCP segment. Also use the native `rdma_devices` config key\nexpected by Mooncake.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Treat Mooncake exists errors as misses\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Feat]: Implement delete operations in MooncakeConnector\n\nAdd do_single_delete and do_batch_delete to the Mooncake storage\nbackend, with integration tests covering key deletion, mixed\nexisting/missing batch deletes, and usage tracking updates.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: resolve ruff F841 and minor formatting cleanups\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n---------\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 361,
+                "insertions": 317,
+                "deletions": 44
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8b4adad1",
+              "author": "Chizheng Fang",
+              "email": "93508110+fcczzz@users.noreply.github.com",
+              "date": "2026-05-14T02:26:22.000Z",
+              "message": "[MP]: Add per-operation dedicated worker pools to Mooncake L2 connector (#3227)\n\n* [Feat]: Implement batch operations in MooncakeConnector for multi-task queue support\n\nAdd do_batch_get/do_batch_set/do_batch_exists/do_batch_delete methods to\nMooncakeConnector and connector_base, enabling efficient multi-task queue\nprocessing via Mooncake's native batch APIs.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Feat]: Add batch operations to Mooncake L2 adapter\n\nWire batch_get/batch_set/batch_exists/batch_delete through the Python L2\nadapter, with comprehensive tests covering success and failure paths.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Generalize worker pool config to a per-op key map\n\nReplace the hardcoded lookup_workers / retrieve_workers / store_workers\ntriplet with a flexible per_op_workers dict that maps lane keys\n(\"lookup\", \"retrieve\", \"store\", \"delete\") to dedicated worker counts.\nUnmentioned keys fall back to the shared num_workers pool, removing the\n\"all must be set together\" constraint and making it easy to add new\noperation lanes without changing the API surface.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Store WorkerLane via unique_ptr in lanes_ map\n\nWorkerLane contains std::mutex and std::condition_variable, which are\nnon-movable, making WorkerLane itself non-movable. Using it as a value\nin std::unordered_map violates the container's movable requirement.\nSwitch to std::unordered_map<std::string, std::unique_ptr<WorkerLane>>\nto fix this.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Make lane_key_for_op's static reverse map thread-safe\n\nThe manual if (reverse.empty()) + population pattern had a data race when\nmultiple threads called lane_key_for_op concurrently. Use an IIFE to\nbuild the map during static initialization, which C++11 guarantees\nthread-safe exactly-once. Also include the unknown Op value in the\nexception message.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Include per_op_workers in native client kwargs for Mooncake L2 adapter\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Test]: Add `per_op_workers=None` to `FakeClient`\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Simplified arguments passing to LMCacheMooncakeClient\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Move per_op_workers parse/validate to shared interfaces\n\nPromote `parse_per_op_workers` from mooncake/pybind.cpp to\nconnector_pybind_utils.h (C++) and `_validate_per_op_workers` /\n`_parse_per_op_workers_from_dict` from MooncakeStoreL2AdapterConfig\nto L2AdapterConfigBase (Python), so all backends can reuse them.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n---------\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>",
+              "stats": {
+                "files": 9,
+                "lines": 550,
+                "insertions": 487,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 84.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 254,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Jason Goldschmidt",
+          "email": "92800864+jgoldsch12@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 251,
+          "commits": [
+            {
+              "hash": "d16c9aa7",
+              "author": "Jason Goldschmidt",
+              "email": "92800864+jgoldsch12@users.noreply.github.com",
+              "date": "2026-05-13T04:42:20.000Z",
+              "message": "feat: Add batched_contains() override for NixlDynamicStorageBackend (#2966)\n\nAdd batched_contains() override for NixlDynamicStorageBackend\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
+              "stats": {
+                "files": 3,
+                "lines": 445,
+                "insertions": 436,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f02ad538",
+              "author": "Jason Goldschmidt",
+              "email": "92800864+jgoldsch12@users.noreply.github.com",
+              "date": "2026-05-15T00:18:00.000Z",
+              "message": "[CORE] Add nixl_endpoint_list for per-worker object-storage endpoint distribution (#2861)\n\n* Add nixl_endpoint_list for per-worker object-storage endpoint distribution\n\nAllow TP workers to target different object-storage endpoints when using\nthe NIXL OBJ backend. When nixl_endpoint_list is set in extra_config,\neach worker selects an endpoint round-robin by worker_id, overriding any\nnixl_backend_params.endpoint_override (with a logged warning).\n\nAlso copies nixl_backend_params into a new dict before mutating it to\navoid modifying the original config.\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>\n\n* Use local_worker_id instead of worker_id is correct for multi-host\ndeployments because:\n\n  • worker_id is the global worker ID across all hosts (e.g., host 0 has\n  workers 0-7, host 1 has workers 8-15)\n  • local_worker_id is the worker ID within the local host (e.g., workers\n  0-7 on each host)\n  • For endpoint distribution, each host should distribute its local\n  workers across endpoints independently\n  • This ensures proper load balancing in multi-host scenarios where each\n  host may have its own set of endpoints\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>\n\n---------\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
+              "stats": {
+                "files": 5,
+                "lines": 240,
+                "insertions": 232,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 24,
+                "total": 86
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "168bbb97",
+              "author": "Jason Goldschmidt",
+              "email": "92800864+jgoldsch12@users.noreply.github.com",
+              "date": "2026-05-14T23:33:17.000Z",
+              "message": "fix: use unique device_id per OBJ register/deregister cycle (#2989)\n\nWhen nixl_async_put is enabled, the async PUT cleanup thread\n(deregister_memory) and the sync GET worker thread (register_memory +\nprepXfer) both use device_id = 0, 1, 2, ... for every call.  NIXL's OBJ\nbackend tracks registrations in a flat unordered_map<uint64, string>\nkeyed by devId with no reference counting.  The PUT's deregister erases\ndevId=0, which deletes the GET's registration, causing postXfer to fail\nwith NIXL_ERR_INVALID_PARAM and crashing the EngineCore.\n\nFix: replace the per-call sequential device_id (idx) with a\nmonotonically increasing counter protected by a threading.Lock.  Each\nregister/deregister cycle now gets globally unique IDs, so concurrent\noperations never collide in devIdToObjKey_.\n\nFixes https://github.com/LMCache/LMCache/issues/2983\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
+              "stats": {
+                "files": 3,
+                "lines": 208,
+                "insertions": 206,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 251,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Kuntai Du",
           "email": "kuntai@uchicago.edu",
           "total_commits": 3,
@@ -14946,6 +15582,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Adeline",
+          "email": "452803476@qq.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 187,
+          "commits": [
+            {
+              "hash": "28c33b91",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-04-07T13:45:27.000Z",
+              "message": "[MP]feat: support different kv cache shape and dtype across layers (#2926)\n\n* multiprocess: support per-group KV cache transfer with group_idx\n\n- gpu_ops: add group_idx param to lmcache_memcpy_async_h2d/d2h,\n  use memory_obj.get_tensor(group_idx) instead of memory_obj.tensor\n- kv_layer_groups: add build_kv_layer_groups_from_list() to group\n  layers by (shape, dtype) from a plain tensor list\n- gpu_context: introduce per-group shape_descs_, hidden_dim_sizes_,\n  group_kv_pointers_, and tmp_gpu_buffers_; update get_kv_buffer_shape,\n  get_tmp_gpu_buffer, get_tmp_gpu_buffer_batched to accept group_idx;\n  add get_shape_desc(group_idx) and get_group_kv_pointers(group_idx)\n- server: update get_layout_desc, _store_loop, _retrieve_loop to\n  iterate over all groups; fix skip_tokens_in_chunk upper bound to\n  use batch_len instead of _BATCH_SIZE\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n* fix: support vectorized KV transfer for non-16B-aligned head sizes\n\nAdd scalar type fallback hierarchy for block KV transfer kernel:\n  head_bytes % 16 == 0  -> uint4    (16B, fastest)\n  head_bytes % 4  == 0  -> uint32_t (4B)\n  head_bytes % 2  == 0  -> uint16_t (2B)\n\nThis fixes the runtime error for MLA models where head_size=132 (uint8),\ngiving head_bytes=132 which is not divisible by 16 but is divisible by 4.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n---------\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1076,
+                "insertions": 801,
+                "deletions": 275
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "384d79df",
+              "author": "Adeline",
+              "email": "452803476@qq.com",
+              "date": "2026-05-14T09:34:16.000Z",
+              "message": "[MP][Feat] Support DeepSeek V4 (#3171)\n\n[MP][Feat] Support DeepSeek V4 with per-group compressed KV layout\n\nIntroduce per-KV-layer-group compress_ratio and physical_chunk_size in KVLayerGroupInfo so that compressed groups (e.g. DSv4 indexer) can coexist with plain groups under a single GPUCacheContext. KVLayerGroupsManager now derives the layout from vllm_logical_block_size and per-group layout hints; GPU connector utils and MP server/protocols are updated accordingly. Tests are adapted to the new API.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
+              "stats": {
+                "files": 18,
+                "lines": 904,
+                "insertions": 787,
+                "deletions": 117
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 93.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 187,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Ziwen Ning",
           "email": "ningziwe@amazon.com",
           "total_commits": 3,
@@ -15023,66 +15719,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 175,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Chizheng Fang",
-          "email": "93508110+fcczzz@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 167,
-          "commits": [
-            {
-              "hash": "19acf22c",
-              "author": "Chizheng Fang",
-              "email": "93508110+fcczzz@users.noreply.github.com",
-              "date": "2026-04-22T23:17:49.000Z",
-              "message": "[Feat] Add RDMA L1 memory preregistration support for MooncakeStore L2 adapter (#3018)\n\n* [Feat]: Enhance MooncakeConnector with pre-registration of L1 memory and update L2 adapter configuration\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Feat]: Add tests for preregister_l1_memory factory behavior in MooncakeStoreL2Adapter\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Simplify MooncakeConnector by removing owned_real_client_ and using a single client_ instance\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Clean up imports and update variable name in MooncakeStoreL2Adapter tests\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* Fix: Updated the library name in the Mooncake extension to \"mooncake_store\".\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Reorder includes in connector.cpp and connector.h for better organization\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Enhance buffer registration logic and update registered buffer state management\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Update MooncakeStoreL2AdapterConfig to include preregister_l1_memory as a specific knob and add related tests\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Update lazy registration logic to prevent resizing of existing buffer registrations and add corresponding test\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Enhance error handling in ensure_registered to manage buffer registration failures\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Update MooncakeConnector to use L1RegistrationConfig for L1 memory registration and adjust related l，ogic in adapter configuration\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Enhance Mooncake connector and documentation for RDMA support, ensuring valid L1 memory descriptor is required for adapter creation\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Docs]: add note in RDMA protocol section recommending disabling lazy L1 allocation to ensure L1 buffers are fully allocated before registration\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Simplify close logic in MooncakeConnector and implement on_workers_stopped for buffer cleanup\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Tests]: gate Mooncake RDMA buffer-backed integration coverage\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* Refine Mooncake region boundary checks\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Improve buffer unregistration logic in MooncakeConnector to handle exceptions gracefully\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Refactor]: Enhance error handling in preregister_l1_memory to ensure buffer unregistration failures do not obscure registration errors\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Reject zero-length buffers in Mooncake registration check\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n---------\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 10,
-                "lines": 574,
-                "insertions": 554,
-                "deletions": 20
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "7657836e",
-              "author": "Chizheng Fang",
-              "email": "93508110+fcczzz@users.noreply.github.com",
-              "date": "2026-05-07T04:56:38.000Z",
-              "message": "[MP]: Add batch operations to Mooncake L2 adapter  (#3172)\n\n* [Feat]: Implement batch operations in MooncakeConnector for improved efficiency and error handling\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Test]: isolate Mooncake RDMA adapter integration test\n\nClose the default TCP adapter before creating the RDMA adapter in the\nbuffer-backed Mooncake integration test so Mooncake master does not allocate\ntest replicas on a TCP segment. Also use the native `rdma_devices` config key\nexpected by Mooncake.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: Treat Mooncake exists errors as misses\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Feat]: Implement delete operations in MooncakeConnector\n\nAdd do_single_delete and do_batch_delete to the Mooncake storage\nbackend, with integration tests covering key deletion, mixed\nexisting/missing batch deletes, and usage tracking updates.\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n* [Fix]: resolve ruff F841 and minor formatting cleanups\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\n\n---------\n\nSigned-off-by: fangchizheng <fangchizheng@mail.ustc.edu.cn>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 4,
-                "lines": 361,
-                "insertions": 317,
-                "deletions": 44
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 83.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 167,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -15186,45 +15822,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Adeline",
-          "email": "452803476@qq.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 100,
-          "commits": [
-            {
-              "hash": "28c33b91",
-              "author": "Adeline",
-              "email": "452803476@qq.com",
-              "date": "2026-04-07T13:45:27.000Z",
-              "message": "[MP]feat: support different kv cache shape and dtype across layers (#2926)\n\n* multiprocess: support per-group KV cache transfer with group_idx\n\n- gpu_ops: add group_idx param to lmcache_memcpy_async_h2d/d2h,\n  use memory_obj.get_tensor(group_idx) instead of memory_obj.tensor\n- kv_layer_groups: add build_kv_layer_groups_from_list() to group\n  layers by (shape, dtype) from a plain tensor list\n- gpu_context: introduce per-group shape_descs_, hidden_dim_sizes_,\n  group_kv_pointers_, and tmp_gpu_buffers_; update get_kv_buffer_shape,\n  get_tmp_gpu_buffer, get_tmp_gpu_buffer_batched to accept group_idx;\n  add get_shape_desc(group_idx) and get_group_kv_pointers(group_idx)\n- server: update get_layout_desc, _store_loop, _retrieve_loop to\n  iterate over all groups; fix skip_tokens_in_chunk upper bound to\n  use batch_len instead of _BATCH_SIZE\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n* fix: support vectorized KV transfer for non-16B-aligned head sizes\n\nAdd scalar type fallback hierarchy for block KV transfer kernel:\n  head_bytes % 16 == 0  -> uint4    (16B, fastest)\n  head_bytes % 4  == 0  -> uint32_t (4B)\n  head_bytes % 2  == 0  -> uint16_t (2B)\n\nThis fixes the runtime error for MLA models where head_size=132 (uint8),\ngiving head_bytes=132 which is not divisible by 16 but is divisible by 4.\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\n\n---------\n\nSigned-off-by: liuyumoye <adeline_ly2023@outlook.com>\nCo-authored-by: liuyumoye <adeline_ly2023@outlook.com>",
-              "stats": {
-                "files": 7,
-                "lines": 1076,
-                "insertions": 801,
-                "deletions": 275
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 100,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 100,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "2xdevv",
           "email": "syk0905.kwon@gmail.com",
           "total_commits": 2,
@@ -15281,45 +15878,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 92,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Jason Goldschmidt",
-          "email": "92800864+jgoldsch12@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 90,
-          "commits": [
-            {
-              "hash": "d16c9aa7",
-              "author": "Jason Goldschmidt",
-              "email": "92800864+jgoldsch12@users.noreply.github.com",
-              "date": "2026-05-13T04:42:20.000Z",
-              "message": "feat: Add batched_contains() override for NixlDynamicStorageBackend (#2966)\n\nAdd batched_contains() override for NixlDynamicStorageBackend\n\nSigned-off-by: Jason Goldschmidt <jason.goldschmidt@dell.com>",
-              "stats": {
-                "files": 3,
-                "lines": 445,
-                "insertions": 436,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 90,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 90,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -16208,13 +16766,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-05-14T00:30:12.368Z",
+    "analyzedAt": "2026-05-15T00:30:19.876Z",
     "daysBack": 2,
-    "totalCommits": 201,
+    "totalCommits": 209,
     "totalContributors": 41,
     "mergedFrom": {
-      "existing": 197,
-      "new": 8
+      "existing": 201,
+      "new": 12
     }
   }
 }
