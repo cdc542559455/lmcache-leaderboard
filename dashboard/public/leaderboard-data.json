@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-18T00:30:04.046Z",
-  "total_commits_analyzed": 9,
+  "last_updated": "2026-05-19T00:30:14.219Z",
+  "total_commits_analyzed": 17,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -284,6 +284,302 @@
           "tier": "T0",
           "tier_name": "Elite"
         }
+      ],
+      "2026-W21": [
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 90,
+          "commits": [
+            {
+              "hash": "516b498c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-18T12:33:27.000Z",
+              "message": "feat: add StubCPUDevice to allow import/startup fallback in CPU-only environments (#3280)\n\n* feat: add StubCPUDevice to enable CPU-only MP mode\n\nIntroduce StubCPUDevice as a torch_dev drop-in for CPU-only\nenvironments, allowing the MP server to run without a GPU.\nUpdate _detect_device() to fall back to StubCPUDevice when no\naccelerator is available. Override KV cache layout to HND for\nCPU backend since vLLM's get_kv_cache_layout() is unavailable\nin MP mode and defaults to NHD.\n\nVerified with L1 adapter end-to-end.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix path sharder ci in cpu-only path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move platform from lmcache to lmcache/v1\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 385,
+                "insertions": 369,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 90,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 90,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Ilya Yanok",
+          "email": "iyanok@nvidia.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "55bcefd9",
+              "author": "Ilya Yanok",
+              "email": "iyanok@nvidia.com",
+              "date": "2026-05-18T16:22:23.000Z",
+              "message": "nixl_storage: naive support for files + dynamic (#2936)\n\n* nixl_storage: naive support for files + dynamic\n\nstatic is not actually very usable with files: we bump into the OS\nlimits on the open files very quickly, limiting the size of the cache.\nWith tons of VRAM, having G3 of comparable size is not helping much, we\nreally need it to be much bigger.\n\nThis commit adds support for files in dynamic mode of nixl storage.\nThere are some naive things done:\n1. No support for sharing the cache storage. We assume the worker has\n   exclusive access to the files and it is always safe to overwrite\n   existing files. Note that with TP!=1 we will have several workers\n   with the same target directory, that's why it's important to have a\n   worker id as part of the key, so they don't affect each other.\n2. No eviction support. As before, dynamic mode has no evicting support.\n   This kinda made sense when it was only working with OBJ storages, but\n   now that is something to be aware of. It's not hard to add eviction\n   though.\n3. Flat directory with all the cache files. There are going to be a lot\n   of them, especially provided we don't have eviction. Most filesystems\n   don't optimize for the case of a directory with millions of files,\n   and we constantly open/close files there, that might be a source\n   of additional latency.\n   - There is an existing PR to support sharding the directory, we can\n     merge it as a band aid.\n   - As a more advanced solution, we can do multi-layer subdirectory\n     structure, like gds backend does.\n4. We switched directly from having _all_ files open at once, to\n   open/close _every_ single file on access. We might explore having an\n   LRU cache of open files instead.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix PR Comments\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Extract _build_descs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Refactor to increase readability\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix another leak issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix release order\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Treat file not found as a miss\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docstring about file create mode 0o644\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Unlink files on failure\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add missing docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix mypy error\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Make tests pass\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Guy Ealey Morag <gealeymorag@nvidia.com>",
+              "stats": {
+                "files": 2,
+                "lines": 715,
+                "insertions": 590,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "aa1abd4d",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-18T20:26:24.000Z",
+              "message": "[CI] skip LMCache main release pipeline for operator-v* release tags (#3312)\n\nadd operator release skip in workflow\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 3,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ec40e74c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-18T20:22:58.000Z",
+              "message": "[CI] DCO sign-off commits from sync_torch_version workflow (#3311)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "kumaneko",
+          "email": "crclq2018@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 36,
+          "commits": [
+            {
+              "hash": "c9cfa3af",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-05-18T15:50:09.000Z",
+              "message": "Fix typos and misspellings across codebase (#3306)\n\n- 'non-blcocking' -> 'non-blocking' in abstract_backend.py\n- 'Memoryobjs' -> 'MemoryObj' in abstract_backend.py\n- 'pareant_allocator' -> 'parent_allocator' in memory_management.py\n- 'storage-manger' -> 'storage-manager' in storage_manager.py\n- 'trak' -> 'track' in executor.py (2 occurrences)\n- 'the the' -> 'the', 'instance' -> 'instances' in kv_controller.py\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 14,
+                "insertions": 7,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 3,
+                "files": 20,
+                "keyword": 12,
+                "ai": 1,
+                "total": 36
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 36,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 36,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jiayue Chen",
+          "email": "96101996+glbyktjys@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "a60ae02e",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-18T22:55:28.000Z",
+              "message": "[CI] add signoff for doc translation workflow (#3315)\n\nadd signoff for doc translation workflow\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "ikasas",
+          "email": "144680962+ikasas@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "b4a2d7ed",
+              "author": "ikasas",
+              "email": "144680962+ikasas@users.noreply.github.com",
+              "date": "2026-05-18T01:52:59.000Z",
+              "message": "[Doc] Fix a typo in p2p_init_ports parameter (#2282)\n\nSigned-off-by: ikasas <Sasaki.Kazuki@da.MitsubishiElectric.co.jp>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 18,
+          "commits": [
+            {
+              "hash": "2e36e1e4",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-18T20:25:18.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-05-15) (#3296)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 5,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 18,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 18,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -291,10 +587,10 @@
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 4,
+          "total_commits": 6,
           "significant_commits": 1,
-          "simple_commits": 3,
-          "commit_score": 162,
+          "simple_commits": 5,
+          "commit_score": 202,
           "commits": [
             {
               "hash": "d37cfa16",
@@ -379,14 +675,116 @@
                 "total": 25
               },
               "classification": "simple"
+            },
+            {
+              "hash": "aa1abd4d",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-18T20:26:24.000Z",
+              "message": "[CI] skip LMCache main release pipeline for operator-v* release tags (#3312)\n\nadd operator release skip in workflow\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 3,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ec40e74c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-18T20:22:58.000Z",
+              "message": "[CI] DCO sign-off commits from sync_torch_version workflow (#3311)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 40.5,
-          "significance_ratio": 0.25,
+          "avg_score": 33.666666666666664,
+          "significance_ratio": 0.16666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 162,
+          "total_score": 202,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 123,
+          "commits": [
+            {
+              "hash": "4658d69e",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-17T01:44:14.000Z",
+              "message": "Defer test_cache runtime imports so lmcache-cli loads without torch (#3294)\n\n* Defer test_cache runtime imports so lmcache-cli loads without torch\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 32,
+                "insertions": 16,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "516b498c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-18T12:33:27.000Z",
+              "message": "feat: add StubCPUDevice to allow import/startup fallback in CPU-only environments (#3280)\n\n* feat: add StubCPUDevice to enable CPU-only MP mode\n\nIntroduce StubCPUDevice as a torch_dev drop-in for CPU-only\nenvironments, allowing the MP server to run without a GPU.\nUpdate _detect_device() to fall back to StubCPUDevice when no\naccelerator is available. Override KV cache layout to HND for\nCPU backend since vLLM's get_kv_cache_layout() is unavailable\nin MP mode and defaults to NHD.\n\nVerified with L1 adapter end-to-end.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix path sharder ci in cpu-only path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move platform from lmcache to lmcache/v1\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 385,
+                "insertions": 369,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 123,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -453,10 +851,10 @@
         {
           "name": "Jiayue Chen",
           "email": "96101996+glbyktjys@users.noreply.github.com",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
+          "simple_commits": 1,
+          "commit_score": 107,
           "commits": [
             {
               "hash": "84667435",
@@ -478,14 +876,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a60ae02e",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-18T22:55:28.000Z",
+              "message": "[CI] add signoff for doc translation workflow (#3315)\n\nadd signoff for doc translation workflow\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 87,
-          "significance_ratio": 1,
+          "avg_score": 53.5,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 107,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -529,43 +948,160 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
+          "name": "Ilya Yanok",
+          "email": "iyanok@nvidia.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "55bcefd9",
+              "author": "Ilya Yanok",
+              "email": "iyanok@nvidia.com",
+              "date": "2026-05-18T16:22:23.000Z",
+              "message": "nixl_storage: naive support for files + dynamic (#2936)\n\n* nixl_storage: naive support for files + dynamic\n\nstatic is not actually very usable with files: we bump into the OS\nlimits on the open files very quickly, limiting the size of the cache.\nWith tons of VRAM, having G3 of comparable size is not helping much, we\nreally need it to be much bigger.\n\nThis commit adds support for files in dynamic mode of nixl storage.\nThere are some naive things done:\n1. No support for sharing the cache storage. We assume the worker has\n   exclusive access to the files and it is always safe to overwrite\n   existing files. Note that with TP!=1 we will have several workers\n   with the same target directory, that's why it's important to have a\n   worker id as part of the key, so they don't affect each other.\n2. No eviction support. As before, dynamic mode has no evicting support.\n   This kinda made sense when it was only working with OBJ storages, but\n   now that is something to be aware of. It's not hard to add eviction\n   though.\n3. Flat directory with all the cache files. There are going to be a lot\n   of them, especially provided we don't have eviction. Most filesystems\n   don't optimize for the case of a directory with millions of files,\n   and we constantly open/close files there, that might be a source\n   of additional latency.\n   - There is an existing PR to support sharding the directory, we can\n     merge it as a band aid.\n   - As a more advanced solution, we can do multi-layer subdirectory\n     structure, like gds backend does.\n4. We switched directly from having _all_ files open at once, to\n   open/close _every_ single file on access. We might explore having an\n   LRU cache of open files instead.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix PR Comments\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Extract _build_descs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Refactor to increase readability\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix another leak issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix release order\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Treat file not found as a miss\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docstring about file create mode 0o644\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Unlink files on failure\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add missing docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix mypy error\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Make tests pass\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Guy Ealey Morag <gealeymorag@nvidia.com>",
+              "stats": {
+                "files": 2,
+                "lines": 715,
+                "insertions": 590,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "kumaneko",
+          "email": "crclq2018@gmail.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 33,
+          "commit_score": 36,
           "commits": [
             {
-              "hash": "4658d69e",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-17T01:44:14.000Z",
-              "message": "Defer test_cache runtime imports so lmcache-cli loads without torch (#3294)\n\n* Defer test_cache runtime imports so lmcache-cli loads without torch\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "hash": "c9cfa3af",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-05-18T15:50:09.000Z",
+              "message": "Fix typos and misspellings across codebase (#3306)\n\n- 'non-blcocking' -> 'non-blocking' in abstract_backend.py\n- 'Memoryobjs' -> 'MemoryObj' in abstract_backend.py\n- 'pareant_allocator' -> 'parent_allocator' in memory_management.py\n- 'storage-manger' -> 'storage-manager' in storage_manager.py\n- 'trak' -> 'track' in executor.py (2 occurrences)\n- 'the the' -> 'the', 'instance' -> 'instances' in kv_controller.py\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
               "stats": {
-                "files": 2,
-                "lines": 32,
-                "insertions": 16,
-                "deletions": 16
+                "files": 5,
+                "lines": 14,
+                "insertions": 7,
+                "deletions": 7
               },
               "scores": {
-                "loc": 8,
-                "files": 10,
+                "loc": 3,
+                "files": 20,
                 "keyword": 12,
-                "ai": 3,
-                "total": 33
+                "ai": 1,
+                "total": 36
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 33,
+          "avg_score": 36,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 33,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "total_score": 36,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "ikasas",
+          "email": "144680962+ikasas@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "b4a2d7ed",
+              "author": "ikasas",
+              "email": "144680962+ikasas@users.noreply.github.com",
+              "date": "2026-05-18T01:52:59.000Z",
+              "message": "[Doc] Fix a typo in p2p_init_ports parameter (#2282)\n\nSigned-off-by: ikasas <Sasaki.Kazuki@da.MitsubishiElectric.co.jp>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 18,
+          "commits": [
+            {
+              "hash": "2e36e1e4",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-18T20:25:18.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-05-15) (#3296)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 5,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 18,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 18,
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
@@ -574,10 +1110,10 @@
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 4,
+          "total_commits": 6,
           "significant_commits": 1,
-          "simple_commits": 3,
-          "commit_score": 162,
+          "simple_commits": 5,
+          "commit_score": 202,
           "commits": [
             {
               "hash": "d37cfa16",
@@ -662,14 +1198,116 @@
                 "total": 25
               },
               "classification": "simple"
+            },
+            {
+              "hash": "aa1abd4d",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-18T20:26:24.000Z",
+              "message": "[CI] skip LMCache main release pipeline for operator-v* release tags (#3312)\n\nadd operator release skip in workflow\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 3,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ec40e74c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-18T20:22:58.000Z",
+              "message": "[CI] DCO sign-off commits from sync_torch_version workflow (#3311)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 40.5,
-          "significance_ratio": 0.25,
+          "avg_score": 33.666666666666664,
+          "significance_ratio": 0.16666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 162,
+          "total_score": 202,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 123,
+          "commits": [
+            {
+              "hash": "4658d69e",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-17T01:44:14.000Z",
+              "message": "Defer test_cache runtime imports so lmcache-cli loads without torch (#3294)\n\n* Defer test_cache runtime imports so lmcache-cli loads without torch\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 32,
+                "insertions": 16,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "516b498c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-18T12:33:27.000Z",
+              "message": "feat: add StubCPUDevice to allow import/startup fallback in CPU-only environments (#3280)\n\n* feat: add StubCPUDevice to enable CPU-only MP mode\n\nIntroduce StubCPUDevice as a torch_dev drop-in for CPU-only\nenvironments, allowing the MP server to run without a GPU.\nUpdate _detect_device() to fall back to StubCPUDevice when no\naccelerator is available. Override KV cache layout to HND for\nCPU backend since vLLM's get_kv_cache_layout() is unavailable\nin MP mode and defaults to NHD.\n\nVerified with L1 adapter end-to-end.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix path sharder ci in cpu-only path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move platform from lmcache to lmcache/v1\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 385,
+                "insertions": 369,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 123,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -736,10 +1374,10 @@
         {
           "name": "Jiayue Chen",
           "email": "96101996+glbyktjys@users.noreply.github.com",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
+          "simple_commits": 1,
+          "commit_score": 107,
           "commits": [
             {
               "hash": "84667435",
@@ -761,14 +1399,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a60ae02e",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-18T22:55:28.000Z",
+              "message": "[CI] add signoff for doc translation workflow (#3315)\n\nadd signoff for doc translation workflow\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 87,
-          "significance_ratio": 1,
+          "avg_score": 53.5,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 107,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -812,55 +1471,172 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
+          "name": "Ilya Yanok",
+          "email": "iyanok@nvidia.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "55bcefd9",
+              "author": "Ilya Yanok",
+              "email": "iyanok@nvidia.com",
+              "date": "2026-05-18T16:22:23.000Z",
+              "message": "nixl_storage: naive support for files + dynamic (#2936)\n\n* nixl_storage: naive support for files + dynamic\n\nstatic is not actually very usable with files: we bump into the OS\nlimits on the open files very quickly, limiting the size of the cache.\nWith tons of VRAM, having G3 of comparable size is not helping much, we\nreally need it to be much bigger.\n\nThis commit adds support for files in dynamic mode of nixl storage.\nThere are some naive things done:\n1. No support for sharing the cache storage. We assume the worker has\n   exclusive access to the files and it is always safe to overwrite\n   existing files. Note that with TP!=1 we will have several workers\n   with the same target directory, that's why it's important to have a\n   worker id as part of the key, so they don't affect each other.\n2. No eviction support. As before, dynamic mode has no evicting support.\n   This kinda made sense when it was only working with OBJ storages, but\n   now that is something to be aware of. It's not hard to add eviction\n   though.\n3. Flat directory with all the cache files. There are going to be a lot\n   of them, especially provided we don't have eviction. Most filesystems\n   don't optimize for the case of a directory with millions of files,\n   and we constantly open/close files there, that might be a source\n   of additional latency.\n   - There is an existing PR to support sharding the directory, we can\n     merge it as a band aid.\n   - As a more advanced solution, we can do multi-layer subdirectory\n     structure, like gds backend does.\n4. We switched directly from having _all_ files open at once, to\n   open/close _every_ single file on access. We might explore having an\n   LRU cache of open files instead.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix PR Comments\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Extract _build_descs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Refactor to increase readability\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix another leak issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix release order\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Treat file not found as a miss\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docstring about file create mode 0o644\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Unlink files on failure\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add missing docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix mypy error\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Make tests pass\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Guy Ealey Morag <gealeymorag@nvidia.com>",
+              "stats": {
+                "files": 2,
+                "lines": 715,
+                "insertions": 590,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "kumaneko",
+          "email": "crclq2018@gmail.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 33,
+          "commit_score": 36,
           "commits": [
             {
-              "hash": "4658d69e",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-17T01:44:14.000Z",
-              "message": "Defer test_cache runtime imports so lmcache-cli loads without torch (#3294)\n\n* Defer test_cache runtime imports so lmcache-cli loads without torch\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "hash": "c9cfa3af",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-05-18T15:50:09.000Z",
+              "message": "Fix typos and misspellings across codebase (#3306)\n\n- 'non-blcocking' -> 'non-blocking' in abstract_backend.py\n- 'Memoryobjs' -> 'MemoryObj' in abstract_backend.py\n- 'pareant_allocator' -> 'parent_allocator' in memory_management.py\n- 'storage-manger' -> 'storage-manager' in storage_manager.py\n- 'trak' -> 'track' in executor.py (2 occurrences)\n- 'the the' -> 'the', 'instance' -> 'instances' in kv_controller.py\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
               "stats": {
-                "files": 2,
-                "lines": 32,
-                "insertions": 16,
-                "deletions": 16
+                "files": 5,
+                "lines": 14,
+                "insertions": 7,
+                "deletions": 7
               },
               "scores": {
-                "loc": 8,
-                "files": 10,
+                "loc": 3,
+                "files": 20,
                 "keyword": 12,
-                "ai": 3,
-                "total": 33
+                "ai": 1,
+                "total": 36
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 33,
+          "avg_score": 36,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 33,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "total_score": 36,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "ikasas",
+          "email": "144680962+ikasas@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "b4a2d7ed",
+              "author": "ikasas",
+              "email": "144680962+ikasas@users.noreply.github.com",
+              "date": "2026-05-18T01:52:59.000Z",
+              "message": "[Doc] Fix a typo in p2p_init_ports parameter (#2282)\n\nSigned-off-by: ikasas <Sasaki.Kazuki@da.MitsubishiElectric.co.jp>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 18,
+          "commits": [
+            {
+              "hash": "2e36e1e4",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-18T20:25:18.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-05-15) (#3296)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 5,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 18,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 18,
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-05-18T00:30:04.046Z",
+    "analyzedAt": "2026-05-19T00:30:14.219Z",
     "daysBack": 2,
-    "totalCommits": 9,
-    "totalContributors": 5,
+    "totalCommits": 17,
+    "totalContributors": 9,
     "mergedFrom": {
-      "existing": 8,
-      "new": 3
+      "existing": 9,
+      "new": 9
     }
   }
 }
