@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-22T00:30:20.326Z",
-  "total_commits_analyzed": 36,
+  "last_updated": "2026-05-23T00:30:11.626Z",
+  "total_commits_analyzed": 40,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -287,6 +287,150 @@
       ],
       "2026-W21": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 6,
+          "significant_commits": 3,
+          "simple_commits": 3,
+          "commit_score": 320,
+          "commits": [
+            {
+              "hash": "f9ce8cbe",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-19T07:14:43.000Z",
+              "message": "[MP] Lazy import cupy for gpu_cache_context (#3308)\n\n* Lazy import cupy for gpu_cache_context\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Lazy import cupy for gpu_cache_context\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Restore cupy type hints via TYPE_CHECKING\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 25,
+                "insertions": 17,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "4d2d4f37",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-19T02:31:44.000Z",
+              "message": "[MP] Add extra_config to construct lmcache mp adapter (#3026)\n\n* [MP] Add extra_config to construct lmcache mp adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 144,
+                "insertions": 111,
+                "deletions": 33
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 14,
+                "total": 66
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2ce4f5f2",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-20T07:55:19.000Z",
+              "message": "Refactor: abstract discover_subclasses util method (#3237)\n\n* Refactor: abstract discover_subclasses util method\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Raise exception on_import_error\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move test_cache CLI module under bench sub-package\n\nTestCacheCommand is the impl behind 'bench kvcache', not a top-level CLI verb. Putting test_cache.py under lmcache/cli/commands/ caused discover_subclasses to surface it as a stand-alone command. Move the module (and its tests) into lmcache/cli/commands/bench/ so it sits next to the engine_bench peer and is naturally invisible to the top-level scan.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 686,
+                "insertions": 541,
+                "deletions": 145
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9793d8b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-23T00:21:16.000Z",
+              "message": "[Integration] LMCache MP mode warn log while cannot reach lmcache server (#3365)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 42,
+                "insertions": 33,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "4168b099",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-22T08:36:03.000Z",
+              "message": "Hotfix: remove macos-13 from ci workflow as resource insufficient (#3366)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 1,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9f06a63f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-22T04:23:12.000Z",
+              "message": "Add macos ci check (#3148)\n\n* ci: add macOS compatibility check\n\nBring over the macOS CI workflow and smoke test from #3148.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* introduce c++ event_notifier abstraction\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from liqian\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(macos): use NO_GPU_EXT=1 to align with build_cpu_artifacts.yml\n\nNO_CUDA_EXT was deprecated by #3357 in favor of two distinct knobs:\n\n  - NO_NATIVE_EXT=1: skip all C++ extensions (pure-Python build)\n\n  - NO_GPU_EXT=1:    build common C++ ext, skip CUDA/ROCm/SYCL\n\nSwitch the macOS workflow to NO_GPU_EXT=1 so we actually compile\n\nnative_storage_ops / lmcache_redis / lmcache_fs on macOS and exercise\n\nthe new PipeNotifier fallback in csrc/storage_backends/event_notifier.h.\n\nAlso extend the smoke script with an import check that mirrors the\n\nverify step in build_cpu_artifacts.yml.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 519,
+                "insertions": 468,
+                "deletions": 51
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 53.333333333333336,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 320,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
           "total_commits": 4,
@@ -385,87 +529,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 292,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 193,
-          "commits": [
-            {
-              "hash": "f9ce8cbe",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-05-19T07:14:43.000Z",
-              "message": "[MP] Lazy import cupy for gpu_cache_context (#3308)\n\n* Lazy import cupy for gpu_cache_context\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Lazy import cupy for gpu_cache_context\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Restore cupy type hints via TYPE_CHECKING\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 25,
-                "insertions": 17,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 2,
-                "total": 27
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "4d2d4f37",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-05-19T02:31:44.000Z",
-              "message": "[MP] Add extra_config to construct lmcache mp adapter (#3026)\n\n* [MP] Add extra_config to construct lmcache mp adapter\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 3,
-                "lines": 144,
-                "insertions": 111,
-                "deletions": 33
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 14,
-                "total": 66
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "2ce4f5f2",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-05-20T07:55:19.000Z",
-              "message": "Refactor: abstract discover_subclasses util method (#3237)\n\n* Refactor: abstract discover_subclasses util method\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Raise exception on_import_error\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move test_cache CLI module under bench sub-package\n\nTestCacheCommand is the impl behind 'bench kvcache', not a top-level CLI verb. Putting test_cache.py under lmcache/cli/commands/ caused discover_subclasses to surface it as a stand-alone command. Move the module (and its tests) into lmcache/cli/commands/bench/ so it sits next to the engine_bench peer and is naturally invisible to the top-level scan.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 11,
-                "lines": 686,
-                "insertions": 541,
-                "deletions": 145
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 64.33333333333333,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 193,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -812,6 +875,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "3300d0d9",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-22T04:08:26.000Z",
+              "message": "[Observability]: Add L2 Usage to SM (#3320)\n\nobservability: add l2_usage_bytes gauge + dashboard panel\n\nRegister an observable gauge that reports each L2 adapter's current\nusage via adapter.get_usage(), tagged by l2_name, plus a Grafana panel\nto visualize it. Lets operators query how much each L2 tier currently\nholds.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 161,
+                "insertions": 148,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Jiayue Chen",
           "email": "96101996+glbyktjys@users.noreply.github.com",
           "total_commits": 2,
@@ -1066,8 +1168,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -1427,10 +1529,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 193,
+          "total_commits": 6,
+          "significant_commits": 3,
+          "simple_commits": 3,
+          "commit_score": 320,
           "commits": [
             {
               "hash": "f9ce8cbe",
@@ -1494,14 +1596,77 @@
                 "total": 100
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9793d8b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-23T00:21:16.000Z",
+              "message": "[Integration] LMCache MP mode warn log while cannot reach lmcache server (#3365)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 42,
+                "insertions": 33,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "4168b099",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-22T08:36:03.000Z",
+              "message": "Hotfix: remove macos-13 from ci workflow as resource insufficient (#3366)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 1,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9f06a63f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-22T04:23:12.000Z",
+              "message": "Add macos ci check (#3148)\n\n* ci: add macOS compatibility check\n\nBring over the macOS CI workflow and smoke test from #3148.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* introduce c++ event_notifier abstraction\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from liqian\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(macos): use NO_GPU_EXT=1 to align with build_cpu_artifacts.yml\n\nNO_CUDA_EXT was deprecated by #3357 in favor of two distinct knobs:\n\n  - NO_NATIVE_EXT=1: skip all C++ extensions (pure-Python build)\n\n  - NO_GPU_EXT=1:    build common C++ ext, skip CUDA/ROCm/SYCL\n\nSwitch the macOS workflow to NO_GPU_EXT=1 so we actually compile\n\nnative_storage_ops / lmcache_redis / lmcache_fs on macOS and exercise\n\nthe new PipeNotifier fallback in csrc/storage_backends/event_notifier.h.\n\nAlso extend the smoke script with an import check that mirrors the\n\nverify step in build_cpu_artifacts.yml.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 519,
+                "insertions": 468,
+                "deletions": 51
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
+                "total": 75
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 64.33333333333333,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 53.333333333333336,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 193,
+          "total_score": 320,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1884,6 +2049,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "3300d0d9",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-22T04:08:26.000Z",
+              "message": "[Observability]: Add L2 Usage to SM (#3320)\n\nobservability: add l2_usage_bytes gauge + dashboard panel\n\nRegister an observable gauge that reports each L2 adapter's current\nusage via adapter.get_usage(), tagged by l2_name, plus a Grafana panel\nto visualize it. Lets operators query how much each L2 tier currently\nholds.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 161,
+                "insertions": 148,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "kumaneko",
           "email": "crclq2018@gmail.com",
           "total_commits": 2,
@@ -2000,8 +2204,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 39,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "longguo",
@@ -2439,10 +2643,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 193,
+          "total_commits": 6,
+          "significant_commits": 3,
+          "simple_commits": 3,
+          "commit_score": 320,
           "commits": [
             {
               "hash": "f9ce8cbe",
@@ -2506,14 +2710,77 @@
                 "total": 100
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9793d8b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-23T00:21:16.000Z",
+              "message": "[Integration] LMCache MP mode warn log while cannot reach lmcache server (#3365)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 42,
+                "insertions": 33,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "4168b099",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-22T08:36:03.000Z",
+              "message": "Hotfix: remove macos-13 from ci workflow as resource insufficient (#3366)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 1,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9f06a63f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-05-22T04:23:12.000Z",
+              "message": "Add macos ci check (#3148)\n\n* ci: add macOS compatibility check\n\nBring over the macOS CI workflow and smoke test from #3148.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* introduce c++ event_notifier abstraction\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment from liqian\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(macos): use NO_GPU_EXT=1 to align with build_cpu_artifacts.yml\n\nNO_CUDA_EXT was deprecated by #3357 in favor of two distinct knobs:\n\n  - NO_NATIVE_EXT=1: skip all C++ extensions (pure-Python build)\n\n  - NO_GPU_EXT=1:    build common C++ ext, skip CUDA/ROCm/SYCL\n\nSwitch the macOS workflow to NO_GPU_EXT=1 so we actually compile\n\nnative_storage_ops / lmcache_redis / lmcache_fs on macOS and exercise\n\nthe new PipeNotifier fallback in csrc/storage_backends/event_notifier.h.\n\nAlso extend the smoke script with an import check that mirrors the\n\nverify step in build_cpu_artifacts.yml.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 519,
+                "insertions": 468,
+                "deletions": 51
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
+                "total": 75
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 64.33333333333333,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 53.333333333333336,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 193,
+          "total_score": 320,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -2896,6 +3163,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "3300d0d9",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-22T04:08:26.000Z",
+              "message": "[Observability]: Add L2 Usage to SM (#3320)\n\nobservability: add l2_usage_bytes gauge + dashboard panel\n\nRegister an observable gauge that reports each L2 adapter's current\nusage via adapter.get_usage(), tagged by l2_name, plus a Grafana panel\nto visualize it. Lets operators query how much each L2 tier currently\nholds.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 161,
+                "insertions": 148,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "kumaneko",
           "email": "crclq2018@gmail.com",
           "total_commits": 2,
@@ -3012,8 +3318,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 39,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "longguo",
@@ -3097,13 +3403,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-05-22T00:30:20.326Z",
+    "analyzedAt": "2026-05-23T00:30:11.626Z",
     "daysBack": 2,
-    "totalCommits": 36,
-    "totalContributors": 14,
+    "totalCommits": 40,
+    "totalContributors": 15,
     "mergedFrom": {
-      "existing": 33,
-      "new": 12
+      "existing": 36,
+      "new": 7
     }
   }
 }
