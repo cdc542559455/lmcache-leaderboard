@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-26T00:30:04.739Z",
-  "total_commits_analyzed": 44,
+  "last_updated": "2026-05-27T00:30:36.069Z",
+  "total_commits_analyzed": 62,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -1174,6 +1174,228 @@
       ],
       "2026-W22": [
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 4,
+          "significant_commits": 2,
+          "simple_commits": 2,
+          "commit_score": 207,
+          "commits": [
+            {
+              "hash": "84079945",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-25T21:27:26.000Z",
+              "message": "[CI][Hotfix] fix the pytest lazy import issue caused by vLLM torch dynamo compilation (#3390)\n\n[CI][Hotfix] Add pytest to runtime deps to fix cupy lazy import crash\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 3,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ec4dbe12",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-26T19:55:21.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-05-21) (#3361)\n\ndocs(mp): note non-CUDA auto-disable of --l1-use-lazy\n\nPR #3259 (feat(mp): Non-GPU Context by pickle) added a post-init\nguard in lmcache/v1/distributed/config.py:L1MemoryManagerConfig\nthat auto-disables use_lazy on backends where\nlmcache.torch_dev has no cudart attribute, logging a warning\n(\"LazyMemoryAllocator requires cudart which is not available\non the current backend. Disabling l1-use-lazy.\").\n\nThe user-facing reference in docs/source/mp/configuration.rst\nstill listed the --l1-use-lazy default as plain \"True\" without\nmentioning that non-CUDA backends silently downgrade to eager\nallocation. Extend the description so the documented behavior\nmatches the actual code path.\n\nDoc-only change; no code is modified.\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 4,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 5,
+                "ai": 0,
+                "total": 13
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bda3af18",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-26T17:43:04.000Z",
+              "message": "[MP][Core] Refactor MPCacheEngine for better extendability (#3391)\n\n* [Add] refactoring for the LMCache MP cache engine\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 16,
+                "lines": 4335,
+                "insertions": 2375,
+                "deletions": 1960
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a534b927",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-26T03:15:27.000Z",
+              "message": "[MP] Update the L2 adapter interface to force measuring the real transferred bytes (#3363)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 28,
+                "lines": 422,
+                "insertions": 202,
+                "deletions": 220
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 51.75,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 207,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Zhengfei He",
+          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 181,
+          "commits": [
+            {
+              "hash": "62bb37d5",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-05-26T20:59:09.000Z",
+              "message": "[Fix]: Skip unpin for non-pinned objects in cleanup_memory_objs (#3385)\n\n* [Fix]: Skip unpin for non-pinned objects in cleanup_memory_objs\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Add type hint in cache engine clean up test\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n---------\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 79,
+                "insertions": 78,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 7,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "4bdcb5cc",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-05-26T20:06:34.000Z",
+              "message": "[Fix] Change pinned pointer allocations in non-CUDA equivalents to be page-aligned for O_DIRECT (#3191)\n\n* [Fix] non_cuda_equivalents: page-align pinned allocations for O_DIRECT\n\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 131,
+                "insertions": 97,
+                "deletions": 34
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4fb03710",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-05-26T15:59:21.000Z",
+              "message": "[Perf] Replace Condvar polling with eventfd + epoll in  iouring worker thread (#3271)\n\n* Replace Condvar polling with eventfd+epoll for io_uring worker\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix rust format check\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Add RAII guard for file descriptor in rust raw block\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n---------\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 985,
+                "insertions": 617,
+                "deletions": 368
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 25,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 60.333333333333336,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 181,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Ilya Yanok",
+          "email": "iyanok@nvidia.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "a68bd0a0",
+              "author": "Ilya Yanok",
+              "email": "iyanok@nvidia.com",
+              "date": "2026-05-26T17:10:29.000Z",
+              "message": "Iyanok/huge pages (#2643)\n\n* memory: huge page support (C bits)\n\nAdd 3 pairs of alloc/free functions for huge pages.\n\nThe 4th option is for SHM and it's missing, since normal SHM use\ncases don't support huge pages.\n\nOld API is left untouched, except for the small refactor: common\nmmap code is factored out. This doesn't affect the behavior.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* memory_management: use new functions for huge pages\n\nChange two allocators to support us_huge_pages flag.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* memory_management: log if allocating huge pages fail\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* non_cuda_equivalents: change memory functions to match cuda\n\nAdding use_hugepages to alloc and size to free.\n\nThere is no actual huge page support though. It should be pretty easy\nto add to non-shm cases (mmap and give torch a buffer). For shm we\nneed to look into shared_memory module implementation.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* local_cpu: support for huge pages\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* nixl_storage: add config option to alloc huge pages\n\nWe want to be able to alloc huge pages for the NIXL buffer in DRAM.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* PR comments fixes, Code cleanup\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Skip test if not enough free huge pages\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix non-cuda fallbacks\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Remove unused func\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix hugepage info to check for 2 MiB only\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Merge branch 'dev' into iyanok/huge-pages\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 12,
+                "lines": 466,
+                "insertions": 417,
+                "deletions": 49
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "elliotz-ai",
           "email": "elliot@character.ai",
           "total_commits": 1,
@@ -1213,6 +1435,435 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Se7en",
+          "email": "chengzw258@163.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "1966340e",
+              "author": "Se7en",
+              "email": "chengzw258@163.com",
+              "date": "2026-05-26T19:10:24.000Z",
+              "message": "[Fix][Observability] PrometheusLogger instance already created with different metadata (#3147)\n\nSigned-off-by: cr7258 <chengzw258@163.com>",
+              "stats": {
+                "files": 12,
+                "lines": 512,
+                "insertions": 346,
+                "deletions": 166
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "aa56b7db",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-05-26T04:16:19.000Z",
+              "message": "[refactor] refactor bench engine cli (#3341)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 1195,
+                "insertions": 630,
+                "deletions": 565
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Riley Dixon",
+          "email": "rildixon@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "9a34979a",
+              "author": "Riley Dixon",
+              "email": "rildixon@amd.com",
+              "date": "2026-05-26T22:10:54.000Z",
+              "message": "[hipFile]: Add cufile-python compatible shim layer to use AMD's hipFile package. (#3115)\n\nThis shim layer matches the cufile-python API that is currently in use\nby LMCache. This allows hipFile to maintain its own API while\nnot requiring additional code changes in LMCache.\n\nSigned-off-by: Riley Dixon <riley.dixon@amd.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 5,
+                "lines": 187,
+                "insertions": 179,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Kihwan Kim",
+          "email": "luceinaltis2020@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "1b8785ab",
+              "author": "Kihwan Kim",
+              "email": "luceinaltis2020@gmail.com",
+              "date": "2026-05-26T23:02:34.000Z",
+              "message": "[Bugfix] Fix 0-hit async lookup when use_layerwise=true (#3252)\n\n* [Bugfix] Fix layerwise lookup miss in async_lookup_and_prefetch\n\nSigned-off-by: Kihwan Kim <luceinaltis2020@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 297,
+                "insertions": 282,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Guy Ealey Morag",
+          "email": "gealeymorag@nvidia.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 73,
+          "commits": [
+            {
+              "hash": "3e83d5c2",
+              "author": "Guy Ealey Morag",
+              "email": "gealeymorag@nvidia.com",
+              "date": "2026-05-26T16:57:01.000Z",
+              "message": "nixl_storage: Fix tests and remove from ignore list (#3200)\n\n* nixl_storage: naive support for files + dynamic\n\nstatic is not actually very usable with files: we bump into the OS\nlimits on the open files very quickly, limiting the size of the cache.\nWith tons of VRAM, having G3 of comparable size is not helping much, we\nreally need it to be much bigger.\n\nThis commit adds support for files in dynamic mode of nixl storage.\nThere are some naive things done:\n1. No support for sharing the cache storage. We assume the worker has\n   exclusive access to the files and it is always safe to overwrite\n   existing files. Note that with TP!=1 we will have several workers\n   with the same target directory, that's why it's important to have a\n   worker id as part of the key, so they don't affect each other.\n2. No eviction support. As before, dynamic mode has no evicting support.\n   This kinda made sense when it was only working with OBJ storages, but\n   now that is something to be aware of. It's not hard to add eviction\n   though.\n3. Flat directory with all the cache files. There are going to be a lot\n   of them, especially provided we don't have eviction. Most filesystems\n   don't optimize for the case of a directory with millions of files,\n   and we constantly open/close files there, that might be a source\n   of additional latency.\n   - There is an existing PR to support sharding the directory, we can\n     merge it as a band aid.\n   - As a more advanced solution, we can do multi-layer subdirectory\n     structure, like gds backend does.\n4. We switched directly from having _all_ files open at once, to\n   open/close _every_ single file on access. We might explore having an\n   LRU cache of open files instead.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix PR Comments\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Extract _build_descs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Refactor to increase readability\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix another leak issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix release order\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Treat file not found as a miss\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docstring about file create mode 0o644\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Unlink files on failure\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add missing docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix mypy error\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Make tests pass\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix nixl tests and stop ignoring them in CI\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix path to support GDS\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Revert path creation in NixlDynamicStorageBackend\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix code quality issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Ilya Yanok <iyanok@nvidia.com>",
+              "stats": {
+                "files": 6,
+                "lines": 118,
+                "insertions": 96,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 11,
+                "total": 73
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 73,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "sh",
+          "email": "100367948+yeoshuheng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 70,
+          "commits": [
+            {
+              "hash": "c276b334",
+              "author": "sh",
+              "email": "100367948+yeoshuheng@users.noreply.github.com",
+              "date": "2026-05-26T13:48:38.000Z",
+              "message": "[Doc] Add recipes for Mistral, Phi & Llama (#3270)\n\n* docs: add recipes for phi, mistral, llama\n\nSigned-off-by: yeoshuheng <100367948+yeoshuheng@users.noreply.github.com>\n\n* docs: update tool calling link\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\n\n* docs: update jinja template fp\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\n\n* docs: update jinja template fp\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\n\n---------\n\nSigned-off-by: yeoshuheng <100367948+yeoshuheng@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 343,
+                "insertions": 343,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 5,
+                "ai": 25,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 70,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yufeng He",
+          "email": "40085740+he-yufeng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 46,
+          "commits": [
+            {
+              "hash": "3dd36681",
+              "author": "Yufeng He",
+              "email": "40085740+he-yufeng@users.noreply.github.com",
+              "date": "2026-05-26T19:05:14.000Z",
+              "message": "fix: support HND formats in MP KV transfer (#3282)\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 60,
+                "insertions": 57,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 6,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 46,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 46,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "GentleCold",
+          "email": "gentlecold@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 45,
+          "commits": [
+            {
+              "hash": "a0574afc",
+              "author": "GentleCold",
+              "email": "gentlecold@qq.com",
+              "date": "2026-05-26T03:08:15.000Z",
+              "message": "[BugFix] fix sha256_cbor + async_loading type mismatch in _hash_tokens (#2999)\n\n* [BugFix] fix sha256_cbor + async_loading type mismatch in _hash_tokens\n\nWhen LMCACHE_PRE_CACHING_HASH_ALGORITHM=sha256_cbor is used together with\nLMCACHE_ENABLE_ASYNC_LOADING=True, the async lookup path fails because\nsha256_cbor (vLLM PR#23673) returns a 32-byte bytes digest. This digest is\nplaced into LookupRequestMsg.hashes which msgpack cannot encode as int,\nraising OverflowError.\n\nFix: after calling hash_func in _hash_tokens, if the result is bytes,\nfold the first 8 bytes into a uint64 int. This keeps all downstream code\n(CacheEngineKey, msgpack serialisation) working with plain ints regardless\nof the configured hash algorithm. Both the store path and the async lookup\npath go through _hash_tokens, so the keys produced are always consistent.\n\nFixes #2997\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n* [BugFix] address review: fix NONE_HASH type and use public test interface\n\n- token_database.py: convert NONE_HASH from bytes to int immediately after\n  it is set from vLLM. This ensures the entire prefix-hash chain uses a\n  consistent int type as canon_prefix input to hash_func, not bytes on the\n  first chunk and int on subsequent ones.\n\n- test_token_database.py: replace direct call to private _hash_tokens with\n  the public process_tokens interface (make_key=False). Drop cbor2 import\n  in favour of a simpler hashlib stub.\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n* [BugFix] normalize byte hash outputs in token database\n\n- token_database.py: add a module-level helper to normalize hash outputs from vLLM hash functions into LMCache's int chunk-hash representation.\n\n- Reuse the helper for both vLLM NONE_HASH initialization and token chunk hashing so sha256_cbor byte digests are folded consistently before entering the prefix hash chain.\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n* [CI] Fix isort in token database test\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n---------\n\nSigned-off-by: GentleCold <gentlecold@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 55,
+                "insertions": 53,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 5,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 45,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 45,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 43,
+          "commits": [
+            {
+              "hash": "956b7bdf",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-26T20:52:21.000Z",
+              "message": "[Operator]: Force external LMCache MP connector path (#3393)",
+              "stats": {
+                "files": 7,
+                "lines": 31,
+                "insertions": 21,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 43,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 43,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "weizhoublue",
+          "email": "45163302+weizhoublue@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 28,
+          "commits": [
+            {
+              "hash": "bd713b5f",
+              "author": "weizhoublue",
+              "email": "45163302+weizhoublue@users.noreply.github.com",
+              "date": "2026-05-26T23:26:22.000Z",
+              "message": "fix: prevent TypeError crash when streaming response has zero visible content (#3258)\n\nSigned-off-by: weizhou.lan@daocloud.io <weizhou.lan@daocloud.io>",
+              "stats": {
+                "files": 2,
+                "lines": 5,
+                "insertions": 5,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 15,
+                "ai": 0,
+                "total": 28
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 28,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 28,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "deng451e",
+          "email": "57919305+deng451e@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 27,
+          "commits": [
+            {
+              "hash": "370cf94c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-26T22:00:42.000Z",
+              "message": "[CI]  smoke-test container images before pushing (#3358)\n\nsmoke test for image release\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 24,
+                "insertions": 24,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 27,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 27,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Nachiket Torwekar",
           "email": "nachiket.torwekar@gmail.com",
           "total_commits": 1,
@@ -1248,8 +1899,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "zhengchenyu",
@@ -1287,47 +1938,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 20,
-          "commits": [
-            {
-              "hash": "84079945",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-05-25T21:27:26.000Z",
-              "message": "[CI][Hotfix] fix the pytest lazy import issue caused by vLLM torch dynamo compilation (#3390)\n\n[CI][Hotfix] Add pytest to runtime deps to fix cupy lazy import crash\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 3,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 20,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 20,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -1336,10 +1948,10 @@
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 10,
+          "total_commits": 11,
           "significant_commits": 2,
-          "simple_commits": 8,
-          "commit_score": 349,
+          "simple_commits": 9,
+          "commit_score": 376,
           "commits": [
             {
               "hash": "d37cfa16",
@@ -1550,14 +2162,35 @@
                 "total": 32
               },
               "classification": "simple"
+            },
+            {
+              "hash": "370cf94c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-26T22:00:42.000Z",
+              "message": "[CI]  smoke-test container images before pushing (#3358)\n\nsmoke test for image release\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 24,
+                "insertions": 24,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 34.9,
-          "significance_ratio": 0.2,
+          "avg_score": 34.18181818181818,
+          "significance_ratio": 0.18181818181818182,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 349,
+          "total_score": 376,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1829,6 +2462,372 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 6,
+          "significant_commits": 2,
+          "simple_commits": 4,
+          "commit_score": 246,
+          "commits": [
+            {
+              "hash": "2e36e1e4",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-18T20:25:18.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-05-15) (#3296)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 5,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "5b71110a",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-20T01:14:20.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-05-18) (#3309)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 34,
+                "insertions": 33,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 5,
+                "ai": 3,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "84079945",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-25T21:27:26.000Z",
+              "message": "[CI][Hotfix] fix the pytest lazy import issue caused by vLLM torch dynamo compilation (#3390)\n\n[CI][Hotfix] Add pytest to runtime deps to fix cupy lazy import crash\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 3,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ec4dbe12",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-26T19:55:21.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-05-21) (#3361)\n\ndocs(mp): note non-CUDA auto-disable of --l1-use-lazy\n\nPR #3259 (feat(mp): Non-GPU Context by pickle) added a post-init\nguard in lmcache/v1/distributed/config.py:L1MemoryManagerConfig\nthat auto-disables use_lazy on backends where\nlmcache.torch_dev has no cudart attribute, logging a warning\n(\"LazyMemoryAllocator requires cudart which is not available\non the current backend. Disabling l1-use-lazy.\").\n\nThe user-facing reference in docs/source/mp/configuration.rst\nstill listed the --l1-use-lazy default as plain \"True\" without\nmentioning that non-CUDA backends silently downgrade to eager\nallocation. Extend the description so the documented behavior\nmatches the actual code path.\n\nDoc-only change; no code is modified.\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 4,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 5,
+                "ai": 0,
+                "total": 13
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bda3af18",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-26T17:43:04.000Z",
+              "message": "[MP][Core] Refactor MPCacheEngine for better extendability (#3391)\n\n* [Add] refactoring for the LMCache MP cache engine\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 16,
+                "lines": 4335,
+                "insertions": 2375,
+                "deletions": 1960
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a534b927",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-26T03:15:27.000Z",
+              "message": "[MP] Update the L2 adapter interface to force measuring the real transferred bytes (#3363)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 28,
+                "lines": 422,
+                "insertions": 202,
+                "deletions": 220
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 41,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 246,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 220,
+          "commits": [
+            {
+              "hash": "2ba249db",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-05-20T07:12:22.000Z",
+              "message": "[optimize] rename non_cuda_equivalents to python_ops_fallback (#3338)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 30,
+                "insertions": 15,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9a2fd944",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-05-20T06:56:27.000Z",
+              "message": "[MP][bench] add l2 adapter benchmark cli (#3243)\n\n* [MP][bench] add l2 adapter benchmark cli\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix: fix timeout error\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* optimize\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix: fix print info error\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* add format/output/quiet\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update configuration metrics\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update name\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* delete unuse code\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 1588,
+                "insertions": 1586,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "aa56b7db",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-05-26T04:16:19.000Z",
+              "message": "[refactor] refactor bench engine cli (#3341)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 1195,
+                "insertions": 630,
+                "deletions": 565
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73.33333333333333,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 220,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Zhengfei He",
+          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 181,
+          "commits": [
+            {
+              "hash": "62bb37d5",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-05-26T20:59:09.000Z",
+              "message": "[Fix]: Skip unpin for non-pinned objects in cleanup_memory_objs (#3385)\n\n* [Fix]: Skip unpin for non-pinned objects in cleanup_memory_objs\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Add type hint in cache engine clean up test\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n---------\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 79,
+                "insertions": 78,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 7,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "4bdcb5cc",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-05-26T20:06:34.000Z",
+              "message": "[Fix] Change pinned pointer allocations in non-CUDA equivalents to be page-aligned for O_DIRECT (#3191)\n\n* [Fix] non_cuda_equivalents: page-align pinned allocations for O_DIRECT\n\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 131,
+                "insertions": 97,
+                "deletions": 34
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4fb03710",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-05-26T15:59:21.000Z",
+              "message": "[Perf] Replace Condvar polling with eventfd + epoll in  iouring worker thread (#3271)\n\n* Replace Condvar polling with eventfd+epoll for io_uring worker\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix rust format check\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Add RAII guard for file descriptor in rust raw block\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n---------\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 985,
+                "insertions": 617,
+                "deletions": 368
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 25,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 60.333333333333336,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 181,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Ilya Yanok",
+          "email": "iyanok@nvidia.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 177,
+          "commits": [
+            {
+              "hash": "55bcefd9",
+              "author": "Ilya Yanok",
+              "email": "iyanok@nvidia.com",
+              "date": "2026-05-18T16:22:23.000Z",
+              "message": "nixl_storage: naive support for files + dynamic (#2936)\n\n* nixl_storage: naive support for files + dynamic\n\nstatic is not actually very usable with files: we bump into the OS\nlimits on the open files very quickly, limiting the size of the cache.\nWith tons of VRAM, having G3 of comparable size is not helping much, we\nreally need it to be much bigger.\n\nThis commit adds support for files in dynamic mode of nixl storage.\nThere are some naive things done:\n1. No support for sharing the cache storage. We assume the worker has\n   exclusive access to the files and it is always safe to overwrite\n   existing files. Note that with TP!=1 we will have several workers\n   with the same target directory, that's why it's important to have a\n   worker id as part of the key, so they don't affect each other.\n2. No eviction support. As before, dynamic mode has no evicting support.\n   This kinda made sense when it was only working with OBJ storages, but\n   now that is something to be aware of. It's not hard to add eviction\n   though.\n3. Flat directory with all the cache files. There are going to be a lot\n   of them, especially provided we don't have eviction. Most filesystems\n   don't optimize for the case of a directory with millions of files,\n   and we constantly open/close files there, that might be a source\n   of additional latency.\n   - There is an existing PR to support sharding the directory, we can\n     merge it as a band aid.\n   - As a more advanced solution, we can do multi-layer subdirectory\n     structure, like gds backend does.\n4. We switched directly from having _all_ files open at once, to\n   open/close _every_ single file on access. We might explore having an\n   LRU cache of open files instead.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix PR Comments\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Extract _build_descs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Refactor to increase readability\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix another leak issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix release order\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Treat file not found as a miss\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docstring about file create mode 0o644\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Unlink files on failure\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add missing docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix mypy error\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Make tests pass\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Guy Ealey Morag <gealeymorag@nvidia.com>",
+              "stats": {
+                "files": 2,
+                "lines": 715,
+                "insertions": 590,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a68bd0a0",
+              "author": "Ilya Yanok",
+              "email": "iyanok@nvidia.com",
+              "date": "2026-05-26T17:10:29.000Z",
+              "message": "Iyanok/huge pages (#2643)\n\n* memory: huge page support (C bits)\n\nAdd 3 pairs of alloc/free functions for huge pages.\n\nThe 4th option is for SHM and it's missing, since normal SHM use\ncases don't support huge pages.\n\nOld API is left untouched, except for the small refactor: common\nmmap code is factored out. This doesn't affect the behavior.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* memory_management: use new functions for huge pages\n\nChange two allocators to support us_huge_pages flag.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* memory_management: log if allocating huge pages fail\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* non_cuda_equivalents: change memory functions to match cuda\n\nAdding use_hugepages to alloc and size to free.\n\nThere is no actual huge page support though. It should be pretty easy\nto add to non-shm cases (mmap and give torch a buffer). For shm we\nneed to look into shared_memory module implementation.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* local_cpu: support for huge pages\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* nixl_storage: add config option to alloc huge pages\n\nWe want to be able to alloc huge pages for the NIXL buffer in DRAM.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* PR comments fixes, Code cleanup\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Skip test if not enough free huge pages\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix non-cuda fallbacks\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Remove unused func\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix hugepage info to check for 2 MiB only\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Merge branch 'dev' into iyanok/huge-pages\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 12,
+                "lines": 466,
+                "insertions": 417,
+                "deletions": 49
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 88.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 177,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "github-actions[bot]",
           "email": "41898282+github-actions[bot]@users.noreply.github.com",
           "total_commits": 2,
@@ -1885,8 +2884,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 174,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Jiayue Chen",
@@ -1966,66 +2965,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 149,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 133,
-          "commits": [
-            {
-              "hash": "2ba249db",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-05-20T07:12:22.000Z",
-              "message": "[optimize] rename non_cuda_equivalents to python_ops_fallback (#3338)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 30,
-                "insertions": 15,
-                "deletions": 15
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 3,
-                "total": 43
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "9a2fd944",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-05-20T06:56:27.000Z",
-              "message": "[MP][bench] add l2 adapter benchmark cli (#3243)\n\n* [MP][bench] add l2 adapter benchmark cli\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix: fix timeout error\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* optimize\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix: fix print info error\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* add format/output/quiet\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update configuration metrics\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update name\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* delete unuse code\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 9,
-                "lines": 1588,
-                "insertions": 1586,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 66.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 133,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2086,6 +3025,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 113,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 111,
+          "commits": [
+            {
+              "hash": "3300d0d9",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-22T04:08:26.000Z",
+              "message": "[Observability]: Add L2 Usage to SM (#3320)\n\nobservability: add l2_usage_bytes gauge + dashboard panel\n\nRegister an observable gauge that reports each L2 adapter's current\nusage via adapter.get_usage(), tagged by l2_name, plus a Grafana panel\nto visualize it. Lets operators query how much each L2 tier currently\nholds.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 161,
+                "insertions": 148,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "956b7bdf",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-26T20:52:21.000Z",
+              "message": "[Operator]: Force external LMCache MP connector path (#3393)",
+              "stats": {
+                "files": 7,
+                "lines": 31,
+                "insertions": 21,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 55.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 111,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2164,8 +3163,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "elliotz-ai",
@@ -2203,28 +3202,106 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "Ilya Yanok",
-          "email": "iyanok@nvidia.com",
+          "name": "Se7en",
+          "email": "chengzw258@163.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "1966340e",
+              "author": "Se7en",
+              "email": "chengzw258@163.com",
+              "date": "2026-05-26T19:10:24.000Z",
+              "message": "[Fix][Observability] PrometheusLogger instance already created with different metadata (#3147)\n\nSigned-off-by: cr7258 <chengzw258@163.com>",
+              "stats": {
+                "files": 12,
+                "lines": 512,
+                "insertions": 346,
+                "deletions": 166
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Riley Dixon",
+          "email": "rildixon@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "9a34979a",
+              "author": "Riley Dixon",
+              "email": "rildixon@amd.com",
+              "date": "2026-05-26T22:10:54.000Z",
+              "message": "[hipFile]: Add cufile-python compatible shim layer to use AMD's hipFile package. (#3115)\n\nThis shim layer matches the cufile-python API that is currently in use\nby LMCache. This allows hipFile to maintain its own API while\nnot requiring additional code changes in LMCache.\n\nSigned-off-by: Riley Dixon <riley.dixon@amd.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 5,
+                "lines": 187,
+                "insertions": 179,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Kihwan Kim",
+          "email": "luceinaltis2020@gmail.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 77,
           "commits": [
             {
-              "hash": "55bcefd9",
-              "author": "Ilya Yanok",
-              "email": "iyanok@nvidia.com",
-              "date": "2026-05-18T16:22:23.000Z",
-              "message": "nixl_storage: naive support for files + dynamic (#2936)\n\n* nixl_storage: naive support for files + dynamic\n\nstatic is not actually very usable with files: we bump into the OS\nlimits on the open files very quickly, limiting the size of the cache.\nWith tons of VRAM, having G3 of comparable size is not helping much, we\nreally need it to be much bigger.\n\nThis commit adds support for files in dynamic mode of nixl storage.\nThere are some naive things done:\n1. No support for sharing the cache storage. We assume the worker has\n   exclusive access to the files and it is always safe to overwrite\n   existing files. Note that with TP!=1 we will have several workers\n   with the same target directory, that's why it's important to have a\n   worker id as part of the key, so they don't affect each other.\n2. No eviction support. As before, dynamic mode has no evicting support.\n   This kinda made sense when it was only working with OBJ storages, but\n   now that is something to be aware of. It's not hard to add eviction\n   though.\n3. Flat directory with all the cache files. There are going to be a lot\n   of them, especially provided we don't have eviction. Most filesystems\n   don't optimize for the case of a directory with millions of files,\n   and we constantly open/close files there, that might be a source\n   of additional latency.\n   - There is an existing PR to support sharding the directory, we can\n     merge it as a band aid.\n   - As a more advanced solution, we can do multi-layer subdirectory\n     structure, like gds backend does.\n4. We switched directly from having _all_ files open at once, to\n   open/close _every_ single file on access. We might explore having an\n   LRU cache of open files instead.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix PR Comments\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Extract _build_descs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Refactor to increase readability\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix another leak issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix release order\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Treat file not found as a miss\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docstring about file create mode 0o644\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Unlink files on failure\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add missing docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix mypy error\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Make tests pass\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Guy Ealey Morag <gealeymorag@nvidia.com>",
+              "hash": "1b8785ab",
+              "author": "Kihwan Kim",
+              "email": "luceinaltis2020@gmail.com",
+              "date": "2026-05-26T23:02:34.000Z",
+              "message": "[Bugfix] Fix 0-hit async lookup when use_layerwise=true (#3252)\n\n* [Bugfix] Fix layerwise lookup miss in async_lookup_and_prefetch\n\nSigned-off-by: Kihwan Kim <luceinaltis2020@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
               "stats": {
-                "files": 2,
-                "lines": 715,
-                "insertions": 590,
-                "deletions": 125
+                "files": 4,
+                "lines": 297,
+                "insertions": 282,
+                "deletions": 15
               },
               "scores": {
                 "loc": 30,
@@ -2242,126 +3319,84 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
+          "name": "Guy Ealey Morag",
+          "email": "gealeymorag@nvidia.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 68,
+          "commit_score": 73,
           "commits": [
             {
-              "hash": "3300d0d9",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-22T04:08:26.000Z",
-              "message": "[Observability]: Add L2 Usage to SM (#3320)\n\nobservability: add l2_usage_bytes gauge + dashboard panel\n\nRegister an observable gauge that reports each L2 adapter's current\nusage via adapter.get_usage(), tagged by l2_name, plus a Grafana panel\nto visualize it. Lets operators query how much each L2 tier currently\nholds.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "hash": "3e83d5c2",
+              "author": "Guy Ealey Morag",
+              "email": "gealeymorag@nvidia.com",
+              "date": "2026-05-26T16:57:01.000Z",
+              "message": "nixl_storage: Fix tests and remove from ignore list (#3200)\n\n* nixl_storage: naive support for files + dynamic\n\nstatic is not actually very usable with files: we bump into the OS\nlimits on the open files very quickly, limiting the size of the cache.\nWith tons of VRAM, having G3 of comparable size is not helping much, we\nreally need it to be much bigger.\n\nThis commit adds support for files in dynamic mode of nixl storage.\nThere are some naive things done:\n1. No support for sharing the cache storage. We assume the worker has\n   exclusive access to the files and it is always safe to overwrite\n   existing files. Note that with TP!=1 we will have several workers\n   with the same target directory, that's why it's important to have a\n   worker id as part of the key, so they don't affect each other.\n2. No eviction support. As before, dynamic mode has no evicting support.\n   This kinda made sense when it was only working with OBJ storages, but\n   now that is something to be aware of. It's not hard to add eviction\n   though.\n3. Flat directory with all the cache files. There are going to be a lot\n   of them, especially provided we don't have eviction. Most filesystems\n   don't optimize for the case of a directory with millions of files,\n   and we constantly open/close files there, that might be a source\n   of additional latency.\n   - There is an existing PR to support sharding the directory, we can\n     merge it as a band aid.\n   - As a more advanced solution, we can do multi-layer subdirectory\n     structure, like gds backend does.\n4. We switched directly from having _all_ files open at once, to\n   open/close _every_ single file on access. We might explore having an\n   LRU cache of open files instead.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix PR Comments\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Extract _build_descs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Refactor to increase readability\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix another leak issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix release order\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Treat file not found as a miss\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docstring about file create mode 0o644\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Unlink files on failure\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add missing docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix mypy error\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Make tests pass\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix nixl tests and stop ignoring them in CI\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix path to support GDS\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Revert path creation in NixlDynamicStorageBackend\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix code quality issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Ilya Yanok <iyanok@nvidia.com>",
               "stats": {
-                "files": 2,
-                "lines": 161,
-                "insertions": 148,
-                "deletions": 13
+                "files": 6,
+                "lines": 118,
+                "insertions": 96,
+                "deletions": 22
               },
               "scores": {
                 "loc": 30,
-                "files": 10,
+                "files": 20,
                 "keyword": 12,
-                "ai": 16,
-                "total": 68
+                "ai": 11,
+                "total": 73
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 68,
+          "avg_score": 73,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 68,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "total_score": 73,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 3,
-          "significant_commits": 0,
-          "simple_commits": 3,
-          "commit_score": 59,
+          "name": "sh",
+          "email": "100367948+yeoshuheng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 70,
           "commits": [
             {
-              "hash": "2e36e1e4",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-05-18T20:25:18.000Z",
-              "message": "docs: daily drift check — multi-process mode (2026-05-15) (#3296)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "hash": "c276b334",
+              "author": "sh",
+              "email": "100367948+yeoshuheng@users.noreply.github.com",
+              "date": "2026-05-26T13:48:38.000Z",
+              "message": "[Doc] Add recipes for Mistral, Phi & Llama (#3270)\n\n* docs: add recipes for phi, mistral, llama\n\nSigned-off-by: yeoshuheng <100367948+yeoshuheng@users.noreply.github.com>\n\n* docs: update tool calling link\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\n\n* docs: update jinja template fp\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\n\n* docs: update jinja template fp\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\n\n---------\n\nSigned-off-by: yeoshuheng <100367948+yeoshuheng@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
               "stats": {
-                "files": 3,
-                "lines": 6,
-                "insertions": 3,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 5,
-                "ai": 0,
-                "total": 18
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "5b71110a",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-05-20T01:14:20.000Z",
-              "message": "docs: daily drift check — multi-process mode (2026-05-18) (#3309)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 34,
-                "insertions": 33,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 5,
-                "ai": 3,
-                "total": 21
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "84079945",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-05-25T21:27:26.000Z",
-              "message": "[CI][Hotfix] fix the pytest lazy import issue caused by vLLM torch dynamo compilation (#3390)\n\n[CI][Hotfix] Add pytest to runtime deps to fix cupy lazy import crash\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 3,
+                "files": 4,
+                "lines": 343,
+                "insertions": 343,
                 "deletions": 0
               },
               "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
+                "loc": 30,
+                "files": 10,
+                "keyword": 5,
+                "ai": 25,
+                "total": 70
               },
-              "classification": "simple"
+              "classification": "significant"
             }
           ],
-          "avg_score": 19.666666666666668,
-          "significance_ratio": 0,
+          "avg_score": 70,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 59,
+          "total_score": 70,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -2426,6 +3461,123 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Yufeng He",
+          "email": "40085740+he-yufeng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 46,
+          "commits": [
+            {
+              "hash": "3dd36681",
+              "author": "Yufeng He",
+              "email": "40085740+he-yufeng@users.noreply.github.com",
+              "date": "2026-05-26T19:05:14.000Z",
+              "message": "fix: support HND formats in MP KV transfer (#3282)\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 60,
+                "insertions": 57,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 6,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 46,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 46,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "GentleCold",
+          "email": "gentlecold@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 45,
+          "commits": [
+            {
+              "hash": "a0574afc",
+              "author": "GentleCold",
+              "email": "gentlecold@qq.com",
+              "date": "2026-05-26T03:08:15.000Z",
+              "message": "[BugFix] fix sha256_cbor + async_loading type mismatch in _hash_tokens (#2999)\n\n* [BugFix] fix sha256_cbor + async_loading type mismatch in _hash_tokens\n\nWhen LMCACHE_PRE_CACHING_HASH_ALGORITHM=sha256_cbor is used together with\nLMCACHE_ENABLE_ASYNC_LOADING=True, the async lookup path fails because\nsha256_cbor (vLLM PR#23673) returns a 32-byte bytes digest. This digest is\nplaced into LookupRequestMsg.hashes which msgpack cannot encode as int,\nraising OverflowError.\n\nFix: after calling hash_func in _hash_tokens, if the result is bytes,\nfold the first 8 bytes into a uint64 int. This keeps all downstream code\n(CacheEngineKey, msgpack serialisation) working with plain ints regardless\nof the configured hash algorithm. Both the store path and the async lookup\npath go through _hash_tokens, so the keys produced are always consistent.\n\nFixes #2997\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n* [BugFix] address review: fix NONE_HASH type and use public test interface\n\n- token_database.py: convert NONE_HASH from bytes to int immediately after\n  it is set from vLLM. This ensures the entire prefix-hash chain uses a\n  consistent int type as canon_prefix input to hash_func, not bytes on the\n  first chunk and int on subsequent ones.\n\n- test_token_database.py: replace direct call to private _hash_tokens with\n  the public process_tokens interface (make_key=False). Drop cbor2 import\n  in favour of a simpler hashlib stub.\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n* [BugFix] normalize byte hash outputs in token database\n\n- token_database.py: add a module-level helper to normalize hash outputs from vLLM hash functions into LMCache's int chunk-hash representation.\n\n- Reuse the helper for both vLLM NONE_HASH initialization and token chunk hashing so sha256_cbor byte digests are folded consistently before entering the prefix hash chain.\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n* [CI] Fix isort in token database test\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n---------\n\nSigned-off-by: GentleCold <gentlecold@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 55,
+                "insertions": 53,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 5,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 45,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 45,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "weizhoublue",
+          "email": "45163302+weizhoublue@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 28,
+          "commits": [
+            {
+              "hash": "bd713b5f",
+              "author": "weizhoublue",
+              "email": "45163302+weizhoublue@users.noreply.github.com",
+              "date": "2026-05-26T23:26:22.000Z",
+              "message": "fix: prevent TypeError crash when streaming response has zero visible content (#3258)\n\nSigned-off-by: weizhou.lan@daocloud.io <weizhou.lan@daocloud.io>",
+              "stats": {
+                "files": 2,
+                "lines": 5,
+                "insertions": 5,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 15,
+                "ai": 0,
+                "total": 28
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 28,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 28,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "longguo",
           "email": "107740309+abinggo@users.noreply.github.com",
           "total_commits": 1,
@@ -2461,8 +3613,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 23,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "ikasas",
@@ -2500,8 +3652,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Nachiket Torwekar",
@@ -2539,8 +3691,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "zhengchenyu",
@@ -2578,8 +3730,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -2588,10 +3740,10 @@
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 10,
+          "total_commits": 11,
           "significant_commits": 2,
-          "simple_commits": 8,
-          "commit_score": 349,
+          "simple_commits": 9,
+          "commit_score": 376,
           "commits": [
             {
               "hash": "d37cfa16",
@@ -2802,14 +3954,35 @@
                 "total": 32
               },
               "classification": "simple"
+            },
+            {
+              "hash": "370cf94c",
+              "author": "deng451e",
+              "email": "57919305+deng451e@users.noreply.github.com",
+              "date": "2026-05-26T22:00:42.000Z",
+              "message": "[CI]  smoke-test container images before pushing (#3358)\n\nsmoke test for image release\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 24,
+                "insertions": 24,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 34.9,
-          "significance_ratio": 0.2,
+          "avg_score": 34.18181818181818,
+          "significance_ratio": 0.18181818181818182,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 349,
+          "total_score": 376,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3081,6 +4254,372 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 6,
+          "significant_commits": 2,
+          "simple_commits": 4,
+          "commit_score": 246,
+          "commits": [
+            {
+              "hash": "2e36e1e4",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-18T20:25:18.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-05-15) (#3296)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 5,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "5b71110a",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-20T01:14:20.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-05-18) (#3309)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 34,
+                "insertions": 33,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 5,
+                "ai": 3,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "84079945",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-25T21:27:26.000Z",
+              "message": "[CI][Hotfix] fix the pytest lazy import issue caused by vLLM torch dynamo compilation (#3390)\n\n[CI][Hotfix] Add pytest to runtime deps to fix cupy lazy import crash\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 3,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ec4dbe12",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-26T19:55:21.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-05-21) (#3361)\n\ndocs(mp): note non-CUDA auto-disable of --l1-use-lazy\n\nPR #3259 (feat(mp): Non-GPU Context by pickle) added a post-init\nguard in lmcache/v1/distributed/config.py:L1MemoryManagerConfig\nthat auto-disables use_lazy on backends where\nlmcache.torch_dev has no cudart attribute, logging a warning\n(\"LazyMemoryAllocator requires cudart which is not available\non the current backend. Disabling l1-use-lazy.\").\n\nThe user-facing reference in docs/source/mp/configuration.rst\nstill listed the --l1-use-lazy default as plain \"True\" without\nmentioning that non-CUDA backends silently downgrade to eager\nallocation. Extend the description so the documented behavior\nmatches the actual code path.\n\nDoc-only change; no code is modified.\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 4,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 5,
+                "ai": 0,
+                "total": 13
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bda3af18",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-26T17:43:04.000Z",
+              "message": "[MP][Core] Refactor MPCacheEngine for better extendability (#3391)\n\n* [Add] refactoring for the LMCache MP cache engine\n\nSigned-off-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 16,
+                "lines": 4335,
+                "insertions": 2375,
+                "deletions": 1960
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a534b927",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-05-26T03:15:27.000Z",
+              "message": "[MP] Update the L2 adapter interface to force measuring the real transferred bytes (#3363)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 28,
+                "lines": 422,
+                "insertions": 202,
+                "deletions": 220
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 41,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 246,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 220,
+          "commits": [
+            {
+              "hash": "2ba249db",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-05-20T07:12:22.000Z",
+              "message": "[optimize] rename non_cuda_equivalents to python_ops_fallback (#3338)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 30,
+                "insertions": 15,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9a2fd944",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-05-20T06:56:27.000Z",
+              "message": "[MP][bench] add l2 adapter benchmark cli (#3243)\n\n* [MP][bench] add l2 adapter benchmark cli\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix: fix timeout error\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* optimize\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix: fix print info error\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* add format/output/quiet\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update configuration metrics\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update name\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* delete unuse code\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 1588,
+                "insertions": 1586,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "aa56b7db",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-05-26T04:16:19.000Z",
+              "message": "[refactor] refactor bench engine cli (#3341)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 1195,
+                "insertions": 630,
+                "deletions": 565
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73.33333333333333,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 220,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Zhengfei He",
+          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 181,
+          "commits": [
+            {
+              "hash": "62bb37d5",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-05-26T20:59:09.000Z",
+              "message": "[Fix]: Skip unpin for non-pinned objects in cleanup_memory_objs (#3385)\n\n* [Fix]: Skip unpin for non-pinned objects in cleanup_memory_objs\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Add type hint in cache engine clean up test\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n---------\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 79,
+                "insertions": 78,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 7,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "4bdcb5cc",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-05-26T20:06:34.000Z",
+              "message": "[Fix] Change pinned pointer allocations in non-CUDA equivalents to be page-aligned for O_DIRECT (#3191)\n\n* [Fix] non_cuda_equivalents: page-align pinned allocations for O_DIRECT\n\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 3,
+                "lines": 131,
+                "insertions": 97,
+                "deletions": 34
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4fb03710",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-05-26T15:59:21.000Z",
+              "message": "[Perf] Replace Condvar polling with eventfd + epoll in  iouring worker thread (#3271)\n\n* Replace Condvar polling with eventfd+epoll for io_uring worker\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix rust format check\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Add RAII guard for file descriptor in rust raw block\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n---------\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 985,
+                "insertions": 617,
+                "deletions": 368
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 25,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 60.333333333333336,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 181,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Ilya Yanok",
+          "email": "iyanok@nvidia.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 177,
+          "commits": [
+            {
+              "hash": "55bcefd9",
+              "author": "Ilya Yanok",
+              "email": "iyanok@nvidia.com",
+              "date": "2026-05-18T16:22:23.000Z",
+              "message": "nixl_storage: naive support for files + dynamic (#2936)\n\n* nixl_storage: naive support for files + dynamic\n\nstatic is not actually very usable with files: we bump into the OS\nlimits on the open files very quickly, limiting the size of the cache.\nWith tons of VRAM, having G3 of comparable size is not helping much, we\nreally need it to be much bigger.\n\nThis commit adds support for files in dynamic mode of nixl storage.\nThere are some naive things done:\n1. No support for sharing the cache storage. We assume the worker has\n   exclusive access to the files and it is always safe to overwrite\n   existing files. Note that with TP!=1 we will have several workers\n   with the same target directory, that's why it's important to have a\n   worker id as part of the key, so they don't affect each other.\n2. No eviction support. As before, dynamic mode has no evicting support.\n   This kinda made sense when it was only working with OBJ storages, but\n   now that is something to be aware of. It's not hard to add eviction\n   though.\n3. Flat directory with all the cache files. There are going to be a lot\n   of them, especially provided we don't have eviction. Most filesystems\n   don't optimize for the case of a directory with millions of files,\n   and we constantly open/close files there, that might be a source\n   of additional latency.\n   - There is an existing PR to support sharding the directory, we can\n     merge it as a band aid.\n   - As a more advanced solution, we can do multi-layer subdirectory\n     structure, like gds backend does.\n4. We switched directly from having _all_ files open at once, to\n   open/close _every_ single file on access. We might explore having an\n   LRU cache of open files instead.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix PR Comments\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Extract _build_descs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Refactor to increase readability\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix another leak issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix release order\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Treat file not found as a miss\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docstring about file create mode 0o644\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Unlink files on failure\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add missing docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix mypy error\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Make tests pass\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Guy Ealey Morag <gealeymorag@nvidia.com>",
+              "stats": {
+                "files": 2,
+                "lines": 715,
+                "insertions": 590,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a68bd0a0",
+              "author": "Ilya Yanok",
+              "email": "iyanok@nvidia.com",
+              "date": "2026-05-26T17:10:29.000Z",
+              "message": "Iyanok/huge pages (#2643)\n\n* memory: huge page support (C bits)\n\nAdd 3 pairs of alloc/free functions for huge pages.\n\nThe 4th option is for SHM and it's missing, since normal SHM use\ncases don't support huge pages.\n\nOld API is left untouched, except for the small refactor: common\nmmap code is factored out. This doesn't affect the behavior.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* memory_management: use new functions for huge pages\n\nChange two allocators to support us_huge_pages flag.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* memory_management: log if allocating huge pages fail\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* non_cuda_equivalents: change memory functions to match cuda\n\nAdding use_hugepages to alloc and size to free.\n\nThere is no actual huge page support though. It should be pretty easy\nto add to non-shm cases (mmap and give torch a buffer). For shm we\nneed to look into shared_memory module implementation.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* local_cpu: support for huge pages\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* nixl_storage: add config option to alloc huge pages\n\nWe want to be able to alloc huge pages for the NIXL buffer in DRAM.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* PR comments fixes, Code cleanup\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Skip test if not enough free huge pages\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix non-cuda fallbacks\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Remove unused func\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix hugepage info to check for 2 MiB only\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Merge branch 'dev' into iyanok/huge-pages\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 12,
+                "lines": 466,
+                "insertions": 417,
+                "deletions": 49
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 88.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 177,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "github-actions[bot]",
           "email": "41898282+github-actions[bot]@users.noreply.github.com",
           "total_commits": 2,
@@ -3137,8 +4676,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 174,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Jiayue Chen",
@@ -3218,66 +4757,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 149,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 133,
-          "commits": [
-            {
-              "hash": "2ba249db",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-05-20T07:12:22.000Z",
-              "message": "[optimize] rename non_cuda_equivalents to python_ops_fallback (#3338)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 30,
-                "insertions": 15,
-                "deletions": 15
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 3,
-                "total": 43
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "9a2fd944",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-05-20T06:56:27.000Z",
-              "message": "[MP][bench] add l2 adapter benchmark cli (#3243)\n\n* [MP][bench] add l2 adapter benchmark cli\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix: fix timeout error\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* optimize\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix: fix print info error\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* add format/output/quiet\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update configuration metrics\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update name\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* delete unuse code\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 9,
-                "lines": 1588,
-                "insertions": 1586,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 66.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 133,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -3338,6 +4817,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 113,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 111,
+          "commits": [
+            {
+              "hash": "3300d0d9",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-22T04:08:26.000Z",
+              "message": "[Observability]: Add L2 Usage to SM (#3320)\n\nobservability: add l2_usage_bytes gauge + dashboard panel\n\nRegister an observable gauge that reports each L2 adapter's current\nusage via adapter.get_usage(), tagged by l2_name, plus a Grafana panel\nto visualize it. Lets operators query how much each L2 tier currently\nholds.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 161,
+                "insertions": 148,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "956b7bdf",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-26T20:52:21.000Z",
+              "message": "[Operator]: Force external LMCache MP connector path (#3393)",
+              "stats": {
+                "files": 7,
+                "lines": 31,
+                "insertions": 21,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 55.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 111,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -3416,8 +4955,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "elliotz-ai",
@@ -3455,28 +4994,106 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "Ilya Yanok",
-          "email": "iyanok@nvidia.com",
+          "name": "Se7en",
+          "email": "chengzw258@163.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "1966340e",
+              "author": "Se7en",
+              "email": "chengzw258@163.com",
+              "date": "2026-05-26T19:10:24.000Z",
+              "message": "[Fix][Observability] PrometheusLogger instance already created with different metadata (#3147)\n\nSigned-off-by: cr7258 <chengzw258@163.com>",
+              "stats": {
+                "files": 12,
+                "lines": 512,
+                "insertions": 346,
+                "deletions": 166
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Riley Dixon",
+          "email": "rildixon@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "9a34979a",
+              "author": "Riley Dixon",
+              "email": "rildixon@amd.com",
+              "date": "2026-05-26T22:10:54.000Z",
+              "message": "[hipFile]: Add cufile-python compatible shim layer to use AMD's hipFile package. (#3115)\n\nThis shim layer matches the cufile-python API that is currently in use\nby LMCache. This allows hipFile to maintain its own API while\nnot requiring additional code changes in LMCache.\n\nSigned-off-by: Riley Dixon <riley.dixon@amd.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 5,
+                "lines": 187,
+                "insertions": 179,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Kihwan Kim",
+          "email": "luceinaltis2020@gmail.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 77,
           "commits": [
             {
-              "hash": "55bcefd9",
-              "author": "Ilya Yanok",
-              "email": "iyanok@nvidia.com",
-              "date": "2026-05-18T16:22:23.000Z",
-              "message": "nixl_storage: naive support for files + dynamic (#2936)\n\n* nixl_storage: naive support for files + dynamic\n\nstatic is not actually very usable with files: we bump into the OS\nlimits on the open files very quickly, limiting the size of the cache.\nWith tons of VRAM, having G3 of comparable size is not helping much, we\nreally need it to be much bigger.\n\nThis commit adds support for files in dynamic mode of nixl storage.\nThere are some naive things done:\n1. No support for sharing the cache storage. We assume the worker has\n   exclusive access to the files and it is always safe to overwrite\n   existing files. Note that with TP!=1 we will have several workers\n   with the same target directory, that's why it's important to have a\n   worker id as part of the key, so they don't affect each other.\n2. No eviction support. As before, dynamic mode has no evicting support.\n   This kinda made sense when it was only working with OBJ storages, but\n   now that is something to be aware of. It's not hard to add eviction\n   though.\n3. Flat directory with all the cache files. There are going to be a lot\n   of them, especially provided we don't have eviction. Most filesystems\n   don't optimize for the case of a directory with millions of files,\n   and we constantly open/close files there, that might be a source\n   of additional latency.\n   - There is an existing PR to support sharding the directory, we can\n     merge it as a band aid.\n   - As a more advanced solution, we can do multi-layer subdirectory\n     structure, like gds backend does.\n4. We switched directly from having _all_ files open at once, to\n   open/close _every_ single file on access. We might explore having an\n   LRU cache of open files instead.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix PR Comments\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Extract _build_descs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Refactor to increase readability\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix another leak issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix release order\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Treat file not found as a miss\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docstring about file create mode 0o644\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Unlink files on failure\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add missing docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix mypy error\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Make tests pass\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Guy Ealey Morag <gealeymorag@nvidia.com>",
+              "hash": "1b8785ab",
+              "author": "Kihwan Kim",
+              "email": "luceinaltis2020@gmail.com",
+              "date": "2026-05-26T23:02:34.000Z",
+              "message": "[Bugfix] Fix 0-hit async lookup when use_layerwise=true (#3252)\n\n* [Bugfix] Fix layerwise lookup miss in async_lookup_and_prefetch\n\nSigned-off-by: Kihwan Kim <luceinaltis2020@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
               "stats": {
-                "files": 2,
-                "lines": 715,
-                "insertions": 590,
-                "deletions": 125
+                "files": 4,
+                "lines": 297,
+                "insertions": 282,
+                "deletions": 15
               },
               "scores": {
                 "loc": 30,
@@ -3494,126 +5111,84 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
+          "name": "Guy Ealey Morag",
+          "email": "gealeymorag@nvidia.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 68,
+          "commit_score": 73,
           "commits": [
             {
-              "hash": "3300d0d9",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-22T04:08:26.000Z",
-              "message": "[Observability]: Add L2 Usage to SM (#3320)\n\nobservability: add l2_usage_bytes gauge + dashboard panel\n\nRegister an observable gauge that reports each L2 adapter's current\nusage via adapter.get_usage(), tagged by l2_name, plus a Grafana panel\nto visualize it. Lets operators query how much each L2 tier currently\nholds.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "hash": "3e83d5c2",
+              "author": "Guy Ealey Morag",
+              "email": "gealeymorag@nvidia.com",
+              "date": "2026-05-26T16:57:01.000Z",
+              "message": "nixl_storage: Fix tests and remove from ignore list (#3200)\n\n* nixl_storage: naive support for files + dynamic\n\nstatic is not actually very usable with files: we bump into the OS\nlimits on the open files very quickly, limiting the size of the cache.\nWith tons of VRAM, having G3 of comparable size is not helping much, we\nreally need it to be much bigger.\n\nThis commit adds support for files in dynamic mode of nixl storage.\nThere are some naive things done:\n1. No support for sharing the cache storage. We assume the worker has\n   exclusive access to the files and it is always safe to overwrite\n   existing files. Note that with TP!=1 we will have several workers\n   with the same target directory, that's why it's important to have a\n   worker id as part of the key, so they don't affect each other.\n2. No eviction support. As before, dynamic mode has no evicting support.\n   This kinda made sense when it was only working with OBJ storages, but\n   now that is something to be aware of. It's not hard to add eviction\n   though.\n3. Flat directory with all the cache files. There are going to be a lot\n   of them, especially provided we don't have eviction. Most filesystems\n   don't optimize for the case of a directory with millions of files,\n   and we constantly open/close files there, that might be a source\n   of additional latency.\n   - There is an existing PR to support sharding the directory, we can\n     merge it as a band aid.\n   - As a more advanced solution, we can do multi-layer subdirectory\n     structure, like gds backend does.\n4. We switched directly from having _all_ files open at once, to\n   open/close _every_ single file on access. We might explore having an\n   LRU cache of open files instead.\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix PR Comments\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Extract _build_descs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Refactor to increase readability\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix another leak issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix release order\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Treat file not found as a miss\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add docstring about file create mode 0o644\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Unlink files on failure\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Add missing docs\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix mypy error\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix test\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Make tests pass\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix formatting\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix nixl tests and stop ignoring them in CI\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix path to support GDS\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Revert path creation in NixlDynamicStorageBackend\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n* Fix code quality issue\n\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\n\n---------\n\nSigned-off-by: Ilya Yanok <iyanok@nvidia.com>\nSigned-off-by: Guy Ealey Morag <gealeymorag@nvidia.com>\nCo-authored-by: Ilya Yanok <iyanok@nvidia.com>",
               "stats": {
-                "files": 2,
-                "lines": 161,
-                "insertions": 148,
-                "deletions": 13
+                "files": 6,
+                "lines": 118,
+                "insertions": 96,
+                "deletions": 22
               },
               "scores": {
                 "loc": 30,
-                "files": 10,
+                "files": 20,
                 "keyword": 12,
-                "ai": 16,
-                "total": 68
+                "ai": 11,
+                "total": 73
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 68,
+          "avg_score": 73,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 68,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "total_score": 73,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 3,
-          "significant_commits": 0,
-          "simple_commits": 3,
-          "commit_score": 59,
+          "name": "sh",
+          "email": "100367948+yeoshuheng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 70,
           "commits": [
             {
-              "hash": "2e36e1e4",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-05-18T20:25:18.000Z",
-              "message": "docs: daily drift check — multi-process mode (2026-05-15) (#3296)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "hash": "c276b334",
+              "author": "sh",
+              "email": "100367948+yeoshuheng@users.noreply.github.com",
+              "date": "2026-05-26T13:48:38.000Z",
+              "message": "[Doc] Add recipes for Mistral, Phi & Llama (#3270)\n\n* docs: add recipes for phi, mistral, llama\n\nSigned-off-by: yeoshuheng <100367948+yeoshuheng@users.noreply.github.com>\n\n* docs: update tool calling link\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\n\n* docs: update jinja template fp\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\n\n* docs: update jinja template fp\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\n\n---------\n\nSigned-off-by: yeoshuheng <100367948+yeoshuheng@users.noreply.github.com>\nSigned-off-by: sh <100367948+yeoshuheng@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
               "stats": {
-                "files": 3,
-                "lines": 6,
-                "insertions": 3,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 5,
-                "ai": 0,
-                "total": 18
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "5b71110a",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-05-20T01:14:20.000Z",
-              "message": "docs: daily drift check — multi-process mode (2026-05-18) (#3309)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 34,
-                "insertions": 33,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 5,
-                "ai": 3,
-                "total": 21
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "84079945",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-05-25T21:27:26.000Z",
-              "message": "[CI][Hotfix] fix the pytest lazy import issue caused by vLLM torch dynamo compilation (#3390)\n\n[CI][Hotfix] Add pytest to runtime deps to fix cupy lazy import crash\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 3,
+                "files": 4,
+                "lines": 343,
+                "insertions": 343,
                 "deletions": 0
               },
               "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
+                "loc": 30,
+                "files": 10,
+                "keyword": 5,
+                "ai": 25,
+                "total": 70
               },
-              "classification": "simple"
+              "classification": "significant"
             }
           ],
-          "avg_score": 19.666666666666668,
-          "significance_ratio": 0,
+          "avg_score": 70,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 59,
+          "total_score": 70,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -3678,6 +5253,123 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Yufeng He",
+          "email": "40085740+he-yufeng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 46,
+          "commits": [
+            {
+              "hash": "3dd36681",
+              "author": "Yufeng He",
+              "email": "40085740+he-yufeng@users.noreply.github.com",
+              "date": "2026-05-26T19:05:14.000Z",
+              "message": "fix: support HND formats in MP KV transfer (#3282)\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 60,
+                "insertions": 57,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 6,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 46,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 46,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "GentleCold",
+          "email": "gentlecold@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 45,
+          "commits": [
+            {
+              "hash": "a0574afc",
+              "author": "GentleCold",
+              "email": "gentlecold@qq.com",
+              "date": "2026-05-26T03:08:15.000Z",
+              "message": "[BugFix] fix sha256_cbor + async_loading type mismatch in _hash_tokens (#2999)\n\n* [BugFix] fix sha256_cbor + async_loading type mismatch in _hash_tokens\n\nWhen LMCACHE_PRE_CACHING_HASH_ALGORITHM=sha256_cbor is used together with\nLMCACHE_ENABLE_ASYNC_LOADING=True, the async lookup path fails because\nsha256_cbor (vLLM PR#23673) returns a 32-byte bytes digest. This digest is\nplaced into LookupRequestMsg.hashes which msgpack cannot encode as int,\nraising OverflowError.\n\nFix: after calling hash_func in _hash_tokens, if the result is bytes,\nfold the first 8 bytes into a uint64 int. This keeps all downstream code\n(CacheEngineKey, msgpack serialisation) working with plain ints regardless\nof the configured hash algorithm. Both the store path and the async lookup\npath go through _hash_tokens, so the keys produced are always consistent.\n\nFixes #2997\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n* [BugFix] address review: fix NONE_HASH type and use public test interface\n\n- token_database.py: convert NONE_HASH from bytes to int immediately after\n  it is set from vLLM. This ensures the entire prefix-hash chain uses a\n  consistent int type as canon_prefix input to hash_func, not bytes on the\n  first chunk and int on subsequent ones.\n\n- test_token_database.py: replace direct call to private _hash_tokens with\n  the public process_tokens interface (make_key=False). Drop cbor2 import\n  in favour of a simpler hashlib stub.\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n* [BugFix] normalize byte hash outputs in token database\n\n- token_database.py: add a module-level helper to normalize hash outputs from vLLM hash functions into LMCache's int chunk-hash representation.\n\n- Reuse the helper for both vLLM NONE_HASH initialization and token chunk hashing so sha256_cbor byte digests are folded consistently before entering the prefix hash chain.\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n* [CI] Fix isort in token database test\n\nSigned-off-by: GentleCold <gentlecold@qq.com>\n\n---------\n\nSigned-off-by: GentleCold <gentlecold@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 55,
+                "insertions": 53,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 5,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 45,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 45,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "weizhoublue",
+          "email": "45163302+weizhoublue@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 28,
+          "commits": [
+            {
+              "hash": "bd713b5f",
+              "author": "weizhoublue",
+              "email": "45163302+weizhoublue@users.noreply.github.com",
+              "date": "2026-05-26T23:26:22.000Z",
+              "message": "fix: prevent TypeError crash when streaming response has zero visible content (#3258)\n\nSigned-off-by: weizhou.lan@daocloud.io <weizhou.lan@daocloud.io>",
+              "stats": {
+                "files": 2,
+                "lines": 5,
+                "insertions": 5,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 15,
+                "ai": 0,
+                "total": 28
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 28,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 28,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "longguo",
           "email": "107740309+abinggo@users.noreply.github.com",
           "total_commits": 1,
@@ -3713,8 +5405,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 23,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "ikasas",
@@ -3752,8 +5444,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Nachiket Torwekar",
@@ -3791,8 +5483,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "zhengchenyu",
@@ -3830,20 +5522,20 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-05-26T00:30:04.739Z",
+    "analyzedAt": "2026-05-27T00:30:36.069Z",
     "daysBack": 2,
-    "totalCommits": 44,
-    "totalContributors": 18,
+    "totalCommits": 62,
+    "totalContributors": 27,
     "mergedFrom": {
-      "existing": 40,
-      "new": 4
+      "existing": 44,
+      "new": 22
     }
   }
 }
