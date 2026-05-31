@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-30T00:30:26.156Z",
-  "total_commits_analyzed": 91,
+  "last_updated": "2026-05-31T00:30:15.148Z",
+  "total_commits_analyzed": 93,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -2431,6 +2431,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "kumaneko",
+          "email": "crclq2018@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 39,
+          "commits": [
+            {
+              "hash": "7eb57ad2",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-05-30T08:55:46.000Z",
+              "message": "[Perf] Avoid redundant PCIe transfer on leader rank during retrieve (#3413)\n\n* [Perf] Avoid redundant PCIe transfer on leader rank during retrieve\n\nWhen `save_only_first_rank` is enabled (MLA path), the leader rank's\nmemory_objs returned from `_process_tokens_internal()` reference\nCPU-resident L1 buffers. The broadcast step uploads each chunk to GPU\nonce via `raw_tensor.to(GPU)` so NCCL has a GPU send buffer, but the\nresult is discarded. The subsequent `batched_to_gpu` then reads the\nsame L1 bytes again over PCIe (via cudaHostGetDevicePointer zero-copy\nmapping inside the multi_layer_kv_transfer kernel), making the leader\nrank ~9 ms slower than passive ranks on every retrieve at our setup\n(8192 tokens, tp=8, DeepSeek-R1-style MLA, H20 + PCIe Gen4).\n\nThis patch keeps the GPU-resident copy from the broadcast alive on the\nleader and substitutes it as the source for `batched_to_gpu`, so the\nkernel reads from HBM (~3 TB/s) instead of pinned host memory through\nPCIe (~32 GB/s). The original CPU memory_objs remain in\n`reordered_chunks` so the existing cleanup / ref-counting path is\nunchanged. Passive ranks are unaffected (already pass GPU tensors).\n\nMeasured on tp=8 H20, DeepSeek-R1, 8192-token warm retrieve,\nin-process connector:\n\n| rank          | togpu_gpu before | after  |\n|---------------|------------------|--------|\n| 0  (leader)   | 9.42 ms          | 0.70 ms|\n| 1-7 (passive) | 0.48 ms          | 0.48 ms|\n\nEnd-to-end TTFT at c=1 improves by ~10 ms (~133 ms -> ~123 ms). All 8\nranks now finish `retrieve()` within ~0.2 ms of each other rather than\nthe leader trailing the others by ~9 ms.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n* [Perf] Move leader GPU substitute cleanup into try/finally\n\nAddress review feedback from gemini-code-assist on PR #3413: wrap the\nbatched_to_gpu call in try/finally so that the leader's\n_leader_gpu_substitute_objs list is always cleared, even if\nbatched_to_gpu raises (e.g. CUDA OOM). Without this, a raise would\nleave temporary GPU tensors held by the long-lived LMCacheEngine\nuntil the next successful retrieve resets the list.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n* Fix mypy [has-type] error on _leader_gpu_substitute_objs\n\nThe previous patch declared self._leader_gpu_substitute_objs lazily\ninside _broadcast_or_receive_memory_objs and accessed it via getattr/\nhasattr in retrieve(). mypy could not infer the attribute's type\nthrough that flow, failing the Code Quality CI check at line 871:\n\n  Cannot determine type of \"_leader_gpu_substitute_objs\"  [has-type]\n\nPer the LMCache coding standards (\"Avoid Optional — initialize objects\neven if empty\"), declare the attribute in __init__ with its full type\nannotation. The broadcast function now just resets it to a fresh list\nat the start of the leader-side critical section, and the call site\nreads it via plain attribute access (no getattr/hasattr guards).\n\nBehavior is unchanged: non-leader ranks never populate the list, so\nthe substitution branch in retrieve() is gated by length-equality\nagainst the chunk count, which is 0 on non-leaders and only matches\non the leader after the broadcast loop has populated it.\n\nVerified with `pre-commit run --files lmcache/v1/cache_engine.py`:\nall hooks (ruff, ruff-format, codespell, mypy, etc.) now pass.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n* Address review: skip list() on leader path; warn on substitute mismatch\n\nTwo cleanups from review feedback on PR #3413:\n\n1. @maobaolong: hoist `memory_objs_for_togpu = list(memory_objs)` into\n   the `else` branch so the leader-substitute path doesn't pay for an\n   unnecessary `list()` allocation that gets immediately overwritten.\n\n2. @chunxiaozheng: when on the leader rank with save_only_first_rank\n   but the substitute list count does not match the memory_objs count,\n   that indicates a bug or stale state (the broadcast should always\n   have populated the substitute list to match). Log a warning and\n   fall back to the CPU L1 source so retrieval is still correct but\n   the anomaly is visible.\n\nAlso widen the static type of `_leader_gpu_substitute_objs` from\n`List[TensorMemoryObj]` to `List[MemoryObj]` so mypy can see that\npassing it to `batched_to_gpu(memory_objs: list[MemoryObj], ...)` is\ntype-safe (Python's `list` is invariant). The runtime objects are\nstill `TensorMemoryObj` instances built in `_broadcast_or_receive_\nmemory_objs`; only the static type widens.\n\nVerified with `pre-commit run --files lmcache/v1/cache_engine.py`:\nall hooks (ruff, ruff-format, mypy, codespell, isort, etc.) pass.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n---------\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 71,
+                "insertions": 68,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 7,
+                "total": 39
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 39,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 39,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "pengxin99",
           "email": "pengxin.yuan@intel.com",
           "total_commits": 1,
@@ -2700,6 +2739,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 24,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Chirag Bansal",
+          "email": "chiragbansal254@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 21,
+          "commits": [
+            {
+              "hash": "79b68e71",
+              "author": "Chirag Bansal",
+              "email": "chiragbansal254@gmail.com",
+              "date": "2026-05-30T02:51:30.000Z",
+              "message": "[good-first-issue] convert loglevel_api f-strings to %-format (#3429) (#3443)\n\nSigned-off-by: ChiragB254 <chiragbansal254@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 5,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -4424,6 +4502,87 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "kumaneko",
+          "email": "crclq2018@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 0,
+          "simple_commits": 3,
+          "commit_score": 95,
+          "commits": [
+            {
+              "hash": "c9cfa3af",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-05-18T15:50:09.000Z",
+              "message": "Fix typos and misspellings across codebase (#3306)\n\n- 'non-blcocking' -> 'non-blocking' in abstract_backend.py\n- 'Memoryobjs' -> 'MemoryObj' in abstract_backend.py\n- 'pareant_allocator' -> 'parent_allocator' in memory_management.py\n- 'storage-manger' -> 'storage-manager' in storage_manager.py\n- 'trak' -> 'track' in executor.py (2 occurrences)\n- 'the the' -> 'the', 'instance' -> 'instances' in kv_controller.py\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 14,
+                "insertions": 7,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 3,
+                "files": 20,
+                "keyword": 12,
+                "ai": 1,
+                "total": 36
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "d74bcfcd",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-05-19T21:23:38.000Z",
+              "message": "Add yoo-kumaneko as CODEOWNER for mp_observability and tools (#3324)\n\nSigned-off-by: rigginschen <crclq2018@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 4,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7eb57ad2",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-05-30T08:55:46.000Z",
+              "message": "[Perf] Avoid redundant PCIe transfer on leader rank during retrieve (#3413)\n\n* [Perf] Avoid redundant PCIe transfer on leader rank during retrieve\n\nWhen `save_only_first_rank` is enabled (MLA path), the leader rank's\nmemory_objs returned from `_process_tokens_internal()` reference\nCPU-resident L1 buffers. The broadcast step uploads each chunk to GPU\nonce via `raw_tensor.to(GPU)` so NCCL has a GPU send buffer, but the\nresult is discarded. The subsequent `batched_to_gpu` then reads the\nsame L1 bytes again over PCIe (via cudaHostGetDevicePointer zero-copy\nmapping inside the multi_layer_kv_transfer kernel), making the leader\nrank ~9 ms slower than passive ranks on every retrieve at our setup\n(8192 tokens, tp=8, DeepSeek-R1-style MLA, H20 + PCIe Gen4).\n\nThis patch keeps the GPU-resident copy from the broadcast alive on the\nleader and substitutes it as the source for `batched_to_gpu`, so the\nkernel reads from HBM (~3 TB/s) instead of pinned host memory through\nPCIe (~32 GB/s). The original CPU memory_objs remain in\n`reordered_chunks` so the existing cleanup / ref-counting path is\nunchanged. Passive ranks are unaffected (already pass GPU tensors).\n\nMeasured on tp=8 H20, DeepSeek-R1, 8192-token warm retrieve,\nin-process connector:\n\n| rank          | togpu_gpu before | after  |\n|---------------|------------------|--------|\n| 0  (leader)   | 9.42 ms          | 0.70 ms|\n| 1-7 (passive) | 0.48 ms          | 0.48 ms|\n\nEnd-to-end TTFT at c=1 improves by ~10 ms (~133 ms -> ~123 ms). All 8\nranks now finish `retrieve()` within ~0.2 ms of each other rather than\nthe leader trailing the others by ~9 ms.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n* [Perf] Move leader GPU substitute cleanup into try/finally\n\nAddress review feedback from gemini-code-assist on PR #3413: wrap the\nbatched_to_gpu call in try/finally so that the leader's\n_leader_gpu_substitute_objs list is always cleared, even if\nbatched_to_gpu raises (e.g. CUDA OOM). Without this, a raise would\nleave temporary GPU tensors held by the long-lived LMCacheEngine\nuntil the next successful retrieve resets the list.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n* Fix mypy [has-type] error on _leader_gpu_substitute_objs\n\nThe previous patch declared self._leader_gpu_substitute_objs lazily\ninside _broadcast_or_receive_memory_objs and accessed it via getattr/\nhasattr in retrieve(). mypy could not infer the attribute's type\nthrough that flow, failing the Code Quality CI check at line 871:\n\n  Cannot determine type of \"_leader_gpu_substitute_objs\"  [has-type]\n\nPer the LMCache coding standards (\"Avoid Optional — initialize objects\neven if empty\"), declare the attribute in __init__ with its full type\nannotation. The broadcast function now just resets it to a fresh list\nat the start of the leader-side critical section, and the call site\nreads it via plain attribute access (no getattr/hasattr guards).\n\nBehavior is unchanged: non-leader ranks never populate the list, so\nthe substitution branch in retrieve() is gated by length-equality\nagainst the chunk count, which is 0 on non-leaders and only matches\non the leader after the broadcast loop has populated it.\n\nVerified with `pre-commit run --files lmcache/v1/cache_engine.py`:\nall hooks (ruff, ruff-format, codespell, mypy, etc.) now pass.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n* Address review: skip list() on leader path; warn on substitute mismatch\n\nTwo cleanups from review feedback on PR #3413:\n\n1. @maobaolong: hoist `memory_objs_for_togpu = list(memory_objs)` into\n   the `else` branch so the leader-substitute path doesn't pay for an\n   unnecessary `list()` allocation that gets immediately overwritten.\n\n2. @chunxiaozheng: when on the leader rank with save_only_first_rank\n   but the substitute list count does not match the memory_objs count,\n   that indicates a bug or stale state (the broadcast should always\n   have populated the substitute list to match). Log a warning and\n   fall back to the CPU L1 source so retrieval is still correct but\n   the anomaly is visible.\n\nAlso widen the static type of `_leader_gpu_substitute_objs` from\n`List[TensorMemoryObj]` to `List[MemoryObj]` so mypy can see that\npassing it to `batched_to_gpu(memory_objs: list[MemoryObj], ...)` is\ntype-safe (Python's `list` is invariant). The runtime objects are\nstill `TensorMemoryObj` instances built in `_broadcast_or_receive_\nmemory_objs`; only the static type widens.\n\nVerified with `pre-commit run --files lmcache/v1/cache_engine.py`:\nall hooks (ruff, ruff-format, mypy, codespell, isort, etc.) pass.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n---------\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 71,
+                "insertions": 68,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 7,
+                "total": 39
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 31.666666666666668,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 95,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Tian, Feng",
           "email": "feng.tian@intel.com",
           "total_commits": 1,
@@ -4771,8 +4930,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 67,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "An Nguyen",
@@ -4810,66 +4969,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 57,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "kumaneko",
-          "email": "crclq2018@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 0,
-          "simple_commits": 2,
-          "commit_score": 56,
-          "commits": [
-            {
-              "hash": "c9cfa3af",
-              "author": "kumaneko",
-              "email": "crclq2018@gmail.com",
-              "date": "2026-05-18T15:50:09.000Z",
-              "message": "Fix typos and misspellings across codebase (#3306)\n\n- 'non-blcocking' -> 'non-blocking' in abstract_backend.py\n- 'Memoryobjs' -> 'MemoryObj' in abstract_backend.py\n- 'pareant_allocator' -> 'parent_allocator' in memory_management.py\n- 'storage-manger' -> 'storage-manager' in storage_manager.py\n- 'trak' -> 'track' in executor.py (2 occurrences)\n- 'the the' -> 'the', 'instance' -> 'instances' in kv_controller.py\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 14,
-                "insertions": 7,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 3,
-                "files": 20,
-                "keyword": 12,
-                "ai": 1,
-                "total": 36
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "d74bcfcd",
-              "author": "kumaneko",
-              "email": "crclq2018@gmail.com",
-              "date": "2026-05-19T21:23:38.000Z",
-              "message": "Add yoo-kumaneko as CODEOWNER for mp_observability and tools (#3324)\n\nSigned-off-by: rigginschen <crclq2018@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 5,
-                "insertions": 4,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 28,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 56,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -5242,6 +5341,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 24,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Chirag Bansal",
+          "email": "chiragbansal254@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 21,
+          "commits": [
+            {
+              "hash": "79b68e71",
+              "author": "Chirag Bansal",
+              "email": "chiragbansal254@gmail.com",
+              "date": "2026-05-30T02:51:30.000Z",
+              "message": "[good-first-issue] convert loglevel_api f-strings to %-format (#3429) (#3443)\n\nSigned-off-by: ChiragB254 <chiragbansal254@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 5,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -7005,6 +7143,87 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "kumaneko",
+          "email": "crclq2018@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 0,
+          "simple_commits": 3,
+          "commit_score": 95,
+          "commits": [
+            {
+              "hash": "c9cfa3af",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-05-18T15:50:09.000Z",
+              "message": "Fix typos and misspellings across codebase (#3306)\n\n- 'non-blcocking' -> 'non-blocking' in abstract_backend.py\n- 'Memoryobjs' -> 'MemoryObj' in abstract_backend.py\n- 'pareant_allocator' -> 'parent_allocator' in memory_management.py\n- 'storage-manger' -> 'storage-manager' in storage_manager.py\n- 'trak' -> 'track' in executor.py (2 occurrences)\n- 'the the' -> 'the', 'instance' -> 'instances' in kv_controller.py\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 14,
+                "insertions": 7,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 3,
+                "files": 20,
+                "keyword": 12,
+                "ai": 1,
+                "total": 36
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "d74bcfcd",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-05-19T21:23:38.000Z",
+              "message": "Add yoo-kumaneko as CODEOWNER for mp_observability and tools (#3324)\n\nSigned-off-by: rigginschen <crclq2018@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 4,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7eb57ad2",
+              "author": "kumaneko",
+              "email": "crclq2018@gmail.com",
+              "date": "2026-05-30T08:55:46.000Z",
+              "message": "[Perf] Avoid redundant PCIe transfer on leader rank during retrieve (#3413)\n\n* [Perf] Avoid redundant PCIe transfer on leader rank during retrieve\n\nWhen `save_only_first_rank` is enabled (MLA path), the leader rank's\nmemory_objs returned from `_process_tokens_internal()` reference\nCPU-resident L1 buffers. The broadcast step uploads each chunk to GPU\nonce via `raw_tensor.to(GPU)` so NCCL has a GPU send buffer, but the\nresult is discarded. The subsequent `batched_to_gpu` then reads the\nsame L1 bytes again over PCIe (via cudaHostGetDevicePointer zero-copy\nmapping inside the multi_layer_kv_transfer kernel), making the leader\nrank ~9 ms slower than passive ranks on every retrieve at our setup\n(8192 tokens, tp=8, DeepSeek-R1-style MLA, H20 + PCIe Gen4).\n\nThis patch keeps the GPU-resident copy from the broadcast alive on the\nleader and substitutes it as the source for `batched_to_gpu`, so the\nkernel reads from HBM (~3 TB/s) instead of pinned host memory through\nPCIe (~32 GB/s). The original CPU memory_objs remain in\n`reordered_chunks` so the existing cleanup / ref-counting path is\nunchanged. Passive ranks are unaffected (already pass GPU tensors).\n\nMeasured on tp=8 H20, DeepSeek-R1, 8192-token warm retrieve,\nin-process connector:\n\n| rank          | togpu_gpu before | after  |\n|---------------|------------------|--------|\n| 0  (leader)   | 9.42 ms          | 0.70 ms|\n| 1-7 (passive) | 0.48 ms          | 0.48 ms|\n\nEnd-to-end TTFT at c=1 improves by ~10 ms (~133 ms -> ~123 ms). All 8\nranks now finish `retrieve()` within ~0.2 ms of each other rather than\nthe leader trailing the others by ~9 ms.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n* [Perf] Move leader GPU substitute cleanup into try/finally\n\nAddress review feedback from gemini-code-assist on PR #3413: wrap the\nbatched_to_gpu call in try/finally so that the leader's\n_leader_gpu_substitute_objs list is always cleared, even if\nbatched_to_gpu raises (e.g. CUDA OOM). Without this, a raise would\nleave temporary GPU tensors held by the long-lived LMCacheEngine\nuntil the next successful retrieve resets the list.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n* Fix mypy [has-type] error on _leader_gpu_substitute_objs\n\nThe previous patch declared self._leader_gpu_substitute_objs lazily\ninside _broadcast_or_receive_memory_objs and accessed it via getattr/\nhasattr in retrieve(). mypy could not infer the attribute's type\nthrough that flow, failing the Code Quality CI check at line 871:\n\n  Cannot determine type of \"_leader_gpu_substitute_objs\"  [has-type]\n\nPer the LMCache coding standards (\"Avoid Optional — initialize objects\neven if empty\"), declare the attribute in __init__ with its full type\nannotation. The broadcast function now just resets it to a fresh list\nat the start of the leader-side critical section, and the call site\nreads it via plain attribute access (no getattr/hasattr guards).\n\nBehavior is unchanged: non-leader ranks never populate the list, so\nthe substitution branch in retrieve() is gated by length-equality\nagainst the chunk count, which is 0 on non-leaders and only matches\non the leader after the broadcast loop has populated it.\n\nVerified with `pre-commit run --files lmcache/v1/cache_engine.py`:\nall hooks (ruff, ruff-format, codespell, mypy, etc.) now pass.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n* Address review: skip list() on leader path; warn on substitute mismatch\n\nTwo cleanups from review feedback on PR #3413:\n\n1. @maobaolong: hoist `memory_objs_for_togpu = list(memory_objs)` into\n   the `else` branch so the leader-substitute path doesn't pay for an\n   unnecessary `list()` allocation that gets immediately overwritten.\n\n2. @chunxiaozheng: when on the leader rank with save_only_first_rank\n   but the substitute list count does not match the memory_objs count,\n   that indicates a bug or stale state (the broadcast should always\n   have populated the substitute list to match). Log a warning and\n   fall back to the CPU L1 source so retrieval is still correct but\n   the anomaly is visible.\n\nAlso widen the static type of `_leader_gpu_substitute_objs` from\n`List[TensorMemoryObj]` to `List[MemoryObj]` so mypy can see that\npassing it to `batched_to_gpu(memory_objs: list[MemoryObj], ...)` is\ntype-safe (Python's `list` is invariant). The runtime objects are\nstill `TensorMemoryObj` instances built in `_broadcast_or_receive_\nmemory_objs`; only the static type widens.\n\nVerified with `pre-commit run --files lmcache/v1/cache_engine.py`:\nall hooks (ruff, ruff-format, mypy, codespell, isort, etc.) pass.\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>\n\n---------\n\nSigned-off-by: kumaneko <crclq2018@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 71,
+                "insertions": 68,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 7,
+                "total": 39
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 31.666666666666668,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 95,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Tian, Feng",
           "email": "feng.tian@intel.com",
           "total_commits": 1,
@@ -7352,8 +7571,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 67,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "An Nguyen",
@@ -7391,66 +7610,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 57,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "kumaneko",
-          "email": "crclq2018@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 0,
-          "simple_commits": 2,
-          "commit_score": 56,
-          "commits": [
-            {
-              "hash": "c9cfa3af",
-              "author": "kumaneko",
-              "email": "crclq2018@gmail.com",
-              "date": "2026-05-18T15:50:09.000Z",
-              "message": "Fix typos and misspellings across codebase (#3306)\n\n- 'non-blcocking' -> 'non-blocking' in abstract_backend.py\n- 'Memoryobjs' -> 'MemoryObj' in abstract_backend.py\n- 'pareant_allocator' -> 'parent_allocator' in memory_management.py\n- 'storage-manger' -> 'storage-manager' in storage_manager.py\n- 'trak' -> 'track' in executor.py (2 occurrences)\n- 'the the' -> 'the', 'instance' -> 'instances' in kv_controller.py\n\nSigned-off-by: rigginschen <rigginschen@tencent.com>\nCo-authored-by: rigginschen <rigginschen@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 14,
-                "insertions": 7,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 3,
-                "files": 20,
-                "keyword": 12,
-                "ai": 1,
-                "total": 36
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "d74bcfcd",
-              "author": "kumaneko",
-              "email": "crclq2018@gmail.com",
-              "date": "2026-05-19T21:23:38.000Z",
-              "message": "Add yoo-kumaneko as CODEOWNER for mp_observability and tools (#3324)\n\nSigned-off-by: rigginschen <crclq2018@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 5,
-                "insertions": 4,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 28,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 56,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -7827,6 +7986,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Chirag Bansal",
+          "email": "chiragbansal254@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 21,
+          "commits": [
+            {
+              "hash": "79b68e71",
+              "author": "Chirag Bansal",
+              "email": "chiragbansal254@gmail.com",
+              "date": "2026-05-30T02:51:30.000Z",
+              "message": "[good-first-issue] convert loglevel_api f-strings to %-format (#3429) (#3443)\n\nSigned-off-by: ChiragB254 <chiragbansal254@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 5,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "ikasas",
           "email": "144680962+ikasas@users.noreply.github.com",
           "total_commits": 1,
@@ -7986,13 +8184,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-05-30T00:30:26.156Z",
+    "analyzedAt": "2026-05-31T00:30:15.148Z",
     "daysBack": 2,
-    "totalCommits": 91,
-    "totalContributors": 37,
+    "totalCommits": 93,
+    "totalContributors": 38,
     "mergedFrom": {
-      "existing": 83,
-      "new": 17
+      "existing": 91,
+      "new": 10
     }
   }
 }
