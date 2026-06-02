@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-01T00:30:03.618Z",
-  "total_commits_analyzed": 94,
+  "last_updated": "2026-06-02T00:30:19.292Z",
+  "total_commits_analyzed": 103,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -2919,6 +2919,341 @@
           "tier": "T3",
           "tier_name": "Contributing"
         }
+      ],
+      "2026-W23": [
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "cb5343d1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-01T02:25:03.000Z",
+              "message": "feat(mp): SHM-based data transfer path for GPUs/CPU/Accelerators (#3359)\n\n* feat(mp): SHM-based data transfer path for GPGPUs/CPU\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Use multiprocessing.shared_memory for cross-platform SHM transport\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* docs: MPCacheEngine prepare/commit docstrings\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Move SHM logic to MPCacheEngine and add lazy/SHM guard\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add ShmSlotDescriptor schema\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactor: move transport files into lmcache/v1/multiprocess/transport/\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Remove redundant shm_name vs use_lazy check\n\nThe config layer already forces use_lazy=False when cudart is\nunavailable. The allocator factory can simply branch on shm_name\nfirst, then on use_lazy — no invalid combination can reach here\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* abstract server transfer strategy\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* to a more friendly naming\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Restore SHM test cases dropped during merge conflict resolution\n\n* fix rebase errors\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore shm logic during rebase\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move files to worker_transfer for clear code layout\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: cache _shm_pool_info in __init__ instead of recomputing on each register\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Split UNREGISTER_KV_CACHE into GPU and non-GPU variants to have\nboth modes supported in the same time\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: handle bool/int strict decoding in msgspec_decode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add auto as default transfer-mode on server side\n\nThe reason is because server is not aware of the device type of\nthe connecting workers. By defaulting to auto, the server loads\nboth GPU and non-GPU transfer modules, allowing workers of either\ntype to connect without requiring manual configuration.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move transfer_context.py into worker_transfer/ package\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move server transfer into modules\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: move SHM pool info to MPCacheEngineContext\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor test cases\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs according to latest code\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactored name for better semantic clarity.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* merging files\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore \"#HELPER FUNCTION\" which is removed by mistake\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix code quality issue\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: replace Any with explicit types in adapter_connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* shorten imports to use package-level re-exports\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add Defensive guard in msgspec encode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Rename adapter_connector → transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename transfer-mode to supported-transfer-mode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: make shm_name/pool_size required in create_non_gpu_context\nadd use_pickle option\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 22,
+                "lines": 2423,
+                "insertions": 2093,
+                "deletions": 330
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Chenglong Zheng",
+          "email": "a310608318@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 99,
+          "commits": [
+            {
+              "hash": "1fc118d3",
+              "author": "Chenglong Zheng",
+              "email": "a310608318@gmail.com",
+              "date": "2026-06-02T00:07:06.000Z",
+              "message": "fix: Add missing completion recorder ops to python_ops_fallback (#3469)\n\n* Fix missing record/drain completion ops in python_ops_fallback\n\nSigned-off-by: hahaha <a310608318@gmail.com>\n\n* Consolidate fallback tests into test_python_ops_fallback.py\n\nSigned-off-by: hahaha <a310608318@gmail.com>\n\n* Consolidate fallback completion tests into scenario framework\n\nSigned-off-by: hahaha <a310608318@gmail.com>\n\n---------\n\nSigned-off-by: hahaha <a310608318@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 111,
+                "insertions": 111,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 11,
+                "total": 66
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5b2d4aee",
+              "author": "Chenglong Zheng",
+              "email": "a310608318@gmail.com",
+              "date": "2026-06-01T03:43:21.000Z",
+              "message": "[good-first-issue] internal_api_server: convert f-string log calls to %-format (#3447)\n\nSigned-off-by: hahaha <a310608318@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 31,
+                "insertions": 18,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 49.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 99,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tian, Feng",
+          "email": "feng.tian@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "d7362a43",
+              "author": "Tian, Feng",
+              "email": "feng.tian@intel.com",
+              "date": "2026-06-02T00:06:27.000Z",
+              "message": "[XPU] Add SYCL CacheGen + RoPE kernels and in-process blender XPU tests (#3360)\n\n* [XPU] Add SYCL CacheGen + RoPE kernels and in-process blender XPU tests\n\nImplements native SYCL/DPC++ kernels for the four CacheGen + RoPE entry\npoints on Intel XPU, exposed through lmcache.xpu_ops and transparently\npicked up by _get_backend():\n\n- cal_cdf_sycl.cpp        : calculate_cdf\n- ac_enc_sycl.cpp         : encode_fast_new\n- ac_dec_sycl.cpp         : decode_fast_new / decode_fast_prefsum\n- pos_kernels_sycl.cpp    : rotary_embedding_k_fused\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Fix issues found in code format check\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Refine the function comments under csrc/sycl folder\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Refine the import logic of flashatt func symobl for different device\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Add input validation TORCH_CHECKs to encoder/decoder\n\n- dtype checks for cdf/input/output/lengths tensors\n- dim checks before accessing sizes()[N]\n- lp >= 2 (max_symbol = lp - 2 must be non-negative)\n- bytestreams last dim == OUTPUT_BUFFER_LENGTH_PER_THREAD (decoder)\n- lengths.max() <= OUTPUT_BUFFER_LENGTH_PER_THREAD (decoder, prevents\n  per-channel kernel OOB read on bs_shared)\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* test_serde: whitelist CUDA/XPU by availability\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* test_python_ops_fallback: add xpu_sycl_ops backend for SYCL parity check\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* benchmarks: merge cachegen_xpu_e2e into test_cachegen and whitelist GPU backends\n\nThe xpu_e2e file was a superset of test_cachegen.py: same KV-blob /\nserde construction logic, but it benchmarked both encode and decode\n(plus a compression-ratio print), while test_cachegen.py only had a\ndecode bench (encode was commented out). It also wasn't actually\nXPU-specific -- it used torch_device_type, so CUDA could run it too.\n\nMerge encode + compression-ratio print into test_cachegen.py, unify the\nchunk_size parameter set to [64, 128, 256, 768], and delete the\nduplicate xpu_e2e file. Switch the skip gate from is_available() to an\nexplicit cuda/xpu whitelist so HPU / CPU-only CI / future backends\nwithout a CacheGen kernel are skipped automatically.\n\nVerified on Arc Pro B60 (XPU): all 8 benchmarks (encode/decode x\n4 chunk sizes) pass with real timings.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* sycl: add head_size kwarg and skip unimplemented ops in fallback tests\n\n- csrc/sycl: add head_size=0 parameter to multi_layer_kv_transfer so the\n  SYCL binding matches the CUDA c_ops signature; callers that pass\n  head_size=... no longer raise TypeError on XPU. The argument is\n  currently unused inside the SYCL kernel.\n- tests/v1/test_python_ops_fallback.py: extend pin_memory branches to\n  cover XPU (XPU supports tensor.pin_memory()), and add a per-backend\n  skip in test_1_scenario so scenarios whose required op is missing from\n  lmcache.xpu_ops are skipped instead of crashing the device with\n  AttributeError/TypeError cascades.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* tests: fix XPU fallback parity by selecting tensor mode per backend\n\nThe scenario helpers in test_python_ops_fallback.py decided between\npointer mode and tensor/tensor-list mode based on the device string,\nwhich conflated the native XPU SYCL backend (which only accepts\nuintptr_t pointers) with the Python fallback (which cannot dereference\nXPU device pointers from ctypes and must receive torch.Tensor inputs).\nAdding XPU to the tensor-mode branch made the native backend crash;\nkeeping XPU out made the fallback segfault.\n\nSwitch the decision to inspect the backend module: only the Python\nfallback uses tensor/tensor-list mode on non-CPU/CUDA devices. This\nkeeps both xpu_sycl_ops and xpu_py_ops happy and lets test_2_compare\nvalidate them against each other.\n\nAlso drop the obsolete block_size kwarg from _create_metadata in\ntest_xpu_connector.py to match the current KVLayerGroupsManager\nsignature.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* tests: drop SCENARIO_REQUIRED_ATTR table, skip on AttributeError\n\nThe hand-maintained mapping of scenario name -> required ops attribute\nwas just a pre-check for what the scenario would do anyway on its\nfirst ops.foo lookup. Replace it with a try/except AttributeError\naround the scenario call: when a backend (e.g. lmcache.xpu_ops) does\nnot implement an op, the scenario raises AttributeError on first\naccess and we turn that into pytest.skip.\n\nSame skip set as before (verified: 70 passed, 7 skipped on XPU).\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* test scenario adjustment to cover all xpu ops\n\n- Align the XPU backend parameterization with the merged\n  lmcache.c_ops module exposed by _get_backend(), and let scenarios\n  surface real failures instead of being silently skipped on\n  AttributeError.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fallback: make enum comparisons work across native/fallback boundary\n\nThe Python fallback ops compared `direction` and `gpu_kv_format` via\n`==` / `in` against the fallback module's own Enum members. When the\nmerged `lmcache.c_ops` module is composed of a native backend\n(`xpu_ops` / `c_ops`) plus the fallback, callers obtain the enum\nmembers from the native pybind11 enums. Cross-type equality between\na pybind11 enum and a Python Enum / IntEnum is always False even\nwhen the integer values match, so the fallback silently took the\nwrong branch -- e.g. `single_layer_kv_transfer_sgl` on XPU executed\nthe D2H path for an H2D request, and `multi_layer_kv_transfer_unilateral`\nmis-classified MLA formats and crashed on out-of-range indexing.\n\nCompare by integer value at every callsite and promote\n`TransferDirection` to `IntEnum` (matching `GPUKVFormat`) so that\n`int(direction)` is well-defined. Also clean up the unilateral\nscenario to decide tensor-list vs pointer mode based on whether the\nactual resolved op is the fallback function (`fn is _py_ops.fn`)\nrather than the merged module's name.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Revise test_python_ops_fallback changes to make minimal change\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Sync missing GPUKVFormat enum field to align with master\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n---------\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2045,
+                "insertions": 1831,
+                "deletions": 214
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "7c235a29",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-06-02T00:06:46.000Z",
+              "message": "[Bugfix] Fix LocalCPUBackend recovery when pinned CPU chunks block eviction (#3189)\n\n* Fix local CPU allocator recovery\n\nKeep pinned layer groups out of batched LocalCPUBackend eviction and make MixedMemoryAllocator-owned tensor objects free through the wrapper allocator.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix batched CPU allocation recovery\n\nScan a bounded set of batched eviction candidates and skip groups that cannot be fully evicted before retrying allocation.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 164,
+                "insertions": 154,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yufeng He",
+          "email": "40085740+he-yufeng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "5824ab30",
+              "author": "Yufeng He",
+              "email": "40085740+he-yufeng@users.noreply.github.com",
+              "date": "2026-06-02T00:09:15.000Z",
+              "message": "Retain CUDA IPC events in MP adapter (#3245)\n\n* fix: retain CUDA IPC events in MP adapter\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* fix: avoid CUDA event type coupling\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* test: use transfer context in MP adapter event tests\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* test: clear MP event test mock references\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* test: drop parent mock event references\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 103,
+                "insertions": 98,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 10,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jinwoo Jeong",
+          "email": "35993396+JinuJeong@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "45612e20",
+              "author": "Jinwoo Jeong",
+              "email": "35993396+JinuJeong@users.noreply.github.com",
+              "date": "2026-06-01T19:01:27.000Z",
+              "message": "fix(gds): use parse_cache_key to handle LayerCacheEngineKey on restart (#3327)\n\nSigned-off-by: Jinwoo Jeong <jwjeong@csl.korea.ac.kr>",
+              "stats": {
+                "files": 2,
+                "lines": 58,
+                "insertions": 55,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "cat",
+          "email": "102634561+catyion@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 37,
+          "commits": [
+            {
+              "hash": "e229bc54",
+              "author": "cat",
+              "email": "102634561+catyion@users.noreply.github.com",
+              "date": "2026-06-02T00:07:43.000Z",
+              "message": "cleanup: move serializer registry + encoder/decoder helpers to end of custom_types.py (#3460)\n\ncleanup: move serializer registry helpers to end of custom_types.py\n\nSigned-off-by: catyion <102634561+catyion@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 56,
+                "insertions": 28,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 37,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Zhengfei He",
+          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 28,
+          "commits": [
+            {
+              "hash": "0a298d00",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-06-01T22:27:59.000Z",
+              "message": "[Fix][Example]: Drop EngineArgs+asdict to fix vLLM 0.20+ pydantic error (#3441)\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 39,
+                "insertions": 19,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 28,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 28,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -5581,6 +5916,341 @@
           "tier": "T3",
           "tier_name": "Contributing"
         }
+      ],
+      "2026-06": [
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "cb5343d1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-01T02:25:03.000Z",
+              "message": "feat(mp): SHM-based data transfer path for GPUs/CPU/Accelerators (#3359)\n\n* feat(mp): SHM-based data transfer path for GPGPUs/CPU\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Use multiprocessing.shared_memory for cross-platform SHM transport\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* docs: MPCacheEngine prepare/commit docstrings\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Move SHM logic to MPCacheEngine and add lazy/SHM guard\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add ShmSlotDescriptor schema\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactor: move transport files into lmcache/v1/multiprocess/transport/\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Remove redundant shm_name vs use_lazy check\n\nThe config layer already forces use_lazy=False when cudart is\nunavailable. The allocator factory can simply branch on shm_name\nfirst, then on use_lazy — no invalid combination can reach here\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* abstract server transfer strategy\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* to a more friendly naming\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Restore SHM test cases dropped during merge conflict resolution\n\n* fix rebase errors\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore shm logic during rebase\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move files to worker_transfer for clear code layout\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: cache _shm_pool_info in __init__ instead of recomputing on each register\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Split UNREGISTER_KV_CACHE into GPU and non-GPU variants to have\nboth modes supported in the same time\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: handle bool/int strict decoding in msgspec_decode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add auto as default transfer-mode on server side\n\nThe reason is because server is not aware of the device type of\nthe connecting workers. By defaulting to auto, the server loads\nboth GPU and non-GPU transfer modules, allowing workers of either\ntype to connect without requiring manual configuration.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move transfer_context.py into worker_transfer/ package\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move server transfer into modules\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: move SHM pool info to MPCacheEngineContext\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor test cases\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs according to latest code\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactored name for better semantic clarity.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* merging files\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore \"#HELPER FUNCTION\" which is removed by mistake\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix code quality issue\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: replace Any with explicit types in adapter_connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* shorten imports to use package-level re-exports\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add Defensive guard in msgspec encode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Rename adapter_connector → transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename transfer-mode to supported-transfer-mode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: make shm_name/pool_size required in create_non_gpu_context\nadd use_pickle option\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 22,
+                "lines": 2423,
+                "insertions": 2093,
+                "deletions": 330
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Chenglong Zheng",
+          "email": "a310608318@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 99,
+          "commits": [
+            {
+              "hash": "1fc118d3",
+              "author": "Chenglong Zheng",
+              "email": "a310608318@gmail.com",
+              "date": "2026-06-02T00:07:06.000Z",
+              "message": "fix: Add missing completion recorder ops to python_ops_fallback (#3469)\n\n* Fix missing record/drain completion ops in python_ops_fallback\n\nSigned-off-by: hahaha <a310608318@gmail.com>\n\n* Consolidate fallback tests into test_python_ops_fallback.py\n\nSigned-off-by: hahaha <a310608318@gmail.com>\n\n* Consolidate fallback completion tests into scenario framework\n\nSigned-off-by: hahaha <a310608318@gmail.com>\n\n---------\n\nSigned-off-by: hahaha <a310608318@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 111,
+                "insertions": 111,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 11,
+                "total": 66
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5b2d4aee",
+              "author": "Chenglong Zheng",
+              "email": "a310608318@gmail.com",
+              "date": "2026-06-01T03:43:21.000Z",
+              "message": "[good-first-issue] internal_api_server: convert f-string log calls to %-format (#3447)\n\nSigned-off-by: hahaha <a310608318@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 31,
+                "insertions": 18,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 49.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 99,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tian, Feng",
+          "email": "feng.tian@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "d7362a43",
+              "author": "Tian, Feng",
+              "email": "feng.tian@intel.com",
+              "date": "2026-06-02T00:06:27.000Z",
+              "message": "[XPU] Add SYCL CacheGen + RoPE kernels and in-process blender XPU tests (#3360)\n\n* [XPU] Add SYCL CacheGen + RoPE kernels and in-process blender XPU tests\n\nImplements native SYCL/DPC++ kernels for the four CacheGen + RoPE entry\npoints on Intel XPU, exposed through lmcache.xpu_ops and transparently\npicked up by _get_backend():\n\n- cal_cdf_sycl.cpp        : calculate_cdf\n- ac_enc_sycl.cpp         : encode_fast_new\n- ac_dec_sycl.cpp         : decode_fast_new / decode_fast_prefsum\n- pos_kernels_sycl.cpp    : rotary_embedding_k_fused\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Fix issues found in code format check\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Refine the function comments under csrc/sycl folder\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Refine the import logic of flashatt func symobl for different device\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Add input validation TORCH_CHECKs to encoder/decoder\n\n- dtype checks for cdf/input/output/lengths tensors\n- dim checks before accessing sizes()[N]\n- lp >= 2 (max_symbol = lp - 2 must be non-negative)\n- bytestreams last dim == OUTPUT_BUFFER_LENGTH_PER_THREAD (decoder)\n- lengths.max() <= OUTPUT_BUFFER_LENGTH_PER_THREAD (decoder, prevents\n  per-channel kernel OOB read on bs_shared)\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* test_serde: whitelist CUDA/XPU by availability\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* test_python_ops_fallback: add xpu_sycl_ops backend for SYCL parity check\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* benchmarks: merge cachegen_xpu_e2e into test_cachegen and whitelist GPU backends\n\nThe xpu_e2e file was a superset of test_cachegen.py: same KV-blob /\nserde construction logic, but it benchmarked both encode and decode\n(plus a compression-ratio print), while test_cachegen.py only had a\ndecode bench (encode was commented out). It also wasn't actually\nXPU-specific -- it used torch_device_type, so CUDA could run it too.\n\nMerge encode + compression-ratio print into test_cachegen.py, unify the\nchunk_size parameter set to [64, 128, 256, 768], and delete the\nduplicate xpu_e2e file. Switch the skip gate from is_available() to an\nexplicit cuda/xpu whitelist so HPU / CPU-only CI / future backends\nwithout a CacheGen kernel are skipped automatically.\n\nVerified on Arc Pro B60 (XPU): all 8 benchmarks (encode/decode x\n4 chunk sizes) pass with real timings.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* sycl: add head_size kwarg and skip unimplemented ops in fallback tests\n\n- csrc/sycl: add head_size=0 parameter to multi_layer_kv_transfer so the\n  SYCL binding matches the CUDA c_ops signature; callers that pass\n  head_size=... no longer raise TypeError on XPU. The argument is\n  currently unused inside the SYCL kernel.\n- tests/v1/test_python_ops_fallback.py: extend pin_memory branches to\n  cover XPU (XPU supports tensor.pin_memory()), and add a per-backend\n  skip in test_1_scenario so scenarios whose required op is missing from\n  lmcache.xpu_ops are skipped instead of crashing the device with\n  AttributeError/TypeError cascades.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* tests: fix XPU fallback parity by selecting tensor mode per backend\n\nThe scenario helpers in test_python_ops_fallback.py decided between\npointer mode and tensor/tensor-list mode based on the device string,\nwhich conflated the native XPU SYCL backend (which only accepts\nuintptr_t pointers) with the Python fallback (which cannot dereference\nXPU device pointers from ctypes and must receive torch.Tensor inputs).\nAdding XPU to the tensor-mode branch made the native backend crash;\nkeeping XPU out made the fallback segfault.\n\nSwitch the decision to inspect the backend module: only the Python\nfallback uses tensor/tensor-list mode on non-CPU/CUDA devices. This\nkeeps both xpu_sycl_ops and xpu_py_ops happy and lets test_2_compare\nvalidate them against each other.\n\nAlso drop the obsolete block_size kwarg from _create_metadata in\ntest_xpu_connector.py to match the current KVLayerGroupsManager\nsignature.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* tests: drop SCENARIO_REQUIRED_ATTR table, skip on AttributeError\n\nThe hand-maintained mapping of scenario name -> required ops attribute\nwas just a pre-check for what the scenario would do anyway on its\nfirst ops.foo lookup. Replace it with a try/except AttributeError\naround the scenario call: when a backend (e.g. lmcache.xpu_ops) does\nnot implement an op, the scenario raises AttributeError on first\naccess and we turn that into pytest.skip.\n\nSame skip set as before (verified: 70 passed, 7 skipped on XPU).\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* test scenario adjustment to cover all xpu ops\n\n- Align the XPU backend parameterization with the merged\n  lmcache.c_ops module exposed by _get_backend(), and let scenarios\n  surface real failures instead of being silently skipped on\n  AttributeError.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fallback: make enum comparisons work across native/fallback boundary\n\nThe Python fallback ops compared `direction` and `gpu_kv_format` via\n`==` / `in` against the fallback module's own Enum members. When the\nmerged `lmcache.c_ops` module is composed of a native backend\n(`xpu_ops` / `c_ops`) plus the fallback, callers obtain the enum\nmembers from the native pybind11 enums. Cross-type equality between\na pybind11 enum and a Python Enum / IntEnum is always False even\nwhen the integer values match, so the fallback silently took the\nwrong branch -- e.g. `single_layer_kv_transfer_sgl` on XPU executed\nthe D2H path for an H2D request, and `multi_layer_kv_transfer_unilateral`\nmis-classified MLA formats and crashed on out-of-range indexing.\n\nCompare by integer value at every callsite and promote\n`TransferDirection` to `IntEnum` (matching `GPUKVFormat`) so that\n`int(direction)` is well-defined. Also clean up the unilateral\nscenario to decide tensor-list vs pointer mode based on whether the\nactual resolved op is the fallback function (`fn is _py_ops.fn`)\nrather than the merged module's name.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Revise test_python_ops_fallback changes to make minimal change\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Sync missing GPUKVFormat enum field to align with master\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n---------\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2045,
+                "insertions": 1831,
+                "deletions": 214
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "7c235a29",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-06-02T00:06:46.000Z",
+              "message": "[Bugfix] Fix LocalCPUBackend recovery when pinned CPU chunks block eviction (#3189)\n\n* Fix local CPU allocator recovery\n\nKeep pinned layer groups out of batched LocalCPUBackend eviction and make MixedMemoryAllocator-owned tensor objects free through the wrapper allocator.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix batched CPU allocation recovery\n\nScan a bounded set of batched eviction candidates and skip groups that cannot be fully evicted before retrying allocation.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 164,
+                "insertions": 154,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yufeng He",
+          "email": "40085740+he-yufeng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "5824ab30",
+              "author": "Yufeng He",
+              "email": "40085740+he-yufeng@users.noreply.github.com",
+              "date": "2026-06-02T00:09:15.000Z",
+              "message": "Retain CUDA IPC events in MP adapter (#3245)\n\n* fix: retain CUDA IPC events in MP adapter\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* fix: avoid CUDA event type coupling\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* test: use transfer context in MP adapter event tests\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* test: clear MP event test mock references\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* test: drop parent mock event references\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 103,
+                "insertions": 98,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 10,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jinwoo Jeong",
+          "email": "35993396+JinuJeong@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "45612e20",
+              "author": "Jinwoo Jeong",
+              "email": "35993396+JinuJeong@users.noreply.github.com",
+              "date": "2026-06-01T19:01:27.000Z",
+              "message": "fix(gds): use parse_cache_key to handle LayerCacheEngineKey on restart (#3327)\n\nSigned-off-by: Jinwoo Jeong <jwjeong@csl.korea.ac.kr>",
+              "stats": {
+                "files": 2,
+                "lines": 58,
+                "insertions": 55,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "cat",
+          "email": "102634561+catyion@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 37,
+          "commits": [
+            {
+              "hash": "e229bc54",
+              "author": "cat",
+              "email": "102634561+catyion@users.noreply.github.com",
+              "date": "2026-06-02T00:07:43.000Z",
+              "message": "cleanup: move serializer registry + encoder/decoder helpers to end of custom_types.py (#3460)\n\ncleanup: move serializer registry helpers to end of custom_types.py\n\nSigned-off-by: catyion <102634561+catyion@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 56,
+                "insertions": 28,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 37,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Zhengfei He",
+          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 28,
+          "commits": [
+            {
+              "hash": "0a298d00",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-06-01T22:27:59.000Z",
+              "message": "[Fix][Example]: Drop EngineArgs+asdict to fix vLLM 0.20+ pydantic error (#3441)\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 39,
+                "insertions": 19,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 28,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 28,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "quarterly": {
@@ -6189,6 +6859,150 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 6,
+          "significant_commits": 4,
+          "simple_commits": 2,
+          "commit_score": 425,
+          "commits": [
+            {
+              "hash": "4658d69e",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-17T01:44:14.000Z",
+              "message": "Defer test_cache runtime imports so lmcache-cli loads without torch (#3294)\n\n* Defer test_cache runtime imports so lmcache-cli loads without torch\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 32,
+                "insertions": 16,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "516b498c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-18T12:33:27.000Z",
+              "message": "feat: add StubCPUDevice to allow import/startup fallback in CPU-only environments (#3280)\n\n* feat: add StubCPUDevice to enable CPU-only MP mode\n\nIntroduce StubCPUDevice as a torch_dev drop-in for CPU-only\nenvironments, allowing the MP server to run without a GPU.\nUpdate _detect_device() to fall back to StubCPUDevice when no\naccelerator is available. Override KV cache layout to HND for\nCPU backend since vLLM's get_kv_cache_layout() is unavailable\nin MP mode and defaults to NHD.\n\nVerified with L1 adapter end-to-end.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix path sharder ci in cpu-only path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move platform from lmcache to lmcache/v1\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 385,
+                "insertions": 369,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "10ad9e42",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-19T21:23:17.000Z",
+              "message": "chore: add hlin99 to CODEOWNERS (#3316)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 31,
+                "insertions": 17,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 10,
+                "ai": 3,
+                "total": 26
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "259c0b39",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-20T22:31:55.000Z",
+              "message": "feat(mp): Non-GPU Context by pickle (#3259)\n\n* feat(mp): CPU Context by pickle\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* renaming bounce keyword to cpu context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix unit test failures\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address bot review comment\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: standardize cpu context naming conventions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small fix on error handling\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: polymorphic TransferContext for MP adapter transport layer\n\nReplace scattered if/else CPU/CUDA branches in vllm_multi_process_adapter\nwith a TransferContext abstraction (ABC + CudaTransferContext + CPUTransferContext).\n\n- Add transfer_context.py with unified register/store/retrieve/poll interface\n- Device-type dispatch centralized in create_transfer_context() factory\n- Adapter delegates all transport logic via polymorphism, no branching\n- Future transports (e.g. SHM) only need a new subclass, zero adapter changes\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore unnecessary changes\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Revert CPU registration payload from pickle bytes to scalar fields\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update design doc\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rebase dsv4: propagate vllm_logical_block_size through TransferContext.register() to restore DeepSeek V4 compress_ratio\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename to more general names: non_gpu_context & non_cuda_transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add todo note for deepseek v4 on non-cuda path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Consolidate MPCacheEngine context state into unified registry\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* use dataclass for payload\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Auto-disable l1-use-lazy on non-CUDA backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Lift layout hints to the caller layer to avoid redundant computation in transfer-context registration\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* [refactor] reserve zero-copy buffer allocation interface to NonGpuContext for shm solution\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: update test to use new unified protocol methods\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename transfer context classes to handle/data semantics\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update test\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename test file\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 13,
+                "lines": 2274,
+                "insertions": 2173,
+                "deletions": 101
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "46c9b5be",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-20T06:34:22.000Z",
+              "message": "Unconditionally compile common c++ extensions in setup.py (#3302)\n\n* Unconditionally compile common c++ extensions in setup.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add \"mooncake ext is optional\" comment back\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 244,
+                "insertions": 121,
+                "deletions": 123
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 24,
+                "total": 76
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "cb5343d1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-01T02:25:03.000Z",
+              "message": "feat(mp): SHM-based data transfer path for GPUs/CPU/Accelerators (#3359)\n\n* feat(mp): SHM-based data transfer path for GPGPUs/CPU\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Use multiprocessing.shared_memory for cross-platform SHM transport\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* docs: MPCacheEngine prepare/commit docstrings\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Move SHM logic to MPCacheEngine and add lazy/SHM guard\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add ShmSlotDescriptor schema\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactor: move transport files into lmcache/v1/multiprocess/transport/\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Remove redundant shm_name vs use_lazy check\n\nThe config layer already forces use_lazy=False when cudart is\nunavailable. The allocator factory can simply branch on shm_name\nfirst, then on use_lazy — no invalid combination can reach here\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* abstract server transfer strategy\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* to a more friendly naming\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Restore SHM test cases dropped during merge conflict resolution\n\n* fix rebase errors\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore shm logic during rebase\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move files to worker_transfer for clear code layout\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: cache _shm_pool_info in __init__ instead of recomputing on each register\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Split UNREGISTER_KV_CACHE into GPU and non-GPU variants to have\nboth modes supported in the same time\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: handle bool/int strict decoding in msgspec_decode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add auto as default transfer-mode on server side\n\nThe reason is because server is not aware of the device type of\nthe connecting workers. By defaulting to auto, the server loads\nboth GPU and non-GPU transfer modules, allowing workers of either\ntype to connect without requiring manual configuration.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move transfer_context.py into worker_transfer/ package\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move server transfer into modules\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: move SHM pool info to MPCacheEngineContext\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor test cases\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs according to latest code\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactored name for better semantic clarity.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* merging files\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore \"#HELPER FUNCTION\" which is removed by mistake\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix code quality issue\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: replace Any with explicit types in adapter_connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* shorten imports to use package-level re-exports\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add Defensive guard in msgspec encode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Rename adapter_connector → transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename transfer-mode to supported-transfer-mode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: make shm_name/pool_size required in create_non_gpu_context\nadd use_pickle option\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 22,
+                "lines": 2423,
+                "insertions": 2093,
+                "deletions": 330
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70.83333333333333,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 425,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
           "total_commits": 7,
@@ -6350,129 +7164,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 386,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 5,
-          "significant_commits": 3,
-          "simple_commits": 2,
-          "commit_score": 325,
-          "commits": [
-            {
-              "hash": "4658d69e",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-17T01:44:14.000Z",
-              "message": "Defer test_cache runtime imports so lmcache-cli loads without torch (#3294)\n\n* Defer test_cache runtime imports so lmcache-cli loads without torch\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 2,
-                "lines": 32,
-                "insertions": 16,
-                "deletions": 16
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 3,
-                "total": 33
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "516b498c",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-18T12:33:27.000Z",
-              "message": "feat: add StubCPUDevice to allow import/startup fallback in CPU-only environments (#3280)\n\n* feat: add StubCPUDevice to enable CPU-only MP mode\n\nIntroduce StubCPUDevice as a torch_dev drop-in for CPU-only\nenvironments, allowing the MP server to run without a GPU.\nUpdate _detect_device() to fall back to StubCPUDevice when no\naccelerator is available. Override KV cache layout to HND for\nCPU backend since vLLM's get_kv_cache_layout() is unavailable\nin MP mode and defaults to NHD.\n\nVerified with L1 adapter end-to-end.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix path sharder ci in cpu-only path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move platform from lmcache to lmcache/v1\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 4,
-                "lines": 385,
-                "insertions": 369,
-                "deletions": 16
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "10ad9e42",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-19T21:23:17.000Z",
-              "message": "chore: add hlin99 to CODEOWNERS (#3316)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 31,
-                "insertions": 17,
-                "deletions": 14
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 10,
-                "ai": 3,
-                "total": 26
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "259c0b39",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-20T22:31:55.000Z",
-              "message": "feat(mp): Non-GPU Context by pickle (#3259)\n\n* feat(mp): CPU Context by pickle\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* renaming bounce keyword to cpu context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix unit test failures\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address bot review comment\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: standardize cpu context naming conventions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small fix on error handling\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: polymorphic TransferContext for MP adapter transport layer\n\nReplace scattered if/else CPU/CUDA branches in vllm_multi_process_adapter\nwith a TransferContext abstraction (ABC + CudaTransferContext + CPUTransferContext).\n\n- Add transfer_context.py with unified register/store/retrieve/poll interface\n- Device-type dispatch centralized in create_transfer_context() factory\n- Adapter delegates all transport logic via polymorphism, no branching\n- Future transports (e.g. SHM) only need a new subclass, zero adapter changes\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore unnecessary changes\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Revert CPU registration payload from pickle bytes to scalar fields\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update design doc\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rebase dsv4: propagate vllm_logical_block_size through TransferContext.register() to restore DeepSeek V4 compress_ratio\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename to more general names: non_gpu_context & non_cuda_transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add todo note for deepseek v4 on non-cuda path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Consolidate MPCacheEngine context state into unified registry\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* use dataclass for payload\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Auto-disable l1-use-lazy on non-CUDA backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Lift layout hints to the caller layer to avoid redundant computation in transfer-context registration\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* [refactor] reserve zero-copy buffer allocation interface to NonGpuContext for shm solution\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: update test to use new unified protocol methods\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename transfer context classes to handle/data semantics\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update test\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename test file\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 13,
-                "lines": 2274,
-                "insertions": 2173,
-                "deletions": 101
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "46c9b5be",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-20T06:34:22.000Z",
-              "message": "Unconditionally compile common c++ extensions in setup.py (#3302)\n\n* Unconditionally compile common c++ extensions in setup.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add \"mooncake ext is optional\" comment back\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 2,
-                "lines": 244,
-                "insertions": 121,
-                "deletions": 123
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 24,
-                "total": 76
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 65,
-          "significance_ratio": 0.6,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 325,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6681,6 +7372,108 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 236,
+          "commits": [
+            {
+              "hash": "713b1a5c",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-05-27T19:45:46.000Z",
+              "message": "[Bugfix] Avoid vLLM import during blake3 token hasher startup (#3416)\n\n* fix: avoid vllm import for blake3 token hasher\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 59,
+                "insertions": 48,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 15,
+                "total": 55
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "acf3c7fa",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-05-27T19:43:01.000Z",
+              "message": "[Hotfix][CI] fix raw-block L2 store result assertions (#3415)\n\ntest: fix raw-block L2 store result assertions\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 6,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 15,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "dca25488",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-05-27T15:34:29.000Z",
+              "message": "[CI/CD] Add CI-safe raw-block temp-file tests (#3203)\n\n* test: add raw-block temp-file coverage\n\nAdd CI-safe raw-block tests that exercise the Rust device binding, RawBlockCore, and the MP raw-block L2 adapter on truncated regular files.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* ci: add focused raw-block temp-file job\n\nAdd raw-block path filtering and a dedicated Ubuntu raw-block CI job that builds the Rust extension and runs only the temp-file raw-block tests under the repo workspace.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* test: address raw-block review feedback\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 714,
+                "insertions": 714,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 20,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7c235a29",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-06-02T00:06:46.000Z",
+              "message": "[Bugfix] Fix LocalCPUBackend recovery when pinned CPU chunks block eviction (#3189)\n\n* Fix local CPU allocator recovery\n\nKeep pinned layer groups out of batched LocalCPUBackend eviction and make MixedMemoryAllocator-owned tensor objects free through the wrapper allocator.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix batched CPU allocation recovery\n\nScan a bounded set of batched eviction candidates and skip groups that cannot be fully evicted before retrying allocation.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 164,
+                "insertions": 154,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 59,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 236,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Shaoting",
           "email": "shaotingf@uchicago.edu",
           "total_commits": 3,
@@ -6764,10 +7557,10 @@
         {
           "name": "Zhengfei He",
           "email": "157287166+zhengfeihe@users.noreply.github.com",
-          "total_commits": 3,
+          "total_commits": 4,
           "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 181,
+          "simple_commits": 2,
+          "commit_score": 209,
           "commits": [
             {
               "hash": "62bb37d5",
@@ -6831,14 +7624,35 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "0a298d00",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-06-01T22:27:59.000Z",
+              "message": "[Fix][Example]: Drop EngineArgs+asdict to fix vLLM 0.20+ pydantic error (#3441)\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 39,
+                "insertions": 19,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 60.333333333333336,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 52.25,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 181,
+          "total_score": 209,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7005,83 +7819,62 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 3,
+          "name": "Tian, Feng",
+          "email": "feng.tian@intel.com",
+          "total_commits": 2,
           "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 168,
+          "simple_commits": 0,
+          "commit_score": 174,
           "commits": [
             {
-              "hash": "713b1a5c",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-05-27T19:45:46.000Z",
-              "message": "[Bugfix] Avoid vLLM import during blake3 token hasher startup (#3416)\n\n* fix: avoid vllm import for blake3 token hasher\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "hash": "3090e896",
+              "author": "Tian, Feng",
+              "email": "feng.tian@intel.com",
+              "date": "2026-05-15T16:06:30.000Z",
+              "message": "Add sycl implementation of memory_kernels for Intel XPU (#2902)\n\n* Add SYCL/XPU port of mem_kernels with Intel optimizations and build scripts\n\nPerformance optimization for flash_infer on Intel XPU:\n\n1. Added page_buffer_base_offset() and key_value_base_offset() helpers\n   that compute loop-invariant base offsets (incl. integer division for\n   flash_infer block mapping) once before the inner loop.\n\n2. Added submit_multi_layer_kernel_fused_kv() that processes both K and V\n   in a single work-group for non-MLA formats, halving work-group count\n   and avoiding redundant slot lookups, pointer reads, and division.\n\n3. Updated dispatch logic to use fused kernel for non-MLA formats\n   (flash_infer, flash_attention, cross-layer) and original kernel for\n   MLA formats.\n\n4. Applied base-offset hoisting to unilateral kernel as well.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Add build instructions for Intel XPU\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Update csrc/sycl/mem_kernels_sycl.cpp\r\n\r\nFix this typo in code\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Tian, Feng <feng.tian@intel.com>\n\n* Fix typo in setup.py and __init__.py\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Refine the logic of importing GPU/XPU/HPU connector symbols\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fix issues raised by cursor\n\n1. add releasing gil lock for single layer transfer\n2. fix typo when printing error message\n3. add .spv file to ignore file list\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fix issues raised by cusor\n\n1. change dtype from uint64 to int64 for old_position calculation\n2. change potential out-of-bound access in slot_mapping\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Fix bugs by merging conflicts\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Update backend loading logic to support XPU backend\n\nThe non_cuda_equivalents is the base module to provide default kernels,\nif backend implments optimized or new ops, use them.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* skip c ops signature check as XPU compiler doesn't generate signature\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fix issue found in test_non_cuda_equivalents.py\n\nThe original code override the non_cuda_equivalents import lib.\nThe change uses a merged module to avoid that.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fix bugs introduced by merging dev to this PR\n\n1. adopt the name change from `discover_gpu_kv_format` to\n   `normalize_kv_and_discover_format` in (LMCache#3162)\n2. adopt the KVLayerGroupsManager change in (LMCache#3078)\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Not install cuda or hip related libs when build sycl version\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* merge the Intel XPU related contents to the latest docs\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* sync GPUKVFormat enum to latest one\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Remove SGLang related mem SYCL kernels\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Fix cpu backend importing c_ops issue\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fix pre-commit check error on test_xpu_connector_benchmark.py\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n---------\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\nSigned-off-by: Tian, Feng <feng.tian@intel.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
               "stats": {
-                "files": 2,
-                "lines": 59,
-                "insertions": 48,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 15,
-                "ai": 15,
-                "total": 55
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "acf3c7fa",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-05-27T19:43:01.000Z",
-              "message": "[Hotfix][CI] fix raw-block L2 store result assertions (#3415)\n\ntest: fix raw-block L2 store result assertions\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 8,
-                "insertions": 6,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 10,
-                "ai": 15,
-                "total": 33
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "dca25488",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-05-27T15:34:29.000Z",
-              "message": "[CI/CD] Add CI-safe raw-block temp-file tests (#3203)\n\n* test: add raw-block temp-file coverage\n\nAdd CI-safe raw-block tests that exercise the Rust device binding, RawBlockCore, and the MP raw-block L2 adapter on truncated regular files.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* ci: add focused raw-block temp-file job\n\nAdd raw-block path filtering and a dedicated Ubuntu raw-block CI job that builds the Rust extension and runs only the temp-file raw-block tests under the repo workspace.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* test: address raw-block review feedback\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 5,
-                "lines": 714,
-                "insertions": 714,
-                "deletions": 0
+                "files": 18,
+                "lines": 4109,
+                "insertions": 2954,
+                "deletions": 1155
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
-                "keyword": 10,
-                "ai": 20,
-                "total": 80
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d7362a43",
+              "author": "Tian, Feng",
+              "email": "feng.tian@intel.com",
+              "date": "2026-06-02T00:06:27.000Z",
+              "message": "[XPU] Add SYCL CacheGen + RoPE kernels and in-process blender XPU tests (#3360)\n\n* [XPU] Add SYCL CacheGen + RoPE kernels and in-process blender XPU tests\n\nImplements native SYCL/DPC++ kernels for the four CacheGen + RoPE entry\npoints on Intel XPU, exposed through lmcache.xpu_ops and transparently\npicked up by _get_backend():\n\n- cal_cdf_sycl.cpp        : calculate_cdf\n- ac_enc_sycl.cpp         : encode_fast_new\n- ac_dec_sycl.cpp         : decode_fast_new / decode_fast_prefsum\n- pos_kernels_sycl.cpp    : rotary_embedding_k_fused\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Fix issues found in code format check\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Refine the function comments under csrc/sycl folder\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Refine the import logic of flashatt func symobl for different device\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Add input validation TORCH_CHECKs to encoder/decoder\n\n- dtype checks for cdf/input/output/lengths tensors\n- dim checks before accessing sizes()[N]\n- lp >= 2 (max_symbol = lp - 2 must be non-negative)\n- bytestreams last dim == OUTPUT_BUFFER_LENGTH_PER_THREAD (decoder)\n- lengths.max() <= OUTPUT_BUFFER_LENGTH_PER_THREAD (decoder, prevents\n  per-channel kernel OOB read on bs_shared)\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* test_serde: whitelist CUDA/XPU by availability\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* test_python_ops_fallback: add xpu_sycl_ops backend for SYCL parity check\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* benchmarks: merge cachegen_xpu_e2e into test_cachegen and whitelist GPU backends\n\nThe xpu_e2e file was a superset of test_cachegen.py: same KV-blob /\nserde construction logic, but it benchmarked both encode and decode\n(plus a compression-ratio print), while test_cachegen.py only had a\ndecode bench (encode was commented out). It also wasn't actually\nXPU-specific -- it used torch_device_type, so CUDA could run it too.\n\nMerge encode + compression-ratio print into test_cachegen.py, unify the\nchunk_size parameter set to [64, 128, 256, 768], and delete the\nduplicate xpu_e2e file. Switch the skip gate from is_available() to an\nexplicit cuda/xpu whitelist so HPU / CPU-only CI / future backends\nwithout a CacheGen kernel are skipped automatically.\n\nVerified on Arc Pro B60 (XPU): all 8 benchmarks (encode/decode x\n4 chunk sizes) pass with real timings.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* sycl: add head_size kwarg and skip unimplemented ops in fallback tests\n\n- csrc/sycl: add head_size=0 parameter to multi_layer_kv_transfer so the\n  SYCL binding matches the CUDA c_ops signature; callers that pass\n  head_size=... no longer raise TypeError on XPU. The argument is\n  currently unused inside the SYCL kernel.\n- tests/v1/test_python_ops_fallback.py: extend pin_memory branches to\n  cover XPU (XPU supports tensor.pin_memory()), and add a per-backend\n  skip in test_1_scenario so scenarios whose required op is missing from\n  lmcache.xpu_ops are skipped instead of crashing the device with\n  AttributeError/TypeError cascades.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* tests: fix XPU fallback parity by selecting tensor mode per backend\n\nThe scenario helpers in test_python_ops_fallback.py decided between\npointer mode and tensor/tensor-list mode based on the device string,\nwhich conflated the native XPU SYCL backend (which only accepts\nuintptr_t pointers) with the Python fallback (which cannot dereference\nXPU device pointers from ctypes and must receive torch.Tensor inputs).\nAdding XPU to the tensor-mode branch made the native backend crash;\nkeeping XPU out made the fallback segfault.\n\nSwitch the decision to inspect the backend module: only the Python\nfallback uses tensor/tensor-list mode on non-CPU/CUDA devices. This\nkeeps both xpu_sycl_ops and xpu_py_ops happy and lets test_2_compare\nvalidate them against each other.\n\nAlso drop the obsolete block_size kwarg from _create_metadata in\ntest_xpu_connector.py to match the current KVLayerGroupsManager\nsignature.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* tests: drop SCENARIO_REQUIRED_ATTR table, skip on AttributeError\n\nThe hand-maintained mapping of scenario name -> required ops attribute\nwas just a pre-check for what the scenario would do anyway on its\nfirst ops.foo lookup. Replace it with a try/except AttributeError\naround the scenario call: when a backend (e.g. lmcache.xpu_ops) does\nnot implement an op, the scenario raises AttributeError on first\naccess and we turn that into pytest.skip.\n\nSame skip set as before (verified: 70 passed, 7 skipped on XPU).\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* test scenario adjustment to cover all xpu ops\n\n- Align the XPU backend parameterization with the merged\n  lmcache.c_ops module exposed by _get_backend(), and let scenarios\n  surface real failures instead of being silently skipped on\n  AttributeError.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fallback: make enum comparisons work across native/fallback boundary\n\nThe Python fallback ops compared `direction` and `gpu_kv_format` via\n`==` / `in` against the fallback module's own Enum members. When the\nmerged `lmcache.c_ops` module is composed of a native backend\n(`xpu_ops` / `c_ops`) plus the fallback, callers obtain the enum\nmembers from the native pybind11 enums. Cross-type equality between\na pybind11 enum and a Python Enum / IntEnum is always False even\nwhen the integer values match, so the fallback silently took the\nwrong branch -- e.g. `single_layer_kv_transfer_sgl` on XPU executed\nthe D2H path for an H2D request, and `multi_layer_kv_transfer_unilateral`\nmis-classified MLA formats and crashed on out-of-range indexing.\n\nCompare by integer value at every callsite and promote\n`TransferDirection` to `IntEnum` (matching `GPUKVFormat`) so that\n`int(direction)` is well-defined. Also clean up the unilateral\nscenario to decide tensor-list vs pointer mode based on whether the\nactual resolved op is the fallback function (`fn is _py_ops.fn`)\nrather than the merged module's name.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Revise test_python_ops_fallback changes to make minimal change\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Sync missing GPUKVFormat enum field to align with master\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n---------\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2045,
+                "insertions": 1831,
+                "deletions": 214
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 56,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 87,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 168,
+          "total_score": 174,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7142,8 +7935,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 113,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Samuel Shen",
@@ -7202,6 +7995,126 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 111,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Yufeng He",
+          "email": "40085740+he-yufeng@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 111,
+          "commits": [
+            {
+              "hash": "3dd36681",
+              "author": "Yufeng He",
+              "email": "40085740+he-yufeng@users.noreply.github.com",
+              "date": "2026-05-26T19:05:14.000Z",
+              "message": "fix: support HND formats in MP KV transfer (#3282)\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 60,
+                "insertions": 57,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 6,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "5824ab30",
+              "author": "Yufeng He",
+              "email": "40085740+he-yufeng@users.noreply.github.com",
+              "date": "2026-06-02T00:09:15.000Z",
+              "message": "Retain CUDA IPC events in MP adapter (#3245)\n\n* fix: retain CUDA IPC events in MP adapter\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* fix: avoid CUDA event type coupling\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* test: use transfer context in MP adapter event tests\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* test: clear MP event test mock references\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n* test: drop parent mock event references\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 103,
+                "insertions": 98,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 10,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 55.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 111,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Chenglong Zheng",
+          "email": "a310608318@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 99,
+          "commits": [
+            {
+              "hash": "1fc118d3",
+              "author": "Chenglong Zheng",
+              "email": "a310608318@gmail.com",
+              "date": "2026-06-02T00:07:06.000Z",
+              "message": "fix: Add missing completion recorder ops to python_ops_fallback (#3469)\n\n* Fix missing record/drain completion ops in python_ops_fallback\n\nSigned-off-by: hahaha <a310608318@gmail.com>\n\n* Consolidate fallback tests into test_python_ops_fallback.py\n\nSigned-off-by: hahaha <a310608318@gmail.com>\n\n* Consolidate fallback completion tests into scenario framework\n\nSigned-off-by: hahaha <a310608318@gmail.com>\n\n---------\n\nSigned-off-by: hahaha <a310608318@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 111,
+                "insertions": 111,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 11,
+                "total": 66
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5b2d4aee",
+              "author": "Chenglong Zheng",
+              "email": "a310608318@gmail.com",
+              "date": "2026-06-01T03:43:21.000Z",
+              "message": "[good-first-issue] internal_api_server: convert f-string log calls to %-format (#3447)\n\nSigned-off-by: hahaha <a310608318@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 31,
+                "insertions": 18,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 49.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 99,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -7283,45 +8196,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 95,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Tian, Feng",
-          "email": "feng.tian@intel.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "3090e896",
-              "author": "Tian, Feng",
-              "email": "feng.tian@intel.com",
-              "date": "2026-05-15T16:06:30.000Z",
-              "message": "Add sycl implementation of memory_kernels for Intel XPU (#2902)\n\n* Add SYCL/XPU port of mem_kernels with Intel optimizations and build scripts\n\nPerformance optimization for flash_infer on Intel XPU:\n\n1. Added page_buffer_base_offset() and key_value_base_offset() helpers\n   that compute loop-invariant base offsets (incl. integer division for\n   flash_infer block mapping) once before the inner loop.\n\n2. Added submit_multi_layer_kernel_fused_kv() that processes both K and V\n   in a single work-group for non-MLA formats, halving work-group count\n   and avoiding redundant slot lookups, pointer reads, and division.\n\n3. Updated dispatch logic to use fused kernel for non-MLA formats\n   (flash_infer, flash_attention, cross-layer) and original kernel for\n   MLA formats.\n\n4. Applied base-offset hoisting to unilateral kernel as well.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Add build instructions for Intel XPU\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Update csrc/sycl/mem_kernels_sycl.cpp\r\n\r\nFix this typo in code\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nSigned-off-by: Tian, Feng <feng.tian@intel.com>\n\n* Fix typo in setup.py and __init__.py\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Refine the logic of importing GPU/XPU/HPU connector symbols\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fix issues raised by cursor\n\n1. add releasing gil lock for single layer transfer\n2. fix typo when printing error message\n3. add .spv file to ignore file list\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fix issues raised by cusor\n\n1. change dtype from uint64 to int64 for old_position calculation\n2. change potential out-of-bound access in slot_mapping\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Fix bugs by merging conflicts\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Update backend loading logic to support XPU backend\n\nThe non_cuda_equivalents is the base module to provide default kernels,\nif backend implments optimized or new ops, use them.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* skip c ops signature check as XPU compiler doesn't generate signature\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fix issue found in test_non_cuda_equivalents.py\n\nThe original code override the non_cuda_equivalents import lib.\nThe change uses a merged module to avoid that.\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fix bugs introduced by merging dev to this PR\n\n1. adopt the name change from `discover_gpu_kv_format` to\n   `normalize_kv_and_discover_format` in (LMCache#3162)\n2. adopt the KVLayerGroupsManager change in (LMCache#3078)\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Not install cuda or hip related libs when build sycl version\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* merge the Intel XPU related contents to the latest docs\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* sync GPUKVFormat enum to latest one\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Remove SGLang related mem SYCL kernels\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* Fix cpu backend importing c_ops issue\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n* fix pre-commit check error on test_xpu_connector_benchmark.py\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\n\n---------\n\nSigned-off-by: Feng Tian <feng.tian@intel.com>\nSigned-off-by: Tian, Feng <feng.tian@intel.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
-              "stats": {
-                "files": 18,
-                "lines": 4109,
-                "insertions": 2954,
-                "deletions": 1155
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -7556,8 +8430,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 73,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "sh",
@@ -7595,8 +8469,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 70,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Javen-Ke",
@@ -7737,45 +8611,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Yufeng He",
-          "email": "40085740+he-yufeng@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 46,
-          "commits": [
-            {
-              "hash": "3dd36681",
-              "author": "Yufeng He",
-              "email": "40085740+he-yufeng@users.noreply.github.com",
-              "date": "2026-05-26T19:05:14.000Z",
-              "message": "fix: support HND formats in MP KV transfer (#3282)\n\nSigned-off-by: Yufeng He <40085740+he-yufeng@users.noreply.github.com>",
-              "stats": {
-                "files": 2,
-                "lines": 60,
-                "insertions": 57,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 15,
-                "ai": 6,
-                "total": 46
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 46,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 46,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "GentleCold",
           "email": "gentlecold@qq.com",
           "total_commits": 1,
@@ -7811,6 +8646,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 45,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Jinwoo Jeong",
+          "email": "35993396+JinuJeong@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "45612e20",
+              "author": "Jinwoo Jeong",
+              "email": "35993396+JinuJeong@users.noreply.github.com",
+              "date": "2026-06-01T19:01:27.000Z",
+              "message": "fix(gds): use parse_cache_key to handle LayerCacheEngineKey on restart (#3327)\n\nSigned-off-by: Jinwoo Jeong <jwjeong@csl.korea.ac.kr>",
+              "stats": {
+                "files": 2,
+                "lines": 58,
+                "insertions": 55,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -7889,6 +8763,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 40,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "cat",
+          "email": "102634561+catyion@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 37,
+          "commits": [
+            {
+              "hash": "e229bc54",
+              "author": "cat",
+              "email": "102634561+catyion@users.noreply.github.com",
+              "date": "2026-06-02T00:07:43.000Z",
+              "message": "cleanup: move serializer registry + encoder/decoder helpers to end of custom_types.py (#3460)\n\ncleanup: move serializer registry helpers to end of custom_types.py\n\nSigned-off-by: catyion <102634561+catyion@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 56,
+                "insertions": 28,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 37,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -8247,13 +9160,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-06-01T00:30:03.618Z",
+    "analyzedAt": "2026-06-02T00:30:19.292Z",
     "daysBack": 2,
-    "totalCommits": 94,
-    "totalContributors": 38,
+    "totalCommits": 103,
+    "totalContributors": 41,
     "mergedFrom": {
-      "existing": 93,
-      "new": 3
+      "existing": 94,
+      "new": 10
     }
   }
 }
