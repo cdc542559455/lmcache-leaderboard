@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-04T00:30:34.752Z",
-  "total_commits_analyzed": 125,
+  "last_updated": "2026-06-05T00:30:29.314Z",
+  "total_commits_analyzed": 130,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -2922,6 +2922,87 @@
       ],
       "2026-W23": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 236,
+          "commits": [
+            {
+              "hash": "b0d1e1e7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-02T05:06:02.000Z",
+              "message": "Put lmcache_frontend into lmcache repo (#3216)\n\n* Put lmcache_frontend into lmcache repo\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move simple_discover_service to lmcache.tools\n\nSo it ships with pip install lmcache. Per ApostaC's review on #3216.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: add frontend dashboard page under MP mode section\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: move architecture diagram to docs/source/mp\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* refactor: move run script to lmcache/lmcache_frontend/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: remove redundant README, covered by frontend_dashboard.rst\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 22,
+                "lines": 3706,
+                "insertions": 3699,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "33a8134c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-04T06:47:04.000Z",
+              "message": "refactor: add set_shape_desc_dtype helper to avoid scattered try/except (#3514)\n\n* refactor: add set_shape_desc_dtype helper to avoid scattered try/except\n\nThe C++ PageBufferShapeDesc has no dtype field, so every call site\nthat needed to set shape_desc.dtype had to wrap it in try/except\nAttributeError. Extract that pattern into a single helper function\nset_shape_desc_dtype() in python_ops_fallback.py, and also add the\ndtype slot to the pure-Python PageBufferShapeDesc so the CPU fallback\nkernel can disambiguate float16 vs bfloat16 (both have element_size==2).\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: add type hint and improve docstring for set_shape_desc_dtype\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: import set_shape_desc_dtype directly, not via lmc_ops\n\nlmc_ops may be the raw C++ module in GPU envs, which has no\nset_shape_desc_dtype. Import it directly from python_ops_fallback.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 37,
+                "insertions": 35,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 25,
+                "ai": 3,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "1cd5a7db",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-04T01:16:45.000Z",
+              "message": "feat(mp): add mp_transfer_mode config option (#3513)\n\n* feat(mp): add mp_transfer_mode config option\n\nAdd lmcache.mp.mp_transfer_mode extra_config key that lets users\noverride the worker->server transfer path (auto/handle/data).\n\n- Add MPTransferMode enum and _resolve_mode/_build_handle_context\n  helpers in worker_transfer.py\n- Pass mode through create_transfer_context in the worker adapter\n- Forward extra_config to LMCacheMPWorkerAdapter in both connectors\n- Add platform _registry for KV-wrapper factory dispatch by device type\n- Add cuda/__init__.py and cpu/__init__.py to self-register factories\n- Update docs and tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: circular import and add type hints/docstrings\n\n- Break circular import in cuda/__init__.py by making torch_dev\n  import lazy inside _cuda_is_available()\n- Add type hints to _kv_wrapper_factory\n- Add complete docstrings to all public functions in _registry.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 458,
+                "insertions": 444,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78.66666666666667,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 236,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
           "total_commits": 3,
@@ -2999,6 +3080,87 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 227,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 206,
+          "commits": [
+            {
+              "hash": "cb5343d1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-01T02:25:03.000Z",
+              "message": "feat(mp): SHM-based data transfer path for GPUs/CPU/Accelerators (#3359)\n\n* feat(mp): SHM-based data transfer path for GPGPUs/CPU\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Use multiprocessing.shared_memory for cross-platform SHM transport\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* docs: MPCacheEngine prepare/commit docstrings\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Move SHM logic to MPCacheEngine and add lazy/SHM guard\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add ShmSlotDescriptor schema\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactor: move transport files into lmcache/v1/multiprocess/transport/\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Remove redundant shm_name vs use_lazy check\n\nThe config layer already forces use_lazy=False when cudart is\nunavailable. The allocator factory can simply branch on shm_name\nfirst, then on use_lazy — no invalid combination can reach here\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* abstract server transfer strategy\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* to a more friendly naming\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Restore SHM test cases dropped during merge conflict resolution\n\n* fix rebase errors\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore shm logic during rebase\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move files to worker_transfer for clear code layout\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: cache _shm_pool_info in __init__ instead of recomputing on each register\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Split UNREGISTER_KV_CACHE into GPU and non-GPU variants to have\nboth modes supported in the same time\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: handle bool/int strict decoding in msgspec_decode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add auto as default transfer-mode on server side\n\nThe reason is because server is not aware of the device type of\nthe connecting workers. By defaulting to auto, the server loads\nboth GPU and non-GPU transfer modules, allowing workers of either\ntype to connect without requiring manual configuration.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move transfer_context.py into worker_transfer/ package\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move server transfer into modules\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: move SHM pool info to MPCacheEngineContext\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor test cases\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs according to latest code\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactored name for better semantic clarity.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* merging files\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore \"#HELPER FUNCTION\" which is removed by mistake\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix code quality issue\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: replace Any with explicit types in adapter_connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* shorten imports to use package-level re-exports\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add Defensive guard in msgspec encode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Rename adapter_connector → transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename transfer-mode to supported-transfer-mode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: make shm_name/pool_size required in create_non_gpu_context\nadd use_pickle option\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 22,
+                "lines": 2423,
+                "insertions": 2093,
+                "deletions": 330
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1a723307",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-03T03:48:35.000Z",
+              "message": "[CI/CD][MP] Add pickle/shm vLLM + LMCache e2e validation on CPU (#3489)\n\n[CI][MP] Add CPU pickle/shm vLLM + LMCache e2e validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 528,
+                "insertions": 528,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "34de7177",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-04T08:34:06.000Z",
+              "message": "fix(ci): resolve AttributeError in test_execute_calls_run_http_server (#3525)\n\nReplace @patch decorator with pytest.importorskip + patch.object to\nensure the http_server submodule is explicitly imported before\npatching. Skips the test gracefully when server dependencies (fastapi,\nuvicorn) are unavailable.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 41,
+                "insertions": 21,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 68.66666666666667,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 206,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3084,66 +3246,6 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 177,
-          "commits": [
-            {
-              "hash": "cb5343d1",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-06-01T02:25:03.000Z",
-              "message": "feat(mp): SHM-based data transfer path for GPUs/CPU/Accelerators (#3359)\n\n* feat(mp): SHM-based data transfer path for GPGPUs/CPU\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Use multiprocessing.shared_memory for cross-platform SHM transport\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* docs: MPCacheEngine prepare/commit docstrings\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Move SHM logic to MPCacheEngine and add lazy/SHM guard\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add ShmSlotDescriptor schema\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactor: move transport files into lmcache/v1/multiprocess/transport/\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Remove redundant shm_name vs use_lazy check\n\nThe config layer already forces use_lazy=False when cudart is\nunavailable. The allocator factory can simply branch on shm_name\nfirst, then on use_lazy — no invalid combination can reach here\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* abstract server transfer strategy\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* to a more friendly naming\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Restore SHM test cases dropped during merge conflict resolution\n\n* fix rebase errors\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore shm logic during rebase\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move files to worker_transfer for clear code layout\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: cache _shm_pool_info in __init__ instead of recomputing on each register\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Split UNREGISTER_KV_CACHE into GPU and non-GPU variants to have\nboth modes supported in the same time\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: handle bool/int strict decoding in msgspec_decode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add auto as default transfer-mode on server side\n\nThe reason is because server is not aware of the device type of\nthe connecting workers. By defaulting to auto, the server loads\nboth GPU and non-GPU transfer modules, allowing workers of either\ntype to connect without requiring manual configuration.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move transfer_context.py into worker_transfer/ package\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move server transfer into modules\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: move SHM pool info to MPCacheEngineContext\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor test cases\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs according to latest code\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactored name for better semantic clarity.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* merging files\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore \"#HELPER FUNCTION\" which is removed by mistake\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix code quality issue\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: replace Any with explicit types in adapter_connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* shorten imports to use package-level re-exports\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add Defensive guard in msgspec encode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Rename adapter_connector → transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename transfer-mode to supported-transfer-mode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: make shm_name/pool_size required in create_non_gpu_context\nadd use_pickle option\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>",
-              "stats": {
-                "files": 22,
-                "lines": 2423,
-                "insertions": 2093,
-                "deletions": 330
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "1a723307",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-06-03T03:48:35.000Z",
-              "message": "[CI/CD][MP] Add pickle/shm vLLM + LMCache e2e validation on CPU (#3489)\n\n[CI][MP] Add CPU pickle/shm vLLM + LMCache e2e validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 528,
-                "insertions": 528,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 88.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 177,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Kuntai Du",
           "email": "kuntai@uchicago.edu",
           "total_commits": 2,
@@ -3200,45 +3302,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 149,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 100,
-          "commits": [
-            {
-              "hash": "b0d1e1e7",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-02T05:06:02.000Z",
-              "message": "Put lmcache_frontend into lmcache repo (#3216)\n\n* Put lmcache_frontend into lmcache repo\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move simple_discover_service to lmcache.tools\n\nSo it ships with pip install lmcache. Per ApostaC's review on #3216.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: add frontend dashboard page under MP mode section\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: move architecture diagram to docs/source/mp\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* refactor: move run script to lmcache/lmcache_frontend/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: remove redundant README, covered by frontend_dashboard.rst\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 22,
-                "lines": 3706,
-                "insertions": 3699,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 100,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3579,6 +3642,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jiayue Chen",
+          "email": "96101996+glbyktjys@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "152879df",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-04T02:42:39.000Z",
+              "message": "deprecate goblin in doc (#3518)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 549,
+                "insertions": 4,
+                "deletions": 545
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Ilya Yanok",
           "email": "iyanok@nvidia.com",
           "total_commits": 1,
@@ -3852,6 +3954,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 32,
+          "commits": [
+            {
+              "hash": "50e574bb",
+              "author": "dependabot[bot]",
+              "email": "49699333+dependabot[bot]@users.noreply.github.com",
+              "date": "2026-06-04T06:39:35.000Z",
+              "message": "Bump go.opentelemetry.io/otel from 1.36.0 to 1.41.0 in /operator (#3136)\n\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 24,
+                "insertions": 12,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 32,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 32,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Zhengfei He",
           "email": "157287166+zhengfeihe@users.noreply.github.com",
           "total_commits": 1,
@@ -3926,8 +4067,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 21,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Shuichi Ihara",
@@ -3965,8 +4106,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -6633,6 +6774,87 @@
       ],
       "2026-06": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 236,
+          "commits": [
+            {
+              "hash": "b0d1e1e7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-02T05:06:02.000Z",
+              "message": "Put lmcache_frontend into lmcache repo (#3216)\n\n* Put lmcache_frontend into lmcache repo\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move simple_discover_service to lmcache.tools\n\nSo it ships with pip install lmcache. Per ApostaC's review on #3216.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: add frontend dashboard page under MP mode section\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: move architecture diagram to docs/source/mp\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* refactor: move run script to lmcache/lmcache_frontend/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: remove redundant README, covered by frontend_dashboard.rst\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 22,
+                "lines": 3706,
+                "insertions": 3699,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "33a8134c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-04T06:47:04.000Z",
+              "message": "refactor: add set_shape_desc_dtype helper to avoid scattered try/except (#3514)\n\n* refactor: add set_shape_desc_dtype helper to avoid scattered try/except\n\nThe C++ PageBufferShapeDesc has no dtype field, so every call site\nthat needed to set shape_desc.dtype had to wrap it in try/except\nAttributeError. Extract that pattern into a single helper function\nset_shape_desc_dtype() in python_ops_fallback.py, and also add the\ndtype slot to the pure-Python PageBufferShapeDesc so the CPU fallback\nkernel can disambiguate float16 vs bfloat16 (both have element_size==2).\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: add type hint and improve docstring for set_shape_desc_dtype\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: import set_shape_desc_dtype directly, not via lmc_ops\n\nlmc_ops may be the raw C++ module in GPU envs, which has no\nset_shape_desc_dtype. Import it directly from python_ops_fallback.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 37,
+                "insertions": 35,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 25,
+                "ai": 3,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "1cd5a7db",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-04T01:16:45.000Z",
+              "message": "feat(mp): add mp_transfer_mode config option (#3513)\n\n* feat(mp): add mp_transfer_mode config option\n\nAdd lmcache.mp.mp_transfer_mode extra_config key that lets users\noverride the worker->server transfer path (auto/handle/data).\n\n- Add MPTransferMode enum and _resolve_mode/_build_handle_context\n  helpers in worker_transfer.py\n- Pass mode through create_transfer_context in the worker adapter\n- Forward extra_config to LMCacheMPWorkerAdapter in both connectors\n- Add platform _registry for KV-wrapper factory dispatch by device type\n- Add cuda/__init__.py and cpu/__init__.py to self-register factories\n- Update docs and tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: circular import and add type hints/docstrings\n\n- Break circular import in cuda/__init__.py by making torch_dev\n  import lazy inside _cuda_is_available()\n- Add type hints to _kv_wrapper_factory\n- Add complete docstrings to all public functions in _registry.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 458,
+                "insertions": 444,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78.66666666666667,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 236,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
           "total_commits": 3,
@@ -6710,6 +6932,87 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 227,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 206,
+          "commits": [
+            {
+              "hash": "cb5343d1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-01T02:25:03.000Z",
+              "message": "feat(mp): SHM-based data transfer path for GPUs/CPU/Accelerators (#3359)\n\n* feat(mp): SHM-based data transfer path for GPGPUs/CPU\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Use multiprocessing.shared_memory for cross-platform SHM transport\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* docs: MPCacheEngine prepare/commit docstrings\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Move SHM logic to MPCacheEngine and add lazy/SHM guard\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add ShmSlotDescriptor schema\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactor: move transport files into lmcache/v1/multiprocess/transport/\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Remove redundant shm_name vs use_lazy check\n\nThe config layer already forces use_lazy=False when cudart is\nunavailable. The allocator factory can simply branch on shm_name\nfirst, then on use_lazy — no invalid combination can reach here\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* abstract server transfer strategy\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* to a more friendly naming\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Restore SHM test cases dropped during merge conflict resolution\n\n* fix rebase errors\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore shm logic during rebase\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move files to worker_transfer for clear code layout\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: cache _shm_pool_info in __init__ instead of recomputing on each register\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Split UNREGISTER_KV_CACHE into GPU and non-GPU variants to have\nboth modes supported in the same time\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: handle bool/int strict decoding in msgspec_decode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add auto as default transfer-mode on server side\n\nThe reason is because server is not aware of the device type of\nthe connecting workers. By defaulting to auto, the server loads\nboth GPU and non-GPU transfer modules, allowing workers of either\ntype to connect without requiring manual configuration.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move transfer_context.py into worker_transfer/ package\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move server transfer into modules\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: move SHM pool info to MPCacheEngineContext\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor test cases\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs according to latest code\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactored name for better semantic clarity.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* merging files\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore \"#HELPER FUNCTION\" which is removed by mistake\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix code quality issue\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: replace Any with explicit types in adapter_connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* shorten imports to use package-level re-exports\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add Defensive guard in msgspec encode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Rename adapter_connector → transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename transfer-mode to supported-transfer-mode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: make shm_name/pool_size required in create_non_gpu_context\nadd use_pickle option\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 22,
+                "lines": 2423,
+                "insertions": 2093,
+                "deletions": 330
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1a723307",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-03T03:48:35.000Z",
+              "message": "[CI/CD][MP] Add pickle/shm vLLM + LMCache e2e validation on CPU (#3489)\n\n[CI][MP] Add CPU pickle/shm vLLM + LMCache e2e validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 528,
+                "insertions": 528,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "34de7177",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-04T08:34:06.000Z",
+              "message": "fix(ci): resolve AttributeError in test_execute_calls_run_http_server (#3525)\n\nReplace @patch decorator with pytest.importorskip + patch.object to\nensure the http_server submodule is explicitly imported before\npatching. Skips the test gracefully when server dependencies (fastapi,\nuvicorn) are unavailable.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 41,
+                "insertions": 21,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 68.66666666666667,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 206,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6795,66 +7098,6 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 177,
-          "commits": [
-            {
-              "hash": "cb5343d1",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-06-01T02:25:03.000Z",
-              "message": "feat(mp): SHM-based data transfer path for GPUs/CPU/Accelerators (#3359)\n\n* feat(mp): SHM-based data transfer path for GPGPUs/CPU\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Use multiprocessing.shared_memory for cross-platform SHM transport\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* docs: MPCacheEngine prepare/commit docstrings\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Move SHM logic to MPCacheEngine and add lazy/SHM guard\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add ShmSlotDescriptor schema\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactor: move transport files into lmcache/v1/multiprocess/transport/\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Remove redundant shm_name vs use_lazy check\n\nThe config layer already forces use_lazy=False when cudart is\nunavailable. The allocator factory can simply branch on shm_name\nfirst, then on use_lazy — no invalid combination can reach here\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* abstract server transfer strategy\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* to a more friendly naming\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Restore SHM test cases dropped during merge conflict resolution\n\n* fix rebase errors\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore shm logic during rebase\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move files to worker_transfer for clear code layout\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: cache _shm_pool_info in __init__ instead of recomputing on each register\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Split UNREGISTER_KV_CACHE into GPU and non-GPU variants to have\nboth modes supported in the same time\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: handle bool/int strict decoding in msgspec_decode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add auto as default transfer-mode on server side\n\nThe reason is because server is not aware of the device type of\nthe connecting workers. By defaulting to auto, the server loads\nboth GPU and non-GPU transfer modules, allowing workers of either\ntype to connect without requiring manual configuration.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move transfer_context.py into worker_transfer/ package\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move server transfer into modules\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: move SHM pool info to MPCacheEngineContext\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor test cases\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs according to latest code\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactored name for better semantic clarity.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* merging files\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore \"#HELPER FUNCTION\" which is removed by mistake\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix code quality issue\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: replace Any with explicit types in adapter_connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* shorten imports to use package-level re-exports\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add Defensive guard in msgspec encode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Rename adapter_connector → transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename transfer-mode to supported-transfer-mode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: make shm_name/pool_size required in create_non_gpu_context\nadd use_pickle option\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>",
-              "stats": {
-                "files": 22,
-                "lines": 2423,
-                "insertions": 2093,
-                "deletions": 330
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "1a723307",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-06-03T03:48:35.000Z",
-              "message": "[CI/CD][MP] Add pickle/shm vLLM + LMCache e2e validation on CPU (#3489)\n\n[CI][MP] Add CPU pickle/shm vLLM + LMCache e2e validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 528,
-                "insertions": 528,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 88.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 177,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Kuntai Du",
           "email": "kuntai@uchicago.edu",
           "total_commits": 2,
@@ -6911,45 +7154,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 149,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 100,
-          "commits": [
-            {
-              "hash": "b0d1e1e7",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-02T05:06:02.000Z",
-              "message": "Put lmcache_frontend into lmcache repo (#3216)\n\n* Put lmcache_frontend into lmcache repo\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move simple_discover_service to lmcache.tools\n\nSo it ships with pip install lmcache. Per ApostaC's review on #3216.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: add frontend dashboard page under MP mode section\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: move architecture diagram to docs/source/mp\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* refactor: move run script to lmcache/lmcache_frontend/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: remove redundant README, covered by frontend_dashboard.rst\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 22,
-                "lines": 3706,
-                "insertions": 3699,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 100,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7290,6 +7494,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jiayue Chen",
+          "email": "96101996+glbyktjys@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "152879df",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-04T02:42:39.000Z",
+              "message": "deprecate goblin in doc (#3518)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 549,
+                "insertions": 4,
+                "deletions": 545
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Ilya Yanok",
           "email": "iyanok@nvidia.com",
           "total_commits": 1,
@@ -7563,6 +7806,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 32,
+          "commits": [
+            {
+              "hash": "50e574bb",
+              "author": "dependabot[bot]",
+              "email": "49699333+dependabot[bot]@users.noreply.github.com",
+              "date": "2026-06-04T06:39:35.000Z",
+              "message": "Bump go.opentelemetry.io/otel from 1.36.0 to 1.41.0 in /operator (#3136)\n\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 24,
+                "insertions": 12,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 32,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 32,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Zhengfei He",
           "email": "157287166+zhengfeihe@users.noreply.github.com",
           "total_commits": 1,
@@ -7637,8 +7919,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 21,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Shuichi Ihara",
@@ -7676,8 +7958,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -8413,177 +8695,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 7,
-          "significant_commits": 5,
-          "simple_commits": 2,
-          "commit_score": 502,
-          "commits": [
-            {
-              "hash": "4658d69e",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-17T01:44:14.000Z",
-              "message": "Defer test_cache runtime imports so lmcache-cli loads without torch (#3294)\n\n* Defer test_cache runtime imports so lmcache-cli loads without torch\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 2,
-                "lines": 32,
-                "insertions": 16,
-                "deletions": 16
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 3,
-                "total": 33
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "516b498c",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-18T12:33:27.000Z",
-              "message": "feat: add StubCPUDevice to allow import/startup fallback in CPU-only environments (#3280)\n\n* feat: add StubCPUDevice to enable CPU-only MP mode\n\nIntroduce StubCPUDevice as a torch_dev drop-in for CPU-only\nenvironments, allowing the MP server to run without a GPU.\nUpdate _detect_device() to fall back to StubCPUDevice when no\naccelerator is available. Override KV cache layout to HND for\nCPU backend since vLLM's get_kv_cache_layout() is unavailable\nin MP mode and defaults to NHD.\n\nVerified with L1 adapter end-to-end.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix path sharder ci in cpu-only path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move platform from lmcache to lmcache/v1\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 4,
-                "lines": 385,
-                "insertions": 369,
-                "deletions": 16
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 25,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "10ad9e42",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-19T21:23:17.000Z",
-              "message": "chore: add hlin99 to CODEOWNERS (#3316)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 31,
-                "insertions": 17,
-                "deletions": 14
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 10,
-                "ai": 3,
-                "total": 26
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "259c0b39",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-20T22:31:55.000Z",
-              "message": "feat(mp): Non-GPU Context by pickle (#3259)\n\n* feat(mp): CPU Context by pickle\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* renaming bounce keyword to cpu context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix unit test failures\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address bot review comment\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: standardize cpu context naming conventions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small fix on error handling\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: polymorphic TransferContext for MP adapter transport layer\n\nReplace scattered if/else CPU/CUDA branches in vllm_multi_process_adapter\nwith a TransferContext abstraction (ABC + CudaTransferContext + CPUTransferContext).\n\n- Add transfer_context.py with unified register/store/retrieve/poll interface\n- Device-type dispatch centralized in create_transfer_context() factory\n- Adapter delegates all transport logic via polymorphism, no branching\n- Future transports (e.g. SHM) only need a new subclass, zero adapter changes\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore unnecessary changes\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Revert CPU registration payload from pickle bytes to scalar fields\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update design doc\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rebase dsv4: propagate vllm_logical_block_size through TransferContext.register() to restore DeepSeek V4 compress_ratio\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename to more general names: non_gpu_context & non_cuda_transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add todo note for deepseek v4 on non-cuda path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Consolidate MPCacheEngine context state into unified registry\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* use dataclass for payload\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Auto-disable l1-use-lazy on non-CUDA backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Lift layout hints to the caller layer to avoid redundant computation in transfer-context registration\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* [refactor] reserve zero-copy buffer allocation interface to NonGpuContext for shm solution\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: update test to use new unified protocol methods\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename transfer context classes to handle/data semantics\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update test\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename test file\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 13,
-                "lines": 2274,
-                "insertions": 2173,
-                "deletions": 101
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "46c9b5be",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-05-20T06:34:22.000Z",
-              "message": "Unconditionally compile common c++ extensions in setup.py (#3302)\n\n* Unconditionally compile common c++ extensions in setup.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add \"mooncake ext is optional\" comment back\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 2,
-                "lines": 244,
-                "insertions": 121,
-                "deletions": 123
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 24,
-                "total": 76
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "cb5343d1",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-06-01T02:25:03.000Z",
-              "message": "feat(mp): SHM-based data transfer path for GPUs/CPU/Accelerators (#3359)\n\n* feat(mp): SHM-based data transfer path for GPGPUs/CPU\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Use multiprocessing.shared_memory for cross-platform SHM transport\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* docs: MPCacheEngine prepare/commit docstrings\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Move SHM logic to MPCacheEngine and add lazy/SHM guard\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add ShmSlotDescriptor schema\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactor: move transport files into lmcache/v1/multiprocess/transport/\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Remove redundant shm_name vs use_lazy check\n\nThe config layer already forces use_lazy=False when cudart is\nunavailable. The allocator factory can simply branch on shm_name\nfirst, then on use_lazy — no invalid combination can reach here\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* abstract server transfer strategy\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* to a more friendly naming\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Restore SHM test cases dropped during merge conflict resolution\n\n* fix rebase errors\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore shm logic during rebase\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move files to worker_transfer for clear code layout\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: cache _shm_pool_info in __init__ instead of recomputing on each register\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Split UNREGISTER_KV_CACHE into GPU and non-GPU variants to have\nboth modes supported in the same time\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: handle bool/int strict decoding in msgspec_decode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add auto as default transfer-mode on server side\n\nThe reason is because server is not aware of the device type of\nthe connecting workers. By defaulting to auto, the server loads\nboth GPU and non-GPU transfer modules, allowing workers of either\ntype to connect without requiring manual configuration.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move transfer_context.py into worker_transfer/ package\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move server transfer into modules\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: move SHM pool info to MPCacheEngineContext\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor test cases\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs according to latest code\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactored name for better semantic clarity.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* merging files\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore \"#HELPER FUNCTION\" which is removed by mistake\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix code quality issue\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: replace Any with explicit types in adapter_connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* shorten imports to use package-level re-exports\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add Defensive guard in msgspec encode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Rename adapter_connector → transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename transfer-mode to supported-transfer-mode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: make shm_name/pool_size required in create_non_gpu_context\nadd use_pickle option\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>",
-              "stats": {
-                "files": 22,
-                "lines": 2423,
-                "insertions": 2093,
-                "deletions": 330
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "1a723307",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-06-03T03:48:35.000Z",
-              "message": "[CI/CD][MP] Add pickle/shm vLLM + LMCache e2e validation on CPU (#3489)\n\n[CI][MP] Add CPU pickle/shm vLLM + LMCache e2e validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 528,
-                "insertions": 528,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 71.71428571428571,
-          "significance_ratio": 0.7142857142857143,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 502,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 8,
-          "significant_commits": 5,
-          "simple_commits": 3,
-          "commit_score": 486,
+          "total_commits": 10,
+          "significant_commits": 6,
+          "simple_commits": 4,
+          "commit_score": 622,
           "commits": [
             {
               "hash": "f9ce8cbe",
@@ -8752,14 +8869,242 @@
                 "total": 100
               },
               "classification": "significant"
+            },
+            {
+              "hash": "33a8134c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-04T06:47:04.000Z",
+              "message": "refactor: add set_shape_desc_dtype helper to avoid scattered try/except (#3514)\n\n* refactor: add set_shape_desc_dtype helper to avoid scattered try/except\n\nThe C++ PageBufferShapeDesc has no dtype field, so every call site\nthat needed to set shape_desc.dtype had to wrap it in try/except\nAttributeError. Extract that pattern into a single helper function\nset_shape_desc_dtype() in python_ops_fallback.py, and also add the\ndtype slot to the pure-Python PageBufferShapeDesc so the CPU fallback\nkernel can disambiguate float16 vs bfloat16 (both have element_size==2).\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: add type hint and improve docstring for set_shape_desc_dtype\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: import set_shape_desc_dtype directly, not via lmc_ops\n\nlmc_ops may be the raw C++ module in GPU envs, which has no\nset_shape_desc_dtype. Import it directly from python_ops_fallback.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 37,
+                "insertions": 35,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 25,
+                "ai": 3,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "1cd5a7db",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-04T01:16:45.000Z",
+              "message": "feat(mp): add mp_transfer_mode config option (#3513)\n\n* feat(mp): add mp_transfer_mode config option\n\nAdd lmcache.mp.mp_transfer_mode extra_config key that lets users\noverride the worker->server transfer path (auto/handle/data).\n\n- Add MPTransferMode enum and _resolve_mode/_build_handle_context\n  helpers in worker_transfer.py\n- Pass mode through create_transfer_context in the worker adapter\n- Forward extra_config to LMCacheMPWorkerAdapter in both connectors\n- Add platform _registry for KV-wrapper factory dispatch by device type\n- Add cuda/__init__.py and cpu/__init__.py to self-register factories\n- Update docs and tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: circular import and add type hints/docstrings\n\n- Break circular import in cuda/__init__.py by making torch_dev\n  import lazy inside _cuda_is_available()\n- Add type hints to _kv_wrapper_factory\n- Add complete docstrings to all public functions in _registry.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 458,
+                "insertions": 444,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 60.75,
+          "avg_score": 62.2,
+          "significance_ratio": 0.6,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 622,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 8,
+          "significant_commits": 5,
+          "simple_commits": 3,
+          "commit_score": 531,
+          "commits": [
+            {
+              "hash": "4658d69e",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-17T01:44:14.000Z",
+              "message": "Defer test_cache runtime imports so lmcache-cli loads without torch (#3294)\n\n* Defer test_cache runtime imports so lmcache-cli loads without torch\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 32,
+                "insertions": 16,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "516b498c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-18T12:33:27.000Z",
+              "message": "feat: add StubCPUDevice to allow import/startup fallback in CPU-only environments (#3280)\n\n* feat: add StubCPUDevice to enable CPU-only MP mode\n\nIntroduce StubCPUDevice as a torch_dev drop-in for CPU-only\nenvironments, allowing the MP server to run without a GPU.\nUpdate _detect_device() to fall back to StubCPUDevice when no\naccelerator is available. Override KV cache layout to HND for\nCPU backend since vLLM's get_kv_cache_layout() is unavailable\nin MP mode and defaults to NHD.\n\nVerified with L1 adapter end-to-end.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix path sharder ci in cpu-only path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add docstring\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move platform from lmcache to lmcache/v1\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 385,
+                "insertions": 369,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "10ad9e42",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-19T21:23:17.000Z",
+              "message": "chore: add hlin99 to CODEOWNERS (#3316)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 31,
+                "insertions": 17,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 10,
+                "ai": 3,
+                "total": 26
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "259c0b39",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-20T22:31:55.000Z",
+              "message": "feat(mp): Non-GPU Context by pickle (#3259)\n\n* feat(mp): CPU Context by pickle\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* renaming bounce keyword to cpu context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix unit test failures\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address bot review comment\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: standardize cpu context naming conventions\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* small fix on error handling\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: polymorphic TransferContext for MP adapter transport layer\n\nReplace scattered if/else CPU/CUDA branches in vllm_multi_process_adapter\nwith a TransferContext abstraction (ABC + CudaTransferContext + CPUTransferContext).\n\n- Add transfer_context.py with unified register/store/retrieve/poll interface\n- Device-type dispatch centralized in create_transfer_context() factory\n- Adapter delegates all transport logic via polymorphism, no branching\n- Future transports (e.g. SHM) only need a new subclass, zero adapter changes\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore unnecessary changes\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Revert CPU registration payload from pickle bytes to scalar fields\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update design doc\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rebase dsv4: propagate vllm_logical_block_size through TransferContext.register() to restore DeepSeek V4 compress_ratio\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename to more general names: non_gpu_context & non_cuda_transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add todo note for deepseek v4 on non-cuda path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Consolidate MPCacheEngine context state into unified registry\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* use dataclass for payload\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Auto-disable l1-use-lazy on non-CUDA backends\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Lift layout hints to the caller layer to avoid redundant computation in transfer-context registration\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* [refactor] reserve zero-copy buffer allocation interface to NonGpuContext for shm solution\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: update test to use new unified protocol methods\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: rename transfer context classes to handle/data semantics\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update test\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename test file\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 13,
+                "lines": 2274,
+                "insertions": 2173,
+                "deletions": 101
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "46c9b5be",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-05-20T06:34:22.000Z",
+              "message": "Unconditionally compile common c++ extensions in setup.py (#3302)\n\n* Unconditionally compile common c++ extensions in setup.py\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add \"mooncake ext is optional\" comment back\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 244,
+                "insertions": 121,
+                "deletions": 123
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 24,
+                "total": 76
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "cb5343d1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-01T02:25:03.000Z",
+              "message": "feat(mp): SHM-based data transfer path for GPUs/CPU/Accelerators (#3359)\n\n* feat(mp): SHM-based data transfer path for GPGPUs/CPU\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address gemini's comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Use multiprocessing.shared_memory for cross-platform SHM transport\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* docs: MPCacheEngine prepare/commit docstrings\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Move SHM logic to MPCacheEngine and add lazy/SHM guard\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add ShmSlotDescriptor schema\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactor: move transport files into lmcache/v1/multiprocess/transport/\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Remove redundant shm_name vs use_lazy check\n\nThe config layer already forces use_lazy=False when cudart is\nunavailable. The allocator factory can simply branch on shm_name\nfirst, then on use_lazy — no invalid combination can reach here\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* abstract server transfer strategy\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* to a more friendly naming\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Restore SHM test cases dropped during merge conflict resolution\n\n* fix rebase errors\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore shm logic during rebase\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move files to worker_transfer for clear code layout\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: cache _shm_pool_info in __init__ instead of recomputing on each register\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Split UNREGISTER_KV_CACHE into GPU and non-GPU variants to have\nboth modes supported in the same time\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* chore: handle bool/int strict decoding in msgspec_decode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add auto as default transfer-mode on server side\n\nThe reason is because server is not aware of the device type of\nthe connecting workers. By defaulting to auto, the server loads\nboth GPU and non-GPU transfer modules, allowing workers of either\ntype to connect without requiring manual configuration.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move transfer_context.py into worker_transfer/ package\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* move server transfer into modules\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: move SHM pool info to MPCacheEngineContext\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor test cases\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* update docs according to latest code\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Refactored name for better semantic clarity.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* merging files\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* restore \"#HELPER FUNCTION\" which is removed by mistake\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* address review comments\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix code quality issue\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix UT\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: replace Any with explicit types in adapter_connector\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* shorten imports to use package-level re-exports\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* add Defensive guard in msgspec encode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* Rename adapter_connector → transfer_context\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* rename transfer-mode to supported-transfer-mode\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* refactor: make shm_name/pool_size required in create_non_gpu_context\nadd use_pickle option\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 22,
+                "lines": 2423,
+                "insertions": 2093,
+                "deletions": 330
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1a723307",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-03T03:48:35.000Z",
+              "message": "[CI/CD][MP] Add pickle/shm vLLM + LMCache e2e validation on CPU (#3489)\n\n[CI][MP] Add CPU pickle/shm vLLM + LMCache e2e validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 528,
+                "insertions": 528,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "34de7177",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-04T08:34:06.000Z",
+              "message": "fix(ci): resolve AttributeError in test_execute_calls_run_http_server (#3525)\n\nReplace @patch decorator with pytest.importorskip + patch.object to\nensure the http_server submodule is explicitly imported before\npatching. Skips the test gracefully when server dependencies (fastapi,\nuvicorn) are unavailable.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 41,
+                "insertions": 21,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 66.375,
           "significance_ratio": 0.625,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 486,
+          "total_score": 531,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -8985,6 +9330,129 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 300,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Jiayue Chen",
+          "email": "96101996+glbyktjys@users.noreply.github.com",
+          "total_commits": 5,
+          "significant_commits": 2,
+          "simple_commits": 3,
+          "commit_score": 263,
+          "commits": [
+            {
+              "hash": "84667435",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-16T02:22:13.000Z",
+              "message": "add Chinese translation pipeline (#3265)\n\n* add Chinese translation pipeline\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 689,
+                "insertions": 688,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a60ae02e",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-18T22:55:28.000Z",
+              "message": "[CI] add signoff for doc translation workflow (#3315)\n\nadd signoff for doc translation workflow\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8ece5f0a",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-19T23:56:56.000Z",
+              "message": "Fix the translation icon together with the screen layout adjustment (#3334)\n\n* Fix the translation icon together with the screen layout adjustment\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 52,
+                "insertions": 39,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e8b373a7",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-28T22:47:32.000Z",
+              "message": "Fix/translate workflow reuse translations (#3436)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 20,
+                "insertions": 18,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "152879df",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-04T02:42:39.000Z",
+              "message": "deprecate goblin in doc (#3518)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 549,
+                "insertions": 4,
+                "deletions": 545
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 52.6,
+          "significance_ratio": 0.4,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 263,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -9453,108 +9921,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 209,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Jiayue Chen",
-          "email": "96101996+glbyktjys@users.noreply.github.com",
-          "total_commits": 4,
-          "significant_commits": 1,
-          "simple_commits": 3,
-          "commit_score": 176,
-          "commits": [
-            {
-              "hash": "84667435",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-05-16T02:22:13.000Z",
-              "message": "add Chinese translation pipeline (#3265)\n\n* add Chinese translation pipeline\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 9,
-                "lines": 689,
-                "insertions": 688,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a60ae02e",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-05-18T22:55:28.000Z",
-              "message": "[CI] add signoff for doc translation workflow (#3315)\n\nadd signoff for doc translation workflow\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 1,
-                "insertions": 1,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "8ece5f0a",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-05-19T23:56:56.000Z",
-              "message": "Fix the translation icon together with the screen layout adjustment (#3334)\n\n* Fix the translation icon together with the screen layout adjustment\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 52,
-                "insertions": 39,
-                "deletions": 13
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 5,
-                "total": 42
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "e8b373a7",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-05-28T22:47:32.000Z",
-              "message": "Fix/translate workflow reuse translations (#3436)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 20,
-                "insertions": 18,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 2,
-                "total": 27
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 44,
-          "significance_ratio": 0.25,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 176,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10804,6 +11170,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 32,
+          "commits": [
+            {
+              "hash": "50e574bb",
+              "author": "dependabot[bot]",
+              "email": "49699333+dependabot[bot]@users.noreply.github.com",
+              "date": "2026-06-04T06:39:35.000Z",
+              "message": "Bump go.opentelemetry.io/otel from 1.36.0 to 1.41.0 in /operator (#3136)\n\nCo-authored-by: Roy Huang <roy.y.huang@gmail.com>\nCo-authored-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 24,
+                "insertions": 12,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 32,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 32,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "RoomWithOutRoof",
           "email": "166608075+Jah-yee@users.noreply.github.com",
           "total_commits": 1,
@@ -11158,13 +11563,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-06-04T00:30:34.752Z",
+    "analyzedAt": "2026-06-05T00:30:29.314Z",
     "daysBack": 2,
-    "totalCommits": 125,
-    "totalContributors": 47,
+    "totalCommits": 130,
+    "totalContributors": 48,
     "mergedFrom": {
-      "existing": 112,
-      "new": 22
+      "existing": 125,
+      "new": 18
     }
   }
 }
