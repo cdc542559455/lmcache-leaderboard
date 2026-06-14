@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-13T00:30:41.092Z",
-  "total_commits_analyzed": 199,
+  "last_updated": "2026-06-14T00:30:18.721Z",
+  "total_commits_analyzed": 200,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -5609,6 +5609,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Libin Tang",
+          "email": "litang@habana.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "93aee5ed",
+              "author": "Libin Tang",
+              "email": "litang@habana.ai",
+              "date": "2026-06-13T05:16:43.000Z",
+              "message": "[XPU] Add SGLang XPU connectors for LMCache KV cache transfer (#3121)\n\n* parent f9ce8cbe105bccfae81c82cdb5b32d57c7aba63a\nauthor Libin Tang <libin.tang@intel.com> 1776923512 -0700\ncommitter Christopher Manteuffel <christopher.manteuffel@intel.com> 1779214699 -0700\n\n[XPU] Add SGLang XPU connectors for LMCache KV cache transfer\n\nAdd SGLangXPUConnector and SGLangLayerwiseXPUConnector that use pure\nPyTorch index_copy_/index_select ops instead of CUDA lmc_ops kernels,\nenabling LMCache store/retrieve on Intel XPU devices.\n\nUpdate sglang_adapter.py with device-agnostic stream and sync calls.\nRegister new connectors in the gpu_connector factory.\n\nAdd integration test (store→retrieve→verify roundtrip via\nLMCacheLayerwiseConnector) and unit tests (roundtrip, multi-chunk,\nMHA/MLA) for both connector classes.\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nAuto review comments fix and format fix.\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nUpdate for feedback\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nFix oversight on hpu\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nMake updates more like CUDA\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nFix missed change\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nUpdate to use new abstraction\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nMissed some downmerge\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nSYCL kernel for SGLang\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nStill working on SYCL\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nFix.\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\nSigned-off-by: Libin Tang <libin.tang@intel.com>\n\n* Change asserts to throw errors\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Add kernels\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix some copy/paste errors\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix mem leak\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix test for functionptr\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix a bad copy/paste in load_kv\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix code quality issue\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix pre-commit\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Too long line\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n---------\n\nSigned-off-by: Libin Tang <libin.tang@intel.com>\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\nCo-authored-by: Christopher Manteuffel <christopher.manteuffel@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 1863,
+                "insertions": 1813,
+                "deletions": 50
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 1,
@@ -5917,8 +5956,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 64,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Zhengfei He",
@@ -10976,6 +11015,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Libin Tang",
+          "email": "litang@habana.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "93aee5ed",
+              "author": "Libin Tang",
+              "email": "litang@habana.ai",
+              "date": "2026-06-13T05:16:43.000Z",
+              "message": "[XPU] Add SGLang XPU connectors for LMCache KV cache transfer (#3121)\n\n* parent f9ce8cbe105bccfae81c82cdb5b32d57c7aba63a\nauthor Libin Tang <libin.tang@intel.com> 1776923512 -0700\ncommitter Christopher Manteuffel <christopher.manteuffel@intel.com> 1779214699 -0700\n\n[XPU] Add SGLang XPU connectors for LMCache KV cache transfer\n\nAdd SGLangXPUConnector and SGLangLayerwiseXPUConnector that use pure\nPyTorch index_copy_/index_select ops instead of CUDA lmc_ops kernels,\nenabling LMCache store/retrieve on Intel XPU devices.\n\nUpdate sglang_adapter.py with device-agnostic stream and sync calls.\nRegister new connectors in the gpu_connector factory.\n\nAdd integration test (store→retrieve→verify roundtrip via\nLMCacheLayerwiseConnector) and unit tests (roundtrip, multi-chunk,\nMHA/MLA) for both connector classes.\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nAuto review comments fix and format fix.\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nUpdate for feedback\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nFix oversight on hpu\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nMake updates more like CUDA\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nFix missed change\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nUpdate to use new abstraction\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nMissed some downmerge\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nSYCL kernel for SGLang\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nStill working on SYCL\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nFix.\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\nSigned-off-by: Libin Tang <libin.tang@intel.com>\n\n* Change asserts to throw errors\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Add kernels\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix some copy/paste errors\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix mem leak\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix test for functionptr\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix a bad copy/paste in load_kv\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix code quality issue\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix pre-commit\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Too long line\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n---------\n\nSigned-off-by: Libin Tang <libin.tang@intel.com>\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\nCo-authored-by: Christopher Manteuffel <christopher.manteuffel@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 1863,
+                "insertions": 1813,
+                "deletions": 50
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Wenwen-Chen",
           "email": "wenwen.chen@samsung.com",
           "total_commits": 1,
@@ -15789,6 +15867,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Libin Tang",
+          "email": "litang@habana.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "93aee5ed",
+              "author": "Libin Tang",
+              "email": "litang@habana.ai",
+              "date": "2026-06-13T05:16:43.000Z",
+              "message": "[XPU] Add SGLang XPU connectors for LMCache KV cache transfer (#3121)\n\n* parent f9ce8cbe105bccfae81c82cdb5b32d57c7aba63a\nauthor Libin Tang <libin.tang@intel.com> 1776923512 -0700\ncommitter Christopher Manteuffel <christopher.manteuffel@intel.com> 1779214699 -0700\n\n[XPU] Add SGLang XPU connectors for LMCache KV cache transfer\n\nAdd SGLangXPUConnector and SGLangLayerwiseXPUConnector that use pure\nPyTorch index_copy_/index_select ops instead of CUDA lmc_ops kernels,\nenabling LMCache store/retrieve on Intel XPU devices.\n\nUpdate sglang_adapter.py with device-agnostic stream and sync calls.\nRegister new connectors in the gpu_connector factory.\n\nAdd integration test (store→retrieve→verify roundtrip via\nLMCacheLayerwiseConnector) and unit tests (roundtrip, multi-chunk,\nMHA/MLA) for both connector classes.\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nAuto review comments fix and format fix.\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nUpdate for feedback\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nFix oversight on hpu\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nMake updates more like CUDA\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nFix missed change\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nUpdate to use new abstraction\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nMissed some downmerge\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nSYCL kernel for SGLang\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nStill working on SYCL\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\n\nFix.\n\nSigned-Off: Libin Tang <libin.tang@intel.com>\n   and Chris Manteuffel <christopher.manteuffel@intel.com>\nSigned-off-by: Libin Tang <libin.tang@intel.com>\n\n* Change asserts to throw errors\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Add kernels\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix some copy/paste errors\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix pre-commit issues\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix mem leak\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix test for functionptr\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix a bad copy/paste in load_kv\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix code quality issue\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Fix pre-commit\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n* Too long line\n\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\n\n---------\n\nSigned-off-by: Libin Tang <libin.tang@intel.com>\nSigned-off-by: Christopher Manteuffel <christopher.manteuffel@intel.com>\nCo-authored-by: Christopher Manteuffel <christopher.manteuffel@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 1863,
+                "insertions": 1813,
+                "deletions": 50
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Riley Dixon",
           "email": "rildixon@amd.com",
           "total_commits": 1,
@@ -17082,13 +17199,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-06-13T00:30:41.092Z",
+    "analyzedAt": "2026-06-14T00:30:18.721Z",
     "daysBack": 2,
-    "totalCommits": 199,
-    "totalContributors": 61,
+    "totalCommits": 200,
+    "totalContributors": 62,
     "mergedFrom": {
-      "existing": 188,
-      "new": 25
+      "existing": 199,
+      "new": 12
     }
   }
 }
