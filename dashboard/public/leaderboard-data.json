@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-16T00:30:15.639Z",
-  "total_commits_analyzed": 211,
+  "last_updated": "2026-06-17T00:30:28.695Z",
+  "total_commits_analyzed": 223,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -6280,12 +6280,72 @@
       ],
       "2026-W25": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 187,
+          "commits": [
+            {
+              "hash": "b3a37582",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-16T12:25:51.000Z",
+              "message": "refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts (#3702)\n\n* refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts\n\nGPUCacheContext and CpuCacheContext were duck-typing through a bunch of\nshared properties and methods. Extract them into a BaseCacheContext ABC\nwith class-level annotations so both type-checkers and humans can see\nthe contract clearly.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: use public properties instead of private attrs in BaseCacheContext\n\nreport_status was still poking self.kv_layer_groups_manager_ / self._engine_kv_format\ndirectly instead of going through the public properties. Fixed that and the derived\nproperties too for consistency.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fixes: use array('q') for cross-platform int64 in copy_view_block_ids_to_gpu\n\narray('l') is 4 bytes on Windows vs 8 bytes on Linux. Use 'q'\n(signed long long, always 8 bytes) instead.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve cache context to be more extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: discover_subclasses should scan sub-package __init__.py\n\nThe multi-level walk added in the levels feature introduced a bug\nwhere sub-package __init__.py was treated purely as a descent point\nand never scanned for classes.  This broke discovery of commands\ndefined in __init__.py (e.g. bench, trace, query, quota, tool).\n\nExtract _scan_module helper so both leaf modules and sub-package\n__init__.py share the same class-scanning logic.  Separate the\ninit-scan depth check from the recursion depth check so a sub-pkg\nat depth=1 can be scanned even when levels=[1, 1] prevents deeper\nrecursion.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: skip model tests when HF_TOKEN not available (fork PR)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop HF_DOWNLOAD_FAIL_ON_ERROR, let download_model.sh retry naturally\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: ignore GenericAlias in subclass discovery on Python < 3.12\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1853,
+                "insertions": 1258,
+                "deletions": 595
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "714bd7a5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-16T04:29:58.000Z",
+              "message": "rename: GPUTransferModule -> LMCacheDrivenTransferModule, NonGPUTransferModule -> EngineDrivenTransferModule (#3679)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 36,
+                "lines": 935,
+                "insertions": 506,
+                "deletions": 429
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 93.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 187,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 2,
+          "total_commits": 5,
           "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 103,
+          "simple_commits": 4,
+          "commit_score": 183,
           "commits": [
             {
               "hash": "29e0b428",
@@ -6328,63 +6388,87 @@
                 "total": 70
               },
               "classification": "significant"
-            }
-          ],
-          "avg_score": 51.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 103,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Lyndon Bauto",
-          "email": "lyndonb@apache.org",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
+            },
             {
-              "hash": "545e1b8e",
-              "author": "Lyndon Bauto",
-              "email": "lyndonb@apache.org",
-              "date": "2026-06-15T20:25:46.000Z",
-              "message": "Add optional native Aerospike L2 backend (BUILD_AEROSPIKE) (#3458)\n\nSigned-off-by: lyndon <lyndonb@apache.org>",
+              "hash": "e41282e0",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-16T19:01:22.000Z",
+              "message": "[CI] Trying to make upstream CI green (#3726)\n\nfix upstream ci read issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
               "stats": {
-                "files": 15,
-                "lines": 1671,
-                "insertions": 1669,
+                "files": 4,
+                "lines": 41,
+                "insertions": 28,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "edd28e08",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-16T18:21:06.000Z",
+              "message": "[CI] Release the requirement for hma gemma 4 test to reduce flakiness (#3723)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
                 "deletions": 2
               },
               "scores": {
-                "loc": 30,
-                "files": 20,
+                "loc": 3,
+                "files": 5,
                 "keyword": 12,
-                "ai": 25,
-                "total": 87
+                "ai": 0,
+                "total": 20
               },
-              "classification": "significant"
+              "classification": "simple"
+            },
+            {
+              "hash": "5d621e1e",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-16T17:13:38.000Z",
+              "message": "[CI] fix flaky failures in AMD CI (#3709)\n\n* fix amd ut\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* fix from claude code\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* revert the changes\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 10,
+                "insertions": 5,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 87,
-          "significance_ratio": 1,
+          "avg_score": 36.6,
+          "significance_ratio": 0.2,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 183,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 77,
+          "commit_score": 154,
           "commits": [
             {
               "hash": "27338569",
@@ -6406,6 +6490,27 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c5bdf79d",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-16T02:22:41.000Z",
+              "message": "[Test] Operator: unit-test coverage targets + reconcile-helper tests (#3291)\n\n* [Test] Operator: unit-test coverage targets + reconcile-helper tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 782,
+                "insertions": 760,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
           "avg_score": 77,
@@ -6413,17 +6518,17 @@
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 77,
+          "total_score": 154,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 3,
+          "total_commits": 4,
           "significant_commits": 0,
-          "simple_commits": 3,
-          "commit_score": 68,
+          "simple_commits": 4,
+          "commit_score": 88,
           "commits": [
             {
               "hash": "c87baeb1",
@@ -6487,16 +6592,271 @@
                 "total": 20
               },
               "classification": "simple"
+            },
+            {
+              "hash": "f52b174c",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-16T21:49:31.000Z",
+              "message": "[fix] fix cu129 image build  (#3729)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 22.666666666666668,
+          "avg_score": 22,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 68,
+          "total_score": 88,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Lyndon Bauto",
+          "email": "lyndonb@apache.org",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "545e1b8e",
+              "author": "Lyndon Bauto",
+              "email": "lyndonb@apache.org",
+              "date": "2026-06-15T20:25:46.000Z",
+              "message": "Add optional native Aerospike L2 backend (BUILD_AEROSPIKE) (#3458)\n\nSigned-off-by: lyndon <lyndonb@apache.org>",
+              "stats": {
+                "files": 15,
+                "lines": 1671,
+                "insertions": 1669,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "d9cab925",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-16T16:03:04.000Z",
+              "message": "[feat] add stage 2 MUSA support with optional native in-process transfer (#3580)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 2204,
+                "insertions": 1984,
+                "deletions": 220
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Luis Chamberlain",
+          "email": "mcgrof@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "518fb028",
+              "author": "Luis Chamberlain",
+              "email": "mcgrof@gmail.com",
+              "date": "2026-06-16T03:41:56.000Z",
+              "message": "[Feat][MP][1/N] Asymmetric Serde Support (eg., FP16 Key , FP8 Value) (#3277)\n\nSigned-off-by: Luis Chamberlain <mcgrof@do-not-panic.com>",
+              "stats": {
+                "files": 15,
+                "lines": 3168,
+                "insertions": 3167,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "github-actions[bot]",
+          "email": "41898282+github-actions[bot]@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "10d88f1e",
+              "author": "github-actions[bot]",
+              "email": "41898282+github-actions[bot]@users.noreply.github.com",
+              "date": "2026-06-16T02:51:25.000Z",
+              "message": "Update Chinese documentation translations (#3701)\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
+              "stats": {
+                "files": 35,
+                "lines": 6005,
+                "insertions": 4537,
+                "deletions": 1468
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "73ab092b",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-06-16T02:18:28.000Z",
+              "message": "[Doc] Restructure docs around multiprocess (MP) mode (#3665)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 77,
+                "lines": 5661,
+                "insertions": 2859,
+                "deletions": 2802
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "6958104e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-16T03:44:23.000Z",
+              "message": "[cli] support format/output/quiet args in bench server command (#3626)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 314,
+                "insertions": 282,
+                "deletions": 32
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
@@ -9165,10 +9525,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 14,
-          "significant_commits": 10,
+          "total_commits": 16,
+          "significant_commits": 12,
           "simple_commits": 4,
-          "commit_score": 1033,
+          "commit_score": 1220,
           "commits": [
             {
               "hash": "b0d1e1e7",
@@ -9463,24 +9823,66 @@
                 "total": 40
               },
               "classification": "simple"
+            },
+            {
+              "hash": "b3a37582",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-16T12:25:51.000Z",
+              "message": "refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts (#3702)\n\n* refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts\n\nGPUCacheContext and CpuCacheContext were duck-typing through a bunch of\nshared properties and methods. Extract them into a BaseCacheContext ABC\nwith class-level annotations so both type-checkers and humans can see\nthe contract clearly.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: use public properties instead of private attrs in BaseCacheContext\n\nreport_status was still poking self.kv_layer_groups_manager_ / self._engine_kv_format\ndirectly instead of going through the public properties. Fixed that and the derived\nproperties too for consistency.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fixes: use array('q') for cross-platform int64 in copy_view_block_ids_to_gpu\n\narray('l') is 4 bytes on Windows vs 8 bytes on Linux. Use 'q'\n(signed long long, always 8 bytes) instead.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve cache context to be more extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: discover_subclasses should scan sub-package __init__.py\n\nThe multi-level walk added in the levels feature introduced a bug\nwhere sub-package __init__.py was treated purely as a descent point\nand never scanned for classes.  This broke discovery of commands\ndefined in __init__.py (e.g. bench, trace, query, quota, tool).\n\nExtract _scan_module helper so both leaf modules and sub-package\n__init__.py share the same class-scanning logic.  Separate the\ninit-scan depth check from the recursion depth check so a sub-pkg\nat depth=1 can be scanned even when levels=[1, 1] prevents deeper\nrecursion.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: skip model tests when HF_TOKEN not available (fork PR)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop HF_DOWNLOAD_FAIL_ON_ERROR, let download_model.sh retry naturally\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: ignore GenericAlias in subclass discovery on Python < 3.12\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1853,
+                "insertions": 1258,
+                "deletions": 595
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "714bd7a5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-16T04:29:58.000Z",
+              "message": "rename: GPUTransferModule -> LMCacheDrivenTransferModule, NonGPUTransferModule -> EngineDrivenTransferModule (#3679)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 36,
+                "lines": 935,
+                "insertions": 506,
+                "deletions": 429
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 73.78571428571429,
-          "significance_ratio": 0.7142857142857143,
+          "avg_score": 76.25,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1033,
+          "total_score": 1220,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 12,
+          "total_commits": 15,
           "significant_commits": 9,
-          "simple_commits": 3,
-          "commit_score": 849,
+          "simple_commits": 6,
+          "commit_score": 929,
           "commits": [
             {
               "hash": "bd93975c",
@@ -9733,24 +10135,87 @@
                 "total": 70
               },
               "classification": "significant"
+            },
+            {
+              "hash": "e41282e0",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-16T19:01:22.000Z",
+              "message": "[CI] Trying to make upstream CI green (#3726)\n\nfix upstream ci read issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 41,
+                "insertions": 28,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "edd28e08",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-16T18:21:06.000Z",
+              "message": "[CI] Release the requirement for hma gemma 4 test to reduce flakiness (#3723)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "5d621e1e",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-16T17:13:38.000Z",
+              "message": "[CI] fix flaky failures in AMD CI (#3709)\n\n* fix amd ut\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* fix from claude code\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* revert the changes\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 10,
+                "insertions": 5,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 70.75,
-          "significance_ratio": 0.75,
+          "avg_score": 61.93333333333333,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 849,
+          "total_score": 929,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 13,
+          "total_commits": 14,
           "significant_commits": 7,
-          "simple_commits": 6,
-          "commit_score": 709,
+          "simple_commits": 7,
+          "commit_score": 729,
           "commits": [
             {
               "hash": "038f27d6",
@@ -10024,14 +10489,35 @@
                 "total": 20
               },
               "classification": "simple"
+            },
+            {
+              "hash": "f52b174c",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-16T21:49:31.000Z",
+              "message": "[fix] fix cu129 image build  (#3729)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 54.53846153846154,
-          "significance_ratio": 0.5384615384615384,
+          "avg_score": 52.07142857142857,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 709,
+          "total_score": 729,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -10554,10 +11040,10 @@
         {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
-          "total_commits": 4,
-          "significant_commits": 2,
+          "total_commits": 5,
+          "significant_commits": 3,
           "simple_commits": 2,
-          "commit_score": 252,
+          "commit_score": 329,
           "commits": [
             {
               "hash": "adedd1fc",
@@ -10642,84 +11128,45 @@
                 "total": 77
               },
               "classification": "significant"
-            }
-          ],
-          "avg_score": 63,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 252,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 187,
-          "commits": [
-            {
-              "hash": "5db61993",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-06-10T23:52:46.000Z",
-              "message": "[cli] refactor query and trace cli (#3625)\n\n* refactor: refactor query cli\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* refactor: refactor trace cli\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 1185,
-                "insertions": 665,
-                "deletions": 520
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
             },
             {
-              "hash": "266f9a9e",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-06-11T06:54:48.000Z",
-              "message": "[cli] add quota management commands (set/get/list/delete) (#3623)\n\n* [cli] add quota management commands (set/get/list/delete)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle error fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "hash": "c5bdf79d",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-16T02:22:41.000Z",
+              "message": "[Test] Operator: unit-test coverage targets + reconcile-helper tests (#3291)\n\n* [Test] Operator: unit-test coverage targets + reconcile-helper tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
               "stats": {
-                "files": 9,
-                "lines": 956,
-                "insertions": 955,
-                "deletions": 1
+                "files": 4,
+                "lines": 782,
+                "insertions": 760,
+                "deletions": 22
               },
               "scores": {
                 "loc": 30,
-                "files": 20,
+                "files": 10,
                 "keyword": 12,
                 "ai": 25,
-                "total": 87
+                "total": 77
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 93.5,
-          "significance_ratio": 1,
+          "avg_score": 65.8,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 187,
+          "total_score": 329,
           "tier": "T1",
           "tier_name": "Advanced"
         },
         {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 3,
-          "significant_commits": 2,
+          "total_commits": 4,
+          "significant_commits": 3,
           "simple_commits": 1,
-          "commit_score": 179,
+          "commit_score": 266,
           "commits": [
             {
               "hash": "28abf0d9",
@@ -10783,24 +11230,126 @@
                 "total": 81
               },
               "classification": "significant"
+            },
+            {
+              "hash": "73ab092b",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-06-16T02:18:28.000Z",
+              "message": "[Doc] Restructure docs around multiprocess (MP) mode (#3665)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 77,
+                "lines": 5661,
+                "insertions": 2859,
+                "deletions": 2802
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.666666666666664,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 66.5,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 179,
+          "total_score": 266,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 264,
+          "commits": [
+            {
+              "hash": "5db61993",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-10T23:52:46.000Z",
+              "message": "[cli] refactor query and trace cli (#3625)\n\n* refactor: refactor query cli\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* refactor: refactor trace cli\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* bugfix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1185,
+                "insertions": 665,
+                "deletions": 520
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "266f9a9e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-11T06:54:48.000Z",
+              "message": "[cli] add quota management commands (set/get/list/delete) (#3623)\n\n* [cli] add quota management commands (set/get/list/delete)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* checkstyle error fix\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 9,
+                "lines": 956,
+                "insertions": 955,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6958104e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-16T03:44:23.000Z",
+              "message": "[cli] support format/output/quiet args in bench server command (#3626)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 314,
+                "insertions": 282,
+                "deletions": 32
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 88,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 264,
           "tier": "T1",
           "tier_name": "Advanced"
         },
         {
           "name": "github-actions[bot]",
           "email": "41898282+github-actions[bot]@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 174,
+          "commit_score": 261,
           "commits": [
             {
               "hash": "ba0f9475",
@@ -10843,6 +11392,27 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "10d88f1e",
+              "author": "github-actions[bot]",
+              "email": "41898282+github-actions[bot]@users.noreply.github.com",
+              "date": "2026-06-16T02:51:25.000Z",
+              "message": "Update Chinese documentation translations (#3701)\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
+              "stats": {
+                "files": 35,
+                "lines": 6005,
+                "insertions": 4537,
+                "deletions": 1468
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
           "avg_score": 87,
@@ -10850,7 +11420,67 @@
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 174,
+          "total_score": 261,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 187,
+          "commits": [
+            {
+              "hash": "a1f6bda9",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-06T08:18:40.000Z",
+              "message": "feat:Add Moore Threads MUSA support for LMCache v1. (#3483)\n\n* Add Moore Threads MUSA support for LMCache v1\n\nAdd MUSA device detection, build selection, and vLLM connector dispatch for LMCache v1. Include the non-layerwise MUSA connector implementation plus CPU-runnable dispatch tests and hardware-gated MUSA connector round-trip tests.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* fix: handle MUSA vLLM cached prefix\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* chore: trigger CI\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n---------\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1243,
+                "insertions": 1224,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d9cab925",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-16T16:03:04.000Z",
+              "message": "[feat] add stage 2 MUSA support with optional native in-process transfer (#3580)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 2204,
+                "insertions": 1984,
+                "deletions": 220
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 93.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 187,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10971,8 +11601,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 169,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Ilya Yanok",
@@ -11151,45 +11781,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 146,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Xiao Lei",
-          "email": "xlei.boll@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 100,
-          "commits": [
-            {
-              "hash": "a1f6bda9",
-              "author": "Xiao Lei",
-              "email": "xlei.boll@gmail.com",
-              "date": "2026-06-06T08:18:40.000Z",
-              "message": "feat:Add Moore Threads MUSA support for LMCache v1. (#3483)\n\n* Add Moore Threads MUSA support for LMCache v1\n\nAdd MUSA device detection, build selection, and vLLM connector dispatch for LMCache v1. Include the non-layerwise MUSA connector implementation plus CPU-runnable dispatch tests and hardware-gated MUSA connector round-trip tests.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* fix: handle MUSA vLLM cached prefix\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* chore: trigger CI\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n---------\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
-              "stats": {
-                "files": 6,
-                "lines": 1243,
-                "insertions": 1224,
-                "deletions": 19
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 100,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 100,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -11587,6 +12178,45 @@
                 "lines": 1671,
                 "insertions": 1669,
                 "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Luis Chamberlain",
+          "email": "mcgrof@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "518fb028",
+              "author": "Luis Chamberlain",
+              "email": "mcgrof@gmail.com",
+              "date": "2026-06-16T03:41:56.000Z",
+              "message": "[Feat][MP][1/N] Asymmetric Serde Support (eg., FP16 Key , FP8 Value) (#3277)\n\nSigned-off-by: Luis Chamberlain <mcgrof@do-not-panic.com>",
+              "stats": {
+                "files": 15,
+                "lines": 3168,
+                "insertions": 3167,
+                "deletions": 1
               },
               "scores": {
                 "loc": 30,
@@ -12436,10 +13066,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 25,
+          "total_commits": 28,
           "significant_commits": 16,
-          "simple_commits": 9,
-          "commit_score": 1554,
+          "simple_commits": 12,
+          "commit_score": 1634,
           "commits": [
             {
               "hash": "2e36e1e4",
@@ -12965,24 +13595,87 @@
                 "total": 70
               },
               "classification": "significant"
+            },
+            {
+              "hash": "e41282e0",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-16T19:01:22.000Z",
+              "message": "[CI] Trying to make upstream CI green (#3726)\n\nfix upstream ci read issue\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 41,
+                "insertions": 28,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "edd28e08",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-16T18:21:06.000Z",
+              "message": "[CI] Release the requirement for hma gemma 4 test to reduce flakiness (#3723)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "5d621e1e",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-16T17:13:38.000Z",
+              "message": "[CI] fix flaky failures in AMD CI (#3709)\n\n* fix amd ut\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* fix from claude code\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* revert the changes\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 10,
+                "insertions": 5,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 62.16,
-          "significance_ratio": 0.64,
+          "avg_score": 58.357142857142854,
+          "significance_ratio": 0.5714285714285714,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1554,
+          "total_score": 1634,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 21,
-          "significant_commits": 14,
+          "total_commits": 23,
+          "significant_commits": 16,
           "simple_commits": 7,
-          "commit_score": 1419,
+          "commit_score": 1606,
           "commits": [
             {
               "hash": "f9ce8cbe",
@@ -13424,24 +14117,66 @@
                 "total": 40
               },
               "classification": "simple"
+            },
+            {
+              "hash": "b3a37582",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-16T12:25:51.000Z",
+              "message": "refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts (#3702)\n\n* refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts\n\nGPUCacheContext and CpuCacheContext were duck-typing through a bunch of\nshared properties and methods. Extract them into a BaseCacheContext ABC\nwith class-level annotations so both type-checkers and humans can see\nthe contract clearly.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: use public properties instead of private attrs in BaseCacheContext\n\nreport_status was still poking self.kv_layer_groups_manager_ / self._engine_kv_format\ndirectly instead of going through the public properties. Fixed that and the derived\nproperties too for consistency.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fixes: use array('q') for cross-platform int64 in copy_view_block_ids_to_gpu\n\narray('l') is 4 bytes on Windows vs 8 bytes on Linux. Use 'q'\n(signed long long, always 8 bytes) instead.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve cache context to be more extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: discover_subclasses should scan sub-package __init__.py\n\nThe multi-level walk added in the levels feature introduced a bug\nwhere sub-package __init__.py was treated purely as a descent point\nand never scanned for classes.  This broke discovery of commands\ndefined in __init__.py (e.g. bench, trace, query, quota, tool).\n\nExtract _scan_module helper so both leaf modules and sub-package\n__init__.py share the same class-scanning logic.  Separate the\ninit-scan depth check from the recursion depth check so a sub-pkg\nat depth=1 can be scanned even when levels=[1, 1] prevents deeper\nrecursion.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: skip model tests when HF_TOKEN not available (fork PR)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop HF_DOWNLOAD_FAIL_ON_ERROR, let download_model.sh retry naturally\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: ignore GenericAlias in subclass discovery on Python < 3.12\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1853,
+                "insertions": 1258,
+                "deletions": 595
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "714bd7a5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-16T04:29:58.000Z",
+              "message": "rename: GPUTransferModule -> LMCacheDrivenTransferModule, NonGPUTransferModule -> EngineDrivenTransferModule (#3679)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 36,
+                "lines": 935,
+                "insertions": 506,
+                "deletions": 429
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 67.57142857142857,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 69.82608695652173,
+          "significance_ratio": 0.6956521739130435,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1419,
+          "total_score": 1606,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 27,
+          "total_commits": 28,
           "significant_commits": 10,
-          "simple_commits": 17,
-          "commit_score": 1213,
+          "simple_commits": 18,
+          "commit_score": 1233,
           "commits": [
             {
               "hash": "d37cfa16",
@@ -14009,14 +14744,35 @@
                 "total": 20
               },
               "classification": "simple"
+            },
+            {
+              "hash": "f52b174c",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-16T21:49:31.000Z",
+              "message": "[fix] fix cu129 image build  (#3729)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 44.925925925925924,
-          "significance_ratio": 0.37037037037037035,
+          "avg_score": 44.035714285714285,
+          "significance_ratio": 0.35714285714285715,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1213,
+          "total_score": 1233,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -14521,10 +15277,10 @@
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 6,
-          "significant_commits": 5,
+          "total_commits": 7,
+          "significant_commits": 6,
           "simple_commits": 1,
-          "commit_score": 487,
+          "commit_score": 564,
           "commits": [
             {
               "hash": "2ba249db",
@@ -14651,24 +15407,45 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "6958104e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-16T03:44:23.000Z",
+              "message": "[cli] support format/output/quiet args in bench server command (#3626)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 314,
+                "insertions": 282,
+                "deletions": 32
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 81.16666666666667,
-          "significance_ratio": 0.8333333333333334,
+          "avg_score": 80.57142857142857,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 487,
+          "total_score": 564,
           "tier": "T1",
           "tier_name": "Advanced"
         },
         {
           "name": "github-actions[bot]",
           "email": "41898282+github-actions[bot]@users.noreply.github.com",
-          "total_commits": 6,
-          "significant_commits": 5,
+          "total_commits": 7,
+          "significant_commits": 6,
           "simple_commits": 1,
-          "commit_score": 465,
+          "commit_score": 552,
           "commits": [
             {
               "hash": "9e38f1db",
@@ -14795,14 +15572,200 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "10d88f1e",
+              "author": "github-actions[bot]",
+              "email": "41898282+github-actions[bot]@users.noreply.github.com",
+              "date": "2026-06-16T02:51:25.000Z",
+              "message": "Update Chinese documentation translations (#3701)\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: deng451e <57919305+deng451e@users.noreply.github.com>",
+              "stats": {
+                "files": 35,
+                "lines": 6005,
+                "insertions": 4537,
+                "deletions": 1468
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 77.5,
-          "significance_ratio": 0.8333333333333334,
+          "avg_score": 78.85714285714286,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 465,
+          "total_score": 552,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 7,
+          "significant_commits": 4,
+          "simple_commits": 3,
+          "commit_score": 442,
+          "commits": [
+            {
+              "hash": "d63f68db",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-05-15T23:13:34.000Z",
+              "message": "[Test] Operator end-to-end smoke suite (#3289)\n\n* [Test] Operator: smoke suite\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 41,
+                "lines": 3926,
+                "insertions": 3431,
+                "deletions": 495
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "86f3c751",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-05-15T21:11:41.000Z",
+              "message": "[Operator][CI] Date-based nightly tag and release-driven flow (#3293)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 16,
+                "insertions": 7,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "adedd1fc",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-11T01:03:38.000Z",
+              "message": "[Operator] CacheBlend: CacheBlendEngine CRD + injection webhook (#3543)\n\n* feat(operator): add CacheBlendEngine CRD + CacheBlend injection webhook\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 47,
+                "lines": 9417,
+                "insertions": 8984,
+                "deletions": 433
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b220b1c7",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-12T23:48:59.000Z",
+              "message": "fix(operator): install cert-manager in e2e smoke suite (#3646)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 99,
+                "insertions": 98,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "549b0070",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-12T03:52:55.000Z",
+              "message": "fix(operator): emit --engine-type blend for CacheBlend engine (#3647)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 29,
+                "insertions": 15,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 2,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "27338569",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-15T20:37:57.000Z",
+              "message": "[Feat] Worker-adapter liveness hygiene for MP server reaping (1/2) (#3631)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 872,
+                "insertions": 809,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c5bdf79d",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-16T02:22:41.000Z",
+              "message": "[Test] Operator: unit-test coverage targets + reconcile-helper tests (#3291)\n\n* [Test] Operator: unit-test coverage targets + reconcile-helper tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 782,
+                "insertions": 760,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 63.142857142857146,
+          "significance_ratio": 0.5714285714285714,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 442,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -14930,129 +15893,66 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
           "total_commits": 6,
-          "significant_commits": 3,
-          "simple_commits": 3,
-          "commit_score": 365,
+          "significant_commits": 4,
+          "simple_commits": 2,
+          "commit_score": 377,
           "commits": [
             {
-              "hash": "d63f68db",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-05-15T23:13:34.000Z",
-              "message": "[Test] Operator end-to-end smoke suite (#3289)\n\n* [Test] Operator: smoke suite\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 41,
-                "lines": 3926,
-                "insertions": 3431,
-                "deletions": 495
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "86f3c751",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-05-15T21:11:41.000Z",
-              "message": "[Operator][CI] Date-based nightly tag and release-driven flow (#3293)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "hash": "3300d0d9",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-22T04:08:26.000Z",
+              "message": "[Observability]: Add L2 Usage to SM (#3320)\n\nobservability: add l2_usage_bytes gauge + dashboard panel\n\nRegister an observable gauge that reports each L2 adapter's current\nusage via adapter.get_usage(), tagged by l2_name, plus a Grafana panel\nto visualize it. Lets operators query how much each L2 tier currently\nholds.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
               "stats": {
                 "files": 2,
-                "lines": 16,
-                "insertions": 7,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 1,
-                "total": 26
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "adedd1fc",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-06-11T01:03:38.000Z",
-              "message": "[Operator] CacheBlend: CacheBlendEngine CRD + injection webhook (#3543)\n\n* feat(operator): add CacheBlendEngine CRD + CacheBlend injection webhook\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 47,
-                "lines": 9417,
-                "insertions": 8984,
-                "deletions": 433
+                "lines": 161,
+                "insertions": 148,
+                "deletions": 13
               },
               "scores": {
                 "loc": 30,
-                "files": 20,
+                "files": 10,
                 "keyword": 12,
-                "ai": 25,
-                "total": 87
+                "ai": 16,
+                "total": 68
               },
               "classification": "significant"
             },
             {
-              "hash": "b220b1c7",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-06-12T23:48:59.000Z",
-              "message": "fix(operator): install cert-manager in e2e smoke suite (#3646)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "hash": "956b7bdf",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-05-26T20:52:21.000Z",
+              "message": "[Operator]: Force external LMCache MP connector path (#3393)",
               "stats": {
-                "files": 3,
-                "lines": 99,
-                "insertions": 98,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 9,
-                "total": 46
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "549b0070",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-06-12T03:52:55.000Z",
-              "message": "fix(operator): emit --engine-type blend for CacheBlend engine (#3647)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 29,
-                "insertions": 15,
-                "deletions": 14
+                "files": 7,
+                "lines": 31,
+                "insertions": 21,
+                "deletions": 10
               },
               "scores": {
                 "loc": 8,
                 "files": 20,
                 "keyword": 12,
-                "ai": 2,
-                "total": 42
+                "ai": 3,
+                "total": 43
               },
               "classification": "simple"
             },
             {
-              "hash": "27338569",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-06-15T20:37:57.000Z",
-              "message": "[Feat] Worker-adapter liveness hygiene for MP server reaping (1/2) (#3631)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "hash": "28abf0d9",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-06-03T02:47:30.000Z",
+              "message": "[Docs][KV Cache Size Calculator]: add hybrid SWA, DSA, placeholders for Mamba / Linear (#3504)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
               "stats": {
-                "files": 4,
-                "lines": 872,
-                "insertions": 809,
-                "deletions": 63
+                "files": 2,
+                "lines": 579,
+                "insertions": 555,
+                "deletions": 24
               },
               "scores": {
                 "loc": 30,
@@ -15062,14 +15962,77 @@
                 "total": 77
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9fbd742b",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-06-03T02:13:12.000Z",
+              "message": "[Chore][CI] Force vLLM Model Runner V1 in the PD comprehensive test (#3502)\n\n[CI/CD] Force vLLM Model Runner V1 in the PD comprehensive test\n\nThe PD comprehensive test (k3-comprehensive-test) started timing out on\n2026-06-02 when the floating vLLM nightly bumped from 0.22.1rc1.dev91 to\n.dev95. That delta includes vllm-project/vllm#43458, which enables Model\nRunner V2 (MRV2) by default for Llama/Mistral dense models -- including\nmeta-llama/Llama-3.2-1B-Instruct, the model used by pd.yaml.\n\nMRV2 is incompatible with KV cache connectors, so the prefiller/decoder\n(both driven through LMCacheConnectorV1) hang on the first request and the\njob is killed by the 30-minute timeout. The vLLM servers start fine; only\nthe disaggregated request path hangs.\n\nPin the PD prefiller and decoder to MRV1 via VLLM_USE_V2_MODEL_RUNNER=0\nuntil MRV2 supports KV connectors / reliably falls back to MRV1.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 10,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "874f81b8",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-06-09T00:05:00.000Z",
+              "message": "[GPUKVFormat]: support vLLM CPU 2-fused KV layout (#3567)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 9,
+                "lines": 195,
+                "insertions": 191,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "73ab092b",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-06-16T02:18:28.000Z",
+              "message": "[Doc] Restructure docs around multiprocess (MP) mode (#3665)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 77,
+                "lines": 5661,
+                "insertions": 2859,
+                "deletions": 2802
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 60.833333333333336,
-          "significance_ratio": 0.5,
+          "avg_score": 62.833333333333336,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 365,
+          "total_score": 377,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -15439,8 +16402,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 323,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Shaoting",
@@ -15541,129 +16504,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 305,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 5,
-          "significant_commits": 3,
-          "simple_commits": 2,
-          "commit_score": 290,
-          "commits": [
-            {
-              "hash": "3300d0d9",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-22T04:08:26.000Z",
-              "message": "[Observability]: Add L2 Usage to SM (#3320)\n\nobservability: add l2_usage_bytes gauge + dashboard panel\n\nRegister an observable gauge that reports each L2 adapter's current\nusage via adapter.get_usage(), tagged by l2_name, plus a Grafana panel\nto visualize it. Lets operators query how much each L2 tier currently\nholds.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 2,
-                "lines": 161,
-                "insertions": 148,
-                "deletions": 13
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 16,
-                "total": 68
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "956b7bdf",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-05-26T20:52:21.000Z",
-              "message": "[Operator]: Force external LMCache MP connector path (#3393)",
-              "stats": {
-                "files": 7,
-                "lines": 31,
-                "insertions": 21,
-                "deletions": 10
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 3,
-                "total": 43
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "28abf0d9",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-06-03T02:47:30.000Z",
-              "message": "[Docs][KV Cache Size Calculator]: add hybrid SWA, DSA, placeholders for Mamba / Linear (#3504)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 2,
-                "lines": 579,
-                "insertions": 555,
-                "deletions": 24
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "9fbd742b",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-06-03T02:13:12.000Z",
-              "message": "[Chore][CI] Force vLLM Model Runner V1 in the PD comprehensive test (#3502)\n\n[CI/CD] Force vLLM Model Runner V1 in the PD comprehensive test\n\nThe PD comprehensive test (k3-comprehensive-test) started timing out on\n2026-06-02 when the floating vLLM nightly bumped from 0.22.1rc1.dev91 to\n.dev95. That delta includes vllm-project/vllm#43458, which enables Model\nRunner V2 (MRV2) by default for Llama/Mistral dense models -- including\nmeta-llama/Llama-3.2-1B-Instruct, the model used by pd.yaml.\n\nMRV2 is incompatible with KV cache connectors, so the prefiller/decoder\n(both driven through LMCacheConnectorV1) hang on the first request and the\njob is killed by the 30-minute timeout. The vLLM servers start fine; only\nthe disaggregated request path hangs.\n\nPin the PD prefiller and decoder to MRV1 via VLLM_USE_V2_MODEL_RUNNER=0\nuntil MRV2 supports KV connectors / reliably falls back to MRV1.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 1,
-                "lines": 10,
-                "insertions": 10,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "874f81b8",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-06-09T00:05:00.000Z",
-              "message": "[GPUKVFormat]: support vLLM CPU 2-fused KV layout (#3567)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 9,
-                "lines": 195,
-                "insertions": 191,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 19,
-                "total": 81
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 58,
-          "significance_ratio": 0.6,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 290,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -15868,6 +16708,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 250,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 187,
+          "commits": [
+            {
+              "hash": "a1f6bda9",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-06T08:18:40.000Z",
+              "message": "feat:Add Moore Threads MUSA support for LMCache v1. (#3483)\n\n* Add Moore Threads MUSA support for LMCache v1\n\nAdd MUSA device detection, build selection, and vLLM connector dispatch for LMCache v1. Include the non-layerwise MUSA connector implementation plus CPU-runnable dispatch tests and hardware-gated MUSA connector round-trip tests.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* fix: handle MUSA vLLM cached prefix\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* chore: trigger CI\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n---------\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1243,
+                "insertions": 1224,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d9cab925",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-16T16:03:04.000Z",
+              "message": "[feat] add stage 2 MUSA support with optional native in-process transfer (#3580)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 2204,
+                "insertions": 1984,
+                "deletions": 220
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 93.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 187,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -16270,8 +17170,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 121,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Yufeng He",
@@ -16330,45 +17230,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 111,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "Xiao Lei",
-          "email": "xlei.boll@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 100,
-          "commits": [
-            {
-              "hash": "a1f6bda9",
-              "author": "Xiao Lei",
-              "email": "xlei.boll@gmail.com",
-              "date": "2026-06-06T08:18:40.000Z",
-              "message": "feat:Add Moore Threads MUSA support for LMCache v1. (#3483)\n\n* Add Moore Threads MUSA support for LMCache v1\n\nAdd MUSA device detection, build selection, and vLLM connector dispatch for LMCache v1. Include the non-layerwise MUSA connector implementation plus CPU-runnable dispatch tests and hardware-gated MUSA connector round-trip tests.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* fix: handle MUSA vLLM cached prefix\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* chore: trigger CI\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n---------\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
-              "stats": {
-                "files": 6,
-                "lines": 1243,
-                "insertions": 1224,
-                "deletions": 19
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 100,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 100,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -16688,6 +17549,45 @@
                 "lines": 1671,
                 "insertions": 1669,
                 "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Luis Chamberlain",
+          "email": "mcgrof@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "518fb028",
+              "author": "Luis Chamberlain",
+              "email": "mcgrof@gmail.com",
+              "date": "2026-06-16T03:41:56.000Z",
+              "message": "[Feat][MP][1/N] Asymmetric Serde Support (eg., FP16 Key , FP8 Value) (#3277)\n\nSigned-off-by: Luis Chamberlain <mcgrof@do-not-panic.com>",
+              "stats": {
+                "files": 15,
+                "lines": 3168,
+                "insertions": 3167,
+                "deletions": 1
               },
               "scores": {
                 "loc": 30,
@@ -18002,13 +18902,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-06-16T00:30:15.639Z",
+    "analyzedAt": "2026-06-17T00:30:28.695Z",
     "daysBack": 2,
-    "totalCommits": 211,
-    "totalContributors": 63,
+    "totalCommits": 223,
+    "totalContributors": 64,
     "mergedFrom": {
-      "existing": 204,
-      "new": 11
+      "existing": 211,
+      "new": 19
     }
   }
 }
