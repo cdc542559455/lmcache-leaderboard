@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-18T00:30:41.079Z",
-  "total_commits_analyzed": 237,
+  "last_updated": "2026-06-19T00:30:43.995Z",
+  "total_commits_analyzed": 251,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -6282,10 +6282,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 8,
-          "significant_commits": 4,
+          "total_commits": 10,
+          "significant_commits": 6,
           "simple_commits": 4,
-          "commit_score": 419,
+          "commit_score": 593,
           "commits": [
             {
               "hash": "29e0b428",
@@ -6454,138 +6454,18 @@
                 "total": 87
               },
               "classification": "significant"
-            }
-          ],
-          "avg_score": 52.375,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 419,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 241,
-          "commits": [
-            {
-              "hash": "27338569",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-06-15T20:37:57.000Z",
-              "message": "[Feat] Worker-adapter liveness hygiene for MP server reaping (1/2) (#3631)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 4,
-                "lines": 872,
-                "insertions": 809,
-                "deletions": 63
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
             },
             {
-              "hash": "c5bdf79d",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-06-16T02:22:41.000Z",
-              "message": "[Test] Operator: unit-test coverage targets + reconcile-helper tests (#3291)\n\n* [Test] Operator: unit-test coverage targets + reconcile-helper tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "hash": "ca79ea33",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-18T21:22:55.000Z",
+              "message": "[MP][P2P] introduce P2P adapter (#3740)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
               "stats": {
-                "files": 4,
-                "lines": 782,
-                "insertions": 760,
-                "deletions": 22
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "28f79c25",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-06-17T01:03:26.000Z",
-              "message": "[Feat] Server-side worker liveness tracking and reaping (2/2) (#3664)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 14,
-                "lines": 1183,
-                "insertions": 987,
-                "deletions": 196
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 80.33333333333333,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 241,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 231,
-          "commits": [
-            {
-              "hash": "b3a37582",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-16T12:25:51.000Z",
-              "message": "refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts (#3702)\n\n* refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts\n\nGPUCacheContext and CpuCacheContext were duck-typing through a bunch of\nshared properties and methods. Extract them into a BaseCacheContext ABC\nwith class-level annotations so both type-checkers and humans can see\nthe contract clearly.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: use public properties instead of private attrs in BaseCacheContext\n\nreport_status was still poking self.kv_layer_groups_manager_ / self._engine_kv_format\ndirectly instead of going through the public properties. Fixed that and the derived\nproperties too for consistency.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fixes: use array('q') for cross-platform int64 in copy_view_block_ids_to_gpu\n\narray('l') is 4 bytes on Windows vs 8 bytes on Linux. Use 'q'\n(signed long long, always 8 bytes) instead.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve cache context to be more extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: discover_subclasses should scan sub-package __init__.py\n\nThe multi-level walk added in the levels feature introduced a bug\nwhere sub-package __init__.py was treated purely as a descent point\nand never scanned for classes.  This broke discovery of commands\ndefined in __init__.py (e.g. bench, trace, query, quota, tool).\n\nExtract _scan_module helper so both leaf modules and sub-package\n__init__.py share the same class-scanning logic.  Separate the\ninit-scan depth check from the recursion depth check so a sub-pkg\nat depth=1 can be scanned even when levels=[1, 1] prevents deeper\nrecursion.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: skip model tests when HF_TOKEN not available (fork PR)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop HF_DOWNLOAD_FAIL_ON_ERROR, let download_model.sh retry naturally\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: ignore GenericAlias in subclass discovery on Python < 3.12\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 20,
-                "lines": 1853,
-                "insertions": 1258,
-                "deletions": 595
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "714bd7a5",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-16T04:29:58.000Z",
-              "message": "rename: GPUTransferModule -> LMCacheDrivenTransferModule, NonGPUTransferModule -> EngineDrivenTransferModule (#3679)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 36,
-                "lines": 935,
-                "insertions": 506,
-                "deletions": 429
+                "files": 34,
+                "lines": 1493,
+                "insertions": 1360,
+                "deletions": 133
               },
               "scores": {
                 "loc": 30,
@@ -6597,43 +6477,43 @@
               "classification": "significant"
             },
             {
-              "hash": "71d2c23f",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-17T17:28:09.000Z",
-              "message": "[CI] Download opt-125m from GitHub release instead of HuggingFace (#3735)\n\n* download opt-125m from GitHub release, no more HF_TOKEN needed\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix review: temp dir leak and missing mkdir for refs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix release download url and bust cache\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "hash": "6a748489",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-18T07:11:20.000Z",
+              "message": "[MP][P2P] Enable runtime registration / deregistration of L2 adapters (#3743)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
               "stats": {
-                "files": 3,
-                "lines": 74,
-                "insertions": 64,
-                "deletions": 10
+                "files": 10,
+                "lines": 1224,
+                "insertions": 1099,
+                "deletions": 125
               },
               "scores": {
-                "loc": 15,
-                "files": 10,
+                "loc": 30,
+                "files": 20,
                 "keyword": 12,
-                "ai": 7,
-                "total": 44
+                "ai": 25,
+                "total": 87
               },
-              "classification": "simple"
+              "classification": "significant"
             }
           ],
-          "avg_score": 77,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 59.3,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 231,
+          "total_score": 593,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 6,
-          "significant_commits": 1,
-          "simple_commits": 5,
-          "commit_score": 207,
+          "total_commits": 9,
+          "significant_commits": 2,
+          "simple_commits": 7,
+          "commit_score": 338,
           "commits": [
             {
               "hash": "c87baeb1",
@@ -6760,24 +6640,87 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "5566fac9",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-18T19:19:13.000Z",
+              "message": "[CI] Publish rc release tags as clean pre-releases + gate CLI wheel against native ops (#3747)\n\nfix\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 29,
+                "insertions": 22,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9cff3526",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-18T07:22:47.000Z",
+              "message": "[ci] add back blend ci test.  (#3739)\n\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 176,
+                "insertions": 176,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 17,
+                "total": 79
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ae0f009f",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-18T02:30:01.000Z",
+              "message": " [CI] Pass LMCACHE_VERSION to RC image build so it installs the RC wheel (#3750)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 34.5,
-          "significance_ratio": 0.16666666666666666,
+          "avg_score": 37.55555555555556,
+          "significance_ratio": 0.2222222222222222,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 207,
+          "total_score": 338,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 4,
+          "significant_commits": 4,
           "simple_commits": 0,
-          "commit_score": 122,
+          "commit_score": 296,
           "commits": [
             {
               "hash": "59a466fd",
@@ -6820,16 +6763,340 @@
                 "total": 66
               },
               "classification": "significant"
+            },
+            {
+              "hash": "5231a15a",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-18T02:04:56.000Z",
+              "message": "[Feat] Operator: reconcile the MP coordinator (LMCacheCoordinator CRD) (#3732)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 33,
+                "lines": 6134,
+                "insertions": 6132,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "eb9405ba",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-18T01:04:00.000Z",
+              "message": "[Feat] [Coordinator] Optimize coordinator global CacheBlend token matching (#3708)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 641,
+                "insertions": 547,
+                "deletions": 94
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 61,
+          "avg_score": 74,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 122,
+          "total_score": 296,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 262,
+          "commits": [
+            {
+              "hash": "27338569",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-15T20:37:57.000Z",
+              "message": "[Feat] Worker-adapter liveness hygiene for MP server reaping (1/2) (#3631)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 872,
+                "insertions": 809,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c5bdf79d",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-16T02:22:41.000Z",
+              "message": "[Test] Operator: unit-test coverage targets + reconcile-helper tests (#3291)\n\n* [Test] Operator: unit-test coverage targets + reconcile-helper tests\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 782,
+                "insertions": 760,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "28f79c25",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-17T01:03:26.000Z",
+              "message": "[Feat] Server-side worker liveness tracking and reaping (2/2) (#3664)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1183,
+                "insertions": 987,
+                "deletions": 196
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9ffb104f",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-18T02:30:31.000Z",
+              "message": "ci(operator): tag pre-release images as latest-rc, not latest (#3746)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 18,
+                "insertions": 16,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 65.5,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 262,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 231,
+          "commits": [
+            {
+              "hash": "b3a37582",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-16T12:25:51.000Z",
+              "message": "refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts (#3702)\n\n* refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts\n\nGPUCacheContext and CpuCacheContext were duck-typing through a bunch of\nshared properties and methods. Extract them into a BaseCacheContext ABC\nwith class-level annotations so both type-checkers and humans can see\nthe contract clearly.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: use public properties instead of private attrs in BaseCacheContext\n\nreport_status was still poking self.kv_layer_groups_manager_ / self._engine_kv_format\ndirectly instead of going through the public properties. Fixed that and the derived\nproperties too for consistency.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fixes: use array('q') for cross-platform int64 in copy_view_block_ids_to_gpu\n\narray('l') is 4 bytes on Windows vs 8 bytes on Linux. Use 'q'\n(signed long long, always 8 bytes) instead.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve cache context to be more extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: discover_subclasses should scan sub-package __init__.py\n\nThe multi-level walk added in the levels feature introduced a bug\nwhere sub-package __init__.py was treated purely as a descent point\nand never scanned for classes.  This broke discovery of commands\ndefined in __init__.py (e.g. bench, trace, query, quota, tool).\n\nExtract _scan_module helper so both leaf modules and sub-package\n__init__.py share the same class-scanning logic.  Separate the\ninit-scan depth check from the recursion depth check so a sub-pkg\nat depth=1 can be scanned even when levels=[1, 1] prevents deeper\nrecursion.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: skip model tests when HF_TOKEN not available (fork PR)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop HF_DOWNLOAD_FAIL_ON_ERROR, let download_model.sh retry naturally\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: ignore GenericAlias in subclass discovery on Python < 3.12\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1853,
+                "insertions": 1258,
+                "deletions": 595
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "714bd7a5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-16T04:29:58.000Z",
+              "message": "rename: GPUTransferModule -> LMCacheDrivenTransferModule, NonGPUTransferModule -> EngineDrivenTransferModule (#3679)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 36,
+                "lines": 935,
+                "insertions": 506,
+                "deletions": 429
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "71d2c23f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-17T17:28:09.000Z",
+              "message": "[CI] Download opt-125m from GitHub release instead of HuggingFace (#3735)\n\n* download opt-125m from GitHub release, no more HF_TOKEN needed\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix review: temp dir leak and missing mkdir for refs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix release download url and bust cache\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 74,
+                "insertions": 64,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 7,
+                "total": 44
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 231,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 187,
+          "commits": [
+            {
+              "hash": "d9cab925",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-16T16:03:04.000Z",
+              "message": "[feat] add stage 2 MUSA support with optional native in-process transfer (#3580)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 2204,
+                "insertions": 1984,
+                "deletions": 220
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "84685ef3",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-18T08:07:05.000Z",
+              "message": "feat: enable MUSA MP engine-driven non-handle path (#3725)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 1376,
+                "insertions": 1139,
+                "deletions": 237
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 93.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 187,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Martin Hua",
+          "email": "huaxr13@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 90,
+          "commits": [
+            {
+              "hash": "6e992ec4",
+              "author": "Martin Hua",
+              "email": "huaxr13@gmail.com",
+              "date": "2026-06-18T03:36:34.000Z",
+              "message": "refactor: move KV-transfer enums into a backend-agnostic header (#3676)\n\nSigned-off-by: MartinHua <huaxr13@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 331,
+                "insertions": 122,
+                "deletions": 209
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 90,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 90,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Lyndon Bauto",
@@ -6850,45 +7117,6 @@
                 "lines": 1671,
                 "insertions": 1669,
                 "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Xiao Lei",
-          "email": "xlei.boll@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "d9cab925",
-              "author": "Xiao Lei",
-              "email": "xlei.boll@gmail.com",
-              "date": "2026-06-16T16:03:04.000Z",
-              "message": "[feat] add stage 2 MUSA support with optional native in-process transfer (#3580)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
-              "stats": {
-                "files": 9,
-                "lines": 2204,
-                "insertions": 1984,
-                "deletions": 220
               },
               "scores": {
                 "loc": 30,
@@ -7101,8 +7329,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Kuntai Du",
@@ -7140,6 +7368,84 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Jiayue Chen",
+          "email": "96101996+glbyktjys@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "9cd1bb81",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-18T02:35:06.000Z",
+              "message": "[doc]review and improve Chinese doc translation (#3744)\n\nSigned-off-by: Jiayue Chen <96101996+glbyktjys@users.noreply.github.com>\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 125,
+                "lines": 15781,
+                "insertions": 8312,
+                "deletions": 7469
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "84ff2091",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-18T05:42:38.000Z",
+              "message": "Fix PDBackendAsync shared-key races in allocation, transfer, and removal paths (#3444)\n\n* Fix PDBackendAsync shared-key races in allocation, transfer, and removal paths\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: update _make_mem_obj mock to use dynamic ref-count tracking\n\nThe remove() method in pd_backend_async.py was changed in commit 8a357de\nto use ref-count-based conditional deletion instead of direct pop(). The\nstatic mock `get_ref_count.return_value = 1` meant the deletion condition\n`get_ref_count() == 0` was never True, so keys were never removed after\nrollback/cancel.\n\nUpdate _make_mem_obj() to track _ref_count dynamically via side_effect,\nmatching the pattern already used in test_pd_backend_async_race.py.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 351,
+                "insertions": 303,
+                "deletions": 48
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -7222,6 +7528,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "James Duong",
+          "email": "duong.james@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "544fa2c4",
+              "author": "James Duong",
+              "email": "duong.james@gmail.com",
+              "date": "2026-06-18T19:01:14.000Z",
+              "message": "fix(memory): avoid valkey using a dangling pointer by using a staging buffer (#3609)\n\nSigned-off-by: James Duong <duong.james@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 227,
+                "insertions": 224,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 22,
+                "total": 74
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Neng",
           "email": "xiad0001@ntu.edu.sg",
           "total_commits": 1,
@@ -7257,6 +7602,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 38,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "吴杨帆",
+          "email": "39647285+leno23@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "f53edd48",
+              "author": "吴杨帆",
+              "email": "39647285+leno23@users.noreply.github.com",
+              "date": "2026-06-18T20:16:57.000Z",
+              "message": "docs: polish Chinese recipes translation (#3680)\n\nSigned-off-by: wuyangfan <yangfan.wu@succaiss.com>",
+              "stats": {
+                "files": 1,
+                "lines": 29,
+                "insertions": 14,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 5,
+                "ai": 2,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
           "tier": "T2",
           "tier_name": "Intermediate"
         }
@@ -9925,387 +10309,12 @@
       ],
       "2026-06": [
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 17,
-          "significant_commits": 12,
-          "simple_commits": 5,
-          "commit_score": 1264,
-          "commits": [
-            {
-              "hash": "b0d1e1e7",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-02T05:06:02.000Z",
-              "message": "Put lmcache_frontend into lmcache repo (#3216)\n\n* Put lmcache_frontend into lmcache repo\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move simple_discover_service to lmcache.tools\n\nSo it ships with pip install lmcache. Per ApostaC's review on #3216.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: add frontend dashboard page under MP mode section\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: move architecture diagram to docs/source/mp\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* refactor: move run script to lmcache/lmcache_frontend/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: remove redundant README, covered by frontend_dashboard.rst\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 22,
-                "lines": 3706,
-                "insertions": 3699,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "33a8134c",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-04T06:47:04.000Z",
-              "message": "refactor: add set_shape_desc_dtype helper to avoid scattered try/except (#3514)\n\n* refactor: add set_shape_desc_dtype helper to avoid scattered try/except\n\nThe C++ PageBufferShapeDesc has no dtype field, so every call site\nthat needed to set shape_desc.dtype had to wrap it in try/except\nAttributeError. Extract that pattern into a single helper function\nset_shape_desc_dtype() in python_ops_fallback.py, and also add the\ndtype slot to the pure-Python PageBufferShapeDesc so the CPU fallback\nkernel can disambiguate float16 vs bfloat16 (both have element_size==2).\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: add type hint and improve docstring for set_shape_desc_dtype\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: import set_shape_desc_dtype directly, not via lmc_ops\n\nlmc_ops may be the raw C++ module in GPU envs, which has no\nset_shape_desc_dtype. Import it directly from python_ops_fallback.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 4,
-                "lines": 37,
-                "insertions": 35,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 25,
-                "ai": 3,
-                "total": 46
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "1cd5a7db",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-04T01:16:45.000Z",
-              "message": "feat(mp): add mp_transfer_mode config option (#3513)\n\n* feat(mp): add mp_transfer_mode config option\n\nAdd lmcache.mp.mp_transfer_mode extra_config key that lets users\noverride the worker->server transfer path (auto/handle/data).\n\n- Add MPTransferMode enum and _resolve_mode/_build_handle_context\n  helpers in worker_transfer.py\n- Pass mode through create_transfer_context in the worker adapter\n- Forward extra_config to LMCacheMPWorkerAdapter in both connectors\n- Add platform _registry for KV-wrapper factory dispatch by device type\n- Add cuda/__init__.py and cpu/__init__.py to self-register factories\n- Update docs and tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: circular import and add type hints/docstrings\n\n- Break circular import in cuda/__init__.py by making torch_dev\n  import lazy inside _cuda_is_available()\n- Add type hints to _kv_wrapper_factory\n- Add complete docstrings to all public functions in _registry.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 11,
-                "lines": 458,
-                "insertions": 444,
-                "deletions": 14
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "5e69770c",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-05T12:48:33.000Z",
-              "message": "feat(bench): server_bench supports --mode cpu and --transfer-mode (#3528)\n\n* feat(bench): server_bench supports --mode cpu and --transfer-mode\n\n- --mode cpu: allocate POSIX-SHM-backed KV cache tensors via\n  CpuShmTensorWrapper; the server maps the same physical pages\n  for zero-copy STORE/RETRIEVE.\n- --transfer-mode {auto,handle,data}: explicit override of the\n  routing. auto keeps the historical gpu->handle / cpu->data\n  dispatch. data uses REGISTER_KV_CACHE_NON_GPU_CONTEXT +\n  PREPARE/COMMIT two-phase path with client-side self-check.\n- handle mode on CPU is left as TODO for a follow-up PR.\n- docs: add Bench Server section to configuration.rst.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: merge cpu/gpu kv-cache allocator and fix chunk_size default\n\nPer @hlin99 review on #3528: collapse _allocate_cpu_kv_cache and _allocate_gpu_kv_cache into a single _allocate_kv_cache(use_gpu=...). Most of the body was identical; the only divergence is whether to attach a CUDA device. Update command.py / tests to call the merged helper.\n\nAlso bump _send_store(chunk_size=...) default from 0 to 256 to match the typical server-side chunk size; the existing chunk_size > 0 guard is preserved by callers passing the runtime value explicitly.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: drop defensive getattr, return register tuple\n\nPer @yoo-kumaneko on #3528:\n\n- args.transfer_mode is always set by argparse, so drop the getattr() defensive fallback. A future rename will now fail loudly instead of silently falling back to 'auto'.\n\n- _send_register_kv_cache used to return 'bool | RegisterNonGpuContextResponse' and the caller relied on the response being truthy to mean success. RegisterNonGpuContextResponse is a dataclass with no __bool__, so even an empty failure response would print OK. Switch to (success, Optional[response]) so the success flag is explicit, and treat an empty shm_name as failure.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 5,
-                "lines": 768,
-                "insertions": 641,
-                "deletions": 127
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 5,
-                "ai": 25,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "d709ac40",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-06T02:14:56.000Z",
-              "message": "refactor(mp): introduce create_cache_context factory (#3531)\n\n* refactor(mp): introduce create_cache_context factory in gpu_transfer\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix docstring: add Args/Returns/Raises to create_cache_context\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* rename GPUContextEntry to ContextEntry\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* rename gpu_context/gpu_contexts to cache_context/cache_contexts\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix remaining gpu_context refs in server.py and tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix gpu_contexts refs in blend_v3.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 11,
-                "lines": 310,
-                "insertions": 203,
-                "deletions": 107
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "2da15192",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-07T08:42:58.000Z",
-              "message": "feat: add POSIX SHM infra for CPU KV-cache IPC (#3563)\n\n* feat: add POSIX SHM infra for CPU KV-cache IPC\n\n- lmcache/v1/multiprocess/posix_shm.py: thin POSIX-SHM facade\n  (shm_create_readwrite / shm_map_readwrite / shm_munmap / shm_unlink /\n  shm_open_pool_as_mmap) routing through CPython's _posixshmem to\n  avoid macOS EACCES and shutdown BufferError issues\n- lmcache/v1/platform/cpu/shm.py: CpuShmTensorWrapper + migrate_to_shm_and_wrap\n  for zero-copy CPU KV-cache IPC mirroring CUDA-IPC semantics\n- lmcache/v1/platform/cpu/__init__.py: self-register cpu factory with\n  platform registry\n- tests/v1/multiprocess/test_posix_shm.py: unit tests for posix_shm\n- tests/v1/platform/test_cpu_shm.py: unit tests for CpuShmTensorWrapper\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* assert zero storage_offset before SHM migration\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add warning logs to swallowed exceptions in posix_shm\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 7,
-                "lines": 893,
-                "insertions": 887,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e10dc5f8",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-09T23:58:33.000Z",
-              "message": "feat(mp): add SHM-based NonGpuContext (server-side copy)  (#3352)\n\n* feat(mp): add SHM-based NonGpuContext (server-side copy)  (#3346)\n\n* feat(mp): add SHM-based NonGpuContext (server-side copy)\n\nPorting upstream PR https://github.com/LMCache/LMCache/pull/3328 (commit 2/2)\n\nAdapted to current branch:\n\n- non_cuda_equivalents.py changes redirected to python_ops_fallback.py (renamed)\n\n- test_cache.py changes redirected to bench/test_cache.py (relocated)\n\n- skipped manual registration in cli/commands/__init__.py (now uses dynamic discovery)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Refactor\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address gemini review on shm + stage_block_ids\n\n- shm.py: hook munmap+shm_unlink via weakref.finalize so mmap and SHM\n  segments are released when migrated tensors / to_tensor views are GC-ed\n- shm.py: stop using id(tensor) as registry key; clear stale entries on\n  finalize and use a monotonic counter for SHM names so id reuse can't\n  trigger EEXIST in shm_open(O_EXCL)\n- shm.py: use numel*element_size for the wrapped tensor byte count so\n  views of larger storages are sized correctly\n- cache_context.py: reject empty/None block_ids and bound-check against\n  block_ids_buffer_ in stage_block_ids\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* shm: guard fd/mmap with try/finally on error paths\n\nensure shm_create_readwrite / shm_map_readwrite never leak the fd\nor the mmap when ftruncate or mmap fails. also rename _nbytes to\nnbytes so the test can read it without poking a private attribute.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* shm: validate cached entry via weakref to defeat id reuse\n\nCache id(tensor)->(weakref, name) instead of id->name. Lookups\nverify ref() is the same tensor before reusing the cached SHM\nname; a stale entry left behind by a GC'd tensor whose id has\nsince been recycled now reads as a miss instead of crashing the\nnext migration with EEXIST.\n\nAdds inject_stale_cache_entry_for_test so the new regression\ntest can simulate id recycling without poking module-private\nstate.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 19,
-                "lines": 1602,
-                "insertions": 1385,
-                "deletions": 217
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a64ef9a7",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-09T12:11:57.000Z",
-              "message": "fix: handle NL_X_NB_NH_BS_TWO_HS in get_group_data_ptrs (#3602)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 1,
-                "insertions": 1,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 0,
-                "total": 23
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "fc39f476",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-10T03:28:47.000Z",
-              "message": "[CI] Reduce ci cpu e2e test memory request (#3614)\n\n* Reduce ci cpu e2e test memory request\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* use python to compute kv cache bytes so float values work\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 33,
-                "insertions": 25,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 3,
-                "total": 28
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "7bf82915",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-12T06:21:11.000Z",
-              "message": "ci: add CPU e2e test(vLLM and bench server) (#3590)\n\n* ci: add cpu device e2e test\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci: alias vllm-cpu-nightly dist-info as vllm to fix CLI version lookup\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci: macOS job also installs vllm-cpu-nightly from PyPI\n\nDrop the in-CI git+url build, drop the manual pip cache step (now\nhandled by setup-python's cache: pip), reuse the same dist-info alias\ntrick as ubuntu so importlib.metadata.version('vllm') works.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci: tag aliased vllm dist-info with +cpu so platform plugin activates\n\nvllm.platforms.cpu_platform_plugin() decides whether the CPU platform\nis available by checking 'cpu' in importlib.metadata.version('vllm').\nOur build script strips the +cpu local label before upload (PyPI\nrejects local versions), so the alias version was just a date string\nwithout 'cpu', making the plugin return None and 'vllm serve' fail\nwith 'Failed to infer device type'. Re-tag the alias copy with +cpu;\nthe original dist-info is untouched.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(buildkite): use unsafe-best-match for uv when installing vllm-cpu-nightly\n\nuv's default first-index strategy locked setuptools to whatever the\npytorch CPU index serves (<=70.2.0), so vllm-cpu-nightly's pinned\nsetuptools==80.10.2 could not be satisfied. Tell uv to consider the\nfull cross-index version pool just for this install.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(buildkite): alias vllm-cpu-nightly dist-info to vllm with +cpu tag\n\nvllm CLI calls importlib.metadata.version('vllm'), but our wheel\nregisters as vllm-cpu-nightly so the lookup raises PackageNotFoundError\nand 'vllm serve' dies. Same fix already applied in the GH Actions\ncpu_device.yml — port it to the buildkite script.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(buildkite): drop stale CpuCacheContext check in handle transport verify\n\nhandle (server-side copy) now goes through ShmTransferStrategy after\nthe non_gpu_transfer refactor; CpuCacheContext is no longer\ninstantiated on this path. Match on the actual log line\n'Using shm non-GPU transfer strategy' instead.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(buildkite): verify transport via worker 'Creating transfer context' line\n\nStep 5.5 transport-mode verification was checking server-side strategy\nstrings, but for handle mode the worker enters HandleTransferContext\nwhich goes through gpu_transfer.py, not non_gpu_transfer.py - so the\nshm strategy line never shows up. Switch to grepping the worker's own\n'Creating transfer context (device_type=*, mode=*)' log line, which\nis the single source of truth for which TransferContext got created.\nAlso split the previously-conflated 'auto' and 'handle' branches: on\nCPU, auto falls back to DataTransferContext, while handle stays as\nHandleTransferContext.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(buildkite): grep handle/auto transport verify in vllm log, not lmcache log\n\nWorker is a child of vllm serve, so its 'Creating transfer context'\nline goes to VLLM_LOG (vllm stdout), not LMCACHE_LOG (lmcache server\nstdout). Step 5.5 was grepping the wrong file.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(cpu): factor out shared install/download scripts\n\nPull the duplicated vLLM-CPU install + dist-info alias, lmcache CPU install and opt-125m download out of cpu_device.yml and run-cpu-e2e-validation.sh into three small scripts under .github/scripts/. Also collapse the ubuntu/macos jobs into a single matrix job, and trim a few overly long inline comments.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(cpu): generalize download script; define wait_for_metric_change\n\n- Rename download_opt125m.sh -> download_model.sh and accept the repo id as a positional arg (or via MODEL_ID), so the script is reusable for other models. - Add the missing wait_for_metric_change helper that run-cpu-e2e-validation.sh has been calling but never defined; previously bash silently swallowed it via '|| true'.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment, remove SKIP_CACHE_HIT_VALIDATION env var\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment, move scripts together\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 11,
-                "lines": 1284,
-                "insertions": 907,
-                "deletions": 377
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 10,
-                "ai": 25,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "35c7d5a9",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-14T12:24:29.000Z",
-              "message": "rename GPUKVFormat -> EngineKVFormat, gpu_kv_* -> engine_kv_* (#3673)\n\n* rename GPUKVFormat -> EngineKVFormat, gpu_kv_* -> engine_kv_*\n\nGPUKVFormat does not always mean GPU (CPU/HPU/XPU...), rename to\nEngineKVFormat to describe the inference engine layout. Keep backward\ncompat aliases (GPUKVFormat = EngineKVFormat) so existing callers\nlike lmc_ops.GPUKVFormat.XXX still work.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: drop GPUKVFormat alias from internal type hints\n\nper reviewer feedback, internal code (type hints, docstrings, enum\nreferences) now uses EngineKVFormat directly. backward compat alias\n(GPUKVFormat = EngineKVFormat) is still kept so external callers\ncontinue to work.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: expose EngineKVFormat on test MockCOps for non-CUDA CI\n\nTests use a MockCOps fallback when c_ops fails to import. Add the\nEngineKVFormat attribute (kept GPUKVFormat as alias) so that tests\nwhich moved to lmc_ops.EngineKVFormat keep working under that path.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 42,
-                "lines": 2439,
-                "insertions": 1257,
-                "deletions": 1182
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "63b9d681",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-14T03:35:35.000Z",
-              "message": "rename: MPCacheEngine to MPCacheServer, Handle/Data to EngineDriven/LMCacheDriven (#3672)\n\n* rename: MPCacheEngine -> MPCacheServer, Handle/Data -> EngineDriven/LMCacheDriven\n\n- MPCacheEngineContext -> MPCacheServerContext for consistency\n- HandleTransferContext -> EngineDrivenTransferContext\n- DataTransferContext -> LMCacheDrivenTransferContext\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: handle/data -> engine_driven/lmcache_driven in CI scripts\n\nCI was broken because shell scripts and workflow still used old\nmode names. Also fix reviewer nits: TYPE_CHECKING import guards\nand ASCII tree indent.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: rename gauge prefix mp_engine -> mp_server\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* rename: IPCCacheEngineKey -> IPCCacheServerKey\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: add backward compat for legacy handle/data transfer mode names\n\nhandle -> engine_driven, data -> lmcache_driven with deprecation warning\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: add close() no-op to CpuCacheContext\n\nunregister_kv_cache calls cache_context.close() unconditionally,\nbut CpuCacheContext was missing the method -- CPU context has no\nGDS buffer to clean up so it's a no-op.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Revert \"fix: add backward compat for legacy handle/data transfer mode names\"\n\nThis reverts commit 79c132f935179db38b316765cac36be8c9ce36ee.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: update outdated handle/data refs in adapter comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* rename: drop legacy handle/data mode names everywhere\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix wrong indentation\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 72,
-                "lines": 1087,
-                "insertions": 558,
-                "deletions": 529
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 25,
-                "total": 90
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a69c7764",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-14T02:52:55.000Z",
-              "message": "refactor(build): extract extension build into profile-based architecture (#3642)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 11,
-                "lines": 1460,
-                "insertions": 1011,
-                "deletions": 449
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "08b90fd6",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-14T02:41:04.000Z",
-              "message": "ci(flaky): Retry flaky comprehensive tests 3 time at most (#3667)\n\n* ci(flaky): Retry flaky comprehensive tests 3 time at most\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci: prefix perf-retry anchor key with x- to pass buildkite validation\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 4,
-                "lines": 59,
-                "insertions": 50,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 10,
-                "ai": 5,
-                "total": 40
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "b3a37582",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-16T12:25:51.000Z",
-              "message": "refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts (#3702)\n\n* refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts\n\nGPUCacheContext and CpuCacheContext were duck-typing through a bunch of\nshared properties and methods. Extract them into a BaseCacheContext ABC\nwith class-level annotations so both type-checkers and humans can see\nthe contract clearly.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: use public properties instead of private attrs in BaseCacheContext\n\nreport_status was still poking self.kv_layer_groups_manager_ / self._engine_kv_format\ndirectly instead of going through the public properties. Fixed that and the derived\nproperties too for consistency.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fixes: use array('q') for cross-platform int64 in copy_view_block_ids_to_gpu\n\narray('l') is 4 bytes on Windows vs 8 bytes on Linux. Use 'q'\n(signed long long, always 8 bytes) instead.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve cache context to be more extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: discover_subclasses should scan sub-package __init__.py\n\nThe multi-level walk added in the levels feature introduced a bug\nwhere sub-package __init__.py was treated purely as a descent point\nand never scanned for classes.  This broke discovery of commands\ndefined in __init__.py (e.g. bench, trace, query, quota, tool).\n\nExtract _scan_module helper so both leaf modules and sub-package\n__init__.py share the same class-scanning logic.  Separate the\ninit-scan depth check from the recursion depth check so a sub-pkg\nat depth=1 can be scanned even when levels=[1, 1] prevents deeper\nrecursion.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: skip model tests when HF_TOKEN not available (fork PR)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop HF_DOWNLOAD_FAIL_ON_ERROR, let download_model.sh retry naturally\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: ignore GenericAlias in subclass discovery on Python < 3.12\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 20,
-                "lines": 1853,
-                "insertions": 1258,
-                "deletions": 595
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "714bd7a5",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-16T04:29:58.000Z",
-              "message": "rename: GPUTransferModule -> LMCacheDrivenTransferModule, NonGPUTransferModule -> EngineDrivenTransferModule (#3679)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 36,
-                "lines": 935,
-                "insertions": 506,
-                "deletions": 429
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "71d2c23f",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-17T17:28:09.000Z",
-              "message": "[CI] Download opt-125m from GitHub release instead of HuggingFace (#3735)\n\n* download opt-125m from GitHub release, no more HF_TOKEN needed\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix review: temp dir leak and missing mkdir for refs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix release download url and bust cache\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 3,
-                "lines": 74,
-                "insertions": 64,
-                "deletions": 10
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 7,
-                "total": 44
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 74.3529411764706,
-          "significance_ratio": 0.7058823529411765,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 1264,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 18,
-          "significant_commits": 12,
+          "total_commits": 20,
+          "significant_commits": 14,
           "simple_commits": 6,
-          "commit_score": 1165,
+          "commit_score": 1339,
           "commits": [
             {
               "hash": "bd93975c",
@@ -10684,24 +10693,441 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "ca79ea33",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-18T21:22:55.000Z",
+              "message": "[MP][P2P] introduce P2P adapter (#3740)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 34,
+                "lines": 1493,
+                "insertions": 1360,
+                "deletions": 133
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6a748489",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-18T07:11:20.000Z",
+              "message": "[MP][P2P] Enable runtime registration / deregistration of L2 adapters (#3743)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 10,
+                "lines": 1224,
+                "insertions": 1099,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 64.72222222222223,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 66.95,
+          "significance_ratio": 0.7,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1165,
+          "total_score": 1339,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 17,
+          "significant_commits": 12,
+          "simple_commits": 5,
+          "commit_score": 1264,
+          "commits": [
+            {
+              "hash": "b0d1e1e7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-02T05:06:02.000Z",
+              "message": "Put lmcache_frontend into lmcache repo (#3216)\n\n* Put lmcache_frontend into lmcache repo\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix logic\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Move simple_discover_service to lmcache.tools\n\nSo it ships with pip install lmcache. Per ApostaC's review on #3216.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: add frontend dashboard page under MP mode section\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: move architecture diagram to docs/source/mp\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* refactor: move run script to lmcache/lmcache_frontend/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* docs: remove redundant README, covered by frontend_dashboard.rst\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 22,
+                "lines": 3706,
+                "insertions": 3699,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "33a8134c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-04T06:47:04.000Z",
+              "message": "refactor: add set_shape_desc_dtype helper to avoid scattered try/except (#3514)\n\n* refactor: add set_shape_desc_dtype helper to avoid scattered try/except\n\nThe C++ PageBufferShapeDesc has no dtype field, so every call site\nthat needed to set shape_desc.dtype had to wrap it in try/except\nAttributeError. Extract that pattern into a single helper function\nset_shape_desc_dtype() in python_ops_fallback.py, and also add the\ndtype slot to the pure-Python PageBufferShapeDesc so the CPU fallback\nkernel can disambiguate float16 vs bfloat16 (both have element_size==2).\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: add type hint and improve docstring for set_shape_desc_dtype\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: import set_shape_desc_dtype directly, not via lmc_ops\n\nlmc_ops may be the raw C++ module in GPU envs, which has no\nset_shape_desc_dtype. Import it directly from python_ops_fallback.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 37,
+                "insertions": 35,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 25,
+                "ai": 3,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "1cd5a7db",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-04T01:16:45.000Z",
+              "message": "feat(mp): add mp_transfer_mode config option (#3513)\n\n* feat(mp): add mp_transfer_mode config option\n\nAdd lmcache.mp.mp_transfer_mode extra_config key that lets users\noverride the worker->server transfer path (auto/handle/data).\n\n- Add MPTransferMode enum and _resolve_mode/_build_handle_context\n  helpers in worker_transfer.py\n- Pass mode through create_transfer_context in the worker adapter\n- Forward extra_config to LMCacheMPWorkerAdapter in both connectors\n- Add platform _registry for KV-wrapper factory dispatch by device type\n- Add cuda/__init__.py and cpu/__init__.py to self-register factories\n- Update docs and tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: circular import and add type hints/docstrings\n\n- Break circular import in cuda/__init__.py by making torch_dev\n  import lazy inside _cuda_is_available()\n- Add type hints to _kv_wrapper_factory\n- Add complete docstrings to all public functions in _registry.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 458,
+                "insertions": 444,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5e69770c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-05T12:48:33.000Z",
+              "message": "feat(bench): server_bench supports --mode cpu and --transfer-mode (#3528)\n\n* feat(bench): server_bench supports --mode cpu and --transfer-mode\n\n- --mode cpu: allocate POSIX-SHM-backed KV cache tensors via\n  CpuShmTensorWrapper; the server maps the same physical pages\n  for zero-copy STORE/RETRIEVE.\n- --transfer-mode {auto,handle,data}: explicit override of the\n  routing. auto keeps the historical gpu->handle / cpu->data\n  dispatch. data uses REGISTER_KV_CACHE_NON_GPU_CONTEXT +\n  PREPARE/COMMIT two-phase path with client-side self-check.\n- handle mode on CPU is left as TODO for a follow-up PR.\n- docs: add Bench Server section to configuration.rst.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: merge cpu/gpu kv-cache allocator and fix chunk_size default\n\nPer @hlin99 review on #3528: collapse _allocate_cpu_kv_cache and _allocate_gpu_kv_cache into a single _allocate_kv_cache(use_gpu=...). Most of the body was identical; the only divergence is whether to attach a CUDA device. Update command.py / tests to call the merged helper.\n\nAlso bump _send_store(chunk_size=...) default from 0 to 256 to match the typical server-side chunk size; the existing chunk_size > 0 guard is preserved by callers passing the runtime value explicitly.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: drop defensive getattr, return register tuple\n\nPer @yoo-kumaneko on #3528:\n\n- args.transfer_mode is always set by argparse, so drop the getattr() defensive fallback. A future rename will now fail loudly instead of silently falling back to 'auto'.\n\n- _send_register_kv_cache used to return 'bool | RegisterNonGpuContextResponse' and the caller relied on the response being truthy to mean success. RegisterNonGpuContextResponse is a dataclass with no __bool__, so even an empty failure response would print OK. Switch to (success, Optional[response]) so the success flag is explicit, and treat an empty shm_name as failure.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 5,
+                "lines": 768,
+                "insertions": 641,
+                "deletions": 127
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d709ac40",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-06T02:14:56.000Z",
+              "message": "refactor(mp): introduce create_cache_context factory (#3531)\n\n* refactor(mp): introduce create_cache_context factory in gpu_transfer\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix docstring: add Args/Returns/Raises to create_cache_context\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* rename GPUContextEntry to ContextEntry\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* rename gpu_context/gpu_contexts to cache_context/cache_contexts\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix remaining gpu_context refs in server.py and tests\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix gpu_contexts refs in blend_v3.py\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 310,
+                "insertions": 203,
+                "deletions": 107
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2da15192",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-07T08:42:58.000Z",
+              "message": "feat: add POSIX SHM infra for CPU KV-cache IPC (#3563)\n\n* feat: add POSIX SHM infra for CPU KV-cache IPC\n\n- lmcache/v1/multiprocess/posix_shm.py: thin POSIX-SHM facade\n  (shm_create_readwrite / shm_map_readwrite / shm_munmap / shm_unlink /\n  shm_open_pool_as_mmap) routing through CPython's _posixshmem to\n  avoid macOS EACCES and shutdown BufferError issues\n- lmcache/v1/platform/cpu/shm.py: CpuShmTensorWrapper + migrate_to_shm_and_wrap\n  for zero-copy CPU KV-cache IPC mirroring CUDA-IPC semantics\n- lmcache/v1/platform/cpu/__init__.py: self-register cpu factory with\n  platform registry\n- tests/v1/multiprocess/test_posix_shm.py: unit tests for posix_shm\n- tests/v1/platform/test_cpu_shm.py: unit tests for CpuShmTensorWrapper\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* assert zero storage_offset before SHM migration\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* add warning logs to swallowed exceptions in posix_shm\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 7,
+                "lines": 893,
+                "insertions": 887,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e10dc5f8",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-09T23:58:33.000Z",
+              "message": "feat(mp): add SHM-based NonGpuContext (server-side copy)  (#3352)\n\n* feat(mp): add SHM-based NonGpuContext (server-side copy)  (#3346)\n\n* feat(mp): add SHM-based NonGpuContext (server-side copy)\n\nPorting upstream PR https://github.com/LMCache/LMCache/pull/3328 (commit 2/2)\n\nAdapted to current branch:\n\n- non_cuda_equivalents.py changes redirected to python_ops_fallback.py (renamed)\n\n- test_cache.py changes redirected to bench/test_cache.py (relocated)\n\n- skipped manual registration in cli/commands/__init__.py (now uses dynamic discovery)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Refactor\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address gemini review on shm + stage_block_ids\n\n- shm.py: hook munmap+shm_unlink via weakref.finalize so mmap and SHM\n  segments are released when migrated tensors / to_tensor views are GC-ed\n- shm.py: stop using id(tensor) as registry key; clear stale entries on\n  finalize and use a monotonic counter for SHM names so id reuse can't\n  trigger EEXIST in shm_open(O_EXCL)\n- shm.py: use numel*element_size for the wrapped tensor byte count so\n  views of larger storages are sized correctly\n- cache_context.py: reject empty/None block_ids and bound-check against\n  block_ids_buffer_ in stage_block_ids\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* shm: guard fd/mmap with try/finally on error paths\n\nensure shm_create_readwrite / shm_map_readwrite never leak the fd\nor the mmap when ftruncate or mmap fails. also rename _nbytes to\nnbytes so the test can read it without poking a private attribute.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* shm: validate cached entry via weakref to defeat id reuse\n\nCache id(tensor)->(weakref, name) instead of id->name. Lookups\nverify ref() is the same tensor before reusing the cached SHM\nname; a stale entry left behind by a GC'd tensor whose id has\nsince been recycled now reads as a miss instead of crashing the\nnext migration with EEXIST.\n\nAdds inject_stale_cache_entry_for_test so the new regression\ntest can simulate id recycling without poking module-private\nstate.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address comments\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1602,
+                "insertions": 1385,
+                "deletions": 217
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a64ef9a7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-09T12:11:57.000Z",
+              "message": "fix: handle NL_X_NB_NH_BS_TWO_HS in get_group_data_ptrs (#3602)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "fc39f476",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-10T03:28:47.000Z",
+              "message": "[CI] Reduce ci cpu e2e test memory request (#3614)\n\n* Reduce ci cpu e2e test memory request\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* use python to compute kv cache bytes so float values work\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 33,
+                "insertions": 25,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7bf82915",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-12T06:21:11.000Z",
+              "message": "ci: add CPU e2e test(vLLM and bench server) (#3590)\n\n* ci: add cpu device e2e test\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci: alias vllm-cpu-nightly dist-info as vllm to fix CLI version lookup\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci: macOS job also installs vllm-cpu-nightly from PyPI\n\nDrop the in-CI git+url build, drop the manual pip cache step (now\nhandled by setup-python's cache: pip), reuse the same dist-info alias\ntrick as ubuntu so importlib.metadata.version('vllm') works.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci: tag aliased vllm dist-info with +cpu so platform plugin activates\n\nvllm.platforms.cpu_platform_plugin() decides whether the CPU platform\nis available by checking 'cpu' in importlib.metadata.version('vllm').\nOur build script strips the +cpu local label before upload (PyPI\nrejects local versions), so the alias version was just a date string\nwithout 'cpu', making the plugin return None and 'vllm serve' fail\nwith 'Failed to infer device type'. Re-tag the alias copy with +cpu;\nthe original dist-info is untouched.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(buildkite): use unsafe-best-match for uv when installing vllm-cpu-nightly\n\nuv's default first-index strategy locked setuptools to whatever the\npytorch CPU index serves (<=70.2.0), so vllm-cpu-nightly's pinned\nsetuptools==80.10.2 could not be satisfied. Tell uv to consider the\nfull cross-index version pool just for this install.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(buildkite): alias vllm-cpu-nightly dist-info to vllm with +cpu tag\n\nvllm CLI calls importlib.metadata.version('vllm'), but our wheel\nregisters as vllm-cpu-nightly so the lookup raises PackageNotFoundError\nand 'vllm serve' dies. Same fix already applied in the GH Actions\ncpu_device.yml — port it to the buildkite script.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(buildkite): drop stale CpuCacheContext check in handle transport verify\n\nhandle (server-side copy) now goes through ShmTransferStrategy after\nthe non_gpu_transfer refactor; CpuCacheContext is no longer\ninstantiated on this path. Match on the actual log line\n'Using shm non-GPU transfer strategy' instead.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(buildkite): verify transport via worker 'Creating transfer context' line\n\nStep 5.5 transport-mode verification was checking server-side strategy\nstrings, but for handle mode the worker enters HandleTransferContext\nwhich goes through gpu_transfer.py, not non_gpu_transfer.py - so the\nshm strategy line never shows up. Switch to grepping the worker's own\n'Creating transfer context (device_type=*, mode=*)' log line, which\nis the single source of truth for which TransferContext got created.\nAlso split the previously-conflated 'auto' and 'handle' branches: on\nCPU, auto falls back to DataTransferContext, while handle stays as\nHandleTransferContext.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(buildkite): grep handle/auto transport verify in vllm log, not lmcache log\n\nWorker is a child of vllm serve, so its 'Creating transfer context'\nline goes to VLLM_LOG (vllm stdout), not LMCACHE_LOG (lmcache server\nstdout). Step 5.5 was grepping the wrong file.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(cpu): factor out shared install/download scripts\n\nPull the duplicated vLLM-CPU install + dist-info alias, lmcache CPU install and opt-125m download out of cpu_device.yml and run-cpu-e2e-validation.sh into three small scripts under .github/scripts/. Also collapse the ubuntu/macos jobs into a single matrix job, and trim a few overly long inline comments.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci(cpu): generalize download script; define wait_for_metric_change\n\n- Rename download_opt125m.sh -> download_model.sh and accept the repo id as a positional arg (or via MODEL_ID), so the script is reusable for other models. - Add the missing wait_for_metric_change helper that run-cpu-e2e-validation.sh has been calling but never defined; previously bash silently swallowed it via '|| true'.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* improve\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment, remove SKIP_CACHE_HIT_VALIDATION env var\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Address comment, move scripts together\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 1284,
+                "insertions": 907,
+                "deletions": 377
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "35c7d5a9",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-14T12:24:29.000Z",
+              "message": "rename GPUKVFormat -> EngineKVFormat, gpu_kv_* -> engine_kv_* (#3673)\n\n* rename GPUKVFormat -> EngineKVFormat, gpu_kv_* -> engine_kv_*\n\nGPUKVFormat does not always mean GPU (CPU/HPU/XPU...), rename to\nEngineKVFormat to describe the inference engine layout. Keep backward\ncompat aliases (GPUKVFormat = EngineKVFormat) so existing callers\nlike lmc_ops.GPUKVFormat.XXX still work.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: drop GPUKVFormat alias from internal type hints\n\nper reviewer feedback, internal code (type hints, docstrings, enum\nreferences) now uses EngineKVFormat directly. backward compat alias\n(GPUKVFormat = EngineKVFormat) is still kept so external callers\ncontinue to work.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: expose EngineKVFormat on test MockCOps for non-CUDA CI\n\nTests use a MockCOps fallback when c_ops fails to import. Add the\nEngineKVFormat attribute (kept GPUKVFormat as alias) so that tests\nwhich moved to lmc_ops.EngineKVFormat keep working under that path.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 42,
+                "lines": 2439,
+                "insertions": 1257,
+                "deletions": 1182
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "63b9d681",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-14T03:35:35.000Z",
+              "message": "rename: MPCacheEngine to MPCacheServer, Handle/Data to EngineDriven/LMCacheDriven (#3672)\n\n* rename: MPCacheEngine -> MPCacheServer, Handle/Data -> EngineDriven/LMCacheDriven\n\n- MPCacheEngineContext -> MPCacheServerContext for consistency\n- HandleTransferContext -> EngineDrivenTransferContext\n- DataTransferContext -> LMCacheDrivenTransferContext\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: handle/data -> engine_driven/lmcache_driven in CI scripts\n\nCI was broken because shell scripts and workflow still used old\nmode names. Also fix reviewer nits: TYPE_CHECKING import guards\nand ASCII tree indent.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: rename gauge prefix mp_engine -> mp_server\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* rename: IPCCacheEngineKey -> IPCCacheServerKey\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: add backward compat for legacy handle/data transfer mode names\n\nhandle -> engine_driven, data -> lmcache_driven with deprecation warning\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: add close() no-op to CpuCacheContext\n\nunregister_kv_cache calls cache_context.close() unconditionally,\nbut CpuCacheContext was missing the method -- CPU context has no\nGDS buffer to clean up so it's a no-op.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Revert \"fix: add backward compat for legacy handle/data transfer mode names\"\n\nThis reverts commit 79c132f935179db38b316765cac36be8c9ce36ee.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: update outdated handle/data refs in adapter comment\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* rename: drop legacy handle/data mode names everywhere\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix wrong indentation\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 72,
+                "lines": 1087,
+                "insertions": 558,
+                "deletions": 529
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a69c7764",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-14T02:52:55.000Z",
+              "message": "refactor(build): extract extension build into profile-based architecture (#3642)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 11,
+                "lines": 1460,
+                "insertions": 1011,
+                "deletions": 449
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "08b90fd6",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-14T02:41:04.000Z",
+              "message": "ci(flaky): Retry flaky comprehensive tests 3 time at most (#3667)\n\n* ci(flaky): Retry flaky comprehensive tests 3 time at most\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* ci: prefix perf-retry anchor key with x- to pass buildkite validation\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 59,
+                "insertions": 50,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 10,
+                "ai": 5,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b3a37582",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-16T12:25:51.000Z",
+              "message": "refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts (#3702)\n\n* refactor: extract BaseCacheContext ABC shared by GPU and CPU cache contexts\n\nGPUCacheContext and CpuCacheContext were duck-typing through a bunch of\nshared properties and methods. Extract them into a BaseCacheContext ABC\nwith class-level annotations so both type-checkers and humans can see\nthe contract clearly.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: use public properties instead of private attrs in BaseCacheContext\n\nreport_status was still poking self.kv_layer_groups_manager_ / self._engine_kv_format\ndirectly instead of going through the public properties. Fixed that and the derived\nproperties too for consistency.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fixes: use array('q') for cross-platform int64 in copy_view_block_ids_to_gpu\n\narray('l') is 4 bytes on Windows vs 8 bytes on Linux. Use 'q'\n(signed long long, always 8 bytes) instead.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Improve cache context to be more extensible\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: discover_subclasses should scan sub-package __init__.py\n\nThe multi-level walk added in the levels feature introduced a bug\nwhere sub-package __init__.py was treated purely as a descent point\nand never scanned for classes.  This broke discovery of commands\ndefined in __init__.py (e.g. bench, trace, query, quota, tool).\n\nExtract _scan_module helper so both leaf modules and sub-package\n__init__.py share the same class-scanning logic.  Separate the\ninit-scan depth check from the recursion depth check so a sub-pkg\nat depth=1 can be scanned even when levels=[1, 1] prevents deeper\nrecursion.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: skip model tests when HF_TOKEN not available (fork PR)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop HF_DOWNLOAD_FAIL_ON_ERROR, let download_model.sh retry naturally\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix: ignore GenericAlias in subclass discovery on Python < 3.12\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1853,
+                "insertions": 1258,
+                "deletions": 595
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "714bd7a5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-16T04:29:58.000Z",
+              "message": "rename: GPUTransferModule -> LMCacheDrivenTransferModule, NonGPUTransferModule -> EngineDrivenTransferModule (#3679)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 36,
+                "lines": 935,
+                "insertions": 506,
+                "deletions": 429
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "71d2c23f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-17T17:28:09.000Z",
+              "message": "[CI] Download opt-125m from GitHub release instead of HuggingFace (#3735)\n\n* download opt-125m from GitHub release, no more HF_TOKEN needed\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix review: temp dir leak and missing mkdir for refs\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* fix release download url and bust cache\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 74,
+                "insertions": 64,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 7,
+                "total": 44
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 74.3529411764706,
+          "significance_ratio": 0.7058823529411765,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 1264,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 16,
-          "significant_commits": 8,
-          "simple_commits": 8,
-          "commit_score": 848,
+          "total_commits": 19,
+          "significant_commits": 9,
+          "simple_commits": 10,
+          "commit_score": 979,
           "commits": [
             {
               "hash": "038f27d6",
@@ -11038,14 +11464,77 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "5566fac9",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-18T19:19:13.000Z",
+              "message": "[CI] Publish rc release tags as clean pre-releases + gate CLI wheel against native ops (#3747)\n\nfix\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 29,
+                "insertions": 22,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9cff3526",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-18T07:22:47.000Z",
+              "message": "[ci] add back blend ci test.  (#3739)\n\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 176,
+                "insertions": 176,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 17,
+                "total": 79
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ae0f009f",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-18T02:30:01.000Z",
+              "message": " [CI] Pass LMCACHE_VERSION to RC image build so it installs the RC wheel (#3750)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 53,
-          "significance_ratio": 0.5,
+          "avg_score": 51.526315789473685,
+          "significance_ratio": 0.47368421052631576,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 848,
+          "total_score": 979,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11259,10 +11748,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 7,
-          "significant_commits": 7,
+          "total_commits": 9,
+          "significant_commits": 9,
           "simple_commits": 0,
-          "commit_score": 562,
+          "commit_score": 736,
           "commits": [
             {
               "hash": "84df850c",
@@ -11410,24 +11899,66 @@
                 "total": 66
               },
               "classification": "significant"
+            },
+            {
+              "hash": "5231a15a",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-18T02:04:56.000Z",
+              "message": "[Feat] Operator: reconcile the MP coordinator (LMCacheCoordinator CRD) (#3732)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 33,
+                "lines": 6134,
+                "insertions": 6132,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "eb9405ba",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-18T01:04:00.000Z",
+              "message": "[Feat] [Coordinator] Optimize coordinator global CacheBlend token matching (#3708)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 641,
+                "insertions": 547,
+                "deletions": 94
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 80.28571428571429,
+          "avg_score": 81.77777777777777,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 562,
+          "total_score": 736,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 9,
-          "significant_commits": 5,
+          "total_commits": 10,
+          "significant_commits": 6,
           "simple_commits": 4,
-          "commit_score": 542,
+          "commit_score": 622,
           "commits": [
             {
               "hash": "cb5343d1",
@@ -11617,24 +12148,45 @@
                 "total": 85
               },
               "classification": "significant"
+            },
+            {
+              "hash": "84ff2091",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-18T05:42:38.000Z",
+              "message": "Fix PDBackendAsync shared-key races in allocation, transfer, and removal paths (#3444)\n\n* Fix PDBackendAsync shared-key races in allocation, transfer, and removal paths\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: update _make_mem_obj mock to use dynamic ref-count tracking\n\nThe remove() method in pd_backend_async.py was changed in commit 8a357de\nto use ref-count-based conditional deletion instead of direct pop(). The\nstatic mock `get_ref_count.return_value = 1` meant the deletion condition\n`get_ref_count() == 0` was never True, so keys were never removed after\nrollback/cancel.\n\nUpdate _make_mem_obj() to track _ref_count dynamically via side_effect,\nmatching the pattern already used in test_pd_backend_async_race.py.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 351,
+                "insertions": 303,
+                "deletions": 48
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 60.22222222222222,
-          "significance_ratio": 0.5555555555555556,
+          "avg_score": 62.2,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 542,
+          "total_score": 622,
           "tier": "T1",
           "tier_name": "Advanced"
         },
         {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
-          "total_commits": 6,
+          "total_commits": 7,
           "significant_commits": 4,
-          "simple_commits": 2,
-          "commit_score": 416,
+          "simple_commits": 3,
+          "commit_score": 437,
           "commits": [
             {
               "hash": "adedd1fc",
@@ -11761,14 +12313,116 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9ffb104f",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-18T02:30:31.000Z",
+              "message": "ci(operator): tag pre-release images as latest-rc, not latest (#3746)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 18,
+                "insertions": 16,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 69.33333333333333,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 62.42857142857143,
+          "significance_ratio": 0.5714285714285714,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 416,
+          "total_score": 437,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 287,
+          "commits": [
+            {
+              "hash": "a1f6bda9",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-06T08:18:40.000Z",
+              "message": "feat:Add Moore Threads MUSA support for LMCache v1. (#3483)\n\n* Add Moore Threads MUSA support for LMCache v1\n\nAdd MUSA device detection, build selection, and vLLM connector dispatch for LMCache v1. Include the non-layerwise MUSA connector implementation plus CPU-runnable dispatch tests and hardware-gated MUSA connector round-trip tests.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* fix: handle MUSA vLLM cached prefix\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* chore: trigger CI\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n---------\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1243,
+                "insertions": 1224,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d9cab925",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-16T16:03:04.000Z",
+              "message": "[feat] add stage 2 MUSA support with optional native in-process transfer (#3580)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 2204,
+                "insertions": 1984,
+                "deletions": 220
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "84685ef3",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-18T08:07:05.000Z",
+              "message": "feat: enable MUSA MP engine-driven non-handle path (#3725)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 1376,
+                "insertions": 1139,
+                "deletions": 237
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 95.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 287,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -12118,6 +12772,87 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jiayue Chen",
+          "email": "96101996+glbyktjys@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 256,
+          "commits": [
+            {
+              "hash": "152879df",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-04T02:42:39.000Z",
+              "message": "deprecate goblin in doc (#3518)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 549,
+                "insertions": 4,
+                "deletions": 545
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f08105b1",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-05T19:25:43.000Z",
+              "message": "[Doc] Update README.md (#3461)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 207,
+                "insertions": 100,
+                "deletions": 107
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9cd1bb81",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-18T02:35:06.000Z",
+              "message": "[doc]review and improve Chinese doc translation (#3744)\n\nSigned-off-by: Jiayue Chen <96101996+glbyktjys@users.noreply.github.com>\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 125,
+                "lines": 15781,
+                "insertions": 8312,
+                "deletions": 7469
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85.33333333333333,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 256,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 3,
@@ -12195,8 +12930,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 242,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Ilya Yanok",
@@ -12276,126 +13011,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 238,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Xiao Lei",
-          "email": "xlei.boll@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 187,
-          "commits": [
-            {
-              "hash": "a1f6bda9",
-              "author": "Xiao Lei",
-              "email": "xlei.boll@gmail.com",
-              "date": "2026-06-06T08:18:40.000Z",
-              "message": "feat:Add Moore Threads MUSA support for LMCache v1. (#3483)\n\n* Add Moore Threads MUSA support for LMCache v1\n\nAdd MUSA device detection, build selection, and vLLM connector dispatch for LMCache v1. Include the non-layerwise MUSA connector implementation plus CPU-runnable dispatch tests and hardware-gated MUSA connector round-trip tests.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* fix: handle MUSA vLLM cached prefix\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* chore: trigger CI\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n---------\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
-              "stats": {
-                "files": 6,
-                "lines": 1243,
-                "insertions": 1224,
-                "deletions": 19
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "d9cab925",
-              "author": "Xiao Lei",
-              "email": "xlei.boll@gmail.com",
-              "date": "2026-06-16T16:03:04.000Z",
-              "message": "[feat] add stage 2 MUSA support with optional native in-process transfer (#3580)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
-              "stats": {
-                "files": 9,
-                "lines": 2204,
-                "insertions": 1984,
-                "deletions": 220
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 93.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 187,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Jiayue Chen",
-          "email": "96101996+glbyktjys@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 169,
-          "commits": [
-            {
-              "hash": "152879df",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-06-04T02:42:39.000Z",
-              "message": "deprecate goblin in doc (#3518)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 14,
-                "lines": 549,
-                "insertions": 4,
-                "deletions": 545
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f08105b1",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-06-05T19:25:43.000Z",
-              "message": "[Doc] Update README.md (#3461)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 9,
-                "lines": 207,
-                "insertions": 100,
-                "deletions": 107
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 84.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 169,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -12658,6 +13273,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Martin Hua",
+          "email": "huaxr13@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 90,
+          "commits": [
+            {
+              "hash": "6e992ec4",
+              "author": "Martin Hua",
+              "email": "huaxr13@gmail.com",
+              "date": "2026-06-18T03:36:34.000Z",
+              "message": "refactor: move KV-transfer enums into a backend-agnostic header (#3676)\n\nSigned-off-by: MartinHua <huaxr13@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 331,
+                "insertions": 122,
+                "deletions": 209
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 90,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 90,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Tian, Feng",
           "email": "feng.tian@intel.com",
           "total_commits": 1,
@@ -12753,8 +13407,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Shaoting",
@@ -13104,6 +13758,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 76,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "James Duong",
+          "email": "duong.james@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "544fa2c4",
+              "author": "James Duong",
+              "email": "duong.james@gmail.com",
+              "date": "2026-06-18T19:01:14.000Z",
+              "message": "fix(memory): avoid valkey using a dangling pointer by using a staging buffer (#3609)\n\nSigned-off-by: James Duong <duong.james@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 227,
+                "insertions": 224,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 22,
+                "total": 74
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -13772,6 +14465,45 @@
           "total_score": 20,
           "tier": "T3",
           "tier_name": "Contributing"
+        },
+        {
+          "name": "吴杨帆",
+          "email": "39647285+leno23@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "f53edd48",
+              "author": "吴杨帆",
+              "email": "39647285+leno23@users.noreply.github.com",
+              "date": "2026-06-18T20:16:57.000Z",
+              "message": "docs: polish Chinese recipes translation (#3680)\n\nSigned-off-by: wuyangfan <yangfan.wu@succaiss.com>",
+              "stats": {
+                "files": 1,
+                "lines": 29,
+                "insertions": 14,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 5,
+                "ai": 2,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -13780,10 +14512,10 @@
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 31,
-          "significant_commits": 19,
+          "total_commits": 33,
+          "significant_commits": 21,
           "simple_commits": 12,
-          "commit_score": 1870,
+          "commit_score": 2044,
           "commits": [
             {
               "hash": "2e36e1e4",
@@ -14435,14 +15167,56 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "ca79ea33",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-18T21:22:55.000Z",
+              "message": "[MP][P2P] introduce P2P adapter (#3740)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 34,
+                "lines": 1493,
+                "insertions": 1360,
+                "deletions": 133
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6a748489",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-06-18T07:11:20.000Z",
+              "message": "[MP][P2P] Enable runtime registration / deregistration of L2 adapters (#3743)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 10,
+                "lines": 1224,
+                "insertions": 1099,
+                "deletions": 125
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 60.32258064516129,
-          "significance_ratio": 0.6129032258064516,
+          "avg_score": 61.93939393939394,
+          "significance_ratio": 0.6363636363636364,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1870,
+          "total_score": 2044,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -14971,10 +15745,10 @@
         {
           "name": "deng451e",
           "email": "57919305+deng451e@users.noreply.github.com",
-          "total_commits": 30,
-          "significant_commits": 11,
-          "simple_commits": 19,
-          "commit_score": 1352,
+          "total_commits": 33,
+          "significant_commits": 12,
+          "simple_commits": 21,
+          "commit_score": 1483,
           "commits": [
             {
               "hash": "d37cfa16",
@@ -15605,24 +16379,87 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "5566fac9",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-18T19:19:13.000Z",
+              "message": "[CI] Publish rc release tags as clean pre-releases + gate CLI wheel against native ops (#3747)\n\nfix\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 29,
+                "insertions": 22,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9cff3526",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-18T07:22:47.000Z",
+              "message": "[ci] add back blend ci test.  (#3739)\n\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 176,
+                "insertions": 176,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 17,
+                "total": 79
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ae0f009f",
+              "author": "deng451e",
+              "email": "838677410@qq.com",
+              "date": "2026-06-18T02:30:01.000Z",
+              "message": " [CI] Pass LMCACHE_VERSION to RC image build so it installs the RC wheel (#3750)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 45.06666666666667,
-          "significance_ratio": 0.36666666666666664,
+          "avg_score": 44.93939393939394,
+          "significance_ratio": 0.36363636363636365,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1352,
+          "total_score": 1483,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 14,
-          "significant_commits": 8,
+          "total_commits": 15,
+          "significant_commits": 9,
           "simple_commits": 6,
-          "commit_score": 867,
+          "commit_score": 947,
           "commits": [
             {
               "hash": "4658d69e",
@@ -15917,14 +16754,35 @@
                 "total": 85
               },
               "classification": "significant"
+            },
+            {
+              "hash": "84ff2091",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-06-18T05:42:38.000Z",
+              "message": "Fix PDBackendAsync shared-key races in allocation, transfer, and removal paths (#3444)\n\n* Fix PDBackendAsync shared-key races in allocation, transfer, and removal paths\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix: update _make_mem_obj mock to use dynamic ref-count tracking\n\nThe remove() method in pd_backend_async.py was changed in commit 8a357de\nto use ref-count-based conditional deletion instead of direct pop(). The\nstatic mock `get_ref_count.return_value = 1` meant the deletion condition\n`get_ref_count() == 0` was never True, so keys were never removed after\nrollback/cancel.\n\nUpdate _make_mem_obj() to track _ref_count dynamically via side_effect,\nmatching the pattern already used in test_pd_backend_async_race.py.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 351,
+                "insertions": 303,
+                "deletions": 48
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 15,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 61.92857142857143,
-          "significance_ratio": 0.5714285714285714,
+          "avg_score": 63.13333333333333,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 867,
+          "total_score": 947,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -16136,6 +16994,213 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 9,
+          "significant_commits": 9,
+          "simple_commits": 0,
+          "commit_score": 736,
+          "commits": [
+            {
+              "hash": "84df850c",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-03T21:31:05.000Z",
+              "message": "[MP][feat] add mp coordinator backbone (#3488)\n\n* feat: add base mp coordinator\n\n* add user doc\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1186,
+                "insertions": 1186,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4ae68238",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-05T07:37:03.000Z",
+              "message": "feat: add coordinator CLI and mp server registration (#3522)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 225,
+                "insertions": 219,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 22,
+                "total": 97
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f95f564d",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-05T03:39:09.000Z",
+              "message": "[MP][Feat] Register MP servers with the coordinator (#3516)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 662,
+                "insertions": 655,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1d2b3de5",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-11T05:10:25.000Z",
+              "message": "[Misc] align MP server id with OTel service.instance.id (#3558)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 97,
+                "insertions": 69,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 9,
+                "total": 56
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f594b209",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-12T23:45:53.000Z",
+              "message": "[Feat][Coordinator] Global CacheBlend fingerprint directory on the MP coordinator (#3597)\n\n* feat: add global cacheblend lookup\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1717,
+                "insertions": 1682,
+                "deletions": 35
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "59a466fd",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-17T20:35:38.000Z",
+              "message": "[Obs] Add cb.coordinator_match observability span for coordinator blend lookup (#3711)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 90,
+                "insertions": 85,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 9,
+                "total": 56
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "88910008",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-17T03:52:52.000Z",
+              "message": "[Feat] Expose CacheBlend coordinator knobs as CLI flags (#3731)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 142,
+                "insertions": 140,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 14,
+                "total": 66
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5231a15a",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-18T02:04:56.000Z",
+              "message": "[Feat] Operator: reconcile the MP coordinator (LMCacheCoordinator CRD) (#3732)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 33,
+                "lines": 6134,
+                "insertions": 6132,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "eb9405ba",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-06-18T01:04:00.000Z",
+              "message": "[Feat] [Coordinator] Optimize coordinator global CacheBlend token matching (#3708)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 641,
+                "insertions": 547,
+                "deletions": 94
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81.77777777777777,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 736,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
           "total_commits": 7,
@@ -16297,171 +17362,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 564,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 7,
-          "significant_commits": 7,
-          "simple_commits": 0,
-          "commit_score": 562,
-          "commits": [
-            {
-              "hash": "84df850c",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-06-03T21:31:05.000Z",
-              "message": "[MP][feat] add mp coordinator backbone (#3488)\n\n* feat: add base mp coordinator\n\n* add user doc\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 18,
-                "lines": 1186,
-                "insertions": 1186,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "4ae68238",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-06-05T07:37:03.000Z",
-              "message": "feat: add coordinator CLI and mp server registration (#3522)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 225,
-                "insertions": 219,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 22,
-                "total": 97
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f95f564d",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-06-05T03:39:09.000Z",
-              "message": "[MP][Feat] Register MP servers with the coordinator (#3516)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 10,
-                "lines": 662,
-                "insertions": 655,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "1d2b3de5",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-06-11T05:10:25.000Z",
-              "message": "[Misc] align MP server id with OTel service.instance.id (#3558)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 97,
-                "insertions": 69,
-                "deletions": 28
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 9,
-                "total": 56
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f594b209",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-06-12T23:45:53.000Z",
-              "message": "[Feat][Coordinator] Global CacheBlend fingerprint directory on the MP coordinator (#3597)\n\n* feat: add global cacheblend lookup\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 14,
-                "lines": 1717,
-                "insertions": 1682,
-                "deletions": 35
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "59a466fd",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-06-17T20:35:38.000Z",
-              "message": "[Obs] Add cb.coordinator_match observability span for coordinator blend lookup (#3711)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 8,
-                "lines": 90,
-                "insertions": 85,
-                "deletions": 5
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 9,
-                "total": 56
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "88910008",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-06-17T03:52:52.000Z",
-              "message": "[Feat] Expose CacheBlend coordinator knobs as CLI flags (#3731)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 3,
-                "lines": 142,
-                "insertions": 140,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 14,
-                "total": 66
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 80.28571428571429,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 562,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -16633,10 +17533,10 @@
         {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
-          "total_commits": 8,
+          "total_commits": 9,
           "significant_commits": 5,
-          "simple_commits": 3,
-          "commit_score": 529,
+          "simple_commits": 4,
+          "commit_score": 550,
           "commits": [
             {
               "hash": "d63f68db",
@@ -16805,14 +17705,200 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9ffb104f",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-06-18T02:30:31.000Z",
+              "message": "ci(operator): tag pre-release images as latest-rc, not latest (#3746)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 18,
+                "insertions": 16,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 66.125,
-          "significance_ratio": 0.625,
+          "avg_score": 61.111111111111114,
+          "significance_ratio": 0.5555555555555556,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 529,
+          "total_score": 550,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Jiayue Chen",
+          "email": "96101996+glbyktjys@users.noreply.github.com",
+          "total_commits": 7,
+          "significant_commits": 4,
+          "simple_commits": 3,
+          "commit_score": 432,
+          "commits": [
+            {
+              "hash": "84667435",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-16T02:22:13.000Z",
+              "message": "add Chinese translation pipeline (#3265)\n\n* add Chinese translation pipeline\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 689,
+                "insertions": 688,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a60ae02e",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-18T22:55:28.000Z",
+              "message": "[CI] add signoff for doc translation workflow (#3315)\n\nadd signoff for doc translation workflow\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8ece5f0a",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-19T23:56:56.000Z",
+              "message": "Fix the translation icon together with the screen layout adjustment (#3334)\n\n* Fix the translation icon together with the screen layout adjustment\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 52,
+                "insertions": 39,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e8b373a7",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-05-28T22:47:32.000Z",
+              "message": "Fix/translate workflow reuse translations (#3436)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 20,
+                "insertions": 18,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "152879df",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-04T02:42:39.000Z",
+              "message": "deprecate goblin in doc (#3518)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 549,
+                "insertions": 4,
+                "deletions": 545
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f08105b1",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-05T19:25:43.000Z",
+              "message": "[Doc] Update README.md (#3461)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 207,
+                "insertions": 100,
+                "deletions": 107
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9cd1bb81",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-18T02:35:06.000Z",
+              "message": "[doc]review and improve Chinese doc translation (#3744)\n\nSigned-off-by: Jiayue Chen <96101996+glbyktjys@users.noreply.github.com>\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 125,
+                "lines": 15781,
+                "insertions": 8312,
+                "deletions": 7469
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61.714285714285715,
+          "significance_ratio": 0.5714285714285714,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 432,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -17224,150 +18310,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 377,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Jiayue Chen",
-          "email": "96101996+glbyktjys@users.noreply.github.com",
-          "total_commits": 6,
-          "significant_commits": 3,
-          "simple_commits": 3,
-          "commit_score": 345,
-          "commits": [
-            {
-              "hash": "84667435",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-05-16T02:22:13.000Z",
-              "message": "add Chinese translation pipeline (#3265)\n\n* add Chinese translation pipeline\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 9,
-                "lines": 689,
-                "insertions": 688,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a60ae02e",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-05-18T22:55:28.000Z",
-              "message": "[CI] add signoff for doc translation workflow (#3315)\n\nadd signoff for doc translation workflow\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 1,
-                "insertions": 1,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "8ece5f0a",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-05-19T23:56:56.000Z",
-              "message": "Fix the translation icon together with the screen layout adjustment (#3334)\n\n* Fix the translation icon together with the screen layout adjustment\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 52,
-                "insertions": 39,
-                "deletions": 13
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 5,
-                "total": 42
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "e8b373a7",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-05-28T22:47:32.000Z",
-              "message": "Fix/translate workflow reuse translations (#3436)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 20,
-                "insertions": 18,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 2,
-                "total": 27
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "152879df",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-06-04T02:42:39.000Z",
-              "message": "deprecate goblin in doc (#3518)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 14,
-                "lines": 549,
-                "insertions": 4,
-                "deletions": 545
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f08105b1",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-06-05T19:25:43.000Z",
-              "message": "[Doc] Update README.md (#3461)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 9,
-                "lines": 207,
-                "insertions": 100,
-                "deletions": 107
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 57.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 345,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -17576,6 +18518,87 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 287,
+          "commits": [
+            {
+              "hash": "a1f6bda9",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-06T08:18:40.000Z",
+              "message": "feat:Add Moore Threads MUSA support for LMCache v1. (#3483)\n\n* Add Moore Threads MUSA support for LMCache v1\n\nAdd MUSA device detection, build selection, and vLLM connector dispatch for LMCache v1. Include the non-layerwise MUSA connector implementation plus CPU-runnable dispatch tests and hardware-gated MUSA connector round-trip tests.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* fix: handle MUSA vLLM cached prefix\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* chore: trigger CI\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n---------\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+              "stats": {
+                "files": 6,
+                "lines": 1243,
+                "insertions": 1224,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d9cab925",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-16T16:03:04.000Z",
+              "message": "[feat] add stage 2 MUSA support with optional native in-process transfer (#3580)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 2204,
+                "insertions": 1984,
+                "deletions": 220
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "84685ef3",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-06-18T08:07:05.000Z",
+              "message": "feat: enable MUSA MP engine-driven non-handle path (#3725)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 1376,
+                "insertions": 1139,
+                "deletions": 237
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 95.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 287,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Zhengfei He",
           "email": "157287166+zhengfeihe@users.noreply.github.com",
           "total_commits": 5,
@@ -17695,66 +18718,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 268,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Xiao Lei",
-          "email": "xlei.boll@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 187,
-          "commits": [
-            {
-              "hash": "a1f6bda9",
-              "author": "Xiao Lei",
-              "email": "xlei.boll@gmail.com",
-              "date": "2026-06-06T08:18:40.000Z",
-              "message": "feat:Add Moore Threads MUSA support for LMCache v1. (#3483)\n\n* Add Moore Threads MUSA support for LMCache v1\n\nAdd MUSA device detection, build selection, and vLLM connector dispatch for LMCache v1. Include the non-layerwise MUSA connector implementation plus CPU-runnable dispatch tests and hardware-gated MUSA connector round-trip tests.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* fix: handle MUSA vLLM cached prefix\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n* chore: trigger CI\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\n\n---------\n\nSigned-off-by: superleo <xlei.boll@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
-              "stats": {
-                "files": 6,
-                "lines": 1243,
-                "insertions": 1224,
-                "deletions": 19
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "d9cab925",
-              "author": "Xiao Lei",
-              "email": "xlei.boll@gmail.com",
-              "date": "2026-06-16T16:03:04.000Z",
-              "message": "[feat] add stage 2 MUSA support with optional native in-process transfer (#3580)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
-              "stats": {
-                "files": 9,
-                "lines": 2204,
-                "insertions": 1984,
-                "deletions": 220
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 93.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 187,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -18401,6 +19364,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Martin Hua",
+          "email": "huaxr13@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 90,
+          "commits": [
+            {
+              "hash": "6e992ec4",
+              "author": "Martin Hua",
+              "email": "huaxr13@gmail.com",
+              "date": "2026-06-18T03:36:34.000Z",
+              "message": "refactor: move KV-transfer enums into a backend-agnostic header (#3676)\n\nSigned-off-by: MartinHua <huaxr13@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 331,
+                "insertions": 122,
+                "deletions": 209
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 25,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 90,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 90,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "elliotz-ai",
           "email": "elliot@character.ai",
           "total_commits": 1,
@@ -18826,6 +19828,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "James Duong",
+          "email": "duong.james@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "544fa2c4",
+              "author": "James Duong",
+              "email": "duong.james@gmail.com",
+              "date": "2026-06-18T19:01:14.000Z",
+              "message": "fix(memory): avoid valkey using a dangling pointer by using a staging buffer (#3609)\n\nSigned-off-by: James Duong <duong.james@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 227,
+                "insertions": 224,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 22,
+                "total": 74
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -19923,18 +20964,57 @@
           "total_score": 20,
           "tier": "T3",
           "tier_name": "Contributing"
+        },
+        {
+          "name": "吴杨帆",
+          "email": "39647285+leno23@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "f53edd48",
+              "author": "吴杨帆",
+              "email": "39647285+leno23@users.noreply.github.com",
+              "date": "2026-06-18T20:16:57.000Z",
+              "message": "docs: polish Chinese recipes translation (#3680)\n\nSigned-off-by: wuyangfan <yangfan.wu@succaiss.com>",
+              "stats": {
+                "files": 1,
+                "lines": 29,
+                "insertions": 14,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 5,
+                "ai": 2,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-06-18T00:30:41.079Z",
+    "analyzedAt": "2026-06-19T00:30:43.995Z",
     "daysBack": 2,
-    "totalCommits": 237,
-    "totalContributors": 65,
+    "totalCommits": 251,
+    "totalContributors": 68,
     "mergedFrom": {
-      "existing": 223,
-      "new": 26
+      "existing": 237,
+      "new": 28
     }
   }
 }
