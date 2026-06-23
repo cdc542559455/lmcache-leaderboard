@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-22T00:30:01.977Z",
-  "total_commits_analyzed": 11,
+  "last_updated": "2026-06-23T00:30:09.602Z",
+  "total_commits_analyzed": 18,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -326,6 +326,263 @@
           "tier": "T0",
           "tier_name": "Elite"
         }
+      ],
+      "2026-W26": [
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "e09972c8",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-22T08:44:39.000Z",
+              "message": "[docs] add cli extension docs (#3719)\n\n* [docs] add cli extension docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 380,
+                "insertions": 380,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "15b38e7e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-22T07:46:44.000Z",
+              "message": "[refactor] refactor CLI for multi sub commands  (#3678)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 40,
+                "lines": 2090,
+                "insertions": 907,
+                "deletions": 1183
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "zxue2",
+          "email": "zhan.xue@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "b2d804e9",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-06-22T20:34:51.000Z",
+              "message": "feat(mp): introduce device-agnostic DeviceIPCWrapper base for KV-cache IPC (#3703)\n\nAll KV-cache IPC wrappers (CUDA, CPU-SHM, TRT-LLM raw-CUDA) previously\nsubclassed `CudaIPCWrapper` — a naming and structural pattern that made\nnon-CUDA backends impossible to add cleanly.  This change introduces a\ndevice-agnostic base class and reparents the existing wrappers onto it.\n\nlmcache/v1/multiprocess/custom_types.py\n  - Add `DeviceIPCWrapper` (new base): holds the shared interface fields\n    :dtype, shape, stride, storage_offset, device_uuid.\n  - `CudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - `RawCudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - Update `list[CudaIPCWrapper]` to `list[DeviceIPCWrapper]`.\n  - `_CUSTOMERIZED_SERIALIZERS` ext-code-1 key updated to\n    `DeviceIPCWrapper`; pickle still preserves concrete subclass identity\n    through the wire so `to_tensor()` dispatches correctly.\n\nlmcache/v1/platform/cpu/shm.py\n  - `CpuShmTensorWrapper` reparented to `DeviceIPCWrapper`.\n\nlmcache/v1/multiprocess/mq.py\n  - Import and `_SPECIAL_ENCODER_DECODERS` keys updated:\n    `CudaIPCWrapper` / `list[CudaIPCWrapper]` -> `DeviceIPCWrapper` /\n    `list[DeviceIPCWrapper]`.\n\nlmcache/v1/multiprocess/protocols/blend_v3.py\nlmcache/v1/multiprocess/modules/blend_v3.py\n  - Import and payload-class / type-annotation references updated to\n    `DeviceIPCWrapper`.\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: Yi Yao <yi.a.yao@intel.com>\nCo-authored-by: Ye XinYu <xinyu.ye@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 290,
+                "insertions": 195,
+                "deletions": 95
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Hz_Zhang",
+          "email": "47402297+HaozheZhang6@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "a312a7f6",
+              "author": "Hz_Zhang",
+              "email": "47402297+HaozheZhang6@users.noreply.github.com",
+              "date": "2026-06-22T22:28:13.000Z",
+              "message": "Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait (#3704)\n\n* Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait\n\nThe SGLang MP adapter's _wait_for_lookup busy-polled QUERY_PREFETCH_STATUS in\na 1ms sleep loop, adding repeated ZMQ requests and polling latency on the load\npath -- noticeable when a lookup triggers movement from a slower storage layer\ninto L1 (per the TODO left in _wait_for_lookup).\n\nAdd a blocking WAIT_PREFETCH_STATUS request type. Its daemon handler blocks on\na PrefetchController completion condition variable until the prefetch result is\npublished (or a timeout), so the client issues a single request instead of\nbusy-polling. L1-only prefetches (prefetch_request_id == -1) return immediately.\n\nFixes #3694\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* Register WAIT_PREFETCH_STATUS in the engine protocol definitions\n\nThe RequestType docstring requires every enum member to also have a protocol\ndefinition (the validation system in protocols/__init__.py enforces a 1:1\nmatch). The new WAIT_PREFETCH_STATUS member was missing one, so\ninitialize_protocols() would fail with an orphaned enum member. Add the\ndefinition (payload: request_id str + timeout float, returns int | None) and\nits REQUEST_NAMES entry, mirroring QUERY_PREFETCH_STATUS.\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* test: cover the WAIT_PREFETCH_STATUS LookupModule handler path\n\nAdd targeted tests for wait_prefetch_status -> query_prefetch_status: count\ncomputation + event emission + exactly-once job consumption on success, None +\njob retention on timeout, and 0 for an unknown request_id. The storage manager is\nmocked, so the request-handler/protocol path is exercised without a GPU or native\nbitmap (the controller tests already cover the condition variable in isolation).\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* style: ruff-format the WAIT_PREFETCH_STATUS test\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* docs: document WAIT_PREFETCH_STATUS in the MP ZMQ protocol (SGLang-only)\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\nCo-authored-by: haozhe <haozhe@haozhes-MacBook-Pro.local>",
+              "stats": {
+                "files": 9,
+                "lines": 283,
+                "insertions": 262,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "LIUyujie",
+          "email": "130735711+Lyj1007@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "c0c613e5",
+              "author": "LIUyujie",
+              "email": "130735711+Lyj1007@users.noreply.github.com",
+              "date": "2026-06-22T08:37:24.000Z",
+              "message": "[MP][feat] Support multi LMCache servers deployment with vllm (#3248)\n\nSigned-off-by: Yujie Liu <milan021007@163.com>",
+              "stats": {
+                "files": 4,
+                "lines": 381,
+                "insertions": 292,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "听说十四行春",
+          "email": "2569381344@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 44,
+          "commits": [
+            {
+              "hash": "beeac503",
+              "author": "听说十四行春",
+              "email": "2569381344@qq.com",
+              "date": "2026-06-22T07:04:33.000Z",
+              "message": "[good-first-issue] core: convert remaining f-string log calls to %-format across 11 files (#3805)\n\nSigned-off-by: April-Sonnet <2569381344@qq.com>",
+              "stats": {
+                "files": 11,
+                "lines": 48,
+                "insertions": 24,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 44,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 44,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 36,
+          "commits": [
+            {
+              "hash": "47517888",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-06-22T11:27:48.000Z",
+              "message": "[Docs]: Update \"Welcom to LMCache\" description (#3806)\n\n* docs: align Welcome page with README About section\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* docs: port README intro (key features, ecosystem, updates) to Welcome page\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 62,
+                "insertions": 59,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 5,
+                "ai": 6,
+                "total": 36
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 36,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 36,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -496,12 +753,72 @@
           "tier_name": "Elite"
         },
         {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "e09972c8",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-22T08:44:39.000Z",
+              "message": "[docs] add cli extension docs (#3719)\n\n* [docs] add cli extension docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 380,
+                "insertions": 380,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "15b38e7e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-22T07:46:44.000Z",
+              "message": "[refactor] refactor CLI for multi sub commands  (#3678)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 40,
+                "lines": 2090,
+                "insertions": 907,
+                "deletions": 1183
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
+          "simple_commits": 1,
+          "commit_score": 123,
           "commits": [
             {
               "hash": "fb844ff8",
@@ -523,14 +840,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "47517888",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-06-22T11:27:48.000Z",
+              "message": "[Docs]: Update \"Welcom to LMCache\" description (#3806)\n\n* docs: align Welcome page with README About section\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* docs: port README intro (key features, ecosystem, updates) to Welcome page\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 62,
+                "insertions": 59,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 5,
+                "ai": 6,
+                "total": 36
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 87,
-          "significance_ratio": 1,
+          "avg_score": 61.5,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 123,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -574,6 +912,162 @@
           "tier_name": "Elite"
         },
         {
+          "name": "zxue2",
+          "email": "zhan.xue@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "b2d804e9",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-06-22T20:34:51.000Z",
+              "message": "feat(mp): introduce device-agnostic DeviceIPCWrapper base for KV-cache IPC (#3703)\n\nAll KV-cache IPC wrappers (CUDA, CPU-SHM, TRT-LLM raw-CUDA) previously\nsubclassed `CudaIPCWrapper` — a naming and structural pattern that made\nnon-CUDA backends impossible to add cleanly.  This change introduces a\ndevice-agnostic base class and reparents the existing wrappers onto it.\n\nlmcache/v1/multiprocess/custom_types.py\n  - Add `DeviceIPCWrapper` (new base): holds the shared interface fields\n    :dtype, shape, stride, storage_offset, device_uuid.\n  - `CudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - `RawCudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - Update `list[CudaIPCWrapper]` to `list[DeviceIPCWrapper]`.\n  - `_CUSTOMERIZED_SERIALIZERS` ext-code-1 key updated to\n    `DeviceIPCWrapper`; pickle still preserves concrete subclass identity\n    through the wire so `to_tensor()` dispatches correctly.\n\nlmcache/v1/platform/cpu/shm.py\n  - `CpuShmTensorWrapper` reparented to `DeviceIPCWrapper`.\n\nlmcache/v1/multiprocess/mq.py\n  - Import and `_SPECIAL_ENCODER_DECODERS` keys updated:\n    `CudaIPCWrapper` / `list[CudaIPCWrapper]` -> `DeviceIPCWrapper` /\n    `list[DeviceIPCWrapper]`.\n\nlmcache/v1/multiprocess/protocols/blend_v3.py\nlmcache/v1/multiprocess/modules/blend_v3.py\n  - Import and payload-class / type-annotation references updated to\n    `DeviceIPCWrapper`.\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: Yi Yao <yi.a.yao@intel.com>\nCo-authored-by: Ye XinYu <xinyu.ye@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 290,
+                "insertions": 195,
+                "deletions": 95
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Hz_Zhang",
+          "email": "47402297+HaozheZhang6@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "a312a7f6",
+              "author": "Hz_Zhang",
+              "email": "47402297+HaozheZhang6@users.noreply.github.com",
+              "date": "2026-06-22T22:28:13.000Z",
+              "message": "Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait (#3704)\n\n* Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait\n\nThe SGLang MP adapter's _wait_for_lookup busy-polled QUERY_PREFETCH_STATUS in\na 1ms sleep loop, adding repeated ZMQ requests and polling latency on the load\npath -- noticeable when a lookup triggers movement from a slower storage layer\ninto L1 (per the TODO left in _wait_for_lookup).\n\nAdd a blocking WAIT_PREFETCH_STATUS request type. Its daemon handler blocks on\na PrefetchController completion condition variable until the prefetch result is\npublished (or a timeout), so the client issues a single request instead of\nbusy-polling. L1-only prefetches (prefetch_request_id == -1) return immediately.\n\nFixes #3694\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* Register WAIT_PREFETCH_STATUS in the engine protocol definitions\n\nThe RequestType docstring requires every enum member to also have a protocol\ndefinition (the validation system in protocols/__init__.py enforces a 1:1\nmatch). The new WAIT_PREFETCH_STATUS member was missing one, so\ninitialize_protocols() would fail with an orphaned enum member. Add the\ndefinition (payload: request_id str + timeout float, returns int | None) and\nits REQUEST_NAMES entry, mirroring QUERY_PREFETCH_STATUS.\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* test: cover the WAIT_PREFETCH_STATUS LookupModule handler path\n\nAdd targeted tests for wait_prefetch_status -> query_prefetch_status: count\ncomputation + event emission + exactly-once job consumption on success, None +\njob retention on timeout, and 0 for an unknown request_id. The storage manager is\nmocked, so the request-handler/protocol path is exercised without a GPU or native\nbitmap (the controller tests already cover the condition variable in isolation).\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* style: ruff-format the WAIT_PREFETCH_STATUS test\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* docs: document WAIT_PREFETCH_STATUS in the MP ZMQ protocol (SGLang-only)\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\nCo-authored-by: haozhe <haozhe@haozhes-MacBook-Pro.local>",
+              "stats": {
+                "files": 9,
+                "lines": 283,
+                "insertions": 262,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "LIUyujie",
+          "email": "130735711+Lyj1007@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "c0c613e5",
+              "author": "LIUyujie",
+              "email": "130735711+Lyj1007@users.noreply.github.com",
+              "date": "2026-06-22T08:37:24.000Z",
+              "message": "[MP][feat] Support multi LMCache servers deployment with vllm (#3248)\n\nSigned-off-by: Yujie Liu <milan021007@163.com>",
+              "stats": {
+                "files": 4,
+                "lines": 381,
+                "insertions": 292,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "听说十四行春",
+          "email": "2569381344@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 44,
+          "commits": [
+            {
+              "hash": "beeac503",
+              "author": "听说十四行春",
+              "email": "2569381344@qq.com",
+              "date": "2026-06-22T07:04:33.000Z",
+              "message": "[good-first-issue] core: convert remaining f-string log calls to %-format across 11 files (#3805)\n\nSigned-off-by: April-Sonnet <2569381344@qq.com>",
+              "stats": {
+                "files": 11,
+                "lines": 48,
+                "insertions": 24,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 44,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 44,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "weizhoublue",
           "email": "45163302+weizhoublue@users.noreply.github.com",
           "total_commits": 1,
@@ -609,8 +1103,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 23,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Cao Qian",
@@ -648,8 +1142,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
@@ -821,12 +1315,72 @@
           "tier_name": "Elite"
         },
         {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "e09972c8",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-22T08:44:39.000Z",
+              "message": "[docs] add cli extension docs (#3719)\n\n* [docs] add cli extension docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 380,
+                "insertions": 380,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "15b38e7e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-22T07:46:44.000Z",
+              "message": "[refactor] refactor CLI for multi sub commands  (#3678)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 40,
+                "lines": 2090,
+                "insertions": 907,
+                "deletions": 1183
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
+          "simple_commits": 1,
+          "commit_score": 123,
           "commits": [
             {
               "hash": "fb844ff8",
@@ -848,14 +1402,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "47517888",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-06-22T11:27:48.000Z",
+              "message": "[Docs]: Update \"Welcom to LMCache\" description (#3806)\n\n* docs: align Welcome page with README About section\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* docs: port README intro (key features, ecosystem, updates) to Welcome page\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 62,
+                "insertions": 59,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 5,
+                "ai": 6,
+                "total": 36
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 87,
-          "significance_ratio": 1,
+          "avg_score": 61.5,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 123,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -899,6 +1474,162 @@
           "tier_name": "Elite"
         },
         {
+          "name": "zxue2",
+          "email": "zhan.xue@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "b2d804e9",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-06-22T20:34:51.000Z",
+              "message": "feat(mp): introduce device-agnostic DeviceIPCWrapper base for KV-cache IPC (#3703)\n\nAll KV-cache IPC wrappers (CUDA, CPU-SHM, TRT-LLM raw-CUDA) previously\nsubclassed `CudaIPCWrapper` — a naming and structural pattern that made\nnon-CUDA backends impossible to add cleanly.  This change introduces a\ndevice-agnostic base class and reparents the existing wrappers onto it.\n\nlmcache/v1/multiprocess/custom_types.py\n  - Add `DeviceIPCWrapper` (new base): holds the shared interface fields\n    :dtype, shape, stride, storage_offset, device_uuid.\n  - `CudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - `RawCudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - Update `list[CudaIPCWrapper]` to `list[DeviceIPCWrapper]`.\n  - `_CUSTOMERIZED_SERIALIZERS` ext-code-1 key updated to\n    `DeviceIPCWrapper`; pickle still preserves concrete subclass identity\n    through the wire so `to_tensor()` dispatches correctly.\n\nlmcache/v1/platform/cpu/shm.py\n  - `CpuShmTensorWrapper` reparented to `DeviceIPCWrapper`.\n\nlmcache/v1/multiprocess/mq.py\n  - Import and `_SPECIAL_ENCODER_DECODERS` keys updated:\n    `CudaIPCWrapper` / `list[CudaIPCWrapper]` -> `DeviceIPCWrapper` /\n    `list[DeviceIPCWrapper]`.\n\nlmcache/v1/multiprocess/protocols/blend_v3.py\nlmcache/v1/multiprocess/modules/blend_v3.py\n  - Import and payload-class / type-annotation references updated to\n    `DeviceIPCWrapper`.\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: Yi Yao <yi.a.yao@intel.com>\nCo-authored-by: Ye XinYu <xinyu.ye@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 290,
+                "insertions": 195,
+                "deletions": 95
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Hz_Zhang",
+          "email": "47402297+HaozheZhang6@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "a312a7f6",
+              "author": "Hz_Zhang",
+              "email": "47402297+HaozheZhang6@users.noreply.github.com",
+              "date": "2026-06-22T22:28:13.000Z",
+              "message": "Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait (#3704)\n\n* Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait\n\nThe SGLang MP adapter's _wait_for_lookup busy-polled QUERY_PREFETCH_STATUS in\na 1ms sleep loop, adding repeated ZMQ requests and polling latency on the load\npath -- noticeable when a lookup triggers movement from a slower storage layer\ninto L1 (per the TODO left in _wait_for_lookup).\n\nAdd a blocking WAIT_PREFETCH_STATUS request type. Its daemon handler blocks on\na PrefetchController completion condition variable until the prefetch result is\npublished (or a timeout), so the client issues a single request instead of\nbusy-polling. L1-only prefetches (prefetch_request_id == -1) return immediately.\n\nFixes #3694\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* Register WAIT_PREFETCH_STATUS in the engine protocol definitions\n\nThe RequestType docstring requires every enum member to also have a protocol\ndefinition (the validation system in protocols/__init__.py enforces a 1:1\nmatch). The new WAIT_PREFETCH_STATUS member was missing one, so\ninitialize_protocols() would fail with an orphaned enum member. Add the\ndefinition (payload: request_id str + timeout float, returns int | None) and\nits REQUEST_NAMES entry, mirroring QUERY_PREFETCH_STATUS.\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* test: cover the WAIT_PREFETCH_STATUS LookupModule handler path\n\nAdd targeted tests for wait_prefetch_status -> query_prefetch_status: count\ncomputation + event emission + exactly-once job consumption on success, None +\njob retention on timeout, and 0 for an unknown request_id. The storage manager is\nmocked, so the request-handler/protocol path is exercised without a GPU or native\nbitmap (the controller tests already cover the condition variable in isolation).\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* style: ruff-format the WAIT_PREFETCH_STATUS test\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* docs: document WAIT_PREFETCH_STATUS in the MP ZMQ protocol (SGLang-only)\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\nCo-authored-by: haozhe <haozhe@haozhes-MacBook-Pro.local>",
+              "stats": {
+                "files": 9,
+                "lines": 283,
+                "insertions": 262,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "LIUyujie",
+          "email": "130735711+Lyj1007@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "c0c613e5",
+              "author": "LIUyujie",
+              "email": "130735711+Lyj1007@users.noreply.github.com",
+              "date": "2026-06-22T08:37:24.000Z",
+              "message": "[MP][feat] Support multi LMCache servers deployment with vllm (#3248)\n\nSigned-off-by: Yujie Liu <milan021007@163.com>",
+              "stats": {
+                "files": 4,
+                "lines": 381,
+                "insertions": 292,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "听说十四行春",
+          "email": "2569381344@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 44,
+          "commits": [
+            {
+              "hash": "beeac503",
+              "author": "听说十四行春",
+              "email": "2569381344@qq.com",
+              "date": "2026-06-22T07:04:33.000Z",
+              "message": "[good-first-issue] core: convert remaining f-string log calls to %-format across 11 files (#3805)\n\nSigned-off-by: April-Sonnet <2569381344@qq.com>",
+              "stats": {
+                "files": 11,
+                "lines": 48,
+                "insertions": 24,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 44,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 44,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "weizhoublue",
           "email": "45163302+weizhoublue@users.noreply.github.com",
           "total_commits": 1,
@@ -934,8 +1665,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 23,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Cao Qian",
@@ -973,20 +1704,20 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-06-22T00:30:01.977Z",
+    "analyzedAt": "2026-06-23T00:30:09.602Z",
     "daysBack": 2,
-    "totalCommits": 11,
-    "totalContributors": 5,
+    "totalCommits": 18,
+    "totalContributors": 10,
     "mergedFrom": {
       "existing": 11,
-      "new": 3
+      "new": 7
     }
   }
 }
