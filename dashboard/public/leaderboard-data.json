@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-24T00:30:22.572Z",
-  "total_commits_analyzed": 26,
+  "last_updated": "2026-06-25T00:30:25.283Z",
+  "total_commits_analyzed": 34,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -329,6 +329,66 @@
       ],
       "2026-W26": [
         {
+          "name": "Kuntai Du",
+          "email": "kuntai@uchicago.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "389b9cfc",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-06-23T01:12:58.000Z",
+              "message": "[Prefetch only sliding window 1/N] Add bitmap operations (#3745)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 14,
+                "lines": 1428,
+                "insertions": 1428,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5936f0d0",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-06-24T20:58:35.000Z",
+              "message": "[Prefetching sliding window 2/N] Propagate sliding-window info to the prefetch path (#3776)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 20,
+                "lines": 664,
+                "insertions": 600,
+                "deletions": 64
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
           "total_commits": 2,
@@ -506,24 +566,24 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Kuntai Du",
-          "email": "kuntai@uchicago.edu",
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 87,
           "commits": [
             {
-              "hash": "389b9cfc",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-06-23T01:12:58.000Z",
-              "message": "[Prefetch only sliding window 1/N] Add bitmap operations (#3745)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "hash": "b8231762",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-06-24T22:12:27.000Z",
+              "message": "[core] Add AMD hipFile backend for the GDS L1 tier (MP mode) (#3843)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
               "stats": {
-                "files": 14,
-                "lines": 1428,
-                "insertions": 1428,
-                "deletions": 0
+                "files": 8,
+                "lines": 986,
+                "insertions": 924,
+                "deletions": 62
               },
               "scores": {
                 "loc": 30,
@@ -541,8 +601,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "3e1bc021",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-24T12:04:36.000Z",
+              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 891,
+                "insertions": 572,
+                "deletions": 319
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Hz_Zhang",
@@ -662,6 +761,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "3xdevv",
+          "email": "3xdevv@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "63e52ab0",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-06-24T17:23:55.000Z",
+              "message": "[Fix] Clean up local backend lock handling (#3682)\n\nUse context managers for local backend locks\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 64,
+                "insertions": 29,
+                "deletions": 35
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 6,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "26cd4993",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-06-24T15:55:08.000Z",
+              "message": "[Docs][operator] Fix CRD spec docs and policy enum gaps (#3496)\n\n* [Docs][operator] Fix duplicate reconcile step numbers in comments\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs][operator] Fix CRD enums and docs for eviction/prefetch policies\n\n- eviction.policy: add \"noop\" to the CRD enum and update docs (\"Only\n  LRU is supported\" was incorrect; noop is stable and needed for\n  buffer-only mode with l2Backend.storePolicy=skip_l1)\n- prefetchPolicy: add \"retain\" to the CRD enum (server registers both\n  \"default\" and \"retain\" but the operator only allowed \"default\")\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs][operator] Fix missing and incorrect fields in CRD spec reference\n\n- Add server.httpPort (default 8080) to the Server table\n- Fix l2Backends -> l2Backend (singular, matches actual CRD field name)\n- Add gpuVendor section (nvidia/amd, was entirely missing)\n- Add NVIDIA_DRIVER_CAPABILITIES=all to auto-injected pod settings\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 3,
+                "lines": 43,
+                "insertions": 32,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "听说十四行春",
           "email": "2569381344@qq.com",
           "total_commits": 1,
@@ -736,8 +895,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "shlin0415",
@@ -775,8 +934,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 38,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Samuel Shen",
@@ -814,8 +973,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 36,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "wangzhehan0811",
+          "email": "wangzhehan0811@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 21,
+          "commits": [
+            {
+              "hash": "5c47959a",
+              "author": "wangzhehan0811",
+              "email": "wangzhehan0811@gmail.com",
+              "date": "2026-06-24T18:03:59.000Z",
+              "message": "ci(flaky): Retry flaky multiprocess tests 3 time at most (#3816)\n\n* ci(flaky): Retry flaky multiprocess tests 3 time at most\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\n\n* ci(flaky): retry on all non-zero exit codes\n\nUse exit_status \"*\" so OOM and other non-zero failures are retried.\nKeep exit_status -1 for agent-lost, which \"*\" does not cover.\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* ci(flaky): rename perf-retry to flaky-retry\n\nClarify anchor naming and document why exit_status -1 is kept alongside \"*\".\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n---------\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+              "stats": {
+                "files": 1,
+                "lines": 13,
+                "insertions": 13,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Ethan Feng",
@@ -836,6 +1034,84 @@
                 "lines": 1,
                 "insertions": 1,
                 "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "sat-v4",
+          "email": "s.9911415165@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "9da57a01",
+              "author": "sat-v4",
+              "email": "s.9911415165@gmail.com",
+              "date": "2026-06-24T02:58:39.000Z",
+              "message": "convert f-string log calls to %-format in system_detection.py (#3795)\n\nSigned-off-by: BSatyaKishore <b.satyakishore@live.com>\nCo-authored-by: BSatyaKishore <b.satyakishore@live.com>",
+              "stats": {
+                "files": 0,
+                "lines": 0,
+                "insertions": 0,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "nevasini1",
+          "email": "nevasini1@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "87eec66f",
+              "author": "nevasini1",
+              "email": "nevasini1@gmail.com",
+              "date": "2026-06-24T02:54:41.000Z",
+              "message": "core: convert f-string log calls in system_detection.py to %-format (#3797)\n\nSigned-off-by: nevasini1 <nevasini1@gmail.com>\nCo-authored-by: Claude Opus 4.8 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
               },
               "scores": {
                 "loc": 3,
@@ -1086,6 +1362,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Kuntai Du",
+          "email": "kuntai@uchicago.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "389b9cfc",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-06-23T01:12:58.000Z",
+              "message": "[Prefetch only sliding window 1/N] Add bitmap operations (#3745)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 14,
+                "lines": 1428,
+                "insertions": 1428,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5936f0d0",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-06-24T20:58:35.000Z",
+              "message": "[Prefetching sliding window 2/N] Propagate sliding-window info to the prefetch path (#3776)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 20,
+                "lines": 664,
+                "insertions": 600,
+                "deletions": 64
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
           "total_commits": 2,
@@ -1280,8 +1616,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "shihaozhou",
@@ -1362,24 +1698,63 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Kuntai Du",
-          "email": "kuntai@uchicago.edu",
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 87,
           "commits": [
             {
-              "hash": "389b9cfc",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-06-23T01:12:58.000Z",
-              "message": "[Prefetch only sliding window 1/N] Add bitmap operations (#3745)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "hash": "b8231762",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-06-24T22:12:27.000Z",
+              "message": "[core] Add AMD hipFile backend for the GDS L1 tier (MP mode) (#3843)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
               "stats": {
-                "files": 14,
-                "lines": 1428,
-                "insertions": 1428,
-                "deletions": 0
+                "files": 8,
+                "lines": 986,
+                "insertions": 924,
+                "deletions": 62
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "3e1bc021",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-24T12:04:36.000Z",
+              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 891,
+                "insertions": 572,
+                "deletions": 319
               },
               "scores": {
                 "loc": 30,
@@ -1514,8 +1889,68 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "3xdevv",
+          "email": "3xdevv@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "63e52ab0",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-06-24T17:23:55.000Z",
+              "message": "[Fix] Clean up local backend lock handling (#3682)\n\nUse context managers for local backend locks\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 64,
+                "insertions": 29,
+                "deletions": 35
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 6,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "26cd4993",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-06-24T15:55:08.000Z",
+              "message": "[Docs][operator] Fix CRD spec docs and policy enum gaps (#3496)\n\n* [Docs][operator] Fix duplicate reconcile step numbers in comments\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs][operator] Fix CRD enums and docs for eviction/prefetch policies\n\n- eviction.policy: add \"noop\" to the CRD enum and update docs (\"Only\n  LRU is supported\" was incorrect; noop is stable and needed for\n  buffer-only mode with l2Backend.storePolicy=skip_l1)\n- prefetchPolicy: add \"retain\" to the CRD enum (server registers both\n  \"default\" and \"retain\" but the operator only allowed \"default\")\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs][operator] Fix missing and incorrect fields in CRD spec reference\n\n- Add server.httpPort (default 8080) to the Server table\n- Fix l2Backends -> l2Backend (singular, matches actual CRD field name)\n- Add gpuVendor section (nvidia/amd, was entirely missing)\n- Add NVIDIA_DRIVER_CAPABILITIES=all to auto-injected pod settings\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 3,
+                "lines": 43,
+                "insertions": 32,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "听说十四行春",
@@ -1553,8 +1988,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "shlin0415",
@@ -1631,6 +2066,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 23,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "wangzhehan0811",
+          "email": "wangzhehan0811@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 21,
+          "commits": [
+            {
+              "hash": "5c47959a",
+              "author": "wangzhehan0811",
+              "email": "wangzhehan0811@gmail.com",
+              "date": "2026-06-24T18:03:59.000Z",
+              "message": "ci(flaky): Retry flaky multiprocess tests 3 time at most (#3816)\n\n* ci(flaky): Retry flaky multiprocess tests 3 time at most\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\n\n* ci(flaky): retry on all non-zero exit codes\n\nUse exit_status \"*\" so OOM and other non-zero failures are retried.\nKeep exit_status -1 for agent-lost, which \"*\" does not cover.\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* ci(flaky): rename perf-retry to flaky-retry\n\nClarify anchor naming and document why exit_status -1 is kept alongside \"*\".\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n---------\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+              "stats": {
+                "files": 1,
+                "lines": 13,
+                "insertions": 13,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -1713,6 +2187,84 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "sat-v4",
+          "email": "s.9911415165@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "9da57a01",
+              "author": "sat-v4",
+              "email": "s.9911415165@gmail.com",
+              "date": "2026-06-24T02:58:39.000Z",
+              "message": "convert f-string log calls to %-format in system_detection.py (#3795)\n\nSigned-off-by: BSatyaKishore <b.satyakishore@live.com>\nCo-authored-by: BSatyaKishore <b.satyakishore@live.com>",
+              "stats": {
+                "files": 0,
+                "lines": 0,
+                "insertions": 0,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "nevasini1",
+          "email": "nevasini1@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "87eec66f",
+              "author": "nevasini1",
+              "email": "nevasini1@gmail.com",
+              "date": "2026-06-24T02:54:41.000Z",
+              "message": "core: convert f-string log calls in system_detection.py to %-format (#3797)\n\nSigned-off-by: nevasini1 <nevasini1@gmail.com>\nCo-authored-by: Claude Opus 4.8 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Kushagra Singh Gaur",
           "email": "kushagrasingh.gaur2022@vitstudent.ac.in",
           "total_commits": 1,
@@ -1748,8 +2300,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 13,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -1942,6 +2494,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Kuntai Du",
+          "email": "kuntai@uchicago.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "389b9cfc",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-06-23T01:12:58.000Z",
+              "message": "[Prefetch only sliding window 1/N] Add bitmap operations (#3745)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 14,
+                "lines": 1428,
+                "insertions": 1428,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5936f0d0",
+              "author": "Kuntai Du",
+              "email": "kuntai@uchicago.edu",
+              "date": "2026-06-24T20:58:35.000Z",
+              "message": "[Prefetching sliding window 2/N] Propagate sliding-window info to the prefetch path (#3776)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 20,
+                "lines": 664,
+                "insertions": 600,
+                "deletions": 64
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
           "total_commits": 2,
@@ -2136,8 +2748,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "shihaozhou",
@@ -2218,24 +2830,63 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Kuntai Du",
-          "email": "kuntai@uchicago.edu",
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 87,
           "commits": [
             {
-              "hash": "389b9cfc",
-              "author": "Kuntai Du",
-              "email": "kuntai@uchicago.edu",
-              "date": "2026-06-23T01:12:58.000Z",
-              "message": "[Prefetch only sliding window 1/N] Add bitmap operations (#3745)\n\nSigned-off-by: KuntaiDu <kuntai@uchicago.edu>",
+              "hash": "b8231762",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-06-24T22:12:27.000Z",
+              "message": "[core] Add AMD hipFile backend for the GDS L1 tier (MP mode) (#3843)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
               "stats": {
-                "files": 14,
-                "lines": 1428,
-                "insertions": 1428,
-                "deletions": 0
+                "files": 8,
+                "lines": 986,
+                "insertions": 924,
+                "deletions": 62
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "3e1bc021",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-24T12:04:36.000Z",
+              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 891,
+                "insertions": 572,
+                "deletions": 319
               },
               "scores": {
                 "loc": 30,
@@ -2370,8 +3021,68 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "3xdevv",
+          "email": "3xdevv@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "63e52ab0",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-06-24T17:23:55.000Z",
+              "message": "[Fix] Clean up local backend lock handling (#3682)\n\nUse context managers for local backend locks\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 64,
+                "insertions": 29,
+                "deletions": 35
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 6,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "26cd4993",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-06-24T15:55:08.000Z",
+              "message": "[Docs][operator] Fix CRD spec docs and policy enum gaps (#3496)\n\n* [Docs][operator] Fix duplicate reconcile step numbers in comments\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs][operator] Fix CRD enums and docs for eviction/prefetch policies\n\n- eviction.policy: add \"noop\" to the CRD enum and update docs (\"Only\n  LRU is supported\" was incorrect; noop is stable and needed for\n  buffer-only mode with l2Backend.storePolicy=skip_l1)\n- prefetchPolicy: add \"retain\" to the CRD enum (server registers both\n  \"default\" and \"retain\" but the operator only allowed \"default\")\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs][operator] Fix missing and incorrect fields in CRD spec reference\n\n- Add server.httpPort (default 8080) to the Server table\n- Fix l2Backends -> l2Backend (singular, matches actual CRD field name)\n- Add gpuVendor section (nvidia/amd, was entirely missing)\n- Add NVIDIA_DRIVER_CAPABILITIES=all to auto-injected pod settings\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 3,
+                "lines": 43,
+                "insertions": 32,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "听说十四行春",
@@ -2409,8 +3120,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "shlin0415",
@@ -2487,6 +3198,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 23,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "wangzhehan0811",
+          "email": "wangzhehan0811@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 21,
+          "commits": [
+            {
+              "hash": "5c47959a",
+              "author": "wangzhehan0811",
+              "email": "wangzhehan0811@gmail.com",
+              "date": "2026-06-24T18:03:59.000Z",
+              "message": "ci(flaky): Retry flaky multiprocess tests 3 time at most (#3816)\n\n* ci(flaky): Retry flaky multiprocess tests 3 time at most\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\n\n* ci(flaky): retry on all non-zero exit codes\n\nUse exit_status \"*\" so OOM and other non-zero failures are retried.\nKeep exit_status -1 for agent-lost, which \"*\" does not cover.\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* ci(flaky): rename perf-retry to flaky-retry\n\nClarify anchor naming and document why exit_status -1 is kept alongside \"*\".\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n---------\n\nSigned-off-by: wangzhehan0811 <wangzhehan0811@gmail.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+              "stats": {
+                "files": 1,
+                "lines": 13,
+                "insertions": 13,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -2569,6 +3319,84 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "sat-v4",
+          "email": "s.9911415165@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "9da57a01",
+              "author": "sat-v4",
+              "email": "s.9911415165@gmail.com",
+              "date": "2026-06-24T02:58:39.000Z",
+              "message": "convert f-string log calls to %-format in system_detection.py (#3795)\n\nSigned-off-by: BSatyaKishore <b.satyakishore@live.com>\nCo-authored-by: BSatyaKishore <b.satyakishore@live.com>",
+              "stats": {
+                "files": 0,
+                "lines": 0,
+                "insertions": 0,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "nevasini1",
+          "email": "nevasini1@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "87eec66f",
+              "author": "nevasini1",
+              "email": "nevasini1@gmail.com",
+              "date": "2026-06-24T02:54:41.000Z",
+              "message": "core: convert f-string log calls in system_detection.py to %-format (#3797)\n\nSigned-off-by: nevasini1 <nevasini1@gmail.com>\nCo-authored-by: Claude Opus 4.8 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 3,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Kushagra Singh Gaur",
           "email": "kushagrasingh.gaur2022@vitstudent.ac.in",
           "total_commits": 1,
@@ -2604,20 +3432,20 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 13,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-06-24T00:30:22.572Z",
+    "analyzedAt": "2026-06-25T00:30:25.283Z",
     "daysBack": 2,
-    "totalCommits": 26,
-    "totalContributors": 17,
+    "totalCommits": 34,
+    "totalContributors": 23,
     "mergedFrom": {
-      "existing": 18,
-      "new": 15
+      "existing": 26,
+      "new": 16
     }
   }
 }
