@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-27T00:30:23.669Z",
-  "total_commits_analyzed": 49,
+  "last_updated": "2026-06-28T00:30:14.966Z",
+  "total_commits_analyzed": 53,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -632,12 +632,72 @@
           "tier_name": "Elite"
         },
         {
-          "name": "nevasini1",
-          "email": "nevasini1@gmail.com",
+          "name": "Hz_Zhang",
+          "email": "47402297+HaozheZhang6@users.noreply.github.com",
           "total_commits": 2,
           "significant_commits": 1,
           "simple_commits": 1,
-          "commit_score": 92,
+          "commit_score": 121,
+          "commits": [
+            {
+              "hash": "a312a7f6",
+              "author": "Hz_Zhang",
+              "email": "47402297+HaozheZhang6@users.noreply.github.com",
+              "date": "2026-06-22T22:28:13.000Z",
+              "message": "Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait (#3704)\n\n* Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait\n\nThe SGLang MP adapter's _wait_for_lookup busy-polled QUERY_PREFETCH_STATUS in\na 1ms sleep loop, adding repeated ZMQ requests and polling latency on the load\npath -- noticeable when a lookup triggers movement from a slower storage layer\ninto L1 (per the TODO left in _wait_for_lookup).\n\nAdd a blocking WAIT_PREFETCH_STATUS request type. Its daemon handler blocks on\na PrefetchController completion condition variable until the prefetch result is\npublished (or a timeout), so the client issues a single request instead of\nbusy-polling. L1-only prefetches (prefetch_request_id == -1) return immediately.\n\nFixes #3694\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* Register WAIT_PREFETCH_STATUS in the engine protocol definitions\n\nThe RequestType docstring requires every enum member to also have a protocol\ndefinition (the validation system in protocols/__init__.py enforces a 1:1\nmatch). The new WAIT_PREFETCH_STATUS member was missing one, so\ninitialize_protocols() would fail with an orphaned enum member. Add the\ndefinition (payload: request_id str + timeout float, returns int | None) and\nits REQUEST_NAMES entry, mirroring QUERY_PREFETCH_STATUS.\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* test: cover the WAIT_PREFETCH_STATUS LookupModule handler path\n\nAdd targeted tests for wait_prefetch_status -> query_prefetch_status: count\ncomputation + event emission + exactly-once job consumption on success, None +\njob retention on timeout, and 0 for an unknown request_id. The storage manager is\nmocked, so the request-handler/protocol path is exercised without a GPU or native\nbitmap (the controller tests already cover the condition variable in isolation).\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* style: ruff-format the WAIT_PREFETCH_STATUS test\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* docs: document WAIT_PREFETCH_STATUS in the MP ZMQ protocol (SGLang-only)\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\nCo-authored-by: haozhe <haozhe@haozhes-MacBook-Pro.local>",
+              "stats": {
+                "files": 9,
+                "lines": 283,
+                "insertions": 262,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6a57f42b",
+              "author": "Hz_Zhang",
+              "email": "47402297+HaozheZhang6@users.noreply.github.com",
+              "date": "2026-06-27T01:30:32.000Z",
+              "message": "chore: move type-only imports under TYPE_CHECKING -- l2_adapters (#3730) (#3736)\n\nchore: move type-only imports under TYPE_CHECKING (#3730)\n\nSigned-off-by: Hz_Zhang <47402297+HaozheZhang6@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 31,
+                "insertions": 16,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 10,
+                "ai": 3,
+                "total": 41
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 60.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 121,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "nevasini1",
+          "email": "nevasini1@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 112,
           "commits": [
             {
               "hash": "87eec66f",
@@ -680,16 +740,97 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "2cdaa96c",
+              "author": "nevasini1",
+              "email": "nevasini1@gmail.com",
+              "date": "2026-06-27T00:52:54.000Z",
+              "message": "cleanup: move type-only IPCCacheServerKey import under TYPE_CHECKING (#3800)\n\nSigned-off-by: nevasini1 <nevasini1@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 6,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 46,
+          "avg_score": 37.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 112,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Jiayue Chen",
+          "email": "96101996+glbyktjys@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 108,
+          "commits": [
+            {
+              "hash": "73bf76b3",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-26T02:38:51.000Z",
+              "message": "Fix/translation reuse job (#3890)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 13,
+                "insertions": 12,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c4b527a7",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-27T00:58:48.000Z",
+              "message": "fix translation and update welcome page (#3906)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 136,
+                "lines": 4245,
+                "insertions": 2052,
+                "deletions": 2193
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 54,
           "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 92,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "total_score": 108,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "zxue2",
@@ -922,8 +1063,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Maharani Ayu Putri Irawan",
@@ -961,8 +1102,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "github-actions[bot]",
@@ -1043,41 +1184,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Hz_Zhang",
-          "email": "47402297+HaozheZhang6@users.noreply.github.com",
+          "name": "Omer Rubinstein",
+          "email": "omerrubi@amazon.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 80,
+          "commit_score": 87,
           "commits": [
             {
-              "hash": "a312a7f6",
-              "author": "Hz_Zhang",
-              "email": "47402297+HaozheZhang6@users.noreply.github.com",
-              "date": "2026-06-22T22:28:13.000Z",
-              "message": "Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait (#3704)\n\n* Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait\n\nThe SGLang MP adapter's _wait_for_lookup busy-polled QUERY_PREFETCH_STATUS in\na 1ms sleep loop, adding repeated ZMQ requests and polling latency on the load\npath -- noticeable when a lookup triggers movement from a slower storage layer\ninto L1 (per the TODO left in _wait_for_lookup).\n\nAdd a blocking WAIT_PREFETCH_STATUS request type. Its daemon handler blocks on\na PrefetchController completion condition variable until the prefetch result is\npublished (or a timeout), so the client issues a single request instead of\nbusy-polling. L1-only prefetches (prefetch_request_id == -1) return immediately.\n\nFixes #3694\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* Register WAIT_PREFETCH_STATUS in the engine protocol definitions\n\nThe RequestType docstring requires every enum member to also have a protocol\ndefinition (the validation system in protocols/__init__.py enforces a 1:1\nmatch). The new WAIT_PREFETCH_STATUS member was missing one, so\ninitialize_protocols() would fail with an orphaned enum member. Add the\ndefinition (payload: request_id str + timeout float, returns int | None) and\nits REQUEST_NAMES entry, mirroring QUERY_PREFETCH_STATUS.\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* test: cover the WAIT_PREFETCH_STATUS LookupModule handler path\n\nAdd targeted tests for wait_prefetch_status -> query_prefetch_status: count\ncomputation + event emission + exactly-once job consumption on success, None +\njob retention on timeout, and 0 for an unknown request_id. The storage manager is\nmocked, so the request-handler/protocol path is exercised without a GPU or native\nbitmap (the controller tests already cover the condition variable in isolation).\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* style: ruff-format the WAIT_PREFETCH_STATUS test\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* docs: document WAIT_PREFETCH_STATUS in the MP ZMQ protocol (SGLang-only)\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\nCo-authored-by: haozhe <haozhe@haozhes-MacBook-Pro.local>",
+              "hash": "31df26dd",
+              "author": "Omer Rubinstein",
+              "email": "omerrubi@amazon.com",
+              "date": "2026-06-27T00:52:20.000Z",
+              "message": "feat(valkey): add per-key TTL + partial-chunk validation to Valkey glide connector (#3836)\n\n* feat(valkey): reject partial/unfull chunks in Valkey glide connector\n\nThe Valkey GLIDE connector uses single-key, fixed-size storage with no\nper-chunk metadata (same scheme as RESPConnector), so partial/unfull\nchunks cannot be represented or verified on read. Validate this in\nValkeyConnectorAdapter by asserting save_chunk_meta and save_unfull_chunk\nare both False, mirroring RESPConnectorAdapter.\n\nAlso coerce free-form extra_config booleans via _to_bool so a string\nlike \"false\" is parsed correctly (bool(\"false\") is truthy); applied to\nsave_chunk_meta and the existing tls_enable read.\n\nAdditionally, harden _do_get_into so a short read is not silently\naccepted: it previously returned True regardless of bytes read, leaving\nstale tail bytes in the destination buffer and masking a size mismatch /\ncorruption. Warn and treat a size mismatch as a miss (return False) on\nboth the buffer-GET and legacy GET paths so the entry is recomputed.\nFixed-size KV chunks must round-trip exactly.\n\nTests cover the real _do_get_into buffer-GET return path directly, and\nthe in-memory mock now faithfully models the buffer-GET branch (returning\nan int byte count) so get/batched_get are exercised on both GET paths.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n* feat(valkey): add optional per-key TTL to Valkey glide connector\n\nWithout a TTL, keys are persisted indefinitely, so a Valkey/Redis node\nusing a volatile-lru/volatile-lfu eviction policy never evicts the L2\nKV cache keys and chokes once it reaches maxmemory. Add an opt-in,\nconfigurable per-key TTL, gated behind a feature flag, so the eviction\npolicy can reclaim memory under pressure.\n\nNew extra_config keys:\n- valkey_enable_ttl (bool, default false): feature flag.\n- valkey_ttl_sec (int seconds, default 86400 when enabled but unset):\n  per-key TTL; must be a positive integer.\n\n_ThreadWorkerPool and ValkeyConnector accept ttl_seconds and, when set,\nwrite keys with glide_sync.ExpirySet(SEC, ttl) (built lazily and cached;\nthe immutable ExpirySet is safe to share across worker threads). The\nno-TTL path is unchanged. Adds docs and unit tests covering config\npassthrough, defaulting, invalid-value rejection, and expiry application\non put.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n---------\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>",
               "stats": {
-                "files": 9,
-                "lines": 283,
-                "insertions": 262,
-                "deletions": 21
+                "files": 5,
+                "lines": 687,
+                "insertions": 674,
+                "deletions": 13
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
-                "keyword": 5,
+                "keyword": 12,
                 "ai": 25,
-                "total": 80
+                "total": 87
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 80,
+          "total_score": 87,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -1354,8 +1495,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "shlin0415",
@@ -1393,8 +1534,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 38,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "wangzhehan0811",
@@ -1415,45 +1556,6 @@
                 "lines": 13,
                 "insertions": 13,
                 "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 21,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 21,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "Jiayue Chen",
-          "email": "96101996+glbyktjys@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 21,
-          "commits": [
-            {
-              "hash": "73bf76b3",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-06-26T02:38:51.000Z",
-              "message": "Fix/translation reuse job (#3890)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 13,
-                "insertions": 12,
-                "deletions": 1
               },
               "scores": {
                 "loc": 3,
@@ -2226,12 +2328,72 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "nevasini1",
-          "email": "nevasini1@gmail.com",
+          "name": "Hz_Zhang",
+          "email": "47402297+HaozheZhang6@users.noreply.github.com",
           "total_commits": 2,
           "significant_commits": 1,
           "simple_commits": 1,
-          "commit_score": 92,
+          "commit_score": 121,
+          "commits": [
+            {
+              "hash": "a312a7f6",
+              "author": "Hz_Zhang",
+              "email": "47402297+HaozheZhang6@users.noreply.github.com",
+              "date": "2026-06-22T22:28:13.000Z",
+              "message": "Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait (#3704)\n\n* Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait\n\nThe SGLang MP adapter's _wait_for_lookup busy-polled QUERY_PREFETCH_STATUS in\na 1ms sleep loop, adding repeated ZMQ requests and polling latency on the load\npath -- noticeable when a lookup triggers movement from a slower storage layer\ninto L1 (per the TODO left in _wait_for_lookup).\n\nAdd a blocking WAIT_PREFETCH_STATUS request type. Its daemon handler blocks on\na PrefetchController completion condition variable until the prefetch result is\npublished (or a timeout), so the client issues a single request instead of\nbusy-polling. L1-only prefetches (prefetch_request_id == -1) return immediately.\n\nFixes #3694\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* Register WAIT_PREFETCH_STATUS in the engine protocol definitions\n\nThe RequestType docstring requires every enum member to also have a protocol\ndefinition (the validation system in protocols/__init__.py enforces a 1:1\nmatch). The new WAIT_PREFETCH_STATUS member was missing one, so\ninitialize_protocols() would fail with an orphaned enum member. Add the\ndefinition (payload: request_id str + timeout float, returns int | None) and\nits REQUEST_NAMES entry, mirroring QUERY_PREFETCH_STATUS.\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* test: cover the WAIT_PREFETCH_STATUS LookupModule handler path\n\nAdd targeted tests for wait_prefetch_status -> query_prefetch_status: count\ncomputation + event emission + exactly-once job consumption on success, None +\njob retention on timeout, and 0 for an unknown request_id. The storage manager is\nmocked, so the request-handler/protocol path is exercised without a GPU or native\nbitmap (the controller tests already cover the condition variable in isolation).\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* style: ruff-format the WAIT_PREFETCH_STATUS test\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* docs: document WAIT_PREFETCH_STATUS in the MP ZMQ protocol (SGLang-only)\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\nCo-authored-by: haozhe <haozhe@haozhes-MacBook-Pro.local>",
+              "stats": {
+                "files": 9,
+                "lines": 283,
+                "insertions": 262,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6a57f42b",
+              "author": "Hz_Zhang",
+              "email": "47402297+HaozheZhang6@users.noreply.github.com",
+              "date": "2026-06-27T01:30:32.000Z",
+              "message": "chore: move type-only imports under TYPE_CHECKING -- l2_adapters (#3730) (#3736)\n\nchore: move type-only imports under TYPE_CHECKING (#3730)\n\nSigned-off-by: Hz_Zhang <47402297+HaozheZhang6@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 31,
+                "insertions": 16,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 10,
+                "ai": 3,
+                "total": 41
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 60.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 121,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "nevasini1",
+          "email": "nevasini1@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 112,
           "commits": [
             {
               "hash": "87eec66f",
@@ -2274,14 +2436,95 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "2cdaa96c",
+              "author": "nevasini1",
+              "email": "nevasini1@gmail.com",
+              "date": "2026-06-27T00:52:54.000Z",
+              "message": "cleanup: move type-only IPCCacheServerKey import under TYPE_CHECKING (#3800)\n\nSigned-off-by: nevasini1 <nevasini1@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 6,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 46,
+          "avg_score": 37.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 112,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Jiayue Chen",
+          "email": "96101996+glbyktjys@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 108,
+          "commits": [
+            {
+              "hash": "73bf76b3",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-26T02:38:51.000Z",
+              "message": "Fix/translation reuse job (#3890)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 13,
+                "insertions": 12,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c4b527a7",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-27T00:58:48.000Z",
+              "message": "fix translation and update welcome page (#3906)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 136,
+                "lines": 4245,
+                "insertions": 2052,
+                "deletions": 2193
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 54,
           "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 92,
+          "total_score": 108,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2438,8 +2681,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "maobaolong",
@@ -2477,8 +2720,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Rui Zhang",
@@ -2598,41 +2841,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Hz_Zhang",
-          "email": "47402297+HaozheZhang6@users.noreply.github.com",
+          "name": "Omer Rubinstein",
+          "email": "omerrubi@amazon.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 80,
+          "commit_score": 87,
           "commits": [
             {
-              "hash": "a312a7f6",
-              "author": "Hz_Zhang",
-              "email": "47402297+HaozheZhang6@users.noreply.github.com",
-              "date": "2026-06-22T22:28:13.000Z",
-              "message": "Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait (#3704)\n\n* Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait\n\nThe SGLang MP adapter's _wait_for_lookup busy-polled QUERY_PREFETCH_STATUS in\na 1ms sleep loop, adding repeated ZMQ requests and polling latency on the load\npath -- noticeable when a lookup triggers movement from a slower storage layer\ninto L1 (per the TODO left in _wait_for_lookup).\n\nAdd a blocking WAIT_PREFETCH_STATUS request type. Its daemon handler blocks on\na PrefetchController completion condition variable until the prefetch result is\npublished (or a timeout), so the client issues a single request instead of\nbusy-polling. L1-only prefetches (prefetch_request_id == -1) return immediately.\n\nFixes #3694\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* Register WAIT_PREFETCH_STATUS in the engine protocol definitions\n\nThe RequestType docstring requires every enum member to also have a protocol\ndefinition (the validation system in protocols/__init__.py enforces a 1:1\nmatch). The new WAIT_PREFETCH_STATUS member was missing one, so\ninitialize_protocols() would fail with an orphaned enum member. Add the\ndefinition (payload: request_id str + timeout float, returns int | None) and\nits REQUEST_NAMES entry, mirroring QUERY_PREFETCH_STATUS.\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* test: cover the WAIT_PREFETCH_STATUS LookupModule handler path\n\nAdd targeted tests for wait_prefetch_status -> query_prefetch_status: count\ncomputation + event emission + exactly-once job consumption on success, None +\njob retention on timeout, and 0 for an unknown request_id. The storage manager is\nmocked, so the request-handler/protocol path is exercised without a GPU or native\nbitmap (the controller tests already cover the condition variable in isolation).\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* style: ruff-format the WAIT_PREFETCH_STATUS test\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* docs: document WAIT_PREFETCH_STATUS in the MP ZMQ protocol (SGLang-only)\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\nCo-authored-by: haozhe <haozhe@haozhes-MacBook-Pro.local>",
+              "hash": "31df26dd",
+              "author": "Omer Rubinstein",
+              "email": "omerrubi@amazon.com",
+              "date": "2026-06-27T00:52:20.000Z",
+              "message": "feat(valkey): add per-key TTL + partial-chunk validation to Valkey glide connector (#3836)\n\n* feat(valkey): reject partial/unfull chunks in Valkey glide connector\n\nThe Valkey GLIDE connector uses single-key, fixed-size storage with no\nper-chunk metadata (same scheme as RESPConnector), so partial/unfull\nchunks cannot be represented or verified on read. Validate this in\nValkeyConnectorAdapter by asserting save_chunk_meta and save_unfull_chunk\nare both False, mirroring RESPConnectorAdapter.\n\nAlso coerce free-form extra_config booleans via _to_bool so a string\nlike \"false\" is parsed correctly (bool(\"false\") is truthy); applied to\nsave_chunk_meta and the existing tls_enable read.\n\nAdditionally, harden _do_get_into so a short read is not silently\naccepted: it previously returned True regardless of bytes read, leaving\nstale tail bytes in the destination buffer and masking a size mismatch /\ncorruption. Warn and treat a size mismatch as a miss (return False) on\nboth the buffer-GET and legacy GET paths so the entry is recomputed.\nFixed-size KV chunks must round-trip exactly.\n\nTests cover the real _do_get_into buffer-GET return path directly, and\nthe in-memory mock now faithfully models the buffer-GET branch (returning\nan int byte count) so get/batched_get are exercised on both GET paths.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n* feat(valkey): add optional per-key TTL to Valkey glide connector\n\nWithout a TTL, keys are persisted indefinitely, so a Valkey/Redis node\nusing a volatile-lru/volatile-lfu eviction policy never evicts the L2\nKV cache keys and chokes once it reaches maxmemory. Add an opt-in,\nconfigurable per-key TTL, gated behind a feature flag, so the eviction\npolicy can reclaim memory under pressure.\n\nNew extra_config keys:\n- valkey_enable_ttl (bool, default false): feature flag.\n- valkey_ttl_sec (int seconds, default 86400 when enabled but unset):\n  per-key TTL; must be a positive integer.\n\n_ThreadWorkerPool and ValkeyConnector accept ttl_seconds and, when set,\nwrite keys with glide_sync.ExpirySet(SEC, ttl) (built lazily and cached;\nthe immutable ExpirySet is safe to share across worker threads). The\nno-TTL path is unchanged. Adds docs and unit tests covering config\npassthrough, defaulting, invalid-value rejection, and expiry application\non put.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n---------\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>",
               "stats": {
-                "files": 9,
-                "lines": 283,
-                "insertions": 262,
-                "deletions": 21
+                "files": 5,
+                "lines": 687,
+                "insertions": 674,
+                "deletions": 13
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
-                "keyword": 5,
+                "keyword": 12,
                 "ai": 25,
-                "total": 80
+                "total": 87
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 80,
+          "total_score": 87,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -2849,8 +3092,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "shlin0415",
@@ -2888,8 +3131,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 38,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "weizhoublue",
@@ -2949,45 +3192,6 @@
                 "lines": 13,
                 "insertions": 13,
                 "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 21,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 21,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "Jiayue Chen",
-          "email": "96101996+glbyktjys@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 21,
-          "commits": [
-            {
-              "hash": "73bf76b3",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-06-26T02:38:51.000Z",
-              "message": "Fix/translation reuse job (#3890)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 13,
-                "insertions": 12,
-                "deletions": 1
               },
               "scores": {
                 "loc": 3,
@@ -3799,12 +4003,72 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "nevasini1",
-          "email": "nevasini1@gmail.com",
+          "name": "Hz_Zhang",
+          "email": "47402297+HaozheZhang6@users.noreply.github.com",
           "total_commits": 2,
           "significant_commits": 1,
           "simple_commits": 1,
-          "commit_score": 92,
+          "commit_score": 121,
+          "commits": [
+            {
+              "hash": "a312a7f6",
+              "author": "Hz_Zhang",
+              "email": "47402297+HaozheZhang6@users.noreply.github.com",
+              "date": "2026-06-22T22:28:13.000Z",
+              "message": "Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait (#3704)\n\n* Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait\n\nThe SGLang MP adapter's _wait_for_lookup busy-polled QUERY_PREFETCH_STATUS in\na 1ms sleep loop, adding repeated ZMQ requests and polling latency on the load\npath -- noticeable when a lookup triggers movement from a slower storage layer\ninto L1 (per the TODO left in _wait_for_lookup).\n\nAdd a blocking WAIT_PREFETCH_STATUS request type. Its daemon handler blocks on\na PrefetchController completion condition variable until the prefetch result is\npublished (or a timeout), so the client issues a single request instead of\nbusy-polling. L1-only prefetches (prefetch_request_id == -1) return immediately.\n\nFixes #3694\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* Register WAIT_PREFETCH_STATUS in the engine protocol definitions\n\nThe RequestType docstring requires every enum member to also have a protocol\ndefinition (the validation system in protocols/__init__.py enforces a 1:1\nmatch). The new WAIT_PREFETCH_STATUS member was missing one, so\ninitialize_protocols() would fail with an orphaned enum member. Add the\ndefinition (payload: request_id str + timeout float, returns int | None) and\nits REQUEST_NAMES entry, mirroring QUERY_PREFETCH_STATUS.\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* test: cover the WAIT_PREFETCH_STATUS LookupModule handler path\n\nAdd targeted tests for wait_prefetch_status -> query_prefetch_status: count\ncomputation + event emission + exactly-once job consumption on success, None +\njob retention on timeout, and 0 for an unknown request_id. The storage manager is\nmocked, so the request-handler/protocol path is exercised without a GPU or native\nbitmap (the controller tests already cover the condition variable in isolation).\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* style: ruff-format the WAIT_PREFETCH_STATUS test\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* docs: document WAIT_PREFETCH_STATUS in the MP ZMQ protocol (SGLang-only)\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\nCo-authored-by: haozhe <haozhe@haozhes-MacBook-Pro.local>",
+              "stats": {
+                "files": 9,
+                "lines": 283,
+                "insertions": 262,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6a57f42b",
+              "author": "Hz_Zhang",
+              "email": "47402297+HaozheZhang6@users.noreply.github.com",
+              "date": "2026-06-27T01:30:32.000Z",
+              "message": "chore: move type-only imports under TYPE_CHECKING -- l2_adapters (#3730) (#3736)\n\nchore: move type-only imports under TYPE_CHECKING (#3730)\n\nSigned-off-by: Hz_Zhang <47402297+HaozheZhang6@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 31,
+                "insertions": 16,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 10,
+                "ai": 3,
+                "total": 41
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 60.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 121,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "nevasini1",
+          "email": "nevasini1@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 112,
           "commits": [
             {
               "hash": "87eec66f",
@@ -3847,14 +4111,95 @@
                 "total": 72
               },
               "classification": "significant"
+            },
+            {
+              "hash": "2cdaa96c",
+              "author": "nevasini1",
+              "email": "nevasini1@gmail.com",
+              "date": "2026-06-27T00:52:54.000Z",
+              "message": "cleanup: move type-only IPCCacheServerKey import under TYPE_CHECKING (#3800)\n\nSigned-off-by: nevasini1 <nevasini1@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 6,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 46,
+          "avg_score": 37.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 112,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Jiayue Chen",
+          "email": "96101996+glbyktjys@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 108,
+          "commits": [
+            {
+              "hash": "73bf76b3",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-26T02:38:51.000Z",
+              "message": "Fix/translation reuse job (#3890)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 13,
+                "insertions": 12,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c4b527a7",
+              "author": "Jiayue Chen",
+              "email": "96101996+glbyktjys@users.noreply.github.com",
+              "date": "2026-06-27T00:58:48.000Z",
+              "message": "fix translation and update welcome page (#3906)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
+              "stats": {
+                "files": 136,
+                "lines": 4245,
+                "insertions": 2052,
+                "deletions": 2193
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 54,
           "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 92,
+          "total_score": 108,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4011,8 +4356,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "maobaolong",
@@ -4050,8 +4395,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Rui Zhang",
@@ -4171,41 +4516,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Hz_Zhang",
-          "email": "47402297+HaozheZhang6@users.noreply.github.com",
+          "name": "Omer Rubinstein",
+          "email": "omerrubi@amazon.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 80,
+          "commit_score": 87,
           "commits": [
             {
-              "hash": "a312a7f6",
-              "author": "Hz_Zhang",
-              "email": "47402297+HaozheZhang6@users.noreply.github.com",
-              "date": "2026-06-22T22:28:13.000Z",
-              "message": "Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait (#3704)\n\n* Add blocking WAIT_PREFETCH_STATUS to avoid busy-polling the lookup wait\n\nThe SGLang MP adapter's _wait_for_lookup busy-polled QUERY_PREFETCH_STATUS in\na 1ms sleep loop, adding repeated ZMQ requests and polling latency on the load\npath -- noticeable when a lookup triggers movement from a slower storage layer\ninto L1 (per the TODO left in _wait_for_lookup).\n\nAdd a blocking WAIT_PREFETCH_STATUS request type. Its daemon handler blocks on\na PrefetchController completion condition variable until the prefetch result is\npublished (or a timeout), so the client issues a single request instead of\nbusy-polling. L1-only prefetches (prefetch_request_id == -1) return immediately.\n\nFixes #3694\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* Register WAIT_PREFETCH_STATUS in the engine protocol definitions\n\nThe RequestType docstring requires every enum member to also have a protocol\ndefinition (the validation system in protocols/__init__.py enforces a 1:1\nmatch). The new WAIT_PREFETCH_STATUS member was missing one, so\ninitialize_protocols() would fail with an orphaned enum member. Add the\ndefinition (payload: request_id str + timeout float, returns int | None) and\nits REQUEST_NAMES entry, mirroring QUERY_PREFETCH_STATUS.\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\n\n* test: cover the WAIT_PREFETCH_STATUS LookupModule handler path\n\nAdd targeted tests for wait_prefetch_status -> query_prefetch_status: count\ncomputation + event emission + exactly-once job consumption on success, None +\njob retention on timeout, and 0 for an unknown request_id. The storage manager is\nmocked, so the request-handler/protocol path is exercised without a GPU or native\nbitmap (the controller tests already cover the condition variable in isolation).\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* style: ruff-format the WAIT_PREFETCH_STATUS test\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n* docs: document WAIT_PREFETCH_STATUS in the MP ZMQ protocol (SGLang-only)\n\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\n\n---------\n\nSigned-off-by: Haozhe Zhang <zhang.hz6666@gmail.com>\nSigned-off-by: haozhe <haozhe@haozhes-MacBook-Pro.local>\nCo-authored-by: haozhe <haozhe@haozhes-MacBook-Pro.local>",
+              "hash": "31df26dd",
+              "author": "Omer Rubinstein",
+              "email": "omerrubi@amazon.com",
+              "date": "2026-06-27T00:52:20.000Z",
+              "message": "feat(valkey): add per-key TTL + partial-chunk validation to Valkey glide connector (#3836)\n\n* feat(valkey): reject partial/unfull chunks in Valkey glide connector\n\nThe Valkey GLIDE connector uses single-key, fixed-size storage with no\nper-chunk metadata (same scheme as RESPConnector), so partial/unfull\nchunks cannot be represented or verified on read. Validate this in\nValkeyConnectorAdapter by asserting save_chunk_meta and save_unfull_chunk\nare both False, mirroring RESPConnectorAdapter.\n\nAlso coerce free-form extra_config booleans via _to_bool so a string\nlike \"false\" is parsed correctly (bool(\"false\") is truthy); applied to\nsave_chunk_meta and the existing tls_enable read.\n\nAdditionally, harden _do_get_into so a short read is not silently\naccepted: it previously returned True regardless of bytes read, leaving\nstale tail bytes in the destination buffer and masking a size mismatch /\ncorruption. Warn and treat a size mismatch as a miss (return False) on\nboth the buffer-GET and legacy GET paths so the entry is recomputed.\nFixed-size KV chunks must round-trip exactly.\n\nTests cover the real _do_get_into buffer-GET return path directly, and\nthe in-memory mock now faithfully models the buffer-GET branch (returning\nan int byte count) so get/batched_get are exercised on both GET paths.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n* feat(valkey): add optional per-key TTL to Valkey glide connector\n\nWithout a TTL, keys are persisted indefinitely, so a Valkey/Redis node\nusing a volatile-lru/volatile-lfu eviction policy never evicts the L2\nKV cache keys and chokes once it reaches maxmemory. Add an opt-in,\nconfigurable per-key TTL, gated behind a feature flag, so the eviction\npolicy can reclaim memory under pressure.\n\nNew extra_config keys:\n- valkey_enable_ttl (bool, default false): feature flag.\n- valkey_ttl_sec (int seconds, default 86400 when enabled but unset):\n  per-key TTL; must be a positive integer.\n\n_ThreadWorkerPool and ValkeyConnector accept ttl_seconds and, when set,\nwrite keys with glide_sync.ExpirySet(SEC, ttl) (built lazily and cached;\nthe immutable ExpirySet is safe to share across worker threads). The\nno-TTL path is unchanged. Adds docs and unit tests covering config\npassthrough, defaulting, invalid-value rejection, and expiry application\non put.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n---------\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>",
               "stats": {
-                "files": 9,
-                "lines": 283,
-                "insertions": 262,
-                "deletions": 21
+                "files": 5,
+                "lines": 687,
+                "insertions": 674,
+                "deletions": 13
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
-                "keyword": 5,
+                "keyword": 12,
                 "ai": 25,
-                "total": 80
+                "total": 87
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 80,
+          "total_score": 87,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -4422,8 +4767,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "shlin0415",
@@ -4461,8 +4806,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 38,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "weizhoublue",
@@ -4522,45 +4867,6 @@
                 "lines": 13,
                 "insertions": 13,
                 "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 21,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 21,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "Jiayue Chen",
-          "email": "96101996+glbyktjys@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 21,
-          "commits": [
-            {
-              "hash": "73bf76b3",
-              "author": "Jiayue Chen",
-              "email": "96101996+glbyktjys@users.noreply.github.com",
-              "date": "2026-06-26T02:38:51.000Z",
-              "message": "Fix/translation reuse job (#3890)\n\nSigned-off-by: Jiayue Chen <chenjiayuejys@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 13,
-                "insertions": 12,
-                "deletions": 1
               },
               "scores": {
                 "loc": 3,
@@ -4780,13 +5086,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-06-27T00:30:23.669Z",
+    "analyzedAt": "2026-06-28T00:30:14.966Z",
     "daysBack": 2,
-    "totalCommits": 49,
-    "totalContributors": 30,
+    "totalCommits": 53,
+    "totalContributors": 31,
     "mergedFrom": {
-      "existing": 43,
-      "new": 15
+      "existing": 49,
+      "new": 10
     }
   }
 }
