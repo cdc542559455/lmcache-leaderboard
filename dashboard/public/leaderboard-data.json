@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-28T00:30:14.966Z",
-  "total_commits_analyzed": 53,
+  "last_updated": "2026-06-29T00:30:11.980Z",
+  "total_commits_analyzed": 56,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -331,10 +331,10 @@
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 3,
+          "total_commits": 5,
+          "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 237,
+          "commit_score": 294,
           "commits": [
             {
               "hash": "e09972c8",
@@ -419,14 +419,35 @@
                 "total": 53
               },
               "classification": "significant"
+            },
+            {
+              "hash": "2d500a16",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-28T08:08:57.000Z",
+              "message": "[Docs] update cli docs (#3870)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 106,
+                "insertions": 106,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 57
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.25,
-          "significance_ratio": 0.75,
+          "avg_score": 58.8,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 237,
+          "total_score": 294,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -487,6 +508,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 160,
+          "commits": [
+            {
+              "hash": "3e1bc021",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-24T12:04:36.000Z",
+              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 891,
+                "insertions": 572,
+                "deletions": 319
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7b05254c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-28T03:21:08.000Z",
+              "message": "[CI] Supports timer trigger test vllm and record (#3920)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 211,
+                "insertions": 211,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 21,
+                "total": 73
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 160,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -688,8 +769,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 121,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "nevasini1",
@@ -968,45 +1049,6 @@
                 "lines": 986,
                 "insertions": 924,
                 "deletions": 62
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "3e1bc021",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-24T12:04:36.000Z",
-              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 17,
-                "lines": 891,
-                "insertions": 572,
-                "deletions": 319
               },
               "scores": {
                 "loc": 30,
@@ -1458,6 +1500,45 @@
           "total_score": 70,
           "tier": "T2",
           "tier_name": "Intermediate"
+        },
+        {
+          "name": "zhengchenyu",
+          "email": "zhengchenyu16@163.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 59,
+          "commits": [
+            {
+              "hash": "1720917e",
+              "author": "zhengchenyu",
+              "email": "zhengchenyu16@163.com",
+              "date": "2026-06-28T06:20:45.000Z",
+              "message": "feat: add thread to clean up expired sessions for SessionManager. (#3570)\n\nSigned-off-by: zhengchenyu <zhengchenyu16@163.com>",
+              "stats": {
+                "files": 4,
+                "lines": 96,
+                "insertions": 83,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 25,
+                "ai": 9,
+                "total": 59
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 59,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 59,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "听说十四行春",
@@ -1944,6 +2025,129 @@
           "tier_name": "Elite"
         },
         {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 294,
+          "commits": [
+            {
+              "hash": "e09972c8",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-22T08:44:39.000Z",
+              "message": "[docs] add cli extension docs (#3719)\n\n* [docs] add cli extension docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 380,
+                "insertions": 380,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "15b38e7e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-22T07:46:44.000Z",
+              "message": "[refactor] refactor CLI for multi sub commands  (#3678)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 40,
+                "lines": 2090,
+                "insertions": 907,
+                "deletions": 1183
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4aafa30e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-25T15:05:36.000Z",
+              "message": "[bugfix] fix uts (#3878)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 1,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "21f159c1",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-26T01:46:02.000Z",
+              "message": "[p2p][bugfix] fix coordinator server disconnected error (#3876)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 6,
+                "lines": 65,
+                "insertions": 57,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 6,
+                "total": 53
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2d500a16",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-28T08:08:57.000Z",
+              "message": "[Docs] update cli docs (#3870)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 106,
+                "insertions": 106,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 57
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 58.8,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 294,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 4,
@@ -2042,108 +2246,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 244,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 237,
-          "commits": [
-            {
-              "hash": "e09972c8",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-06-22T08:44:39.000Z",
-              "message": "[docs] add cli extension docs (#3719)\n\n* [docs] add cli extension docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 3,
-                "lines": 380,
-                "insertions": 380,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "15b38e7e",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-06-22T07:46:44.000Z",
-              "message": "[refactor] refactor CLI for multi sub commands  (#3678)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 40,
-                "lines": 2090,
-                "insertions": 907,
-                "deletions": 1183
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "4aafa30e",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-06-25T15:05:36.000Z",
-              "message": "[bugfix] fix uts (#3878)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 4,
-                "insertions": 1,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "21f159c1",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-06-26T01:46:02.000Z",
-              "message": "[p2p][bugfix] fix coordinator server disconnected error (#3876)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 6,
-                "lines": 65,
-                "insertions": 57,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 6,
-                "total": 53
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 59.25,
-          "significance_ratio": 0.75,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 237,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -2266,6 +2368,66 @@
           "total_score": 174,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 160,
+          "commits": [
+            {
+              "hash": "3e1bc021",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-24T12:04:36.000Z",
+              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 891,
+                "insertions": 572,
+                "deletions": 319
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7b05254c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-28T03:21:08.000Z",
+              "message": "[CI] Supports timer trigger test vllm and record (#3920)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 211,
+                "insertions": 211,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 21,
+                "total": 73
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 160,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Tony Lin",
@@ -2642,8 +2804,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "andyluo7",
@@ -2664,45 +2826,6 @@
                 "lines": 986,
                 "insertions": 924,
                 "deletions": 62
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "3e1bc021",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-24T12:04:36.000Z",
-              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 17,
-                "lines": 891,
-                "insertions": 572,
-                "deletions": 319
               },
               "scores": {
                 "loc": 30,
@@ -3055,6 +3178,45 @@
           "total_score": 77,
           "tier": "T2",
           "tier_name": "Intermediate"
+        },
+        {
+          "name": "zhengchenyu",
+          "email": "zhengchenyu16@163.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 59,
+          "commits": [
+            {
+              "hash": "1720917e",
+              "author": "zhengchenyu",
+              "email": "zhengchenyu16@163.com",
+              "date": "2026-06-28T06:20:45.000Z",
+              "message": "feat: add thread to clean up expired sessions for SessionManager. (#3570)\n\nSigned-off-by: zhengchenyu <zhengchenyu16@163.com>",
+              "stats": {
+                "files": 4,
+                "lines": 96,
+                "insertions": 83,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 25,
+                "ai": 9,
+                "total": 59
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 59,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 59,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "听说十四行春",
@@ -3619,6 +3781,129 @@
           "tier_name": "Elite"
         },
         {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 294,
+          "commits": [
+            {
+              "hash": "e09972c8",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-22T08:44:39.000Z",
+              "message": "[docs] add cli extension docs (#3719)\n\n* [docs] add cli extension docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 380,
+                "insertions": 380,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "15b38e7e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-22T07:46:44.000Z",
+              "message": "[refactor] refactor CLI for multi sub commands  (#3678)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 40,
+                "lines": 2090,
+                "insertions": 907,
+                "deletions": 1183
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4aafa30e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-25T15:05:36.000Z",
+              "message": "[bugfix] fix uts (#3878)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 1,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "21f159c1",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-26T01:46:02.000Z",
+              "message": "[p2p][bugfix] fix coordinator server disconnected error (#3876)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 6,
+                "lines": 65,
+                "insertions": 57,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 6,
+                "total": 53
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2d500a16",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-06-28T08:08:57.000Z",
+              "message": "[Docs] update cli docs (#3870)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 106,
+                "insertions": 106,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 57
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 58.8,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 294,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 4,
@@ -3717,108 +4002,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 244,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 237,
-          "commits": [
-            {
-              "hash": "e09972c8",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-06-22T08:44:39.000Z",
-              "message": "[docs] add cli extension docs (#3719)\n\n* [docs] add cli extension docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n* update docs\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\n\n---------\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 3,
-                "lines": 380,
-                "insertions": 380,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "15b38e7e",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-06-22T07:46:44.000Z",
-              "message": "[refactor] refactor CLI for multi sub commands  (#3678)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 40,
-                "lines": 2090,
-                "insertions": 907,
-                "deletions": 1183
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "4aafa30e",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-06-25T15:05:36.000Z",
-              "message": "[bugfix] fix uts (#3878)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>",
-              "stats": {
-                "files": 1,
-                "lines": 4,
-                "insertions": 1,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "21f159c1",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-06-26T01:46:02.000Z",
-              "message": "[p2p][bugfix] fix coordinator server disconnected error (#3876)\n\nSigned-off-by: idellzheng <idellzheng@tencent.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 6,
-                "lines": 65,
-                "insertions": 57,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 6,
-                "total": 53
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 59.25,
-          "significance_ratio": 0.75,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 237,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3941,6 +4124,66 @@
           "total_score": 174,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 160,
+          "commits": [
+            {
+              "hash": "3e1bc021",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-24T12:04:36.000Z",
+              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 891,
+                "insertions": 572,
+                "deletions": 319
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7b05254c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-28T03:21:08.000Z",
+              "message": "[CI] Supports timer trigger test vllm and record (#3920)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 211,
+                "insertions": 211,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 21,
+                "total": 73
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 160,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Tony Lin",
@@ -4317,8 +4560,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "andyluo7",
@@ -4339,45 +4582,6 @@
                 "lines": 986,
                 "insertions": 924,
                 "deletions": 62
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "3e1bc021",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-24T12:04:36.000Z",
-              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 17,
-                "lines": 891,
-                "insertions": 572,
-                "deletions": 319
               },
               "scores": {
                 "loc": 30,
@@ -4730,6 +4934,45 @@
           "total_score": 77,
           "tier": "T2",
           "tier_name": "Intermediate"
+        },
+        {
+          "name": "zhengchenyu",
+          "email": "zhengchenyu16@163.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 59,
+          "commits": [
+            {
+              "hash": "1720917e",
+              "author": "zhengchenyu",
+              "email": "zhengchenyu16@163.com",
+              "date": "2026-06-28T06:20:45.000Z",
+              "message": "feat: add thread to clean up expired sessions for SessionManager. (#3570)\n\nSigned-off-by: zhengchenyu <zhengchenyu16@163.com>",
+              "stats": {
+                "files": 4,
+                "lines": 96,
+                "insertions": 83,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 25,
+                "ai": 9,
+                "total": 59
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 59,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 59,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "听说十四行春",
@@ -5086,13 +5329,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-06-28T00:30:14.966Z",
+    "analyzedAt": "2026-06-29T00:30:11.980Z",
     "daysBack": 2,
-    "totalCommits": 53,
-    "totalContributors": 31,
+    "totalCommits": 56,
+    "totalContributors": 32,
     "mergedFrom": {
-      "existing": 49,
-      "new": 10
+      "existing": 53,
+      "new": 7
     }
   }
 }
