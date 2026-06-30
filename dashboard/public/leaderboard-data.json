@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-29T00:30:11.980Z",
-  "total_commits_analyzed": 56,
+  "last_updated": "2026-06-30T00:30:11.953Z",
+  "total_commits_analyzed": 62,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -1813,6 +1813,242 @@
           "tier": "T3",
           "tier_name": "Contributing"
         }
+      ],
+      "2026-W27": [
+        {
+          "name": "Manas Adepu",
+          "email": "112828012+a-m-n-s@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "d4c36bd5",
+              "author": "Manas Adepu",
+              "email": "112828012+a-m-n-s@users.noreply.github.com",
+              "date": "2026-06-30T00:23:37.000Z",
+              "message": "[CLI] Add `describe engine` command (#3867)\n\nCo-authored-by: Manas Adepu <112828012+manasadepu@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 539,
+                "insertions": 515,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "d29e3e18",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-06-29T21:22:18.000Z",
+              "message": "[Fix][RawBlock] Roll back put-task refs when dispatch scheduling fails (#3698)\n\nbatched_submit_put_task raises a ref on each pending object and reserves\nits key in _put_tasks before handing the batch to the event loop. If\nasyncio.run_coroutine_threadsafe fails (e.g. the loop is shutting down),\nthe raised refs and reserved keys for the unscheduled items leaked,\nkeeping the MemoryObj pinned and the key permanently blocked from future\nputs. Wrap dispatch so the unscheduled items roll back their ref and\nput-task entry; already-scheduled items still release theirs in the\ncoroutine's finally block.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 223,
+                "insertions": 207,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 22,
+                "total": 74
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 67,
+          "commits": [
+            {
+              "hash": "5d95caf2",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-06-29T23:38:07.000Z",
+              "message": "feat: add configurable disk_io_threads for local disk and GDS backends (#3941)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 70,
+                "insertions": 55,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 25,
+                "ai": 7,
+                "total": 67
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 67,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 67,
+          "commits": [
+            {
+              "hash": "f63e9ad8",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-29T19:26:43.000Z",
+              "message": "ci: pin vLLM nightly to the canary-verified version (#3910)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 172,
+                "insertions": 170,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 17,
+                "total": 67
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 67,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "zxue2",
+          "email": "zhan.xue@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 59,
+          "commits": [
+            {
+              "hash": "54437e26",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-06-29T10:41:48.000Z",
+              "message": "add LMCache xpu docker file (#3838)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 124,
+                "insertions": 124,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 12,
+                "total": 59
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 59,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 59,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Sun",
+          "email": "3193304954@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 46,
+          "commits": [
+            {
+              "hash": "cc9b0f51",
+              "author": "Sun",
+              "email": "3193304954@qq.com",
+              "date": "2026-06-29T03:17:48.000Z",
+              "message": "fix(memory): cache ctypes ubyte-array types to stop heap-type leak (#3793)\n\nSigned-off-by: THINKER-ONLY <9116124039@email.ncu.edu.cn>",
+              "stats": {
+                "files": 2,
+                "lines": 95,
+                "insertions": 91,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 46,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 46,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -2250,6 +2486,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 227,
+          "commits": [
+            {
+              "hash": "3e1bc021",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-24T12:04:36.000Z",
+              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 891,
+                "insertions": 572,
+                "deletions": 319
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7b05254c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-28T03:21:08.000Z",
+              "message": "[CI] Supports timer trigger test vllm and record (#3920)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 211,
+                "insertions": 211,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 21,
+                "total": 73
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f63e9ad8",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-29T19:26:43.000Z",
+              "message": "ci: pin vLLM nightly to the canary-verified version (#3910)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 172,
+                "insertions": 170,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 17,
+                "total": 67
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 227,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
           "total_commits": 2,
@@ -2366,28 +2683,28 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 174,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
+          "name": "zxue2",
+          "email": "zhan.xue@intel.com",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 160,
+          "commit_score": 146,
           "commits": [
             {
-              "hash": "3e1bc021",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-24T12:04:36.000Z",
-              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "hash": "b2d804e9",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-06-22T20:34:51.000Z",
+              "message": "feat(mp): introduce device-agnostic DeviceIPCWrapper base for KV-cache IPC (#3703)\n\nAll KV-cache IPC wrappers (CUDA, CPU-SHM, TRT-LLM raw-CUDA) previously\nsubclassed `CudaIPCWrapper` — a naming and structural pattern that made\nnon-CUDA backends impossible to add cleanly.  This change introduces a\ndevice-agnostic base class and reparents the existing wrappers onto it.\n\nlmcache/v1/multiprocess/custom_types.py\n  - Add `DeviceIPCWrapper` (new base): holds the shared interface fields\n    :dtype, shape, stride, storage_offset, device_uuid.\n  - `CudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - `RawCudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - Update `list[CudaIPCWrapper]` to `list[DeviceIPCWrapper]`.\n  - `_CUSTOMERIZED_SERIALIZERS` ext-code-1 key updated to\n    `DeviceIPCWrapper`; pickle still preserves concrete subclass identity\n    through the wire so `to_tensor()` dispatches correctly.\n\nlmcache/v1/platform/cpu/shm.py\n  - `CpuShmTensorWrapper` reparented to `DeviceIPCWrapper`.\n\nlmcache/v1/multiprocess/mq.py\n  - Import and `_SPECIAL_ENCODER_DECODERS` keys updated:\n    `CudaIPCWrapper` / `list[CudaIPCWrapper]` -> `DeviceIPCWrapper` /\n    `list[DeviceIPCWrapper]`.\n\nlmcache/v1/multiprocess/protocols/blend_v3.py\nlmcache/v1/multiprocess/modules/blend_v3.py\n  - Import and payload-class / type-annotation references updated to\n    `DeviceIPCWrapper`.\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: Yi Yao <yi.a.yao@intel.com>\nCo-authored-by: Ye XinYu <xinyu.ye@intel.com>",
               "stats": {
-                "files": 17,
-                "lines": 891,
-                "insertions": 572,
-                "deletions": 319
+                "files": 10,
+                "lines": 290,
+                "insertions": 195,
+                "deletions": 95
               },
               "scores": {
                 "loc": 30,
@@ -2399,33 +2716,33 @@
               "classification": "significant"
             },
             {
-              "hash": "7b05254c",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-28T03:21:08.000Z",
-              "message": "[CI] Supports timer trigger test vllm and record (#3920)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "hash": "54437e26",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-06-29T10:41:48.000Z",
+              "message": "add LMCache xpu docker file (#3838)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
               "stats": {
-                "files": 2,
-                "lines": 211,
-                "insertions": 211,
+                "files": 1,
+                "lines": 124,
+                "insertions": 124,
                 "deletions": 0
               },
               "scores": {
                 "loc": 30,
-                "files": 10,
+                "files": 5,
                 "keyword": 12,
-                "ai": 21,
-                "total": 73
+                "ai": 12,
+                "total": 59
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 73,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 160,
+          "total_score": 146,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2687,45 +3004,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 108,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "zxue2",
-          "email": "zhan.xue@intel.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "b2d804e9",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-06-22T20:34:51.000Z",
-              "message": "feat(mp): introduce device-agnostic DeviceIPCWrapper base for KV-cache IPC (#3703)\n\nAll KV-cache IPC wrappers (CUDA, CPU-SHM, TRT-LLM raw-CUDA) previously\nsubclassed `CudaIPCWrapper` — a naming and structural pattern that made\nnon-CUDA backends impossible to add cleanly.  This change introduces a\ndevice-agnostic base class and reparents the existing wrappers onto it.\n\nlmcache/v1/multiprocess/custom_types.py\n  - Add `DeviceIPCWrapper` (new base): holds the shared interface fields\n    :dtype, shape, stride, storage_offset, device_uuid.\n  - `CudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - `RawCudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - Update `list[CudaIPCWrapper]` to `list[DeviceIPCWrapper]`.\n  - `_CUSTOMERIZED_SERIALIZERS` ext-code-1 key updated to\n    `DeviceIPCWrapper`; pickle still preserves concrete subclass identity\n    through the wire so `to_tensor()` dispatches correctly.\n\nlmcache/v1/platform/cpu/shm.py\n  - `CpuShmTensorWrapper` reparented to `DeviceIPCWrapper`.\n\nlmcache/v1/multiprocess/mq.py\n  - Import and `_SPECIAL_ENCODER_DECODERS` keys updated:\n    `CudaIPCWrapper` / `list[CudaIPCWrapper]` -> `DeviceIPCWrapper` /\n    `list[DeviceIPCWrapper]`.\n\nlmcache/v1/multiprocess/protocols/blend_v3.py\nlmcache/v1/multiprocess/modules/blend_v3.py\n  - Import and payload-class / type-annotation references updated to\n    `DeviceIPCWrapper`.\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: Yi Yao <yi.a.yao@intel.com>\nCo-authored-by: Ye XinYu <xinyu.ye@intel.com>",
-              "stats": {
-                "files": 10,
-                "lines": 290,
-                "insertions": 195,
-                "deletions": 95
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -3180,6 +3458,123 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Manas Adepu",
+          "email": "112828012+a-m-n-s@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "d4c36bd5",
+              "author": "Manas Adepu",
+              "email": "112828012+a-m-n-s@users.noreply.github.com",
+              "date": "2026-06-30T00:23:37.000Z",
+              "message": "[CLI] Add `describe engine` command (#3867)\n\nCo-authored-by: Manas Adepu <112828012+manasadepu@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 539,
+                "insertions": 515,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "d29e3e18",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-06-29T21:22:18.000Z",
+              "message": "[Fix][RawBlock] Roll back put-task refs when dispatch scheduling fails (#3698)\n\nbatched_submit_put_task raises a ref on each pending object and reserves\nits key in _put_tasks before handing the batch to the event loop. If\nasyncio.run_coroutine_threadsafe fails (e.g. the loop is shutting down),\nthe raised refs and reserved keys for the unscheduled items leaked,\nkeeping the MemoryObj pinned and the key permanently blocked from future\nputs. Wrap dispatch so the unscheduled items roll back their ref and\nput-task entry; already-scheduled items still release theirs in the\ncoroutine's finally block.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 223,
+                "insertions": 207,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 22,
+                "total": 74
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 67,
+          "commits": [
+            {
+              "hash": "5d95caf2",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-06-29T23:38:07.000Z",
+              "message": "feat: add configurable disk_io_threads for local disk and GDS backends (#3941)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 70,
+                "insertions": 55,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 25,
+                "ai": 7,
+                "total": 67
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 67,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "zhengchenyu",
           "email": "zhengchenyu16@163.com",
           "total_commits": 1,
@@ -3215,6 +3610,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 59,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Sun",
+          "email": "3193304954@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 46,
+          "commits": [
+            {
+              "hash": "cc9b0f51",
+              "author": "Sun",
+              "email": "3193304954@qq.com",
+              "date": "2026-06-29T03:17:48.000Z",
+              "message": "fix(memory): cache ctypes ubyte-array types to stop heap-type leak (#3793)\n\nSigned-off-by: THINKER-ONLY <9116124039@email.ncu.edu.cn>",
+              "stats": {
+                "files": 2,
+                "lines": 95,
+                "insertions": 91,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 46,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 46,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -4006,6 +4440,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 227,
+          "commits": [
+            {
+              "hash": "3e1bc021",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-24T12:04:36.000Z",
+              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 17,
+                "lines": 891,
+                "insertions": 572,
+                "deletions": 319
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7b05254c",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-28T03:21:08.000Z",
+              "message": "[CI] Supports timer trigger test vllm and record (#3920)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 211,
+                "insertions": 211,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 21,
+                "total": 73
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f63e9ad8",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-06-29T19:26:43.000Z",
+              "message": "ci: pin vLLM nightly to the canary-verified version (#3910)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 3,
+                "lines": 172,
+                "insertions": 170,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 17,
+                "total": 67
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 227,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
           "total_commits": 2,
@@ -4122,28 +4637,28 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 174,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
+          "name": "zxue2",
+          "email": "zhan.xue@intel.com",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 160,
+          "commit_score": 146,
           "commits": [
             {
-              "hash": "3e1bc021",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-24T12:04:36.000Z",
-              "message": "refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/ (#3829)\n\n* refactor(platform): auto-discover DeviceIPCWrapper subclasses under platform/<device>/\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* address review: lock lazy discovery, type hints, docstrings\n\n- _registry: guard _discover_wrappers_once with a double-checked lock\n\n- base_ipc_wrapper: tighten __eq__ with isinstance, annotate fields,\n\n  add Serialize/Deserialize docstrings, type _discover_devices\n\n- cuda/ipc_wrapper, cpu/shm: flesh out wrap() docstrings, -> None on __init__\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Fix UT\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* Remove re-exports code\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* update design doc to reflect auto-discovery registration model\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n* drop _is_default_wrapper from base class\n\nPer review, the registry already treats a missing attribute as False via getattr, so keeping _is_default_wrapper only on concrete subclasses is enough.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>\n\n---------\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "hash": "b2d804e9",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-06-22T20:34:51.000Z",
+              "message": "feat(mp): introduce device-agnostic DeviceIPCWrapper base for KV-cache IPC (#3703)\n\nAll KV-cache IPC wrappers (CUDA, CPU-SHM, TRT-LLM raw-CUDA) previously\nsubclassed `CudaIPCWrapper` — a naming and structural pattern that made\nnon-CUDA backends impossible to add cleanly.  This change introduces a\ndevice-agnostic base class and reparents the existing wrappers onto it.\n\nlmcache/v1/multiprocess/custom_types.py\n  - Add `DeviceIPCWrapper` (new base): holds the shared interface fields\n    :dtype, shape, stride, storage_offset, device_uuid.\n  - `CudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - `RawCudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - Update `list[CudaIPCWrapper]` to `list[DeviceIPCWrapper]`.\n  - `_CUSTOMERIZED_SERIALIZERS` ext-code-1 key updated to\n    `DeviceIPCWrapper`; pickle still preserves concrete subclass identity\n    through the wire so `to_tensor()` dispatches correctly.\n\nlmcache/v1/platform/cpu/shm.py\n  - `CpuShmTensorWrapper` reparented to `DeviceIPCWrapper`.\n\nlmcache/v1/multiprocess/mq.py\n  - Import and `_SPECIAL_ENCODER_DECODERS` keys updated:\n    `CudaIPCWrapper` / `list[CudaIPCWrapper]` -> `DeviceIPCWrapper` /\n    `list[DeviceIPCWrapper]`.\n\nlmcache/v1/multiprocess/protocols/blend_v3.py\nlmcache/v1/multiprocess/modules/blend_v3.py\n  - Import and payload-class / type-annotation references updated to\n    `DeviceIPCWrapper`.\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: Yi Yao <yi.a.yao@intel.com>\nCo-authored-by: Ye XinYu <xinyu.ye@intel.com>",
               "stats": {
-                "files": 17,
-                "lines": 891,
-                "insertions": 572,
-                "deletions": 319
+                "files": 10,
+                "lines": 290,
+                "insertions": 195,
+                "deletions": 95
               },
               "scores": {
                 "loc": 30,
@@ -4155,33 +4670,33 @@
               "classification": "significant"
             },
             {
-              "hash": "7b05254c",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-06-28T03:21:08.000Z",
-              "message": "[CI] Supports timer trigger test vllm and record (#3920)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "hash": "54437e26",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-06-29T10:41:48.000Z",
+              "message": "add LMCache xpu docker file (#3838)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
               "stats": {
-                "files": 2,
-                "lines": 211,
-                "insertions": 211,
+                "files": 1,
+                "lines": 124,
+                "insertions": 124,
                 "deletions": 0
               },
               "scores": {
                 "loc": 30,
-                "files": 10,
+                "files": 5,
                 "keyword": 12,
-                "ai": 21,
-                "total": 73
+                "ai": 12,
+                "total": 59
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 73,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 160,
+          "total_score": 146,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4443,45 +4958,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 108,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "zxue2",
-          "email": "zhan.xue@intel.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "b2d804e9",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-06-22T20:34:51.000Z",
-              "message": "feat(mp): introduce device-agnostic DeviceIPCWrapper base for KV-cache IPC (#3703)\n\nAll KV-cache IPC wrappers (CUDA, CPU-SHM, TRT-LLM raw-CUDA) previously\nsubclassed `CudaIPCWrapper` — a naming and structural pattern that made\nnon-CUDA backends impossible to add cleanly.  This change introduces a\ndevice-agnostic base class and reparents the existing wrappers onto it.\n\nlmcache/v1/multiprocess/custom_types.py\n  - Add `DeviceIPCWrapper` (new base): holds the shared interface fields\n    :dtype, shape, stride, storage_offset, device_uuid.\n  - `CudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - `RawCudaIPCWrapper` reparented to `DeviceIPCWrapper`.\n  - Update `list[CudaIPCWrapper]` to `list[DeviceIPCWrapper]`.\n  - `_CUSTOMERIZED_SERIALIZERS` ext-code-1 key updated to\n    `DeviceIPCWrapper`; pickle still preserves concrete subclass identity\n    through the wire so `to_tensor()` dispatches correctly.\n\nlmcache/v1/platform/cpu/shm.py\n  - `CpuShmTensorWrapper` reparented to `DeviceIPCWrapper`.\n\nlmcache/v1/multiprocess/mq.py\n  - Import and `_SPECIAL_ENCODER_DECODERS` keys updated:\n    `CudaIPCWrapper` / `list[CudaIPCWrapper]` -> `DeviceIPCWrapper` /\n    `list[DeviceIPCWrapper]`.\n\nlmcache/v1/multiprocess/protocols/blend_v3.py\nlmcache/v1/multiprocess/modules/blend_v3.py\n  - Import and payload-class / type-annotation references updated to\n    `DeviceIPCWrapper`.\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: Yi Yao <yi.a.yao@intel.com>\nCo-authored-by: Ye XinYu <xinyu.ye@intel.com>",
-              "stats": {
-                "files": 10,
-                "lines": 290,
-                "insertions": 195,
-                "deletions": 95
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4936,6 +5412,123 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Manas Adepu",
+          "email": "112828012+a-m-n-s@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "d4c36bd5",
+              "author": "Manas Adepu",
+              "email": "112828012+a-m-n-s@users.noreply.github.com",
+              "date": "2026-06-30T00:23:37.000Z",
+              "message": "[CLI] Add `describe engine` command (#3867)\n\nCo-authored-by: Manas Adepu <112828012+manasadepu@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 539,
+                "insertions": 515,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "d29e3e18",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-06-29T21:22:18.000Z",
+              "message": "[Fix][RawBlock] Roll back put-task refs when dispatch scheduling fails (#3698)\n\nbatched_submit_put_task raises a ref on each pending object and reserves\nits key in _put_tasks before handing the batch to the event loop. If\nasyncio.run_coroutine_threadsafe fails (e.g. the loop is shutting down),\nthe raised refs and reserved keys for the unscheduled items leaked,\nkeeping the MemoryObj pinned and the key permanently blocked from future\nputs. Wrap dispatch so the unscheduled items roll back their ref and\nput-task entry; already-scheduled items still release theirs in the\ncoroutine's finally block.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 223,
+                "insertions": 207,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 22,
+                "total": 74
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Boris Glimcher",
+          "email": "36732377+glimchb@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 67,
+          "commits": [
+            {
+              "hash": "5d95caf2",
+              "author": "Boris Glimcher",
+              "email": "36732377+glimchb@users.noreply.github.com",
+              "date": "2026-06-29T23:38:07.000Z",
+              "message": "feat: add configurable disk_io_threads for local disk and GDS backends (#3941)\n\nSigned-off-by: Boris Glimcher <Boris.Glimcher@emc.com>\nCo-authored-by: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 70,
+                "insertions": 55,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 25,
+                "ai": 7,
+                "total": 67
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 67,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "zhengchenyu",
           "email": "zhengchenyu16@163.com",
           "total_commits": 1,
@@ -4971,6 +5564,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 59,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Sun",
+          "email": "3193304954@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 46,
+          "commits": [
+            {
+              "hash": "cc9b0f51",
+              "author": "Sun",
+              "email": "3193304954@qq.com",
+              "date": "2026-06-29T03:17:48.000Z",
+              "message": "fix(memory): cache ctypes ubyte-array types to stop heap-type leak (#3793)\n\nSigned-off-by: THINKER-ONLY <9116124039@email.ncu.edu.cn>",
+              "stats": {
+                "files": 2,
+                "lines": 95,
+                "insertions": 91,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 46,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 46,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -5329,13 +5961,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-06-29T00:30:11.980Z",
+    "analyzedAt": "2026-06-30T00:30:11.953Z",
     "daysBack": 2,
-    "totalCommits": 56,
-    "totalContributors": 32,
+    "totalCommits": 62,
+    "totalContributors": 36,
     "mergedFrom": {
-      "existing": 53,
-      "new": 7
+      "existing": 56,
+      "new": 9
     }
   }
 }
