@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-06T00:30:06.742Z",
-  "total_commits_analyzed": 91,
+  "last_updated": "2026-07-07T00:30:17.449Z",
+  "total_commits_analyzed": 99,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3000,6 +3000,320 @@
           "tier": "T3",
           "tier_name": "Contributing"
         }
+      ],
+      "2026-W28": [
+        {
+          "name": "Changhyeon Nam",
+          "email": "63542219+changhyeonnam@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "2d0dda59",
+              "author": "Changhyeon Nam",
+              "email": "63542219+changhyeonnam@users.noreply.github.com",
+              "date": "2026-07-06T21:33:12.000Z",
+              "message": "[Examples] Add Dynamo + LMCache MP integration recipe (aggregated + disaggregated) (#3935)\n\nSigned-off-by: Changhyeon Nam <63542219+changhyeonnam@users.noreply.github.com>",
+              "stats": {
+                "files": 6,
+                "lines": 373,
+                "insertions": 373,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "88e579b2",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-07-06T20:07:54.000Z",
+              "message": "feat(mp): async engine-driven store (#3808)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1038,
+                "insertions": 1031,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "21a5cb1b",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-06T19:48:53.000Z",
+              "message": "[Core][Refactor] Split memory allocators into modules (#3967)\n\n* Split memory allocators into modules\n\nMove concrete memory allocator implementations out of memory_management.py while keeping the existing memory_management import surface intact.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix allocator import compatibility\n\nUse lazy allocator re-exports to avoid import cycles while preserving the lmcache.v1.memory_management public import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Add allocator import order tests\n\nAdd subprocess-based checks for allocator import ordering and the legacy memory_management import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Free paged CPU memory on allocator close\n\nRelease the pinned CPU arena owned by PagedCpuGpuMemoryAllocator through the matching memory_management._free_cpu_memory path.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Harden CuFile allocator destructor\n\nGuard CuFile cleanup for partially initialized allocators and suppress destructor-time deregistration errors.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Document allocator public methods\n\nAdd return annotations and docstrings to the public methods introduced by the memory allocator module split.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Move lazy allocator into allocator package\n\nPlace LazyMemoryAllocator under lmcache.v1.memory_allocators while keeping the old module path as a compatibility shim.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Relax CUDA event IPC test timeout\n\nAllow more time for spawned CUDA IPC event creation in full CI runs.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 5120,
+                "insertions": 3082,
+                "deletions": 2038
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Maharani Ayu Putri Irawan",
+          "email": "72875641+rannnayy@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "0ab390e1",
+              "author": "Maharani Ayu Putri Irawan",
+              "email": "72875641+rannnayy@users.noreply.github.com",
+              "date": "2026-07-06T06:50:30.000Z",
+              "message": "KVCache SDK: batch and stream interface (#3950)\n\n* batch and stream\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* revise\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* fix demo\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* minor fix\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* user facing doc\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n---------\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 1753,
+                "insertions": 1753,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Shuichi Ihara",
+          "email": "sihara@ddn.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "69cfb50e",
+              "author": "Shuichi Ihara",
+              "email": "sihara@ddn.com",
+              "date": "2026-07-06T22:06:12.000Z",
+              "message": "[MP] perf(nixl_store_dynamic): load a request's chunks concurrently (#3696)\n\nSigned-off-by: Shuichi Ihara <sihara@ddn.com>",
+              "stats": {
+                "files": 2,
+                "lines": 133,
+                "insertions": 127,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 37,
+          "commits": [
+            {
+              "hash": "96f86f9b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-07-06T12:39:11.000Z",
+              "message": "ci: collapse cpu-only e2e steps into a matrix (#3980)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 76,
+                "insertions": 20,
+                "deletions": 56
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 10,
+                "ai": 7,
+                "total": 37
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 37,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Xiaohu",
+          "email": "975326527@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "89f317a9",
+              "author": "Xiaohu",
+              "email": "975326527@qq.com",
+              "date": "2026-07-06T22:16:27.000Z",
+              "message": "Move L2 adapter type-only imports under TYPE_CHECKING (#3815)\n\nSigned-off-by: fengxiaohu <975326527@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 16,
+                "insertions": 9,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Kartik Hans",
+          "email": "kartik.feb.hans@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "24f04b23",
+              "author": "Kartik Hans",
+              "email": "kartik.feb.hans@gmail.com",
+              "date": "2026-07-06T19:55:19.000Z",
+              "message": "fix(examples/disagg): guard chat streaming loop against empty choices (#3998)\n\nSigned-off-by: kartikhans <kartik.feb.hans@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 8,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -5263,6 +5577,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 161,
+          "commits": [
+            {
+              "hash": "b8c6a8df",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-01T03:56:56.000Z",
+              "message": "[MP][DAX] Split Device-DAX L1 from CPU L1 manager (#3947)\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 128,
+                "insertions": 97,
+                "deletions": 31
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 12,
+                "total": 74
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "21a5cb1b",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-06T19:48:53.000Z",
+              "message": "[Core][Refactor] Split memory allocators into modules (#3967)\n\n* Split memory allocators into modules\n\nMove concrete memory allocator implementations out of memory_management.py while keeping the existing memory_management import surface intact.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix allocator import compatibility\n\nUse lazy allocator re-exports to avoid import cycles while preserving the lmcache.v1.memory_management public import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Add allocator import order tests\n\nAdd subprocess-based checks for allocator import ordering and the legacy memory_management import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Free paged CPU memory on allocator close\n\nRelease the pinned CPU arena owned by PagedCpuGpuMemoryAllocator through the matching memory_management._free_cpu_memory path.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Harden CuFile allocator destructor\n\nGuard CuFile cleanup for partially initialized allocators and suppress destructor-time deregistration errors.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Document allocator public methods\n\nAdd return annotations and docstrings to the public methods introduced by the memory allocator module split.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Move lazy allocator into allocator package\n\nPlace LazyMemoryAllocator under lmcache.v1.memory_allocators while keeping the old module path as a compatibility shim.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Relax CUDA event IPC test timeout\n\nAllow more time for spawned CUDA IPC event creation in full CI runs.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 5120,
+                "insertions": 3082,
+                "deletions": 2038
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 161,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yuhan Liu",
           "email": "32589867+YuhanLiu11@users.noreply.github.com",
           "total_commits": 2,
@@ -5323,6 +5697,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Shuichi Ihara",
+          "email": "sihara@ddn.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 110,
+          "commits": [
+            {
+              "hash": "979719d7",
+              "author": "Shuichi Ihara",
+              "email": "sihara@ddn.com",
+              "date": "2026-07-02T20:08:13.000Z",
+              "message": "[Bugfix] batched_nixl_desc_exists never hits on FILE (dynamic NIXL) (#3520)",
+              "stats": {
+                "files": 2,
+                "lines": 81,
+                "insertions": 75,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "69cfb50e",
+              "author": "Shuichi Ihara",
+              "email": "sihara@ddn.com",
+              "date": "2026-07-06T22:06:12.000Z",
+              "message": "[MP] perf(nixl_store_dynamic): load a request's chunks concurrently (#3696)\n\nSigned-off-by: Shuichi Ihara <sihara@ddn.com>",
+              "stats": {
+                "files": 2,
+                "lines": 133,
+                "insertions": 127,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 55,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 110,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Xiao Lei",
           "email": "xlei.boll@gmail.com",
           "total_commits": 1,
@@ -5358,8 +5792,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "chunxiaozheng",
@@ -5397,8 +5831,125 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Changhyeon Nam",
+          "email": "63542219+changhyeonnam@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "2d0dda59",
+              "author": "Changhyeon Nam",
+              "email": "63542219+changhyeonnam@users.noreply.github.com",
+              "date": "2026-07-06T21:33:12.000Z",
+              "message": "[Examples] Add Dynamo + LMCache MP integration recipe (aggregated + disaggregated) (#3935)\n\nSigned-off-by: Changhyeon Nam <63542219+changhyeonnam@users.noreply.github.com>",
+              "stats": {
+                "files": 6,
+                "lines": 373,
+                "insertions": 373,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "88e579b2",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-07-06T20:07:54.000Z",
+              "message": "feat(mp): async engine-driven store (#3808)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1038,
+                "insertions": 1031,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Maharani Ayu Putri Irawan",
+          "email": "72875641+rannnayy@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "0ab390e1",
+              "author": "Maharani Ayu Putri Irawan",
+              "email": "72875641+rannnayy@users.noreply.github.com",
+              "date": "2026-07-06T06:50:30.000Z",
+              "message": "KVCache SDK: batch and stream interface (#3950)\n\n* batch and stream\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* revise\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* fix demo\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* minor fix\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* user facing doc\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n---------\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 1753,
+                "insertions": 1753,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Roy Huang",
@@ -5475,45 +6026,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 74,
-          "commits": [
-            {
-              "hash": "b8c6a8df",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-07-01T03:56:56.000Z",
-              "message": "[MP][DAX] Split Device-DAX L1 from CPU L1 manager (#3947)\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 5,
-                "lines": 128,
-                "insertions": 97,
-                "deletions": 31
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 12,
-                "total": 74
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 74,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 74,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -5595,8 +6107,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 69,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "siweil",
@@ -5634,47 +6146,68 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 67,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "Shuichi Ihara",
-          "email": "sihara@ddn.com",
-          "total_commits": 1,
+          "name": "Kartik Hans",
+          "email": "kartik.feb.hans@gmail.com",
+          "total_commits": 2,
           "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 45,
+          "simple_commits": 2,
+          "commit_score": 53,
           "commits": [
             {
-              "hash": "979719d7",
-              "author": "Shuichi Ihara",
-              "email": "sihara@ddn.com",
-              "date": "2026-07-02T20:08:13.000Z",
-              "message": "[Bugfix] batched_nixl_desc_exists never hits on FILE (dynamic NIXL) (#3520)",
+              "hash": "b678b5f7",
+              "author": "Kartik Hans",
+              "email": "kartik.feb.hans@gmail.com",
+              "date": "2026-07-02T02:52:55.000Z",
+              "message": "[good-first-issue] cleanup: move type-only imports under TYPE_CHECKING (#3871)\n\nSigned-off-by: kartikhans <kartik.feb.hans@gmail.com>",
               "stats": {
-                "files": 2,
-                "lines": 81,
-                "insertions": 75,
-                "deletions": 6
+                "files": 4,
+                "lines": 31,
+                "insertions": 20,
+                "deletions": 11
               },
               "scores": {
-                "loc": 15,
+                "loc": 8,
                 "files": 10,
                 "keyword": 12,
-                "ai": 8,
-                "total": 45
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "24f04b23",
+              "author": "Kartik Hans",
+              "email": "kartik.feb.hans@gmail.com",
+              "date": "2026-07-06T19:55:19.000Z",
+              "message": "fix(examples/disagg): guard chat streaming loop against empty choices (#3998)\n\nSigned-off-by: kartikhans <kartik.feb.hans@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 8,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 45,
+          "avg_score": 26.5,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 45,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "total_score": 53,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Boris Glimcher",
@@ -5712,8 +6245,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 40,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "听说十四行春",
@@ -5755,41 +6288,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Kartik Hans",
-          "email": "kartik.feb.hans@gmail.com",
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 33,
+          "commit_score": 37,
           "commits": [
             {
-              "hash": "b678b5f7",
-              "author": "Kartik Hans",
-              "email": "kartik.feb.hans@gmail.com",
-              "date": "2026-07-02T02:52:55.000Z",
-              "message": "[good-first-issue] cleanup: move type-only imports under TYPE_CHECKING (#3871)\n\nSigned-off-by: kartikhans <kartik.feb.hans@gmail.com>",
+              "hash": "96f86f9b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-07-06T12:39:11.000Z",
+              "message": "ci: collapse cpu-only e2e steps into a matrix (#3980)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
               "stats": {
-                "files": 4,
-                "lines": 31,
+                "files": 1,
+                "lines": 76,
                 "insertions": 20,
-                "deletions": 11
+                "deletions": 56
               },
               "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 3,
-                "total": 33
+                "loc": 15,
+                "files": 5,
+                "keyword": 10,
+                "ai": 7,
+                "total": 37
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 33,
+          "avg_score": 37,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 33,
+          "total_score": 37,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -5829,6 +6362,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 27,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Xiaohu",
+          "email": "975326527@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "89f317a9",
+              "author": "Xiaohu",
+              "email": "975326527@qq.com",
+              "date": "2026-07-06T22:16:27.000Z",
+              "message": "Move L2 adapter type-only imports under TYPE_CHECKING (#3815)\n\nSigned-off-by: fengxiaohu <975326527@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 16,
+                "insertions": 9,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -8134,6 +8706,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 161,
+          "commits": [
+            {
+              "hash": "b8c6a8df",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-01T03:56:56.000Z",
+              "message": "[MP][DAX] Split Device-DAX L1 from CPU L1 manager (#3947)\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 128,
+                "insertions": 97,
+                "deletions": 31
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 12,
+                "total": 74
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "21a5cb1b",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-06T19:48:53.000Z",
+              "message": "[Core][Refactor] Split memory allocators into modules (#3967)\n\n* Split memory allocators into modules\n\nMove concrete memory allocator implementations out of memory_management.py while keeping the existing memory_management import surface intact.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix allocator import compatibility\n\nUse lazy allocator re-exports to avoid import cycles while preserving the lmcache.v1.memory_management public import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Add allocator import order tests\n\nAdd subprocess-based checks for allocator import ordering and the legacy memory_management import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Free paged CPU memory on allocator close\n\nRelease the pinned CPU arena owned by PagedCpuGpuMemoryAllocator through the matching memory_management._free_cpu_memory path.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Harden CuFile allocator destructor\n\nGuard CuFile cleanup for partially initialized allocators and suppress destructor-time deregistration errors.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Document allocator public methods\n\nAdd return annotations and docstrings to the public methods introduced by the memory allocator module split.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Move lazy allocator into allocator package\n\nPlace LazyMemoryAllocator under lmcache.v1.memory_allocators while keeping the old module path as a compatibility shim.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Relax CUDA event IPC test timeout\n\nAllow more time for spawned CUDA IPC event creation in full CI runs.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 5120,
+                "insertions": 3082,
+                "deletions": 2038
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 161,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yuhan Liu",
           "email": "32589867+YuhanLiu11@users.noreply.github.com",
           "total_commits": 2,
@@ -8194,6 +8826,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Shuichi Ihara",
+          "email": "sihara@ddn.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 110,
+          "commits": [
+            {
+              "hash": "979719d7",
+              "author": "Shuichi Ihara",
+              "email": "sihara@ddn.com",
+              "date": "2026-07-02T20:08:13.000Z",
+              "message": "[Bugfix] batched_nixl_desc_exists never hits on FILE (dynamic NIXL) (#3520)",
+              "stats": {
+                "files": 2,
+                "lines": 81,
+                "insertions": 75,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "69cfb50e",
+              "author": "Shuichi Ihara",
+              "email": "sihara@ddn.com",
+              "date": "2026-07-06T22:06:12.000Z",
+              "message": "[MP] perf(nixl_store_dynamic): load a request's chunks concurrently (#3696)\n\nSigned-off-by: Shuichi Ihara <sihara@ddn.com>",
+              "stats": {
+                "files": 2,
+                "lines": 133,
+                "insertions": 127,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 55,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 110,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Xiao Lei",
           "email": "xlei.boll@gmail.com",
           "total_commits": 1,
@@ -8229,8 +8921,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "chunxiaozheng",
@@ -8268,8 +8960,125 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Changhyeon Nam",
+          "email": "63542219+changhyeonnam@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "2d0dda59",
+              "author": "Changhyeon Nam",
+              "email": "63542219+changhyeonnam@users.noreply.github.com",
+              "date": "2026-07-06T21:33:12.000Z",
+              "message": "[Examples] Add Dynamo + LMCache MP integration recipe (aggregated + disaggregated) (#3935)\n\nSigned-off-by: Changhyeon Nam <63542219+changhyeonnam@users.noreply.github.com>",
+              "stats": {
+                "files": 6,
+                "lines": 373,
+                "insertions": 373,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "88e579b2",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-07-06T20:07:54.000Z",
+              "message": "feat(mp): async engine-driven store (#3808)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 7,
+                "lines": 1038,
+                "insertions": 1031,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Maharani Ayu Putri Irawan",
+          "email": "72875641+rannnayy@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "0ab390e1",
+              "author": "Maharani Ayu Putri Irawan",
+              "email": "72875641+rannnayy@users.noreply.github.com",
+              "date": "2026-07-06T06:50:30.000Z",
+              "message": "KVCache SDK: batch and stream interface (#3950)\n\n* batch and stream\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* revise\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* fix demo\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* minor fix\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n* user facing doc\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>\n\n---------\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 1753,
+                "insertions": 1753,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Roy Huang",
@@ -8346,45 +9155,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 74,
-          "commits": [
-            {
-              "hash": "b8c6a8df",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-07-01T03:56:56.000Z",
-              "message": "[MP][DAX] Split Device-DAX L1 from CPU L1 manager (#3947)\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 5,
-                "lines": 128,
-                "insertions": 97,
-                "deletions": 31
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 12,
-                "total": 74
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 74,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 74,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -8466,8 +9236,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 69,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "siweil",
@@ -8505,47 +9275,68 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 67,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "Shuichi Ihara",
-          "email": "sihara@ddn.com",
-          "total_commits": 1,
+          "name": "Kartik Hans",
+          "email": "kartik.feb.hans@gmail.com",
+          "total_commits": 2,
           "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 45,
+          "simple_commits": 2,
+          "commit_score": 53,
           "commits": [
             {
-              "hash": "979719d7",
-              "author": "Shuichi Ihara",
-              "email": "sihara@ddn.com",
-              "date": "2026-07-02T20:08:13.000Z",
-              "message": "[Bugfix] batched_nixl_desc_exists never hits on FILE (dynamic NIXL) (#3520)",
+              "hash": "b678b5f7",
+              "author": "Kartik Hans",
+              "email": "kartik.feb.hans@gmail.com",
+              "date": "2026-07-02T02:52:55.000Z",
+              "message": "[good-first-issue] cleanup: move type-only imports under TYPE_CHECKING (#3871)\n\nSigned-off-by: kartikhans <kartik.feb.hans@gmail.com>",
               "stats": {
-                "files": 2,
-                "lines": 81,
-                "insertions": 75,
-                "deletions": 6
+                "files": 4,
+                "lines": 31,
+                "insertions": 20,
+                "deletions": 11
               },
               "scores": {
-                "loc": 15,
+                "loc": 8,
                 "files": 10,
                 "keyword": 12,
-                "ai": 8,
-                "total": 45
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "24f04b23",
+              "author": "Kartik Hans",
+              "email": "kartik.feb.hans@gmail.com",
+              "date": "2026-07-06T19:55:19.000Z",
+              "message": "fix(examples/disagg): guard chat streaming loop against empty choices (#3998)\n\nSigned-off-by: kartikhans <kartik.feb.hans@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 8,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 45,
+          "avg_score": 26.5,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 45,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "total_score": 53,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Boris Glimcher",
@@ -8583,8 +9374,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 40,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "听说十四行春",
@@ -8626,41 +9417,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Kartik Hans",
-          "email": "kartik.feb.hans@gmail.com",
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 33,
+          "commit_score": 37,
           "commits": [
             {
-              "hash": "b678b5f7",
-              "author": "Kartik Hans",
-              "email": "kartik.feb.hans@gmail.com",
-              "date": "2026-07-02T02:52:55.000Z",
-              "message": "[good-first-issue] cleanup: move type-only imports under TYPE_CHECKING (#3871)\n\nSigned-off-by: kartikhans <kartik.feb.hans@gmail.com>",
+              "hash": "96f86f9b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-07-06T12:39:11.000Z",
+              "message": "ci: collapse cpu-only e2e steps into a matrix (#3980)\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
               "stats": {
-                "files": 4,
-                "lines": 31,
+                "files": 1,
+                "lines": 76,
                 "insertions": 20,
-                "deletions": 11
+                "deletions": 56
               },
               "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 3,
-                "total": 33
+                "loc": 15,
+                "files": 5,
+                "keyword": 10,
+                "ai": 7,
+                "total": 37
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 33,
+          "avg_score": 37,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 33,
+          "total_score": 37,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -8700,6 +9491,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 27,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Xiaohu",
+          "email": "975326527@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "89f317a9",
+              "author": "Xiaohu",
+              "email": "975326527@qq.com",
+              "date": "2026-07-06T22:16:27.000Z",
+              "message": "Move L2 adapter type-only imports under TYPE_CHECKING (#3815)\n\nSigned-off-by: fengxiaohu <975326527@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 16,
+                "insertions": 9,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -8746,13 +9576,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-07-06T00:30:06.742Z",
+    "analyzedAt": "2026-07-07T00:30:17.449Z",
     "daysBack": 2,
-    "totalCommits": 91,
-    "totalContributors": 46,
+    "totalCommits": 99,
+    "totalContributors": 48,
     "mergedFrom": {
-      "existing": 87,
-      "new": 5
+      "existing": 91,
+      "new": 12
     }
   }
 }
