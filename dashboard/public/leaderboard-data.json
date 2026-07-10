@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-09T00:30:20.399Z",
-  "total_commits_analyzed": 112,
+  "last_updated": "2026-07-10T00:30:15.170Z",
+  "total_commits_analyzed": 115,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3084,6 +3084,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "21a5cb1b",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-06T19:48:53.000Z",
+              "message": "[Core][Refactor] Split memory allocators into modules (#3967)\n\n* Split memory allocators into modules\n\nMove concrete memory allocator implementations out of memory_management.py while keeping the existing memory_management import surface intact.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix allocator import compatibility\n\nUse lazy allocator re-exports to avoid import cycles while preserving the lmcache.v1.memory_management public import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Add allocator import order tests\n\nAdd subprocess-based checks for allocator import ordering and the legacy memory_management import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Free paged CPU memory on allocator close\n\nRelease the pinned CPU arena owned by PagedCpuGpuMemoryAllocator through the matching memory_management._free_cpu_memory path.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Harden CuFile allocator destructor\n\nGuard CuFile cleanup for partially initialized allocators and suppress destructor-time deregistration errors.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Document allocator public methods\n\nAdd return annotations and docstrings to the public methods introduced by the memory allocator module split.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Move lazy allocator into allocator package\n\nPlace LazyMemoryAllocator under lmcache.v1.memory_allocators while keeping the old module path as a compatibility shim.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Relax CUDA event IPC test timeout\n\nAllow more time for spawned CUDA IPC event creation in full CI runs.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 5120,
+                "insertions": 3082,
+                "deletions": 2038
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0403017a",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-09T15:02:33.000Z",
+              "message": "[Core][Refactor] Remove legacy allocator import paths (#4026)\n\n* Move allocator imports to concrete modules\n\nImport concrete allocator classes from their memory_allocators submodules across internals and tests. Remove allocator compatibility exports from memory_management so that module only exposes core memory-management types, and keep the memory_allocators package lazy without type-checking-only concrete imports.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Remove lazy memory allocator wrapper\n\nUse the moved memory_allocators.lazy_memory_allocator module directly and delete the old lmcache.v1.lazy_memory_allocator compatibility wrapper.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* tests: patch concrete allocator modules\n\nPatch test fixtures through the concrete memory allocator module paths instead of the package-level lazy re-export paths.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 50,
+                "lines": 402,
+                "insertions": 183,
+                "deletions": 219
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "weishu",
           "email": "838677410@qq.com",
           "total_commits": 3,
@@ -3278,45 +3338,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "21a5cb1b",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-07-06T19:48:53.000Z",
-              "message": "[Core][Refactor] Split memory allocators into modules (#3967)\n\n* Split memory allocators into modules\n\nMove concrete memory allocator implementations out of memory_management.py while keeping the existing memory_management import surface intact.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix allocator import compatibility\n\nUse lazy allocator re-exports to avoid import cycles while preserving the lmcache.v1.memory_management public import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Add allocator import order tests\n\nAdd subprocess-based checks for allocator import ordering and the legacy memory_management import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Free paged CPU memory on allocator close\n\nRelease the pinned CPU arena owned by PagedCpuGpuMemoryAllocator through the matching memory_management._free_cpu_memory path.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Harden CuFile allocator destructor\n\nGuard CuFile cleanup for partially initialized allocators and suppress destructor-time deregistration errors.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Document allocator public methods\n\nAdd return annotations and docstrings to the public methods introduced by the memory allocator module split.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Move lazy allocator into allocator package\n\nPlace LazyMemoryAllocator under lmcache.v1.memory_allocators while keeping the old module path as a compatibility shim.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Relax CUDA event IPC test timeout\n\nAllow more time for spawned CUDA IPC event creation in full CI runs.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 5120,
-                "insertions": 3082,
-                "deletions": 2038
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -3477,6 +3498,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "NekoPunch",
+          "email": "95899648+orangeCatDeveloper@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 48,
+          "commits": [
+            {
+              "hash": "40abe8a7",
+              "author": "NekoPunch",
+              "email": "95899648+orangeCatDeveloper@users.noreply.github.com",
+              "date": "2026-07-09T05:36:31.000Z",
+              "message": "style(fs_connector): convert f-string log calls to %-format (G004) (#4056)\n\nSigned-off-by: NekoPunch <engineer.jyao@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 30,
+                "insertions": 18,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3519563f",
+              "author": "NekoPunch",
+              "email": "95899648+orangeCatDeveloper@users.noreply.github.com",
+              "date": "2026-07-09T02:42:52.000Z",
+              "message": "cleanup: remove redundant local import of MooncakeLookupClient (#4058)\n\nSigned-off-by: NekoPunch <engineer.jyao@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 0,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 24,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 48,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Cao Qian",
           "email": "talexcao@gmail.com",
           "total_commits": 1,
@@ -3551,8 +3632,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Xiaohu",
@@ -5871,6 +5952,87 @@
       ],
       "2026-07": [
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 248,
+          "commits": [
+            {
+              "hash": "b8c6a8df",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-01T03:56:56.000Z",
+              "message": "[MP][DAX] Split Device-DAX L1 from CPU L1 manager (#3947)\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 128,
+                "insertions": 97,
+                "deletions": 31
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 12,
+                "total": 74
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "21a5cb1b",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-06T19:48:53.000Z",
+              "message": "[Core][Refactor] Split memory allocators into modules (#3967)\n\n* Split memory allocators into modules\n\nMove concrete memory allocator implementations out of memory_management.py while keeping the existing memory_management import surface intact.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix allocator import compatibility\n\nUse lazy allocator re-exports to avoid import cycles while preserving the lmcache.v1.memory_management public import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Add allocator import order tests\n\nAdd subprocess-based checks for allocator import ordering and the legacy memory_management import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Free paged CPU memory on allocator close\n\nRelease the pinned CPU arena owned by PagedCpuGpuMemoryAllocator through the matching memory_management._free_cpu_memory path.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Harden CuFile allocator destructor\n\nGuard CuFile cleanup for partially initialized allocators and suppress destructor-time deregistration errors.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Document allocator public methods\n\nAdd return annotations and docstrings to the public methods introduced by the memory allocator module split.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Move lazy allocator into allocator package\n\nPlace LazyMemoryAllocator under lmcache.v1.memory_allocators while keeping the old module path as a compatibility shim.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Relax CUDA event IPC test timeout\n\nAllow more time for spawned CUDA IPC event creation in full CI runs.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 5120,
+                "insertions": 3082,
+                "deletions": 2038
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0403017a",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-09T15:02:33.000Z",
+              "message": "[Core][Refactor] Remove legacy allocator import paths (#4026)\n\n* Move allocator imports to concrete modules\n\nImport concrete allocator classes from their memory_allocators submodules across internals and tests. Remove allocator compatibility exports from memory_management so that module only exposes core memory-management types, and keep the memory_allocators package lazy without type-checking-only concrete imports.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Remove lazy memory allocator wrapper\n\nUse the moved memory_allocators.lazy_memory_allocator module directly and delete the old lmcache.v1.lazy_memory_allocator compatibility wrapper.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* tests: patch concrete allocator modules\n\nPatch test fixtures through the concrete memory allocator module paths instead of the package-level lazy re-export paths.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 50,
+                "lines": 402,
+                "insertions": 183,
+                "deletions": 219
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 248,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
           "total_commits": 3,
@@ -6089,66 +6251,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 167,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 161,
-          "commits": [
-            {
-              "hash": "b8c6a8df",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-07-01T03:56:56.000Z",
-              "message": "[MP][DAX] Split Device-DAX L1 from CPU L1 manager (#3947)\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 5,
-                "lines": 128,
-                "insertions": 97,
-                "deletions": 31
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 12,
-                "total": 74
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "21a5cb1b",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-07-06T19:48:53.000Z",
-              "message": "[Core][Refactor] Split memory allocators into modules (#3967)\n\n* Split memory allocators into modules\n\nMove concrete memory allocator implementations out of memory_management.py while keeping the existing memory_management import surface intact.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix allocator import compatibility\n\nUse lazy allocator re-exports to avoid import cycles while preserving the lmcache.v1.memory_management public import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Add allocator import order tests\n\nAdd subprocess-based checks for allocator import ordering and the legacy memory_management import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Free paged CPU memory on allocator close\n\nRelease the pinned CPU arena owned by PagedCpuGpuMemoryAllocator through the matching memory_management._free_cpu_memory path.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Harden CuFile allocator destructor\n\nGuard CuFile cleanup for partially initialized allocators and suppress destructor-time deregistration errors.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Document allocator public methods\n\nAdd return annotations and docstrings to the public methods introduced by the memory allocator module split.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Move lazy allocator into allocator package\n\nPlace LazyMemoryAllocator under lmcache.v1.memory_allocators while keeping the old module path as a compatibility shim.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Relax CUDA event IPC test timeout\n\nAllow more time for spawned CUDA IPC event creation in full CI runs.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 5120,
-                "insertions": 3082,
-                "deletions": 2038
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 80.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 161,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6924,6 +7026,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "NekoPunch",
+          "email": "95899648+orangeCatDeveloper@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 48,
+          "commits": [
+            {
+              "hash": "40abe8a7",
+              "author": "NekoPunch",
+              "email": "95899648+orangeCatDeveloper@users.noreply.github.com",
+              "date": "2026-07-09T05:36:31.000Z",
+              "message": "style(fs_connector): convert f-string log calls to %-format (G004) (#4056)\n\nSigned-off-by: NekoPunch <engineer.jyao@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 30,
+                "insertions": 18,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3519563f",
+              "author": "NekoPunch",
+              "email": "95899648+orangeCatDeveloper@users.noreply.github.com",
+              "date": "2026-07-09T02:42:52.000Z",
+              "message": "cleanup: remove redundant local import of MooncakeLookupClient (#4058)\n\nSigned-off-by: NekoPunch <engineer.jyao@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 0,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 24,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 48,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Cao Qian",
           "email": "talexcao@gmail.com",
           "total_commits": 1,
@@ -6998,8 +7160,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Boris Glimcher",
@@ -9435,6 +9597,87 @@
       ],
       "2026-Q3": [
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 248,
+          "commits": [
+            {
+              "hash": "b8c6a8df",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-01T03:56:56.000Z",
+              "message": "[MP][DAX] Split Device-DAX L1 from CPU L1 manager (#3947)\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 128,
+                "insertions": 97,
+                "deletions": 31
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 12,
+                "total": 74
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "21a5cb1b",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-06T19:48:53.000Z",
+              "message": "[Core][Refactor] Split memory allocators into modules (#3967)\n\n* Split memory allocators into modules\n\nMove concrete memory allocator implementations out of memory_management.py while keeping the existing memory_management import surface intact.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix allocator import compatibility\n\nUse lazy allocator re-exports to avoid import cycles while preserving the lmcache.v1.memory_management public import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Add allocator import order tests\n\nAdd subprocess-based checks for allocator import ordering and the legacy memory_management import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Free paged CPU memory on allocator close\n\nRelease the pinned CPU arena owned by PagedCpuGpuMemoryAllocator through the matching memory_management._free_cpu_memory path.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Harden CuFile allocator destructor\n\nGuard CuFile cleanup for partially initialized allocators and suppress destructor-time deregistration errors.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Document allocator public methods\n\nAdd return annotations and docstrings to the public methods introduced by the memory allocator module split.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Move lazy allocator into allocator package\n\nPlace LazyMemoryAllocator under lmcache.v1.memory_allocators while keeping the old module path as a compatibility shim.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Relax CUDA event IPC test timeout\n\nAllow more time for spawned CUDA IPC event creation in full CI runs.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 5120,
+                "insertions": 3082,
+                "deletions": 2038
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0403017a",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-07-09T15:02:33.000Z",
+              "message": "[Core][Refactor] Remove legacy allocator import paths (#4026)\n\n* Move allocator imports to concrete modules\n\nImport concrete allocator classes from their memory_allocators submodules across internals and tests. Remove allocator compatibility exports from memory_management so that module only exposes core memory-management types, and keep the memory_allocators package lazy without type-checking-only concrete imports.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Remove lazy memory allocator wrapper\n\nUse the moved memory_allocators.lazy_memory_allocator module directly and delete the old lmcache.v1.lazy_memory_allocator compatibility wrapper.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* tests: patch concrete allocator modules\n\nPatch test fixtures through the concrete memory allocator module paths instead of the package-level lazy re-export paths.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 50,
+                "lines": 402,
+                "insertions": 183,
+                "deletions": 219
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 248,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
           "total_commits": 3,
@@ -9653,66 +9896,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 167,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 161,
-          "commits": [
-            {
-              "hash": "b8c6a8df",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-07-01T03:56:56.000Z",
-              "message": "[MP][DAX] Split Device-DAX L1 from CPU L1 manager (#3947)\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 5,
-                "lines": 128,
-                "insertions": 97,
-                "deletions": 31
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 12,
-                "total": 74
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "21a5cb1b",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-07-06T19:48:53.000Z",
-              "message": "[Core][Refactor] Split memory allocators into modules (#3967)\n\n* Split memory allocators into modules\n\nMove concrete memory allocator implementations out of memory_management.py while keeping the existing memory_management import surface intact.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Fix allocator import compatibility\n\nUse lazy allocator re-exports to avoid import cycles while preserving the lmcache.v1.memory_management public import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Add allocator import order tests\n\nAdd subprocess-based checks for allocator import ordering and the legacy memory_management import surface.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Free paged CPU memory on allocator close\n\nRelease the pinned CPU arena owned by PagedCpuGpuMemoryAllocator through the matching memory_management._free_cpu_memory path.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Harden CuFile allocator destructor\n\nGuard CuFile cleanup for partially initialized allocators and suppress destructor-time deregistration errors.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Document allocator public methods\n\nAdd return annotations and docstrings to the public methods introduced by the memory allocator module split.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Move lazy allocator into allocator package\n\nPlace LazyMemoryAllocator under lmcache.v1.memory_allocators while keeping the old module path as a compatibility shim.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* Relax CUDA event IPC test timeout\n\nAllow more time for spawned CUDA IPC event creation in full CI runs.\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 5120,
-                "insertions": 3082,
-                "deletions": 2038
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 80.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 161,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -10488,6 +10671,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "NekoPunch",
+          "email": "95899648+orangeCatDeveloper@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 48,
+          "commits": [
+            {
+              "hash": "40abe8a7",
+              "author": "NekoPunch",
+              "email": "95899648+orangeCatDeveloper@users.noreply.github.com",
+              "date": "2026-07-09T05:36:31.000Z",
+              "message": "style(fs_connector): convert f-string log calls to %-format (G004) (#4056)\n\nSigned-off-by: NekoPunch <engineer.jyao@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 30,
+                "insertions": 18,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3519563f",
+              "author": "NekoPunch",
+              "email": "95899648+orangeCatDeveloper@users.noreply.github.com",
+              "date": "2026-07-09T02:42:52.000Z",
+              "message": "cleanup: remove redundant local import of MooncakeLookupClient (#4058)\n\nSigned-off-by: NekoPunch <engineer.jyao@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 0,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 24,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 48,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Cao Qian",
           "email": "talexcao@gmail.com",
           "total_commits": 1,
@@ -10562,8 +10805,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Boris Glimcher",
@@ -10881,13 +11124,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-07-09T00:30:20.399Z",
+    "analyzedAt": "2026-07-10T00:30:15.170Z",
     "daysBack": 2,
-    "totalCommits": 112,
-    "totalContributors": 51,
+    "totalCommits": 115,
+    "totalContributors": 52,
     "mergedFrom": {
-      "existing": 105,
-      "new": 13
+      "existing": 112,
+      "new": 10
     }
   }
 }
