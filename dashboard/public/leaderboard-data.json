@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-14T00:30:07.007Z",
-  "total_commits_analyzed": 129,
+  "last_updated": "2026-07-15T00:30:11.842Z",
+  "total_commits_analyzed": 132,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4112,6 +4112,45 @@
       ],
       "2026-W29": [
         {
+          "name": "An Nguyen",
+          "email": "annenguyen@google.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "f5abb8a3",
+              "author": "An Nguyen",
+              "email": "annenguyen@google.com",
+              "date": "2026-07-14T16:39:06.000Z",
+              "message": "feat: implement Cloud Bigtable L2 Adapter and Layer-Group Sharding optimizations (#3885)\n\n* Implement Bigtable L2 Adapter and Layer-Group Sharding with Integration Fixes\n\nThis squashes the Bigtable storage backend connector and L2 daemon adapter implementation along with formatting and integration fixes.\n\nKey Features & Optimizations:\n- Integrated BigtableL2Adapter and BigtableL2KeyEncoder to support out-of-process remote L2 caching.\n- Implemented Layer-Group Sharding inside the Bigtable connector to partition KV cache payloads along layer dimensions, bypassing Bigtable's single-cell limit.\n- Added a thread-safe TTLCache wrapper inside lmcache/utils.py to shield Bigtable nodes from lookup spikes.\n- Wrapped CPU-heavy payload sharding and reassembly inside loop.run_in_executor to prevent event loop blocking.\n- Appended @lg{layer_group_size} configuration versioning to row keys to isolate sharding configurations.\n- Bound CellsColumnLimitFilter(1) to all read queries to prevent database over-fetching.\n\nBug Fixes & Correctness:\n- Aligned cell timestamps to millisecond granularity to prevent Bigtable emulator and server invalid timestamp errors.\n- Resolved row key collisions in layerwise serving by suffixing @layer_{layer_id} in BigtableConnector and L2 adapter.\n- Bypassed 200MB mutation size limits with concurrent split mutations and added 90MB single-shard safety warnings.\n- Fixed V2 in-process memory exhaustion reference leak inside LMCacheEngine.retrieve by releasing reference counts for hits.\n- Formatted all files with isort and ruff format to comply with Google Python style guide and pre-commit checks.\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n* fix(bigtable): L2 adapter correctness and performance fixes\n\n- Offloaded memoryview-to-bytes conversion to executor thread pool.\n- Fixed circuit breaker cache miss reset logic when no errors occur.\n- Reconciled storage accounting (ghost bytes) on lookup and load cache misses.\n- Rolled back lock refcounts on lookup cancellation or failure.\n- Implemented size-based batch mutations chunking for unsharded bulk store.\n- Added comprehensive unit tests for all correctness fixes.\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n* fix(bigtable): raise CancelledError explicitly inside lookup/load gather loops\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n* style(bigtable): resolve type annotations and import sorting issues\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n---------\n\nSigned-off-by: An Nguyen <annenguyen@google.com>",
+              "stats": {
+                "files": 17,
+                "lines": 3850,
+                "insertions": 3538,
+                "deletions": 312
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "github-actions[bot]",
           "email": "41898282+github-actions[bot]@users.noreply.github.com",
           "total_commits": 1,
@@ -4147,6 +4186,84 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Zhengfei He",
+          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "c828516e",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-07-14T16:27:58.000Z",
+              "message": "[Feat]Add Valkey L2 adapter (standalone + cluster) for MP mode (#3505)\n\n* Add Valkey L2 adapter (standalone + cluster) for MP mode\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix code quality check and gemini comments\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Remove redundant ai generated comments and tests\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix mypy after rebase master branch\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Update Valkey eviction guidance, using server-driven as default\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Include latest valkey fix in master branch\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix submit_lookup_and_lock_task signature drift in Valkey L2 adapter\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Add ttl support to valkey adapter\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Improve docstring based on gemini comments\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Change based on the comment\n\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>\n\n* Fix Gemini comments\n\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>\n\n---------\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 11,
+                "lines": 3735,
+                "insertions": 3300,
+                "deletions": 435
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Divy",
+          "email": "vasal@wisc.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "5edc6863",
+              "author": "Divy",
+              "email": "vasal@wisc.edu",
+              "date": "2026-07-14T21:03:37.000Z",
+              "message": "fix(mp): reclaim CUDA-IPC-imported KV memory when an instance is released (#4015)\n\nSigned-off-by: Divy Vasal <divy@coralbricks.ai>\nSigned-off-by: Divy <divy@coralbricks.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 287,
+                "insertions": 270,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4225,8 +4342,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 27,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "maobaolong",
@@ -4264,8 +4381,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 25,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "dependabot[bot]",
@@ -4303,8 +4420,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
@@ -7097,6 +7214,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Zhengfei He",
+          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "ca9f862c",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-07-05T22:00:50.000Z",
+              "message": "[Tool] Add on/off-CPU flame-graph profiling into bench l2 adapter  (#3272)\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 611,
+                "insertions": 609,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c828516e",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-07-14T16:27:58.000Z",
+              "message": "[Feat]Add Valkey L2 adapter (standalone + cluster) for MP mode (#3505)\n\n* Add Valkey L2 adapter (standalone + cluster) for MP mode\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix code quality check and gemini comments\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Remove redundant ai generated comments and tests\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix mypy after rebase master branch\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Update Valkey eviction guidance, using server-driven as default\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Include latest valkey fix in master branch\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix submit_lookup_and_lock_task signature drift in Valkey L2 adapter\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Add ttl support to valkey adapter\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Improve docstring based on gemini comments\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Change based on the comment\n\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>\n\n* Fix Gemini comments\n\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>\n\n---------\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 11,
+                "lines": 3735,
+                "insertions": 3300,
+                "deletions": 435
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Yuhan Liu",
           "email": "32589867+YuhanLiu11@users.noreply.github.com",
           "total_commits": 2,
@@ -7153,6 +7330,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 157,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "An Nguyen",
+          "email": "annenguyen@google.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 143,
+          "commits": [
+            {
+              "hash": "495cc9a8",
+              "author": "An Nguyen",
+              "email": "annenguyen@google.com",
+              "date": "2026-07-08T22:52:06.000Z",
+              "message": "Fix LMCache V2 In-Process Memory Exhaustion - Ref Count Leaks (#3884)\n\nSigned-off-by: An Nguyen <annenguyen@google.com>",
+              "stats": {
+                "files": 2,
+                "lines": 65,
+                "insertions": 64,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 6,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f5abb8a3",
+              "author": "An Nguyen",
+              "email": "annenguyen@google.com",
+              "date": "2026-07-14T16:39:06.000Z",
+              "message": "feat: implement Cloud Bigtable L2 Adapter and Layer-Group Sharding optimizations (#3885)\n\n* Implement Bigtable L2 Adapter and Layer-Group Sharding with Integration Fixes\n\nThis squashes the Bigtable storage backend connector and L2 daemon adapter implementation along with formatting and integration fixes.\n\nKey Features & Optimizations:\n- Integrated BigtableL2Adapter and BigtableL2KeyEncoder to support out-of-process remote L2 caching.\n- Implemented Layer-Group Sharding inside the Bigtable connector to partition KV cache payloads along layer dimensions, bypassing Bigtable's single-cell limit.\n- Added a thread-safe TTLCache wrapper inside lmcache/utils.py to shield Bigtable nodes from lookup spikes.\n- Wrapped CPU-heavy payload sharding and reassembly inside loop.run_in_executor to prevent event loop blocking.\n- Appended @lg{layer_group_size} configuration versioning to row keys to isolate sharding configurations.\n- Bound CellsColumnLimitFilter(1) to all read queries to prevent database over-fetching.\n\nBug Fixes & Correctness:\n- Aligned cell timestamps to millisecond granularity to prevent Bigtable emulator and server invalid timestamp errors.\n- Resolved row key collisions in layerwise serving by suffixing @layer_{layer_id} in BigtableConnector and L2 adapter.\n- Bypassed 200MB mutation size limits with concurrent split mutations and added 90MB single-shard safety warnings.\n- Fixed V2 in-process memory exhaustion reference leak inside LMCacheEngine.retrieve by releasing reference counts for hits.\n- Formatted all files with isort and ruff format to comply with Google Python style guide and pre-commit checks.\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n* fix(bigtable): L2 adapter correctness and performance fixes\n\n- Offloaded memoryview-to-bytes conversion to executor thread pool.\n- Fixed circuit breaker cache miss reset logic when no errors occur.\n- Reconciled storage accounting (ghost bytes) on lookup and load cache misses.\n- Rolled back lock refcounts on lookup cancellation or failure.\n- Implemented size-based batch mutations chunking for unsharded bulk store.\n- Added comprehensive unit tests for all correctness fixes.\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n* fix(bigtable): raise CancelledError explicitly inside lookup/load gather loops\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n* style(bigtable): resolve type annotations and import sorting issues\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n---------\n\nSigned-off-by: An Nguyen <annenguyen@google.com>",
+              "stats": {
+                "files": 17,
+                "lines": 3850,
+                "insertions": 3538,
+                "deletions": 312
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 143,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7273,8 +7510,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 129,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Shuichi Ihara",
@@ -7333,8 +7570,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 110,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "sahibpreet singh",
@@ -7673,24 +7910,24 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Zhengfei He",
-          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "name": "Divy",
+          "email": "vasal@wisc.edu",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 77,
           "commits": [
             {
-              "hash": "ca9f862c",
-              "author": "Zhengfei He",
-              "email": "157287166+zhengfeihe@users.noreply.github.com",
-              "date": "2026-07-05T22:00:50.000Z",
-              "message": "[Tool] Add on/off-CPU flame-graph profiling into bench l2 adapter  (#3272)\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "hash": "5edc6863",
+              "author": "Divy",
+              "email": "vasal@wisc.edu",
+              "date": "2026-07-14T21:03:37.000Z",
+              "message": "fix(mp): reclaim CUDA-IPC-imported KV memory when an instance is released (#4015)\n\nSigned-off-by: Divy Vasal <divy@coralbricks.ai>\nSigned-off-by: Divy <divy@coralbricks.ai>",
               "stats": {
-                "files": 4,
-                "lines": 611,
-                "insertions": 609,
-                "deletions": 2
+                "files": 2,
+                "lines": 287,
+                "insertions": 270,
+                "deletions": 17
               },
               "scores": {
                 "loc": 30,
@@ -7747,8 +7984,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 67,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Kartik Hans",
@@ -7807,8 +8044,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 53,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "NekoPunch",
@@ -7867,45 +8104,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 48,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "An Nguyen",
-          "email": "annenguyen@google.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 43,
-          "commits": [
-            {
-              "hash": "495cc9a8",
-              "author": "An Nguyen",
-              "email": "annenguyen@google.com",
-              "date": "2026-07-08T22:52:06.000Z",
-              "message": "Fix LMCache V2 In-Process Memory Exhaustion - Ref Count Leaks (#3884)\n\nSigned-off-by: An Nguyen <annenguyen@google.com>",
-              "stats": {
-                "files": 2,
-                "lines": 65,
-                "insertions": 64,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 6,
-                "total": 43
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 43,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 43,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -11090,6 +11288,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Zhengfei He",
+          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "ca9f862c",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-07-05T22:00:50.000Z",
+              "message": "[Tool] Add on/off-CPU flame-graph profiling into bench l2 adapter  (#3272)\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 611,
+                "insertions": 609,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c828516e",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-07-14T16:27:58.000Z",
+              "message": "[Feat]Add Valkey L2 adapter (standalone + cluster) for MP mode (#3505)\n\n* Add Valkey L2 adapter (standalone + cluster) for MP mode\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix code quality check and gemini comments\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Remove redundant ai generated comments and tests\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix mypy after rebase master branch\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Update Valkey eviction guidance, using server-driven as default\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Include latest valkey fix in master branch\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Fix submit_lookup_and_lock_task signature drift in Valkey L2 adapter\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Add ttl support to valkey adapter\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Improve docstring based on gemini comments\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\n\n* Change based on the comment\n\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>\n\n* Fix Gemini comments\n\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>\n\n---------\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>\nSigned-off-by: zhengfei.he <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 11,
+                "lines": 3735,
+                "insertions": 3300,
+                "deletions": 435
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Yuhan Liu",
           "email": "32589867+YuhanLiu11@users.noreply.github.com",
           "total_commits": 2,
@@ -11146,6 +11404,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 157,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "An Nguyen",
+          "email": "annenguyen@google.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 143,
+          "commits": [
+            {
+              "hash": "495cc9a8",
+              "author": "An Nguyen",
+              "email": "annenguyen@google.com",
+              "date": "2026-07-08T22:52:06.000Z",
+              "message": "Fix LMCache V2 In-Process Memory Exhaustion - Ref Count Leaks (#3884)\n\nSigned-off-by: An Nguyen <annenguyen@google.com>",
+              "stats": {
+                "files": 2,
+                "lines": 65,
+                "insertions": 64,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 6,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f5abb8a3",
+              "author": "An Nguyen",
+              "email": "annenguyen@google.com",
+              "date": "2026-07-14T16:39:06.000Z",
+              "message": "feat: implement Cloud Bigtable L2 Adapter and Layer-Group Sharding optimizations (#3885)\n\n* Implement Bigtable L2 Adapter and Layer-Group Sharding with Integration Fixes\n\nThis squashes the Bigtable storage backend connector and L2 daemon adapter implementation along with formatting and integration fixes.\n\nKey Features & Optimizations:\n- Integrated BigtableL2Adapter and BigtableL2KeyEncoder to support out-of-process remote L2 caching.\n- Implemented Layer-Group Sharding inside the Bigtable connector to partition KV cache payloads along layer dimensions, bypassing Bigtable's single-cell limit.\n- Added a thread-safe TTLCache wrapper inside lmcache/utils.py to shield Bigtable nodes from lookup spikes.\n- Wrapped CPU-heavy payload sharding and reassembly inside loop.run_in_executor to prevent event loop blocking.\n- Appended @lg{layer_group_size} configuration versioning to row keys to isolate sharding configurations.\n- Bound CellsColumnLimitFilter(1) to all read queries to prevent database over-fetching.\n\nBug Fixes & Correctness:\n- Aligned cell timestamps to millisecond granularity to prevent Bigtable emulator and server invalid timestamp errors.\n- Resolved row key collisions in layerwise serving by suffixing @layer_{layer_id} in BigtableConnector and L2 adapter.\n- Bypassed 200MB mutation size limits with concurrent split mutations and added 90MB single-shard safety warnings.\n- Fixed V2 in-process memory exhaustion reference leak inside LMCacheEngine.retrieve by releasing reference counts for hits.\n- Formatted all files with isort and ruff format to comply with Google Python style guide and pre-commit checks.\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n* fix(bigtable): L2 adapter correctness and performance fixes\n\n- Offloaded memoryview-to-bytes conversion to executor thread pool.\n- Fixed circuit breaker cache miss reset logic when no errors occur.\n- Reconciled storage accounting (ghost bytes) on lookup and load cache misses.\n- Rolled back lock refcounts on lookup cancellation or failure.\n- Implemented size-based batch mutations chunking for unsharded bulk store.\n- Added comprehensive unit tests for all correctness fixes.\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n* fix(bigtable): raise CancelledError explicitly inside lookup/load gather loops\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n* style(bigtable): resolve type annotations and import sorting issues\n\nSigned-off-by: An Nguyen <annenguyen@google.com>\n\n---------\n\nSigned-off-by: An Nguyen <annenguyen@google.com>",
+              "stats": {
+                "files": 17,
+                "lines": 3850,
+                "insertions": 3538,
+                "deletions": 312
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 143,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -11266,8 +11584,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 129,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Shuichi Ihara",
@@ -11326,8 +11644,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 110,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "sahibpreet singh",
@@ -11666,24 +11984,24 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Zhengfei He",
-          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "name": "Divy",
+          "email": "vasal@wisc.edu",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 77,
           "commits": [
             {
-              "hash": "ca9f862c",
-              "author": "Zhengfei He",
-              "email": "157287166+zhengfeihe@users.noreply.github.com",
-              "date": "2026-07-05T22:00:50.000Z",
-              "message": "[Tool] Add on/off-CPU flame-graph profiling into bench l2 adapter  (#3272)\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "hash": "5edc6863",
+              "author": "Divy",
+              "email": "vasal@wisc.edu",
+              "date": "2026-07-14T21:03:37.000Z",
+              "message": "fix(mp): reclaim CUDA-IPC-imported KV memory when an instance is released (#4015)\n\nSigned-off-by: Divy Vasal <divy@coralbricks.ai>\nSigned-off-by: Divy <divy@coralbricks.ai>",
               "stats": {
-                "files": 4,
-                "lines": 611,
-                "insertions": 609,
-                "deletions": 2
+                "files": 2,
+                "lines": 287,
+                "insertions": 270,
+                "deletions": 17
               },
               "scores": {
                 "loc": 30,
@@ -11740,8 +12058,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 67,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Kartik Hans",
@@ -11800,8 +12118,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 53,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "NekoPunch",
@@ -11860,45 +12178,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 48,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "An Nguyen",
-          "email": "annenguyen@google.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 43,
-          "commits": [
-            {
-              "hash": "495cc9a8",
-              "author": "An Nguyen",
-              "email": "annenguyen@google.com",
-              "date": "2026-07-08T22:52:06.000Z",
-              "message": "Fix LMCache V2 In-Process Memory Exhaustion - Ref Count Leaks (#3884)\n\nSigned-off-by: An Nguyen <annenguyen@google.com>",
-              "stats": {
-                "files": 2,
-                "lines": 65,
-                "insertions": 64,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 6,
-                "total": 43
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 43,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 43,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -12296,13 +12575,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-07-14T00:30:07.008Z",
+    "analyzedAt": "2026-07-15T00:30:11.842Z",
     "daysBack": 2,
-    "totalCommits": 129,
-    "totalContributors": 55,
+    "totalCommits": 132,
+    "totalContributors": 56,
     "mergedFrom": {
-      "existing": 124,
-      "new": 5
+      "existing": 129,
+      "new": 8
     }
   }
 }
