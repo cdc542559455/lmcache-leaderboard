@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-15T00:30:11.842Z",
-  "total_commits_analyzed": 132,
+  "last_updated": "2026-07-16T00:30:09.668Z",
+  "total_commits_analyzed": 136,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4268,6 +4268,45 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Omer Rubinstein",
+          "email": "omerrubi@amazon.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "668a1fd6",
+              "author": "Omer Rubinstein",
+              "email": "omerrubi@amazon.com",
+              "date": "2026-07-15T17:44:56.000Z",
+              "message": "feat(valkey): Tag GLIDE connections as GlidePySync(lmcache:<ver>) (#4023)\n\n* feat(valkey): Tag GLIDE connections as GlidePySync(lmcache:<ver>)\n\nAttribute LMCache's valkey-glide connections in CLIENT INFO / CLIENT LIST\nvia GLIDE's client_info_tag option, producing GlidePySync(lmcache:<version>)\nso LMCache usage is distinguishable without disturbing GLIDE's own library\nidentity or adoption metrics.\n\nclient_info_tag was added to the glide Python client in valkey-io/valkey-glide#6389\nand ships in valkey-glide 2.5.0; it is not in any released wheel yet. Older\nclients would raise TypeError on the unknown kwarg, so the connector applies\nthe tag only behind a feature-detection guard: it inspects the client config\nconstructor signature for a client_info_tag parameter and passes it through\nin both the standalone and cluster branches of _ThreadWorkerPool._get_client\nonly when present. Behavior on current glide builds is unchanged.\n\nThe tag falls back to a bare \"lmcache\" if the resolved version string\ncontains whitespace (which GLIDE's config validation rejects).\n\nAdds tests covering tag formatting, the whitespace fallback, signature-based\nsupport detection, and that _get_client sets/omits the kwarg for supported\nvs unsupported glide builds (standalone and cluster) using an injected fake\nglide_sync module.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n* style(valkey): Fix isort import ordering in client_info_tag tests\n\nisort (repo pre-commit hook, PyCQA/isort) orders the imported names\ncase-insensitively, placing _ThreadWorkerPool after the lowercase\nhelper functions. Reorder to satisfy the hook; local ruff check did not\nflag it. No functional change.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n* test(valkey): Make client_info_tag test fake mypy-clean\n\nCI mypy flagged the fake glide_sync helper: the config classes were\nredefined under if/else (no-redef) and attributes were assigned onto a\ntypes.ModuleType instance (attr-defined).\n\nRework the fake so it is statically clean:\n- Define tagged vs untagged client/cluster config classes as distinct\n  top-level classes (the differing constructor signatures are what the\n  connector feature-detects) instead of redefining one name.\n- Build the fake module as a types.SimpleNamespace rather than assigning\n  attributes onto a ModuleType.\n- Annotate the empty kwargs dict (var-annotated).\n\nVerified locally: mypy, isort, ruff check/format all clean; 10 tests pass.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n---------\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>",
+              "stats": {
+                "files": 2,
+                "lines": 361,
+                "insertions": 361,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
           "total_commits": 1,
@@ -4303,16 +4342,16 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 65,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Tai An",
           "email": "antai12232931@outlook.com",
-          "total_commits": 1,
+          "total_commits": 2,
           "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 27,
+          "simple_commits": 2,
+          "commit_score": 49,
           "commits": [
             {
               "hash": "21b33419",
@@ -4334,14 +4373,113 @@
                 "total": 27
               },
               "classification": "simple"
+            },
+            {
+              "hash": "cd1c0766",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-15T06:53:00.000Z",
+              "message": "[good-first-issue] core: convert f-string log calls in local_disk_backend.py to %-format (#3973)\n\n* [good-first-issue] core: convert f-string log calls in local_disk_backend.py to %-format\n\nPer ruff G004 and the logging docs, %-format defers message construction\nuntil the record is actually emitted. Converts the 8 remaining f-string\nlogger calls in lmcache/v1/storage_backend/local_disk_backend.py to\nlazy %-format; no behavior change. One of the files listed in #3952.\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n* fix(local_disk): guard bandwidth logging against zero elapsed time\n\nwrite_file/read_file compute Bandwidth as size / elapsed, but a very fast\nI/O can round elapsed to 0.0 (time.time() resolution), raising\nZeroDivisionError from a debug log. Skip the bandwidth term when elapsed\nis 0 and log size only.\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n* style: drop trailing blank line to satisfy ruff-format\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* chore: empty commit to re-trigger buildkite k3-unit-tests\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n* chore: empty commit to re-trigger CI (flaky cu129 build)\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n---------\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\nSigned-off-by: Tai An <antai12232931@outlook.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 40,
+                "insertions": 25,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 5,
+                "ai": 4,
+                "total": 22
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 27,
+          "avg_score": 24.5,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 27,
+          "total_score": 49,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 37,
+          "commits": [
+            {
+              "hash": "32d71f52",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-07-15T06:15:31.000Z",
+              "message": "[CI/CD]Add XPU web setup doc (#4108)\n\n* Add XPU buildkite web setup\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* Update XPU web setup\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 50,
+                "insertions": 50,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 37,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "mmustafasenoglu",
+          "email": "mmustafasenoglu0@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 32,
+          "commits": [
+            {
+              "hash": "76744ce2",
+              "author": "mmustafasenoglu",
+              "email": "mmustafasenoglu0@gmail.com",
+              "date": "2026-07-15T07:59:18.000Z",
+              "message": "[good-first-issue] core: convert f-string log calls in cache_controller to %-format (#4102)\n\nSigned-off-by: Mustafa Senoglu <mmustafasenoglu0@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 25,
+                "insertions": 14,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 32,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 32,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7514,6 +7652,129 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Tai An",
+          "email": "antai12232931@outlook.com",
+          "total_commits": 5,
+          "significant_commits": 0,
+          "simple_commits": 5,
+          "commit_score": 118,
+          "commits": [
+            {
+              "hash": "1a842582",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-02T14:25:25.000Z",
+              "message": "style(token_database): convert f-string log calls to %-format (G004) (#3982)\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 5,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "397181c6",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-02T07:21:49.000Z",
+              "message": "[good-first-issue] core: convert f-string log calls in s3_connector.py to %-format (#3977)\n\nConverts the 8 f-string logger.* calls in\nlmcache/v1/storage_backend/connector/s3_connector.py to lazy %-format,\nper ruff G004 and the Python logging docs, so the message string is only\nbuilt when the record is actually emitted. No behavior change; format\nstyle only.\n\nRef #3372\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>",
+              "stats": {
+                "files": 1,
+                "lines": 16,
+                "insertions": 8,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "30982945",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-02T01:30:42.000Z",
+              "message": "fix(vllm/v1): no-op KV transfer when LMCache is in degraded mode (#3487)\n\n* fix(vllm/v1): no-op KV transfer when LMCache is in degraded mode\n\nWhen LMCache fails to initialize, the manager leaves `lmcache_engine` as\nNone and operates in degraded (recompute) mode. The worker-side\n`start_load_kv`, `save_kv_layer`, and `wait_for_save` paths still\n`assert self.lmcache_engine is not None`, which kills EngineCore on the\nfirst request instead of honoring the documented recompute fallback.\n\nGuard these entry points with an early return when the engine is None,\nmatching the existing degraded-mode handling in `_setup_metrics`. In\nnormal operation the engine is non-None so behavior is unchanged.\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* fix(vllm/v1): guard scheduler-side hooks in degraded mode\n\nExtend the degraded-mode handling to the four scheduler-side connector\nhooks so a failed LMCache init no longer crashes EngineCore during\nscheduling (per the matrix in vllm-project/vllm#44249):\n\n- get_num_new_matched_tokens -> 0 (no external hit, recompute)\n- update_state_after_alloc -> no-op\n- build_connector_meta -> empty metadata\n- request_finished -> (False, None)\n\nMirrors the existing worker-side guards; covers the \"scheduler degraded\nonly\" and \"LMCache fully unavailable\" rows that the worker-only guard\nstill let crash with EngineDeadError.\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* fix(vllm/v1): don't short-circuit request_finished in degraded mode\n\nThe early return when lmcache_engine OR lookup_client is None dropped the\nstorage/lookup cancels that must still run when only one of the two is\nmissing. Remove it and rely on the per-branch fail-soft logic, which warns\nand skips only the unavailable backend. Fixes the 4 regression tests in\ntests/v1/test_v1_adapter_request_finished_scheduler_role.py (LMCache#3337).\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n---------\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 38,
+                "insertions": 32,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "21b33419",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-13T21:09:55.000Z",
+              "message": "chore(hfbucket): move type-only imports under TYPE_CHECKING (#3730) (#4080)\n\nSigned-off-by: Anai-Guo <antai12232931@anaiguo.com>",
+              "stats": {
+                "files": 1,
+                "lines": 21,
+                "insertions": 13,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "cd1c0766",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-15T06:53:00.000Z",
+              "message": "[good-first-issue] core: convert f-string log calls in local_disk_backend.py to %-format (#3973)\n\n* [good-first-issue] core: convert f-string log calls in local_disk_backend.py to %-format\n\nPer ruff G004 and the logging docs, %-format defers message construction\nuntil the record is actually emitted. Converts the 8 remaining f-string\nlogger calls in lmcache/v1/storage_backend/local_disk_backend.py to\nlazy %-format; no behavior change. One of the files listed in #3952.\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n* fix(local_disk): guard bandwidth logging against zero elapsed time\n\nwrite_file/read_file compute Bandwidth as size / elapsed, but a very fast\nI/O can round elapsed to 0.0 (time.time() resolution), raising\nZeroDivisionError from a debug log. Skip the bandwidth term when elapsed\nis 0 and log size only.\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n* style: drop trailing blank line to satisfy ruff-format\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* chore: empty commit to re-trigger buildkite k3-unit-tests\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n* chore: empty commit to re-trigger CI (flaky cu129 build)\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n---------\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\nSigned-off-by: Tai An <antai12232931@outlook.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 40,
+                "insertions": 25,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 5,
+                "ai": 4,
+                "total": 22
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 23.6,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 118,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Shuichi Ihara",
           "email": "sihara@ddn.com",
           "total_commits": 2,
@@ -7609,108 +7870,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 100,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Tai An",
-          "email": "antai12232931@outlook.com",
-          "total_commits": 4,
-          "significant_commits": 0,
-          "simple_commits": 4,
-          "commit_score": 96,
-          "commits": [
-            {
-              "hash": "1a842582",
-              "author": "Tai An",
-              "email": "antai12232931@outlook.com",
-              "date": "2026-07-02T14:25:25.000Z",
-              "message": "style(token_database): convert f-string log calls to %-format (G004) (#3982)\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>",
-              "stats": {
-                "files": 1,
-                "lines": 9,
-                "insertions": 5,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "397181c6",
-              "author": "Tai An",
-              "email": "antai12232931@outlook.com",
-              "date": "2026-07-02T07:21:49.000Z",
-              "message": "[good-first-issue] core: convert f-string log calls in s3_connector.py to %-format (#3977)\n\nConverts the 8 f-string logger.* calls in\nlmcache/v1/storage_backend/connector/s3_connector.py to lazy %-format,\nper ruff G004 and the Python logging docs, so the message string is only\nbuilt when the record is actually emitted. No behavior change; format\nstyle only.\n\nRef #3372\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>",
-              "stats": {
-                "files": 1,
-                "lines": 16,
-                "insertions": 8,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "30982945",
-              "author": "Tai An",
-              "email": "antai12232931@outlook.com",
-              "date": "2026-07-02T01:30:42.000Z",
-              "message": "fix(vllm/v1): no-op KV transfer when LMCache is in degraded mode (#3487)\n\n* fix(vllm/v1): no-op KV transfer when LMCache is in degraded mode\n\nWhen LMCache fails to initialize, the manager leaves `lmcache_engine` as\nNone and operates in degraded (recompute) mode. The worker-side\n`start_load_kv`, `save_kv_layer`, and `wait_for_save` paths still\n`assert self.lmcache_engine is not None`, which kills EngineCore on the\nfirst request instead of honoring the documented recompute fallback.\n\nGuard these entry points with an early return when the engine is None,\nmatching the existing degraded-mode handling in `_setup_metrics`. In\nnormal operation the engine is non-None so behavior is unchanged.\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* fix(vllm/v1): guard scheduler-side hooks in degraded mode\n\nExtend the degraded-mode handling to the four scheduler-side connector\nhooks so a failed LMCache init no longer crashes EngineCore during\nscheduling (per the matrix in vllm-project/vllm#44249):\n\n- get_num_new_matched_tokens -> 0 (no external hit, recompute)\n- update_state_after_alloc -> no-op\n- build_connector_meta -> empty metadata\n- request_finished -> (False, None)\n\nMirrors the existing worker-side guards; covers the \"scheduler degraded\nonly\" and \"LMCache fully unavailable\" rows that the worker-only guard\nstill let crash with EngineDeadError.\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* fix(vllm/v1): don't short-circuit request_finished in degraded mode\n\nThe early return when lmcache_engine OR lookup_client is None dropped the\nstorage/lookup cancels that must still run when only one of the two is\nmissing. Remove it and rely on the per-branch fail-soft logic, which warns\nand skips only the unavailable backend. Fixes the 4 regression tests in\ntests/v1/test_v1_adapter_request_finished_scheduler_role.py (LMCache#3337).\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n---------\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 38,
-                "insertions": 32,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 3,
-                "total": 28
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "21b33419",
-              "author": "Tai An",
-              "email": "antai12232931@outlook.com",
-              "date": "2026-07-13T21:09:55.000Z",
-              "message": "chore(hfbucket): move type-only imports under TYPE_CHECKING (#3730) (#4080)\n\nSigned-off-by: Anai-Guo <antai12232931@anaiguo.com>",
-              "stats": {
-                "files": 1,
-                "lines": 21,
-                "insertions": 13,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 2,
-                "total": 27
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 24,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 96,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -7949,6 +8108,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Omer Rubinstein",
+          "email": "omerrubi@amazon.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "668a1fd6",
+              "author": "Omer Rubinstein",
+              "email": "omerrubi@amazon.com",
+              "date": "2026-07-15T17:44:56.000Z",
+              "message": "feat(valkey): Tag GLIDE connections as GlidePySync(lmcache:<ver>) (#4023)\n\n* feat(valkey): Tag GLIDE connections as GlidePySync(lmcache:<ver>)\n\nAttribute LMCache's valkey-glide connections in CLIENT INFO / CLIENT LIST\nvia GLIDE's client_info_tag option, producing GlidePySync(lmcache:<version>)\nso LMCache usage is distinguishable without disturbing GLIDE's own library\nidentity or adoption metrics.\n\nclient_info_tag was added to the glide Python client in valkey-io/valkey-glide#6389\nand ships in valkey-glide 2.5.0; it is not in any released wheel yet. Older\nclients would raise TypeError on the unknown kwarg, so the connector applies\nthe tag only behind a feature-detection guard: it inspects the client config\nconstructor signature for a client_info_tag parameter and passes it through\nin both the standalone and cluster branches of _ThreadWorkerPool._get_client\nonly when present. Behavior on current glide builds is unchanged.\n\nThe tag falls back to a bare \"lmcache\" if the resolved version string\ncontains whitespace (which GLIDE's config validation rejects).\n\nAdds tests covering tag formatting, the whitespace fallback, signature-based\nsupport detection, and that _get_client sets/omits the kwarg for supported\nvs unsupported glide builds (standalone and cluster) using an injected fake\nglide_sync module.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n* style(valkey): Fix isort import ordering in client_info_tag tests\n\nisort (repo pre-commit hook, PyCQA/isort) orders the imported names\ncase-insensitively, placing _ThreadWorkerPool after the lowercase\nhelper functions. Reorder to satisfy the hook; local ruff check did not\nflag it. No functional change.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n* test(valkey): Make client_info_tag test fake mypy-clean\n\nCI mypy flagged the fake glide_sync helper: the config classes were\nredefined under if/else (no-redef) and attributes were assigned onto a\ntypes.ModuleType instance (attr-defined).\n\nRework the fake so it is statically clean:\n- Define tagged vs untagged client/cluster config classes as distinct\n  top-level classes (the differing constructor signatures are what the\n  connector feature-detects) instead of redefining one name.\n- Build the fake module as a types.SimpleNamespace rather than assigning\n  attributes onto a ModuleType.\n- Annotate the empty kwargs dict (var-annotated).\n\nVerified locally: mypy, isort, ruff check/format all clean; 10 tests pass.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n---------\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>",
+              "stats": {
+                "files": 2,
+                "lines": 361,
+                "insertions": 361,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "siweil",
           "email": "42653669+waynel96@users.noreply.github.com",
           "total_commits": 1,
@@ -8143,6 +8341,84 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 37,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 37,
+          "commits": [
+            {
+              "hash": "32d71f52",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-07-15T06:15:31.000Z",
+              "message": "[CI/CD]Add XPU web setup doc (#4108)\n\n* Add XPU buildkite web setup\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* Update XPU web setup\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 50,
+                "insertions": 50,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 37,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "mmustafasenoglu",
+          "email": "mmustafasenoglu0@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 32,
+          "commits": [
+            {
+              "hash": "76744ce2",
+              "author": "mmustafasenoglu",
+              "email": "mmustafasenoglu0@gmail.com",
+              "date": "2026-07-15T07:59:18.000Z",
+              "message": "[good-first-issue] core: convert f-string log calls in cache_controller to %-format (#4102)\n\nSigned-off-by: Mustafa Senoglu <mmustafasenoglu0@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 25,
+                "insertions": 14,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 32,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 32,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -11588,6 +11864,129 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Tai An",
+          "email": "antai12232931@outlook.com",
+          "total_commits": 5,
+          "significant_commits": 0,
+          "simple_commits": 5,
+          "commit_score": 118,
+          "commits": [
+            {
+              "hash": "1a842582",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-02T14:25:25.000Z",
+              "message": "style(token_database): convert f-string log calls to %-format (G004) (#3982)\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 5,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "397181c6",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-02T07:21:49.000Z",
+              "message": "[good-first-issue] core: convert f-string log calls in s3_connector.py to %-format (#3977)\n\nConverts the 8 f-string logger.* calls in\nlmcache/v1/storage_backend/connector/s3_connector.py to lazy %-format,\nper ruff G004 and the Python logging docs, so the message string is only\nbuilt when the record is actually emitted. No behavior change; format\nstyle only.\n\nRef #3372\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>",
+              "stats": {
+                "files": 1,
+                "lines": 16,
+                "insertions": 8,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "30982945",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-02T01:30:42.000Z",
+              "message": "fix(vllm/v1): no-op KV transfer when LMCache is in degraded mode (#3487)\n\n* fix(vllm/v1): no-op KV transfer when LMCache is in degraded mode\n\nWhen LMCache fails to initialize, the manager leaves `lmcache_engine` as\nNone and operates in degraded (recompute) mode. The worker-side\n`start_load_kv`, `save_kv_layer`, and `wait_for_save` paths still\n`assert self.lmcache_engine is not None`, which kills EngineCore on the\nfirst request instead of honoring the documented recompute fallback.\n\nGuard these entry points with an early return when the engine is None,\nmatching the existing degraded-mode handling in `_setup_metrics`. In\nnormal operation the engine is non-None so behavior is unchanged.\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* fix(vllm/v1): guard scheduler-side hooks in degraded mode\n\nExtend the degraded-mode handling to the four scheduler-side connector\nhooks so a failed LMCache init no longer crashes EngineCore during\nscheduling (per the matrix in vllm-project/vllm#44249):\n\n- get_num_new_matched_tokens -> 0 (no external hit, recompute)\n- update_state_after_alloc -> no-op\n- build_connector_meta -> empty metadata\n- request_finished -> (False, None)\n\nMirrors the existing worker-side guards; covers the \"scheduler degraded\nonly\" and \"LMCache fully unavailable\" rows that the worker-only guard\nstill let crash with EngineDeadError.\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* fix(vllm/v1): don't short-circuit request_finished in degraded mode\n\nThe early return when lmcache_engine OR lookup_client is None dropped the\nstorage/lookup cancels that must still run when only one of the two is\nmissing. Remove it and rely on the per-branch fail-soft logic, which warns\nand skips only the unavailable backend. Fixes the 4 regression tests in\ntests/v1/test_v1_adapter_request_finished_scheduler_role.py (LMCache#3337).\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n---------\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 38,
+                "insertions": 32,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "21b33419",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-13T21:09:55.000Z",
+              "message": "chore(hfbucket): move type-only imports under TYPE_CHECKING (#3730) (#4080)\n\nSigned-off-by: Anai-Guo <antai12232931@anaiguo.com>",
+              "stats": {
+                "files": 1,
+                "lines": 21,
+                "insertions": 13,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "cd1c0766",
+              "author": "Tai An",
+              "email": "antai12232931@outlook.com",
+              "date": "2026-07-15T06:53:00.000Z",
+              "message": "[good-first-issue] core: convert f-string log calls in local_disk_backend.py to %-format (#3973)\n\n* [good-first-issue] core: convert f-string log calls in local_disk_backend.py to %-format\n\nPer ruff G004 and the logging docs, %-format defers message construction\nuntil the record is actually emitted. Converts the 8 remaining f-string\nlogger calls in lmcache/v1/storage_backend/local_disk_backend.py to\nlazy %-format; no behavior change. One of the files listed in #3952.\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n* fix(local_disk): guard bandwidth logging against zero elapsed time\n\nwrite_file/read_file compute Bandwidth as size / elapsed, but a very fast\nI/O can round elapsed to 0.0 (time.time() resolution), raising\nZeroDivisionError from a debug log. Skip the bandwidth term when elapsed\nis 0 and log size only.\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n* style: drop trailing blank line to satisfy ruff-format\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* chore: empty commit to re-trigger buildkite k3-unit-tests\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n* chore: empty commit to re-trigger CI (flaky cu129 build)\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n---------\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\nSigned-off-by: Tai An <antai12232931@outlook.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 40,
+                "insertions": 25,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 5,
+                "ai": 4,
+                "total": 22
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 23.6,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 118,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Shuichi Ihara",
           "email": "sihara@ddn.com",
           "total_commits": 2,
@@ -11683,108 +12082,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 100,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Tai An",
-          "email": "antai12232931@outlook.com",
-          "total_commits": 4,
-          "significant_commits": 0,
-          "simple_commits": 4,
-          "commit_score": 96,
-          "commits": [
-            {
-              "hash": "1a842582",
-              "author": "Tai An",
-              "email": "antai12232931@outlook.com",
-              "date": "2026-07-02T14:25:25.000Z",
-              "message": "style(token_database): convert f-string log calls to %-format (G004) (#3982)\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>",
-              "stats": {
-                "files": 1,
-                "lines": 9,
-                "insertions": 5,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "397181c6",
-              "author": "Tai An",
-              "email": "antai12232931@outlook.com",
-              "date": "2026-07-02T07:21:49.000Z",
-              "message": "[good-first-issue] core: convert f-string log calls in s3_connector.py to %-format (#3977)\n\nConverts the 8 f-string logger.* calls in\nlmcache/v1/storage_backend/connector/s3_connector.py to lazy %-format,\nper ruff G004 and the Python logging docs, so the message string is only\nbuilt when the record is actually emitted. No behavior change; format\nstyle only.\n\nRef #3372\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>",
-              "stats": {
-                "files": 1,
-                "lines": 16,
-                "insertions": 8,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "30982945",
-              "author": "Tai An",
-              "email": "antai12232931@outlook.com",
-              "date": "2026-07-02T01:30:42.000Z",
-              "message": "fix(vllm/v1): no-op KV transfer when LMCache is in degraded mode (#3487)\n\n* fix(vllm/v1): no-op KV transfer when LMCache is in degraded mode\n\nWhen LMCache fails to initialize, the manager leaves `lmcache_engine` as\nNone and operates in degraded (recompute) mode. The worker-side\n`start_load_kv`, `save_kv_layer`, and `wait_for_save` paths still\n`assert self.lmcache_engine is not None`, which kills EngineCore on the\nfirst request instead of honoring the documented recompute fallback.\n\nGuard these entry points with an early return when the engine is None,\nmatching the existing degraded-mode handling in `_setup_metrics`. In\nnormal operation the engine is non-None so behavior is unchanged.\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* fix(vllm/v1): guard scheduler-side hooks in degraded mode\n\nExtend the degraded-mode handling to the four scheduler-side connector\nhooks so a failed LMCache init no longer crashes EngineCore during\nscheduling (per the matrix in vllm-project/vllm#44249):\n\n- get_num_new_matched_tokens -> 0 (no external hit, recompute)\n- update_state_after_alloc -> no-op\n- build_connector_meta -> empty metadata\n- request_finished -> (False, None)\n\nMirrors the existing worker-side guards; covers the \"scheduler degraded\nonly\" and \"LMCache fully unavailable\" rows that the worker-only guard\nstill let crash with EngineDeadError.\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\n\n* fix(vllm/v1): don't short-circuit request_finished in degraded mode\n\nThe early return when lmcache_engine OR lookup_client is None dropped the\nstorage/lookup cancels that must still run when only one of the two is\nmissing. Remove it and rely on the per-branch fail-soft logic, which warns\nand skips only the unavailable backend. Fixes the 4 regression tests in\ntests/v1/test_v1_adapter_request_finished_scheduler_role.py (LMCache#3337).\n\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\n\n---------\n\nSigned-off-by: Tai An <antai12232931@outlook.com>\nSigned-off-by: Anai-Guo <antai12232931@outlook.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 38,
-                "insertions": 32,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 3,
-                "total": 28
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "21b33419",
-              "author": "Tai An",
-              "email": "antai12232931@outlook.com",
-              "date": "2026-07-13T21:09:55.000Z",
-              "message": "chore(hfbucket): move type-only imports under TYPE_CHECKING (#3730) (#4080)\n\nSigned-off-by: Anai-Guo <antai12232931@anaiguo.com>",
-              "stats": {
-                "files": 1,
-                "lines": 21,
-                "insertions": 13,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 2,
-                "total": 27
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 24,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 96,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -12023,6 +12320,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Omer Rubinstein",
+          "email": "omerrubi@amazon.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "668a1fd6",
+              "author": "Omer Rubinstein",
+              "email": "omerrubi@amazon.com",
+              "date": "2026-07-15T17:44:56.000Z",
+              "message": "feat(valkey): Tag GLIDE connections as GlidePySync(lmcache:<ver>) (#4023)\n\n* feat(valkey): Tag GLIDE connections as GlidePySync(lmcache:<ver>)\n\nAttribute LMCache's valkey-glide connections in CLIENT INFO / CLIENT LIST\nvia GLIDE's client_info_tag option, producing GlidePySync(lmcache:<version>)\nso LMCache usage is distinguishable without disturbing GLIDE's own library\nidentity or adoption metrics.\n\nclient_info_tag was added to the glide Python client in valkey-io/valkey-glide#6389\nand ships in valkey-glide 2.5.0; it is not in any released wheel yet. Older\nclients would raise TypeError on the unknown kwarg, so the connector applies\nthe tag only behind a feature-detection guard: it inspects the client config\nconstructor signature for a client_info_tag parameter and passes it through\nin both the standalone and cluster branches of _ThreadWorkerPool._get_client\nonly when present. Behavior on current glide builds is unchanged.\n\nThe tag falls back to a bare \"lmcache\" if the resolved version string\ncontains whitespace (which GLIDE's config validation rejects).\n\nAdds tests covering tag formatting, the whitespace fallback, signature-based\nsupport detection, and that _get_client sets/omits the kwarg for supported\nvs unsupported glide builds (standalone and cluster) using an injected fake\nglide_sync module.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n* style(valkey): Fix isort import ordering in client_info_tag tests\n\nisort (repo pre-commit hook, PyCQA/isort) orders the imported names\ncase-insensitively, placing _ThreadWorkerPool after the lowercase\nhelper functions. Reorder to satisfy the hook; local ruff check did not\nflag it. No functional change.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n* test(valkey): Make client_info_tag test fake mypy-clean\n\nCI mypy flagged the fake glide_sync helper: the config classes were\nredefined under if/else (no-redef) and attributes were assigned onto a\ntypes.ModuleType instance (attr-defined).\n\nRework the fake so it is statically clean:\n- Define tagged vs untagged client/cluster config classes as distinct\n  top-level classes (the differing constructor signatures are what the\n  connector feature-detects) instead of redefining one name.\n- Build the fake module as a types.SimpleNamespace rather than assigning\n  attributes onto a ModuleType.\n- Annotate the empty kwargs dict (var-annotated).\n\nVerified locally: mypy, isort, ruff check/format all clean; 10 tests pass.\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>\n\n---------\n\nSigned-off-by: Omer Rubinstein <omerrubi@amazon.com>",
+              "stats": {
+                "files": 2,
+                "lines": 361,
+                "insertions": 361,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "siweil",
           "email": "42653669+waynel96@users.noreply.github.com",
           "total_commits": 1,
@@ -12217,6 +12553,84 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 37,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 37,
+          "commits": [
+            {
+              "hash": "32d71f52",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-07-15T06:15:31.000Z",
+              "message": "[CI/CD]Add XPU web setup doc (#4108)\n\n* Add XPU buildkite web setup\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* Update XPU web setup\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 50,
+                "insertions": 50,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 37,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "mmustafasenoglu",
+          "email": "mmustafasenoglu0@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 32,
+          "commits": [
+            {
+              "hash": "76744ce2",
+              "author": "mmustafasenoglu",
+              "email": "mmustafasenoglu0@gmail.com",
+              "date": "2026-07-15T07:59:18.000Z",
+              "message": "[good-first-issue] core: convert f-string log calls in cache_controller to %-format (#4102)\n\nSigned-off-by: Mustafa Senoglu <mmustafasenoglu0@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 25,
+                "insertions": 14,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 32,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 32,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -12575,13 +12989,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-07-15T00:30:11.842Z",
+    "analyzedAt": "2026-07-16T00:30:09.668Z",
     "daysBack": 2,
-    "totalCommits": 132,
-    "totalContributors": 56,
+    "totalCommits": 136,
+    "totalContributors": 58,
     "mergedFrom": {
-      "existing": 129,
-      "new": 8
+      "existing": 132,
+      "new": 7
     }
   }
 }
