@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-25T00:30:23.740Z",
-  "total_commits_analyzed": 188,
+  "last_updated": "2026-07-26T00:30:11.148Z",
+  "total_commits_analyzed": 190,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -5061,10 +5061,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 9,
+          "total_commits": 10,
           "significant_commits": 6,
-          "simple_commits": 3,
-          "commit_score": 506,
+          "simple_commits": 4,
+          "commit_score": 538,
           "commits": [
             {
               "hash": "247787a9",
@@ -5254,14 +5254,35 @@
                 "total": 65
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8fc50f1e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-07-25T12:39:27.000Z",
+              "message": "[CI] pin vllm-cpu-nightly on macOS to dodge broken upstream wheel (#4238)\n\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 25,
+                "insertions": 24,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 56.22222222222222,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 53.8,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 506,
+          "total_score": 538,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -5530,6 +5551,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 132,
+          "commits": [
+            {
+              "hash": "792324b1",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-07-21T01:28:24.000Z",
+              "message": "ci(docker): build and push lmcache-payload image on release and nightly (#4122)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 86,
+                "insertions": 86,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "927897db",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-07-25T21:00:49.000Z",
+              "message": "feat(mp): multimodal support for MP mode (no encoder cache yet) (#4183)\n\n* fix(mp): image-aware cache keys for multimodal requests\n\nThe MP connector fed raw token ids into lookup/store/retrieve key\nderivation. vLLM emits identical placeholder token ids for every image,\nso two requests with the same text but different images collided on the\nsame cache keys and could serve the wrong image's KV.\n\nCapture mm hashes and placeholder positions in the request tracker,\nmaterialize an mm-adjusted copy of the prompt token ids once (same\noverwrite scheme the in-process adapter uses), and use it at every\nkey-derivation site so lookup, lock release, store, retrieve, and L0\ntelemetry stay consistent.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 383,
+                "insertions": 375,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 66,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 132,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Tai An",
           "email": "antai12232931@outlook.com",
           "total_commits": 3,
@@ -5607,8 +5688,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 93,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "github-actions[bot]",
@@ -5901,8 +5982,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 48,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "3xdevv",
@@ -5979,45 +6060,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 46,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 45,
-          "commits": [
-            {
-              "hash": "792324b1",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-07-21T01:28:24.000Z",
-              "message": "ci(docker): build and push lmcache-payload image on release and nightly (#4122)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 86,
-                "insertions": 86,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 8,
-                "total": 45
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 45,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 45,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -8301,10 +8343,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 13,
+          "total_commits": 14,
           "significant_commits": 8,
-          "simple_commits": 5,
-          "commit_score": 752,
+          "simple_commits": 6,
+          "commit_score": 784,
           "commits": [
             {
               "hash": "96f86f9b",
@@ -8578,14 +8620,35 @@
                 "total": 65
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8fc50f1e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-07-25T12:39:27.000Z",
+              "message": "[CI] pin vllm-cpu-nightly on macOS to dodge broken upstream wheel (#4238)\n\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 25,
+                "insertions": 24,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 57.84615384615385,
-          "significance_ratio": 0.6153846153846154,
+          "avg_score": 56,
+          "significance_ratio": 0.5714285714285714,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 752,
+          "total_score": 784,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9310,6 +9373,108 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 304,
+          "commits": [
+            {
+              "hash": "d495223b",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-07-01T00:07:51.000Z",
+              "message": "feat(operator): make engine DaemonSet privileged mode optional (#3943)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 18,
+                "lines": 239,
+                "insertions": 193,
+                "deletions": 46
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 23,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "36a9b04a",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-07-10T02:35:20.000Z",
+              "message": "feat(operator): inject lmcache code payload into vLLM pods (#3965)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1217,
+                "insertions": 1128,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "792324b1",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-07-21T01:28:24.000Z",
+              "message": "ci(docker): build and push lmcache-payload image on release and nightly (#4122)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 86,
+                "insertions": 86,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "927897db",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-07-25T21:00:49.000Z",
+              "message": "feat(mp): multimodal support for MP mode (no encoder cache yet) (#4183)\n\n* fix(mp): image-aware cache keys for multimodal requests\n\nThe MP connector fed raw token ids into lookup/store/retrieve key\nderivation. vLLM emits identical placeholder token ids for every image,\nso two requests with the same text but different images collided on the\nsame cache keys and could serve the wrong image's KV.\n\nCapture mm hashes and placeholder positions in the request tracker,\nmaterialize an mm-adjusted copy of the prompt token ids once (same\noverwrite scheme the in-process adapter uses), and use it at every\nkey-derivation site so lookup, lock release, store, retrieve, and L0\ntelemetry stay consistent.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 383,
+                "insertions": 375,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 76,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 304,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Zhengfei He",
           "email": "157287166+zhengfeihe@users.noreply.github.com",
           "total_commits": 4,
@@ -9777,87 +9942,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 231,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 217,
-          "commits": [
-            {
-              "hash": "d495223b",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-07-01T00:07:51.000Z",
-              "message": "feat(operator): make engine DaemonSet privileged mode optional (#3943)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 18,
-                "lines": 239,
-                "insertions": 193,
-                "deletions": 46
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 23,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "36a9b04a",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-07-10T02:35:20.000Z",
-              "message": "feat(operator): inject lmcache code payload into vLLM pods (#3965)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 19,
-                "lines": 1217,
-                "insertions": 1128,
-                "deletions": 89
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "792324b1",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-07-21T01:28:24.000Z",
-              "message": "ci(docker): build and push lmcache-payload image on release and nightly (#4122)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 86,
-                "insertions": 86,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 8,
-                "total": 45
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 72.33333333333333,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 217,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -13767,10 +13851,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 13,
+          "total_commits": 14,
           "significant_commits": 8,
-          "simple_commits": 5,
-          "commit_score": 752,
+          "simple_commits": 6,
+          "commit_score": 784,
           "commits": [
             {
               "hash": "96f86f9b",
@@ -14044,14 +14128,35 @@
                 "total": 65
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8fc50f1e",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-07-25T12:39:27.000Z",
+              "message": "[CI] pin vllm-cpu-nightly on macOS to dodge broken upstream wheel (#4238)\n\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 25,
+                "insertions": 24,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 57.84615384615385,
-          "significance_ratio": 0.6153846153846154,
+          "avg_score": 56,
+          "significance_ratio": 0.5714285714285714,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 752,
+          "total_score": 784,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -14776,6 +14881,108 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Roy Huang",
+          "email": "roy.y.huang@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 304,
+          "commits": [
+            {
+              "hash": "d495223b",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-07-01T00:07:51.000Z",
+              "message": "feat(operator): make engine DaemonSet privileged mode optional (#3943)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 18,
+                "lines": 239,
+                "insertions": 193,
+                "deletions": 46
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 23,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "36a9b04a",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-07-10T02:35:20.000Z",
+              "message": "feat(operator): inject lmcache code payload into vLLM pods (#3965)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1217,
+                "insertions": 1128,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "792324b1",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-07-21T01:28:24.000Z",
+              "message": "ci(docker): build and push lmcache-payload image on release and nightly (#4122)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 86,
+                "insertions": 86,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "927897db",
+              "author": "Roy Huang",
+              "email": "roy.y.huang@gmail.com",
+              "date": "2026-07-25T21:00:49.000Z",
+              "message": "feat(mp): multimodal support for MP mode (no encoder cache yet) (#4183)\n\n* fix(mp): image-aware cache keys for multimodal requests\n\nThe MP connector fed raw token ids into lookup/store/retrieve key\nderivation. vLLM emits identical placeholder token ids for every image,\nso two requests with the same text but different images collided on the\nsame cache keys and could serve the wrong image's KV.\n\nCapture mm hashes and placeholder positions in the request tracker,\nmaterialize an mm-adjusted copy of the prompt token ids once (same\noverwrite scheme the in-process adapter uses), and use it at every\nkey-derivation site so lookup, lock release, store, retrieve, and L0\ntelemetry stay consistent.\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 383,
+                "insertions": 375,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 76,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 304,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Zhengfei He",
           "email": "157287166+zhengfeihe@users.noreply.github.com",
           "total_commits": 4,
@@ -15243,87 +15450,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 231,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Roy Huang",
-          "email": "roy.y.huang@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 217,
-          "commits": [
-            {
-              "hash": "d495223b",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-07-01T00:07:51.000Z",
-              "message": "feat(operator): make engine DaemonSet privileged mode optional (#3943)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 18,
-                "lines": 239,
-                "insertions": 193,
-                "deletions": 46
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 23,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "36a9b04a",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-07-10T02:35:20.000Z",
-              "message": "feat(operator): inject lmcache code payload into vLLM pods (#3965)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 19,
-                "lines": 1217,
-                "insertions": 1128,
-                "deletions": 89
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "792324b1",
-              "author": "Roy Huang",
-              "email": "roy.y.huang@gmail.com",
-              "date": "2026-07-21T01:28:24.000Z",
-              "message": "ci(docker): build and push lmcache-payload image on release and nightly (#4122)\n\nSigned-off-by: royyhuang <roy.y.huang@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 86,
-                "insertions": 86,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 8,
-                "total": 45
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 72.33333333333333,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 217,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -17113,13 +17239,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-07-25T00:30:23.740Z",
+    "analyzedAt": "2026-07-26T00:30:11.148Z",
     "daysBack": 2,
-    "totalCommits": 188,
+    "totalCommits": 190,
     "totalContributors": 65,
     "mergedFrom": {
-      "existing": 182,
-      "new": 16
+      "existing": 188,
+      "new": 8
     }
   }
 }
