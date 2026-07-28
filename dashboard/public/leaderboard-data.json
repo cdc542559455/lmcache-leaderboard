@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-27T00:30:03.978Z",
-  "total_commits_analyzed": 192,
+  "last_updated": "2026-07-28T00:30:17.124Z",
+  "total_commits_analyzed": 202,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -6261,6 +6261,398 @@
           "tier": "T2",
           "tier_name": "Intermediate"
         }
+      ],
+      "2026-W31": [
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "c9ac6a53",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-27T20:50:30.000Z",
+              "message": "[Add] New engine KV format for vLLM unified KV cache layout (#4220)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 22,
+                "lines": 454,
+                "insertions": 371,
+                "deletions": 83
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "2xdevv",
+          "email": "syk0905.kwon@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 76,
+          "commits": [
+            {
+              "hash": "fe448392",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-07-27T22:11:23.000Z",
+              "message": "[Fix] Harden raw-block device cleanup and alignment checks (#3260)\n\n* [Fix] Require block_align to be a positive power of 2\n\nReplace the existing > 0 checks with a power-of-2 guard in both\nRawBlockCore.__init__ (canonical) and RawBlockL2AdapterConfig.from_dict\n(early fail for the JSON config path).\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Fix] Check offset and total_len alignment in batched_write()\n\nAdd O_DIRECT aligned-offset and aligned-total_len guards to\nbatched_write(), mirroring the checks already present in\nbatched_read(). Misaligned pointer continues to be handled via\nbounce buffer. Adds two tests covering the new error paths.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Style] Apply pre-commit fixes\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Fix] Update raw-block alignment error message\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs] Clarify raw-block alignment rules\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 9,
+                "lines": 147,
+                "insertions": 136,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 14,
+                "total": 76
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 76,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 76,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Rocky Song",
+          "email": "167060552+youngrok-XCENA@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "b20e6151",
+              "author": "Rocky Song",
+              "email": "167060552+youngrok-XCENA@users.noreply.github.com",
+              "date": "2026-07-27T20:01:19.000Z",
+              "message": "fix(mp): fix shared-memory leaks during graceful shutdown (#4197)\n\n* fix(mp): fix shared-memory leak on SIGTERM\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\n\n* fix(mp): close HTTP engine during shutdown\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\n\n---------\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>",
+              "stats": {
+                "files": 3,
+                "lines": 160,
+                "insertions": 159,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Arijit Desai",
+          "email": "desaiarijit@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "e0eb96c4",
+              "author": "Arijit Desai",
+              "email": "desaiarijit@gmail.com",
+              "date": "2026-07-27T20:01:27.000Z",
+              "message": "fix(pd): fail fast when a prefill exceeds the receiver buffer capacity (#4210)\n\nThe receiver's reservation admission only succeeds when the buffer has\nenough free chunks (`available >= total_chunks`), and `available` can\nnever exceed the buffer's total capacity. A request whose declared\n`total_chunks` is larger than the whole buffer therefore can never be\nadmitted: it blocked for the full `pd_allocation_timeout_sec` and then\nraised a misleading \"over-subscribed\" timeout, tearing down the transfer\nmid-flight (clients saw ServerDisconnectedError / \"Not enough data to\nsatisfy transfer length header\").\n\nAdd an explicit fail-fast in `_async_allocate_and_put`, co-located with\nthe existing `total_chunks == 0` validation, that rejects such a request\nimmediately with an actionable error (needs N chunks, buffer holds M,\nincrease pd_buffer_size). Add a regression test asserting the request is\nrejected well before the admission timeout could elapse and leaves no\nreservation behind.\n\nSigned-off-by: ardecode <desaiarijit@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 54,
+                "insertions": 54,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 38,
+          "commits": [
+            {
+              "hash": "20e87af0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-07-27T06:53:19.000Z",
+              "message": "[MP] make DeviceHostFuncDispatcher a PeriodicThread (#4212)\n\nSo it shows up in PeriodicThreadRegistry alongside PinMonitor and the session/p2p/reaper threads, and we get its run stats through the shared periodic-thread HTTP API for free. Public API is unchanged.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 61,
+                "insertions": 32,
+                "deletions": 29
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 6,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 38,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "3xdevv",
+          "email": "3xdevv@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 34,
+          "commits": [
+            {
+              "hash": "7357deae",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-07-27T20:01:30.000Z",
+              "message": "[Fix][RawBlock] Validate checkpoint layout fields (#3700)\n\nfix raw-block checkpoint layout validation\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 45,
+                "insertions": 45,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 34,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 34,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Allen Huang",
+          "email": "adolphinvx@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 27,
+          "commits": [
+            {
+              "hash": "5ae67cbf",
+              "author": "Allen Huang",
+              "email": "adolphinvx@users.noreply.github.com",
+              "date": "2026-07-27T18:28:17.000Z",
+              "message": "[good-first-issue] mp: use lazy logging in runtime plugin launcher (#4229) (#4230)\n\nstyle(mp): use lazy logging in runtime plugin launcher\n\nSigned-off-by: adolphinvx <exarunner@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 24,
+                "insertions": 16,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 27,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 27,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Zhengfei He",
+          "email": "157287166+zhengfeihe@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 21,
+          "commits": [
+            {
+              "hash": "cd9a0ad5",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-07-28T00:06:08.000Z",
+              "message": "[Doc] Add zhengfeihe to CODEROWNERS (#4254)\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 15,
+                "insertions": 8,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "github-actions[bot]",
+          "email": "41898282+github-actions[bot]@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "4fd8cd71",
+              "author": "github-actions[bot]",
+              "email": "41898282+github-actions[bot]@users.noreply.github.com",
+              "date": "2026-07-27T20:56:06.000Z",
+              "message": "[Build] sync torch version with vLLM (2.13.0) (#4255)\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: ApostaC <25103655+ApostaC@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "6a43d4ab",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-07-27T17:17:27.000Z",
+              "message": "[fix]: disable the GDS thread pool in the no-pool batched_get test (#4243)\n\nfix(test): disable the GDS thread pool in the no-pool batched_get test\n\n#4067 made the disk I/O thread pool always-on by default, which broke\ntest_batched_get_blocking_no_thread_pool's assumption that a default\nbackend has the pool off. The failure only surfaces on cuFile-equipped CI\nnodes (TestGdsBackend is skipif-gated on GDS support), so most runs skip\nit. Pass disk_io_threads=0 explicitly, restoring the test's intent of\nexercising the no-pool path.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 7,
+                "insertions": 6,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -8385,10 +8777,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 15,
+          "total_commits": 16,
           "significant_commits": 9,
-          "simple_commits": 6,
-          "commit_score": 884,
+          "simple_commits": 7,
+          "commit_score": 922,
           "commits": [
             {
               "hash": "96f86f9b",
@@ -8704,57 +9096,141 @@
                 "total": 100
               },
               "classification": "significant"
+            },
+            {
+              "hash": "20e87af0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-07-27T06:53:19.000Z",
+              "message": "[MP] make DeviceHostFuncDispatcher a PeriodicThread (#4212)\n\nSo it shows up in PeriodicThreadRegistry alongside PinMonitor and the session/p2p/reaper threads, and we get its run stats through the shared periodic-thread HTTP API for free. Public API is unchanged.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 61,
+                "insertions": 32,
+                "deletions": 29
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 6,
+                "total": 38
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 58.93333333333333,
-          "significance_ratio": 0.6,
+          "avg_score": 57.625,
+          "significance_ratio": 0.5625,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 884,
+          "total_score": 922,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
-          "name": "Cao Qian",
-          "email": "talexcao@gmail.com",
-          "total_commits": 6,
-          "significant_commits": 5,
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 7,
+          "significant_commits": 6,
           "simple_commits": 1,
-          "commit_score": 470,
+          "commit_score": 540,
           "commits": [
             {
-              "hash": "0bbd0511",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-08T21:59:02.000Z",
-              "message": "[Operator] CacheBlend webhook: support namespace-qualified engine refs for cross-namespace binds (#4024)\n\n* init\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "hash": "efaf341d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-08T02:54:55.000Z",
+              "message": "[Bugfix] Postpone the `is_kv_writer` check after starting the worker heartbeat (#4044)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
               "stats": {
                 "files": 2,
-                "lines": 84,
-                "insertions": 70,
-                "deletions": 14
+                "lines": 8,
+                "insertions": 3,
+                "deletions": 5
               },
               "scores": {
-                "loc": 15,
+                "loc": 3,
                 "files": 10,
                 "keyword": 12,
-                "ai": 8,
-                "total": 45
+                "ai": 0,
+                "total": 25
               },
               "classification": "simple"
             },
             {
-              "hash": "2756b828",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-11T00:59:56.000Z",
-              "message": "[MP coordinator] Chunk eviction dispatch to the delete cap; add default quota limit for unquota'd salts (#4027)\n\n* init\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "hash": "c9439c65",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-17T03:08:49.000Z",
+              "message": "[Fix] Add kernels for vLLM-packed KV cache format (#4128)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 29,
+                "lines": 652,
+                "insertions": 581,
+                "deletions": 71
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0c1bbf1d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-18T01:03:53.000Z",
+              "message": "[Misc] Add periodic terminal logging for L0 - L1 performance and L1 usage (#4145)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 14,
+                "lines": 918,
+                "insertions": 916,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "51f1d606",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-23T02:03:27.000Z",
+              "message": "docs: consolidated daily drift-check updates (2026-06-30 .. 2026-07-19) (#4167)\n\nConsolidates the 13 open daily doc-drift PRs into one change, re-verified\nagainst the current code (dev @ a2bb21d1) as the single source of truth:\n\n \nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 14,
+                "lines": 710,
+                "insertions": 588,
+                "deletions": 122
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f1ab19a1",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-23T00:57:20.000Z",
+              "message": "[Fix] MiniMax M3 and other Mamba Model for incoming vLLM 0.26 (#4206)\n\n* Fix mamba models and minimax M3 for incoming vLLM 0.26\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
               "stats": {
                 "files": 11,
-                "lines": 566,
-                "insertions": 532,
-                "deletions": 34
+                "lines": 264,
+                "insertions": 235,
+                "deletions": 29
               },
               "scores": {
                 "loc": 30,
@@ -8766,79 +9242,37 @@
               "classification": "significant"
             },
             {
-              "hash": "7c0e7271",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-22T19:55:48.000Z",
-              "message": "[Refactor] Group prefetch params into PrefetchRequestSpec (#4121)\n\n* [Refactor] Group prefetch params into PrefetchRequestSpec\n\nIntroduce a frozen PrefetchRequestSpec dataclass in distributed/api.py\n(alongside PrefetchHandle) bundling the six L2-fetch inputs: keys,\nlayout_desc, extra_count, policy, attn_desc, mode.\n\n- PrefetchController.submit_prefetch_request(spec): replaces the six\n  flat params and removes the fragile positional submission tuple; the\n  field list now lives in one place.\n- StorageManager.submit_prefetch_task(spec, external_request_id='',\n  skip_l2=False): takes the shared spec plus the two StorageManager-only\n  orchestration knobs as explicit args (kept out of the spec so the\n  controller's contract has no settable-but-ignored fields).\n- Update the six MP-module callers and all affected tests.\n\nNo behavior change. mypy + non-CUDA mock tests pass; CUDA-gated prefetch\ntests require GPU CI.\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "hash": "9334bf28",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-24T01:55:59.000Z",
+              "message": "[Bugfix] Change use_mla to mla_only so that MLA/Mamba mixed model can work normally (#4219)\n\n* change use_mla to mla_only\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 11,
+                "lines": 583,
+                "insertions": 558,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c9ac6a53",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-27T20:50:30.000Z",
+              "message": "[Add] New engine KV format for vLLM unified KV cache layout (#4220)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
               "stats": {
                 "files": 22,
-                "lines": 551,
-                "insertions": 316,
-                "deletions": 235
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "42a446da",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-23T17:49:26.000Z",
-              "message": "[Python FS L2 adapter] implement delete and fire L2 listener notifications (#4103)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
-              "stats": {
-                "files": 3,
-                "lines": 332,
-                "insertions": 322,
-                "deletions": 10
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "1e95b53a",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-23T03:51:57.000Z",
-              "message": "[Serde] add ObjectKey to parameter (#4203)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 306,
-                "insertions": 188,
-                "deletions": 118
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "73b5ce64",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-26T03:22:15.000Z",
-              "message": "[Serde] AES-GCM  (#4235)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
-              "stats": {
-                "files": 10,
-                "lines": 1060,
-                "insertions": 1060,
-                "deletions": 0
+                "lines": 454,
+                "insertions": 371,
+                "deletions": 83
               },
               "scores": {
                 "loc": 30,
@@ -8850,22 +9284,22 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 78.33333333333333,
-          "significance_ratio": 0.8333333333333334,
+          "avg_score": 77.14285714285714,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 470,
+          "total_score": 540,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 9,
+          "total_commits": 10,
           "significant_commits": 5,
-          "simple_commits": 4,
-          "commit_score": 469,
+          "simple_commits": 5,
+          "commit_score": 489,
           "commits": [
             {
               "hash": "f1fe2b72",
@@ -9055,120 +9489,78 @@
                 "total": 27
               },
               "classification": "simple"
+            },
+            {
+              "hash": "6a43d4ab",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-07-27T17:17:27.000Z",
+              "message": "[fix]: disable the GDS thread pool in the no-pool batched_get test (#4243)\n\nfix(test): disable the GDS thread pool in the no-pool batched_get test\n\n#4067 made the disk I/O thread pool always-on by default, which broke\ntest_batched_get_blocking_no_thread_pool's assumption that a default\nbackend has the pool off. The failure only surfaces on cuFile-equipped CI\nnodes (TestGdsBackend is skipif-gated on GDS support), so most runs skip\nit. Pass disk_io_threads=0 explicitly, restoring the test's intent of\nexercising the no-pool path.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 7,
+                "insertions": 6,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 52.111111111111114,
-          "significance_ratio": 0.5555555555555556,
+          "avg_score": 48.9,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 469,
+          "total_score": 489,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
+          "name": "Cao Qian",
+          "email": "talexcao@gmail.com",
           "total_commits": 6,
           "significant_commits": 5,
           "simple_commits": 1,
-          "commit_score": 453,
+          "commit_score": 470,
           "commits": [
             {
-              "hash": "efaf341d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-08T02:54:55.000Z",
-              "message": "[Bugfix] Postpone the `is_kv_writer` check after starting the worker heartbeat (#4044)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "hash": "0bbd0511",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-08T21:59:02.000Z",
+              "message": "[Operator] CacheBlend webhook: support namespace-qualified engine refs for cross-namespace binds (#4024)\n\n* init\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
               "stats": {
                 "files": 2,
-                "lines": 8,
-                "insertions": 3,
-                "deletions": 5
+                "lines": 84,
+                "insertions": 70,
+                "deletions": 14
               },
               "scores": {
-                "loc": 3,
+                "loc": 15,
                 "files": 10,
                 "keyword": 12,
-                "ai": 0,
-                "total": 25
+                "ai": 8,
+                "total": 45
               },
               "classification": "simple"
             },
             {
-              "hash": "c9439c65",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-17T03:08:49.000Z",
-              "message": "[Fix] Add kernels for vLLM-packed KV cache format (#4128)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 29,
-                "lines": 652,
-                "insertions": 581,
-                "deletions": 71
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0c1bbf1d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-18T01:03:53.000Z",
-              "message": "[Misc] Add periodic terminal logging for L0 - L1 performance and L1 usage (#4145)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 14,
-                "lines": 918,
-                "insertions": 916,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "51f1d606",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-23T02:03:27.000Z",
-              "message": "docs: consolidated daily drift-check updates (2026-06-30 .. 2026-07-19) (#4167)\n\nConsolidates the 13 open daily doc-drift PRs into one change, re-verified\nagainst the current code (dev @ a2bb21d1) as the single source of truth:\n\n \nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 14,
-                "lines": 710,
-                "insertions": 588,
-                "deletions": 122
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 5,
-                "ai": 25,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f1ab19a1",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-23T00:57:20.000Z",
-              "message": "[Fix] MiniMax M3 and other Mamba Model for incoming vLLM 0.26 (#4206)\n\n* Fix mamba models and minimax M3 for incoming vLLM 0.26\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "hash": "2756b828",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-11T00:59:56.000Z",
+              "message": "[MP coordinator] Chunk eviction dispatch to the delete cap; add default quota limit for unquota'd salts (#4027)\n\n* init\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
               "stats": {
                 "files": 11,
-                "lines": 264,
-                "insertions": 235,
-                "deletions": 29
+                "lines": 566,
+                "insertions": 532,
+                "deletions": 34
               },
               "scores": {
                 "loc": 30,
@@ -9180,16 +9572,79 @@
               "classification": "significant"
             },
             {
-              "hash": "9334bf28",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-24T01:55:59.000Z",
-              "message": "[Bugfix] Change use_mla to mla_only so that MLA/Mamba mixed model can work normally (#4219)\n\n* change use_mla to mla_only\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "hash": "7c0e7271",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-22T19:55:48.000Z",
+              "message": "[Refactor] Group prefetch params into PrefetchRequestSpec (#4121)\n\n* [Refactor] Group prefetch params into PrefetchRequestSpec\n\nIntroduce a frozen PrefetchRequestSpec dataclass in distributed/api.py\n(alongside PrefetchHandle) bundling the six L2-fetch inputs: keys,\nlayout_desc, extra_count, policy, attn_desc, mode.\n\n- PrefetchController.submit_prefetch_request(spec): replaces the six\n  flat params and removes the fragile positional submission tuple; the\n  field list now lives in one place.\n- StorageManager.submit_prefetch_task(spec, external_request_id='',\n  skip_l2=False): takes the shared spec plus the two StorageManager-only\n  orchestration knobs as explicit args (kept out of the spec so the\n  controller's contract has no settable-but-ignored fields).\n- Update the six MP-module callers and all affected tests.\n\nNo behavior change. mypy + non-CUDA mock tests pass; CUDA-gated prefetch\ntests require GPU CI.\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
               "stats": {
-                "files": 11,
-                "lines": 583,
-                "insertions": 558,
-                "deletions": 25
+                "files": 22,
+                "lines": 551,
+                "insertions": 316,
+                "deletions": 235
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "42a446da",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-23T17:49:26.000Z",
+              "message": "[Python FS L2 adapter] implement delete and fire L2 listener notifications (#4103)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 332,
+                "insertions": 322,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1e95b53a",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-23T03:51:57.000Z",
+              "message": "[Serde] add ObjectKey to parameter (#4203)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 306,
+                "insertions": 188,
+                "deletions": 118
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "73b5ce64",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-26T03:22:15.000Z",
+              "message": "[Serde] AES-GCM  (#4235)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 1060,
+                "insertions": 1060,
+                "deletions": 0
               },
               "scores": {
                 "loc": 30,
@@ -9201,12 +9656,12 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 75.5,
+          "avg_score": 78.33333333333333,
           "significance_ratio": 0.8333333333333334,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 453,
+          "total_score": 470,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9561,10 +10016,10 @@
         {
           "name": "Zhengfei He",
           "email": "157287166+zhengfeihe@users.noreply.github.com",
-          "total_commits": 4,
+          "total_commits": 5,
           "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 272,
+          "simple_commits": 2,
+          "commit_score": 293,
           "commits": [
             {
               "hash": "ca9f862c",
@@ -9649,24 +10104,45 @@
                 "total": 21
               },
               "classification": "simple"
+            },
+            {
+              "hash": "cd9a0ad5",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-07-28T00:06:08.000Z",
+              "message": "[Doc] Add zhengfeihe to CODEROWNERS (#4254)\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 15,
+                "insertions": 8,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 68,
-          "significance_ratio": 0.75,
+          "avg_score": 58.6,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 272,
+          "total_score": 293,
           "tier": "T1",
           "tier_name": "Advanced"
         },
         {
           "name": "github-actions[bot]",
           "email": "41898282+github-actions[bot]@users.noreply.github.com",
-          "total_commits": 3,
+          "total_commits": 4,
           "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 261,
+          "simple_commits": 1,
+          "commit_score": 281,
           "commits": [
             {
               "hash": "2ef005d9",
@@ -9730,14 +10206,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "4fd8cd71",
+              "author": "github-actions[bot]",
+              "email": "41898282+github-actions[bot]@users.noreply.github.com",
+              "date": "2026-07-27T20:56:06.000Z",
+              "message": "[Build] sync torch version with vLLM (2.13.0) (#4255)\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: ApostaC <25103655+ApostaC@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 87,
-          "significance_ratio": 1,
+          "avg_score": 70.25,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 261,
+          "total_score": 281,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10951,6 +11448,66 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "3xdevv",
+          "email": "3xdevv@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "26ca1b18",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-07-20T21:48:28.000Z",
+              "message": "[Fix][RawBlock] Rebuild free slots during checkpoint recovery (#4078)\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 98,
+                "insertions": 69,
+                "deletions": 29
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7357deae",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-07-27T20:01:30.000Z",
+              "message": "[Fix][RawBlock] Validate checkpoint layout fields (#3700)\n\nfix raw-block checkpoint layout validation\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 45,
+                "insertions": 45,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Divy",
           "email": "vasal@wisc.edu",
           "total_commits": 1,
@@ -11029,6 +11586,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "2xdevv",
+          "email": "syk0905.kwon@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 76,
+          "commits": [
+            {
+              "hash": "fe448392",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-07-27T22:11:23.000Z",
+              "message": "[Fix] Harden raw-block device cleanup and alignment checks (#3260)\n\n* [Fix] Require block_align to be a positive power of 2\n\nReplace the existing > 0 checks with a power-of-2 guard in both\nRawBlockCore.__init__ (canonical) and RawBlockL2AdapterConfig.from_dict\n(early fail for the JSON config path).\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Fix] Check offset and total_len alignment in batched_write()\n\nAdd O_DIRECT aligned-offset and aligned-total_len guards to\nbatched_write(), mirroring the checks already present in\nbatched_read(). Misaligned pointer continues to be handled via\nbounce buffer. Adds two tests covering the new error paths.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Style] Apply pre-commit fixes\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Fix] Update raw-block alignment error message\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs] Clarify raw-block alignment rules\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 9,
+                "lines": 147,
+                "insertions": 136,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 14,
+                "total": 76
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 76,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 76,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "LIUyujie",
           "email": "130735711+Lyj1007@users.noreply.github.com",
           "total_commits": 1,
@@ -11064,6 +11660,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 70,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Rocky Song",
+          "email": "167060552+youngrok-XCENA@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "b20e6151",
+              "author": "Rocky Song",
+              "email": "167060552+youngrok-XCENA@users.noreply.github.com",
+              "date": "2026-07-27T20:01:19.000Z",
+              "message": "fix(mp): fix shared-memory leaks during graceful shutdown (#4197)\n\n* fix(mp): fix shared-memory leak on SIGTERM\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\n\n* fix(mp): close HTTP engine during shutdown\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\n\n---------\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>",
+              "stats": {
+                "files": 3,
+                "lines": 160,
+                "insertions": 159,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -11167,45 +11802,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "3xdevv",
-          "email": "3xdevv@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 46,
-          "commits": [
-            {
-              "hash": "26ca1b18",
-              "author": "3xdevv",
-              "email": "3xdevv@gmail.com",
-              "date": "2026-07-20T21:48:28.000Z",
-              "message": "[Fix][RawBlock] Rebuild free slots during checkpoint recovery (#4078)\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 98,
-                "insertions": 69,
-                "deletions": 29
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 9,
-                "total": 46
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 46,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 46,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "jiahengxie",
           "email": "13716265422@139.com",
           "total_commits": 1,
@@ -11241,6 +11837,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 46,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Arijit Desai",
+          "email": "desaiarijit@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "e0eb96c4",
+              "author": "Arijit Desai",
+              "email": "desaiarijit@gmail.com",
+              "date": "2026-07-27T20:01:27.000Z",
+              "message": "fix(pd): fail fast when a prefill exceeds the receiver buffer capacity (#4210)\n\nThe receiver's reservation admission only succeeds when the buffer has\nenough free chunks (`available >= total_chunks`), and `available` can\nnever exceed the buffer's total capacity. A request whose declared\n`total_chunks` is larger than the whole buffer therefore can never be\nadmitted: it blocked for the full `pd_allocation_timeout_sec` and then\nraised a misleading \"over-subscribed\" timeout, tearing down the transfer\nmid-flight (clients saw ServerDisconnectedError / \"Not enough data to\nsatisfy transfer length header\").\n\nAdd an explicit fail-fast in `_async_allocate_and_put`, co-located with\nthe existing `total_chunks == 0` validation, that rejects such a request\nimmediately with an actionable error (needs N chunks, buffer holds M,\nincrease pd_buffer_size). Add a regression test asserting the request is\nrejected well before the admission timeout could elapse and leaves no\nreservation behind.\n\nSigned-off-by: ardecode <desaiarijit@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 54,
+                "insertions": 54,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -11497,6 +12132,45 @@
                 "lines": 21,
                 "insertions": 17,
                 "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 27,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 27,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Allen Huang",
+          "email": "adolphinvx@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 27,
+          "commits": [
+            {
+              "hash": "5ae67cbf",
+              "author": "Allen Huang",
+              "email": "adolphinvx@users.noreply.github.com",
+              "date": "2026-07-27T18:28:17.000Z",
+              "message": "[good-first-issue] mp: use lazy logging in runtime plugin launcher (#4229) (#4230)\n\nstyle(mp): use lazy logging in runtime plugin launcher\n\nSigned-off-by: adolphinvx <exarunner@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 24,
+                "insertions": 16,
+                "deletions": 8
               },
               "scores": {
                 "loc": 8,
@@ -13935,10 +14609,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 15,
+          "total_commits": 16,
           "significant_commits": 9,
-          "simple_commits": 6,
-          "commit_score": 884,
+          "simple_commits": 7,
+          "commit_score": 922,
           "commits": [
             {
               "hash": "96f86f9b",
@@ -14254,57 +14928,141 @@
                 "total": 100
               },
               "classification": "significant"
+            },
+            {
+              "hash": "20e87af0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-07-27T06:53:19.000Z",
+              "message": "[MP] make DeviceHostFuncDispatcher a PeriodicThread (#4212)\n\nSo it shows up in PeriodicThreadRegistry alongside PinMonitor and the session/p2p/reaper threads, and we get its run stats through the shared periodic-thread HTTP API for free. Public API is unchanged.\n\nSigned-off-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 61,
+                "insertions": 32,
+                "deletions": 29
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 6,
+                "total": 38
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 58.93333333333333,
-          "significance_ratio": 0.6,
+          "avg_score": 57.625,
+          "significance_ratio": 0.5625,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 884,
+          "total_score": 922,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
-          "name": "Cao Qian",
-          "email": "talexcao@gmail.com",
-          "total_commits": 6,
-          "significant_commits": 5,
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 7,
+          "significant_commits": 6,
           "simple_commits": 1,
-          "commit_score": 470,
+          "commit_score": 540,
           "commits": [
             {
-              "hash": "0bbd0511",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-08T21:59:02.000Z",
-              "message": "[Operator] CacheBlend webhook: support namespace-qualified engine refs for cross-namespace binds (#4024)\n\n* init\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "hash": "efaf341d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-08T02:54:55.000Z",
+              "message": "[Bugfix] Postpone the `is_kv_writer` check after starting the worker heartbeat (#4044)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
               "stats": {
                 "files": 2,
-                "lines": 84,
-                "insertions": 70,
-                "deletions": 14
+                "lines": 8,
+                "insertions": 3,
+                "deletions": 5
               },
               "scores": {
-                "loc": 15,
+                "loc": 3,
                 "files": 10,
                 "keyword": 12,
-                "ai": 8,
-                "total": 45
+                "ai": 0,
+                "total": 25
               },
               "classification": "simple"
             },
             {
-              "hash": "2756b828",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-11T00:59:56.000Z",
-              "message": "[MP coordinator] Chunk eviction dispatch to the delete cap; add default quota limit for unquota'd salts (#4027)\n\n* init\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "hash": "c9439c65",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-17T03:08:49.000Z",
+              "message": "[Fix] Add kernels for vLLM-packed KV cache format (#4128)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 29,
+                "lines": 652,
+                "insertions": 581,
+                "deletions": 71
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0c1bbf1d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-18T01:03:53.000Z",
+              "message": "[Misc] Add periodic terminal logging for L0 - L1 performance and L1 usage (#4145)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 14,
+                "lines": 918,
+                "insertions": 916,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "51f1d606",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-23T02:03:27.000Z",
+              "message": "docs: consolidated daily drift-check updates (2026-06-30 .. 2026-07-19) (#4167)\n\nConsolidates the 13 open daily doc-drift PRs into one change, re-verified\nagainst the current code (dev @ a2bb21d1) as the single source of truth:\n\n \nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 14,
+                "lines": 710,
+                "insertions": 588,
+                "deletions": 122
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f1ab19a1",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-23T00:57:20.000Z",
+              "message": "[Fix] MiniMax M3 and other Mamba Model for incoming vLLM 0.26 (#4206)\n\n* Fix mamba models and minimax M3 for incoming vLLM 0.26\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
               "stats": {
                 "files": 11,
-                "lines": 566,
-                "insertions": 532,
-                "deletions": 34
+                "lines": 264,
+                "insertions": 235,
+                "deletions": 29
               },
               "scores": {
                 "loc": 30,
@@ -14316,79 +15074,37 @@
               "classification": "significant"
             },
             {
-              "hash": "7c0e7271",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-22T19:55:48.000Z",
-              "message": "[Refactor] Group prefetch params into PrefetchRequestSpec (#4121)\n\n* [Refactor] Group prefetch params into PrefetchRequestSpec\n\nIntroduce a frozen PrefetchRequestSpec dataclass in distributed/api.py\n(alongside PrefetchHandle) bundling the six L2-fetch inputs: keys,\nlayout_desc, extra_count, policy, attn_desc, mode.\n\n- PrefetchController.submit_prefetch_request(spec): replaces the six\n  flat params and removes the fragile positional submission tuple; the\n  field list now lives in one place.\n- StorageManager.submit_prefetch_task(spec, external_request_id='',\n  skip_l2=False): takes the shared spec plus the two StorageManager-only\n  orchestration knobs as explicit args (kept out of the spec so the\n  controller's contract has no settable-but-ignored fields).\n- Update the six MP-module callers and all affected tests.\n\nNo behavior change. mypy + non-CUDA mock tests pass; CUDA-gated prefetch\ntests require GPU CI.\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "hash": "9334bf28",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-24T01:55:59.000Z",
+              "message": "[Bugfix] Change use_mla to mla_only so that MLA/Mamba mixed model can work normally (#4219)\n\n* change use_mla to mla_only\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 11,
+                "lines": 583,
+                "insertions": 558,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c9ac6a53",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-07-27T20:50:30.000Z",
+              "message": "[Add] New engine KV format for vLLM unified KV cache layout (#4220)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
               "stats": {
                 "files": 22,
-                "lines": 551,
-                "insertions": 316,
-                "deletions": 235
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "42a446da",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-23T17:49:26.000Z",
-              "message": "[Python FS L2 adapter] implement delete and fire L2 listener notifications (#4103)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
-              "stats": {
-                "files": 3,
-                "lines": 332,
-                "insertions": 322,
-                "deletions": 10
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "1e95b53a",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-23T03:51:57.000Z",
-              "message": "[Serde] add ObjectKey to parameter (#4203)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 306,
-                "insertions": 188,
-                "deletions": 118
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "73b5ce64",
-              "author": "Cao Qian",
-              "email": "talexcao@gmail.com",
-              "date": "2026-07-26T03:22:15.000Z",
-              "message": "[Serde] AES-GCM  (#4235)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
-              "stats": {
-                "files": 10,
-                "lines": 1060,
-                "insertions": 1060,
-                "deletions": 0
+                "lines": 454,
+                "insertions": 371,
+                "deletions": 83
               },
               "scores": {
                 "loc": 30,
@@ -14400,22 +15116,22 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 78.33333333333333,
-          "significance_ratio": 0.8333333333333334,
+          "avg_score": 77.14285714285714,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 470,
+          "total_score": 540,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 9,
+          "total_commits": 10,
           "significant_commits": 5,
-          "simple_commits": 4,
-          "commit_score": 469,
+          "simple_commits": 5,
+          "commit_score": 489,
           "commits": [
             {
               "hash": "f1fe2b72",
@@ -14605,120 +15321,78 @@
                 "total": 27
               },
               "classification": "simple"
+            },
+            {
+              "hash": "6a43d4ab",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-07-27T17:17:27.000Z",
+              "message": "[fix]: disable the GDS thread pool in the no-pool batched_get test (#4243)\n\nfix(test): disable the GDS thread pool in the no-pool batched_get test\n\n#4067 made the disk I/O thread pool always-on by default, which broke\ntest_batched_get_blocking_no_thread_pool's assumption that a default\nbackend has the pool off. The failure only surfaces on cuFile-equipped CI\nnodes (TestGdsBackend is skipif-gated on GDS support), so most runs skip\nit. Pass disk_io_threads=0 explicitly, restoring the test's intent of\nexercising the no-pool path.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 7,
+                "insertions": 6,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 52.111111111111114,
-          "significance_ratio": 0.5555555555555556,
+          "avg_score": 48.9,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 469,
+          "total_score": 489,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
+          "name": "Cao Qian",
+          "email": "talexcao@gmail.com",
           "total_commits": 6,
           "significant_commits": 5,
           "simple_commits": 1,
-          "commit_score": 453,
+          "commit_score": 470,
           "commits": [
             {
-              "hash": "efaf341d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-08T02:54:55.000Z",
-              "message": "[Bugfix] Postpone the `is_kv_writer` check after starting the worker heartbeat (#4044)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "hash": "0bbd0511",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-08T21:59:02.000Z",
+              "message": "[Operator] CacheBlend webhook: support namespace-qualified engine refs for cross-namespace binds (#4024)\n\n* init\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
               "stats": {
                 "files": 2,
-                "lines": 8,
-                "insertions": 3,
-                "deletions": 5
+                "lines": 84,
+                "insertions": 70,
+                "deletions": 14
               },
               "scores": {
-                "loc": 3,
+                "loc": 15,
                 "files": 10,
                 "keyword": 12,
-                "ai": 0,
-                "total": 25
+                "ai": 8,
+                "total": 45
               },
               "classification": "simple"
             },
             {
-              "hash": "c9439c65",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-17T03:08:49.000Z",
-              "message": "[Fix] Add kernels for vLLM-packed KV cache format (#4128)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 29,
-                "lines": 652,
-                "insertions": 581,
-                "deletions": 71
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0c1bbf1d",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-18T01:03:53.000Z",
-              "message": "[Misc] Add periodic terminal logging for L0 - L1 performance and L1 usage (#4145)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 14,
-                "lines": 918,
-                "insertions": 916,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "51f1d606",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-23T02:03:27.000Z",
-              "message": "docs: consolidated daily drift-check updates (2026-06-30 .. 2026-07-19) (#4167)\n\nConsolidates the 13 open daily doc-drift PRs into one change, re-verified\nagainst the current code (dev @ a2bb21d1) as the single source of truth:\n\n \nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 14,
-                "lines": 710,
-                "insertions": 588,
-                "deletions": 122
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 5,
-                "ai": 25,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f1ab19a1",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-23T00:57:20.000Z",
-              "message": "[Fix] MiniMax M3 and other Mamba Model for incoming vLLM 0.26 (#4206)\n\n* Fix mamba models and minimax M3 for incoming vLLM 0.26\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "hash": "2756b828",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-11T00:59:56.000Z",
+              "message": "[MP coordinator] Chunk eviction dispatch to the delete cap; add default quota limit for unquota'd salts (#4027)\n\n* init\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
               "stats": {
                 "files": 11,
-                "lines": 264,
-                "insertions": 235,
-                "deletions": 29
+                "lines": 566,
+                "insertions": 532,
+                "deletions": 34
               },
               "scores": {
                 "loc": 30,
@@ -14730,16 +15404,79 @@
               "classification": "significant"
             },
             {
-              "hash": "9334bf28",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-07-24T01:55:59.000Z",
-              "message": "[Bugfix] Change use_mla to mla_only so that MLA/Mamba mixed model can work normally (#4219)\n\n* change use_mla to mla_only\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "hash": "7c0e7271",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-22T19:55:48.000Z",
+              "message": "[Refactor] Group prefetch params into PrefetchRequestSpec (#4121)\n\n* [Refactor] Group prefetch params into PrefetchRequestSpec\n\nIntroduce a frozen PrefetchRequestSpec dataclass in distributed/api.py\n(alongside PrefetchHandle) bundling the six L2-fetch inputs: keys,\nlayout_desc, extra_count, policy, attn_desc, mode.\n\n- PrefetchController.submit_prefetch_request(spec): replaces the six\n  flat params and removes the fragile positional submission tuple; the\n  field list now lives in one place.\n- StorageManager.submit_prefetch_task(spec, external_request_id='',\n  skip_l2=False): takes the shared spec plus the two StorageManager-only\n  orchestration knobs as explicit args (kept out of the spec so the\n  controller's contract has no settable-but-ignored fields).\n- Update the six MP-module callers and all affected tests.\n\nNo behavior change. mypy + non-CUDA mock tests pass; CUDA-gated prefetch\ntests require GPU CI.\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
               "stats": {
-                "files": 11,
-                "lines": 583,
-                "insertions": 558,
-                "deletions": 25
+                "files": 22,
+                "lines": 551,
+                "insertions": 316,
+                "deletions": 235
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "42a446da",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-23T17:49:26.000Z",
+              "message": "[Python FS L2 adapter] implement delete and fire L2 listener notifications (#4103)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 332,
+                "insertions": 322,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1e95b53a",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-23T03:51:57.000Z",
+              "message": "[Serde] add ObjectKey to parameter (#4203)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 306,
+                "insertions": 188,
+                "deletions": 118
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "73b5ce64",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-07-26T03:22:15.000Z",
+              "message": "[Serde] AES-GCM  (#4235)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 1060,
+                "insertions": 1060,
+                "deletions": 0
               },
               "scores": {
                 "loc": 30,
@@ -14751,12 +15488,12 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 75.5,
+          "avg_score": 78.33333333333333,
           "significance_ratio": 0.8333333333333334,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 453,
+          "total_score": 470,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -15111,10 +15848,10 @@
         {
           "name": "Zhengfei He",
           "email": "157287166+zhengfeihe@users.noreply.github.com",
-          "total_commits": 4,
+          "total_commits": 5,
           "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 272,
+          "simple_commits": 2,
+          "commit_score": 293,
           "commits": [
             {
               "hash": "ca9f862c",
@@ -15199,24 +15936,45 @@
                 "total": 21
               },
               "classification": "simple"
+            },
+            {
+              "hash": "cd9a0ad5",
+              "author": "Zhengfei He",
+              "email": "157287166+zhengfeihe@users.noreply.github.com",
+              "date": "2026-07-28T00:06:08.000Z",
+              "message": "[Doc] Add zhengfeihe to CODEROWNERS (#4254)\n\nSigned-off-by: zhengfeihe <hezhengfei1999@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 15,
+                "insertions": 8,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 68,
-          "significance_ratio": 0.75,
+          "avg_score": 58.6,
+          "significance_ratio": 0.6,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 272,
+          "total_score": 293,
           "tier": "T1",
           "tier_name": "Advanced"
         },
         {
           "name": "github-actions[bot]",
           "email": "41898282+github-actions[bot]@users.noreply.github.com",
-          "total_commits": 3,
+          "total_commits": 4,
           "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 261,
+          "simple_commits": 1,
+          "commit_score": 281,
           "commits": [
             {
               "hash": "2ef005d9",
@@ -15280,14 +16038,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "4fd8cd71",
+              "author": "github-actions[bot]",
+              "email": "41898282+github-actions[bot]@users.noreply.github.com",
+              "date": "2026-07-27T20:56:06.000Z",
+              "message": "[Build] sync torch version with vLLM (2.13.0) (#4255)\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: ApostaC <25103655+ApostaC@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 87,
-          "significance_ratio": 1,
+          "avg_score": 70.25,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 261,
+          "total_score": 281,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -16501,6 +17280,66 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "3xdevv",
+          "email": "3xdevv@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "26ca1b18",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-07-20T21:48:28.000Z",
+              "message": "[Fix][RawBlock] Rebuild free slots during checkpoint recovery (#4078)\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 98,
+                "insertions": 69,
+                "deletions": 29
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7357deae",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-07-27T20:01:30.000Z",
+              "message": "[Fix][RawBlock] Validate checkpoint layout fields (#3700)\n\nfix raw-block checkpoint layout validation\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 45,
+                "insertions": 45,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Divy",
           "email": "vasal@wisc.edu",
           "total_commits": 1,
@@ -16579,6 +17418,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "2xdevv",
+          "email": "syk0905.kwon@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 76,
+          "commits": [
+            {
+              "hash": "fe448392",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-07-27T22:11:23.000Z",
+              "message": "[Fix] Harden raw-block device cleanup and alignment checks (#3260)\n\n* [Fix] Require block_align to be a positive power of 2\n\nReplace the existing > 0 checks with a power-of-2 guard in both\nRawBlockCore.__init__ (canonical) and RawBlockL2AdapterConfig.from_dict\n(early fail for the JSON config path).\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Fix] Check offset and total_len alignment in batched_write()\n\nAdd O_DIRECT aligned-offset and aligned-total_len guards to\nbatched_write(), mirroring the checks already present in\nbatched_read(). Misaligned pointer continues to be handled via\nbounce buffer. Adds two tests covering the new error paths.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Style] Apply pre-commit fixes\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Fix] Update raw-block alignment error message\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs] Clarify raw-block alignment rules\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 9,
+                "lines": 147,
+                "insertions": 136,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 14,
+                "total": 76
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 76,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 76,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "LIUyujie",
           "email": "130735711+Lyj1007@users.noreply.github.com",
           "total_commits": 1,
@@ -16614,6 +17492,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 70,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Rocky Song",
+          "email": "167060552+youngrok-XCENA@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "b20e6151",
+              "author": "Rocky Song",
+              "email": "167060552+youngrok-XCENA@users.noreply.github.com",
+              "date": "2026-07-27T20:01:19.000Z",
+              "message": "fix(mp): fix shared-memory leaks during graceful shutdown (#4197)\n\n* fix(mp): fix shared-memory leak on SIGTERM\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\n\n* fix(mp): close HTTP engine during shutdown\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>\n\n---------\n\nSigned-off-by: youngrok-XCENA <yr.song@xcena.com>",
+              "stats": {
+                "files": 3,
+                "lines": 160,
+                "insertions": 159,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -16717,45 +17634,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "3xdevv",
-          "email": "3xdevv@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 46,
-          "commits": [
-            {
-              "hash": "26ca1b18",
-              "author": "3xdevv",
-              "email": "3xdevv@gmail.com",
-              "date": "2026-07-20T21:48:28.000Z",
-              "message": "[Fix][RawBlock] Rebuild free slots during checkpoint recovery (#4078)\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 98,
-                "insertions": 69,
-                "deletions": 29
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 9,
-                "total": 46
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 46,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 46,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "jiahengxie",
           "email": "13716265422@139.com",
           "total_commits": 1,
@@ -16791,6 +17669,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 46,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Arijit Desai",
+          "email": "desaiarijit@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "e0eb96c4",
+              "author": "Arijit Desai",
+              "email": "desaiarijit@gmail.com",
+              "date": "2026-07-27T20:01:27.000Z",
+              "message": "fix(pd): fail fast when a prefill exceeds the receiver buffer capacity (#4210)\n\nThe receiver's reservation admission only succeeds when the buffer has\nenough free chunks (`available >= total_chunks`), and `available` can\nnever exceed the buffer's total capacity. A request whose declared\n`total_chunks` is larger than the whole buffer therefore can never be\nadmitted: it blocked for the full `pd_allocation_timeout_sec` and then\nraised a misleading \"over-subscribed\" timeout, tearing down the transfer\nmid-flight (clients saw ServerDisconnectedError / \"Not enough data to\nsatisfy transfer length header\").\n\nAdd an explicit fail-fast in `_async_allocate_and_put`, co-located with\nthe existing `total_chunks == 0` validation, that rejects such a request\nimmediately with an actionable error (needs N chunks, buffer holds M,\nincrease pd_buffer_size). Add a regression test asserting the request is\nrejected well before the admission timeout could elapse and leaves no\nreservation behind.\n\nSigned-off-by: ardecode <desaiarijit@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 54,
+                "insertions": 54,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -17047,6 +17964,45 @@
                 "lines": 21,
                 "insertions": 17,
                 "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 27,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 27,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Allen Huang",
+          "email": "adolphinvx@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 27,
+          "commits": [
+            {
+              "hash": "5ae67cbf",
+              "author": "Allen Huang",
+              "email": "adolphinvx@users.noreply.github.com",
+              "date": "2026-07-27T18:28:17.000Z",
+              "message": "[good-first-issue] mp: use lazy logging in runtime plugin launcher (#4229) (#4230)\n\nstyle(mp): use lazy logging in runtime plugin launcher\n\nSigned-off-by: adolphinvx <exarunner@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 24,
+                "insertions": 16,
+                "deletions": 8
               },
               "scores": {
                 "loc": 8,
@@ -17365,13 +18321,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-07-27T00:30:03.978Z",
+    "analyzedAt": "2026-07-28T00:30:17.124Z",
     "daysBack": 2,
-    "totalCommits": 192,
-    "totalContributors": 65,
+    "totalCommits": 202,
+    "totalContributors": 69,
     "mergedFrom": {
-      "existing": 190,
-      "new": 4
+      "existing": 192,
+      "new": 12
     }
   }
 }
