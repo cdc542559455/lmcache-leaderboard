@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-08-11T00:30:02.114Z",
-  "total_commits_analyzed": 274,
+  "last_updated": "2026-08-12T00:30:09.682Z",
+  "total_commits_analyzed": 281,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -8779,6 +8779,144 @@
       ],
       "2026-W33": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 151,
+          "commits": [
+            {
+              "hash": "102b42b2",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-11T09:44:23.000Z",
+              "message": "refactor: rename native_storage_ops to lmcache_native and relocate KV-format/transfer types (#4453)\n\n* refactor: rename native_storage_ops to lmache_native and relocate device-independent KV format/transfer types\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n- Rename the compiled extension native_storage_ops -> lmache_native and\n  move EngineKVFormat / GPUKVFormat / TransferDirection and the format\n  predicates (is_kv_list, is_layer_list, is_cross_layer, is_mla) into it so\n  they are backend-independent single source of truth.\n- Add a top-level lmache_native shim and keep a native_storage_ops shim for\n  backward compatibility. Forward relocated names from lmcache.c_ops.\n- Use absolute include_dirs when building common C++ extensions so the\n  engine_kv_format.h include resolves regardless of the build working dir\n  (fixes the CPU wheel build under 'python -m build').\n- Make the lmache_native top-level shim tolerate a missing native extension\n  (CPU-only / test envs) instead of failing the whole import.\n- Drop the old native_storage_ops.pyi stub (superseded by the Python shim).\n\n* fix(c_ops): drop lmcache:: prefix for format predicates in storage_manager pybind\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nThe format predicates (is_kv_list, is_layer_list, is_cross_layer, is_mla)\nlive in engine_kv_format.h which has no `lmcache` namespace, so the\n`&lmcache::is_kv_list` references failed to compile in the UT build.\n\n* fix(c_ops): drop const on slot_mapping lambdas to match single_layer_kv_transfer signatures\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nThe single_layer_kv_transfer / single_layer_kv_transfer_sgl C++ functions\ntake a non-const torch::Tensor& slot_mapping. The refactor wrapped them in\nlambdas that declared slot_mapping as const torch::Tensor&, causing a\n'discards qualifiers' compile error. Restore non-const binding.\n\n* fix(c_ops): accept int for lmcache_memcpy_async direction instead of the enum\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nTransferDirection/EngineKVFormat are owned by the lmache_native module only,\nso c_ops must not export them. lmcache_memcpy_async was still bound via a raw\nfunction pointer whose 4th param is the C++ TransferDirection type, requiring\na TransferDirection object from the same module. Wrap it in a lambda that takes\nan int and casts to TransferDirection, matching the other c_ops bindings and\nletting callers pass the enum value (implicitly converted to int).\n\n* refactor: rename storage_manager csrc dir and namespace to lmcache_native\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nRename csrc/storage_manager to csrc/lmcache_native and the\nlmcache::storage_manager C++ namespace to lmcache::lmcache_native\nto match the existing pybind module name (lmache_native). Update\nbuild config (setup_extensions/common_cpp.py) and comments.\n\n* fix: avoid duplicate pybind11 enum registration in xpu_ops\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nThe SYCL/XPU bindings (csrc/sycl/pybind_sycl.cpp, module lmcache.xpu_ops)\nre-registered TransferDirection and EngineKVFormat, which are already\nregistered by the lmache_native module. pybind11 keeps a global type\nregistry, so re-registering the same type across modules raises\n\"type already registered\". This surfaced as an XPU CI import error after\nthe storage_manager -> lmcache_native rename changed import ordering.\n\nDrop the duplicate enum registration and bind the kv-transfer functions\nwith plain int direction/engine_kv_format args plus static_cast, matching\nthe c_ops convention. The Python-side GPUKVFormat alias is unaffected.\n\n* Fix typo\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* Fix typo\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: Delete the redundant files.\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: update origin/dev new test __init__.py files to use lmcache_native\nSigned-off-by: baoloongmao <307499405@qq.com>\n\norigin/dev added three test-level __init__.py files (trace, distributed,\nmultiprocess) that still referenced the old native_storage_ops module\nname. Update them to lmcache_native to match the rename.\n\n---------\n\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 70,
+                "lines": 895,
+                "insertions": 586,
+                "deletions": 309
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f08bf165",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-11T06:24:10.000Z",
+              "message": "CI: fix gemma4 HMA test by enabling --separate-object-groups explicitly (#4488)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 61,
+                "insertions": 37,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 10,
+                "ai": 6,
+                "total": 51
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 151,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Neng",
+          "email": "i@neng.dev",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "937f8649",
+              "author": "Neng",
+              "email": "i@neng.dev",
+              "date": "2026-08-11T19:26:46.000Z",
+              "message": "Add pd-disaggregation for operator (#4218)\n\nSigned-off-by: Neng <i@neng.dev>",
+              "stats": {
+                "files": 17,
+                "lines": 1281,
+                "insertions": 1267,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 85,
+          "commits": [
+            {
+              "hash": "df94b3cd",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-11T12:16:19.000Z",
+              "message": "test: refine tests v1 subdir compute, platform, and storage_backend (#4409)\n\n* tests: keep tests/v1 subdirectory updates excluding gpu_connector\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 19,
+                "lines": 626,
+                "insertions": 432,
+                "deletions": 194
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Bo Jiang",
           "email": "bo.jiang@temple.edu",
           "total_commits": 1,
@@ -8816,6 +8954,123 @@
           "total_score": 77,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "a976ce09",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-08-11T09:53:46.000Z",
+              "message": "[Fix][RawBlock] Bounce unaligned buffers in io_uring uring_cmd read paths (#3891)\n\nMulti-page NVMe passthrough builds a PRP list whose entries must each be\npage-aligned. read_uring only enforced this under use_odirect, and\nbatched_read had no bounce path at all, so unaligned buffers under\nuse_uring_cmd hit EINVAL on transfers larger than one page.\n\nExtend read_uring's alignment check to use_odirect || use_uring_cmd and\nmirror its bounce logic in batched_read. Add 4 env-guarded tests verifying\nunaligned read/batched_read, short-buffer bounce, and per-item decisions.\nVerified on Samsung PM1753.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 162,
+                "insertions": 140,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "2xdevv",
+          "email": "syk0905.kwon@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "0c487832",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-08-11T14:46:47.000Z",
+              "message": "[Fix][NIXL] Report capacity-limited dynamic stores as failed (#4430)\n\nfix(nixl): report capacity-limited dynamic stores as failed\n\nMark dynamic NIXL store tasks unsuccessful when the capacity check stops a batch. Preserve completed writes and usage accounting while preventing callers from treating skipped keys as persisted.\n\nSigned-off-by: 2xdevv <2xdevv@gmail.com>\nCo-authored-by: 2xdevv <2xdevv@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 56,
+                "insertions": 56,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "d4d25eb4",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-11T19:32:40.000Z",
+              "message": "[CODEOWNERS] Add @ruizhang0101 to mp coordinator, mp observability, mp docs, operator, and CLI (#4496)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 5,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     },
@@ -15471,114 +15726,12 @@
       ],
       "2026-08": [
         {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 4,
-          "significant_commits": 4,
-          "simple_commits": 0,
-          "commit_score": 324,
-          "commits": [
-            {
-              "hash": "9c89db15",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-03T19:37:41.000Z",
-              "message": "[Fix][MP][Operator] Restore compat for renamed coordinator event flags (#4395)\n\nPR #4292 renamed --coordinator-l2-event-{reporting,flush-interval} to\n--coordinator-event-{reporting,flush-interval} with no back-compat, so\nargs rendered by released deployers (operator <= v0.5.2, charts) crash\nthe server at argparse:\n\n    lmcache: error: unrecognized arguments: --coordinator-l2-event-flush-interval 1\n\nlmcache: accept the old flag spellings as hidden deprecated aliases,\nlogging a deprecation warning when used. Precedence per setting:\nnew flag > deprecated flag > env var > default. Remove once\noperator <= v0.5.2 is out of the support matrix.\n\noperator: emit the new flag names in BuildContainerArgs. Servers\n< v0.5.3 reject the new spellings, so the operator requires\nlmcache >= v0.5.3 when a coordinator is configured.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 4,
-                "lines": 115,
-                "insertions": 111,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 11,
-                "total": 63
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "6bcb00eb",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-04T19:16:53.000Z",
-              "message": "[MP][Coordinator] Route quota accounting through the cache-event stream (#4310)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 41,
-                "lines": 2508,
-                "insertions": 1542,
-                "deletions": 966
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "8720637f",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-05T06:26:50.000Z",
-              "message": "[MP][Coordinator] Construct token directory and its API based on cache event (#4404)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 15,
-                "lines": 1254,
-                "insertions": 1124,
-                "deletions": 130
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b12b078a",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-07T23:47:17.000Z",
-              "message": "[Coordinator][CacheBlend] serve fleet blend lookup from the key directory (#4438)\n\n* [Coordinator][CacheBlend] serve fleet blend lookup from the key directory\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 32,
-                "lines": 3636,
-                "insertions": 1993,
-                "deletions": 1643
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 81,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 324,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 5,
-          "significant_commits": 3,
+          "total_commits": 7,
+          "significant_commits": 5,
           "simple_commits": 2,
-          "commit_score": 299,
+          "commit_score": 450,
           "commits": [
             {
               "hash": "3b8093cf",
@@ -15684,14 +15837,281 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "102b42b2",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-11T09:44:23.000Z",
+              "message": "refactor: rename native_storage_ops to lmcache_native and relocate KV-format/transfer types (#4453)\n\n* refactor: rename native_storage_ops to lmache_native and relocate device-independent KV format/transfer types\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n- Rename the compiled extension native_storage_ops -> lmache_native and\n  move EngineKVFormat / GPUKVFormat / TransferDirection and the format\n  predicates (is_kv_list, is_layer_list, is_cross_layer, is_mla) into it so\n  they are backend-independent single source of truth.\n- Add a top-level lmache_native shim and keep a native_storage_ops shim for\n  backward compatibility. Forward relocated names from lmcache.c_ops.\n- Use absolute include_dirs when building common C++ extensions so the\n  engine_kv_format.h include resolves regardless of the build working dir\n  (fixes the CPU wheel build under 'python -m build').\n- Make the lmache_native top-level shim tolerate a missing native extension\n  (CPU-only / test envs) instead of failing the whole import.\n- Drop the old native_storage_ops.pyi stub (superseded by the Python shim).\n\n* fix(c_ops): drop lmcache:: prefix for format predicates in storage_manager pybind\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nThe format predicates (is_kv_list, is_layer_list, is_cross_layer, is_mla)\nlive in engine_kv_format.h which has no `lmcache` namespace, so the\n`&lmcache::is_kv_list` references failed to compile in the UT build.\n\n* fix(c_ops): drop const on slot_mapping lambdas to match single_layer_kv_transfer signatures\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nThe single_layer_kv_transfer / single_layer_kv_transfer_sgl C++ functions\ntake a non-const torch::Tensor& slot_mapping. The refactor wrapped them in\nlambdas that declared slot_mapping as const torch::Tensor&, causing a\n'discards qualifiers' compile error. Restore non-const binding.\n\n* fix(c_ops): accept int for lmcache_memcpy_async direction instead of the enum\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nTransferDirection/EngineKVFormat are owned by the lmache_native module only,\nso c_ops must not export them. lmcache_memcpy_async was still bound via a raw\nfunction pointer whose 4th param is the C++ TransferDirection type, requiring\na TransferDirection object from the same module. Wrap it in a lambda that takes\nan int and casts to TransferDirection, matching the other c_ops bindings and\nletting callers pass the enum value (implicitly converted to int).\n\n* refactor: rename storage_manager csrc dir and namespace to lmcache_native\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nRename csrc/storage_manager to csrc/lmcache_native and the\nlmcache::storage_manager C++ namespace to lmcache::lmcache_native\nto match the existing pybind module name (lmache_native). Update\nbuild config (setup_extensions/common_cpp.py) and comments.\n\n* fix: avoid duplicate pybind11 enum registration in xpu_ops\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nThe SYCL/XPU bindings (csrc/sycl/pybind_sycl.cpp, module lmcache.xpu_ops)\nre-registered TransferDirection and EngineKVFormat, which are already\nregistered by the lmache_native module. pybind11 keeps a global type\nregistry, so re-registering the same type across modules raises\n\"type already registered\". This surfaced as an XPU CI import error after\nthe storage_manager -> lmcache_native rename changed import ordering.\n\nDrop the duplicate enum registration and bind the kv-transfer functions\nwith plain int direction/engine_kv_format args plus static_cast, matching\nthe c_ops convention. The Python-side GPUKVFormat alias is unaffected.\n\n* Fix typo\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* Fix typo\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: Delete the redundant files.\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: update origin/dev new test __init__.py files to use lmcache_native\nSigned-off-by: baoloongmao <307499405@qq.com>\n\norigin/dev added three test-level __init__.py files (trace, distributed,\nmultiprocess) that still referenced the old native_storage_ops module\nname. Update them to lmcache_native to match the rename.\n\n---------\n\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 70,
+                "lines": 895,
+                "insertions": 586,
+                "deletions": 309
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f08bf165",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-11T06:24:10.000Z",
+              "message": "CI: fix gemma4 HMA test by enabling --separate-object-groups explicitly (#4488)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 61,
+                "insertions": 37,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 10,
+                "ai": 6,
+                "total": 51
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.8,
-          "significance_ratio": 0.6,
+          "avg_score": 64.28571428571429,
+          "significance_ratio": 0.7142857142857143,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 299,
+          "total_score": 450,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 344,
+          "commits": [
+            {
+              "hash": "9c89db15",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-03T19:37:41.000Z",
+              "message": "[Fix][MP][Operator] Restore compat for renamed coordinator event flags (#4395)\n\nPR #4292 renamed --coordinator-l2-event-{reporting,flush-interval} to\n--coordinator-event-{reporting,flush-interval} with no back-compat, so\nargs rendered by released deployers (operator <= v0.5.2, charts) crash\nthe server at argparse:\n\n    lmcache: error: unrecognized arguments: --coordinator-l2-event-flush-interval 1\n\nlmcache: accept the old flag spellings as hidden deprecated aliases,\nlogging a deprecation warning when used. Precedence per setting:\nnew flag > deprecated flag > env var > default. Remove once\noperator <= v0.5.2 is out of the support matrix.\n\noperator: emit the new flag names in BuildContainerArgs. Servers\n< v0.5.3 reject the new spellings, so the operator requires\nlmcache >= v0.5.3 when a coordinator is configured.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 115,
+                "insertions": 111,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 11,
+                "total": 63
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6bcb00eb",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-04T19:16:53.000Z",
+              "message": "[MP][Coordinator] Route quota accounting through the cache-event stream (#4310)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 41,
+                "lines": 2508,
+                "insertions": 1542,
+                "deletions": 966
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8720637f",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-05T06:26:50.000Z",
+              "message": "[MP][Coordinator] Construct token directory and its API based on cache event (#4404)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 15,
+                "lines": 1254,
+                "insertions": 1124,
+                "deletions": 130
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b12b078a",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-07T23:47:17.000Z",
+              "message": "[Coordinator][CacheBlend] serve fleet blend lookup from the key directory (#4438)\n\n* [Coordinator][CacheBlend] serve fleet blend lookup from the key directory\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 32,
+                "lines": 3636,
+                "insertions": 1993,
+                "deletions": 1643
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d4d25eb4",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-11T19:32:40.000Z",
+              "message": "[CODEOWNERS] Add @ruizhang0101 to mp coordinator, mp observability, mp docs, operator, and CLI (#4496)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 5,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 68.8,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 344,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 285,
+          "commits": [
+            {
+              "hash": "9b7bd211",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-01T02:01:39.000Z",
+              "message": "test: refine mp observation and mp coordinator tests (#4301)\n\n* tests(mp): isolate mp observation and coordinator updates\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* ci(xpu): expand test discovery and fix observability lint\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests(xpu): include MP test suites\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\n\n* test: gate event recorder on CUDA device type\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 9,
+                "lines": 228,
+                "insertions": 142,
+                "deletions": 86
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 22,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a012dd99",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-03T06:08:59.000Z",
+              "message": "fix(turboquant): handle non-CUDA device capabilities (#4303)\n\n* test(serde): split distributed serde updates\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\n\n* xpu: export NL_X_NB_BSV_BSS and clarify fp8 fallback notes\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 3,
+                "lines": 37,
+                "insertions": 29,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "3869bc43",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-09T03:13:10.000Z",
+              "message": "test: refine tests v1 level1 tests (#4397)\n\n* tests: keep tests/v1 level-1 updates\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests: apply file-level cuda mark in cache engine tests\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nCo-authored-by: baoloongmao <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 27,
+                "lines": 566,
+                "insertions": 330,
+                "deletions": 236
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "df94b3cd",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-11T12:16:19.000Z",
+              "message": "test: refine tests v1 subdir compute, platform, and storage_backend (#4409)\n\n* tests: keep tests/v1 subdirectory updates excluding gpu_connector\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 19,
+                "lines": 626,
+                "insertions": 432,
+                "deletions": 194
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71.25,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 285,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -15977,87 +16397,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 228,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "VincyZhang",
-          "email": "wenxin.zhang@intel.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 200,
-          "commits": [
-            {
-              "hash": "9b7bd211",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-08-01T02:01:39.000Z",
-              "message": "test: refine mp observation and mp coordinator tests (#4301)\n\n* tests(mp): isolate mp observation and coordinator updates\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* ci(xpu): expand test discovery and fix observability lint\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests(xpu): include MP test suites\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\n\n* test: gate event recorder on CUDA device type\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 9,
-                "lines": 228,
-                "insertions": 142,
-                "deletions": 86
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 10,
-                "ai": 22,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a012dd99",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-08-03T06:08:59.000Z",
-              "message": "fix(turboquant): handle non-CUDA device capabilities (#4303)\n\n* test(serde): split distributed serde updates\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\n\n* xpu: export NL_X_NB_BSV_BSS and clarify fp8 fallback notes\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 3,
-                "lines": 37,
-                "insertions": 29,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 3,
-                "total": 33
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "3869bc43",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-08-09T03:13:10.000Z",
-              "message": "test: refine tests v1 level1 tests (#4397)\n\n* tests: keep tests/v1 level-1 updates\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests: apply file-level cuda mark in cache engine tests\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nCo-authored-by: baoloongmao <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 27,
-                "lines": 566,
-                "insertions": 330,
-                "deletions": 236
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 10,
-                "ai": 25,
-                "total": 85
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 66.66666666666667,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 200,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -16320,6 +16659,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Neng",
+          "email": "i@neng.dev",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "937f8649",
+              "author": "Neng",
+              "email": "i@neng.dev",
+              "date": "2026-08-11T19:26:46.000Z",
+              "message": "Add pd-disaggregation for operator (#4218)\n\nSigned-off-by: Neng <i@neng.dev>",
+              "stats": {
+                "files": 17,
+                "lines": 1281,
+                "insertions": 1267,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "zxue2",
           "email": "zhan.xue@intel.com",
           "total_commits": 1,
@@ -16355,8 +16733,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "3xdevv",
@@ -16433,6 +16811,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 69,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "a976ce09",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-08-11T09:53:46.000Z",
+              "message": "[Fix][RawBlock] Bounce unaligned buffers in io_uring uring_cmd read paths (#3891)\n\nMulti-page NVMe passthrough builds a PRP list whose entries must each be\npage-aligned. read_uring only enforced this under use_odirect, and\nbatched_read had no bounce path at all, so unaligned buffers under\nuse_uring_cmd hit EINVAL on transfers larger than one page.\n\nExtend read_uring's alignment check to use_odirect || use_uring_cmd and\nmirror its bounce logic in batched_read. Add 4 env-guarded tests verifying\nunaligned read/batched_read, short-buffer bounce, and per-item decisions.\nVerified on Samsung PM1753.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 162,
+                "insertions": 140,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -16550,6 +16967,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "2xdevv",
+          "email": "syk0905.kwon@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "0c487832",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-08-11T14:46:47.000Z",
+              "message": "[Fix][NIXL] Report capacity-limited dynamic stores as failed (#4430)\n\nfix(nixl): report capacity-limited dynamic stores as failed\n\nMark dynamic NIXL store tasks unsuccessful when the capacity check stops a batch. Preserve completed writes and usage accounting while preventing callers from treating skipped keys as persisted.\n\nSigned-off-by: 2xdevv <2xdevv@gmail.com>\nCo-authored-by: 2xdevv <2xdevv@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 56,
+                "insertions": 56,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -18755,10 +19211,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 22,
-          "significant_commits": 13,
+          "total_commits": 24,
+          "significant_commits": 15,
           "simple_commits": 9,
-          "commit_score": 1305,
+          "commit_score": 1456,
           "commits": [
             {
               "hash": "96f86f9b",
@@ -19221,14 +19677,56 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "102b42b2",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-11T09:44:23.000Z",
+              "message": "refactor: rename native_storage_ops to lmcache_native and relocate KV-format/transfer types (#4453)\n\n* refactor: rename native_storage_ops to lmache_native and relocate device-independent KV format/transfer types\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n- Rename the compiled extension native_storage_ops -> lmache_native and\n  move EngineKVFormat / GPUKVFormat / TransferDirection and the format\n  predicates (is_kv_list, is_layer_list, is_cross_layer, is_mla) into it so\n  they are backend-independent single source of truth.\n- Add a top-level lmache_native shim and keep a native_storage_ops shim for\n  backward compatibility. Forward relocated names from lmcache.c_ops.\n- Use absolute include_dirs when building common C++ extensions so the\n  engine_kv_format.h include resolves regardless of the build working dir\n  (fixes the CPU wheel build under 'python -m build').\n- Make the lmache_native top-level shim tolerate a missing native extension\n  (CPU-only / test envs) instead of failing the whole import.\n- Drop the old native_storage_ops.pyi stub (superseded by the Python shim).\n\n* fix(c_ops): drop lmcache:: prefix for format predicates in storage_manager pybind\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nThe format predicates (is_kv_list, is_layer_list, is_cross_layer, is_mla)\nlive in engine_kv_format.h which has no `lmcache` namespace, so the\n`&lmcache::is_kv_list` references failed to compile in the UT build.\n\n* fix(c_ops): drop const on slot_mapping lambdas to match single_layer_kv_transfer signatures\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nThe single_layer_kv_transfer / single_layer_kv_transfer_sgl C++ functions\ntake a non-const torch::Tensor& slot_mapping. The refactor wrapped them in\nlambdas that declared slot_mapping as const torch::Tensor&, causing a\n'discards qualifiers' compile error. Restore non-const binding.\n\n* fix(c_ops): accept int for lmcache_memcpy_async direction instead of the enum\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nTransferDirection/EngineKVFormat are owned by the lmache_native module only,\nso c_ops must not export them. lmcache_memcpy_async was still bound via a raw\nfunction pointer whose 4th param is the C++ TransferDirection type, requiring\na TransferDirection object from the same module. Wrap it in a lambda that takes\nan int and casts to TransferDirection, matching the other c_ops bindings and\nletting callers pass the enum value (implicitly converted to int).\n\n* refactor: rename storage_manager csrc dir and namespace to lmcache_native\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nRename csrc/storage_manager to csrc/lmcache_native and the\nlmcache::storage_manager C++ namespace to lmcache::lmcache_native\nto match the existing pybind module name (lmache_native). Update\nbuild config (setup_extensions/common_cpp.py) and comments.\n\n* fix: avoid duplicate pybind11 enum registration in xpu_ops\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nThe SYCL/XPU bindings (csrc/sycl/pybind_sycl.cpp, module lmcache.xpu_ops)\nre-registered TransferDirection and EngineKVFormat, which are already\nregistered by the lmache_native module. pybind11 keeps a global type\nregistry, so re-registering the same type across modules raises\n\"type already registered\". This surfaced as an XPU CI import error after\nthe storage_manager -> lmcache_native rename changed import ordering.\n\nDrop the duplicate enum registration and bind the kv-transfer functions\nwith plain int direction/engine_kv_format args plus static_cast, matching\nthe c_ops convention. The Python-side GPUKVFormat alias is unaffected.\n\n* Fix typo\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* Fix typo\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: Delete the redundant files.\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: update origin/dev new test __init__.py files to use lmcache_native\nSigned-off-by: baoloongmao <307499405@qq.com>\n\norigin/dev added three test-level __init__.py files (trace, distributed,\nmultiprocess) that still referenced the old native_storage_ops module\nname. Update them to lmcache_native to match the rename.\n\n---------\n\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 70,
+                "lines": 895,
+                "insertions": 586,
+                "deletions": 309
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f08bf165",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-11T06:24:10.000Z",
+              "message": "CI: fix gemma4 HMA test by enabling --separate-object-groups explicitly (#4488)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 61,
+                "insertions": 37,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 10,
+                "ai": 6,
+                "total": 51
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.31818181818182,
-          "significance_ratio": 0.5909090909090909,
+          "avg_score": 60.666666666666664,
+          "significance_ratio": 0.625,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1305,
+          "total_score": 1456,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -19545,6 +20043,234 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 10,
+          "significant_commits": 9,
+          "simple_commits": 1,
+          "commit_score": 786,
+          "commits": [
+            {
+              "hash": "dd24562e",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-07-07T23:15:58.000Z",
+              "message": "[MP][Coordinator] Add Pin/Unpin Tokens API (#3978)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 16,
+                "lines": 585,
+                "insertions": 546,
+                "deletions": 39
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "dd86612f",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-07-16T21:15:07.000Z",
+              "message": "[MP][Coordinator] token-based cache delete API (#3990)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1022,
+                "insertions": 813,
+                "deletions": 209
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8b008d15",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-07-22T01:02:56.000Z",
+              "message": "[Cacheblend][Coordinator] Enable global token matching in l1 using p2p (#4172)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 199,
+                "insertions": 142,
+                "deletions": 57
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0fc6cd8b",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-07-28T22:22:03.000Z",
+              "message": "[MP][Coordinator] Fleet-wide key directory built from cache events (#4275)\n\n* feat: add key directory\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 1336,
+                "insertions": 1334,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "468edf51",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-07-30T22:28:34.000Z",
+              "message": "[MP][Coordinator] Emit cache events from MP server to the key directory (#4292)\n\n* [MP][Coordinator] Emit cache events from MP server to the key directory\n\nMP servers now stream STORE/ACCESS/DELETE cache events for both tiers\nto the coordinator's key directory:\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 38,
+                "lines": 1609,
+                "insertions": 1465,
+                "deletions": 144
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9c89db15",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-03T19:37:41.000Z",
+              "message": "[Fix][MP][Operator] Restore compat for renamed coordinator event flags (#4395)\n\nPR #4292 renamed --coordinator-l2-event-{reporting,flush-interval} to\n--coordinator-event-{reporting,flush-interval} with no back-compat, so\nargs rendered by released deployers (operator <= v0.5.2, charts) crash\nthe server at argparse:\n\n    lmcache: error: unrecognized arguments: --coordinator-l2-event-flush-interval 1\n\nlmcache: accept the old flag spellings as hidden deprecated aliases,\nlogging a deprecation warning when used. Precedence per setting:\nnew flag > deprecated flag > env var > default. Remove once\noperator <= v0.5.2 is out of the support matrix.\n\noperator: emit the new flag names in BuildContainerArgs. Servers\n< v0.5.3 reject the new spellings, so the operator requires\nlmcache >= v0.5.3 when a coordinator is configured.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 115,
+                "insertions": 111,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 11,
+                "total": 63
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6bcb00eb",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-04T19:16:53.000Z",
+              "message": "[MP][Coordinator] Route quota accounting through the cache-event stream (#4310)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 41,
+                "lines": 2508,
+                "insertions": 1542,
+                "deletions": 966
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8720637f",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-05T06:26:50.000Z",
+              "message": "[MP][Coordinator] Construct token directory and its API based on cache event (#4404)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 15,
+                "lines": 1254,
+                "insertions": 1124,
+                "deletions": 130
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b12b078a",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-07T23:47:17.000Z",
+              "message": "[Coordinator][CacheBlend] serve fleet blend lookup from the key directory (#4438)\n\n* [Coordinator][CacheBlend] serve fleet blend lookup from the key directory\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 32,
+                "lines": 3636,
+                "insertions": 1993,
+                "deletions": 1643
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d4d25eb4",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-11T19:32:40.000Z",
+              "message": "[CODEOWNERS] Add @ruizhang0101 to mp coordinator, mp observability, mp docs, operator, and CLI (#4496)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 5,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 78.6,
+          "significance_ratio": 0.9,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 786,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
           "total_commits": 12,
@@ -19815,219 +20541,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 9,
-          "significant_commits": 9,
-          "simple_commits": 0,
-          "commit_score": 766,
-          "commits": [
-            {
-              "hash": "dd24562e",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-07-07T23:15:58.000Z",
-              "message": "[MP][Coordinator] Add Pin/Unpin Tokens API (#3978)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 16,
-                "lines": 585,
-                "insertions": 546,
-                "deletions": 39
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "dd86612f",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-07-16T21:15:07.000Z",
-              "message": "[MP][Coordinator] token-based cache delete API (#3990)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 19,
-                "lines": 1022,
-                "insertions": 813,
-                "deletions": 209
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "8b008d15",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-07-22T01:02:56.000Z",
-              "message": "[Cacheblend][Coordinator] Enable global token matching in l1 using p2p (#4172)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 10,
-                "lines": 199,
-                "insertions": 142,
-                "deletions": 57
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 19,
-                "total": 81
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0fc6cd8b",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-07-28T22:22:03.000Z",
-              "message": "[MP][Coordinator] Fleet-wide key directory built from cache events (#4275)\n\n* feat: add key directory\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 9,
-                "lines": 1336,
-                "insertions": 1334,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "468edf51",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-07-30T22:28:34.000Z",
-              "message": "[MP][Coordinator] Emit cache events from MP server to the key directory (#4292)\n\n* [MP][Coordinator] Emit cache events from MP server to the key directory\n\nMP servers now stream STORE/ACCESS/DELETE cache events for both tiers\nto the coordinator's key directory:\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 38,
-                "lines": 1609,
-                "insertions": 1465,
-                "deletions": 144
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "9c89db15",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-03T19:37:41.000Z",
-              "message": "[Fix][MP][Operator] Restore compat for renamed coordinator event flags (#4395)\n\nPR #4292 renamed --coordinator-l2-event-{reporting,flush-interval} to\n--coordinator-event-{reporting,flush-interval} with no back-compat, so\nargs rendered by released deployers (operator <= v0.5.2, charts) crash\nthe server at argparse:\n\n    lmcache: error: unrecognized arguments: --coordinator-l2-event-flush-interval 1\n\nlmcache: accept the old flag spellings as hidden deprecated aliases,\nlogging a deprecation warning when used. Precedence per setting:\nnew flag > deprecated flag > env var > default. Remove once\noperator <= v0.5.2 is out of the support matrix.\n\noperator: emit the new flag names in BuildContainerArgs. Servers\n< v0.5.3 reject the new spellings, so the operator requires\nlmcache >= v0.5.3 when a coordinator is configured.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 4,
-                "lines": 115,
-                "insertions": 111,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 11,
-                "total": 63
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "6bcb00eb",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-04T19:16:53.000Z",
-              "message": "[MP][Coordinator] Route quota accounting through the cache-event stream (#4310)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 41,
-                "lines": 2508,
-                "insertions": 1542,
-                "deletions": 966
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "8720637f",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-05T06:26:50.000Z",
-              "message": "[MP][Coordinator] Construct token directory and its API based on cache event (#4404)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 15,
-                "lines": 1254,
-                "insertions": 1124,
-                "deletions": 130
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b12b078a",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-07T23:47:17.000Z",
-              "message": "[Coordinator][CacheBlend] serve fleet blend lookup from the key directory (#4438)\n\n* [Coordinator][CacheBlend] serve fleet blend lookup from the key directory\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 32,
-                "lines": 3636,
-                "insertions": 1993,
-                "deletions": 1643
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 85.11111111111111,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 766,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "VincyZhang",
           "email": "wenxin.zhang@intel.com",
-          "total_commits": 10,
-          "significant_commits": 7,
+          "total_commits": 11,
+          "significant_commits": 8,
           "simple_commits": 3,
-          "commit_score": 666,
+          "commit_score": 751,
           "commits": [
             {
               "hash": "32d71f52",
@@ -20238,14 +20757,35 @@
                 "total": 85
               },
               "classification": "significant"
+            },
+            {
+              "hash": "df94b3cd",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-11T12:16:19.000Z",
+              "message": "test: refine tests v1 subdir compute, platform, and storage_backend (#4409)\n\n* tests: keep tests/v1 subdirectory updates excluding gpu_connector\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 19,
+                "lines": 626,
+                "insertions": 432,
+                "deletions": 194
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66.6,
-          "significance_ratio": 0.7,
+          "avg_score": 68.27272727272727,
+          "significance_ratio": 0.7272727272727273,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 666,
+          "total_score": 751,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -21954,6 +22494,108 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "2xdevv",
+          "email": "syk0905.kwon@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 1,
+          "simple_commits": 3,
+          "commit_score": 184,
+          "commits": [
+            {
+              "hash": "fe448392",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-07-27T22:11:23.000Z",
+              "message": "[Fix] Harden raw-block device cleanup and alignment checks (#3260)\n\n* [Fix] Require block_align to be a positive power of 2\n\nReplace the existing > 0 checks with a power-of-2 guard in both\nRawBlockCore.__init__ (canonical) and RawBlockL2AdapterConfig.from_dict\n(early fail for the JSON config path).\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Fix] Check offset and total_len alignment in batched_write()\n\nAdd O_DIRECT aligned-offset and aligned-total_len guards to\nbatched_write(), mirroring the checks already present in\nbatched_read(). Misaligned pointer continues to be handled via\nbounce buffer. Adds two tests covering the new error paths.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Style] Apply pre-commit fixes\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Fix] Update raw-block alignment error message\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs] Clarify raw-block alignment rules\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 9,
+                "lines": 147,
+                "insertions": 136,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 14,
+                "total": 76
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a2411a0a",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-07-28T15:19:07.000Z",
+              "message": "[Fix][RawBlock] Report recovered slot sizes to L2 listeners (#4283)\n\n[Fix][RawBlock] Report recovered slot sizes to listeners\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "686df323",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-07-28T13:36:09.000Z",
+              "message": "[Fix][NIXL] Close static storage agent during adapter shutdown (#4251)\n\nSigned-off-by: 2xdevv <syk0905.kwon@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 99,
+                "insertions": 75,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0c487832",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-08-11T14:46:47.000Z",
+              "message": "[Fix][NIXL] Report capacity-limited dynamic stores as failed (#4430)\n\nfix(nixl): report capacity-limited dynamic stores as failed\n\nMark dynamic NIXL store tasks unsuccessful when the capacity check stops a batch. Preserve completed writes and usage accounting while preventing callers from treating skipped keys as persisted.\n\nSigned-off-by: 2xdevv <2xdevv@gmail.com>\nCo-authored-by: 2xdevv <2xdevv@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 56,
+                "insertions": 56,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 46,
+          "significance_ratio": 0.25,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 184,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "sahibpreet singh",
           "email": "ss9334931@gmail.com",
           "total_commits": 2,
@@ -22232,8 +22874,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 157,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Jungwoo Song",
@@ -22377,6 +23019,66 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 145,
+          "commits": [
+            {
+              "hash": "d67b59d5",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-07-30T03:54:25.000Z",
+              "message": "[Fix][RawBlock] handle uring_cmd SQE build errors (#4294)\n\nFail the operation instead of hanging wait_iouring, and reject an\nalignment that is not a multiple of the NVMe LBA size.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 5,
+                "lines": 156,
+                "insertions": 142,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a976ce09",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-08-11T09:53:46.000Z",
+              "message": "[Fix][RawBlock] Bounce unaligned buffers in io_uring uring_cmd read paths (#3891)\n\nMulti-page NVMe passthrough builds a PRP list whose entries must each be\npage-aligned. read_uring only enforced this under use_odirect, and\nbatched_read had no bounce path at all, so unaligned buffers under\nuse_uring_cmd hit EINVAL on transfers larger than one page.\n\nExtend read_uring's alignment check to use_odirect || use_uring_cmd and\nmirror its bounce logic in batched_read. Add 4 env-guarded tests verifying\nunaligned read/batched_read, short-buffer bounce, and per-item decisions.\nVerified on Samsung PM1753.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 162,
+                "insertions": 140,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 72.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 145,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "An Nguyen",
           "email": "annenguyen@google.com",
           "total_commits": 2,
@@ -22433,87 +23135,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 143,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "2xdevv",
-          "email": "syk0905.kwon@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 1,
-          "simple_commits": 2,
-          "commit_score": 142,
-          "commits": [
-            {
-              "hash": "fe448392",
-              "author": "2xdevv",
-              "email": "syk0905.kwon@gmail.com",
-              "date": "2026-07-27T22:11:23.000Z",
-              "message": "[Fix] Harden raw-block device cleanup and alignment checks (#3260)\n\n* [Fix] Require block_align to be a positive power of 2\n\nReplace the existing > 0 checks with a power-of-2 guard in both\nRawBlockCore.__init__ (canonical) and RawBlockL2AdapterConfig.from_dict\n(early fail for the JSON config path).\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Fix] Check offset and total_len alignment in batched_write()\n\nAdd O_DIRECT aligned-offset and aligned-total_len guards to\nbatched_write(), mirroring the checks already present in\nbatched_read(). Misaligned pointer continues to be handled via\nbounce buffer. Adds two tests covering the new error paths.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Style] Apply pre-commit fixes\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Fix] Update raw-block alignment error message\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [Docs] Clarify raw-block alignment rules\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
-              "stats": {
-                "files": 9,
-                "lines": 147,
-                "insertions": 136,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 14,
-                "total": 76
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a2411a0a",
-              "author": "2xdevv",
-              "email": "syk0905.kwon@gmail.com",
-              "date": "2026-07-28T15:19:07.000Z",
-              "message": "[Fix][RawBlock] Report recovered slot sizes to L2 listeners (#4283)\n\n[Fix][RawBlock] Report recovered slot sizes to listeners\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 2,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "686df323",
-              "author": "2xdevv",
-              "email": "syk0905.kwon@gmail.com",
-              "date": "2026-07-28T13:36:09.000Z",
-              "message": "[Fix][NIXL] Close static storage agent during adapter shutdown (#4251)\n\nSigned-off-by: 2xdevv <syk0905.kwon@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 99,
-                "insertions": 75,
-                "deletions": 24
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 9,
-                "total": 46
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 47.333333333333336,
-          "significance_ratio": 0.3333333333333333,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 142,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -22755,6 +23376,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Neng",
+          "email": "i@neng.dev",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "937f8649",
+              "author": "Neng",
+              "email": "i@neng.dev",
+              "date": "2026-08-11T19:26:46.000Z",
+              "message": "Add pd-disaggregation for operator (#4218)\n\nSigned-off-by: Neng <i@neng.dev>",
+              "stats": {
+                "files": 17,
+                "lines": 1281,
+                "insertions": 1267,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "NekoPunch",
           "email": "95899648+orangeCatDeveloper@users.noreply.github.com",
           "total_commits": 3,
@@ -22899,45 +23559,6 @@
                 "files": 10,
                 "keyword": 12,
                 "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 77,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 77,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "nayeonikim",
-          "email": "100911844+nayeonikim@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 77,
-          "commits": [
-            {
-              "hash": "d67b59d5",
-              "author": "nayeonikim",
-              "email": "100911844+nayeonikim@users.noreply.github.com",
-              "date": "2026-07-30T03:54:25.000Z",
-              "message": "[Fix][RawBlock] handle uring_cmd SQE build errors (#4294)\n\nFail the operation instead of hanging wait_iouring, and reject an\nalignment that is not a multiple of the NVMe LBA size.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
-              "stats": {
-                "files": 5,
-                "lines": 156,
-                "insertions": 142,
-                "deletions": 14
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
                 "total": 77
               },
               "classification": "significant"
@@ -24267,13 +24888,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-08-11T00:30:02.114Z",
+    "analyzedAt": "2026-08-12T00:30:09.682Z",
     "daysBack": 2,
-    "totalCommits": 274,
-    "totalContributors": 83,
+    "totalCommits": 281,
+    "totalContributors": 84,
     "mergedFrom": {
-      "existing": 273,
-      "new": 3
+      "existing": 274,
+      "new": 8
     }
   }
 }
