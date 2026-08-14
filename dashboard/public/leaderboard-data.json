@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-08-13T00:30:19.521Z",
-  "total_commits_analyzed": 13,
+  "last_updated": "2026-08-14T00:30:16.738Z",
+  "total_commits_analyzed": 19,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -8,10 +8,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
+          "total_commits": 4,
           "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 251,
+          "simple_commits": 1,
+          "commit_score": 264,
           "commits": [
             {
               "hash": "53faf1f5",
@@ -75,11 +75,95 @@
                 "total": 51
               },
               "classification": "significant"
+            },
+            {
+              "hash": "5793e761",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-14T00:07:58.000Z",
+              "message": "agents: note Rust toolchain for pre-commit (#4532)\n\n* docs: note Rust toolchain for pre-commit\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* docs: note SKIP flow for Rust pre-commit hooks\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* docs: clarify pre-commit Rust prerequisites\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 8,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 5,
+                "ai": 0,
+                "total": 13
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 83.66666666666667,
-          "significance_ratio": 1,
+          "avg_score": 66,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 264,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 107,
+          "commits": [
+            {
+              "hash": "d4d25eb4",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-11T19:32:40.000Z",
+              "message": "[CODEOWNERS] Add @ruizhang0101 to mp coordinator, mp observability, mp docs, operator, and CLI (#4496)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 5,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8d72417c",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-14T00:08:31.000Z",
+              "message": "[Coordinator][Refactor]: cache-event ingest layer and fleet controllers (#4526)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 44,
+                "lines": 2985,
+                "insertions": 1368,
+                "deletions": 1617
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 53.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 107,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -116,6 +200,9 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -152,8 +239,89 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Cao Qian",
+          "email": "talexcao@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "d7cbb21e",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-08-13T21:45:28.000Z",
+              "message": "[Operator] Remove Hardcoded CacheBlend webhook-injected vLLM params (#4424)\n\n* [Operator] Make CacheBlend webhook-injected vLLM params configurable\n\nThe mutating webhook hardcoded --block-size 64 and --attention-backend\nCUSTOM, silently overwriting user-supplied values, and offered no way to\nset env vars on the vLLM container or extra cb.* connector config. That\nblocks models that deviate from the baseline profile: sparse-attention\nmodels needing --block-size 128, all-sparse-MLA models whose arch\nadapter must NOT get --attention-backend, fp8-MoE models needing\nVLLM_USE_FLASHINFER_MOE_FP8=0, and models needing extra cb.* knobs.\n\nAdd four CacheBlendEngine spec fields, all defaulting to the previous\nhardcoded behavior:\n\n- injection.blockSize (default 64): injected --block-size value.\n- injection.attentionBackend (default CUSTOM): injected\n  --attention-backend; the sentinel \"none\" omits the flag and leaves a\n  user-supplied value untouched.\n- injection.env: extra env vars set on the target vLLM container\n  (same-name vars overwritten; PYTHONPATH rejected by validation and\n  skipped by the builder - the plugin staging owns it).\n- blend.extraConfig (map[string]JSON): extra kv_connector_extra_config\n  entries merged last into the connection ConfigMap, able to override\n  auto-generated keys (mirroring extraArgs semantics).\n\nSigned-off-by: aeon-x <talexcao@gmail.com>\n\n* [Operator] Replace blend.extraConfig with typed blend.partialBucket\n\nReview feedback: a free-form JSON map is more surface than the one knob\nthat needs it. cb.partial_bucket is the only extra connector key a\nknown model profile requires (fp8-MoE PARTIAL row padding, keeping the\nTriton autotuner from re-tuning per CB step), so expose it as a typed,\nvalidated field instead. Unset omits the key (padding disabled);\nvalidation requires >= 1 when set.\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 17,
+                "lines": 254,
+                "insertions": 165,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Ke Wan",
+          "email": "ke_wan_2019@hotmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "4c2cdf0d",
+              "author": "Ke Wan",
+              "email": "ke_wan_2019@hotmail.com",
+              "date": "2026-08-13T01:16:14.000Z",
+              "message": "[Example] Tune R-KV token-dropping default config and add Qwen3-1.7B Colab demo (#4500)\n\nSigned-off-by: Ke Wan <ke_wan_2019@hotmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 5400,
+                "insertions": 4678,
+                "deletions": 722
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "VincyZhang",
@@ -188,8 +356,50 @@
           "avg_score": 85,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yuhan Liu",
+          "email": "32589867+YuhanLiu11@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 71,
+          "commits": [
+            {
+              "hash": "f82f6fd3",
+              "author": "Yuhan Liu",
+              "email": "32589867+YuhanLiu11@users.noreply.github.com",
+              "date": "2026-08-13T03:37:34.000Z",
+              "message": "[MP][Bugfix] free_lookup_locks: release only the keys the prefetch actually locked (#4523)\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 197,
+                "insertions": 184,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 19,
+                "total": 71
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 71,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "nayeonikim",
@@ -224,8 +434,50 @@
           "avg_score": 68,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "m0g3r",
+          "email": "87276771+m0g3r@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 61,
+          "commits": [
+            {
+              "hash": "0373a573",
+              "author": "m0g3r",
+              "email": "87276771+m0g3r@users.noreply.github.com",
+              "date": "2026-08-13T06:43:28.000Z",
+              "message": "[good-first-issue] storage: convert f-string log calls in bigtable_connector.py to %-format (#4479)\n\nbigtable_connector: convert f-string log calls to %-format\n\nAll 43 logger calls in bigtable_connector.py used f-strings, so each message\nwas formatted even when the record was filtered out. Convert them to lazy\n%-format (ruff G004).\n\nNo behavior change; format style only. Message text, placeholder/argument\ncounts and the exc_info kwarg are all preserved -- verified mechanically by\nnormalizing placeholders on both sides and diffing.\n\nSame pattern as #4477, #4478, #4319 and #4331.\n\nSigned-off-by: m0g3r <m0g3r@users.noreply.github.com>\nCo-authored-by: m0g3r <m0g3r@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 142,
+                "insertions": 81,
+                "deletions": 61
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 14,
+                "total": 61
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 61,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "3xdevv",
@@ -260,6 +512,9 @@
           "avg_score": 46,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 46,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -296,6 +551,9 @@
           "avg_score": 42,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -332,8 +590,11 @@
           "avg_score": 21,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Alex Nguyen",
@@ -368,8 +629,11 @@
           "avg_score": 20,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Vedant",
@@ -404,44 +668,11 @@
           "avg_score": 20,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 20,
-          "commits": [
-            {
-              "hash": "d4d25eb4",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-11T19:32:40.000Z",
-              "message": "[CODEOWNERS] Add @ruizhang0101 to mp coordinator, mp observability, mp docs, operator, and CLI (#4496)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 9,
-                "insertions": 5,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 20,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -450,10 +681,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
+          "total_commits": 4,
           "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 251,
+          "simple_commits": 1,
+          "commit_score": 264,
           "commits": [
             {
               "hash": "53faf1f5",
@@ -517,11 +748,95 @@
                 "total": 51
               },
               "classification": "significant"
+            },
+            {
+              "hash": "5793e761",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-14T00:07:58.000Z",
+              "message": "agents: note Rust toolchain for pre-commit (#4532)\n\n* docs: note Rust toolchain for pre-commit\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* docs: note SKIP flow for Rust pre-commit hooks\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* docs: clarify pre-commit Rust prerequisites\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 8,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 5,
+                "ai": 0,
+                "total": 13
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 83.66666666666667,
-          "significance_ratio": 1,
+          "avg_score": 66,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 264,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 107,
+          "commits": [
+            {
+              "hash": "d4d25eb4",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-11T19:32:40.000Z",
+              "message": "[CODEOWNERS] Add @ruizhang0101 to mp coordinator, mp observability, mp docs, operator, and CLI (#4496)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 5,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8d72417c",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-14T00:08:31.000Z",
+              "message": "[Coordinator][Refactor]: cache-event ingest layer and fleet controllers (#4526)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 44,
+                "lines": 2985,
+                "insertions": 1368,
+                "deletions": 1617
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 53.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 107,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -558,6 +873,9 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -594,8 +912,89 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Cao Qian",
+          "email": "talexcao@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "d7cbb21e",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-08-13T21:45:28.000Z",
+              "message": "[Operator] Remove Hardcoded CacheBlend webhook-injected vLLM params (#4424)\n\n* [Operator] Make CacheBlend webhook-injected vLLM params configurable\n\nThe mutating webhook hardcoded --block-size 64 and --attention-backend\nCUSTOM, silently overwriting user-supplied values, and offered no way to\nset env vars on the vLLM container or extra cb.* connector config. That\nblocks models that deviate from the baseline profile: sparse-attention\nmodels needing --block-size 128, all-sparse-MLA models whose arch\nadapter must NOT get --attention-backend, fp8-MoE models needing\nVLLM_USE_FLASHINFER_MOE_FP8=0, and models needing extra cb.* knobs.\n\nAdd four CacheBlendEngine spec fields, all defaulting to the previous\nhardcoded behavior:\n\n- injection.blockSize (default 64): injected --block-size value.\n- injection.attentionBackend (default CUSTOM): injected\n  --attention-backend; the sentinel \"none\" omits the flag and leaves a\n  user-supplied value untouched.\n- injection.env: extra env vars set on the target vLLM container\n  (same-name vars overwritten; PYTHONPATH rejected by validation and\n  skipped by the builder - the plugin staging owns it).\n- blend.extraConfig (map[string]JSON): extra kv_connector_extra_config\n  entries merged last into the connection ConfigMap, able to override\n  auto-generated keys (mirroring extraArgs semantics).\n\nSigned-off-by: aeon-x <talexcao@gmail.com>\n\n* [Operator] Replace blend.extraConfig with typed blend.partialBucket\n\nReview feedback: a free-form JSON map is more surface than the one knob\nthat needs it. cb.partial_bucket is the only extra connector key a\nknown model profile requires (fp8-MoE PARTIAL row padding, keeping the\nTriton autotuner from re-tuning per CB step), so expose it as a typed,\nvalidated field instead. Unset omits the key (padding disabled);\nvalidation requires >= 1 when set.\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 17,
+                "lines": 254,
+                "insertions": 165,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Ke Wan",
+          "email": "ke_wan_2019@hotmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "4c2cdf0d",
+              "author": "Ke Wan",
+              "email": "ke_wan_2019@hotmail.com",
+              "date": "2026-08-13T01:16:14.000Z",
+              "message": "[Example] Tune R-KV token-dropping default config and add Qwen3-1.7B Colab demo (#4500)\n\nSigned-off-by: Ke Wan <ke_wan_2019@hotmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 5400,
+                "insertions": 4678,
+                "deletions": 722
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "VincyZhang",
@@ -630,8 +1029,50 @@
           "avg_score": 85,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yuhan Liu",
+          "email": "32589867+YuhanLiu11@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 71,
+          "commits": [
+            {
+              "hash": "f82f6fd3",
+              "author": "Yuhan Liu",
+              "email": "32589867+YuhanLiu11@users.noreply.github.com",
+              "date": "2026-08-13T03:37:34.000Z",
+              "message": "[MP][Bugfix] free_lookup_locks: release only the keys the prefetch actually locked (#4523)\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 197,
+                "insertions": 184,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 19,
+                "total": 71
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 71,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "nayeonikim",
@@ -666,8 +1107,50 @@
           "avg_score": 68,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "m0g3r",
+          "email": "87276771+m0g3r@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 61,
+          "commits": [
+            {
+              "hash": "0373a573",
+              "author": "m0g3r",
+              "email": "87276771+m0g3r@users.noreply.github.com",
+              "date": "2026-08-13T06:43:28.000Z",
+              "message": "[good-first-issue] storage: convert f-string log calls in bigtable_connector.py to %-format (#4479)\n\nbigtable_connector: convert f-string log calls to %-format\n\nAll 43 logger calls in bigtable_connector.py used f-strings, so each message\nwas formatted even when the record was filtered out. Convert them to lazy\n%-format (ruff G004).\n\nNo behavior change; format style only. Message text, placeholder/argument\ncounts and the exc_info kwarg are all preserved -- verified mechanically by\nnormalizing placeholders on both sides and diffing.\n\nSame pattern as #4477, #4478, #4319 and #4331.\n\nSigned-off-by: m0g3r <m0g3r@users.noreply.github.com>\nCo-authored-by: m0g3r <m0g3r@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 142,
+                "insertions": 81,
+                "deletions": 61
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 14,
+                "total": 61
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 61,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "3xdevv",
@@ -702,6 +1185,9 @@
           "avg_score": 46,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 46,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -738,6 +1224,9 @@
           "avg_score": 42,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -774,8 +1263,11 @@
           "avg_score": 21,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Alex Nguyen",
@@ -810,8 +1302,11 @@
           "avg_score": 20,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Vedant",
@@ -846,44 +1341,11 @@
           "avg_score": 20,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 20,
-          "commits": [
-            {
-              "hash": "d4d25eb4",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-11T19:32:40.000Z",
-              "message": "[CODEOWNERS] Add @ruizhang0101 to mp coordinator, mp observability, mp docs, operator, and CLI (#4496)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 9,
-                "insertions": 5,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 20,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -892,10 +1354,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 3,
+          "total_commits": 4,
           "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 251,
+          "simple_commits": 1,
+          "commit_score": 264,
           "commits": [
             {
               "hash": "53faf1f5",
@@ -959,11 +1421,95 @@
                 "total": 51
               },
               "classification": "significant"
+            },
+            {
+              "hash": "5793e761",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-14T00:07:58.000Z",
+              "message": "agents: note Rust toolchain for pre-commit (#4532)\n\n* docs: note Rust toolchain for pre-commit\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* docs: note SKIP flow for Rust pre-commit hooks\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* docs: clarify pre-commit Rust prerequisites\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 8,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 5,
+                "ai": 0,
+                "total": 13
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 83.66666666666667,
-          "significance_ratio": 1,
+          "avg_score": 66,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 264,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 107,
+          "commits": [
+            {
+              "hash": "d4d25eb4",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-11T19:32:40.000Z",
+              "message": "[CODEOWNERS] Add @ruizhang0101 to mp coordinator, mp observability, mp docs, operator, and CLI (#4496)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 5,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8d72417c",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-08-14T00:08:31.000Z",
+              "message": "[Coordinator][Refactor]: cache-event ingest layer and fleet controllers (#4526)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 44,
+                "lines": 2985,
+                "insertions": 1368,
+                "deletions": 1617
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 53.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 107,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1000,6 +1546,9 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1036,8 +1585,89 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Cao Qian",
+          "email": "talexcao@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "d7cbb21e",
+              "author": "Cao Qian",
+              "email": "talexcao@gmail.com",
+              "date": "2026-08-13T21:45:28.000Z",
+              "message": "[Operator] Remove Hardcoded CacheBlend webhook-injected vLLM params (#4424)\n\n* [Operator] Make CacheBlend webhook-injected vLLM params configurable\n\nThe mutating webhook hardcoded --block-size 64 and --attention-backend\nCUSTOM, silently overwriting user-supplied values, and offered no way to\nset env vars on the vLLM container or extra cb.* connector config. That\nblocks models that deviate from the baseline profile: sparse-attention\nmodels needing --block-size 128, all-sparse-MLA models whose arch\nadapter must NOT get --attention-backend, fp8-MoE models needing\nVLLM_USE_FLASHINFER_MOE_FP8=0, and models needing extra cb.* knobs.\n\nAdd four CacheBlendEngine spec fields, all defaulting to the previous\nhardcoded behavior:\n\n- injection.blockSize (default 64): injected --block-size value.\n- injection.attentionBackend (default CUSTOM): injected\n  --attention-backend; the sentinel \"none\" omits the flag and leaves a\n  user-supplied value untouched.\n- injection.env: extra env vars set on the target vLLM container\n  (same-name vars overwritten; PYTHONPATH rejected by validation and\n  skipped by the builder - the plugin staging owns it).\n- blend.extraConfig (map[string]JSON): extra kv_connector_extra_config\n  entries merged last into the connection ConfigMap, able to override\n  auto-generated keys (mirroring extraArgs semantics).\n\nSigned-off-by: aeon-x <talexcao@gmail.com>\n\n* [Operator] Replace blend.extraConfig with typed blend.partialBucket\n\nReview feedback: a free-form JSON map is more surface than the one knob\nthat needs it. cb.partial_bucket is the only extra connector key a\nknown model profile requires (fp8-MoE PARTIAL row padding, keeping the\nTriton autotuner from re-tuning per CB step), so expose it as a typed,\nvalidated field instead. Unset omits the key (padding disabled);\nvalidation requires >= 1 when set.\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 17,
+                "lines": 254,
+                "insertions": 165,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Ke Wan",
+          "email": "ke_wan_2019@hotmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "4c2cdf0d",
+              "author": "Ke Wan",
+              "email": "ke_wan_2019@hotmail.com",
+              "date": "2026-08-13T01:16:14.000Z",
+              "message": "[Example] Tune R-KV token-dropping default config and add Qwen3-1.7B Colab demo (#4500)\n\nSigned-off-by: Ke Wan <ke_wan_2019@hotmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 5400,
+                "insertions": 4678,
+                "deletions": 722
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "VincyZhang",
@@ -1072,8 +1702,50 @@
           "avg_score": 85,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yuhan Liu",
+          "email": "32589867+YuhanLiu11@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 71,
+          "commits": [
+            {
+              "hash": "f82f6fd3",
+              "author": "Yuhan Liu",
+              "email": "32589867+YuhanLiu11@users.noreply.github.com",
+              "date": "2026-08-13T03:37:34.000Z",
+              "message": "[MP][Bugfix] free_lookup_locks: release only the keys the prefetch actually locked (#4523)\n\nSigned-off-by: YuhanLiu11 <yliu738@wisc.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 197,
+                "insertions": 184,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 19,
+                "total": 71
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 71,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "nayeonikim",
@@ -1108,8 +1780,50 @@
           "avg_score": 68,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "m0g3r",
+          "email": "87276771+m0g3r@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 61,
+          "commits": [
+            {
+              "hash": "0373a573",
+              "author": "m0g3r",
+              "email": "87276771+m0g3r@users.noreply.github.com",
+              "date": "2026-08-13T06:43:28.000Z",
+              "message": "[good-first-issue] storage: convert f-string log calls in bigtable_connector.py to %-format (#4479)\n\nbigtable_connector: convert f-string log calls to %-format\n\nAll 43 logger calls in bigtable_connector.py used f-strings, so each message\nwas formatted even when the record was filtered out. Convert them to lazy\n%-format (ruff G004).\n\nNo behavior change; format style only. Message text, placeholder/argument\ncounts and the exc_info kwarg are all preserved -- verified mechanically by\nnormalizing placeholders on both sides and diffing.\n\nSame pattern as #4477, #4478, #4319 and #4331.\n\nSigned-off-by: m0g3r <m0g3r@users.noreply.github.com>\nCo-authored-by: m0g3r <m0g3r@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 142,
+                "insertions": 81,
+                "deletions": 61
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 14,
+                "total": 61
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 61,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "3xdevv",
@@ -1144,6 +1858,9 @@
           "avg_score": 46,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 46,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1180,6 +1897,9 @@
           "avg_score": 42,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1216,8 +1936,11 @@
           "avg_score": 21,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Alex Nguyen",
@@ -1252,8 +1975,11 @@
           "avg_score": 20,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Vedant",
@@ -1288,52 +2014,23 @@
           "avg_score": 20,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 20,
-          "commits": [
-            {
-              "hash": "d4d25eb4",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-08-11T19:32:40.000Z",
-              "message": "[CODEOWNERS] Add @ruizhang0101 to mp coordinator, mp observability, mp docs, operator, and CLI (#4496)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 9,
-                "insertions": 5,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 20,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-08-13T00:30:19.521Z",
+    "analyzedAt": "2026-08-14T00:30:16.738Z",
     "daysBack": 2,
-    "totalCommits": 13,
-    "totalContributors": 11
+    "totalCommits": 19,
+    "totalContributors": 15,
+    "mergedFrom": {
+      "existing": 13,
+      "new": 12
+    }
   }
 }
