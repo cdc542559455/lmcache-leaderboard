@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-08-14T00:30:16.738Z",
-  "total_commits_analyzed": 19,
+  "last_updated": "2026-08-15T00:30:23.064Z",
+  "total_commits_analyzed": 29,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -8,10 +8,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 3,
+          "total_commits": 5,
+          "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 264,
+          "commit_score": 364,
           "commits": [
             {
               "hash": "53faf1f5",
@@ -96,14 +96,95 @@
                 "total": 13
               },
               "classification": "simple"
+            },
+            {
+              "hash": "fb0838e8",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-14T06:04:26.000Z",
+              "message": "refactor: remove legacy c_ops surface (#4502)\n\n* refactor: remove legacy c_ops surface\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* test: route xpu torch ops through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 94,
+                "lines": 1245,
+                "insertions": 671,
+                "deletions": 574
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66,
-          "significance_ratio": 0.75,
+          "avg_score": 72.8,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 264,
+          "total_score": 364,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "3xdevv",
+          "email": "3xdevv@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 110,
+          "commits": [
+            {
+              "hash": "40d237ec",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-08-12T03:59:46.000Z",
+              "message": "[Fix][RawBlock] Cap uring_cmd auto transfer size by max_segments (#3882)\n\n[Bugfix] raw_block: cap auto max_data_transfer_size by NVMe max_segments\n\nWith use_uring_cmd=true, _resolve_max_data_transfer_size auto-detected the I/O split size from max_hw_sectors_kb only, ignoring the device's max_segments scatter-gather limit. The NVMe io_uring_cmd passthrough builds one iovec segment per page, so a transfer larger than max_segments*page_size is rejected by the kernel with EINVAL and every large store/load fails.\n\nCap the auto-detected size at min(max_hw_sectors_kb*1024, max_segments*page_size), falling back to the max_hw_sectors_kb value when max_segments sysfs is absent.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Zhengfei He <157287166+zhengfeihe@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 98,
+                "insertions": 91,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8584c2be",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-08-14T16:51:33.000Z",
+              "message": "[Fix][RawBlock] Align uring_cmd temporary buffers (#3841)\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 120,
+                "insertions": 117,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 55,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 110,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -164,6 +245,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 107,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jungwoo Song",
+          "email": "37579681+bluayer@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 90,
+          "commits": [
+            {
+              "hash": "2a7f48e8",
+              "author": "Jungwoo Song",
+              "email": "37579681+bluayer@users.noreply.github.com",
+              "date": "2026-08-14T20:39:36.000Z",
+              "message": "[Operator] Make hostIPC optional (#4399)\n\n* feat(operator): make hostIPC optional, share /dev/shm via hostPath\n\nCross-pod CUDA IPC needs a shared /dev/shm tmpfs, not a shared host IPC namespace.\nAdd spec.hostIPC (*bool, default false) to LMCacheEngine and CacheBlendEngine: by default the engine DaemonSet and the injection webhooks mount the host's /dev/shm via hostPath (volume lmcache-dev-shm);\nsetting it to true restores the legacy hostIPC behavior for clusters that block hostPath volumes.\nUser-supplied /dev/shm wiring suppresses the injection.\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* test(operator): cover hostPath /dev/shm default and hostIPC opt-in\n\nUpdate unit, envtest, and e2e assertions for the new default;\nadd cases for the opt-in mode, user-supplied /dev/shm mounts, and volume-name collisions.\nThe e2e vLLM fixture now mounts /dev/shm via hostPath instead of setting hostIPC.\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* docs: document optional hostIPC / hostPath /dev/shm in operator guide\n\nFix the DESIGN.md/README claim that CUDA IPC requires a shared IPC\nnamespace, add an upgrade note for the default flip, document the\nspec.hostIPC field in the Sphinx operator guide, and update sample\ncomments.\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* fix: check vllm hostIPC and skip the mount\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n---------\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>",
+              "stats": {
+                "files": 34,
+                "lines": 924,
+                "insertions": 743,
+                "deletions": 181
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 90,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 90,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -242,8 +362,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Cao Qian",
@@ -281,8 +401,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Ke Wan",
@@ -303,6 +423,45 @@
                 "lines": 5400,
                 "insertions": 4678,
                 "deletions": 722
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "8264f400",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-08-14T08:55:32.000Z",
+              "message": "[MP] support lazy offload (#4434)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 859,
+                "insertions": 855,
+                "deletions": 4
               },
               "scores": {
                 "loc": 30,
@@ -363,6 +522,84 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 81,
+          "commits": [
+            {
+              "hash": "4d06708e",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-14T21:34:44.000Z",
+              "message": "[Misc] Update the default value of shm name and supported transfer mode to avoid shm warnings (#4447)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 14,
+                "lines": 191,
+                "insertions": 128,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 81,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "longguo",
+          "email": "107740309+abinggo@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "5747d153",
+              "author": "longguo",
+              "email": "107740309+abinggo@users.noreply.github.com",
+              "date": "2026-08-14T02:25:23.000Z",
+              "message": "fix(v1): keep IPC socket path within sockaddr_un limit (fixes #3529) (#3530)\n\nSigned-off-by: abinggo <107740309+abinggo@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 238,
+                "insertions": 237,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 23,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Yuhan Liu",
           "email": "32589867+YuhanLiu11@users.noreply.github.com",
           "total_commits": 1,
@@ -398,8 +635,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Shuichi Ihara",
+          "email": "sihara@ddn.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 69,
+          "commits": [
+            {
+              "hash": "227d13f5",
+              "author": "Shuichi Ihara",
+              "email": "sihara@ddn.com",
+              "date": "2026-08-14T02:52:07.000Z",
+              "message": "[MP] feat(nixl_store_dynamic): add shard_dirs option for 2-level subdir layout (#4120)\n\nSigned-off-by: Shuichi Ihara <sihara@ddn.com>",
+              "stats": {
+                "files": 3,
+                "lines": 174,
+                "insertions": 157,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 17,
+                "total": 69
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 69,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 69,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "nayeonikim",
@@ -437,8 +713,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 68,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "m0g3r",
@@ -476,47 +752,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 61,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "3xdevv",
-          "email": "3xdevv@gmail.com",
+          "name": "yonghengbit",
+          "email": "1515593069@qq.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 46,
+          "commit_score": 43,
           "commits": [
             {
-              "hash": "40d237ec",
-              "author": "3xdevv",
-              "email": "3xdevv@gmail.com",
-              "date": "2026-08-12T03:59:46.000Z",
-              "message": "[Fix][RawBlock] Cap uring_cmd auto transfer size by max_segments (#3882)\n\n[Bugfix] raw_block: cap auto max_data_transfer_size by NVMe max_segments\n\nWith use_uring_cmd=true, _resolve_max_data_transfer_size auto-detected the I/O split size from max_hw_sectors_kb only, ignoring the device's max_segments scatter-gather limit. The NVMe io_uring_cmd passthrough builds one iovec segment per page, so a transfer larger than max_segments*page_size is rejected by the kernel with EINVAL and every large store/load fails.\n\nCap the auto-detected size at min(max_hw_sectors_kb*1024, max_segments*page_size), falling back to the max_hw_sectors_kb value when max_segments sysfs is absent.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Zhengfei He <157287166+zhengfeihe@users.noreply.github.com>",
+              "hash": "4fbc6bf7",
+              "author": "yonghengbit",
+              "email": "1515593069@qq.com",
+              "date": "2026-08-14T02:28:21.000Z",
+              "message": "[Bugfix] storage: keep allocated keys aligned with copied objects (#4391)\n\nFix allocated key alignment during object copies\n\nSigned-off-by: yonghengbit <312300723+yonghengbit@users.noreply.github.com>\nCo-authored-by: yonghengbit <312300723+yonghengbit@users.noreply.github.com>",
               "stats": {
-                "files": 3,
-                "lines": 98,
-                "insertions": 91,
-                "deletions": 7
+                "files": 2,
+                "lines": 66,
+                "insertions": 64,
+                "deletions": 2
               },
               "scores": {
                 "loc": 15,
                 "files": 10,
                 "keyword": 12,
-                "ai": 9,
-                "total": 46
+                "ai": 6,
+                "total": 43
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 46,
+          "avg_score": 43,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 46,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "total_score": 43,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "2xdevv",
@@ -554,8 +830,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 33,
+          "commits": [
+            {
+              "hash": "318f6c0b",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-08-14T02:05:39.000Z",
+              "message": "ci(rocm): tag the ROCm wheel with a +rocm7.2 local version (#4481)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 3,
+                "lines": 31,
+                "insertions": 28,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 33,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 33,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Ilia Yastrebov",
@@ -673,6 +988,45 @@
           "total_score": 20,
           "tier": "T2",
           "tier_name": "Intermediate"
+        },
+        {
+          "name": "JH",
+          "email": "riversky0014@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "baa21350",
+              "author": "JH",
+              "email": "riversky0014@gmail.com",
+              "date": "2026-08-14T13:26:08.000Z",
+              "message": "[good-first-issue] storage: use lazy logging in blackhole_adapter.py (#4560)\n\nstorage: use lazy logging in blackhole adapter\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -681,10 +1035,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 3,
+          "total_commits": 5,
+          "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 264,
+          "commit_score": 364,
           "commits": [
             {
               "hash": "53faf1f5",
@@ -769,14 +1123,95 @@
                 "total": 13
               },
               "classification": "simple"
+            },
+            {
+              "hash": "fb0838e8",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-14T06:04:26.000Z",
+              "message": "refactor: remove legacy c_ops surface (#4502)\n\n* refactor: remove legacy c_ops surface\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* test: route xpu torch ops through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 94,
+                "lines": 1245,
+                "insertions": 671,
+                "deletions": 574
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66,
-          "significance_ratio": 0.75,
+          "avg_score": 72.8,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 264,
+          "total_score": 364,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "3xdevv",
+          "email": "3xdevv@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 110,
+          "commits": [
+            {
+              "hash": "40d237ec",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-08-12T03:59:46.000Z",
+              "message": "[Fix][RawBlock] Cap uring_cmd auto transfer size by max_segments (#3882)\n\n[Bugfix] raw_block: cap auto max_data_transfer_size by NVMe max_segments\n\nWith use_uring_cmd=true, _resolve_max_data_transfer_size auto-detected the I/O split size from max_hw_sectors_kb only, ignoring the device's max_segments scatter-gather limit. The NVMe io_uring_cmd passthrough builds one iovec segment per page, so a transfer larger than max_segments*page_size is rejected by the kernel with EINVAL and every large store/load fails.\n\nCap the auto-detected size at min(max_hw_sectors_kb*1024, max_segments*page_size), falling back to the max_hw_sectors_kb value when max_segments sysfs is absent.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Zhengfei He <157287166+zhengfeihe@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 98,
+                "insertions": 91,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8584c2be",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-08-14T16:51:33.000Z",
+              "message": "[Fix][RawBlock] Align uring_cmd temporary buffers (#3841)\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 120,
+                "insertions": 117,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 55,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 110,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -837,6 +1272,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 107,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jungwoo Song",
+          "email": "37579681+bluayer@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 90,
+          "commits": [
+            {
+              "hash": "2a7f48e8",
+              "author": "Jungwoo Song",
+              "email": "37579681+bluayer@users.noreply.github.com",
+              "date": "2026-08-14T20:39:36.000Z",
+              "message": "[Operator] Make hostIPC optional (#4399)\n\n* feat(operator): make hostIPC optional, share /dev/shm via hostPath\n\nCross-pod CUDA IPC needs a shared /dev/shm tmpfs, not a shared host IPC namespace.\nAdd spec.hostIPC (*bool, default false) to LMCacheEngine and CacheBlendEngine: by default the engine DaemonSet and the injection webhooks mount the host's /dev/shm via hostPath (volume lmcache-dev-shm);\nsetting it to true restores the legacy hostIPC behavior for clusters that block hostPath volumes.\nUser-supplied /dev/shm wiring suppresses the injection.\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* test(operator): cover hostPath /dev/shm default and hostIPC opt-in\n\nUpdate unit, envtest, and e2e assertions for the new default;\nadd cases for the opt-in mode, user-supplied /dev/shm mounts, and volume-name collisions.\nThe e2e vLLM fixture now mounts /dev/shm via hostPath instead of setting hostIPC.\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* docs: document optional hostIPC / hostPath /dev/shm in operator guide\n\nFix the DESIGN.md/README claim that CUDA IPC requires a shared IPC\nnamespace, add an upgrade note for the default flip, document the\nspec.hostIPC field in the Sphinx operator guide, and update sample\ncomments.\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* fix: check vllm hostIPC and skip the mount\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n---------\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>",
+              "stats": {
+                "files": 34,
+                "lines": 924,
+                "insertions": 743,
+                "deletions": 181
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 90,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 90,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -915,8 +1389,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Cao Qian",
@@ -954,8 +1428,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Ke Wan",
@@ -976,6 +1450,45 @@
                 "lines": 5400,
                 "insertions": 4678,
                 "deletions": 722
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "8264f400",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-08-14T08:55:32.000Z",
+              "message": "[MP] support lazy offload (#4434)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 859,
+                "insertions": 855,
+                "deletions": 4
               },
               "scores": {
                 "loc": 30,
@@ -1036,6 +1549,84 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 81,
+          "commits": [
+            {
+              "hash": "4d06708e",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-14T21:34:44.000Z",
+              "message": "[Misc] Update the default value of shm name and supported transfer mode to avoid shm warnings (#4447)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 14,
+                "lines": 191,
+                "insertions": 128,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 81,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "longguo",
+          "email": "107740309+abinggo@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "5747d153",
+              "author": "longguo",
+              "email": "107740309+abinggo@users.noreply.github.com",
+              "date": "2026-08-14T02:25:23.000Z",
+              "message": "fix(v1): keep IPC socket path within sockaddr_un limit (fixes #3529) (#3530)\n\nSigned-off-by: abinggo <107740309+abinggo@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 238,
+                "insertions": 237,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 23,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Yuhan Liu",
           "email": "32589867+YuhanLiu11@users.noreply.github.com",
           "total_commits": 1,
@@ -1071,8 +1662,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Shuichi Ihara",
+          "email": "sihara@ddn.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 69,
+          "commits": [
+            {
+              "hash": "227d13f5",
+              "author": "Shuichi Ihara",
+              "email": "sihara@ddn.com",
+              "date": "2026-08-14T02:52:07.000Z",
+              "message": "[MP] feat(nixl_store_dynamic): add shard_dirs option for 2-level subdir layout (#4120)\n\nSigned-off-by: Shuichi Ihara <sihara@ddn.com>",
+              "stats": {
+                "files": 3,
+                "lines": 174,
+                "insertions": 157,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 17,
+                "total": 69
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 69,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 69,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "nayeonikim",
@@ -1110,8 +1740,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 68,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "m0g3r",
@@ -1149,47 +1779,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 61,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "3xdevv",
-          "email": "3xdevv@gmail.com",
+          "name": "yonghengbit",
+          "email": "1515593069@qq.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 46,
+          "commit_score": 43,
           "commits": [
             {
-              "hash": "40d237ec",
-              "author": "3xdevv",
-              "email": "3xdevv@gmail.com",
-              "date": "2026-08-12T03:59:46.000Z",
-              "message": "[Fix][RawBlock] Cap uring_cmd auto transfer size by max_segments (#3882)\n\n[Bugfix] raw_block: cap auto max_data_transfer_size by NVMe max_segments\n\nWith use_uring_cmd=true, _resolve_max_data_transfer_size auto-detected the I/O split size from max_hw_sectors_kb only, ignoring the device's max_segments scatter-gather limit. The NVMe io_uring_cmd passthrough builds one iovec segment per page, so a transfer larger than max_segments*page_size is rejected by the kernel with EINVAL and every large store/load fails.\n\nCap the auto-detected size at min(max_hw_sectors_kb*1024, max_segments*page_size), falling back to the max_hw_sectors_kb value when max_segments sysfs is absent.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Zhengfei He <157287166+zhengfeihe@users.noreply.github.com>",
+              "hash": "4fbc6bf7",
+              "author": "yonghengbit",
+              "email": "1515593069@qq.com",
+              "date": "2026-08-14T02:28:21.000Z",
+              "message": "[Bugfix] storage: keep allocated keys aligned with copied objects (#4391)\n\nFix allocated key alignment during object copies\n\nSigned-off-by: yonghengbit <312300723+yonghengbit@users.noreply.github.com>\nCo-authored-by: yonghengbit <312300723+yonghengbit@users.noreply.github.com>",
               "stats": {
-                "files": 3,
-                "lines": 98,
-                "insertions": 91,
-                "deletions": 7
+                "files": 2,
+                "lines": 66,
+                "insertions": 64,
+                "deletions": 2
               },
               "scores": {
                 "loc": 15,
                 "files": 10,
                 "keyword": 12,
-                "ai": 9,
-                "total": 46
+                "ai": 6,
+                "total": 43
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 46,
+          "avg_score": 43,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 46,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "total_score": 43,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "2xdevv",
@@ -1227,8 +1857,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 33,
+          "commits": [
+            {
+              "hash": "318f6c0b",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-08-14T02:05:39.000Z",
+              "message": "ci(rocm): tag the ROCm wheel with a +rocm7.2 local version (#4481)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 3,
+                "lines": 31,
+                "insertions": 28,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 33,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 33,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Ilia Yastrebov",
@@ -1346,6 +2015,45 @@
           "total_score": 20,
           "tier": "T2",
           "tier_name": "Intermediate"
+        },
+        {
+          "name": "JH",
+          "email": "riversky0014@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "baa21350",
+              "author": "JH",
+              "email": "riversky0014@gmail.com",
+              "date": "2026-08-14T13:26:08.000Z",
+              "message": "[good-first-issue] storage: use lazy logging in blackhole_adapter.py (#4560)\n\nstorage: use lazy logging in blackhole adapter\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -1354,10 +2062,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 3,
+          "total_commits": 5,
+          "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 264,
+          "commit_score": 364,
           "commits": [
             {
               "hash": "53faf1f5",
@@ -1442,14 +2150,95 @@
                 "total": 13
               },
               "classification": "simple"
+            },
+            {
+              "hash": "fb0838e8",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-08-14T06:04:26.000Z",
+              "message": "refactor: remove legacy c_ops surface (#4502)\n\n* refactor: remove legacy c_ops surface\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* test: route xpu torch ops through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 94,
+                "lines": 1245,
+                "insertions": 671,
+                "deletions": 574
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66,
-          "significance_ratio": 0.75,
+          "avg_score": 72.8,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 264,
+          "total_score": 364,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "3xdevv",
+          "email": "3xdevv@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 110,
+          "commits": [
+            {
+              "hash": "40d237ec",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-08-12T03:59:46.000Z",
+              "message": "[Fix][RawBlock] Cap uring_cmd auto transfer size by max_segments (#3882)\n\n[Bugfix] raw_block: cap auto max_data_transfer_size by NVMe max_segments\n\nWith use_uring_cmd=true, _resolve_max_data_transfer_size auto-detected the I/O split size from max_hw_sectors_kb only, ignoring the device's max_segments scatter-gather limit. The NVMe io_uring_cmd passthrough builds one iovec segment per page, so a transfer larger than max_segments*page_size is rejected by the kernel with EINVAL and every large store/load fails.\n\nCap the auto-detected size at min(max_hw_sectors_kb*1024, max_segments*page_size), falling back to the max_hw_sectors_kb value when max_segments sysfs is absent.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Zhengfei He <157287166+zhengfeihe@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 98,
+                "insertions": 91,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8584c2be",
+              "author": "3xdevv",
+              "email": "3xdevv@gmail.com",
+              "date": "2026-08-14T16:51:33.000Z",
+              "message": "[Fix][RawBlock] Align uring_cmd temporary buffers (#3841)\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 120,
+                "insertions": 117,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 55,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 110,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1510,6 +2299,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 107,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jungwoo Song",
+          "email": "37579681+bluayer@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 90,
+          "commits": [
+            {
+              "hash": "2a7f48e8",
+              "author": "Jungwoo Song",
+              "email": "37579681+bluayer@users.noreply.github.com",
+              "date": "2026-08-14T20:39:36.000Z",
+              "message": "[Operator] Make hostIPC optional (#4399)\n\n* feat(operator): make hostIPC optional, share /dev/shm via hostPath\n\nCross-pod CUDA IPC needs a shared /dev/shm tmpfs, not a shared host IPC namespace.\nAdd spec.hostIPC (*bool, default false) to LMCacheEngine and CacheBlendEngine: by default the engine DaemonSet and the injection webhooks mount the host's /dev/shm via hostPath (volume lmcache-dev-shm);\nsetting it to true restores the legacy hostIPC behavior for clusters that block hostPath volumes.\nUser-supplied /dev/shm wiring suppresses the injection.\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* test(operator): cover hostPath /dev/shm default and hostIPC opt-in\n\nUpdate unit, envtest, and e2e assertions for the new default;\nadd cases for the opt-in mode, user-supplied /dev/shm mounts, and volume-name collisions.\nThe e2e vLLM fixture now mounts /dev/shm via hostPath instead of setting hostIPC.\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* docs: document optional hostIPC / hostPath /dev/shm in operator guide\n\nFix the DESIGN.md/README claim that CUDA IPC requires a shared IPC\nnamespace, add an upgrade note for the default flip, document the\nspec.hostIPC field in the Sphinx operator guide, and update sample\ncomments.\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n* fix: check vllm hostIPC and skip the mount\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>\n\n---------\n\nSigned-off-by: Jungwoo Song <bluayer@gmail.com>",
+              "stats": {
+                "files": 34,
+                "lines": 924,
+                "insertions": 743,
+                "deletions": 181
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 25,
+                "total": 90
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 90,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 90,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1588,8 +2416,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Cao Qian",
@@ -1627,8 +2455,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Ke Wan",
@@ -1649,6 +2477,45 @@
                 "lines": 5400,
                 "insertions": 4678,
                 "deletions": 722
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "8264f400",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-08-14T08:55:32.000Z",
+              "message": "[MP] support lazy offload (#4434)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 859,
+                "insertions": 855,
+                "deletions": 4
               },
               "scores": {
                 "loc": 30,
@@ -1709,6 +2576,84 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 81,
+          "commits": [
+            {
+              "hash": "4d06708e",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-14T21:34:44.000Z",
+              "message": "[Misc] Update the default value of shm name and supported transfer mode to avoid shm warnings (#4447)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 14,
+                "lines": 191,
+                "insertions": 128,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 81,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "longguo",
+          "email": "107740309+abinggo@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "5747d153",
+              "author": "longguo",
+              "email": "107740309+abinggo@users.noreply.github.com",
+              "date": "2026-08-14T02:25:23.000Z",
+              "message": "fix(v1): keep IPC socket path within sockaddr_un limit (fixes #3529) (#3530)\n\nSigned-off-by: abinggo <107740309+abinggo@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 238,
+                "insertions": 237,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 23,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Yuhan Liu",
           "email": "32589867+YuhanLiu11@users.noreply.github.com",
           "total_commits": 1,
@@ -1744,8 +2689,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Shuichi Ihara",
+          "email": "sihara@ddn.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 69,
+          "commits": [
+            {
+              "hash": "227d13f5",
+              "author": "Shuichi Ihara",
+              "email": "sihara@ddn.com",
+              "date": "2026-08-14T02:52:07.000Z",
+              "message": "[MP] feat(nixl_store_dynamic): add shard_dirs option for 2-level subdir layout (#4120)\n\nSigned-off-by: Shuichi Ihara <sihara@ddn.com>",
+              "stats": {
+                "files": 3,
+                "lines": 174,
+                "insertions": 157,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 17,
+                "total": 69
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 69,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 69,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "nayeonikim",
@@ -1783,8 +2767,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 68,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "m0g3r",
@@ -1822,47 +2806,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 61,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "3xdevv",
-          "email": "3xdevv@gmail.com",
+          "name": "yonghengbit",
+          "email": "1515593069@qq.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 46,
+          "commit_score": 43,
           "commits": [
             {
-              "hash": "40d237ec",
-              "author": "3xdevv",
-              "email": "3xdevv@gmail.com",
-              "date": "2026-08-12T03:59:46.000Z",
-              "message": "[Fix][RawBlock] Cap uring_cmd auto transfer size by max_segments (#3882)\n\n[Bugfix] raw_block: cap auto max_data_transfer_size by NVMe max_segments\n\nWith use_uring_cmd=true, _resolve_max_data_transfer_size auto-detected the I/O split size from max_hw_sectors_kb only, ignoring the device's max_segments scatter-gather limit. The NVMe io_uring_cmd passthrough builds one iovec segment per page, so a transfer larger than max_segments*page_size is rejected by the kernel with EINVAL and every large store/load fails.\n\nCap the auto-detected size at min(max_hw_sectors_kb*1024, max_segments*page_size), falling back to the max_hw_sectors_kb value when max_segments sysfs is absent.\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Zhengfei He <157287166+zhengfeihe@users.noreply.github.com>",
+              "hash": "4fbc6bf7",
+              "author": "yonghengbit",
+              "email": "1515593069@qq.com",
+              "date": "2026-08-14T02:28:21.000Z",
+              "message": "[Bugfix] storage: keep allocated keys aligned with copied objects (#4391)\n\nFix allocated key alignment during object copies\n\nSigned-off-by: yonghengbit <312300723+yonghengbit@users.noreply.github.com>\nCo-authored-by: yonghengbit <312300723+yonghengbit@users.noreply.github.com>",
               "stats": {
-                "files": 3,
-                "lines": 98,
-                "insertions": 91,
-                "deletions": 7
+                "files": 2,
+                "lines": 66,
+                "insertions": 64,
+                "deletions": 2
               },
               "scores": {
                 "loc": 15,
                 "files": 10,
                 "keyword": 12,
-                "ai": 9,
-                "total": 46
+                "ai": 6,
+                "total": 43
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 46,
+          "avg_score": 43,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 46,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "total_score": 43,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "2xdevv",
@@ -1900,8 +2884,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 33,
+          "commits": [
+            {
+              "hash": "318f6c0b",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-08-14T02:05:39.000Z",
+              "message": "ci(rocm): tag the ROCm wheel with a +rocm7.2 local version (#4481)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 3,
+                "lines": 31,
+                "insertions": 28,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 33,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 33,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Ilia Yastrebov",
@@ -2019,18 +3042,57 @@
           "total_score": 20,
           "tier": "T2",
           "tier_name": "Intermediate"
+        },
+        {
+          "name": "JH",
+          "email": "riversky0014@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "baa21350",
+              "author": "JH",
+              "email": "riversky0014@gmail.com",
+              "date": "2026-08-14T13:26:08.000Z",
+              "message": "[good-first-issue] storage: use lazy logging in blackhole_adapter.py (#4560)\n\nstorage: use lazy logging in blackhole adapter\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-08-14T00:30:16.738Z",
+    "analyzedAt": "2026-08-15T00:30:23.064Z",
     "daysBack": 2,
-    "totalCommits": 19,
-    "totalContributors": 15,
+    "totalCommits": 29,
+    "totalContributors": 23,
     "mergedFrom": {
-      "existing": 13,
-      "new": 12
+      "existing": 19,
+      "new": 16
     }
   }
 }
