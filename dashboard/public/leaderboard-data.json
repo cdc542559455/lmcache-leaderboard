@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-08-16T00:30:26.747Z",
-  "total_commits_analyzed": 35,
+  "last_updated": "2026-08-17T00:30:10.624Z",
+  "total_commits_analyzed": 36,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -624,6 +624,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "e8f93818",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-08-16T00:51:19.000Z",
+              "message": "[Platform][RBLN] Add RBLN device backend for engine-driven MP transfer (#4450)\n\n* [Platform][RBLN] Add RBLN device backend for engine-driven MP transfer\n\nAdds Rebellions NPUs as a device-registry entry. `torch.rbln` comes from\ntorch-rbln through a torch backend entry point, so it is visible on a bare\n`import torch`; the engine is vllm-rbln. Without a registry entry,\ndetection falls back to the CPU stub and no RBLN path works at all.\n\nScope is multiprocess engine-driven transfer, which is self-contained: the\nMP path builds no GPU connector, resolving layouts through\n`normalize_kv_and_discover_format` and moving KV through `RblnDeviceOps`.\nThe in-process connector follows separately.\n\nLMCache-driven MP is refused up front. `torch.rbln` exposes device\ndiscovery, `set_device()` and `synchronize()` but no `Stream` / `Event`,\nand that path orders its cross-process handoff with an event, so\n`RblnDeviceSpec` reports `is_handle_transfer_available()` as False and\nleaves `ipc_wrapper_cls` / `event_ipc_backend` at their None defaults --\n`mp_transfer_mode=lmcache_driven` then fails at its documented validation\npoint instead of on an attribute lookup later.\n\nThe per-layer KV cache is 6-D: vllm-rbln allocates\n`[2, NB, NH, 1, BS, HS]`, HND with an extra axis between heads and block\ntokens that the RBLN attention backend requires. Axis 3 is always 1, so the\nbytes and strides are those of NL_X_TWO_NB_NH_BS_HS one axis short.\n\nIt is registered as its own EngineKVFormat.NL_X_TWO_NB_NH_ONE_BS_HS (15)\nrather than squeezed into format 6 during discovery. Reshaping inside\ndetection would need a device hook, making discovery depend on\nprocess-global device state instead of being a pure function of\n`(kv_caches, layout_hints)`, and would force a second device-specific rule\nfor a layout that is HND by definition. As its own format, the 6-D branch\nin `detectors/vllm.py` keys off the shape signature alone (rank 6, leading\naxis 2, axis 3 == 1), so the same input classifies identically on any host,\nthe detector needs no `rbln` entry in its HND table, and the reported\nlayout -- which vllm-rbln never sets, leaving `get_kv_cache_layout()` at\nits NHD default -- plays no part.\n\nSqueezing the axis in `attempt_permute_to_contiguous_view` was also\nrejected: a blanket singleton squeeze silently misclassifies vLLM HND with\n`num_kv_heads == 1` (any TP size equal to the KV-head count) as a rank-4\nblocks-first fused format, and breaks SGLang MLA outright, whose detection\nkeys off `shape[1] == 1`.\n\nNo transfer kernel handles format 15. RBLN has no compiled block-transfer\nextension in tree, and the CUDA / SYCL kernels never see an RBLN cache, so\ntheir `default:` arm rejecting it is correct rather than a gap. csrc\ncarries only the enum value and its `FORMAT_FACTS` row; `ops_types.py`\nmirrors the value, which `test_c_ops_parity` requires to match exactly.\n\n`RblnDeviceOps` inherits the torch baseline for every op except\n`multi_layer_block_kv_transfer`, which stages each chunk head-major\n(`[2, L, H, T, D]`) rather than upstream's token-major `[2, L, T, H*D]`.\nFilling a token-major chunk from an HND paged buffer costs an on-device\nhead/token permute per store and restore; head-major issues none. The\nchunk keeps the byte size upstream sized it to and is reinterpreted with a\nfree view. Sound because the engine-driven pair writes and reads it with\nthe same code and the cache server treats it as an opaque byte range. It\napplies `squeeze_singleton_axis` at entry, so `kv_ops.py` indexes a 5-D\ntensor and the singleton stays out of every axis offset below.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\n\n* [Platform][RBLN] Drop the unused is_native_kv_structure predicate\n\nThe predicate was the tolerant guard for a `normalize_kv_caches` hook on\n`DeviceSpec`: format discovery handed the hook every KV structure it saw,\nso the RBLN override had to recognize a flat list of native 6-D tensors\nand pass everything else through untouched.\n\nThat design is gone. The native layout is now its own\n`EngineKVFormat.NL_X_TWO_NB_NH_ONE_BS_HS`, detection reshapes nothing,\nand the squeeze moved down into `RblnDeviceOps`, which knows from the\ndetected format what it holds and uses the strict\n`squeeze_singleton_axis`. Nothing under `lmcache/` calls the predicate\nany more -- only its own test did -- so remove it along with the\n`DiscoverableKVCache` import it needed and the design-doc mention.\n\n`is_rbln_kv_layout` stays: `squeeze_singleton_axis` is built on it.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>\n\n* [Platform][RBLN] Stage chunks in the canonical token-major wire layout\n\nRblnDeviceOps staged each chunk head-major ([2, L, H, T, D]) to avoid the\nhead<->token transpose that filling a token-major chunk from an HND cache\nrequires. That made an RBLN chunk unreadable by any other device, which\nis the whole point of a wire layout, and it is not necessary: the\ntranspose can run on the host instead of inside the device<->host copy.\n\nChunks are now staged in LMCache's canonical [2, L, T, H*D]. Gather reads\neach block's K and V straight out of the paged cache into a host buffer\nlaid out [B, L, 2, H, BS, D] -- both sides contiguous, no device-side\ngather and no device buffer -- and transposes into the chunk on the host.\nScatter mirrors it. K and V are addressed separately because\nlayer[:, block] spans both halves of a layer and is not contiguous.\n\nMeasured on Qwen3-1.7B (28L, 8 heads, head_size 128, bf16, block 1024,\none block per chunk):\n\n  gather  D2H   19.5 GB/s   (head-major staging reached 3.8 GB/s here)\n  scatter H2D   19.2 GB/s   (head-major staging reached 24.5 GB/s)\n\nso the canonical layout costs nothing on the store path and stays within\nreach on the restore path. Block ids being scattered rather than\ncontiguous makes no difference: no copy spans a block boundary either\nway.\n\ntest_chunk_matches_the_canonical_torch_path pins the output byte-for-byte\nagainst the shared torch path. The staging buffers are thread-local: the\nmultiprocess server runs blocking handlers on a thread pool, so a store\nand a retrieve can be in multi_layer_block_kv_transfer at once, and\nsharing one buffer corrupted the KV cache with no error raised.\ntest_staging_concurrency covers that and fails on a shared buffer.\n\nCo-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1340,
+                "insertions": 1339,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "VincyZhang",
           "email": "wenxin.zhang@intel.com",
           "total_commits": 1,
@@ -659,8 +698,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 85,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "longguo",
@@ -1049,8 +1088,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 21,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Alex Nguyen",
@@ -1831,6 +1870,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "e8f93818",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-08-16T00:51:19.000Z",
+              "message": "[Platform][RBLN] Add RBLN device backend for engine-driven MP transfer (#4450)\n\n* [Platform][RBLN] Add RBLN device backend for engine-driven MP transfer\n\nAdds Rebellions NPUs as a device-registry entry. `torch.rbln` comes from\ntorch-rbln through a torch backend entry point, so it is visible on a bare\n`import torch`; the engine is vllm-rbln. Without a registry entry,\ndetection falls back to the CPU stub and no RBLN path works at all.\n\nScope is multiprocess engine-driven transfer, which is self-contained: the\nMP path builds no GPU connector, resolving layouts through\n`normalize_kv_and_discover_format` and moving KV through `RblnDeviceOps`.\nThe in-process connector follows separately.\n\nLMCache-driven MP is refused up front. `torch.rbln` exposes device\ndiscovery, `set_device()` and `synchronize()` but no `Stream` / `Event`,\nand that path orders its cross-process handoff with an event, so\n`RblnDeviceSpec` reports `is_handle_transfer_available()` as False and\nleaves `ipc_wrapper_cls` / `event_ipc_backend` at their None defaults --\n`mp_transfer_mode=lmcache_driven` then fails at its documented validation\npoint instead of on an attribute lookup later.\n\nThe per-layer KV cache is 6-D: vllm-rbln allocates\n`[2, NB, NH, 1, BS, HS]`, HND with an extra axis between heads and block\ntokens that the RBLN attention backend requires. Axis 3 is always 1, so the\nbytes and strides are those of NL_X_TWO_NB_NH_BS_HS one axis short.\n\nIt is registered as its own EngineKVFormat.NL_X_TWO_NB_NH_ONE_BS_HS (15)\nrather than squeezed into format 6 during discovery. Reshaping inside\ndetection would need a device hook, making discovery depend on\nprocess-global device state instead of being a pure function of\n`(kv_caches, layout_hints)`, and would force a second device-specific rule\nfor a layout that is HND by definition. As its own format, the 6-D branch\nin `detectors/vllm.py` keys off the shape signature alone (rank 6, leading\naxis 2, axis 3 == 1), so the same input classifies identically on any host,\nthe detector needs no `rbln` entry in its HND table, and the reported\nlayout -- which vllm-rbln never sets, leaving `get_kv_cache_layout()` at\nits NHD default -- plays no part.\n\nSqueezing the axis in `attempt_permute_to_contiguous_view` was also\nrejected: a blanket singleton squeeze silently misclassifies vLLM HND with\n`num_kv_heads == 1` (any TP size equal to the KV-head count) as a rank-4\nblocks-first fused format, and breaks SGLang MLA outright, whose detection\nkeys off `shape[1] == 1`.\n\nNo transfer kernel handles format 15. RBLN has no compiled block-transfer\nextension in tree, and the CUDA / SYCL kernels never see an RBLN cache, so\ntheir `default:` arm rejecting it is correct rather than a gap. csrc\ncarries only the enum value and its `FORMAT_FACTS` row; `ops_types.py`\nmirrors the value, which `test_c_ops_parity` requires to match exactly.\n\n`RblnDeviceOps` inherits the torch baseline for every op except\n`multi_layer_block_kv_transfer`, which stages each chunk head-major\n(`[2, L, H, T, D]`) rather than upstream's token-major `[2, L, T, H*D]`.\nFilling a token-major chunk from an HND paged buffer costs an on-device\nhead/token permute per store and restore; head-major issues none. The\nchunk keeps the byte size upstream sized it to and is reinterpreted with a\nfree view. Sound because the engine-driven pair writes and reads it with\nthe same code and the cache server treats it as an opaque byte range. It\napplies `squeeze_singleton_axis` at entry, so `kv_ops.py` indexes a 5-D\ntensor and the singleton stays out of every axis offset below.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\n\n* [Platform][RBLN] Drop the unused is_native_kv_structure predicate\n\nThe predicate was the tolerant guard for a `normalize_kv_caches` hook on\n`DeviceSpec`: format discovery handed the hook every KV structure it saw,\nso the RBLN override had to recognize a flat list of native 6-D tensors\nand pass everything else through untouched.\n\nThat design is gone. The native layout is now its own\n`EngineKVFormat.NL_X_TWO_NB_NH_ONE_BS_HS`, detection reshapes nothing,\nand the squeeze moved down into `RblnDeviceOps`, which knows from the\ndetected format what it holds and uses the strict\n`squeeze_singleton_axis`. Nothing under `lmcache/` calls the predicate\nany more -- only its own test did -- so remove it along with the\n`DiscoverableKVCache` import it needed and the design-doc mention.\n\n`is_rbln_kv_layout` stays: `squeeze_singleton_axis` is built on it.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>\n\n* [Platform][RBLN] Stage chunks in the canonical token-major wire layout\n\nRblnDeviceOps staged each chunk head-major ([2, L, H, T, D]) to avoid the\nhead<->token transpose that filling a token-major chunk from an HND cache\nrequires. That made an RBLN chunk unreadable by any other device, which\nis the whole point of a wire layout, and it is not necessary: the\ntranspose can run on the host instead of inside the device<->host copy.\n\nChunks are now staged in LMCache's canonical [2, L, T, H*D]. Gather reads\neach block's K and V straight out of the paged cache into a host buffer\nlaid out [B, L, 2, H, BS, D] -- both sides contiguous, no device-side\ngather and no device buffer -- and transposes into the chunk on the host.\nScatter mirrors it. K and V are addressed separately because\nlayer[:, block] spans both halves of a layer and is not contiguous.\n\nMeasured on Qwen3-1.7B (28L, 8 heads, head_size 128, bf16, block 1024,\none block per chunk):\n\n  gather  D2H   19.5 GB/s   (head-major staging reached 3.8 GB/s here)\n  scatter H2D   19.2 GB/s   (head-major staging reached 24.5 GB/s)\n\nso the canonical layout costs nothing on the store path and stays within\nreach on the restore path. Block ids being scattered rather than\ncontiguous makes no difference: no copy spans a block boundary either\nway.\n\ntest_chunk_matches_the_canonical_torch_path pins the output byte-for-byte\nagainst the shared torch path. The staging buffers are thread-local: the\nmultiprocess server runs blocking handlers on a thread pool, so a store\nand a retrieve can be in multi_layer_block_kv_transfer at once, and\nsharing one buffer corrupted the KV cache with no error raised.\ntest_staging_concurrency covers that and fails on a shared buffer.\n\nCo-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1340,
+                "insertions": 1339,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "VincyZhang",
           "email": "wenxin.zhang@intel.com",
           "total_commits": 1,
@@ -1866,8 +1944,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 85,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "longguo",
@@ -2256,8 +2334,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 21,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Alex Nguyen",
@@ -3038,6 +3116,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "e8f93818",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-08-16T00:51:19.000Z",
+              "message": "[Platform][RBLN] Add RBLN device backend for engine-driven MP transfer (#4450)\n\n* [Platform][RBLN] Add RBLN device backend for engine-driven MP transfer\n\nAdds Rebellions NPUs as a device-registry entry. `torch.rbln` comes from\ntorch-rbln through a torch backend entry point, so it is visible on a bare\n`import torch`; the engine is vllm-rbln. Without a registry entry,\ndetection falls back to the CPU stub and no RBLN path works at all.\n\nScope is multiprocess engine-driven transfer, which is self-contained: the\nMP path builds no GPU connector, resolving layouts through\n`normalize_kv_and_discover_format` and moving KV through `RblnDeviceOps`.\nThe in-process connector follows separately.\n\nLMCache-driven MP is refused up front. `torch.rbln` exposes device\ndiscovery, `set_device()` and `synchronize()` but no `Stream` / `Event`,\nand that path orders its cross-process handoff with an event, so\n`RblnDeviceSpec` reports `is_handle_transfer_available()` as False and\nleaves `ipc_wrapper_cls` / `event_ipc_backend` at their None defaults --\n`mp_transfer_mode=lmcache_driven` then fails at its documented validation\npoint instead of on an attribute lookup later.\n\nThe per-layer KV cache is 6-D: vllm-rbln allocates\n`[2, NB, NH, 1, BS, HS]`, HND with an extra axis between heads and block\ntokens that the RBLN attention backend requires. Axis 3 is always 1, so the\nbytes and strides are those of NL_X_TWO_NB_NH_BS_HS one axis short.\n\nIt is registered as its own EngineKVFormat.NL_X_TWO_NB_NH_ONE_BS_HS (15)\nrather than squeezed into format 6 during discovery. Reshaping inside\ndetection would need a device hook, making discovery depend on\nprocess-global device state instead of being a pure function of\n`(kv_caches, layout_hints)`, and would force a second device-specific rule\nfor a layout that is HND by definition. As its own format, the 6-D branch\nin `detectors/vllm.py` keys off the shape signature alone (rank 6, leading\naxis 2, axis 3 == 1), so the same input classifies identically on any host,\nthe detector needs no `rbln` entry in its HND table, and the reported\nlayout -- which vllm-rbln never sets, leaving `get_kv_cache_layout()` at\nits NHD default -- plays no part.\n\nSqueezing the axis in `attempt_permute_to_contiguous_view` was also\nrejected: a blanket singleton squeeze silently misclassifies vLLM HND with\n`num_kv_heads == 1` (any TP size equal to the KV-head count) as a rank-4\nblocks-first fused format, and breaks SGLang MLA outright, whose detection\nkeys off `shape[1] == 1`.\n\nNo transfer kernel handles format 15. RBLN has no compiled block-transfer\nextension in tree, and the CUDA / SYCL kernels never see an RBLN cache, so\ntheir `default:` arm rejecting it is correct rather than a gap. csrc\ncarries only the enum value and its `FORMAT_FACTS` row; `ops_types.py`\nmirrors the value, which `test_c_ops_parity` requires to match exactly.\n\n`RblnDeviceOps` inherits the torch baseline for every op except\n`multi_layer_block_kv_transfer`, which stages each chunk head-major\n(`[2, L, H, T, D]`) rather than upstream's token-major `[2, L, T, H*D]`.\nFilling a token-major chunk from an HND paged buffer costs an on-device\nhead/token permute per store and restore; head-major issues none. The\nchunk keeps the byte size upstream sized it to and is reinterpreted with a\nfree view. Sound because the engine-driven pair writes and reads it with\nthe same code and the cache server treats it as an opaque byte range. It\napplies `squeeze_singleton_axis` at entry, so `kv_ops.py` indexes a 5-D\ntensor and the singleton stays out of every axis offset below.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\n\n* [Platform][RBLN] Drop the unused is_native_kv_structure predicate\n\nThe predicate was the tolerant guard for a `normalize_kv_caches` hook on\n`DeviceSpec`: format discovery handed the hook every KV structure it saw,\nso the RBLN override had to recognize a flat list of native 6-D tensors\nand pass everything else through untouched.\n\nThat design is gone. The native layout is now its own\n`EngineKVFormat.NL_X_TWO_NB_NH_ONE_BS_HS`, detection reshapes nothing,\nand the squeeze moved down into `RblnDeviceOps`, which knows from the\ndetected format what it holds and uses the strict\n`squeeze_singleton_axis`. Nothing under `lmcache/` calls the predicate\nany more -- only its own test did -- so remove it along with the\n`DiscoverableKVCache` import it needed and the design-doc mention.\n\n`is_rbln_kv_layout` stays: `squeeze_singleton_axis` is built on it.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>\n\n* [Platform][RBLN] Stage chunks in the canonical token-major wire layout\n\nRblnDeviceOps staged each chunk head-major ([2, L, H, T, D]) to avoid the\nhead<->token transpose that filling a token-major chunk from an HND cache\nrequires. That made an RBLN chunk unreadable by any other device, which\nis the whole point of a wire layout, and it is not necessary: the\ntranspose can run on the host instead of inside the device<->host copy.\n\nChunks are now staged in LMCache's canonical [2, L, T, H*D]. Gather reads\neach block's K and V straight out of the paged cache into a host buffer\nlaid out [B, L, 2, H, BS, D] -- both sides contiguous, no device-side\ngather and no device buffer -- and transposes into the chunk on the host.\nScatter mirrors it. K and V are addressed separately because\nlayer[:, block] spans both halves of a layer and is not contiguous.\n\nMeasured on Qwen3-1.7B (28L, 8 heads, head_size 128, bf16, block 1024,\none block per chunk):\n\n  gather  D2H   19.5 GB/s   (head-major staging reached 3.8 GB/s here)\n  scatter H2D   19.2 GB/s   (head-major staging reached 24.5 GB/s)\n\nso the canonical layout costs nothing on the store path and stays within\nreach on the restore path. Block ids being scattered rather than\ncontiguous makes no difference: no copy spans a block boundary either\nway.\n\ntest_chunk_matches_the_canonical_torch_path pins the output byte-for-byte\nagainst the shared torch path. The staging buffers are thread-local: the\nmultiprocess server runs blocking handlers on a thread pool, so a store\nand a retrieve can be in multi_layer_block_kv_transfer at once, and\nsharing one buffer corrupted the KV cache with no error raised.\ntest_staging_concurrency covers that and fails on a shared buffer.\n\nCo-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1340,
+                "insertions": 1339,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "VincyZhang",
           "email": "wenxin.zhang@intel.com",
           "total_commits": 1,
@@ -3073,8 +3190,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 85,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "longguo",
@@ -3463,8 +3580,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 21,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Alex Nguyen",
@@ -3626,13 +3743,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-08-16T00:30:26.747Z",
+    "analyzedAt": "2026-08-17T00:30:10.624Z",
     "daysBack": 2,
-    "totalCommits": 35,
-    "totalContributors": 26,
+    "totalCommits": 36,
+    "totalContributors": 27,
     "mergedFrom": {
-      "existing": 29,
-      "new": 16
+      "existing": 35,
+      "new": 7
     }
   }
 }
