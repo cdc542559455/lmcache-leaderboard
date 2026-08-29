@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-08-28T00:30:38.727Z",
-  "total_commits_analyzed": 102,
+  "last_updated": "2026-08-29T00:30:26.781Z",
+  "total_commits_analyzed": 106,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -2635,6 +2635,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 193,
+          "commits": [
+            {
+              "hash": "e10c67fa",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-26T19:50:29.000Z",
+              "message": "[Observability] Add inflight copies counters for MP (#4755)\n\n* Add observability metrics for in-flight stores and retrieves\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 709,
+                "insertions": 688,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c0604a54",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-27T19:23:28.000Z",
+              "message": "[Misc] Backport vLLM #47505 to fix LMCache with vllm multi connector (#4781)\n\nfix the logic for multi-connector\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0c2a6801",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-28T17:57:56.000Z",
+              "message": "[Cli] add --no-warmup to lmcache bench engine cli command (#4789)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 10,
+                "lines": 247,
+                "insertions": 230,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 24,
+                "total": 86
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 64.33333333333333,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 193,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
           "total_commits": 2,
@@ -2695,24 +2776,24 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
           "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 107,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 172,
           "commits": [
             {
-              "hash": "e10c67fa",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-26T19:50:29.000Z",
-              "message": "[Observability] Add inflight copies counters for MP (#4755)\n\n* Add observability metrics for in-flight stores and retrieves\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "hash": "f5f3e95c",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-08-26T04:36:53.000Z",
+              "message": "[Feature] MP mode DCP compatibility (#4679)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
               "stats": {
-                "files": 7,
-                "lines": 709,
-                "insertions": 688,
-                "deletions": 21
+                "files": 31,
+                "lines": 1355,
+                "insertions": 1052,
+                "deletions": 303
               },
               "scores": {
                 "loc": 30,
@@ -2724,35 +2805,35 @@
               "classification": "significant"
             },
             {
-              "hash": "c0604a54",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-27T19:23:28.000Z",
-              "message": "[Misc] Backport vLLM #47505 to fix LMCache with vllm multi connector (#4781)\n\nfix the logic for multi-connector\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "hash": "a0e4a4c2",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-08-28T06:46:32.000Z",
+              "message": "[Refactor]: vLLM LBHNC KVLayout metadata (#4729)\n\n* [Fix] Restore vLLM KV cache layout discovery after vllm#51718\n\nvllm#51718 (RFC vllm#42082) moved layout resolution onto\nCacheConfig.kv_cache_layout and removed\nvllm.v1.attention.backends.utils.get_kv_cache_layout, so the kv_layout\nregistration hint silently vanished on vLLM nightlies.\n\nRead the resolved layout from CacheConfig (falling back to the legacy\nbackend query on older vLLM), normalize standardized KVCacheLayout\nnames onto the existing NHD/HND vocabulary, and raise at registration\nfor the four layouts LMCache cannot transfer yet instead of\nmisclassifying them as NHD.\n\nPart of #3560.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Clarify unsupported-layout remediation: backend-required layouts cannot be overridden via env\n\nFound in E2E: DeepSeek V4's attention backend requires BLHNC, so the\nprevious suggestion to set VLLM_KV_CACHE_LAYOUT was not actionable there\n(backend-required outranks the env var in vLLM's resolution order).\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Fix] Express LMCache's preferred KV cache layout to vLLM\n\nNon-MLA models prefer the standardized head-contiguous layout (LBHNC);\nMLA defers since layout is immaterial for a single latent head, and\npre-standardization vLLM gets the legacy HND name. The standardized\nname is returned rather than its alias because MultiConnector compares\npreference strings verbatim. Backend-required layouts and\nVLLM_KV_CACHE_LAYOUT still outrank a preference and remain validated\nat registration.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Keep LayoutHints.kv_layout strictly NHD/HND; translate at the vLLM boundary\n\nReview feedback: kv_layout exists only to disambiguate the heads/tokens\norder that shape sniffing cannot; engine formats live in EngineKVFormat.\nMove the standardized-name translation (and the unsupported-layout\nfail-loud) from kv_format/types.py into integration/vllm/utils.py, and\nhave the detector reject hints outside the two-value contract instead\nof importing a vLLM vocabulary.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Fail loud when layout hints are built before resolution\n\nRegistration always runs after vLLM resolves the layout, so an\nunresolved CacheConfig here means a caller bug (hints built at\nconstruction time, or an ambient default config); raise with the\nprecondition instead of silently skipping the hint. The MP worker\nadapter captures hints once per process -- the layout is final for the\nprocess lifetime and heartbeat recovery may re-register from a context\nwithout the ambient vLLM config.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Support the blocks-first standardized layouts (BLHNC/BLNHC)\n\nThe kv_layout hint now carries the standardized layout vocabulary\n(legacy NHD/HND spellings canonicalize at the vLLM boundary), and the\nvLLM detector goes declaration-first: a blocks-first hint makes it\nverify that the registered per-layer views share one storage with the\ndeclared strides -- any drift raises -- and reconstruct the single\ncross-layer tensor.\n\nTwo EngineKVFormat members join their NB_NL_TWO_* siblings with K/V\npacked in the content dim: NB_NL_NH_BS_CS (BLHNC) and NB_NL_BS_NH_CS\n(BLNHC). Their specs hand the kernels per-layer base pointers one\n(layer, block) chunk apart, and page_buffer_offset gains the inflated\nper-block step (num_layers * chunk) that blocks-first addressing\nneeds. GPU round-trip tests pin the kernels against a pure-torch\nreference in both directions.\n\nLHBNC and BHLNC remain rejected: their per-(layer, block) content is\nfragmented per head, which PageBufferShapeDesc cannot describe.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Blocks-first transfers through HMA-shared pools\n\nDeepSeek V4's pool interleaves groups with different geometry, so a\ngroup's per-block step exceeds num_layers * chunk. Reconstruction now\naccepts (and preserves) the observed step, the connector reads it off\nthe reconstructed tensor, and multi_layer_kv_transfer carries it to\nthe kernels as block_stride_elems (0 = tight). Pointer initialization\ngoes through spec.data_ptrs so cross-layer formats hand the kernels\nper-layer bases. GPU round-trip tests cover tight and padded pools.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Reconstruct blocks-first groups interleaved inside HMA blocks\n\nDeepSeek V4 pools weave groups within each block, so one group's\nconsecutive layers sit a uniform step apart that exceeds its own\nchunk. Observe and verify the step (uniform spacing, block step large\nenough to hold all layers), carry it as the reconstructed tensor's\nlayer stride, and let the per-layer base pointers absorb it in the\nkernels.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Carry canonical layout names and reconstructed tensors through the MP group path\n\nFound by MP-mode E2E: the subpaged-MLA group edit still enforced the\nlegacy two-name kv_layout contract and rejected canonical names, and\nper-group discovery integer-indexed the reconstructed cross-layer\ntensor as if it were a per-layer list. Group edits now accept the\ncanonical spellings, and cross-layer sub-groups keep their single\nreconstructed tensor (identity grouping folds the repeats).\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Identity grouping reads geometry off the reconstructed cross-layer tensor\n\nCross-layer entries in the normalized per-layer list are the whole\nreconstructed tensor, not per-layer slices; indexing the outer list by\nlayer fed a list into the spec accessors.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Group representatives resolve their spec source through one helper\n\nThird occurrence of the same slip (engine discovery, identity grouping,\nnow the layer-groups manager): a cross-layer group's representative\nentry is the reconstructed whole-group tensor and must not be wrapped\nas a per-layer list. group_spec_source() owns the choice.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Route every group-representative spec access through group_spec_source\n\nThe layer-groups manager's block-stride probe and shape-desc builder\nstill passed the outer per-layer list for cross-layer groups.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Group data pointers resolve cross-layer groups locally\n\nget_group_data_ptrs passed the outer per-layer list and global layer\nindices; a cross-layer group's spec needs its reconstructed tensor and\ngroup-local indices. Adds a DSV4-shaped construction test: two groups\nwith different geometry interleaved in one blocks-first pool, through\nnormalize -> manager -> group pointers.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* MP block-transfer kernels address the blocks-first formats\n\nPer-layer base pointers land one (layer, block) chunk apart and\nscalars_per_block() already carries the interleaved step through\nblock_stride_elems, so the new formats reuse the per-layer address\nshape; NB_NL_NH_BS_CS joins the HND within-block branch.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Apply isort and clang-format across the branch\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Import the MP connector lazily in the preference tests\n\nImporting lmcache_mp_connector at collection time initializes\nprocess-wide MP transfer state, which the cache-server tests later\ntrip over when the whole suite runs in one process. The isolation\ndefect predates this branch; importing inside a fixture keeps the\npreference tests out of that ordering.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Note why the heads-outermost layouts stay unsupported\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Mark the heads-outermost layout gap as TODO\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Treat layout hints as registration payload, not adapter-computed state\n\nThe connector already builds the hints for group edits; forward them\nthrough register_kv_caches and persist them beside kv_caches and\nengine_group_infos for heartbeat re-registration, instead of the\nadapter lazily computing its own copy from the ambient config.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Scope the CPU-backend HND override to layer-compact hints\n\nThe override works around vLLM's CPU attention backend misreporting\nthe layer-compact layout; it was also stomping explicit blocks-first\ndeclarations, which broke reconstruction everywhere torch runs on CPU\n(the ubuntu CI matrix).\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Match the torch fallback's multi_layer_kv_transfer signature to cuda_ops\n\nThe CUDA binding gained block_stride_elems; the fallback mirrors it\nand rejects the blocks-first cross-layer formats it does not\nimplement, following the file's existing HND precedent. Caught by\ntest_function_signature_parity on k3.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Resolve cross-layer entries inside the spec accessors\n\nReview feedback: the geometry accessors own the mapping from a\nnormalized per-layer structure onto what a format's spec expects, so\ncall sites stay uniform. One documented resolver replaces the\nper-call-site source juggling and the group_spec_source helper, and\nbare cross-layer tensors pass through unchanged again.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Own the kv_layout vocabulary in kv_format.types\n\nThe canonical-spelling map was declared in the vLLM detector and\nre-spelled inline in the group edits; the vocabulary module that\ndefines KVLayoutName owns it now and both consume it.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Skip the connector preference tests where vLLM is not installed\n\nThe k3 unit environment installs LMCache without vLLM; the lazy\nconnector import now skips there instead of erroring.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Split the data_ptrs docstring into one paragraph per pointer shape\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Resolve block_stride_elems through the layout getter\n\nBoth connector classes computed it inline from is_cross_layer checks;\nroute them through resolve_block_stride_and_log_layout and give the\ntorch fallback an _is_blocks_first_format predicate beside its\nexisting _is_*_format helpers.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Trim comments to load-bearing facts\n\nAlso fix the NB_NL_BS_NH_CS module docstring (the [BS, NH, CS] order\nis NHD, not HND) and move the enum doc comments for 17/18 in front of\ntheir members like the rest of the file.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Drop layout-name canonicalization; keep NHD and HND\n\ntranslate_vllm_kv_cache_layout now maps vLLM's LBNHC/LBHNC to NHD/HND\nat the boundary, so hints and detection keep the names LMCache has\nalways used, plus BLHNC/BLNHC which have no legacy spelling. Deletes\nCANONICAL_KV_LAYOUTS. get_required_kvcache_layout still returns\nLBHNC because that string goes to vLLM.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Leave kv_cache_group_edits.py untouched\n\nWith hints carrying NHD/HND again the file needs no change; restore\nit to dev byte for byte.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Drop drive-by edits to unrelated files\n\nRestore two READMEs, the cache-simulator README, and\nrecord_strategies/base.py, which a repo-wide format pass had\nreformatted; none are touched by this change. Keep the dev wording of\nthe kv_layout hint doc, appending only the new names.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Keep get_num_blocks at two arguments\n\nThe cross-layer unwrap lives inside the getter, so dev's call site\nworks unchanged for every group and kv_layer_groups.py returns to dev\nbyte for byte.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Name the fallback guard for what it tests\n\nBlocks-outermost is not the same as cross-layer: TRT-LLM's\nNB_NL_TWO_NH_BS_HS is cross-layer without fused KV and the NL_X_*_CS\nformats are fused without being cross-layer; the fallback supports\nboth. The guard rejects exactly the cross-layer fused pair, so call\nit that.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Derive every layout-name check from KVLayoutName\n\nKVLayoutName is the one place the accepted vocabulary is written;\nKV_LAYOUT_NAMES = get_args(KVLayoutName) feeds the membership checks\nand the return annotations use the type. Deletes the\n_UNSUPPORTED/_KNOWN tuple globals from the vLLM integration.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Return only the spec input from _resolve_spec_view\n\nCross-layer spec accessors ignore per-call layer indices, so the\nresolved local index was never load-bearing; callers keep passing\ntheir own.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Spell out shapes in the reconstruction docstring\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Drop the blocks-first reconstruction; read the block step from stride(0)\n\nvLLM's per-layer views under BLHNC/BLNHC have exactly the shape of the\nexisting NL_X_NB_NH_BS_CS / NL_X_NB_BS_NH_CS formats -- only stride(0)\ndiffers, and contiguous-view recovery already accepts dim-0-padded\nviews. So detection classifies them as those formats with the views\npassed through, the two per-layer CS offset entries take the block\nstep from block_stride_elems (0 means tight, as before), and\nresolve_block_stride_and_log_layout treats the CS formats as\nblock-axis. Deletes NB_NL_NH_BS_CS / NB_NL_BS_NH_CS, their specs, the\nreconstruction, and _resolve_spec_view.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Tile the mamba state row without assuming divisibility\n\nNightly vLLM registers the aligned mamba state as a tight view: the\npage padding lives only in stride(0), so the row no longer divides by\nthe unified block size. Round the per-token width up to the widest\nvector alignment that tiles within the block step and divides it; the\nspilled columns land in the page padding and stride(0) stays the\ndim-0 step. Verified MP E2E on Kimi Linear and Qwen3-Next.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Bound the mamba tile by the layer's padded page, not stride(0)\n\nOn a shared pool stride(0) spans sibling layers, so a rounded-up tile\ncould cover the next layer's bytes and a stale load would corrupt it.\nspec.page_size_bytes is this layer's own allotment; spill stays inside\nit.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Move get_size_bytes to lmcache.utils\n\nIt is engine-agnostic and the core (memory management, allocators)\nimported it from the vLLM integration module, inverting the layering\nand creating an import cycle through lmcache.v1.gpu_connector. The\nold name re-exports; the cycle-dodging function-level import of\nKV_LAYOUT_NAMES becomes a plain module import.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Rely on vLLM's own layout parsing\n\nCacheConfig.get_resolved_kv_cache_layout() owns alias resolution,\nunknown-name validation, and the not-yet-resolved error, so the\ntranslation shrinks to the member-name -> LMCache-name map plus the\nheads-outermost rejection.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Document the mamba re-view by input and output shape and stride\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
               "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
+                "files": 28,
+                "lines": 935,
+                "insertions": 802,
+                "deletions": 133
               },
               "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
               },
-              "classification": "simple"
+              "classification": "significant"
             }
           ],
-          "avg_score": 53.5,
-          "significance_ratio": 0.5,
+          "avg_score": 86,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 107,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "total_score": 172,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "maobaolong",
@@ -2893,45 +2974,6 @@
                 "lines": 1128,
                 "insertions": 959,
                 "deletions": 169
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "f5f3e95c",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-08-26T04:36:53.000Z",
-              "message": "[Feature] MP mode DCP compatibility (#4679)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 31,
-                "lines": 1355,
-                "insertions": 1052,
-                "deletions": 303
               },
               "scores": {
                 "loc": 30,
@@ -3148,6 +3190,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Meghana",
+          "email": "11406990+meghana-madhyastha@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 64,
+          "commits": [
+            {
+              "hash": "1fca11ed",
+              "author": "Meghana",
+              "email": "11406990+meghana-madhyastha@users.noreply.github.com",
+              "date": "2026-08-28T01:26:03.000Z",
+              "message": "[good-first-issue] storage: convert f-string log calls in gds_backend.py to %-format (#4785)\n\nAll 33 logger.* calls in lmcache/v1/storage_backend/gds_backend.py built their\nmessage with an f-string, so the string was interpolated even when the record\nwas filtered out. Convert them to lazy %-format (ruff G004).\n\nNo behavior change; format style only.\n\nSigned-off-by: Meghana <meghana.madhyastha@parasail.io>",
+              "stats": {
+                "files": 1,
+                "lines": 178,
+                "insertions": 116,
+                "deletions": 62
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 17,
+                "total": 64
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 64,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "chuanzhisongshu",
           "email": "49055103+982945902@users.noreply.github.com",
           "total_commits": 1,
@@ -3288,6 +3369,45 @@
                 "loc": 3,
                 "files": 10,
                 "keyword": 5,
+                "ai": 1,
+                "total": 19
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 19,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 19,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 19,
+          "commits": [
+            {
+              "hash": "f4e2bd48",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-08-28T23:38:26.000Z",
+              "message": "ci: install ATOM dependencies in ROCm torch 2.10 smoke test (#4802)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 1,
+                "lines": 19,
+                "insertions": 16,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
                 "ai": 1,
                 "total": 19
               },
@@ -4055,6 +4175,150 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 6,
+          "significant_commits": 5,
+          "simple_commits": 1,
+          "commit_score": 404,
+          "commits": [
+            {
+              "hash": "4d06708e",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-14T21:34:44.000Z",
+              "message": "[Misc] Update the default value of shm name and supported transfer mode to avoid shm warnings (#4447)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 14,
+                "lines": 191,
+                "insertions": 128,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8655d5b6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-15T04:06:15.000Z",
+              "message": "[CI] fix failed AMD ROCm release pipeline (#4581)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 106,
+                "insertions": 104,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "61960c22",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-15T01:27:55.000Z",
+              "message": "[MP][Perf] Improve the store/retrieve throughput for single head large block size models (#4577)\n\n[Add] kernel fix for single head large block size case\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 164,
+                "insertions": 156,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e10c67fa",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-26T19:50:29.000Z",
+              "message": "[Observability] Add inflight copies counters for MP (#4755)\n\n* Add observability metrics for in-flight stores and retrieves\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 709,
+                "insertions": 688,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c0604a54",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-27T19:23:28.000Z",
+              "message": "[Misc] Backport vLLM #47505 to fix LMCache with vllm multi connector (#4781)\n\nfix the logic for multi-connector\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0c2a6801",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-28T17:57:56.000Z",
+              "message": "[Cli] add --no-warmup to lmcache bench engine cli command (#4789)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 10,
+                "lines": 247,
+                "insertions": 230,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 24,
+                "total": 86
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67.33333333333333,
+          "significance_ratio": 0.8333333333333334,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 404,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Xiao Lei",
           "email": "xlei.boll@gmail.com",
           "total_commits": 5,
@@ -4174,129 +4438,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 401,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 5,
-          "significant_commits": 4,
-          "simple_commits": 1,
-          "commit_score": 318,
-          "commits": [
-            {
-              "hash": "4d06708e",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-14T21:34:44.000Z",
-              "message": "[Misc] Update the default value of shm name and supported transfer mode to avoid shm warnings (#4447)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 14,
-                "lines": 191,
-                "insertions": 128,
-                "deletions": 63
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 19,
-                "total": 81
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "8655d5b6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-15T04:06:15.000Z",
-              "message": "[CI] fix failed AMD ROCm release pipeline (#4581)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 106,
-                "insertions": 104,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 10,
-                "total": 62
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "61960c22",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-15T01:27:55.000Z",
-              "message": "[MP][Perf] Improve the store/retrieve throughput for single head large block size models (#4577)\n\n[Add] kernel fix for single head large block size case\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 2,
-                "lines": 164,
-                "insertions": 156,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 16,
-                "total": 68
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e10c67fa",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-26T19:50:29.000Z",
-              "message": "[Observability] Add inflight copies counters for MP (#4755)\n\n* Add observability metrics for in-flight stores and retrieves\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 709,
-                "insertions": 688,
-                "deletions": 21
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "c0604a54",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-27T19:23:28.000Z",
-              "message": "[Misc] Backport vLLM #47505 to fix LMCache with vllm multi connector (#4781)\n\nfix the logic for multi-connector\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 63.6,
-          "significance_ratio": 0.8,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 318,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4648,10 +4789,10 @@
         {
           "name": "andyluo7",
           "email": "43718156+andyluo7@users.noreply.github.com",
-          "total_commits": 5,
+          "total_commits": 6,
           "significant_commits": 2,
-          "simple_commits": 3,
-          "commit_score": 212,
+          "simple_commits": 4,
+          "commit_score": 231,
           "commits": [
             {
               "hash": "318f6c0b",
@@ -4757,14 +4898,95 @@
                 "total": 29
               },
               "classification": "simple"
+            },
+            {
+              "hash": "f4e2bd48",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-08-28T23:38:26.000Z",
+              "message": "ci: install ATOM dependencies in ROCm torch 2.10 smoke test (#4802)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 1,
+                "lines": 19,
+                "insertions": 16,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 1,
+                "total": 19
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 42.4,
-          "significance_ratio": 0.4,
+          "avg_score": 38.5,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 212,
+          "total_score": 231,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 172,
+          "commits": [
+            {
+              "hash": "f5f3e95c",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-08-26T04:36:53.000Z",
+              "message": "[Feature] MP mode DCP compatibility (#4679)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 31,
+                "lines": 1355,
+                "insertions": 1052,
+                "deletions": 303
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a0e4a4c2",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-08-28T06:46:32.000Z",
+              "message": "[Refactor]: vLLM LBHNC KVLayout metadata (#4729)\n\n* [Fix] Restore vLLM KV cache layout discovery after vllm#51718\n\nvllm#51718 (RFC vllm#42082) moved layout resolution onto\nCacheConfig.kv_cache_layout and removed\nvllm.v1.attention.backends.utils.get_kv_cache_layout, so the kv_layout\nregistration hint silently vanished on vLLM nightlies.\n\nRead the resolved layout from CacheConfig (falling back to the legacy\nbackend query on older vLLM), normalize standardized KVCacheLayout\nnames onto the existing NHD/HND vocabulary, and raise at registration\nfor the four layouts LMCache cannot transfer yet instead of\nmisclassifying them as NHD.\n\nPart of #3560.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Clarify unsupported-layout remediation: backend-required layouts cannot be overridden via env\n\nFound in E2E: DeepSeek V4's attention backend requires BLHNC, so the\nprevious suggestion to set VLLM_KV_CACHE_LAYOUT was not actionable there\n(backend-required outranks the env var in vLLM's resolution order).\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Fix] Express LMCache's preferred KV cache layout to vLLM\n\nNon-MLA models prefer the standardized head-contiguous layout (LBHNC);\nMLA defers since layout is immaterial for a single latent head, and\npre-standardization vLLM gets the legacy HND name. The standardized\nname is returned rather than its alias because MultiConnector compares\npreference strings verbatim. Backend-required layouts and\nVLLM_KV_CACHE_LAYOUT still outrank a preference and remain validated\nat registration.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Keep LayoutHints.kv_layout strictly NHD/HND; translate at the vLLM boundary\n\nReview feedback: kv_layout exists only to disambiguate the heads/tokens\norder that shape sniffing cannot; engine formats live in EngineKVFormat.\nMove the standardized-name translation (and the unsupported-layout\nfail-loud) from kv_format/types.py into integration/vllm/utils.py, and\nhave the detector reject hints outside the two-value contract instead\nof importing a vLLM vocabulary.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Fail loud when layout hints are built before resolution\n\nRegistration always runs after vLLM resolves the layout, so an\nunresolved CacheConfig here means a caller bug (hints built at\nconstruction time, or an ambient default config); raise with the\nprecondition instead of silently skipping the hint. The MP worker\nadapter captures hints once per process -- the layout is final for the\nprocess lifetime and heartbeat recovery may re-register from a context\nwithout the ambient vLLM config.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Support the blocks-first standardized layouts (BLHNC/BLNHC)\n\nThe kv_layout hint now carries the standardized layout vocabulary\n(legacy NHD/HND spellings canonicalize at the vLLM boundary), and the\nvLLM detector goes declaration-first: a blocks-first hint makes it\nverify that the registered per-layer views share one storage with the\ndeclared strides -- any drift raises -- and reconstruct the single\ncross-layer tensor.\n\nTwo EngineKVFormat members join their NB_NL_TWO_* siblings with K/V\npacked in the content dim: NB_NL_NH_BS_CS (BLHNC) and NB_NL_BS_NH_CS\n(BLNHC). Their specs hand the kernels per-layer base pointers one\n(layer, block) chunk apart, and page_buffer_offset gains the inflated\nper-block step (num_layers * chunk) that blocks-first addressing\nneeds. GPU round-trip tests pin the kernels against a pure-torch\nreference in both directions.\n\nLHBNC and BHLNC remain rejected: their per-(layer, block) content is\nfragmented per head, which PageBufferShapeDesc cannot describe.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Blocks-first transfers through HMA-shared pools\n\nDeepSeek V4's pool interleaves groups with different geometry, so a\ngroup's per-block step exceeds num_layers * chunk. Reconstruction now\naccepts (and preserves) the observed step, the connector reads it off\nthe reconstructed tensor, and multi_layer_kv_transfer carries it to\nthe kernels as block_stride_elems (0 = tight). Pointer initialization\ngoes through spec.data_ptrs so cross-layer formats hand the kernels\nper-layer bases. GPU round-trip tests cover tight and padded pools.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Reconstruct blocks-first groups interleaved inside HMA blocks\n\nDeepSeek V4 pools weave groups within each block, so one group's\nconsecutive layers sit a uniform step apart that exceeds its own\nchunk. Observe and verify the step (uniform spacing, block step large\nenough to hold all layers), carry it as the reconstructed tensor's\nlayer stride, and let the per-layer base pointers absorb it in the\nkernels.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Carry canonical layout names and reconstructed tensors through the MP group path\n\nFound by MP-mode E2E: the subpaged-MLA group edit still enforced the\nlegacy two-name kv_layout contract and rejected canonical names, and\nper-group discovery integer-indexed the reconstructed cross-layer\ntensor as if it were a per-layer list. Group edits now accept the\ncanonical spellings, and cross-layer sub-groups keep their single\nreconstructed tensor (identity grouping folds the repeats).\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Identity grouping reads geometry off the reconstructed cross-layer tensor\n\nCross-layer entries in the normalized per-layer list are the whole\nreconstructed tensor, not per-layer slices; indexing the outer list by\nlayer fed a list into the spec accessors.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Group representatives resolve their spec source through one helper\n\nThird occurrence of the same slip (engine discovery, identity grouping,\nnow the layer-groups manager): a cross-layer group's representative\nentry is the reconstructed whole-group tensor and must not be wrapped\nas a per-layer list. group_spec_source() owns the choice.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Route every group-representative spec access through group_spec_source\n\nThe layer-groups manager's block-stride probe and shape-desc builder\nstill passed the outer per-layer list for cross-layer groups.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Group data pointers resolve cross-layer groups locally\n\nget_group_data_ptrs passed the outer per-layer list and global layer\nindices; a cross-layer group's spec needs its reconstructed tensor and\ngroup-local indices. Adds a DSV4-shaped construction test: two groups\nwith different geometry interleaved in one blocks-first pool, through\nnormalize -> manager -> group pointers.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* MP block-transfer kernels address the blocks-first formats\n\nPer-layer base pointers land one (layer, block) chunk apart and\nscalars_per_block() already carries the interleaved step through\nblock_stride_elems, so the new formats reuse the per-layer address\nshape; NB_NL_NH_BS_CS joins the HND within-block branch.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Apply isort and clang-format across the branch\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Import the MP connector lazily in the preference tests\n\nImporting lmcache_mp_connector at collection time initializes\nprocess-wide MP transfer state, which the cache-server tests later\ntrip over when the whole suite runs in one process. The isolation\ndefect predates this branch; importing inside a fixture keeps the\npreference tests out of that ordering.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Note why the heads-outermost layouts stay unsupported\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Mark the heads-outermost layout gap as TODO\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Treat layout hints as registration payload, not adapter-computed state\n\nThe connector already builds the hints for group edits; forward them\nthrough register_kv_caches and persist them beside kv_caches and\nengine_group_infos for heartbeat re-registration, instead of the\nadapter lazily computing its own copy from the ambient config.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Scope the CPU-backend HND override to layer-compact hints\n\nThe override works around vLLM's CPU attention backend misreporting\nthe layer-compact layout; it was also stomping explicit blocks-first\ndeclarations, which broke reconstruction everywhere torch runs on CPU\n(the ubuntu CI matrix).\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Match the torch fallback's multi_layer_kv_transfer signature to cuda_ops\n\nThe CUDA binding gained block_stride_elems; the fallback mirrors it\nand rejects the blocks-first cross-layer formats it does not\nimplement, following the file's existing HND precedent. Caught by\ntest_function_signature_parity on k3.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Resolve cross-layer entries inside the spec accessors\n\nReview feedback: the geometry accessors own the mapping from a\nnormalized per-layer structure onto what a format's spec expects, so\ncall sites stay uniform. One documented resolver replaces the\nper-call-site source juggling and the group_spec_source helper, and\nbare cross-layer tensors pass through unchanged again.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Own the kv_layout vocabulary in kv_format.types\n\nThe canonical-spelling map was declared in the vLLM detector and\nre-spelled inline in the group edits; the vocabulary module that\ndefines KVLayoutName owns it now and both consume it.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Skip the connector preference tests where vLLM is not installed\n\nThe k3 unit environment installs LMCache without vLLM; the lazy\nconnector import now skips there instead of erroring.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Split the data_ptrs docstring into one paragraph per pointer shape\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Resolve block_stride_elems through the layout getter\n\nBoth connector classes computed it inline from is_cross_layer checks;\nroute them through resolve_block_stride_and_log_layout and give the\ntorch fallback an _is_blocks_first_format predicate beside its\nexisting _is_*_format helpers.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Trim comments to load-bearing facts\n\nAlso fix the NB_NL_BS_NH_CS module docstring (the [BS, NH, CS] order\nis NHD, not HND) and move the enum doc comments for 17/18 in front of\ntheir members like the rest of the file.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Drop layout-name canonicalization; keep NHD and HND\n\ntranslate_vllm_kv_cache_layout now maps vLLM's LBNHC/LBHNC to NHD/HND\nat the boundary, so hints and detection keep the names LMCache has\nalways used, plus BLHNC/BLNHC which have no legacy spelling. Deletes\nCANONICAL_KV_LAYOUTS. get_required_kvcache_layout still returns\nLBHNC because that string goes to vLLM.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Leave kv_cache_group_edits.py untouched\n\nWith hints carrying NHD/HND again the file needs no change; restore\nit to dev byte for byte.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Drop drive-by edits to unrelated files\n\nRestore two READMEs, the cache-simulator README, and\nrecord_strategies/base.py, which a repo-wide format pass had\nreformatted; none are touched by this change. Keep the dev wording of\nthe kv_layout hint doc, appending only the new names.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Keep get_num_blocks at two arguments\n\nThe cross-layer unwrap lives inside the getter, so dev's call site\nworks unchanged for every group and kv_layer_groups.py returns to dev\nbyte for byte.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Name the fallback guard for what it tests\n\nBlocks-outermost is not the same as cross-layer: TRT-LLM's\nNB_NL_TWO_NH_BS_HS is cross-layer without fused KV and the NL_X_*_CS\nformats are fused without being cross-layer; the fallback supports\nboth. The guard rejects exactly the cross-layer fused pair, so call\nit that.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Derive every layout-name check from KVLayoutName\n\nKVLayoutName is the one place the accepted vocabulary is written;\nKV_LAYOUT_NAMES = get_args(KVLayoutName) feeds the membership checks\nand the return annotations use the type. Deletes the\n_UNSUPPORTED/_KNOWN tuple globals from the vLLM integration.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Return only the spec input from _resolve_spec_view\n\nCross-layer spec accessors ignore per-call layer indices, so the\nresolved local index was never load-bearing; callers keep passing\ntheir own.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Spell out shapes in the reconstruction docstring\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Drop the blocks-first reconstruction; read the block step from stride(0)\n\nvLLM's per-layer views under BLHNC/BLNHC have exactly the shape of the\nexisting NL_X_NB_NH_BS_CS / NL_X_NB_BS_NH_CS formats -- only stride(0)\ndiffers, and contiguous-view recovery already accepts dim-0-padded\nviews. So detection classifies them as those formats with the views\npassed through, the two per-layer CS offset entries take the block\nstep from block_stride_elems (0 means tight, as before), and\nresolve_block_stride_and_log_layout treats the CS formats as\nblock-axis. Deletes NB_NL_NH_BS_CS / NB_NL_BS_NH_CS, their specs, the\nreconstruction, and _resolve_spec_view.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Tile the mamba state row without assuming divisibility\n\nNightly vLLM registers the aligned mamba state as a tight view: the\npage padding lives only in stride(0), so the row no longer divides by\nthe unified block size. Round the per-token width up to the widest\nvector alignment that tiles within the block step and divides it; the\nspilled columns land in the page padding and stride(0) stays the\ndim-0 step. Verified MP E2E on Kimi Linear and Qwen3-Next.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Bound the mamba tile by the layer's padded page, not stride(0)\n\nOn a shared pool stride(0) spans sibling layers, so a rounded-up tile\ncould cover the next layer's bytes and a stale load would corrupt it.\nspec.page_size_bytes is this layer's own allotment; spill stays inside\nit.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Move get_size_bytes to lmcache.utils\n\nIt is engine-agnostic and the core (memory management, allocators)\nimported it from the vLLM integration module, inverting the layering\nand creating an import cycle through lmcache.v1.gpu_connector. The\nold name re-exports; the cycle-dodging function-level import of\nKV_LAYOUT_NAMES becomes a plain module import.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Rely on vLLM's own layout parsing\n\nCacheConfig.get_resolved_kv_cache_layout() owns alias resolution,\nunknown-name validation, and the not-yet-resolved error, so the\ntranslation shrinks to the member-name -> LMCache-name map plus the\nheads-outermost rejection.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Document the mamba re-view by input and output shape and stride\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 28,
+                "lines": 935,
+                "insertions": 802,
+                "deletions": 133
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 86,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 172,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4906,8 +5128,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 143,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "3xdevv",
@@ -5303,45 +5525,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "f5f3e95c",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-08-26T04:36:53.000Z",
-              "message": "[Feature] MP mode DCP compatibility (#4679)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 31,
-                "lines": 1355,
-                "insertions": 1052,
-                "deletions": 303
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "Junyuan",
           "email": "jjysama@gmail.com",
           "total_commits": 1,
@@ -5533,6 +5716,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 69,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Meghana",
+          "email": "11406990+meghana-madhyastha@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 64,
+          "commits": [
+            {
+              "hash": "1fca11ed",
+              "author": "Meghana",
+              "email": "11406990+meghana-madhyastha@users.noreply.github.com",
+              "date": "2026-08-28T01:26:03.000Z",
+              "message": "[good-first-issue] storage: convert f-string log calls in gds_backend.py to %-format (#4785)\n\nAll 33 logger.* calls in lmcache/v1/storage_backend/gds_backend.py built their\nmessage with an f-string, so the string was interpolated even when the record\nwas filtered out. Convert them to lazy %-format (ruff G004).\n\nNo behavior change; format style only.\n\nSigned-off-by: Meghana <meghana.madhyastha@parasail.io>",
+              "stats": {
+                "files": 1,
+                "lines": 178,
+                "insertions": 116,
+                "deletions": 62
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 17,
+                "total": 64
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 64,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -7029,6 +7251,150 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 6,
+          "significant_commits": 5,
+          "simple_commits": 1,
+          "commit_score": 404,
+          "commits": [
+            {
+              "hash": "4d06708e",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-14T21:34:44.000Z",
+              "message": "[Misc] Update the default value of shm name and supported transfer mode to avoid shm warnings (#4447)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 14,
+                "lines": 191,
+                "insertions": 128,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8655d5b6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-15T04:06:15.000Z",
+              "message": "[CI] fix failed AMD ROCm release pipeline (#4581)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 2,
+                "lines": 106,
+                "insertions": 104,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "61960c22",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-15T01:27:55.000Z",
+              "message": "[MP][Perf] Improve the store/retrieve throughput for single head large block size models (#4577)\n\n[Add] kernel fix for single head large block size case\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 164,
+                "insertions": 156,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e10c67fa",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-26T19:50:29.000Z",
+              "message": "[Observability] Add inflight copies counters for MP (#4755)\n\n* Add observability metrics for in-flight stores and retrieves\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 709,
+                "insertions": 688,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c0604a54",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-27T19:23:28.000Z",
+              "message": "[Misc] Backport vLLM #47505 to fix LMCache with vllm multi connector (#4781)\n\nfix the logic for multi-connector\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0c2a6801",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-08-28T17:57:56.000Z",
+              "message": "[Cli] add --no-warmup to lmcache bench engine cli command (#4789)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 10,
+                "lines": 247,
+                "insertions": 230,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 24,
+                "total": 86
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67.33333333333333,
+          "significance_ratio": 0.8333333333333334,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 404,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Xiao Lei",
           "email": "xlei.boll@gmail.com",
           "total_commits": 5,
@@ -7148,129 +7514,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 401,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 5,
-          "significant_commits": 4,
-          "simple_commits": 1,
-          "commit_score": 318,
-          "commits": [
-            {
-              "hash": "4d06708e",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-14T21:34:44.000Z",
-              "message": "[Misc] Update the default value of shm name and supported transfer mode to avoid shm warnings (#4447)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 14,
-                "lines": 191,
-                "insertions": 128,
-                "deletions": 63
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 19,
-                "total": 81
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "8655d5b6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-15T04:06:15.000Z",
-              "message": "[CI] fix failed AMD ROCm release pipeline (#4581)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 2,
-                "lines": 106,
-                "insertions": 104,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 10,
-                "total": 62
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "61960c22",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-15T01:27:55.000Z",
-              "message": "[MP][Perf] Improve the store/retrieve throughput for single head large block size models (#4577)\n\n[Add] kernel fix for single head large block size case\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 2,
-                "lines": 164,
-                "insertions": 156,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 16,
-                "total": 68
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e10c67fa",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-26T19:50:29.000Z",
-              "message": "[Observability] Add inflight copies counters for MP (#4755)\n\n* Add observability metrics for in-flight stores and retrieves\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 709,
-                "insertions": 688,
-                "deletions": 21
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "c0604a54",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-08-27T19:23:28.000Z",
-              "message": "[Misc] Backport vLLM #47505 to fix LMCache with vllm multi connector (#4781)\n\nfix the logic for multi-connector\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 63.6,
-          "significance_ratio": 0.8,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 318,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7622,10 +7865,10 @@
         {
           "name": "andyluo7",
           "email": "43718156+andyluo7@users.noreply.github.com",
-          "total_commits": 5,
+          "total_commits": 6,
           "significant_commits": 2,
-          "simple_commits": 3,
-          "commit_score": 212,
+          "simple_commits": 4,
+          "commit_score": 231,
           "commits": [
             {
               "hash": "318f6c0b",
@@ -7731,14 +7974,95 @@
                 "total": 29
               },
               "classification": "simple"
+            },
+            {
+              "hash": "f4e2bd48",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-08-28T23:38:26.000Z",
+              "message": "ci: install ATOM dependencies in ROCm torch 2.10 smoke test (#4802)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 1,
+                "lines": 19,
+                "insertions": 16,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 1,
+                "total": 19
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 42.4,
-          "significance_ratio": 0.4,
+          "avg_score": 38.5,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 212,
+          "total_score": 231,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 172,
+          "commits": [
+            {
+              "hash": "f5f3e95c",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-08-26T04:36:53.000Z",
+              "message": "[Feature] MP mode DCP compatibility (#4679)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 31,
+                "lines": 1355,
+                "insertions": 1052,
+                "deletions": 303
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a0e4a4c2",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-08-28T06:46:32.000Z",
+              "message": "[Refactor]: vLLM LBHNC KVLayout metadata (#4729)\n\n* [Fix] Restore vLLM KV cache layout discovery after vllm#51718\n\nvllm#51718 (RFC vllm#42082) moved layout resolution onto\nCacheConfig.kv_cache_layout and removed\nvllm.v1.attention.backends.utils.get_kv_cache_layout, so the kv_layout\nregistration hint silently vanished on vLLM nightlies.\n\nRead the resolved layout from CacheConfig (falling back to the legacy\nbackend query on older vLLM), normalize standardized KVCacheLayout\nnames onto the existing NHD/HND vocabulary, and raise at registration\nfor the four layouts LMCache cannot transfer yet instead of\nmisclassifying them as NHD.\n\nPart of #3560.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Clarify unsupported-layout remediation: backend-required layouts cannot be overridden via env\n\nFound in E2E: DeepSeek V4's attention backend requires BLHNC, so the\nprevious suggestion to set VLLM_KV_CACHE_LAYOUT was not actionable there\n(backend-required outranks the env var in vLLM's resolution order).\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Fix] Express LMCache's preferred KV cache layout to vLLM\n\nNon-MLA models prefer the standardized head-contiguous layout (LBHNC);\nMLA defers since layout is immaterial for a single latent head, and\npre-standardization vLLM gets the legacy HND name. The standardized\nname is returned rather than its alias because MultiConnector compares\npreference strings verbatim. Backend-required layouts and\nVLLM_KV_CACHE_LAYOUT still outrank a preference and remain validated\nat registration.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Keep LayoutHints.kv_layout strictly NHD/HND; translate at the vLLM boundary\n\nReview feedback: kv_layout exists only to disambiguate the heads/tokens\norder that shape sniffing cannot; engine formats live in EngineKVFormat.\nMove the standardized-name translation (and the unsupported-layout\nfail-loud) from kv_format/types.py into integration/vllm/utils.py, and\nhave the detector reject hints outside the two-value contract instead\nof importing a vLLM vocabulary.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Fail loud when layout hints are built before resolution\n\nRegistration always runs after vLLM resolves the layout, so an\nunresolved CacheConfig here means a caller bug (hints built at\nconstruction time, or an ambient default config); raise with the\nprecondition instead of silently skipping the hint. The MP worker\nadapter captures hints once per process -- the layout is final for the\nprocess lifetime and heartbeat recovery may re-register from a context\nwithout the ambient vLLM config.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Support the blocks-first standardized layouts (BLHNC/BLNHC)\n\nThe kv_layout hint now carries the standardized layout vocabulary\n(legacy NHD/HND spellings canonicalize at the vLLM boundary), and the\nvLLM detector goes declaration-first: a blocks-first hint makes it\nverify that the registered per-layer views share one storage with the\ndeclared strides -- any drift raises -- and reconstruct the single\ncross-layer tensor.\n\nTwo EngineKVFormat members join their NB_NL_TWO_* siblings with K/V\npacked in the content dim: NB_NL_NH_BS_CS (BLHNC) and NB_NL_BS_NH_CS\n(BLNHC). Their specs hand the kernels per-layer base pointers one\n(layer, block) chunk apart, and page_buffer_offset gains the inflated\nper-block step (num_layers * chunk) that blocks-first addressing\nneeds. GPU round-trip tests pin the kernels against a pure-torch\nreference in both directions.\n\nLHBNC and BHLNC remain rejected: their per-(layer, block) content is\nfragmented per head, which PageBufferShapeDesc cannot describe.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Blocks-first transfers through HMA-shared pools\n\nDeepSeek V4's pool interleaves groups with different geometry, so a\ngroup's per-block step exceeds num_layers * chunk. Reconstruction now\naccepts (and preserves) the observed step, the connector reads it off\nthe reconstructed tensor, and multi_layer_kv_transfer carries it to\nthe kernels as block_stride_elems (0 = tight). Pointer initialization\ngoes through spec.data_ptrs so cross-layer formats hand the kernels\nper-layer bases. GPU round-trip tests cover tight and padded pools.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Reconstruct blocks-first groups interleaved inside HMA blocks\n\nDeepSeek V4 pools weave groups within each block, so one group's\nconsecutive layers sit a uniform step apart that exceeds its own\nchunk. Observe and verify the step (uniform spacing, block step large\nenough to hold all layers), carry it as the reconstructed tensor's\nlayer stride, and let the per-layer base pointers absorb it in the\nkernels.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Carry canonical layout names and reconstructed tensors through the MP group path\n\nFound by MP-mode E2E: the subpaged-MLA group edit still enforced the\nlegacy two-name kv_layout contract and rejected canonical names, and\nper-group discovery integer-indexed the reconstructed cross-layer\ntensor as if it were a per-layer list. Group edits now accept the\ncanonical spellings, and cross-layer sub-groups keep their single\nreconstructed tensor (identity grouping folds the repeats).\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Identity grouping reads geometry off the reconstructed cross-layer tensor\n\nCross-layer entries in the normalized per-layer list are the whole\nreconstructed tensor, not per-layer slices; indexing the outer list by\nlayer fed a list into the spec accessors.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Group representatives resolve their spec source through one helper\n\nThird occurrence of the same slip (engine discovery, identity grouping,\nnow the layer-groups manager): a cross-layer group's representative\nentry is the reconstructed whole-group tensor and must not be wrapped\nas a per-layer list. group_spec_source() owns the choice.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Route every group-representative spec access through group_spec_source\n\nThe layer-groups manager's block-stride probe and shape-desc builder\nstill passed the outer per-layer list for cross-layer groups.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Group data pointers resolve cross-layer groups locally\n\nget_group_data_ptrs passed the outer per-layer list and global layer\nindices; a cross-layer group's spec needs its reconstructed tensor and\ngroup-local indices. Adds a DSV4-shaped construction test: two groups\nwith different geometry interleaved in one blocks-first pool, through\nnormalize -> manager -> group pointers.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* MP block-transfer kernels address the blocks-first formats\n\nPer-layer base pointers land one (layer, block) chunk apart and\nscalars_per_block() already carries the interleaved step through\nblock_stride_elems, so the new formats reuse the per-layer address\nshape; NB_NL_NH_BS_CS joins the HND within-block branch.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Apply isort and clang-format across the branch\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Import the MP connector lazily in the preference tests\n\nImporting lmcache_mp_connector at collection time initializes\nprocess-wide MP transfer state, which the cache-server tests later\ntrip over when the whole suite runs in one process. The isolation\ndefect predates this branch; importing inside a fixture keeps the\npreference tests out of that ordering.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Note why the heads-outermost layouts stay unsupported\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Mark the heads-outermost layout gap as TODO\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Treat layout hints as registration payload, not adapter-computed state\n\nThe connector already builds the hints for group edits; forward them\nthrough register_kv_caches and persist them beside kv_caches and\nengine_group_infos for heartbeat re-registration, instead of the\nadapter lazily computing its own copy from the ambient config.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Scope the CPU-backend HND override to layer-compact hints\n\nThe override works around vLLM's CPU attention backend misreporting\nthe layer-compact layout; it was also stomping explicit blocks-first\ndeclarations, which broke reconstruction everywhere torch runs on CPU\n(the ubuntu CI matrix).\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Match the torch fallback's multi_layer_kv_transfer signature to cuda_ops\n\nThe CUDA binding gained block_stride_elems; the fallback mirrors it\nand rejects the blocks-first cross-layer formats it does not\nimplement, following the file's existing HND precedent. Caught by\ntest_function_signature_parity on k3.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Resolve cross-layer entries inside the spec accessors\n\nReview feedback: the geometry accessors own the mapping from a\nnormalized per-layer structure onto what a format's spec expects, so\ncall sites stay uniform. One documented resolver replaces the\nper-call-site source juggling and the group_spec_source helper, and\nbare cross-layer tensors pass through unchanged again.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Own the kv_layout vocabulary in kv_format.types\n\nThe canonical-spelling map was declared in the vLLM detector and\nre-spelled inline in the group edits; the vocabulary module that\ndefines KVLayoutName owns it now and both consume it.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Skip the connector preference tests where vLLM is not installed\n\nThe k3 unit environment installs LMCache without vLLM; the lazy\nconnector import now skips there instead of erroring.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Split the data_ptrs docstring into one paragraph per pointer shape\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Resolve block_stride_elems through the layout getter\n\nBoth connector classes computed it inline from is_cross_layer checks;\nroute them through resolve_block_stride_and_log_layout and give the\ntorch fallback an _is_blocks_first_format predicate beside its\nexisting _is_*_format helpers.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Trim comments to load-bearing facts\n\nAlso fix the NB_NL_BS_NH_CS module docstring (the [BS, NH, CS] order\nis NHD, not HND) and move the enum doc comments for 17/18 in front of\ntheir members like the rest of the file.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Drop layout-name canonicalization; keep NHD and HND\n\ntranslate_vllm_kv_cache_layout now maps vLLM's LBNHC/LBHNC to NHD/HND\nat the boundary, so hints and detection keep the names LMCache has\nalways used, plus BLHNC/BLNHC which have no legacy spelling. Deletes\nCANONICAL_KV_LAYOUTS. get_required_kvcache_layout still returns\nLBHNC because that string goes to vLLM.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Leave kv_cache_group_edits.py untouched\n\nWith hints carrying NHD/HND again the file needs no change; restore\nit to dev byte for byte.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Drop drive-by edits to unrelated files\n\nRestore two READMEs, the cache-simulator README, and\nrecord_strategies/base.py, which a repo-wide format pass had\nreformatted; none are touched by this change. Keep the dev wording of\nthe kv_layout hint doc, appending only the new names.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Keep get_num_blocks at two arguments\n\nThe cross-layer unwrap lives inside the getter, so dev's call site\nworks unchanged for every group and kv_layer_groups.py returns to dev\nbyte for byte.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Name the fallback guard for what it tests\n\nBlocks-outermost is not the same as cross-layer: TRT-LLM's\nNB_NL_TWO_NH_BS_HS is cross-layer without fused KV and the NL_X_*_CS\nformats are fused without being cross-layer; the fallback supports\nboth. The guard rejects exactly the cross-layer fused pair, so call\nit that.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Derive every layout-name check from KVLayoutName\n\nKVLayoutName is the one place the accepted vocabulary is written;\nKV_LAYOUT_NAMES = get_args(KVLayoutName) feeds the membership checks\nand the return annotations use the type. Deletes the\n_UNSUPPORTED/_KNOWN tuple globals from the vLLM integration.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Return only the spec input from _resolve_spec_view\n\nCross-layer spec accessors ignore per-call layer indices, so the\nresolved local index was never load-bearing; callers keep passing\ntheir own.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Spell out shapes in the reconstruction docstring\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Drop the blocks-first reconstruction; read the block step from stride(0)\n\nvLLM's per-layer views under BLHNC/BLNHC have exactly the shape of the\nexisting NL_X_NB_NH_BS_CS / NL_X_NB_BS_NH_CS formats -- only stride(0)\ndiffers, and contiguous-view recovery already accepts dim-0-padded\nviews. So detection classifies them as those formats with the views\npassed through, the two per-layer CS offset entries take the block\nstep from block_stride_elems (0 means tight, as before), and\nresolve_block_stride_and_log_layout treats the CS formats as\nblock-axis. Deletes NB_NL_NH_BS_CS / NB_NL_BS_NH_CS, their specs, the\nreconstruction, and _resolve_spec_view.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Tile the mamba state row without assuming divisibility\n\nNightly vLLM registers the aligned mamba state as a tight view: the\npage padding lives only in stride(0), so the row no longer divides by\nthe unified block size. Round the per-token width up to the widest\nvector alignment that tiles within the block step and divides it; the\nspilled columns land in the page padding and stride(0) stays the\ndim-0 step. Verified MP E2E on Kimi Linear and Qwen3-Next.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Bound the mamba tile by the layer's padded page, not stride(0)\n\nOn a shared pool stride(0) spans sibling layers, so a rounded-up tile\ncould cover the next layer's bytes and a stale load would corrupt it.\nspec.page_size_bytes is this layer's own allotment; spill stays inside\nit.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Move get_size_bytes to lmcache.utils\n\nIt is engine-agnostic and the core (memory management, allocators)\nimported it from the vLLM integration module, inverting the layering\nand creating an import cycle through lmcache.v1.gpu_connector. The\nold name re-exports; the cycle-dodging function-level import of\nKV_LAYOUT_NAMES becomes a plain module import.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Rely on vLLM's own layout parsing\n\nCacheConfig.get_resolved_kv_cache_layout() owns alias resolution,\nunknown-name validation, and the not-yet-resolved error, so the\ntranslation shrinks to the member-name -> LMCache-name map plus the\nheads-outermost rejection.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* Document the mamba re-view by input and output shape and stride\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 28,
+                "lines": 935,
+                "insertions": 802,
+                "deletions": 133
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 86,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 172,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7880,8 +8204,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 143,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "3xdevv",
@@ -8277,45 +8601,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "f5f3e95c",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-08-26T04:36:53.000Z",
-              "message": "[Feature] MP mode DCP compatibility (#4679)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 31,
-                "lines": 1355,
-                "insertions": 1052,
-                "deletions": 303
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "Junyuan",
           "email": "jjysama@gmail.com",
           "total_commits": 1,
@@ -8507,6 +8792,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 69,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Meghana",
+          "email": "11406990+meghana-madhyastha@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 64,
+          "commits": [
+            {
+              "hash": "1fca11ed",
+              "author": "Meghana",
+              "email": "11406990+meghana-madhyastha@users.noreply.github.com",
+              "date": "2026-08-28T01:26:03.000Z",
+              "message": "[good-first-issue] storage: convert f-string log calls in gds_backend.py to %-format (#4785)\n\nAll 33 logger.* calls in lmcache/v1/storage_backend/gds_backend.py built their\nmessage with an f-string, so the string was interpolated even when the record\nwas filtered out. Convert them to lazy %-format (ruff G004).\n\nNo behavior change; format style only.\n\nSigned-off-by: Meghana <meghana.madhyastha@parasail.io>",
+              "stats": {
+                "files": 1,
+                "lines": 178,
+                "insertions": 116,
+                "deletions": 62
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 17,
+                "total": 64
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 64,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -9255,13 +9579,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-08-28T00:30:38.727Z",
+    "analyzedAt": "2026-08-29T00:30:26.781Z",
     "daysBack": 2,
-    "totalCommits": 102,
-    "totalContributors": 46,
+    "totalCommits": 106,
+    "totalContributors": 47,
     "mergedFrom": {
-      "existing": 89,
-      "new": 23
+      "existing": 102,
+      "new": 17
     }
   }
 }
