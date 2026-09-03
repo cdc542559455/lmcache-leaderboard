@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-09-02T00:30:27.961Z",
-  "total_commits_analyzed": 134,
+  "last_updated": "2026-09-03T00:30:55.879Z",
+  "total_commits_analyzed": 143,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3729,6 +3729,231 @@
       ],
       "2026-W36": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 277,
+          "commits": [
+            {
+              "hash": "1a247620",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-02T00:05:27.000Z",
+              "message": "feat(mp): forward request configs (#4810)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 458,
+                "insertions": 428,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d3dddecc",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T00:03:17.000Z",
+              "message": "[Docs] Add accelerator vendors to ecosystem diagram (#4884)\n\ndocs: expand accelerator vendor logos\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 0,
+                "insertions": 0,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 5,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bbd38f08",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-02T04:20:36.000Z",
+              "message": "fix(mp): make transfer events context-aware (#4854)\n\n* fix(mp): make transfer events context-aware\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nCo-authored-by: Junyuan <jjysama@gmail.com>\nCo-authored-by: Libin Tang <libin.tang@intel.com>\nCo-authored-by: Jinhwan Suk <jinhwan.suk@rebellions.ai>\nCo-authored-by: Shiv Kaul <shiv.kaul@intel.com>",
+              "stats": {
+                "files": 8,
+                "lines": 300,
+                "insertions": 201,
+                "deletions": 99
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b9411278",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-02T03:56:36.000Z",
+              "message": "fix(cpu): support MLA with Engine-driven transfer (#4798)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 232,
+                "insertions": 214,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 23,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 69.25,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 277,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 5,
+          "significant_commits": 3,
+          "simple_commits": 2,
+          "commit_score": 250,
+          "commits": [
+            {
+              "hash": "e8435547",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-01T23:41:48.000Z",
+              "message": "[Fix][CB] Reserve one sparse-leg read lock per KV reader, not one per key (#4866)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c6965abb",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-01T18:20:45.000Z",
+              "message": "[Fix][CB] Decide fused-KV packing per group, not per registration (#4850)\n\n`_cb_group_rope_geometry` read `is_fused_packed` from the group's\n`engine_kv_format`, but that format is detected once per REGISTRATION while\nfused-ness is a per-GROUP property.\n\nMiniMax-M3 registers a fused `2 * head_size` main K/V group (60 layers)\nalongside a key-only `head_size` lightning-indexer side cache (57 layers).\nBoth are rank 4 -- the fused signature -- and both report `kv_size == 1`, so\nthe shared format labelled the index group fused too. `per_head` became\n`2 * head_size`, which does not divide that group's 128-wide row, and the\nhelper raised:\n\n    CB rope: group 1 hidden_dim (128) not a multiple of per-head width\n             (256; fused=True)\n\nThe raise lands inside `cb_retrieve_pre_computed`'s handler, so the server\nanswers `scatter_ran=False` instead of hanging and the client degrades the\nrequest TP-collectively. Measured on an 8-way H200 M3 run: every CB retrieve\nfailed this way (408 degrades = 8 ranks x 51 calls) with `blend_loads` 0, so\nthe blend never engaged. Output stayed correct because each request fell back\nto a full recompute, which is why this presented as a silent 0.0 blend rate\nrather than a crash.\n\nLet the group's own declared per-head width (`shape_desc.hs`, i.e. what vLLM\nallocated) decide whether the format's fused claim applies to it. Both signals\nare required, so this can only narrow a fused claim: a format that is not\nfused stays not fused, and a group carrying no `shape_desc` keeps the\nformat-only decision.\n\nThe index group then resolves to `(fused=False, per_head=128, n_heads=1)` and\nis rotated as one K plane, which is correct: M3's write kernel ropes index-K at\nthe token's absolute position, so those keys must be re-RoPE'd when a token is\nreused at a different position. Skipping the group instead would leave stale\npositions in the indexer and silently perturb its top-k block selection.\n\nVerified against the installed 0.5.5.dev63 build: the new\n`test_mixed_registration_key_only_group_is_not_fused` fails before the change\nand passes after, with the file's 19 pre-existing cases green both ways.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 108,
+                "insertions": 106,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "cd441cdf",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-02T21:42:27.000Z",
+              "message": "[Fix] explicit bucket boundaries for L1 lifecycle histograms (#4803)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 34,
+                "insertions": 33,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "342df9f9",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-02T21:34:31.000Z",
+              "message": "[fix] Release sparse-prefetch read locks when a request never retrieves (#4852)\n\n* fix\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 448,
+                "insertions": 405,
+                "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d589e72c",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-02T20:25:59.000Z",
+              "message": "[fix][CB] Fix the blend-rate regression: all-or-nothing scatter + per-range applied dedup (#4872)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 163,
+                "insertions": 102,
+                "deletions": 61
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 16,
+                "total": 63
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 50,
+          "significance_ratio": 0.6,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 250,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "JH",
           "email": "riversky0014@gmail.com",
           "total_commits": 2,
@@ -3785,45 +4010,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 174,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "1a247620",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-09-02T00:05:27.000Z",
-              "message": "feat(mp): forward request configs (#4810)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 14,
-                "lines": 458,
-                "insertions": 428,
-                "deletions": 30
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3941,8 +4127,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Xiao Lei",
@@ -3984,62 +4170,41 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "weishu",
-          "email": "838677410@qq.com",
-          "total_commits": 2,
+          "name": "Immanuel",
+          "email": "immanuel.peter1@gmail.com",
+          "total_commits": 1,
           "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 82,
+          "simple_commits": 0,
+          "commit_score": 83,
           "commits": [
             {
-              "hash": "e8435547",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-09-01T23:41:48.000Z",
-              "message": "[Fix][CB] Reserve one sparse-leg read lock per KV reader, not one per key (#4866)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "d8fe62b5",
+              "author": "Immanuel",
+              "email": "immanuel.peter1@gmail.com",
+              "date": "2026-09-02T01:42:26.000Z",
+              "message": "[MP][Coordinator] Track per-key ACCESS counts in the key directory (#4873)\n\nSigned-off-by: Immanuel <immanuel.peter1@gmail.com>",
               "stats": {
-                "files": 1,
-                "lines": 1,
-                "insertions": 1,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "c6965abb",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-09-01T18:20:45.000Z",
-              "message": "[Fix][CB] Decide fused-KV packing per group, not per registration (#4850)\n\n`_cb_group_rope_geometry` read `is_fused_packed` from the group's\n`engine_kv_format`, but that format is detected once per REGISTRATION while\nfused-ness is a per-GROUP property.\n\nMiniMax-M3 registers a fused `2 * head_size` main K/V group (60 layers)\nalongside a key-only `head_size` lightning-indexer side cache (57 layers).\nBoth are rank 4 -- the fused signature -- and both report `kv_size == 1`, so\nthe shared format labelled the index group fused too. `per_head` became\n`2 * head_size`, which does not divide that group's 128-wide row, and the\nhelper raised:\n\n    CB rope: group 1 hidden_dim (128) not a multiple of per-head width\n             (256; fused=True)\n\nThe raise lands inside `cb_retrieve_pre_computed`'s handler, so the server\nanswers `scatter_ran=False` instead of hanging and the client degrades the\nrequest TP-collectively. Measured on an 8-way H200 M3 run: every CB retrieve\nfailed this way (408 degrades = 8 ranks x 51 calls) with `blend_loads` 0, so\nthe blend never engaged. Output stayed correct because each request fell back\nto a full recompute, which is why this presented as a silent 0.0 blend rate\nrather than a crash.\n\nLet the group's own declared per-head width (`shape_desc.hs`, i.e. what vLLM\nallocated) decide whether the format's fused claim applies to it. Both signals\nare required, so this can only narrow a fused claim: a format that is not\nfused stays not fused, and a group carrying no `shape_desc` keeps the\nformat-only decision.\n\nThe index group then resolves to `(fused=False, per_head=128, n_heads=1)` and\nis rotated as one K plane, which is correct: M3's write kernel ropes index-K at\nthe token's absolute position, so those keys must be re-RoPE'd when a token is\nreused at a different position. Skipping the group instead would leave stale\npositions in the indexer and silently perturb its top-k block selection.\n\nVerified against the installed 0.5.5.dev63 build: the new\n`test_mixed_registration_key_only_group_is_not_fused` fails before the change\nand passes after, with the file's 19 pre-existing cases green both ways.\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 2,
-                "lines": 108,
-                "insertions": 106,
-                "deletions": 2
+                "files": 10,
+                "lines": 217,
+                "insertions": 176,
+                "deletions": 41
               },
               "scores": {
                 "loc": 30,
-                "files": 10,
+                "files": 20,
                 "keyword": 12,
-                "ai": 10,
-                "total": 62
+                "ai": 21,
+                "total": 83
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 41,
-          "significance_ratio": 0.5,
+          "avg_score": 83,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 82,
+          "total_score": 83,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4101,6 +4266,45 @@
                 "lines": 416,
                 "insertions": 378,
                 "deletions": 38
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "CedricHuang",
+          "email": "38417461+CedricHwong@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "56e45ff7",
+              "author": "CedricHuang",
+              "email": "38417461+CedricHwong@users.noreply.github.com",
+              "date": "2026-09-02T01:49:51.000Z",
+              "message": "[Bugfix][MP][NIXL] Isolate dynamic store paths by cache_salt (#4857)\n\nSigned-off-by: CedricHuang <38417461+CedricHwong@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 299,
+                "insertions": 283,
+                "deletions": 16
               },
               "scores": {
                 "loc": 30,
@@ -4196,8 +4400,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 64,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Julian",
@@ -4235,8 +4439,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "honglie",
@@ -4352,6 +4556,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 29,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Miguel",
+          "email": "60073809+migarci2@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "5c2ca6a7",
+              "author": "Miguel",
+              "email": "60073809+migarci2@users.noreply.github.com",
+              "date": "2026-09-02T03:52:17.000Z",
+              "message": "[good-first-issue] serde: defer timing log formatting (#4779) (#4780)\n\nDefer serde timing log formatting\n\nSigned-off-by: Miguel Garcia <miguelgarciaroman8@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
           "tier": "T2",
           "tier_name": "Intermediate"
         }
@@ -7839,6 +8082,231 @@
       ],
       "2026-09": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 277,
+          "commits": [
+            {
+              "hash": "1a247620",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-02T00:05:27.000Z",
+              "message": "feat(mp): forward request configs (#4810)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 458,
+                "insertions": 428,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d3dddecc",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T00:03:17.000Z",
+              "message": "[Docs] Add accelerator vendors to ecosystem diagram (#4884)\n\ndocs: expand accelerator vendor logos\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 0,
+                "insertions": 0,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 5,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bbd38f08",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-02T04:20:36.000Z",
+              "message": "fix(mp): make transfer events context-aware (#4854)\n\n* fix(mp): make transfer events context-aware\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nCo-authored-by: Junyuan <jjysama@gmail.com>\nCo-authored-by: Libin Tang <libin.tang@intel.com>\nCo-authored-by: Jinhwan Suk <jinhwan.suk@rebellions.ai>\nCo-authored-by: Shiv Kaul <shiv.kaul@intel.com>",
+              "stats": {
+                "files": 8,
+                "lines": 300,
+                "insertions": 201,
+                "deletions": 99
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b9411278",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-02T03:56:36.000Z",
+              "message": "fix(cpu): support MLA with Engine-driven transfer (#4798)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 232,
+                "insertions": 214,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 23,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 69.25,
+          "significance_ratio": 0.75,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 277,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 5,
+          "significant_commits": 3,
+          "simple_commits": 2,
+          "commit_score": 250,
+          "commits": [
+            {
+              "hash": "e8435547",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-01T23:41:48.000Z",
+              "message": "[Fix][CB] Reserve one sparse-leg read lock per KV reader, not one per key (#4866)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "c6965abb",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-01T18:20:45.000Z",
+              "message": "[Fix][CB] Decide fused-KV packing per group, not per registration (#4850)\n\n`_cb_group_rope_geometry` read `is_fused_packed` from the group's\n`engine_kv_format`, but that format is detected once per REGISTRATION while\nfused-ness is a per-GROUP property.\n\nMiniMax-M3 registers a fused `2 * head_size` main K/V group (60 layers)\nalongside a key-only `head_size` lightning-indexer side cache (57 layers).\nBoth are rank 4 -- the fused signature -- and both report `kv_size == 1`, so\nthe shared format labelled the index group fused too. `per_head` became\n`2 * head_size`, which does not divide that group's 128-wide row, and the\nhelper raised:\n\n    CB rope: group 1 hidden_dim (128) not a multiple of per-head width\n             (256; fused=True)\n\nThe raise lands inside `cb_retrieve_pre_computed`'s handler, so the server\nanswers `scatter_ran=False` instead of hanging and the client degrades the\nrequest TP-collectively. Measured on an 8-way H200 M3 run: every CB retrieve\nfailed this way (408 degrades = 8 ranks x 51 calls) with `blend_loads` 0, so\nthe blend never engaged. Output stayed correct because each request fell back\nto a full recompute, which is why this presented as a silent 0.0 blend rate\nrather than a crash.\n\nLet the group's own declared per-head width (`shape_desc.hs`, i.e. what vLLM\nallocated) decide whether the format's fused claim applies to it. Both signals\nare required, so this can only narrow a fused claim: a format that is not\nfused stays not fused, and a group carrying no `shape_desc` keeps the\nformat-only decision.\n\nThe index group then resolves to `(fused=False, per_head=128, n_heads=1)` and\nis rotated as one K plane, which is correct: M3's write kernel ropes index-K at\nthe token's absolute position, so those keys must be re-RoPE'd when a token is\nreused at a different position. Skipping the group instead would leave stale\npositions in the indexer and silently perturb its top-k block selection.\n\nVerified against the installed 0.5.5.dev63 build: the new\n`test_mixed_registration_key_only_group_is_not_fused` fails before the change\nand passes after, with the file's 19 pre-existing cases green both ways.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 108,
+                "insertions": 106,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "cd441cdf",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-02T21:42:27.000Z",
+              "message": "[Fix] explicit bucket boundaries for L1 lifecycle histograms (#4803)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 34,
+                "insertions": 33,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "342df9f9",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-02T21:34:31.000Z",
+              "message": "[fix] Release sparse-prefetch read locks when a request never retrieves (#4852)\n\n* fix\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 448,
+                "insertions": 405,
+                "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d589e72c",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-02T20:25:59.000Z",
+              "message": "[fix][CB] Fix the blend-rate regression: all-or-nothing scatter + per-range applied dedup (#4872)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 163,
+                "insertions": 102,
+                "deletions": 61
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 16,
+                "total": 63
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 50,
+          "significance_ratio": 0.6,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 250,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "JH",
           "email": "riversky0014@gmail.com",
           "total_commits": 1,
@@ -7857,45 +8325,6 @@
                 "lines": 2340,
                 "insertions": 1336,
                 "deletions": 1004
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "1a247620",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-09-02T00:05:27.000Z",
-              "message": "feat(mp): forward request configs (#4810)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 14,
-                "lines": 458,
-                "insertions": 428,
-                "deletions": 30
               },
               "scores": {
                 "loc": 30,
@@ -8030,66 +8459,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "weishu",
-          "email": "838677410@qq.com",
-          "total_commits": 2,
+          "name": "Immanuel",
+          "email": "immanuel.peter1@gmail.com",
+          "total_commits": 1,
           "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 82,
+          "simple_commits": 0,
+          "commit_score": 83,
           "commits": [
             {
-              "hash": "e8435547",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-09-01T23:41:48.000Z",
-              "message": "[Fix][CB] Reserve one sparse-leg read lock per KV reader, not one per key (#4866)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "d8fe62b5",
+              "author": "Immanuel",
+              "email": "immanuel.peter1@gmail.com",
+              "date": "2026-09-02T01:42:26.000Z",
+              "message": "[MP][Coordinator] Track per-key ACCESS counts in the key directory (#4873)\n\nSigned-off-by: Immanuel <immanuel.peter1@gmail.com>",
               "stats": {
-                "files": 1,
-                "lines": 1,
-                "insertions": 1,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "c6965abb",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-09-01T18:20:45.000Z",
-              "message": "[Fix][CB] Decide fused-KV packing per group, not per registration (#4850)\n\n`_cb_group_rope_geometry` read `is_fused_packed` from the group's\n`engine_kv_format`, but that format is detected once per REGISTRATION while\nfused-ness is a per-GROUP property.\n\nMiniMax-M3 registers a fused `2 * head_size` main K/V group (60 layers)\nalongside a key-only `head_size` lightning-indexer side cache (57 layers).\nBoth are rank 4 -- the fused signature -- and both report `kv_size == 1`, so\nthe shared format labelled the index group fused too. `per_head` became\n`2 * head_size`, which does not divide that group's 128-wide row, and the\nhelper raised:\n\n    CB rope: group 1 hidden_dim (128) not a multiple of per-head width\n             (256; fused=True)\n\nThe raise lands inside `cb_retrieve_pre_computed`'s handler, so the server\nanswers `scatter_ran=False` instead of hanging and the client degrades the\nrequest TP-collectively. Measured on an 8-way H200 M3 run: every CB retrieve\nfailed this way (408 degrades = 8 ranks x 51 calls) with `blend_loads` 0, so\nthe blend never engaged. Output stayed correct because each request fell back\nto a full recompute, which is why this presented as a silent 0.0 blend rate\nrather than a crash.\n\nLet the group's own declared per-head width (`shape_desc.hs`, i.e. what vLLM\nallocated) decide whether the format's fused claim applies to it. Both signals\nare required, so this can only narrow a fused claim: a format that is not\nfused stays not fused, and a group carrying no `shape_desc` keeps the\nformat-only decision.\n\nThe index group then resolves to `(fused=False, per_head=128, n_heads=1)` and\nis rotated as one K plane, which is correct: M3's write kernel ropes index-K at\nthe token's absolute position, so those keys must be re-RoPE'd when a token is\nreused at a different position. Skipping the group instead would leave stale\npositions in the indexer and silently perturb its top-k block selection.\n\nVerified against the installed 0.5.5.dev63 build: the new\n`test_mixed_registration_key_only_group_is_not_fused` fails before the change\nand passes after, with the file's 19 pre-existing cases green both ways.\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 2,
-                "lines": 108,
-                "insertions": 106,
-                "deletions": 2
+                "files": 10,
+                "lines": 217,
+                "insertions": 176,
+                "deletions": 41
               },
               "scores": {
                 "loc": 30,
-                "files": 10,
+                "files": 20,
                 "keyword": 12,
-                "ai": 10,
-                "total": 62
+                "ai": 21,
+                "total": 83
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 41,
-          "significance_ratio": 0.5,
+          "avg_score": 83,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 82,
+          "total_score": 83,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -8112,6 +8520,45 @@
                 "lines": 416,
                 "insertions": 378,
                 "deletions": 38
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "CedricHuang",
+          "email": "38417461+CedricHwong@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "56e45ff7",
+              "author": "CedricHuang",
+              "email": "38417461+CedricHwong@users.noreply.github.com",
+              "date": "2026-09-02T01:49:51.000Z",
+              "message": "[Bugfix][MP][NIXL] Isolate dynamic store paths by cache_salt (#4857)\n\nSigned-off-by: CedricHuang <38417461+CedricHwong@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 299,
+                "insertions": 283,
+                "deletions": 16
               },
               "scores": {
                 "loc": 30,
@@ -8285,8 +8732,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 32,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "m0g3r",
@@ -8324,8 +8771,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 29,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Miguel",
+          "email": "60073809+migarci2@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "5c2ca6a7",
+              "author": "Miguel",
+              "email": "60073809+migarci2@users.noreply.github.com",
+              "date": "2026-09-02T03:52:17.000Z",
+              "message": "[good-first-issue] serde: defer timing log formatting (#4779) (#4780)\n\nDefer serde timing log formatting\n\nSigned-off-by: Miguel Garcia <miguelgarciaroman8@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -8334,10 +8820,10 @@
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 17,
-          "significant_commits": 12,
-          "simple_commits": 5,
-          "commit_score": 1126,
+          "total_commits": 20,
+          "significant_commits": 14,
+          "simple_commits": 6,
+          "commit_score": 1294,
           "commits": [
             {
               "hash": "2d040312",
@@ -8695,24 +9181,87 @@
                 "total": 62
               },
               "classification": "significant"
+            },
+            {
+              "hash": "cd441cdf",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-02T21:42:27.000Z",
+              "message": "[Fix] explicit bucket boundaries for L1 lifecycle histograms (#4803)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 34,
+                "insertions": 33,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 3,
+                "total": 28
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "342df9f9",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-02T21:34:31.000Z",
+              "message": "[fix] Release sparse-prefetch read locks when a request never retrieves (#4852)\n\n* fix\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 448,
+                "insertions": 405,
+                "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d589e72c",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-09-02T20:25:59.000Z",
+              "message": "[fix][CB] Fix the blend-rate regression: all-or-nothing scatter + per-range applied dedup (#4872)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 163,
+                "insertions": 102,
+                "deletions": 61
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 16,
+                "total": 63
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66.23529411764706,
-          "significance_ratio": 0.7058823529411765,
+          "avg_score": 64.7,
+          "significance_ratio": 0.7,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1126,
+          "total_score": 1294,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 15,
-          "significant_commits": 9,
-          "simple_commits": 6,
-          "commit_score": 951,
+          "total_commits": 18,
+          "significant_commits": 11,
+          "simple_commits": 7,
+          "commit_score": 1141,
           "commits": [
             {
               "hash": "53faf1f5",
@@ -9028,14 +9577,77 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "d3dddecc",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T00:03:17.000Z",
+              "message": "[Docs] Add accelerator vendors to ecosystem diagram (#4884)\n\ndocs: expand accelerator vendor logos\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 0,
+                "insertions": 0,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 5,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bbd38f08",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-02T04:20:36.000Z",
+              "message": "fix(mp): make transfer events context-aware (#4854)\n\n* fix(mp): make transfer events context-aware\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\nCo-authored-by: Junyuan <jjysama@gmail.com>\nCo-authored-by: Libin Tang <libin.tang@intel.com>\nCo-authored-by: Jinhwan Suk <jinhwan.suk@rebellions.ai>\nCo-authored-by: Shiv Kaul <shiv.kaul@intel.com>",
+              "stats": {
+                "files": 8,
+                "lines": 300,
+                "insertions": 201,
+                "deletions": 99
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b9411278",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-02T03:56:36.000Z",
+              "message": "fix(cpu): support MLA with Engine-driven transfer (#4798)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 232,
+                "insertions": 214,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 23,
+                "total": 85
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 63.4,
-          "significance_ratio": 0.6,
+          "avg_score": 63.388888888888886,
+          "significance_ratio": 0.6111111111111112,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 951,
+          "total_score": 1141,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -10963,6 +11575,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Immanuel",
+          "email": "immanuel.peter1@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 83,
+          "commits": [
+            {
+              "hash": "d8fe62b5",
+              "author": "Immanuel",
+              "email": "immanuel.peter1@gmail.com",
+              "date": "2026-09-02T01:42:26.000Z",
+              "message": "[MP][Coordinator] Track per-key ACCESS counts in the key directory (#4873)\n\nSigned-off-by: Immanuel <immanuel.peter1@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 217,
+                "insertions": 176,
+                "deletions": 41
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 21,
+                "total": 83
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 83,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Mahendra Rathore",
           "email": "49229348+mahendrarathore1742@users.noreply.github.com",
           "total_commits": 1,
@@ -11098,6 +11749,45 @@
                 "lines": 416,
                 "insertions": 378,
                 "deletions": 38
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "CedricHuang",
+          "email": "38417461+CedricHwong@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "56e45ff7",
+              "author": "CedricHuang",
+              "email": "38417461+CedricHwong@users.noreply.github.com",
+              "date": "2026-09-02T01:49:51.000Z",
+              "message": "[Bugfix][MP][NIXL] Isolate dynamic store paths by cache_salt (#4857)\n\nSigned-off-by: CedricHuang <38417461+CedricHwong@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 299,
+                "insertions": 283,
+                "deletions": 16
               },
               "scores": {
                 "loc": 30,
@@ -12097,6 +12787,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Miguel",
+          "email": "60073809+migarci2@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "5c2ca6a7",
+              "author": "Miguel",
+              "email": "60073809+migarci2@users.noreply.github.com",
+              "date": "2026-09-02T03:52:17.000Z",
+              "message": "[good-first-issue] serde: defer timing log formatting (#4779) (#4780)\n\nDefer serde timing log formatting\n\nSigned-off-by: Miguel Garcia <miguelgarciaroman8@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Cappuccino",
           "email": "1121861747@qq.com",
           "total_commits": 1,
@@ -12139,13 +12868,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-09-02T00:30:27.961Z",
+    "analyzedAt": "2026-09-03T00:30:55.879Z",
     "daysBack": 2,
-    "totalCommits": 134,
-    "totalContributors": 55,
+    "totalCommits": 143,
+    "totalContributors": 58,
     "mergedFrom": {
-      "existing": 122,
-      "new": 17
+      "existing": 134,
+      "new": 21
     }
   }
 }
