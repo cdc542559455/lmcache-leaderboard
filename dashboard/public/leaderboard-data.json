@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-09-03T00:30:55.879Z",
-  "total_commits_analyzed": 143,
+  "last_updated": "2026-09-04T00:30:25.215Z",
+  "total_commits_analyzed": 149,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3731,10 +3731,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 277,
+          "total_commits": 7,
+          "significant_commits": 4,
+          "simple_commits": 3,
+          "commit_score": 414,
           "commits": [
             {
               "hash": "1a247620",
@@ -3819,14 +3819,77 @@
                 "total": 85
               },
               "classification": "significant"
+            },
+            {
+              "hash": "86483cd6",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T06:45:25.000Z",
+              "message": "fix(multiprocess): avoid RequestType alias collisions on Python 3.10 (#4897)\n\nfix(multiprocess): avoid request type alias collisions\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 25,
+                "insertions": 19,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b3a2a69a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T04:44:42.000Z",
+              "message": "ci: upgrade CodeQL action for bundle download retries (#4898)",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "45506f8f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T00:56:17.000Z",
+              "message": "refactor(multiprocess): add ZMQ RPC client facade (#4878)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 31,
+                "lines": 1863,
+                "insertions": 1078,
+                "deletions": 785
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 69.25,
-          "significance_ratio": 0.75,
+          "avg_score": 59.142857142857146,
+          "significance_ratio": 0.5714285714285714,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 277,
+          "total_score": 414,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4326,6 +4389,84 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Divy",
+          "email": "divy@coralbricks.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 66,
+          "commits": [
+            {
+              "hash": "00db3ced",
+              "author": "Divy",
+              "email": "divy@coralbricks.ai",
+              "date": "2026-09-03T14:51:34.000Z",
+              "message": "[Bugfix][MP] Complete async copies before their buffers are reused (#4830)\n\n* fix(mp): complete async copies before their buffers are reused\n\nTwo places in the engine-driven path launch async copies and then hand the\nbuffers to something that reads them, without waiting. Both fail silently:\nthe KV is already committed or already scattered, so the only symptom is\ncorrupted content much later. Found while running the engine-driven pickle\ntransport on 8xH100, where it showed up as a gsm8k score dropping from 0.80\nto 0.00 with no error anywhere.\n\nscatter_cpu_to_paged_kv pins unpinned chunks into temporaries and launches\nasync H2D reads on them through raw pointers, which torch's stream tracking\ncannot see. Returning drops the last reference, so the caching host\nallocator can hand that memory to the next caller while the copies are\nstill in flight and the next pin_memory() overwrites the bytes mid-transfer.\nThe caller-side synchronize the function documents cannot cover this: by\nthen the temporaries are already gone. Sync before returning, but only when\nwe pinned them -- caller-owned pinned chunks keep the existing fast path.\n\nsubmit_store synchronized only when out_buffers was given, i.e. the SHM\npath. Gather issues async device->CPU copies on both transports, and the\npickle transport serializes the buffers immediately in commit_store, so the\npickle path was serializing a buffer still being written. Make it\nunconditional.\n\nBoth tests run without a GPU so they hold in the CPU-only unit CI, and both\nfail without the corresponding fix. The pickle one asserts a sync falls\nbetween gather and commit rather than merely occurring: submit_store also\nsyncs before prepare_store, and that earlier call is why guarding the second\non out_buffers went unnoticed.\n\nSigned-off-by: Divy <divy@coralbricks.ai>\n\n* test(mp): satisfy mypy in the async-copy lifetime tests\n\ncommit_store's side effect used `order.append(...) or True`, and append\nreturns None, so mypy rejected it as func-returns-value. Replaced with a\ntyped function. The scatter test passes MagicMock chunks on purpose\n(pin_memory needs an accelerator, so the ptr-only branch cannot execute on\nthe CPU-only CI), so the call now casts them explicitly.\n\nSigned-off-by: Divy <divy@coralbricks.ai>\n\n---------\n\nSigned-off-by: Divy <divy@coralbricks.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 149,
+                "insertions": 145,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 14,
+                "total": 66
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 66,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 66,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Haotian Zheng",
+          "email": "73241835+Hao-tian-Zheng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 66,
+          "commits": [
+            {
+              "hash": "40d8bb69",
+              "author": "Haotian Zheng",
+              "email": "73241835+Hao-tian-Zheng@users.noreply.github.com",
+              "date": "2026-09-03T08:58:39.000Z",
+              "message": "[Docs] Add vLLM and LMCache compatibility guide (#4859) (#4891)\n\ndocs: explain vLLM and LMCache compatibility\n\nSigned-off-by: Haotian Zheng <73241835+Hao-tian-Zheng@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 219,
+                "insertions": 219,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 5,
+                "ai": 21,
+                "total": 66
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 66,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 66,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "JianDan0212",
           "email": "126063153+JianDan0212@users.noreply.github.com",
           "total_commits": 1,
@@ -4361,8 +4502,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 65,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Samuel Shen",
@@ -4545,6 +4686,45 @@
                 "files": 5,
                 "keyword": 12,
                 "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 29,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 29,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "ゆり",
+          "email": "crystalinecohomology@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 29,
+          "commits": [
+            {
+              "hash": "913016b1",
+              "author": "ゆり",
+              "email": "crystalinecohomology@gmail.com",
+              "date": "2026-09-03T16:47:47.000Z",
+              "message": "fix: two logging calls that raise and drop their message (#4855)\n\nBoth sites pass more arguments than the format string has placeholders,\nso `record.getMessage()` raises TypeError inside logging. The logging\nmodule catches it, prints \"--- Logging error ---\" to stderr, and the\nintended message is never emitted.\n\n  p2p_backend.py:155    one %s, two args -- the exception `e` is lost\n  mock_connector.py:278 no placeholders, one arg -- a comma where the\n                        author meant string concatenation\n\nThe p2p site is the more costly one: it is the error path for closing a\npeer lookup socket, so the diagnostic disappears exactly when it is\nneeded.\n\nEnables ruff PLE1205, which catches this class. These two were the only\noccurrences in the repo, so the rule is green tree-wide as of this\ncommit.\n\nAI-assisted.\n\nSigned-off-by: yurekami <yurekami@users.noreply.github.com>\nCo-authored-by: yurekami <yurekami@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 12,
+                "insertions": 9,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 15,
+                "ai": 1,
                 "total": 29
               },
               "classification": "simple"
@@ -8084,10 +8264,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 277,
+          "total_commits": 7,
+          "significant_commits": 4,
+          "simple_commits": 3,
+          "commit_score": 414,
           "commits": [
             {
               "hash": "1a247620",
@@ -8172,14 +8352,77 @@
                 "total": 85
               },
               "classification": "significant"
+            },
+            {
+              "hash": "86483cd6",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T06:45:25.000Z",
+              "message": "fix(multiprocess): avoid RequestType alias collisions on Python 3.10 (#4897)\n\nfix(multiprocess): avoid request type alias collisions\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 25,
+                "insertions": 19,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b3a2a69a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T04:44:42.000Z",
+              "message": "ci: upgrade CodeQL action for bundle download retries (#4898)",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "45506f8f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T00:56:17.000Z",
+              "message": "refactor(multiprocess): add ZMQ RPC client facade (#4878)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 31,
+                "lines": 1863,
+                "insertions": 1078,
+                "deletions": 785
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 69.25,
-          "significance_ratio": 0.75,
+          "avg_score": 59.142857142857146,
+          "significance_ratio": 0.5714285714285714,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 277,
+          "total_score": 414,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -8580,6 +8823,84 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Divy",
+          "email": "divy@coralbricks.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 66,
+          "commits": [
+            {
+              "hash": "00db3ced",
+              "author": "Divy",
+              "email": "divy@coralbricks.ai",
+              "date": "2026-09-03T14:51:34.000Z",
+              "message": "[Bugfix][MP] Complete async copies before their buffers are reused (#4830)\n\n* fix(mp): complete async copies before their buffers are reused\n\nTwo places in the engine-driven path launch async copies and then hand the\nbuffers to something that reads them, without waiting. Both fail silently:\nthe KV is already committed or already scattered, so the only symptom is\ncorrupted content much later. Found while running the engine-driven pickle\ntransport on 8xH100, where it showed up as a gsm8k score dropping from 0.80\nto 0.00 with no error anywhere.\n\nscatter_cpu_to_paged_kv pins unpinned chunks into temporaries and launches\nasync H2D reads on them through raw pointers, which torch's stream tracking\ncannot see. Returning drops the last reference, so the caching host\nallocator can hand that memory to the next caller while the copies are\nstill in flight and the next pin_memory() overwrites the bytes mid-transfer.\nThe caller-side synchronize the function documents cannot cover this: by\nthen the temporaries are already gone. Sync before returning, but only when\nwe pinned them -- caller-owned pinned chunks keep the existing fast path.\n\nsubmit_store synchronized only when out_buffers was given, i.e. the SHM\npath. Gather issues async device->CPU copies on both transports, and the\npickle transport serializes the buffers immediately in commit_store, so the\npickle path was serializing a buffer still being written. Make it\nunconditional.\n\nBoth tests run without a GPU so they hold in the CPU-only unit CI, and both\nfail without the corresponding fix. The pickle one asserts a sync falls\nbetween gather and commit rather than merely occurring: submit_store also\nsyncs before prepare_store, and that earlier call is why guarding the second\non out_buffers went unnoticed.\n\nSigned-off-by: Divy <divy@coralbricks.ai>\n\n* test(mp): satisfy mypy in the async-copy lifetime tests\n\ncommit_store's side effect used `order.append(...) or True`, and append\nreturns None, so mypy rejected it as func-returns-value. Replaced with a\ntyped function. The scatter test passes MagicMock chunks on purpose\n(pin_memory needs an accelerator, so the ptr-only branch cannot execute on\nthe CPU-only CI), so the call now casts them explicitly.\n\nSigned-off-by: Divy <divy@coralbricks.ai>\n\n---------\n\nSigned-off-by: Divy <divy@coralbricks.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 149,
+                "insertions": 145,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 14,
+                "total": 66
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 66,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 66,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Haotian Zheng",
+          "email": "73241835+Hao-tian-Zheng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 66,
+          "commits": [
+            {
+              "hash": "40d8bb69",
+              "author": "Haotian Zheng",
+              "email": "73241835+Hao-tian-Zheng@users.noreply.github.com",
+              "date": "2026-09-03T08:58:39.000Z",
+              "message": "[Docs] Add vLLM and LMCache compatibility guide (#4859) (#4891)\n\ndocs: explain vLLM and LMCache compatibility\n\nSigned-off-by: Haotian Zheng <73241835+Hao-tian-Zheng@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 219,
+                "insertions": 219,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 5,
+                "ai": 21,
+                "total": 66
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 66,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 66,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 1,
@@ -8654,8 +8975,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "honglie",
@@ -8693,8 +9014,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 33,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Alex Nguyen",
@@ -8760,6 +9081,45 @@
                 "files": 5,
                 "keyword": 12,
                 "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 29,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 29,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "ゆり",
+          "email": "crystalinecohomology@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 29,
+          "commits": [
+            {
+              "hash": "913016b1",
+              "author": "ゆり",
+              "email": "crystalinecohomology@gmail.com",
+              "date": "2026-09-03T16:47:47.000Z",
+              "message": "fix: two logging calls that raise and drop their message (#4855)\n\nBoth sites pass more arguments than the format string has placeholders,\nso `record.getMessage()` raises TypeError inside logging. The logging\nmodule catches it, prints \"--- Logging error ---\" to stderr, and the\nintended message is never emitted.\n\n  p2p_backend.py:155    one %s, two args -- the exception `e` is lost\n  mock_connector.py:278 no placeholders, one arg -- a comma where the\n                        author meant string concatenation\n\nThe p2p site is the more costly one: it is the error path for closing a\npeer lookup socket, so the diagnostic disappears exactly when it is\nneeded.\n\nEnables ruff PLE1205, which catches this class. These two were the only\noccurrences in the repo, so the rule is green tree-wide as of this\ncommit.\n\nAI-assisted.\n\nSigned-off-by: yurekami <yurekami@users.noreply.github.com>\nCo-authored-by: yurekami <yurekami@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 12,
+                "insertions": 9,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 15,
+                "ai": 1,
                 "total": 29
               },
               "classification": "simple"
@@ -9258,10 +9618,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 18,
-          "significant_commits": 11,
-          "simple_commits": 7,
-          "commit_score": 1141,
+          "total_commits": 21,
+          "significant_commits": 12,
+          "simple_commits": 9,
+          "commit_score": 1278,
           "commits": [
             {
               "hash": "53faf1f5",
@@ -9640,14 +10000,77 @@
                 "total": 85
               },
               "classification": "significant"
+            },
+            {
+              "hash": "86483cd6",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T06:45:25.000Z",
+              "message": "fix(multiprocess): avoid RequestType alias collisions on Python 3.10 (#4897)\n\nfix(multiprocess): avoid request type alias collisions\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 25,
+                "insertions": 19,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b3a2a69a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T04:44:42.000Z",
+              "message": "ci: upgrade CodeQL action for bundle download retries (#4898)",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 0,
+                "total": 18
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "45506f8f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-03T00:56:17.000Z",
+              "message": "refactor(multiprocess): add ZMQ RPC client facade (#4878)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 31,
+                "lines": 1863,
+                "insertions": 1078,
+                "deletions": 785
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 63.388888888888886,
-          "significance_ratio": 0.6111111111111112,
+          "avg_score": 60.857142857142854,
+          "significance_ratio": 0.5714285714285714,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1141,
+          "total_score": 1278,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11926,6 +12349,84 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Divy",
+          "email": "divy@coralbricks.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 66,
+          "commits": [
+            {
+              "hash": "00db3ced",
+              "author": "Divy",
+              "email": "divy@coralbricks.ai",
+              "date": "2026-09-03T14:51:34.000Z",
+              "message": "[Bugfix][MP] Complete async copies before their buffers are reused (#4830)\n\n* fix(mp): complete async copies before their buffers are reused\n\nTwo places in the engine-driven path launch async copies and then hand the\nbuffers to something that reads them, without waiting. Both fail silently:\nthe KV is already committed or already scattered, so the only symptom is\ncorrupted content much later. Found while running the engine-driven pickle\ntransport on 8xH100, where it showed up as a gsm8k score dropping from 0.80\nto 0.00 with no error anywhere.\n\nscatter_cpu_to_paged_kv pins unpinned chunks into temporaries and launches\nasync H2D reads on them through raw pointers, which torch's stream tracking\ncannot see. Returning drops the last reference, so the caching host\nallocator can hand that memory to the next caller while the copies are\nstill in flight and the next pin_memory() overwrites the bytes mid-transfer.\nThe caller-side synchronize the function documents cannot cover this: by\nthen the temporaries are already gone. Sync before returning, but only when\nwe pinned them -- caller-owned pinned chunks keep the existing fast path.\n\nsubmit_store synchronized only when out_buffers was given, i.e. the SHM\npath. Gather issues async device->CPU copies on both transports, and the\npickle transport serializes the buffers immediately in commit_store, so the\npickle path was serializing a buffer still being written. Make it\nunconditional.\n\nBoth tests run without a GPU so they hold in the CPU-only unit CI, and both\nfail without the corresponding fix. The pickle one asserts a sync falls\nbetween gather and commit rather than merely occurring: submit_store also\nsyncs before prepare_store, and that earlier call is why guarding the second\non out_buffers went unnoticed.\n\nSigned-off-by: Divy <divy@coralbricks.ai>\n\n* test(mp): satisfy mypy in the async-copy lifetime tests\n\ncommit_store's side effect used `order.append(...) or True`, and append\nreturns None, so mypy rejected it as func-returns-value. Replaced with a\ntyped function. The scatter test passes MagicMock chunks on purpose\n(pin_memory needs an accelerator, so the ptr-only branch cannot execute on\nthe CPU-only CI), so the call now casts them explicitly.\n\nSigned-off-by: Divy <divy@coralbricks.ai>\n\n---------\n\nSigned-off-by: Divy <divy@coralbricks.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 149,
+                "insertions": 145,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 14,
+                "total": 66
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 66,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 66,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Haotian Zheng",
+          "email": "73241835+Hao-tian-Zheng@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 66,
+          "commits": [
+            {
+              "hash": "40d8bb69",
+              "author": "Haotian Zheng",
+              "email": "73241835+Hao-tian-Zheng@users.noreply.github.com",
+              "date": "2026-09-03T08:58:39.000Z",
+              "message": "[Docs] Add vLLM and LMCache compatibility guide (#4859) (#4891)\n\ndocs: explain vLLM and LMCache compatibility\n\nSigned-off-by: Haotian Zheng <73241835+Hao-tian-Zheng@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 219,
+                "insertions": 219,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 5,
+                "ai": 21,
+                "total": 66
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 66,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 66,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "JianDan0212",
           "email": "126063153+JianDan0212@users.noreply.github.com",
           "total_commits": 1,
@@ -12553,6 +13054,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "ゆり",
+          "email": "crystalinecohomology@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 29,
+          "commits": [
+            {
+              "hash": "913016b1",
+              "author": "ゆり",
+              "email": "crystalinecohomology@gmail.com",
+              "date": "2026-09-03T16:47:47.000Z",
+              "message": "fix: two logging calls that raise and drop their message (#4855)\n\nBoth sites pass more arguments than the format string has placeholders,\nso `record.getMessage()` raises TypeError inside logging. The logging\nmodule catches it, prints \"--- Logging error ---\" to stderr, and the\nintended message is never emitted.\n\n  p2p_backend.py:155    one %s, two args -- the exception `e` is lost\n  mock_connector.py:278 no placeholders, one arg -- a comma where the\n                        author meant string concatenation\n\nThe p2p site is the more costly one: it is the error path for closing a\npeer lookup socket, so the diagnostic disappears exactly when it is\nneeded.\n\nEnables ruff PLE1205, which catches this class. These two were the only\noccurrences in the repo, so the rule is green tree-wide as of this\ncommit.\n\nAI-assisted.\n\nSigned-off-by: yurekami <yurekami@users.noreply.github.com>\nCo-authored-by: yurekami <yurekami@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 12,
+                "insertions": 9,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 15,
+                "ai": 1,
+                "total": 29
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 29,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 29,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Baojiang Lee",
           "email": "2461443384@qq.com",
           "total_commits": 1,
@@ -12868,13 +13408,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-09-03T00:30:55.879Z",
+    "analyzedAt": "2026-09-04T00:30:25.215Z",
     "daysBack": 2,
-    "totalCommits": 143,
-    "totalContributors": 58,
+    "totalCommits": 149,
+    "totalContributors": 61,
     "mergedFrom": {
-      "existing": 134,
-      "new": 21
+      "existing": 143,
+      "new": 15
     }
   }
 }
