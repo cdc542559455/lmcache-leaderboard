@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-09-05T00:30:20.841Z",
-  "total_commits_analyzed": 155,
+  "last_updated": "2026-09-06T00:30:18.366Z",
+  "total_commits_analyzed": 159,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4377,6 +4377,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Bo Jiang",
+          "email": "bo.jiang@temple.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "ce08eea7",
+              "author": "Bo Jiang",
+              "email": "bo.jiang@temple.edu",
+              "date": "2026-09-05T14:57:15.000Z",
+              "message": "[Bugfix][vLLM] Different images can share the same multimodal cache keys (#4783)\n\n* fix(vllm): full-entropy mm_hash substitution for multimodal cache keys\n\nThe multimodal placeholder substitution collapsed each image's identifier\nto 16 bits (hex_hash_to_int16) and filled the whole placeholder span with\nthat single value. Two different images therefore had a ~50% chance of\nsharing ALL their KV cache keys at ~300 distinct same-shape images\n(birthday bound over 65536 buckets), silently serving the wrong image's\nKV. Reproduced end-to-end on Qwen2.5-VL-3B: 6 of 800 distinct images\ncross-hit with visible answer flips (issue #3301).\n\nReplace it with mm_hash_to_token_values(): each placeholder position gets\na distinct 31-bit value derived from the FULL identifier (SHA-256 counter\nmode), so any chunk overlapping k placeholder tokens carries 31*k bits of\nimage identity, the offset within the item is encoded per position\n(mirroring vLLM's (mm_hash, offset) block-hash extra keys), and prefixes\nare stable under save-path truncation. No interface changes; both existing\nsubstitution paths (in-process connector, main MP connector) are fixed at\nonce. Values stay under 2^31 for signed-int32 safety.\n\nAlso fix the in-process lookup path to keep decode tokens after the\nadjusted prompt for preempted multimodal requests (it previously dropped\nthem by using prompt_token_ids only), and document the keying contract in\ndocs/design/integration/vllm/multimodal_cache_keying.md.\n\nVerified: the unit tests here cover the derivation properties and carry a\nregression for the 16-bit collision. The end-to-end evidence -- an\n800-image pressure test that cross-hits deterministically on the pre-fix\ncode -- and the standalone reproducer for issue #3301 live on the\nmulti_modal_repro branch, which is not proposed for dev.\n\nSigned-off-by: Bo Jiang <bo.jiang@temple.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 602,
+                "insertions": 440,
+                "deletions": 162
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Immanuel",
           "email": "immanuel.peter1@gmail.com",
           "total_commits": 1,
@@ -4412,6 +4451,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 83,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "9384ad22",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-05T05:37:20.000Z",
+              "message": "Enable xpu mp tests dev (#4849)\n\n* ci(xpu): restore xpu harness and score-mode validation\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): import torch_dev for compatibility checks\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): add safe fallback and transfer regression coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* minor fix to change the agent to the correct one\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(mp): make transfer events context-aware\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* chore(xpu): restore dev implementations\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(ci): use intel xpu queue for multiprocess tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): tune multiprocess benchmark offload\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): increase multiprocess L1 capacity\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): disable lazy offload benchmark experiment\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): restore score-mode lm-eval verification\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): preserve multiprocess benchmark results\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): launch baseline for benchmark tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* style: remove unused vLLM adapter import\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n* ci: tune XPU multiprocess benchmark resources\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci: parameterize multiprocess device settings\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci(xpu): restore shared multiprocess defaults\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 580,
+                "insertions": 494,
+                "deletions": 86
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4490,8 +4568,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "CedricHuang",
@@ -4529,8 +4607,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Peiyu (Hao)",
+          "email": "35384999+PYyu6@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "08fac932",
+              "author": "Peiyu (Hao)",
+              "email": "35384999+PYyu6@users.noreply.github.com",
+              "date": "2026-09-05T07:14:43.000Z",
+              "message": "[Bugfix] Fix AzureConnector put/get failing against real Azure Blob Storage (#4054)\n\n* [Bugfix] Fix AzureConnector blob transfers and add Azurite CI\n\nUse byte-oriented buffers for Azure Blob uploads and downloads, cover the full transaction against Azurite, keep Azure optional in the general test suite, and clean up test containers after each run.\n\nSigned-off-by: Peiyu Yu <doubleyu666666@gmail.com>\n\n* Fix Azure integration CI: install lmcache before running the Azurite test\n\nSigned-off-by: Peiyu (Hao) <35384999+PYyu6@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Peiyu Yu <doubleyu666666@gmail.com>\nSigned-off-by: Peiyu (Hao) <35384999+PYyu6@users.noreply.github.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 306,
+                "insertions": 293,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Yuhan Liu",
@@ -4841,8 +4958,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 29,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "ゆり",
@@ -4880,8 +4997,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 29,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Miguel",
@@ -4919,8 +5036,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "39af40f1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-09-05T07:11:04.000Z",
+              "message": "fix(ci): correct REPO_ROOT depth in xpu unittests run.sh (#4964)\n\nThe script now lives one directory deeper (xpu/unittests/run.sh), so\n../../.. resolved to .buildkite/ instead of the repo root, producing\n.buildkite/.buildkite/k3_harness/setup-lmcache-only-env.sh.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -9012,6 +9168,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Bo Jiang",
+          "email": "bo.jiang@temple.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "ce08eea7",
+              "author": "Bo Jiang",
+              "email": "bo.jiang@temple.edu",
+              "date": "2026-09-05T14:57:15.000Z",
+              "message": "[Bugfix][vLLM] Different images can share the same multimodal cache keys (#4783)\n\n* fix(vllm): full-entropy mm_hash substitution for multimodal cache keys\n\nThe multimodal placeholder substitution collapsed each image's identifier\nto 16 bits (hex_hash_to_int16) and filled the whole placeholder span with\nthat single value. Two different images therefore had a ~50% chance of\nsharing ALL their KV cache keys at ~300 distinct same-shape images\n(birthday bound over 65536 buckets), silently serving the wrong image's\nKV. Reproduced end-to-end on Qwen2.5-VL-3B: 6 of 800 distinct images\ncross-hit with visible answer flips (issue #3301).\n\nReplace it with mm_hash_to_token_values(): each placeholder position gets\na distinct 31-bit value derived from the FULL identifier (SHA-256 counter\nmode), so any chunk overlapping k placeholder tokens carries 31*k bits of\nimage identity, the offset within the item is encoded per position\n(mirroring vLLM's (mm_hash, offset) block-hash extra keys), and prefixes\nare stable under save-path truncation. No interface changes; both existing\nsubstitution paths (in-process connector, main MP connector) are fixed at\nonce. Values stay under 2^31 for signed-int32 safety.\n\nAlso fix the in-process lookup path to keep decode tokens after the\nadjusted prompt for preempted multimodal requests (it previously dropped\nthem by using prompt_token_ids only), and document the keying contract in\ndocs/design/integration/vllm/multimodal_cache_keying.md.\n\nVerified: the unit tests here cover the derivation properties and carry a\nregression for the 16-bit collision. The end-to-end evidence -- an\n800-image pressure test that cross-hits deterministically on the pre-fix\ncode -- and the standalone reproducer for issue #3301 live on the\nmulti_modal_repro branch, which is not proposed for dev.\n\nSigned-off-by: Bo Jiang <bo.jiang@temple.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 602,
+                "insertions": 440,
+                "deletions": 162
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Immanuel",
           "email": "immanuel.peter1@gmail.com",
           "total_commits": 1,
@@ -9047,6 +9242,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 83,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "9384ad22",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-05T05:37:20.000Z",
+              "message": "Enable xpu mp tests dev (#4849)\n\n* ci(xpu): restore xpu harness and score-mode validation\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): import torch_dev for compatibility checks\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): add safe fallback and transfer regression coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* minor fix to change the agent to the correct one\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(mp): make transfer events context-aware\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* chore(xpu): restore dev implementations\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(ci): use intel xpu queue for multiprocess tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): tune multiprocess benchmark offload\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): increase multiprocess L1 capacity\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): disable lazy offload benchmark experiment\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): restore score-mode lm-eval verification\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): preserve multiprocess benchmark results\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): launch baseline for benchmark tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* style: remove unused vLLM adapter import\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n* ci: tune XPU multiprocess benchmark resources\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci: parameterize multiprocess device settings\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci(xpu): restore shared multiprocess defaults\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 580,
+                "insertions": 494,
+                "deletions": 86
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -9125,8 +9359,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Peiyu (Hao)",
+          "email": "35384999+PYyu6@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "08fac932",
+              "author": "Peiyu (Hao)",
+              "email": "35384999+PYyu6@users.noreply.github.com",
+              "date": "2026-09-05T07:14:43.000Z",
+              "message": "[Bugfix] Fix AzureConnector put/get failing against real Azure Blob Storage (#4054)\n\n* [Bugfix] Fix AzureConnector blob transfers and add Azurite CI\n\nUse byte-oriented buffers for Azure Blob uploads and downloads, cover the full transaction against Azurite, keep Azure optional in the general test suite, and clean up test containers after each run.\n\nSigned-off-by: Peiyu Yu <doubleyu666666@gmail.com>\n\n* Fix Azure integration CI: install lmcache before running the Azurite test\n\nSigned-off-by: Peiyu (Hao) <35384999+PYyu6@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Peiyu Yu <doubleyu666666@gmail.com>\nSigned-off-by: Peiyu (Hao) <35384999+PYyu6@users.noreply.github.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 306,
+                "insertions": 293,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Yuhan Liu",
@@ -9164,8 +9437,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 73,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Divy",
@@ -9476,8 +9749,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "39af40f1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-09-05T07:11:04.000Z",
+              "message": "fix(ci): correct REPO_ROOT depth in xpu unittests run.sh (#4964)\n\nThe script now lives one directory deeper (xpu/unittests/run.sh), so\n../../.. resolved to .buildkite/ instead of the repo root, producing\n.buildkite/.buildkite/k3_harness/setup-lmcache-only-env.sh.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -11062,6 +11374,108 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 4,
+          "significant_commits": 4,
+          "simple_commits": 0,
+          "commit_score": 325,
+          "commits": [
+            {
+              "hash": "df94b3cd",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-11T12:16:19.000Z",
+              "message": "test: refine tests v1 subdir compute, platform, and storage_backend (#4409)\n\n* tests: keep tests/v1 subdirectory updates excluding gpu_connector\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 19,
+                "lines": 626,
+                "insertions": 432,
+                "deletions": 194
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f9addd2e",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-22T06:29:09.000Z",
+              "message": "tests: refine gpu_connector tests (#4513)\n\n* test: use portable accelerator device helpers\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\n\n* tests: normalize device guards and xpu behavior in gpu connector suite\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests: fix ruff line length in gpu connector test\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests: isolate vllm layout resolution\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* test(gpu-connector): support non-CUDA device format detection\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n(cherry picked from commit df23715b63462c4f395d1cc7a435ff33efff5e78)\n\n* test(multiprocess): abstract blocked scale CUDA device\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 13,
+                "lines": 338,
+                "insertions": 198,
+                "deletions": 140
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d0c53b77",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-27T03:14:10.000Z",
+              "message": "ci: add Intel XPU wheel build and release workflow (#4446)\n\n* ci: add Intel XPU wheel build and release workflow\n\nAdd reusable build_xpu_artifacts workflow and build_xpu_wheel script. Integrate build/publish-xpu jobs into the publish pipeline and pin validated XPU image + torch version from local verification.\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 348,
+                "insertions": 346,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
+                "total": 75
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9384ad22",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-05T05:37:20.000Z",
+              "message": "Enable xpu mp tests dev (#4849)\n\n* ci(xpu): restore xpu harness and score-mode validation\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): import torch_dev for compatibility checks\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): add safe fallback and transfer regression coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* minor fix to change the agent to the correct one\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(mp): make transfer events context-aware\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* chore(xpu): restore dev implementations\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(ci): use intel xpu queue for multiprocess tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): tune multiprocess benchmark offload\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): increase multiprocess L1 capacity\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): disable lazy offload benchmark experiment\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): restore score-mode lm-eval verification\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): preserve multiprocess benchmark results\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): launch baseline for benchmark tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* style: remove unused vLLM adapter import\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n* ci: tune XPU multiprocess benchmark resources\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci: parameterize multiprocess device settings\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci(xpu): restore shared multiprocess defaults\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 580,
+                "insertions": 494,
+                "deletions": 86
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81.25,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 325,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 5,
@@ -11466,87 +11880,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 261,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "VincyZhang",
-          "email": "wenxin.zhang@intel.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 245,
-          "commits": [
-            {
-              "hash": "df94b3cd",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-08-11T12:16:19.000Z",
-              "message": "test: refine tests v1 subdir compute, platform, and storage_backend (#4409)\n\n* tests: keep tests/v1 subdirectory updates excluding gpu_connector\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
-              "stats": {
-                "files": 19,
-                "lines": 626,
-                "insertions": 432,
-                "deletions": 194
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 10,
-                "ai": 25,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f9addd2e",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-08-22T06:29:09.000Z",
-              "message": "tests: refine gpu_connector tests (#4513)\n\n* test: use portable accelerator device helpers\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\n\n* tests: normalize device guards and xpu behavior in gpu connector suite\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests: fix ruff line length in gpu connector test\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests: isolate vllm layout resolution\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* test(gpu-connector): support non-CUDA device format detection\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n(cherry picked from commit df23715b63462c4f395d1cc7a435ff33efff5e78)\n\n* test(multiprocess): abstract blocked scale CUDA device\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 13,
-                "lines": 338,
-                "insertions": 198,
-                "deletions": 140
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 10,
-                "ai": 25,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "d0c53b77",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-08-27T03:14:10.000Z",
-              "message": "ci: add Intel XPU wheel build and release workflow (#4446)\n\n* ci: add Intel XPU wheel build and release workflow\n\nAdd reusable build_xpu_artifacts workflow and build_xpu_wheel script. Integrate build/publish-xpu jobs into the publish pipeline and pin validated XPU image + torch version from local verification.\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
-              "stats": {
-                "files": 4,
-                "lines": 348,
-                "insertions": 346,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 10,
-                "ai": 25,
-                "total": 75
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 81.66666666666667,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 245,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -12469,6 +12802,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Bo Jiang",
+          "email": "bo.jiang@temple.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "ce08eea7",
+              "author": "Bo Jiang",
+              "email": "bo.jiang@temple.edu",
+              "date": "2026-09-05T14:57:15.000Z",
+              "message": "[Bugfix][vLLM] Different images can share the same multimodal cache keys (#4783)\n\n* fix(vllm): full-entropy mm_hash substitution for multimodal cache keys\n\nThe multimodal placeholder substitution collapsed each image's identifier\nto 16 bits (hex_hash_to_int16) and filled the whole placeholder span with\nthat single value. Two different images therefore had a ~50% chance of\nsharing ALL their KV cache keys at ~300 distinct same-shape images\n(birthday bound over 65536 buckets), silently serving the wrong image's\nKV. Reproduced end-to-end on Qwen2.5-VL-3B: 6 of 800 distinct images\ncross-hit with visible answer flips (issue #3301).\n\nReplace it with mm_hash_to_token_values(): each placeholder position gets\na distinct 31-bit value derived from the FULL identifier (SHA-256 counter\nmode), so any chunk overlapping k placeholder tokens carries 31*k bits of\nimage identity, the offset within the item is encoded per position\n(mirroring vLLM's (mm_hash, offset) block-hash extra keys), and prefixes\nare stable under save-path truncation. No interface changes; both existing\nsubstitution paths (in-process connector, main MP connector) are fixed at\nonce. Values stay under 2^31 for signed-int32 safety.\n\nAlso fix the in-process lookup path to keep decode tokens after the\nadjusted prompt for preempted multimodal requests (it previously dropped\nthem by using prompt_token_ids only), and document the keying contract in\ndocs/design/integration/vllm/multimodal_cache_keying.md.\n\nVerified: the unit tests here cover the derivation properties and carry a\nregression for the 16-bit collision. The end-to-end evidence -- an\n800-image pressure test that cross-hits deterministically on the pre-fix\ncode -- and the standalone reproducer for issue #3301 live on the\nmulti_modal_repro branch, which is not proposed for dev.\n\nSigned-off-by: Bo Jiang <bo.jiang@temple.edu>",
+              "stats": {
+                "files": 9,
+                "lines": 602,
+                "insertions": 440,
+                "deletions": 162
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Immanuel",
           "email": "immanuel.peter1@gmail.com",
           "total_commits": 1,
@@ -12727,6 +13099,45 @@
                 "files": 10,
                 "keyword": 12,
                 "ai": 23,
+                "total": 75
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Peiyu (Hao)",
+          "email": "35384999+PYyu6@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "08fac932",
+              "author": "Peiyu (Hao)",
+              "email": "35384999+PYyu6@users.noreply.github.com",
+              "date": "2026-09-05T07:14:43.000Z",
+              "message": "[Bugfix] Fix AzureConnector put/get failing against real Azure Blob Storage (#4054)\n\n* [Bugfix] Fix AzureConnector blob transfers and add Azurite CI\n\nUse byte-oriented buffers for Azure Blob uploads and downloads, cover the full transaction against Azurite, keep Azure optional in the general test suite, and clean up test containers after each run.\n\nSigned-off-by: Peiyu Yu <doubleyu666666@gmail.com>\n\n* Fix Azure integration CI: install lmcache before running the Azurite test\n\nSigned-off-by: Peiyu (Hao) <35384999+PYyu6@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Peiyu Yu <doubleyu666666@gmail.com>\nSigned-off-by: Peiyu (Hao) <35384999+PYyu6@users.noreply.github.com>\nCo-authored-by: Yihua Cheng <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 306,
+                "insertions": 293,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
                 "total": 75
               },
               "classification": "significant"
@@ -13798,6 +14209,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "39af40f1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-09-05T07:11:04.000Z",
+              "message": "fix(ci): correct REPO_ROOT depth in xpu unittests run.sh (#4964)\n\nThe script now lives one directory deeper (xpu/unittests/run.sh), so\n../../.. resolved to .buildkite/ instead of the repo root, producing\n.buildkite/.buildkite/k3_harness/setup-lmcache-only-env.sh.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Cappuccino",
           "email": "1121861747@qq.com",
           "total_commits": 1,
@@ -13840,13 +14290,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-09-05T00:30:20.841Z",
+    "analyzedAt": "2026-09-06T00:30:18.366Z",
     "daysBack": 2,
-    "totalCommits": 155,
-    "totalContributors": 61,
+    "totalCommits": 159,
+    "totalContributors": 64,
     "mergedFrom": {
-      "existing": 149,
-      "new": 12
+      "existing": 155,
+      "new": 10
     }
   }
 }
