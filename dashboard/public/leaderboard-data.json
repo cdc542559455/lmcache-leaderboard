@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-09-08T00:30:05.331Z",
-  "total_commits_analyzed": 162,
+  "last_updated": "2026-09-09T00:30:12.652Z",
+  "total_commits_analyzed": 167,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -5177,6 +5177,203 @@
           "tier": "T3",
           "tier_name": "Contributing"
         }
+      ],
+      "2026-W37": [
+        {
+          "name": "Tushar Goyal",
+          "email": "tusharg1993@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "01d8bd4a",
+              "author": "Tushar Goyal",
+              "email": "tusharg1993@gmail.com",
+              "date": "2026-09-08T18:18:12.000Z",
+              "message": "[Coordinator] Add cache-event source abstraction (#4583)\n\nSigned-off-by: Tushar Goyal <tusharg1993@gmail.com>",
+              "stats": {
+                "files": 13,
+                "lines": 588,
+                "insertions": 515,
+                "deletions": 73
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Julian",
+          "email": "148066842+JulianZJN@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "72480522",
+              "author": "Julian",
+              "email": "148066842+JulianZJN@users.noreply.github.com",
+              "date": "2026-09-08T14:47:45.000Z",
+              "message": "[Bugfix] storage: make local-disk put admission rollback-safe (#4660)\n\nSigned-off-by: Julian <148066842+JulianZJN@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 327,
+                "insertions": 300,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "SANJAY E",
+          "email": "sanjayelango06@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 31,
+          "commits": [
+            {
+              "hash": "45e019df",
+              "author": "SANJAY E",
+              "email": "sanjayelango06@gmail.com",
+              "date": "2026-09-08T19:18:19.000Z",
+              "message": "fix: defer XPU connector log formatting (#4713)\n\nSigned-off-by: sanjayy0612 <sanjayelango06@gmail.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 33,
+                "insertions": 19,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 15,
+                "ai": 3,
+                "total": 31
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 31,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 31,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "JianDan0212",
+          "email": "126063153+JianDan0212@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "21a5db10",
+              "author": "JianDan0212",
+              "email": "126063153+JianDan0212@users.noreply.github.com",
+              "date": "2026-09-08T03:01:54.000Z",
+              "message": "[MACA] Fix detect() exception handling and add missing triton dependency (#4907)\n\nMacaProfile.detect() only caught ImportError, but a MACA-enabled torch\nbuild's cpp_extension module raises TypeError instead when MACA_PATH\nisn't set yet (its own module-level init calls _find_cuda_home(), which\ndoes os.path.exists(None)). Confirmed on real MACA hardware: this\npropagated uncaught, crashing setup.py's build-profile auto-detection\non any machine with MACA torch installed, regardless of whether\nBUILD_WITH_MACA was actually requested. Broaden the catch to Exception;\ndetect() must never propagate since it runs during auto-detection for\nunrelated profiles too.\n\nSeparately, running the real tests/v1/ suite on MACA hardware surfaced\na missing dependency: tests/v1/compute/attention/test_triton_kernels.py\nfails to collect without triton installed. MACA's own torch wheel\ndoesn't declare triton as a dependency the way mainstream PyPI torch\ndoes, so add it to maca_core.txt alongside mcpy.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\nCo-authored-by: JianDan0212 <zhangyj0212@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 15,
+                "insertions": 14,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Shaoting",
+          "email": "shaotingf@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "47da378c",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-09-08T15:17:45.000Z",
+              "message": "[Chore] Add Shaoting-Feng to CODEOWNERS for the GDS L1 tier (#5028)\n\nSigned-off-by: Shaoting-Feng <stfeng@cs.washington.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 4,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T0",
+          "tier_name": "Elite"
+        }
       ]
     },
     "monthly": {
@@ -9111,6 +9308,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Julian",
+          "email": "148066842+JulianZJN@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 119,
+          "commits": [
+            {
+              "hash": "187b71ad",
+              "author": "Julian",
+              "email": "148066842+JulianZJN@users.noreply.github.com",
+              "date": "2026-09-01T00:25:50.000Z",
+              "message": "[Bugfix] storage: skip duplicate puts for resident disk keys (#4656)\n\nSigned-off-by: Julian <148066842+JulianZJN@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 51,
+                "insertions": 51,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "72480522",
+              "author": "Julian",
+              "email": "148066842+JulianZJN@users.noreply.github.com",
+              "date": "2026-09-08T14:47:45.000Z",
+              "message": "[Bugfix] storage: make local-disk put admission rollback-safe (#4660)\n\nSigned-off-by: Julian <148066842+JulianZJN@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 327,
+                "insertions": 300,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 59.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 119,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 2,
@@ -9167,8 +9424,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 106,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Yuanfan Chen",
@@ -9327,6 +9584,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Tushar Goyal",
+          "email": "tusharg1993@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "01d8bd4a",
+              "author": "Tushar Goyal",
+              "email": "tusharg1993@gmail.com",
+              "date": "2026-09-08T18:18:12.000Z",
+              "message": "[Coordinator] Add cache-event source abstraction (#4583)\n\nSigned-off-by: Tushar Goyal <tusharg1993@gmail.com>",
+              "stats": {
+                "files": 13,
+                "lines": 588,
+                "insertions": 515,
+                "deletions": 73
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Immanuel",
           "email": "immanuel.peter1@gmail.com",
           "total_commits": 1,
@@ -9401,8 +9697,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 80,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "yatesdr",
@@ -9440,8 +9736,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "CedricHuang",
@@ -9678,45 +9974,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Julian",
-          "email": "148066842+JulianZJN@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 42,
-          "commits": [
-            {
-              "hash": "187b71ad",
-              "author": "Julian",
-              "email": "148066842+JulianZJN@users.noreply.github.com",
-              "date": "2026-09-01T00:25:50.000Z",
-              "message": "[Bugfix] storage: skip duplicate puts for resident disk keys (#4656)\n\nSigned-off-by: Julian <148066842+JulianZJN@users.noreply.github.com>",
-              "stats": {
-                "files": 2,
-                "lines": 51,
-                "insertions": 51,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 5,
-                "total": 42
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 42,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 42,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "DaMi",
           "email": "118408678+Kangwenqiao@users.noreply.github.com",
           "total_commits": 1,
@@ -9830,8 +10087,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 32,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "SANJAY E",
+          "email": "sanjayelango06@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 31,
+          "commits": [
+            {
+              "hash": "45e019df",
+              "author": "SANJAY E",
+              "email": "sanjayelango06@gmail.com",
+              "date": "2026-09-08T19:18:19.000Z",
+              "message": "fix: defer XPU connector log formatting (#4713)\n\nSigned-off-by: sanjayy0612 <sanjayelango06@gmail.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 33,
+                "insertions": 19,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 15,
+                "ai": 3,
+                "total": 31
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 31,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 31,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "m0g3r",
@@ -9912,6 +10208,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "JianDan0212",
+          "email": "126063153+JianDan0212@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "21a5db10",
+              "author": "JianDan0212",
+              "email": "126063153+JianDan0212@users.noreply.github.com",
+              "date": "2026-09-08T03:01:54.000Z",
+              "message": "[MACA] Fix detect() exception handling and add missing triton dependency (#4907)\n\nMacaProfile.detect() only caught ImportError, but a MACA-enabled torch\nbuild's cpp_extension module raises TypeError instead when MACA_PATH\nisn't set yet (its own module-level init calls _find_cuda_home(), which\ndoes os.path.exists(None)). Confirmed on real MACA hardware: this\npropagated uncaught, crashing setup.py's build-profile auto-detection\non any machine with MACA torch installed, regardless of whether\nBUILD_WITH_MACA was actually requested. Broaden the catch to Exception;\ndetect() must never propagate since it runs during auto-detection for\nunrelated profiles too.\n\nSeparately, running the real tests/v1/ suite on MACA hardware surfaced\na missing dependency: tests/v1/compute/attention/test_triton_kernels.py\nfails to collect without triton installed. MACA's own torch wheel\ndoesn't declare triton as a dependency the way mainstream PyPI torch\ndoes, so add it to maca_core.txt alongside mcpy.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\nCo-authored-by: JianDan0212 <zhangyj0212@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 15,
+                "insertions": 14,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Miguel",
           "email": "60073809+migarci2@users.noreply.github.com",
           "total_commits": 1,
@@ -9969,6 +10304,45 @@
                 "lines": 2,
                 "insertions": 1,
                 "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Shaoting",
+          "email": "shaotingf@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "47da378c",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-09-08T15:17:45.000Z",
+              "message": "[Chore] Add Shaoting-Feng to CODEOWNERS for the GDS L1 tier (#5028)\n\nSigned-off-by: Shaoting-Feng <stfeng@cs.washington.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 4,
+                "deletions": 2
               },
               "scores": {
                 "loc": 3,
@@ -12589,6 +12963,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Julian",
+          "email": "148066842+JulianZJN@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 119,
+          "commits": [
+            {
+              "hash": "187b71ad",
+              "author": "Julian",
+              "email": "148066842+JulianZJN@users.noreply.github.com",
+              "date": "2026-09-01T00:25:50.000Z",
+              "message": "[Bugfix] storage: skip duplicate puts for resident disk keys (#4656)\n\nSigned-off-by: Julian <148066842+JulianZJN@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 51,
+                "insertions": 51,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "72480522",
+              "author": "Julian",
+              "email": "148066842+JulianZJN@users.noreply.github.com",
+              "date": "2026-09-08T14:47:45.000Z",
+              "message": "[Bugfix] storage: make local-disk put admission rollback-safe (#4660)\n\nSigned-off-by: Julian <148066842+JulianZJN@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 327,
+                "insertions": 300,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 59.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 119,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "MonthFall",
           "email": "58578810+MonthFall@users.noreply.github.com",
           "total_commits": 2,
@@ -12645,6 +13079,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 107,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "JianDan0212",
+          "email": "126063153+JianDan0212@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 91,
+          "commits": [
+            {
+              "hash": "117a0b88",
+              "author": "JianDan0212",
+              "email": "126063153+JianDan0212@users.noreply.github.com",
+              "date": "2026-08-31T08:42:37.000Z",
+              "message": "[MACA] Add self-compile build profile for MetaX GPUs (#4606)\n\n* [MACA] Add self-compile build profile for MetaX GPUs\n\nAdds a BuildProfile for MetaX MACA (BUILD_WITH_MACA=1), following the\nsame pattern as cuda.py/rocm.py. MACA reports device_type==\"cuda\" to\ntorch/vLLM, so this only needs a compile-time profile, not a separate\nruntime platform/DeviceSpec.\n\n- setup_extensions/build_profiles/maca.py: detects a MACA-enabled torch\n  build via torch.utils.cpp_extension.MACA_HOME (avoids colliding with\n  cuda.py's nvcc-based detection, since MACA's cu-bridge also exposes an\n  nvcc-named compiler); builds the extension as lmcache.cuda_ops (same\n  name CudaDeviceOps imports) from the existing csrc/cuda/*.cu sources\n  unchanged; adds the half-precision -U flags and ABI flag MACA's\n  toolchain needs.\n- csrc/cuda/mp_mem_kernels.cu: gates the CUDA-only PTX cache-streaming\n  asm in ld_cs/st_cs behind `!defined(USE_MACA)` instead of removing it,\n  so real CUDA builds keep the optimization and MACA builds fall through\n  to the portable path.\n- requirements/maca_core.txt: placeholder, no MACA-specific runtime\n  package identified yet.\n- docs: add a MetaX MACA tab under \"From Source\" installation docs.\n\nNo CI/wheel publishing is included by design (self-compile only).\n\nVerified on MetaX C500 hardware: BUILD_WITH_MACA=1 python setup.py\nbuild_ext --inplace compiles lmcache.cuda_ops successfully and the\nextension imports with all expected native symbols.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\n\n* [MACA] Fix stale comment in requirements/maca_core.txt\n\nmcpy is MetaX's own cupy-equivalent for MACA (analogue of\ncupy-rocm-7-0), not an unconfirmed placeholder as the previous\ncomment said.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\n\n* [MACA] Rename USE_MACA guard to LMCACHE_DISABLE_STREAMING_IO\n\nPer review feedback from @maobaolong: the macro gating the CUDA-only\nPTX cache-streaming asm in ld_cs/st_cs shouldn't couple a vendor name\ninto a shared cuda/ source file. Renamed to describe what it does\n(disables the streaming-IO fast path) rather than who requested it, so\nany future backend with the same limitation can reuse the same guard.\n\nNo behavior change.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\n\n* [MACA] Address Copilot review feedback\n\n- Docstring no longer claims a guaranteed profile-discovery order\n  (pkgutil.iter_modules doesn't sort); state the actual mitigation\n  instead: MACA builds must be explicitly enabled via BUILD_WITH_MACA=1.\n- Use the public torch.compiled_with_cxx11_abi() instead of the private\n  torch._C._GLIBCXX_USE_CXX11_ABI attribute.\n\nNo behavior change.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\n\n* [MACA] Correct mcpy install guidance\n\nmcpy (MetaX's cupy equivalent, needed for MP mode) is a real wheel\npublished on MetaX's own pip index (repos.metax-tech.com/r/maca-pypi),\nnot a tarball/shell-script install as first assumed. Restore it to\nmaca_core.txt's dependency list with an accurate comment, and replace\nthe installation docs' tarball instructions with the actual pip\ncommand pointed at that index.\n\n--no-deps remains the documented default for the self-compile flow, so\nthis doesn't change what gets installed there; it only matters for\nusers who explicitly want MP mode's mcpy dependency resolved.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\n\n---------\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\nCo-authored-by: JianDan0212 <zhangyj0212@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 207,
+                "insertions": 205,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 5,
+                "ai": 20,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "21a5db10",
+              "author": "JianDan0212",
+              "email": "126063153+JianDan0212@users.noreply.github.com",
+              "date": "2026-09-08T03:01:54.000Z",
+              "message": "[MACA] Fix detect() exception handling and add missing triton dependency (#4907)\n\nMacaProfile.detect() only caught ImportError, but a MACA-enabled torch\nbuild's cpp_extension module raises TypeError instead when MACA_PATH\nisn't set yet (its own module-level init calls _find_cuda_home(), which\ndoes os.path.exists(None)). Confirmed on real MACA hardware: this\npropagated uncaught, crashing setup.py's build-profile auto-detection\non any machine with MACA torch installed, regardless of whether\nBUILD_WITH_MACA was actually requested. Broaden the catch to Exception;\ndetect() must never propagate since it runs during auto-detection for\nunrelated profiles too.\n\nSeparately, running the real tests/v1/ suite on MACA hardware surfaced\na missing dependency: tests/v1/compute/attention/test_triton_kernels.py\nfails to collect without triton installed. MACA's own torch wheel\ndoesn't declare triton as a dependency the way mainstream PyPI torch\ndoes, so add it to maca_core.txt alongside mcpy.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\nCo-authored-by: JianDan0212 <zhangyj0212@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 15,
+                "insertions": 14,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 45.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 91,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -12783,8 +13277,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Neng",
@@ -12822,8 +13316,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Cao Qian",
@@ -13039,6 +13533,45 @@
                 "lines": 602,
                 "insertions": 440,
                 "deletions": 162
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Tushar Goyal",
+          "email": "tusharg1993@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "01d8bd4a",
+              "author": "Tushar Goyal",
+              "email": "tusharg1993@gmail.com",
+              "date": "2026-09-08T18:18:12.000Z",
+              "message": "[Coordinator] Add cache-event source abstraction (#4583)\n\nSigned-off-by: Tushar Goyal <tusharg1993@gmail.com>",
+              "stats": {
+                "files": 13,
+                "lines": 588,
+                "insertions": 515,
+                "deletions": 73
               },
               "scores": {
                 "loc": 30,
@@ -13489,45 +14022,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "JianDan0212",
-          "email": "126063153+JianDan0212@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 65,
-          "commits": [
-            {
-              "hash": "117a0b88",
-              "author": "JianDan0212",
-              "email": "126063153+JianDan0212@users.noreply.github.com",
-              "date": "2026-08-31T08:42:37.000Z",
-              "message": "[MACA] Add self-compile build profile for MetaX GPUs (#4606)\n\n* [MACA] Add self-compile build profile for MetaX GPUs\n\nAdds a BuildProfile for MetaX MACA (BUILD_WITH_MACA=1), following the\nsame pattern as cuda.py/rocm.py. MACA reports device_type==\"cuda\" to\ntorch/vLLM, so this only needs a compile-time profile, not a separate\nruntime platform/DeviceSpec.\n\n- setup_extensions/build_profiles/maca.py: detects a MACA-enabled torch\n  build via torch.utils.cpp_extension.MACA_HOME (avoids colliding with\n  cuda.py's nvcc-based detection, since MACA's cu-bridge also exposes an\n  nvcc-named compiler); builds the extension as lmcache.cuda_ops (same\n  name CudaDeviceOps imports) from the existing csrc/cuda/*.cu sources\n  unchanged; adds the half-precision -U flags and ABI flag MACA's\n  toolchain needs.\n- csrc/cuda/mp_mem_kernels.cu: gates the CUDA-only PTX cache-streaming\n  asm in ld_cs/st_cs behind `!defined(USE_MACA)` instead of removing it,\n  so real CUDA builds keep the optimization and MACA builds fall through\n  to the portable path.\n- requirements/maca_core.txt: placeholder, no MACA-specific runtime\n  package identified yet.\n- docs: add a MetaX MACA tab under \"From Source\" installation docs.\n\nNo CI/wheel publishing is included by design (self-compile only).\n\nVerified on MetaX C500 hardware: BUILD_WITH_MACA=1 python setup.py\nbuild_ext --inplace compiles lmcache.cuda_ops successfully and the\nextension imports with all expected native symbols.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\n\n* [MACA] Fix stale comment in requirements/maca_core.txt\n\nmcpy is MetaX's own cupy-equivalent for MACA (analogue of\ncupy-rocm-7-0), not an unconfirmed placeholder as the previous\ncomment said.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\n\n* [MACA] Rename USE_MACA guard to LMCACHE_DISABLE_STREAMING_IO\n\nPer review feedback from @maobaolong: the macro gating the CUDA-only\nPTX cache-streaming asm in ld_cs/st_cs shouldn't couple a vendor name\ninto a shared cuda/ source file. Renamed to describe what it does\n(disables the streaming-IO fast path) rather than who requested it, so\nany future backend with the same limitation can reuse the same guard.\n\nNo behavior change.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\n\n* [MACA] Address Copilot review feedback\n\n- Docstring no longer claims a guaranteed profile-discovery order\n  (pkgutil.iter_modules doesn't sort); state the actual mitigation\n  instead: MACA builds must be explicitly enabled via BUILD_WITH_MACA=1.\n- Use the public torch.compiled_with_cxx11_abi() instead of the private\n  torch._C._GLIBCXX_USE_CXX11_ABI attribute.\n\nNo behavior change.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\n\n* [MACA] Correct mcpy install guidance\n\nmcpy (MetaX's cupy equivalent, needed for MP mode) is a real wheel\npublished on MetaX's own pip index (repos.metax-tech.com/r/maca-pypi),\nnot a tarball/shell-script install as first assumed. Restore it to\nmaca_core.txt's dependency list with an accurate comment, and replace\nthe installation docs' tarball instructions with the actual pip\ncommand pointed at that index.\n\n--no-deps remains the documented default for the self-compile flow, so\nthis doesn't change what gets installed there; it only matters for\nusers who explicitly want MP mode's mcpy dependency resolved.\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\n\n---------\n\nSigned-off-by: JianDan0212 <zhangyj0212@gmail.com>\nCo-authored-by: JianDan0212 <zhangyj0212@gmail.com>",
-              "stats": {
-                "files": 4,
-                "lines": 207,
-                "insertions": 205,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 5,
-                "ai": 20,
-                "total": 65
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 65,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 65,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "Meghana",
           "email": "11406990+meghana-madhyastha@users.noreply.github.com",
           "total_commits": 1,
@@ -13783,6 +14277,66 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "SANJAY E",
+          "email": "sanjayelango06@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 51,
+          "commits": [
+            {
+              "hash": "9997afbc",
+              "author": "SANJAY E",
+              "email": "sanjayelango06@gmail.com",
+              "date": "2026-08-20T07:22:36.000Z",
+              "message": "[good-first-issue] telemetry: use lazy logging in FastAPI reporter (#4644) (#4645)\n\ntelemetry: use lazy logging in FastAPI reporter\n\nSigned-off-by: sanjayy0612 <sanjayelango06@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 4,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "45e019df",
+              "author": "SANJAY E",
+              "email": "sanjayelango06@gmail.com",
+              "date": "2026-09-08T19:18:19.000Z",
+              "message": "fix: defer XPU connector log formatting (#4713)\n\nSigned-off-by: sanjayy0612 <sanjayelango06@gmail.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 33,
+                "insertions": 19,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 15,
+                "ai": 3,
+                "total": 31
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 51,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "HelloKitty",
           "email": "hfutqyy@163.com",
           "total_commits": 1,
@@ -13956,45 +14510,6 @@
                 "files": 2,
                 "lines": 56,
                 "insertions": 56,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 5,
-                "total": 42
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 42,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 42,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "Julian",
-          "email": "148066842+JulianZJN@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 42,
-          "commits": [
-            {
-              "hash": "187b71ad",
-              "author": "Julian",
-              "email": "148066842+JulianZJN@users.noreply.github.com",
-              "date": "2026-09-01T00:25:50.000Z",
-              "message": "[Bugfix] storage: skip duplicate puts for resident disk keys (#4656)\n\nSigned-off-by: Julian <148066842+JulianZJN@users.noreply.github.com>",
-              "stats": {
-                "files": 2,
-                "lines": 51,
-                "insertions": 51,
                 "deletions": 0
               },
               "scores": {
@@ -14428,45 +14943,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "SANJAY E",
-          "email": "sanjayelango06@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 20,
-          "commits": [
-            {
-              "hash": "9997afbc",
-              "author": "SANJAY E",
-              "email": "sanjayelango06@gmail.com",
-              "date": "2026-08-20T07:22:36.000Z",
-              "message": "[good-first-issue] telemetry: use lazy logging in FastAPI reporter (#4644) (#4645)\n\ntelemetry: use lazy logging in FastAPI reporter\n\nSigned-off-by: sanjayy0612 <sanjayelango06@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 8,
-                "insertions": 4,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 20,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 20,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "Miguel",
           "email": "60073809+migarci2@users.noreply.github.com",
           "total_commits": 1,
@@ -14545,6 +15021,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Shaoting",
+          "email": "shaotingf@uchicago.edu",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "47da378c",
+              "author": "Shaoting",
+              "email": "shaotingf@uchicago.edu",
+              "date": "2026-09-08T15:17:45.000Z",
+              "message": "[Chore] Add Shaoting-Feng to CODEOWNERS for the GDS L1 tier (#5028)\n\nSigned-off-by: Shaoting-Feng <stfeng@cs.washington.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 6,
+                "insertions": 4,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Cappuccino",
           "email": "1121861747@qq.com",
           "total_commits": 1,
@@ -14587,13 +15102,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-09-08T00:30:05.331Z",
+    "analyzedAt": "2026-09-09T00:30:12.652Z",
     "daysBack": 2,
-    "totalCommits": 162,
-    "totalContributors": 66,
+    "totalCommits": 167,
+    "totalContributors": 68,
     "mergedFrom": {
-      "existing": 159,
-      "new": 3
+      "existing": 162,
+      "new": 5
     }
   }
 }
