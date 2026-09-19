@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-09-18T00:30:38.572Z",
-  "total_commits_analyzed": 226,
+  "last_updated": "2026-09-19T00:30:47.803Z",
+  "total_commits_analyzed": 237,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -6255,10 +6255,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 5,
-          "significant_commits": 4,
+          "total_commits": 7,
+          "significant_commits": 6,
           "simple_commits": 1,
-          "commit_score": 374,
+          "commit_score": 528,
           "commits": [
             {
               "hash": "e5078730",
@@ -6364,14 +6364,176 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7dac8bcd",
+              "author": "maobaolong",
+              "email": "307499405@qq.com",
+              "date": "2026-09-18T14:42:45.000Z",
+              "message": "fix(vllm): safely wire MP cache reset (#5091)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 256,
+                "insertions": 231,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "92a40871",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-18T05:13:39.000Z",
+              "message": "Add optional force flag to clear RPC (#5158)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 19,
+                "lines": 154,
+                "insertions": 121,
+                "deletions": 33
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 74.8,
-          "significance_ratio": 0.8,
+          "avg_score": 75.42857142857143,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 374,
+          "total_score": 528,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "6612149d",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-18T17:54:11.000Z",
+              "message": "Refine k3 tests path filtering (#4177)\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <vincyzhang@users.noreply.github.com>\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nCo-authored-by: VincyZhang <vincyzhang@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 415,
+                "insertions": 366,
+                "deletions": 49
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8a03dce7",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-18T15:18:35.000Z",
+              "message": "Feat/xpu nightly workflow (#4616)\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <vincyzhang@users.noreply.github.com>\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nCo-authored-by: VincyZhang <vincyzhang@users.noreply.github.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 506,
+                "insertions": 400,
+                "deletions": 106
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "f59a354f",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-09-17T17:26:12.000Z",
+              "message": "[Fix][MP] honor kv_role when storing KV cache (#5148)\n\n* [Bugfix][MP] Honor consumer roles when storing KV cache\n\nUse the MP connector's own producer capability to gate STORE metadata and\nlazy-offload candidates after token and block accounting. Keep lookup\nand retrieval enabled for all roles, including producers.\n\nAvoid delayed save frees and synthetic STORE completions for consumers,\nwhile preserving producer telemetry and nested kv_both behavior.\n\nFixes LMCache/LMCache#5143\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* [Test][MP] Cover KV roles through public connector lifecycle\n\nExercise new and cached prefill steps, lazy drains, retrieval failures,\nrequest cleanup, and completion telemetry through public connector APIs.\nVerify nested MP roles and MultiConnector completion coordination.\n\nDocument why consumers must omit engine-finished IDs from save completion\npolling and annotate the connector constructor return type.\n\nValidation: 107 focused tests and modified-file pre-commit checks pass.\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 431,
+                "insertions": 428,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a4eb68cb",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-09-18T03:24:03.000Z",
+              "message": "[feat][vllm] publish MP connector KV events (#5076)\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 464,
+                "insertions": 458,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6436,6 +6598,45 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Murphy",
+          "email": "42812404+realtmxi@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "45575d89",
+              "author": "Murphy",
+              "email": "42812404+realtmxi@users.noreply.github.com",
+              "date": "2026-09-18T10:51:26.000Z",
+              "message": "feat: Add MP server autostart for vLLM connector (#3476)\n\n* Add MP server autostart for vLLM connector\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Address MP autostart review feedback\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Add k3 MP autostart TP2 smoke test\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Address MP autostart review polish\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Move MP autostart into scheduler adapter\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Document MP autostart server lifetime\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Revert connector autostart changes\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Move MP autostart to worker adapter\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Harden MP autostart local binding\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Keep legacy MP adapter connect-only for autostart\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Avoid patching private MP health helpers\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Document MP autostart HTTP port caveat\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Document MP autostart design\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Address MP autostart review comments\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Lazy import MP health probe dependencies\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Tighten MP health lazy import tests\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* test: adapt autostart tests to renamed ParallelStrategy.mla_only and new get_experimental init call\n\ndev renamed ParallelStrategy.use_mla to mla_only and added a\nget_experimental() MQ query in LMCacheMPWorkerAdapter.__init__.\nUpdate the autostart tests added by this PR accordingly:\n\n- rename use_mla -> mla_only in the _parallel_strategy test helper and\n  its call sites\n- stub adapter_mod.get_experimental in the three worker autostart tests\n  that patch the MQ boundary per-test instead of via the fake_adapter\n  fixture\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* fix: align MP autostart probes and endpoint validation with dev\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* fix: reject multi-server autostart before connector handshake\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* test: update MP autostart transfer mode and register server cleanup\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* docs: clarify MP autostart endpoint and transport limits\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* docs: clarify MP autostart lifetime and service ownership\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n---------\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 2123,
+                "insertions": 2110,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
           "total_commits": 1,
@@ -6471,8 +6672,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Hyunseung Jung",
@@ -6510,8 +6711,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "JH",
@@ -6549,8 +6750,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "JianDan0212",
@@ -6571,6 +6772,84 @@
                 "lines": 371,
                 "insertions": 371,
                 "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "rebel-jindol21",
+          "email": "jindol21@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "7d5fa221",
+              "author": "rebel-jindol21",
+              "email": "jindol21@rebellions.ai",
+              "date": "2026-09-18T03:21:49.000Z",
+              "message": "[Platform][RBLN] MLA (NL_X_NB_BS_HS) block transfer support (#4726)\n\n* [feat][RBLN] MLA (NL_X_NB_BS_HS) block transfer support\n\nExtend RblnDeviceOps to accept the MLA KV layout ([NB, BS, HS], single\nlatent plane) alongside the validated HND format. MLA layers get their\nown functional gather/scatter op sequence (index_select + stack /\nindex_copy_) that stays on device-native v2v kernels and crosses the\ndevice boundary with one DMA per chunk, since the shared torch path's\ntorch.empty staging falls back to CPU on RBLN.\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n* [feat][RBLN] address MLA review comments and document the MLA layout\n\n- Rename gather_blocks_to_chunk / scatter_chunk_to_blocks to *_hnd,\n  matching the *_mla pair (review)\n- Rename _SUPPORTED_FORMAT to _HND_FORMAT (review)\n- Classify MLA via lmcache_native.is_mla() (review); unsupported MLA\n  layouts are rejected at the format check with a format error instead\n  of surfacing later as a shape mismatch in validate_mla_layers\n- Document the MLA layout and its RBLN op sequence in the design README\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n* [fix][RBLN] apply ruff-format to kv_ops.py\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n* [Platform][RBLN] Move MLA block transfer to device-staged _foreach_copy_\n\nReview of #4726 asked for proof that the MLA op sequence (index_select +\nstack, .to + index_copy_) does not take torch-rbln's CPU-fallback path on a\nreal vLLM-RBLN KV cache, and for a comparison against a block-view\n_foreach_copy_ implementation.\n\nTraced on DeepSeek-V3 (61 layers, dp8, VLLM_RBLN_USE_DEVICE_TENSOR=1,\ntorch-rbln 0.4.0rc0 / vllm-rbln 0.11.3a1): neither sequence hits any\ntorch-rbln bounce site or cpu_fallback, and store->retrieve is byte-exact\nfor both. The block-view design is adopted anyway:\n\n- no index tensor, so no per-layer read-back of the index to the host\n  (index_copy_ cannot take a CPU index, so a gather-side fix alone could\n  not cover the scatter);\n- every copy is a whole contiguous block, so it takes the direct memcpy_v2v\n  path with no submit_or_fallback behind it;\n- the L*B block copies of a chunk go through one batched d2d submission\n  into a persistent per-thread device staging buffer and the chunk crosses\n  the device boundary in one contiguous DMA. On par with the previous\n  sequence at one block per chunk; 3.5-5x faster at 2-8 blocks per chunk\n  (10-41 ms vs 37-213 ms per chunk on the real KV).\n\nvalidate_mla_layers now also requires contiguous layers, since a permuted\nview would silently send the block copies down the strided path. The\ndocstrings and README claiming the shared torch path falls to the CPU\nfallback via a lazy torch.empty were not reproducible and are replaced by\nthe measured rationale. Adds a per-thread MLA staging test and a\ncontiguity test.\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\nCo-authored-by: Claude Fable 5 <noreply@anthropic.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 655,
+                "insertions": 612,
+                "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Ofer Achler",
+          "email": "ofer.achler@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "c7c02791",
+              "author": "Ofer Achler",
+              "email": "ofer.achler@gmail.com",
+              "date": "2026-09-18T03:13:42.000Z",
+              "message": "Add a native connector for NIXL (#4865)\n\nSigned-off-by: Ofer Achler <oachler@nvidia.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 22,
+                "lines": 3702,
+                "insertions": 3578,
+                "deletions": 124
               },
               "scores": {
                 "loc": 30,
@@ -6687,8 +6966,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 80,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Junyuan",
+          "email": "jjysama@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "f01d527b",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-09-18T12:08:37.000Z",
+              "message": "[MP][Ascend][KV format] Add NL_X_NP_X_NB_BS_ONE_HS for vLLM-Ascend MLA/DSA plane tuples (#5138)\n\n* [KV format] Add NL_X_NP_X_NB_BS_ONE_HS for vLLM-Ascend MLA/DSA plane tuples\n\nDetect and transfer per-layer plane tuples emitted by vLLM-Ascend for\nDeepSeek-V2/V3 MLA (latent, rope) and V3.2 DSA (latent, rope, dsa)\ncaches: every plane is a paged [NB, BS, 1, width] tensor with a single\nlatent KV head and mutually unequal widths. The transferred object stays\none flat plane of the summed width (kv_size == 1, is_mla); only the\npaged source arrives as per-plane tuples.\n\n- New EngineKVFormat value + format facts, pybind export, .pyi stub\n- vLLM detector branch: single-head tuples of unequal widths (or arity\n  1/3) classify as plane tuples; equal-width pairs stay (K, V)\n- New spec NL_X_NP_X_NB_BS_ONE_HS_Spec; NP stays symbolic like ONE/TWO\n- Group per-layer format discovery by full shape/dtype structure\n  (get_shape_and_dtype) so plane-tuple layers share one detection pass\n- block-stride resolution accepts the format\n- Python-fallback D2H/H2D transfer carving planes by byte offset,\n  including mixed-item-size (int8 latent + fp16 scale) packing\n\nCo-Authored-By: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-Authored-By: larksudo <72514768+larksudo@users.noreply.github.com>\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n* docs: spell out NP in _BLOCK_AXIS_FORMATS comment (review)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n* Route plane-tuple branches through format facts instead of enum equality (review)\n\nThe NL_X_NP_X_NB_BS_ONE_HS dispatch in multi_layer_block_kv_transfer and\nthe tuple-length check in _normalize_paged_layers now read the declared\nfacts (is_mla && is_kv_second_tuple) like the surrounding branches,\nrather than naming the format inline.\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n* remove some comments\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n---------\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nCo-authored-by: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-authored-by: larksudo <72514768+larksudo@users.noreply.github.com>",
+              "stats": {
+                "files": 13,
+                "lines": 556,
+                "insertions": 536,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Divy",
@@ -6726,47 +7044,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 77,
-          "commits": [
-            {
-              "hash": "f59a354f",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-09-17T17:26:12.000Z",
-              "message": "[Fix][MP] honor kv_role when storing KV cache (#5148)\n\n* [Bugfix][MP] Honor consumer roles when storing KV cache\n\nUse the MP connector's own producer capability to gate STORE metadata and\nlazy-offload candidates after token and block accounting. Keep lookup\nand retrieval enabled for all roles, including producers.\n\nAvoid delayed save frees and synthetic STORE completions for consumers,\nwhile preserving producer telemetry and nested kv_both behavior.\n\nFixes LMCache/LMCache#5143\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* [Test][MP] Cover KV roles through public connector lifecycle\n\nExercise new and cached prefill steps, lazy drains, retrieval failures,\nrequest cleanup, and completion telemetry through public connector APIs.\nVerify nested MP roles and MultiConnector completion coordination.\n\nDocument why consumers must omit engine-finished IDs from save completion\npolling and annotate the connector constructor return type.\n\nValidation: 107 focused tests and modified-file pre-commit checks pass.\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 431,
-                "insertions": 428,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 77,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 77,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "weishu",
@@ -6825,8 +7104,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 69,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Shuichi Ihara",
@@ -6864,8 +7143,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 62,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Yifan Jin",
@@ -6985,6 +7264,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Zupeng Wang",
+          "email": "zupenwang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 36,
+          "commits": [
+            {
+              "hash": "1a0374c6",
+              "author": "Zupeng Wang",
+              "email": "zupenwang@gmail.com",
+              "date": "2026-09-18T03:30:54.000Z",
+              "message": "Fix: periodic thread restart after failure (#3758)\n\nFix periodic thread restart after failure\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>\nCo-authored-by: Wang Zupeng <wangzupeng12061@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 37,
+                "insertions": 37,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 15,
+                "ai": 3,
+                "total": 36
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 36,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 36,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "dependabot[bot]",
           "email": "49699333+dependabot[bot]@users.noreply.github.com",
           "total_commits": 1,
@@ -7059,8 +7377,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 25,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 25,
+          "commits": [
+            {
+              "hash": "476738dd",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-09-18T21:06:33.000Z",
+              "message": "ci: gate ROCm wheel builds in PR full build (#4741)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 1,
+                "lines": 21,
+                "insertions": 17,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 10,
+                "ai": 2,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 25,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Alan Vanderboom",
@@ -7098,8 +7455,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 21,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Karsten Wade",
@@ -7137,8 +7494,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 21,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "m0g3r",
@@ -7176,8 +7533,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "听说十四行春",
@@ -7215,8 +7572,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Vedant",
@@ -7254,8 +7611,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "haiqakhan2005",
@@ -10821,10 +11178,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 23,
-          "significant_commits": 15,
+          "total_commits": 25,
+          "significant_commits": 17,
           "simple_commits": 8,
-          "commit_score": 1532,
+          "commit_score": 1686,
           "commits": [
             {
               "hash": "1a247620",
@@ -11308,14 +11665,56 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7dac8bcd",
+              "author": "maobaolong",
+              "email": "307499405@qq.com",
+              "date": "2026-09-18T14:42:45.000Z",
+              "message": "fix(vllm): safely wire MP cache reset (#5091)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 256,
+                "insertions": 231,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "92a40871",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-18T05:13:39.000Z",
+              "message": "Add optional force flag to clear RPC (#5158)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 19,
+                "lines": 154,
+                "insertions": 121,
+                "deletions": 33
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 66.6086956521739,
-          "significance_ratio": 0.6521739130434783,
+          "avg_score": 67.44,
+          "significance_ratio": 0.68,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1532,
+          "total_score": 1686,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11502,6 +11901,129 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 406,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 365,
+          "commits": [
+            {
+              "hash": "9384ad22",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-05T05:37:20.000Z",
+              "message": "Enable xpu mp tests dev (#4849)\n\n* ci(xpu): restore xpu harness and score-mode validation\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): import torch_dev for compatibility checks\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): add safe fallback and transfer regression coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* minor fix to change the agent to the correct one\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(mp): make transfer events context-aware\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* chore(xpu): restore dev implementations\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(ci): use intel xpu queue for multiprocess tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): tune multiprocess benchmark offload\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): increase multiprocess L1 capacity\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): disable lazy offload benchmark experiment\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): restore score-mode lm-eval verification\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): preserve multiprocess benchmark results\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): launch baseline for benchmark tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* style: remove unused vLLM adapter import\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n* ci: tune XPU multiprocess benchmark resources\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci: parameterize multiprocess device settings\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci(xpu): restore shared multiprocess defaults\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 580,
+                "insertions": 494,
+                "deletions": 86
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5eebe0d9",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-09T06:01:01.000Z",
+              "message": "test: diagnose XPU LM server connector timeouts (#4999)\n\ntest: remove deprecated LM connector coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 55,
+                "insertions": 4,
+                "deletions": 51
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 10,
+                "ai": 5,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "85a902d3",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-11T04:52:46.000Z",
+              "message": "Fix TurboQuant asynchronous storage races (#5058)\n\nPrevent internal serde staging buffers from being routed back through L2 storage, and release L1 read locks when adapter task submission fails.\n\nAnchor TurboQuant completion waits on actual L2 persistence and add regression coverage for both lifecycle races.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Vincy Zhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 198,
+                "insertions": 166,
+                "deletions": 32
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 19,
+                "total": 71
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6612149d",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-18T17:54:11.000Z",
+              "message": "Refine k3 tests path filtering (#4177)\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <vincyzhang@users.noreply.github.com>\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nCo-authored-by: VincyZhang <vincyzhang@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 415,
+                "insertions": 366,
+                "deletions": 49
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8a03dce7",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-18T15:18:35.000Z",
+              "message": "Feat/xpu nightly workflow (#4616)\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <vincyzhang@users.noreply.github.com>\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nCo-authored-by: VincyZhang <vincyzhang@users.noreply.github.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 506,
+                "insertions": 400,
+                "deletions": 106
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 365,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11766,8 +12288,89 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 246,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 241,
+          "commits": [
+            {
+              "hash": "588c5366",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-09-12T01:52:14.000Z",
+              "message": "[Perf][MP] Poll lookup status without blocking the scheduler (#5053)",
+              "stats": {
+                "files": 3,
+                "lines": 470,
+                "insertions": 459,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f59a354f",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-09-17T17:26:12.000Z",
+              "message": "[Fix][MP] honor kv_role when storing KV cache (#5148)\n\n* [Bugfix][MP] Honor consumer roles when storing KV cache\n\nUse the MP connector's own producer capability to gate STORE metadata and\nlazy-offload candidates after token and block accounting. Keep lookup\nand retrieval enabled for all roles, including producers.\n\nAvoid delayed save frees and synthetic STORE completions for consumers,\nwhile preserving producer telemetry and nested kv_both behavior.\n\nFixes LMCache/LMCache#5143\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* [Test][MP] Cover KV roles through public connector lifecycle\n\nExercise new and cached prefill steps, lazy drains, retrieval failures,\nrequest cleanup, and completion telemetry through public connector APIs.\nVerify nested MP roles and MultiConnector completion coordination.\n\nDocument why consumers must omit engine-finished IDs from save completion\npolling and annotate the connector constructor return type.\n\nValidation: 107 focused tests and modified-file pre-commit checks pass.\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 431,
+                "insertions": 428,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a4eb68cb",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-09-18T03:24:03.000Z",
+              "message": "[feat][vllm] publish MP connector KV events (#5076)\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 464,
+                "insertions": 458,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80.33333333333333,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 241,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Roy Huang",
@@ -11847,87 +12450,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 208,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "VincyZhang",
-          "email": "wenxin.zhang@intel.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 191,
-          "commits": [
-            {
-              "hash": "9384ad22",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-09-05T05:37:20.000Z",
-              "message": "Enable xpu mp tests dev (#4849)\n\n* ci(xpu): restore xpu harness and score-mode validation\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): import torch_dev for compatibility checks\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): add safe fallback and transfer regression coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* minor fix to change the agent to the correct one\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(mp): make transfer events context-aware\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* chore(xpu): restore dev implementations\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(ci): use intel xpu queue for multiprocess tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): tune multiprocess benchmark offload\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): increase multiprocess L1 capacity\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): disable lazy offload benchmark experiment\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): restore score-mode lm-eval verification\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): preserve multiprocess benchmark results\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): launch baseline for benchmark tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* style: remove unused vLLM adapter import\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n* ci: tune XPU multiprocess benchmark resources\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci: parameterize multiprocess device settings\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci(xpu): restore shared multiprocess defaults\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 14,
-                "lines": 580,
-                "insertions": 494,
-                "deletions": 86
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 5,
-                "ai": 25,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "5eebe0d9",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-09-09T06:01:01.000Z",
-              "message": "test: diagnose XPU LM server connector timeouts (#4999)\n\ntest: remove deprecated LM connector coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>",
-              "stats": {
-                "files": 2,
-                "lines": 55,
-                "insertions": 4,
-                "deletions": 51
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 10,
-                "ai": 5,
-                "total": 40
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "85a902d3",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-09-11T04:52:46.000Z",
-              "message": "Fix TurboQuant asynchronous storage races (#5058)\n\nPrevent internal serde staging buffers from being routed back through L2 storage, and release L1 read locks when adapter task submission fails.\n\nAnchor TurboQuant completion waits on actual L2 persistence and add regression coverage for both lifecycle races.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Vincy Zhang <wenxin.zhang@intel.com>",
-              "stats": {
-                "files": 4,
-                "lines": 198,
-                "insertions": 166,
-                "deletions": 32
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 19,
-                "total": 71
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 63.666666666666664,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 191,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -12052,6 +12574,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Junyuan",
+          "email": "jjysama@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 167,
+          "commits": [
+            {
+              "hash": "989e34f5",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-09-01T03:04:34.000Z",
+              "message": "[Ascend][MP] Add NPU pin-memory backend via AscendCL aclrtHostRegister for async MP transfers (#4763)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>",
+              "stats": {
+                "files": 13,
+                "lines": 734,
+                "insertions": 727,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f01d527b",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-09-18T12:08:37.000Z",
+              "message": "[MP][Ascend][KV format] Add NL_X_NP_X_NB_BS_ONE_HS for vLLM-Ascend MLA/DSA plane tuples (#5138)\n\n* [KV format] Add NL_X_NP_X_NB_BS_ONE_HS for vLLM-Ascend MLA/DSA plane tuples\n\nDetect and transfer per-layer plane tuples emitted by vLLM-Ascend for\nDeepSeek-V2/V3 MLA (latent, rope) and V3.2 DSA (latent, rope, dsa)\ncaches: every plane is a paged [NB, BS, 1, width] tensor with a single\nlatent KV head and mutually unequal widths. The transferred object stays\none flat plane of the summed width (kv_size == 1, is_mla); only the\npaged source arrives as per-plane tuples.\n\n- New EngineKVFormat value + format facts, pybind export, .pyi stub\n- vLLM detector branch: single-head tuples of unequal widths (or arity\n  1/3) classify as plane tuples; equal-width pairs stay (K, V)\n- New spec NL_X_NP_X_NB_BS_ONE_HS_Spec; NP stays symbolic like ONE/TWO\n- Group per-layer format discovery by full shape/dtype structure\n  (get_shape_and_dtype) so plane-tuple layers share one detection pass\n- block-stride resolution accepts the format\n- Python-fallback D2H/H2D transfer carving planes by byte offset,\n  including mixed-item-size (int8 latent + fp16 scale) packing\n\nCo-Authored-By: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-Authored-By: larksudo <72514768+larksudo@users.noreply.github.com>\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n* docs: spell out NP in _BLOCK_AXIS_FORMATS comment (review)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n* Route plane-tuple branches through format facts instead of enum equality (review)\n\nThe NL_X_NP_X_NB_BS_ONE_HS dispatch in multi_layer_block_kv_transfer and\nthe tuple-length check in _normalize_paged_layers now read the declared\nfacts (is_mla && is_kv_second_tuple) like the surrounding branches,\nrather than naming the format inline.\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n* remove some comments\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n---------\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nCo-authored-by: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-authored-by: larksudo <72514768+larksudo@users.noreply.github.com>",
+              "stats": {
+                "files": 13,
+                "lines": 556,
+                "insertions": 536,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 167,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Bo Jiang",
           "email": "bo.jiang@temple.edu",
           "total_commits": 2,
@@ -12108,66 +12690,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 167,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 154,
-          "commits": [
-            {
-              "hash": "588c5366",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-09-12T01:52:14.000Z",
-              "message": "[Perf][MP] Poll lookup status without blocking the scheduler (#5053)",
-              "stats": {
-                "files": 3,
-                "lines": 470,
-                "insertions": 459,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f59a354f",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-09-17T17:26:12.000Z",
-              "message": "[Fix][MP] honor kv_role when storing KV cache (#5148)\n\n* [Bugfix][MP] Honor consumer roles when storing KV cache\n\nUse the MP connector's own producer capability to gate STORE metadata and\nlazy-offload candidates after token and block accounting. Keep lookup\nand retrieval enabled for all roles, including producers.\n\nAvoid delayed save frees and synthetic STORE completions for consumers,\nwhile preserving producer telemetry and nested kv_both behavior.\n\nFixes LMCache/LMCache#5143\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* [Test][MP] Cover KV roles through public connector lifecycle\n\nExercise new and cached prefill steps, lazy drains, retrieval failures,\nrequest cleanup, and completion telemetry through public connector APIs.\nVerify nested MP roles and MultiConnector completion coordination.\n\nDocument why consumers must omit engine-finished IDs from save completion\npolling and annotate the connector constructor return type.\n\nValidation: 107 focused tests and modified-file pre-commit checks pass.\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 431,
-                "insertions": 428,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 77,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 154,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -12249,8 +12771,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 149,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Divy",
@@ -12553,41 +13075,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Junyuan",
-          "email": "jjysama@gmail.com",
+          "name": "Murphy",
+          "email": "42812404+realtmxi@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 87,
+          "commit_score": 100,
           "commits": [
             {
-              "hash": "989e34f5",
-              "author": "Junyuan",
-              "email": "jjysama@gmail.com",
-              "date": "2026-09-01T03:04:34.000Z",
-              "message": "[Ascend][MP] Add NPU pin-memory backend via AscendCL aclrtHostRegister for async MP transfers (#4763)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>",
+              "hash": "45575d89",
+              "author": "Murphy",
+              "email": "42812404+realtmxi@users.noreply.github.com",
+              "date": "2026-09-18T10:51:26.000Z",
+              "message": "feat: Add MP server autostart for vLLM connector (#3476)\n\n* Add MP server autostart for vLLM connector\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Address MP autostart review feedback\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Add k3 MP autostart TP2 smoke test\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Address MP autostart review polish\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Move MP autostart into scheduler adapter\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Document MP autostart server lifetime\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Revert connector autostart changes\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Move MP autostart to worker adapter\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Harden MP autostart local binding\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Keep legacy MP adapter connect-only for autostart\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Avoid patching private MP health helpers\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Document MP autostart HTTP port caveat\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Document MP autostart design\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Address MP autostart review comments\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Lazy import MP health probe dependencies\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Tighten MP health lazy import tests\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* test: adapt autostart tests to renamed ParallelStrategy.mla_only and new get_experimental init call\n\ndev renamed ParallelStrategy.use_mla to mla_only and added a\nget_experimental() MQ query in LMCacheMPWorkerAdapter.__init__.\nUpdate the autostart tests added by this PR accordingly:\n\n- rename use_mla -> mla_only in the _parallel_strategy test helper and\n  its call sites\n- stub adapter_mod.get_experimental in the three worker autostart tests\n  that patch the MQ boundary per-test instead of via the fake_adapter\n  fixture\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* fix: align MP autostart probes and endpoint validation with dev\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* fix: reject multi-server autostart before connector handshake\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* test: update MP autostart transfer mode and register server cleanup\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* docs: clarify MP autostart endpoint and transport limits\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* docs: clarify MP autostart lifetime and service ownership\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n---------\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
               "stats": {
                 "files": 13,
-                "lines": 734,
-                "insertions": 727,
-                "deletions": 7
+                "lines": 2123,
+                "insertions": 2110,
+                "deletions": 13
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
-                "keyword": 12,
+                "keyword": 25,
                 "ai": 25,
-                "total": 87
+                "total": 100
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 87,
+          "avg_score": 100,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 100,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -12709,6 +13231,84 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "rebel-jindol21",
+          "email": "jindol21@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "7d5fa221",
+              "author": "rebel-jindol21",
+              "email": "jindol21@rebellions.ai",
+              "date": "2026-09-18T03:21:49.000Z",
+              "message": "[Platform][RBLN] MLA (NL_X_NB_BS_HS) block transfer support (#4726)\n\n* [feat][RBLN] MLA (NL_X_NB_BS_HS) block transfer support\n\nExtend RblnDeviceOps to accept the MLA KV layout ([NB, BS, HS], single\nlatent plane) alongside the validated HND format. MLA layers get their\nown functional gather/scatter op sequence (index_select + stack /\nindex_copy_) that stays on device-native v2v kernels and crosses the\ndevice boundary with one DMA per chunk, since the shared torch path's\ntorch.empty staging falls back to CPU on RBLN.\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n* [feat][RBLN] address MLA review comments and document the MLA layout\n\n- Rename gather_blocks_to_chunk / scatter_chunk_to_blocks to *_hnd,\n  matching the *_mla pair (review)\n- Rename _SUPPORTED_FORMAT to _HND_FORMAT (review)\n- Classify MLA via lmcache_native.is_mla() (review); unsupported MLA\n  layouts are rejected at the format check with a format error instead\n  of surfacing later as a shape mismatch in validate_mla_layers\n- Document the MLA layout and its RBLN op sequence in the design README\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n* [fix][RBLN] apply ruff-format to kv_ops.py\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n* [Platform][RBLN] Move MLA block transfer to device-staged _foreach_copy_\n\nReview of #4726 asked for proof that the MLA op sequence (index_select +\nstack, .to + index_copy_) does not take torch-rbln's CPU-fallback path on a\nreal vLLM-RBLN KV cache, and for a comparison against a block-view\n_foreach_copy_ implementation.\n\nTraced on DeepSeek-V3 (61 layers, dp8, VLLM_RBLN_USE_DEVICE_TENSOR=1,\ntorch-rbln 0.4.0rc0 / vllm-rbln 0.11.3a1): neither sequence hits any\ntorch-rbln bounce site or cpu_fallback, and store->retrieve is byte-exact\nfor both. The block-view design is adopted anyway:\n\n- no index tensor, so no per-layer read-back of the index to the host\n  (index_copy_ cannot take a CPU index, so a gather-side fix alone could\n  not cover the scatter);\n- every copy is a whole contiguous block, so it takes the direct memcpy_v2v\n  path with no submit_or_fallback behind it;\n- the L*B block copies of a chunk go through one batched d2d submission\n  into a persistent per-thread device staging buffer and the chunk crosses\n  the device boundary in one contiguous DMA. On par with the previous\n  sequence at one block per chunk; 3.5-5x faster at 2-8 blocks per chunk\n  (10-41 ms vs 37-213 ms per chunk on the real KV).\n\nvalidate_mla_layers now also requires contiguous layers, since a permuted\nview would silently send the block copies down the strided path. The\ndocstrings and README claiming the shared torch path falls to the CPU\nfallback via a lazy torch.empty were not reproducible and are replaced by\nthe measured rationale. Adds a per-thread MLA staging test and a\ncontiguity test.\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\nCo-authored-by: Claude Fable 5 <noreply@anthropic.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 655,
+                "insertions": 612,
+                "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Ofer Achler",
+          "email": "ofer.achler@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "c7c02791",
+              "author": "Ofer Achler",
+              "email": "ofer.achler@gmail.com",
+              "date": "2026-09-18T03:13:42.000Z",
+              "message": "Add a native connector for NIXL (#4865)\n\nSigned-off-by: Ofer Achler <oachler@nvidia.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 22,
+                "lines": 3702,
+                "insertions": 3578,
+                "deletions": 124
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "yatesdr",
           "email": "derek.yates@live.com",
           "total_commits": 1,
@@ -12744,8 +13344,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "CedricHuang",
@@ -13393,6 +13993,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Zupeng Wang",
+          "email": "zupenwang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 36,
+          "commits": [
+            {
+              "hash": "1a0374c6",
+              "author": "Zupeng Wang",
+              "email": "zupenwang@gmail.com",
+              "date": "2026-09-18T03:30:54.000Z",
+              "message": "Fix: periodic thread restart after failure (#3758)\n\nFix periodic thread restart after failure\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>\nCo-authored-by: Wang Zupeng <wangzupeng12061@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 37,
+                "insertions": 37,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 15,
+                "ai": 3,
+                "total": 36
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 36,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 36,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "honglie",
           "email": "hyi@amd.com",
           "total_commits": 1,
@@ -13612,6 +14251,45 @@
                 "files": 10,
                 "keyword": 12,
                 "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 25,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "andyluo7",
+          "email": "43718156+andyluo7@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 25,
+          "commits": [
+            {
+              "hash": "476738dd",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-09-18T21:06:33.000Z",
+              "message": "ci: gate ROCm wheel builds in PR full build (#4741)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 1,
+                "lines": 21,
+                "insertions": 17,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 10,
+                "ai": 2,
                 "total": 25
               },
               "classification": "simple"
@@ -13984,10 +14662,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 37,
-          "significant_commits": 23,
+          "total_commits": 39,
+          "significant_commits": 25,
           "simple_commits": 14,
-          "commit_score": 2396,
+          "commit_score": 2550,
           "commits": [
             {
               "hash": "53faf1f5",
@@ -14765,14 +15443,56 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7dac8bcd",
+              "author": "maobaolong",
+              "email": "307499405@qq.com",
+              "date": "2026-09-18T14:42:45.000Z",
+              "message": "fix(vllm): safely wire MP cache reset (#5091)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 256,
+                "insertions": 231,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "92a40871",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-09-18T05:13:39.000Z",
+              "message": "Add optional force flag to clear RPC (#5158)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 19,
+                "lines": 154,
+                "insertions": 121,
+                "deletions": 33
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 77
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 64.75675675675676,
-          "significance_ratio": 0.6216216216216216,
+          "avg_score": 65.38461538461539,
+          "significance_ratio": 0.6410256410256411,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2396,
+          "total_score": 2550,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -15713,6 +16433,192 @@
           "tier_name": "Elite"
         },
         {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 8,
+          "significant_commits": 7,
+          "simple_commits": 1,
+          "commit_score": 610,
+          "commits": [
+            {
+              "hash": "df94b3cd",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-11T12:16:19.000Z",
+              "message": "test: refine tests v1 subdir compute, platform, and storage_backend (#4409)\n\n* tests: keep tests/v1 subdirectory updates excluding gpu_connector\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 19,
+                "lines": 626,
+                "insertions": 432,
+                "deletions": 194
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f9addd2e",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-22T06:29:09.000Z",
+              "message": "tests: refine gpu_connector tests (#4513)\n\n* test: use portable accelerator device helpers\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\n\n* tests: normalize device guards and xpu behavior in gpu connector suite\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests: fix ruff line length in gpu connector test\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests: isolate vllm layout resolution\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* test(gpu-connector): support non-CUDA device format detection\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n(cherry picked from commit df23715b63462c4f395d1cc7a435ff33efff5e78)\n\n* test(multiprocess): abstract blocked scale CUDA device\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 13,
+                "lines": 338,
+                "insertions": 198,
+                "deletions": 140
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d0c53b77",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-08-27T03:14:10.000Z",
+              "message": "ci: add Intel XPU wheel build and release workflow (#4446)\n\n* ci: add Intel XPU wheel build and release workflow\n\nAdd reusable build_xpu_artifacts workflow and build_xpu_wheel script. Integrate build/publish-xpu jobs into the publish pipeline and pin validated XPU image + torch version from local verification.\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 348,
+                "insertions": 346,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 10,
+                "ai": 25,
+                "total": 75
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9384ad22",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-05T05:37:20.000Z",
+              "message": "Enable xpu mp tests dev (#4849)\n\n* ci(xpu): restore xpu harness and score-mode validation\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): import torch_dev for compatibility checks\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): add safe fallback and transfer regression coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* minor fix to change the agent to the correct one\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(mp): make transfer events context-aware\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* chore(xpu): restore dev implementations\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(ci): use intel xpu queue for multiprocess tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): tune multiprocess benchmark offload\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): increase multiprocess L1 capacity\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): disable lazy offload benchmark experiment\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): restore score-mode lm-eval verification\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): preserve multiprocess benchmark results\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): launch baseline for benchmark tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* style: remove unused vLLM adapter import\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n* ci: tune XPU multiprocess benchmark resources\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci: parameterize multiprocess device settings\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci(xpu): restore shared multiprocess defaults\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 580,
+                "insertions": 494,
+                "deletions": 86
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5eebe0d9",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-09T06:01:01.000Z",
+              "message": "test: diagnose XPU LM server connector timeouts (#4999)\n\ntest: remove deprecated LM connector coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 55,
+                "insertions": 4,
+                "deletions": 51
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 10,
+                "ai": 5,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "85a902d3",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-11T04:52:46.000Z",
+              "message": "Fix TurboQuant asynchronous storage races (#5058)\n\nPrevent internal serde staging buffers from being routed back through L2 storage, and release L1 read locks when adapter task submission fails.\n\nAnchor TurboQuant completion waits on actual L2 persistence and add regression coverage for both lifecycle races.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Vincy Zhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 4,
+                "lines": 198,
+                "insertions": 166,
+                "deletions": 32
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 19,
+                "total": 71
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6612149d",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-18T17:54:11.000Z",
+              "message": "Refine k3 tests path filtering (#4177)\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <vincyzhang@users.noreply.github.com>\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nCo-authored-by: VincyZhang <vincyzhang@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 415,
+                "insertions": 366,
+                "deletions": 49
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8a03dce7",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-09-18T15:18:35.000Z",
+              "message": "Feat/xpu nightly workflow (#4616)\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <vincyzhang@users.noreply.github.com>\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nCo-authored-by: VincyZhang <vincyzhang@users.noreply.github.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 506,
+                "insertions": 400,
+                "deletions": 106
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 76.25,
+          "significance_ratio": 0.875,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 610,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Roy Huang",
           "email": "roy.y.huang@gmail.com",
           "total_commits": 6,
@@ -15853,8 +16759,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 469,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "chunxiaozheng",
@@ -16018,150 +16924,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 464,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "VincyZhang",
-          "email": "wenxin.zhang@intel.com",
-          "total_commits": 6,
-          "significant_commits": 5,
-          "simple_commits": 1,
-          "commit_score": 436,
-          "commits": [
-            {
-              "hash": "df94b3cd",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-08-11T12:16:19.000Z",
-              "message": "test: refine tests v1 subdir compute, platform, and storage_backend (#4409)\n\n* tests: keep tests/v1 subdirectory updates excluding gpu_connector\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
-              "stats": {
-                "files": 19,
-                "lines": 626,
-                "insertions": 432,
-                "deletions": 194
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 10,
-                "ai": 25,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f9addd2e",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-08-22T06:29:09.000Z",
-              "message": "tests: refine gpu_connector tests (#4513)\n\n* test: use portable accelerator device helpers\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\n\n* tests: normalize device guards and xpu behavior in gpu connector suite\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests: fix ruff line length in gpu connector test\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* tests: isolate vllm layout resolution\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n* test(gpu-connector): support non-CUDA device format detection\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n(cherry picked from commit df23715b63462c4f395d1cc7a435ff33efff5e78)\n\n* test(multiprocess): abstract blocked scale CUDA device\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 13,
-                "lines": 338,
-                "insertions": 198,
-                "deletions": 140
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 10,
-                "ai": 25,
-                "total": 85
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "d0c53b77",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-08-27T03:14:10.000Z",
-              "message": "ci: add Intel XPU wheel build and release workflow (#4446)\n\n* ci: add Intel XPU wheel build and release workflow\n\nAdd reusable build_xpu_artifacts workflow and build_xpu_wheel script. Integrate build/publish-xpu jobs into the publish pipeline and pin validated XPU image + torch version from local verification.\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\n\n\n---------\n\nSigned-off-by: wenxin-zhang <wenxin.zhang@intel.com>\nSigned-off-by: Wenxin <wenxin.zhang@intel.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>",
-              "stats": {
-                "files": 4,
-                "lines": 348,
-                "insertions": 346,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 10,
-                "ai": 25,
-                "total": 75
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "9384ad22",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-09-05T05:37:20.000Z",
-              "message": "Enable xpu mp tests dev (#4849)\n\n* ci(xpu): restore xpu harness and score-mode validation\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): import torch_dev for compatibility checks\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): add safe fallback and transfer regression coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* minor fix to change the agent to the correct one\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(mp): make transfer events context-aware\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* chore(xpu): restore dev implementations\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(ci): use intel xpu queue for multiprocess tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): tune multiprocess benchmark offload\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): increase multiprocess L1 capacity\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): disable lazy offload benchmark experiment\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): restore score-mode lm-eval verification\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* test(xpu): preserve multiprocess benchmark results\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* fix(xpu): launch baseline for benchmark tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* style: remove unused vLLM adapter import\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n* ci: tune XPU multiprocess benchmark resources\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci: parameterize multiprocess device settings\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n* ci(xpu): restore shared multiprocess defaults\n\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\n\n---------\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: VincyZhang <wenxin.zhang@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 14,
-                "lines": 580,
-                "insertions": 494,
-                "deletions": 86
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 5,
-                "ai": 25,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "5eebe0d9",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-09-09T06:01:01.000Z",
-              "message": "test: diagnose XPU LM server connector timeouts (#4999)\n\ntest: remove deprecated LM connector coverage\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>",
-              "stats": {
-                "files": 2,
-                "lines": 55,
-                "insertions": 4,
-                "deletions": 51
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 10,
-                "ai": 5,
-                "total": 40
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "85a902d3",
-              "author": "VincyZhang",
-              "email": "wenxin.zhang@intel.com",
-              "date": "2026-09-11T04:52:46.000Z",
-              "message": "Fix TurboQuant asynchronous storage races (#5058)\n\nPrevent internal serde staging buffers from being routed back through L2 storage, and release L1 read locks when adapter task submission fails.\n\nAnchor TurboQuant completion waits on actual L2 persistence and add regression coverage for both lifecycle races.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Vincy Zhang <wenxin.zhang@intel.com>",
-              "stats": {
-                "files": 4,
-                "lines": 198,
-                "insertions": 166,
-                "deletions": 32
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 19,
-                "total": 71
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 72.66666666666667,
-          "significance_ratio": 0.8333333333333334,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 436,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -16658,6 +17420,108 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 4,
+          "simple_commits": 0,
+          "commit_score": 299,
+          "commits": [
+            {
+              "hash": "3247c008",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-08-18T02:31:37.000Z",
+              "message": "[Refactor] remove unused allocator package exports (#4598)\n\nrefactor: remove unused allocator package exports\n\nRemove the package-level allocator registry and lazy attribute hook. Keep allocator classes available through their concrete submodules so adding a new allocator requires no package registry update.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 84,
+                "insertions": 5,
+                "deletions": 79
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 25,
+                "ai": 8,
+                "total": 58
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "588c5366",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-09-12T01:52:14.000Z",
+              "message": "[Perf][MP] Poll lookup status without blocking the scheduler (#5053)",
+              "stats": {
+                "files": 3,
+                "lines": 470,
+                "insertions": 459,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f59a354f",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-09-17T17:26:12.000Z",
+              "message": "[Fix][MP] honor kv_role when storing KV cache (#5148)\n\n* [Bugfix][MP] Honor consumer roles when storing KV cache\n\nUse the MP connector's own producer capability to gate STORE metadata and\nlazy-offload candidates after token and block accounting. Keep lookup\nand retrieval enabled for all roles, including producers.\n\nAvoid delayed save frees and synthetic STORE completions for consumers,\nwhile preserving producer telemetry and nested kv_both behavior.\n\nFixes LMCache/LMCache#5143\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* [Test][MP] Cover KV roles through public connector lifecycle\n\nExercise new and cached prefill steps, lazy drains, retrieval failures,\nrequest cleanup, and completion telemetry through public connector APIs.\nVerify nested MP roles and MultiConnector completion coordination.\n\nDocument why consumers must omit engine-finished IDs from save completion\npolling and annotate the connector constructor return type.\n\nValidation: 107 focused tests and modified-file pre-commit checks pass.\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 431,
+                "insertions": 428,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a4eb68cb",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-09-18T03:24:03.000Z",
+              "message": "[feat][vllm] publish MP connector KV events (#5076)\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 464,
+                "insertions": 458,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74.75,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 299,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Zhengfei He",
           "email": "157287166+zhengfeihe@users.noreply.github.com",
           "total_commits": 5,
@@ -16777,118 +17641,16 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 287,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "nayeonikim",
-          "email": "100911844+nayeonikim@users.noreply.github.com",
-          "total_commits": 4,
-          "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 235,
-          "commits": [
-            {
-              "hash": "a976ce09",
-              "author": "nayeonikim",
-              "email": "100911844+nayeonikim@users.noreply.github.com",
-              "date": "2026-08-11T09:53:46.000Z",
-              "message": "[Fix][RawBlock] Bounce unaligned buffers in io_uring uring_cmd read paths (#3891)\n\nMulti-page NVMe passthrough builds a PRP list whose entries must each be\npage-aligned. read_uring only enforced this under use_odirect, and\nbatched_read had no bounce path at all, so unaligned buffers under\nuse_uring_cmd hit EINVAL on transfers larger than one page.\n\nExtend read_uring's alignment check to use_odirect || use_uring_cmd and\nmirror its bounce logic in batched_read. Add 4 env-guarded tests verifying\nunaligned read/batched_read, short-buffer bounce, and per-item decisions.\nVerified on Samsung PM1753.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 162,
-                "insertions": 140,
-                "deletions": 22
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 16,
-                "total": 68
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e9ccf87f",
-              "author": "nayeonikim",
-              "email": "100911844+nayeonikim@users.noreply.github.com",
-              "date": "2026-08-25T05:57:04.000Z",
-              "message": "[MP] Skip NIXL poll sleep on terminal state (#4429)\n\nThe completion loop slept 10ms after check_xfer_state() already\nreturned DONE or ERR, adding a fixed delay to every pending transfer.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 11,
-                "insertions": 7,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 1,
-                "total": 26
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "09be4083",
-              "author": "nayeonikim",
-              "email": "100911844+nayeonikim@users.noreply.github.com",
-              "date": "2026-08-25T05:54:59.000Z",
-              "message": "[perf] Reduce lock acquisitions in RustRawBlockBackend.batched_remove (#3494)\n\n[perf] override batched_remove in RustRawBlockBackend to reduce lock contention\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 127,
-                "insertions": 127,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 12,
-                "total": 64
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "d7ada924",
-              "author": "nayeonikim",
-              "email": "100911844+nayeonikim@users.noreply.github.com",
-              "date": "2026-09-09T04:03:10.000Z",
-              "message": "[Perf][RawBlock] Batch io_uring put_many writes in bounded chunks (#3636)\n\n[Perf][RawBlock] Batch io_uring put_many writes\n\nSubmit bounded put_many chunks through one io_uring batch.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
-              "stats": {
-                "files": 2,
-                "lines": 922,
-                "insertions": 912,
-                "deletions": 10
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 25,
-                "total": 77
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 58.75,
-          "significance_ratio": 0.75,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 235,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
         {
           "name": "andyluo7",
           "email": "43718156+andyluo7@users.noreply.github.com",
-          "total_commits": 6,
+          "total_commits": 7,
           "significant_commits": 2,
-          "simple_commits": 4,
-          "commit_score": 231,
+          "simple_commits": 5,
+          "commit_score": 256,
           "commits": [
             {
               "hash": "318f6c0b",
@@ -17015,78 +17777,201 @@
                 "total": 19
               },
               "classification": "simple"
+            },
+            {
+              "hash": "476738dd",
+              "author": "andyluo7",
+              "email": "43718156+andyluo7@users.noreply.github.com",
+              "date": "2026-09-18T21:06:33.000Z",
+              "message": "ci: gate ROCm wheel builds in PR full build (#4741)\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 1,
+                "lines": 21,
+                "insertions": 17,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 10,
+                "ai": 2,
+                "total": 25
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 38.5,
-          "significance_ratio": 0.3333333333333333,
+          "avg_score": 36.57142857142857,
+          "significance_ratio": 0.2857142857142857,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 231,
+          "total_score": 256,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
         {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
+          "name": "Junyuan",
+          "email": "jjysama@gmail.com",
           "total_commits": 3,
           "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 212,
+          "commit_score": 254,
           "commits": [
             {
-              "hash": "3247c008",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-08-18T02:31:37.000Z",
-              "message": "[Refactor] remove unused allocator package exports (#4598)\n\nrefactor: remove unused allocator package exports\n\nRemove the package-level allocator registry and lazy attribute hook. Keep allocator classes available through their concrete submodules so adding a new allocator requires no package registry update.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "hash": "6ec5b88f",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-08-27T02:14:00.000Z",
+              "message": "[MP][Ascend] Ascend NPU multiprocess format support + generic engine-driven path (#3968)\n\n* [MP][Ascend] support Ascend NPU and the per-layer (K, V) tuple KV format\n\nAdd Ascend NPU as a first-class platform and introduce the per-layer\n(K, V) tuple engine KV format (NL_X_TWO_X_NB_BS_NH_HS) produced by\nvLLM-Ascend, where layers are outermost and each layer carries its own\n(K, V) pair of paged [num_blocks, block_size, num_heads, head_size]\ntensors.\n\nPlatform:\n- New NpuDeviceInfo detection entry (lmcache/v1/platform/npu) that loads\n  the lmcache_ascend.c_ops backend on an NPU host; native kernels stay\n  in the LMCache-Ascend plugin.\n- New Ascend build profile (setup_extensions/build_profiles/ascend.py):\n  detects the CANN toolchain via ASCEND_HOME_PATH and supplies the ABI\n  flags; the upstream package builds only the common C++ extensions.\n\nKV format (NL_X_TWO_X_NB_BS_NH_HS):\n- Register the enum value across the C++ header, pybind bindings, and the\n  Python fallback, and add the orthogonal is_kv_second_tuple modifier.\n- Allow tuples in DiscoverableKVCache, list-depth probing, and device\n  lookup so the native per-layer (K, V) structure is recognized end to\n  end; add a vLLM detector branch and a format spec.\n- Add the _transfer_per_layer_kv_tuple path, which transposes the\n  structure to the SGLang MHA [[K_layers], [V_layers]] layout the kernel\n  consumes.\n- Route the transfer context gather/scatter through get_device /\n  get_dtype / get_group_data_ptrs instead of tensors[0], so the nested\n  per-layer tuple layout resolves device, dtype, and plane pointers\n  correctly.\n\nTests:\n- Extend the format-classification golden tests to pin the new format's\n  structural partition and the is_kv_second_tuple modifier.\n- Add compute_kv_layout and accessor/grouping tests for the tuple format.\n\nCo-Authored-By: matthewygf <yyygggfff@hotmail.com>\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: matthewygf <yyygggfff@hotmail.com>\n\n---------\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: matthewygf <yyygggfff@hotmail.com>\nCo-authored-by: matthewygf <yyygggfff@hotmail.com>",
               "stats": {
-                "files": 2,
-                "lines": 84,
-                "insertions": 5,
-                "deletions": 79
+                "files": 19,
+                "lines": 661,
+                "insertions": 615,
+                "deletions": 46
               },
               "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 25,
-                "ai": 8,
-                "total": 58
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
               },
               "classification": "significant"
             },
             {
-              "hash": "588c5366",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-09-12T01:52:14.000Z",
-              "message": "[Perf][MP] Poll lookup status without blocking the scheduler (#5053)",
+              "hash": "989e34f5",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-09-01T03:04:34.000Z",
+              "message": "[Ascend][MP] Add NPU pin-memory backend via AscendCL aclrtHostRegister for async MP transfers (#4763)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>",
               "stats": {
-                "files": 3,
-                "lines": 470,
-                "insertions": 459,
-                "deletions": 11
+                "files": 13,
+                "lines": 734,
+                "insertions": 727,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f01d527b",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-09-18T12:08:37.000Z",
+              "message": "[MP][Ascend][KV format] Add NL_X_NP_X_NB_BS_ONE_HS for vLLM-Ascend MLA/DSA plane tuples (#5138)\n\n* [KV format] Add NL_X_NP_X_NB_BS_ONE_HS for vLLM-Ascend MLA/DSA plane tuples\n\nDetect and transfer per-layer plane tuples emitted by vLLM-Ascend for\nDeepSeek-V2/V3 MLA (latent, rope) and V3.2 DSA (latent, rope, dsa)\ncaches: every plane is a paged [NB, BS, 1, width] tensor with a single\nlatent KV head and mutually unequal widths. The transferred object stays\none flat plane of the summed width (kv_size == 1, is_mla); only the\npaged source arrives as per-plane tuples.\n\n- New EngineKVFormat value + format facts, pybind export, .pyi stub\n- vLLM detector branch: single-head tuples of unequal widths (or arity\n  1/3) classify as plane tuples; equal-width pairs stay (K, V)\n- New spec NL_X_NP_X_NB_BS_ONE_HS_Spec; NP stays symbolic like ONE/TWO\n- Group per-layer format discovery by full shape/dtype structure\n  (get_shape_and_dtype) so plane-tuple layers share one detection pass\n- block-stride resolution accepts the format\n- Python-fallback D2H/H2D transfer carving planes by byte offset,\n  including mixed-item-size (int8 latent + fp16 scale) packing\n\nCo-Authored-By: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-Authored-By: larksudo <72514768+larksudo@users.noreply.github.com>\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n* docs: spell out NP in _BLOCK_AXIS_FORMATS comment (review)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n* Route plane-tuple branches through format facts instead of enum equality (review)\n\nThe NL_X_NP_X_NB_BS_ONE_HS dispatch in multi_layer_block_kv_transfer and\nthe tuple-length check in _normalize_paged_layers now read the declared\nfacts (is_mla && is_kv_second_tuple) like the surrounding branches,\nrather than naming the format inline.\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n* remove some comments\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\n\n---------\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nCo-authored-by: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-authored-by: larksudo <72514768+larksudo@users.noreply.github.com>",
+              "stats": {
+                "files": 13,
+                "lines": 556,
+                "insertions": 536,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 84.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 254,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 4,
+          "significant_commits": 3,
+          "simple_commits": 1,
+          "commit_score": 235,
+          "commits": [
+            {
+              "hash": "a976ce09",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-08-11T09:53:46.000Z",
+              "message": "[Fix][RawBlock] Bounce unaligned buffers in io_uring uring_cmd read paths (#3891)\n\nMulti-page NVMe passthrough builds a PRP list whose entries must each be\npage-aligned. read_uring only enforced this under use_odirect, and\nbatched_read had no bounce path at all, so unaligned buffers under\nuse_uring_cmd hit EINVAL on transfers larger than one page.\n\nExtend read_uring's alignment check to use_odirect || use_uring_cmd and\nmirror its bounce logic in batched_read. Add 4 env-guarded tests verifying\nunaligned read/batched_read, short-buffer bounce, and per-item decisions.\nVerified on Samsung PM1753.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 162,
+                "insertions": 140,
+                "deletions": 22
               },
               "scores": {
                 "loc": 30,
                 "files": 10,
                 "keyword": 12,
-                "ai": 25,
-                "total": 77
+                "ai": 16,
+                "total": 68
               },
               "classification": "significant"
             },
             {
-              "hash": "f59a354f",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-09-17T17:26:12.000Z",
-              "message": "[Fix][MP] honor kv_role when storing KV cache (#5148)\n\n* [Bugfix][MP] Honor consumer roles when storing KV cache\n\nUse the MP connector's own producer capability to gate STORE metadata and\nlazy-offload candidates after token and block accounting. Keep lookup\nand retrieval enabled for all roles, including producers.\n\nAvoid delayed save frees and synthetic STORE completions for consumers,\nwhile preserving producer telemetry and nested kv_both behavior.\n\nFixes LMCache/LMCache#5143\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n* [Test][MP] Cover KV roles through public connector lifecycle\n\nExercise new and cached prefill steps, lazy drains, retrieval failures,\nrequest cleanup, and completion telemetry through public connector APIs.\nVerify nested MP roles and MultiConnector completion coordination.\n\nDocument why consumers must omit engine-finished IDs from save completion\npolling and annotate the connector constructor return type.\n\nValidation: 107 focused tests and modified-file pre-commit checks pass.\n\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: Dongjoo Seo <dongjoo.seo1@samsung.com>\nCo-authored-by: Dongjoo Seo <dongjoo.seo1@samsung.com>",
+              "hash": "e9ccf87f",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-08-25T05:57:04.000Z",
+              "message": "[MP] Skip NIXL poll sleep on terminal state (#4429)\n\nThe completion loop slept 10ms after check_xfer_state() already\nreturned DONE or ERR, adding a fixed delay to every pending transfer.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
               "stats": {
                 "files": 2,
-                "lines": 431,
-                "insertions": 428,
-                "deletions": 3
+                "lines": 11,
+                "insertions": 7,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "09be4083",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-08-25T05:54:59.000Z",
+              "message": "[perf] Reduce lock acquisitions in RustRawBlockBackend.batched_remove (#3494)\n\n[perf] override batched_remove in RustRawBlockBackend to reduce lock contention\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 127,
+                "insertions": 127,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d7ada924",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-09-09T04:03:10.000Z",
+              "message": "[Perf][RawBlock] Batch io_uring put_many writes in bounded chunks (#3636)\n\n[Perf][RawBlock] Batch io_uring put_many writes\n\nSubmit bounded put_many chunks through one io_uring batch.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 2,
+                "lines": 922,
+                "insertions": 912,
+                "deletions": 10
               },
               "scores": {
                 "loc": 30,
@@ -17098,12 +17983,12 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 70.66666666666667,
-          "significance_ratio": 1,
+          "avg_score": 58.75,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 212,
+          "total_score": 235,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -17368,66 +18253,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 178,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Junyuan",
-          "email": "jjysama@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 174,
-          "commits": [
-            {
-              "hash": "6ec5b88f",
-              "author": "Junyuan",
-              "email": "jjysama@gmail.com",
-              "date": "2026-08-27T02:14:00.000Z",
-              "message": "[MP][Ascend] Ascend NPU multiprocess format support + generic engine-driven path (#3968)\n\n* [MP][Ascend] support Ascend NPU and the per-layer (K, V) tuple KV format\n\nAdd Ascend NPU as a first-class platform and introduce the per-layer\n(K, V) tuple engine KV format (NL_X_TWO_X_NB_BS_NH_HS) produced by\nvLLM-Ascend, where layers are outermost and each layer carries its own\n(K, V) pair of paged [num_blocks, block_size, num_heads, head_size]\ntensors.\n\nPlatform:\n- New NpuDeviceInfo detection entry (lmcache/v1/platform/npu) that loads\n  the lmcache_ascend.c_ops backend on an NPU host; native kernels stay\n  in the LMCache-Ascend plugin.\n- New Ascend build profile (setup_extensions/build_profiles/ascend.py):\n  detects the CANN toolchain via ASCEND_HOME_PATH and supplies the ABI\n  flags; the upstream package builds only the common C++ extensions.\n\nKV format (NL_X_TWO_X_NB_BS_NH_HS):\n- Register the enum value across the C++ header, pybind bindings, and the\n  Python fallback, and add the orthogonal is_kv_second_tuple modifier.\n- Allow tuples in DiscoverableKVCache, list-depth probing, and device\n  lookup so the native per-layer (K, V) structure is recognized end to\n  end; add a vLLM detector branch and a format spec.\n- Add the _transfer_per_layer_kv_tuple path, which transposes the\n  structure to the SGLang MHA [[K_layers], [V_layers]] layout the kernel\n  consumes.\n- Route the transfer context gather/scatter through get_device /\n  get_dtype / get_group_data_ptrs instead of tensors[0], so the nested\n  per-layer tuple layout resolves device, dtype, and plane pointers\n  correctly.\n\nTests:\n- Extend the format-classification golden tests to pin the new format's\n  structural partition and the is_kv_second_tuple modifier.\n- Add compute_kv_layout and accessor/grouping tests for the tuple format.\n\nCo-Authored-By: matthewygf <yyygggfff@hotmail.com>\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: matthewygf <yyygggfff@hotmail.com>\n\n---------\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: matthewygf <yyygggfff@hotmail.com>\nCo-authored-by: matthewygf <yyygggfff@hotmail.com>",
-              "stats": {
-                "files": 19,
-                "lines": 661,
-                "insertions": 615,
-                "deletions": 46
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "989e34f5",
-              "author": "Junyuan",
-              "email": "jjysama@gmail.com",
-              "date": "2026-09-01T03:04:34.000Z",
-              "message": "[Ascend][MP] Add NPU pin-memory backend via AscendCL aclrtHostRegister for async MP transfers (#4763)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>",
-              "stats": {
-                "files": 13,
-                "lines": 734,
-                "insertions": 727,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 174,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -18113,6 +18938,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Murphy",
+          "email": "42812404+realtmxi@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "45575d89",
+              "author": "Murphy",
+              "email": "42812404+realtmxi@users.noreply.github.com",
+              "date": "2026-09-18T10:51:26.000Z",
+              "message": "feat: Add MP server autostart for vLLM connector (#3476)\n\n* Add MP server autostart for vLLM connector\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Address MP autostart review feedback\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Add k3 MP autostart TP2 smoke test\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Address MP autostart review polish\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Move MP autostart into scheduler adapter\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Document MP autostart server lifetime\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Revert connector autostart changes\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Move MP autostart to worker adapter\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Harden MP autostart local binding\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Keep legacy MP adapter connect-only for autostart\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Avoid patching private MP health helpers\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Document MP autostart HTTP port caveat\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Document MP autostart design\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Address MP autostart review comments\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Lazy import MP health probe dependencies\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* Tighten MP health lazy import tests\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* test: adapt autostart tests to renamed ParallelStrategy.mla_only and new get_experimental init call\n\ndev renamed ParallelStrategy.use_mla to mla_only and added a\nget_experimental() MQ query in LMCacheMPWorkerAdapter.__init__.\nUpdate the autostart tests added by this PR accordingly:\n\n- rename use_mla -> mla_only in the _parallel_strategy test helper and\n  its call sites\n- stub adapter_mod.get_experimental in the three worker autostart tests\n  that patch the MQ boundary per-test instead of via the fake_adapter\n  fixture\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* fix: align MP autostart probes and endpoint validation with dev\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* fix: reject multi-server autostart before connector handshake\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* test: update MP autostart transfer mode and register server cleanup\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* docs: clarify MP autostart endpoint and transport limits\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n* docs: clarify MP autostart lifetime and service ownership\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\n\n---------\n\nSigned-off-by: Murphy <murphytian06@gmail.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 2123,
+                "insertions": 2110,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Jungwoo Song",
           "email": "37579681+bluayer@users.noreply.github.com",
           "total_commits": 1,
@@ -18482,6 +19346,84 @@
                 "lines": 317,
                 "insertions": 313,
                 "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "rebel-jindol21",
+          "email": "jindol21@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "7d5fa221",
+              "author": "rebel-jindol21",
+              "email": "jindol21@rebellions.ai",
+              "date": "2026-09-18T03:21:49.000Z",
+              "message": "[Platform][RBLN] MLA (NL_X_NB_BS_HS) block transfer support (#4726)\n\n* [feat][RBLN] MLA (NL_X_NB_BS_HS) block transfer support\n\nExtend RblnDeviceOps to accept the MLA KV layout ([NB, BS, HS], single\nlatent plane) alongside the validated HND format. MLA layers get their\nown functional gather/scatter op sequence (index_select + stack /\nindex_copy_) that stays on device-native v2v kernels and crosses the\ndevice boundary with one DMA per chunk, since the shared torch path's\ntorch.empty staging falls back to CPU on RBLN.\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n* [feat][RBLN] address MLA review comments and document the MLA layout\n\n- Rename gather_blocks_to_chunk / scatter_chunk_to_blocks to *_hnd,\n  matching the *_mla pair (review)\n- Rename _SUPPORTED_FORMAT to _HND_FORMAT (review)\n- Classify MLA via lmcache_native.is_mla() (review); unsupported MLA\n  layouts are rejected at the format check with a format error instead\n  of surfacing later as a shape mismatch in validate_mla_layers\n- Document the MLA layout and its RBLN op sequence in the design README\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n* [fix][RBLN] apply ruff-format to kv_ops.py\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n* [Platform][RBLN] Move MLA block transfer to device-staged _foreach_copy_\n\nReview of #4726 asked for proof that the MLA op sequence (index_select +\nstack, .to + index_copy_) does not take torch-rbln's CPU-fallback path on a\nreal vLLM-RBLN KV cache, and for a comparison against a block-view\n_foreach_copy_ implementation.\n\nTraced on DeepSeek-V3 (61 layers, dp8, VLLM_RBLN_USE_DEVICE_TENSOR=1,\ntorch-rbln 0.4.0rc0 / vllm-rbln 0.11.3a1): neither sequence hits any\ntorch-rbln bounce site or cpu_fallback, and store->retrieve is byte-exact\nfor both. The block-view design is adopted anyway:\n\n- no index tensor, so no per-layer read-back of the index to the host\n  (index_copy_ cannot take a CPU index, so a gather-side fix alone could\n  not cover the scatter);\n- every copy is a whole contiguous block, so it takes the direct memcpy_v2v\n  path with no submit_or_fallback behind it;\n- the L*B block copies of a chunk go through one batched d2d submission\n  into a persistent per-thread device staging buffer and the chunk crosses\n  the device boundary in one contiguous DMA. On par with the previous\n  sequence at one block per chunk; 3.5-5x faster at 2-8 blocks per chunk\n  (10-41 ms vs 37-213 ms per chunk on the real KV).\n\nvalidate_mla_layers now also requires contiguous layers, since a permuted\nview would silently send the block copies down the strided path. The\ndocstrings and README claiming the shared torch path falls to the CPU\nfallback via a lazy torch.empty were not reproducible and are replaced by\nthe measured rationale. Adds a per-thread MLA staging test and a\ncontiguity test.\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jindol21 <jindol21@rebellions.ai>\nCo-authored-by: Claude Fable 5 <noreply@anthropic.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 655,
+                "insertions": 612,
+                "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Ofer Achler",
+          "email": "ofer.achler@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "c7c02791",
+              "author": "Ofer Achler",
+              "email": "ofer.achler@gmail.com",
+              "date": "2026-09-18T03:13:42.000Z",
+              "message": "Add a native connector for NIXL (#4865)\n\nSigned-off-by: Ofer Achler <oachler@nvidia.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 22,
+                "lines": 3702,
+                "insertions": 3578,
+                "deletions": 124
               },
               "scores": {
                 "loc": 30,
@@ -19502,6 +20444,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Zupeng Wang",
+          "email": "zupenwang@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 36,
+          "commits": [
+            {
+              "hash": "1a0374c6",
+              "author": "Zupeng Wang",
+              "email": "zupenwang@gmail.com",
+              "date": "2026-09-18T03:30:54.000Z",
+              "message": "Fix: periodic thread restart after failure (#3758)\n\nFix periodic thread restart after failure\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>\nCo-authored-by: Wang Zupeng <wangzupeng12061@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 37,
+                "insertions": 37,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 15,
+                "ai": 3,
+                "total": 36
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 36,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 36,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Ethan Feng",
           "email": "ethan.fengch@gmail.com",
           "total_commits": 1,
@@ -20207,13 +21188,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-09-18T00:30:38.572Z",
+    "analyzedAt": "2026-09-19T00:30:47.803Z",
     "daysBack": 2,
-    "totalCommits": 226,
-    "totalContributors": 82,
+    "totalCommits": 237,
+    "totalContributors": 86,
     "mergedFrom": {
-      "existing": 211,
-      "new": 22
+      "existing": 226,
+      "new": 26
     }
   }
 }
