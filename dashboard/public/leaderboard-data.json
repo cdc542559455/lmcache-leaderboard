@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-09-30T00:30:44.557Z",
-  "total_commits_analyzed": 98,
+  "last_updated": "2026-10-01T00:30:45.556Z",
+  "total_commits_analyzed": 110,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -2334,10 +2334,10 @@
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 6,
-          "significant_commits": 6,
-          "simple_commits": 0,
-          "commit_score": 471,
+          "total_commits": 9,
+          "significant_commits": 7,
+          "simple_commits": 2,
+          "commit_score": 576,
           "commits": [
             {
               "hash": "38580938",
@@ -2464,14 +2464,176 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7fb6f912",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-09-30T08:27:32.000Z",
+              "message": "[Bugfix] remove the limit of sglang nightly test (#5427)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 0,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8aa93712",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-09-30T07:29:57.000Z",
+              "message": "[Bugfix] fix verify and update sglang version failed (#5424)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 7,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8c733d48",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-09-30T01:37:19.000Z",
+              "message": "[Doc][SGLang] Update sglang docs (#5419)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 125,
+                "insertions": 79,
+                "deletions": 46
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 78.5,
+          "avg_score": 64,
+          "significance_ratio": 0.7777777777777778,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 576,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 120,
+          "commits": [
+            {
+              "hash": "c89bbe9d",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-09-30T08:45:54.000Z",
+              "message": "[Fix][RawBlock] Require L1 alignment only for O_DIRECT and io_uring_cmd (#5425)\n\n[Fix][RawBlock] Fix buffered io_uring L1 guard\n\nKeep L1 block-alignment checks for O_DIRECT and io_uring_cmd only.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 4,
+                "lines": 31,
+                "insertions": 23,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0f166d0b",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-09-30T04:00:25.000Z",
+              "message": "[RawBlock] Support padded payloads in batched io_uring put_many (#3949)\n\n[RawBlock] Support padded batched io_uring writes\n\nRoute padded io_uring writes through batched_write by adding an optional\npayload_lens, so the padding region is zero-filled without falling back\nto per-entry submissions.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 678,
+                "insertions": 579,
+                "deletions": 99
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 60,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 120,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jinyoung Moon",
+          "email": "moon960323@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "1365a00d",
+              "author": "Jinyoung Moon",
+              "email": "moon960323@gmail.com",
+              "date": "2026-09-30T03:48:44.000Z",
+              "message": "[feat] Add HTTP endpoints for runtime L1 Device-DAX reconfiguration (#5077)\n\n* [Refactor] Introduce shared schemas for HTTP reconfiguration\n\nShare size parsing, error responses and engine lookup across the\nreconfiguration handlers while preserving the existing L2 URLs.\nUse StrictInt for byte counts so JSON booleans and floats return\n422, and cover this contract in the L2 HTTP tests.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [feat] Move L2 reconfigure endpoints under the backend-first l2 tier\n\nBREAKING: Move L2 status and operations to /reconfigure/{backend}/l2/*.\nThe previous unscoped URLs return 404. Preserve the generic backend\ncontract and strict request schemas; update API/backend documentation\nand the existing HTTP route tests.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [feat] Add runtime L1 Device-DAX reconfigure HTTP endpoints\n\nExpose status, add and drain-only remove under /reconfigure/dax/l1\nthrough public StorageManager and L1Manager methods. Keep L1 routes\ndisjoint from tier-scoped L2 and reuse shared size and error schemas.\nMap manager errors through L1ReconfigureError in distributed/error.py.\n\nPreserve primary-arena and live-allocation protections during drain.\nReject runtime L1 additions whose device is already owned by DAX L2,\nand interlock multi-arena L1 with adapters that register only one\nmemory region. Use exact registered paths for L1 removal and leave\ndevice provisioning to operators.\n\nInclude HTTP, allocator and portable integration tests and document\nthe endpoint, error and lifetime contracts.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [feat] Publish runtime L1 Device-DAX capacity changes\n\nDerive declared Device-DAX capacity from active arenas and use the\nsame calculation for local report_status and coordinator capacity\ndeclarations. Publish the existing whole-topology event after runtime\nadd and drain, including cleanup failures after drain starts.\n\nResolve the target by its exact registered path when detecting a\nfailed remove that already changed arena state. Serialize snapshot\nconstruction and enqueue while retaining asynchronous, best-effort\ndelivery. Include capacity tests and reporting documentation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [fix] Prevent duplicate DAX mappings during runtime add\n\nCheck L1 and L2 ownership before DAX hotplug and adapter registration.\nHold the lifecycle lock from the ownership check through mapping to\nserialize competing adds, with DAX request handling kept in the adapter\nthrough an ownership callback.\n\nShare physical identity checks for paths and mapped file descriptors.\nDetect aliases within L1/L2 and reject duplicate devices in a DAX\nconfig. Return unknown identity on lookup errors and reject\nunidentified candidate paths.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [fix] Offload blocking work in reconfigure HTTP handlers\n\nRun L1 add/remove/status and L2 reconfigure/status calls in worker\nthreads with asyncio.to_thread, including L2 adapter resolution. Await\ncompletion before responding so these blocking calls do not stall other\nHTTP requests or coordinator heartbeats.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>",
+              "stats": {
+                "files": 31,
+                "lines": 2925,
+                "insertions": 2535,
+                "deletions": 390
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 471,
+          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -2589,8 +2751,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "maobaolong",
@@ -2628,8 +2790,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "PerryZhang01",
@@ -2749,6 +2911,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Ankit Kumar",
+          "email": "33925670+ankit-sam@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "f22dec28",
+              "author": "Ankit Kumar",
+              "email": "33925670+ankit-sam@users.noreply.github.com",
+              "date": "2026-09-30T06:14:34.000Z",
+              "message": "[Feat][MP]: Support 2 MiB hugepages for shared L1 memory (#5393)\n\nBack the MP-mode L1 pool with 2 MiB hugepages, instead of\nregular pinned memory. Can be enabled by --l1-use-hugepages.\nAdd fail-fast checks for free 2MB hugepage availability.\nThe hugepage support doesn't work with options --shm-name and\n--l1-use-lazy, and is no-op for GDS L1 and pure Device-DAX.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\nSigned-off-by: Preetham P Jain <preet.jain@samsung.com>\nCo-authored-by: Preetham P Jain <preet.jain@samsung.com>",
+              "stats": {
+                "files": 10,
+                "lines": 316,
+                "insertions": 311,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Jason",
           "email": "31175216+thegoldenflow@users.noreply.github.com",
           "total_commits": 1,
@@ -2788,6 +2989,165 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Anthony24601",
+          "email": "60018434+Anthony24601@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "044458f6",
+              "author": "Anthony24601",
+              "email": "60018434+Anthony24601@users.noreply.github.com",
+              "date": "2026-09-30T19:09:40.000Z",
+              "message": "feat(nixl): add IBM_SCALE backend support and fix NIXL transfer performance (#5170)\n\nCo-authored-by: Anthony Hsu <anthony.hsu@ibm.com>",
+              "stats": {
+                "files": 4,
+                "lines": 260,
+                "insertions": 171,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "daitran-tensormesh",
+          "email": "dai@tensormesh.ai",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 76,
+          "commits": [
+            {
+              "hash": "73722117",
+              "author": "daitran-tensormesh",
+              "email": "dai@tensormesh.ai",
+              "date": "2026-09-29T18:11:21.000Z",
+              "message": "[MP][Bugfix] Bound client TCP connect attempts (#4671)\n\n* [MP][Bugfix] Bound client TCP connect attempts\n\nThe MQ client's DEALER set no connect timeout, so a reconnect whose SYN is silently dropped inherits the OS timeout (~127s on Linux) and wedges the socket, stalling every pending request including heartbeat pings and delaying KV re-registration by the same amount. Sets a hardcoded 5s zmq.CONNECT_TIMEOUT and enables reconnect backoff (zmq.RECONNECT_IVL_MAX=1s) on the client socket.\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Drop comments per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n---------\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 23,
+                "insertions": 23,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b4fcfa39",
+              "author": "daitran-tensormesh",
+              "email": "dai@tensormesh.ai",
+              "date": "2026-09-30T01:21:28.000Z",
+              "message": "[MP][Bugfix] Bind a CUDA context before the IPC wrappers' driver calls (#5169)\n\n* platform/cuda: bind a CUDA context before the IPC wrappers' driver calls\n\nThe MP heartbeat re-registers KV caches from its own thread after a server restart. That thread has no current CUDA context, so cuMemGetAddressRange failed with CUDA_ERROR_INVALID_CONTEXT on every retry and the worker never recovered. Bind the device's primary context when the calling thread has none. VmmCudaIPCWrapper relied on torch.cuda.device around its own driver calls, which does not bind on a fresh thread, so it is fixed the same way. Adds a fresh-thread regression test.\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Trim _bind_primary_context docstring per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Drop comment per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n---------\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 75,
+                "insertions": 75,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 7,
+                "total": 44
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 76,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Max",
+          "email": "129373179+Dashener2@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 50,
+          "commits": [
+            {
+              "hash": "7413f652",
+              "author": "Max",
+              "email": "129373179+Dashener2@users.noreply.github.com",
+              "date": "2026-09-30T06:57:34.000Z",
+              "message": "logging: convert eic/s3 adapter f-string logs to %-format (#5110) (#5410)\n\nConvert the remaining eager f-string logger.info calls in the EIC and S3\nconnector adapters to lazy %-format, and drop their now-stale G004\nper-file-ignores from pyproject.toml.\n\nRefs #3372\n\nSigned-off-by: Dashener2 <dashen272@outlook.com>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 2,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "688f7355",
+              "author": "Max",
+              "email": "129373179+Dashener2@users.noreply.github.com",
+              "date": "2026-09-30T02:09:33.000Z",
+              "message": "logging: convert azure/audit adapter f-string logs to %-format (#5112) (#5411)\n\nConvert the remaining eager f-string logger.info calls in the Azure and\nAudit connector adapters to lazy %-format, and drop their now-stale G004\nper-file-ignores from pyproject.toml.\n\nRefs #3372\n\nSigned-off-by: Dashener2 <dashen272@outlook.com>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 2,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 50,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Jay H. Park",
           "email": "jayhpark530@gmail.com",
           "total_commits": 1,
@@ -2823,8 +3183,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 45,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Stefan Wang",
@@ -2862,8 +3222,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Akshat Lakhera",
@@ -2901,8 +3261,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 37,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Parman Mohammadalizadeh",
@@ -3061,45 +3421,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "daitran-tensormesh",
-          "email": "dai@tensormesh.ai",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 32,
-          "commits": [
-            {
-              "hash": "73722117",
-              "author": "daitran-tensormesh",
-              "email": "dai@tensormesh.ai",
-              "date": "2026-09-29T18:11:21.000Z",
-              "message": "[MP][Bugfix] Bound client TCP connect attempts (#4671)\n\n* [MP][Bugfix] Bound client TCP connect attempts\n\nThe MQ client's DEALER set no connect timeout, so a reconnect whose SYN is silently dropped inherits the OS timeout (~127s on Linux) and wedges the socket, stalling every pending request including heartbeat pings and delaying KV re-registration by the same amount. Sets a hardcoded 5s zmq.CONNECT_TIMEOUT and enables reconnect backoff (zmq.RECONNECT_IVL_MAX=1s) on the client socket.\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Drop comments per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n---------\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>",
-              "stats": {
-                "files": 2,
-                "lines": 23,
-                "insertions": 23,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 2,
-                "total": 32
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 32,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 32,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "Parithosh Varma",
           "email": "demgufever@gmail.com",
           "total_commits": 1,
@@ -3135,8 +3456,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 27,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Song Dehao",
@@ -3174,8 +3495,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 26,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Efutrrionpy",
@@ -3213,8 +3534,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 25,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Burlin",
+          "email": "chenbeiliuhuo@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 25,
+          "commits": [
+            {
+              "hash": "c6aa2cc1",
+              "author": "Burlin",
+              "email": "chenbeiliuhuo@gmail.com",
+              "date": "2026-09-30T08:04:51.000Z",
+              "message": "[good-first-issue] logging: use lazy formatting in NIXL transfer polling (#4737) (#5421)\n\nConvert polling-loop debug logs in nixl_channel.py to %-format and drop the\nnow-stale G004 per-file ignore for that module.\n\nSigned-off-by: burlinchen <chenbeiliuhuo@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 9,
+                "insertions": 4,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 25,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "weishu",
@@ -3252,8 +3612,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 18,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -3595,10 +3955,10 @@
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 11,
-          "significant_commits": 11,
-          "simple_commits": 0,
-          "commit_score": 834,
+          "total_commits": 14,
+          "significant_commits": 12,
+          "simple_commits": 2,
+          "commit_score": 939,
           "commits": [
             {
               "hash": "1a4b40b1",
@@ -3830,14 +4190,77 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7fb6f912",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-09-30T08:27:32.000Z",
+              "message": "[Bugfix] remove the limit of sglang nightly test (#5427)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 0,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8aa93712",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-09-30T07:29:57.000Z",
+              "message": "[Bugfix] fix verify and update sglang version failed (#5424)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 7,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8c733d48",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-09-30T01:37:19.000Z",
+              "message": "[Doc][SGLang] Update sglang docs (#5419)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 125,
+                "insertions": 79,
+                "deletions": 46
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 75.81818181818181,
-          "significance_ratio": 1,
+          "avg_score": 67.07142857142857,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 834,
+          "total_score": 939,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4535,6 +4958,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 120,
+          "commits": [
+            {
+              "hash": "c89bbe9d",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-09-30T08:45:54.000Z",
+              "message": "[Fix][RawBlock] Require L1 alignment only for O_DIRECT and io_uring_cmd (#5425)\n\n[Fix][RawBlock] Fix buffered io_uring L1 guard\n\nKeep L1 block-alignment checks for O_DIRECT and io_uring_cmd only.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 4,
+                "lines": 31,
+                "insertions": 23,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0f166d0b",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-09-30T04:00:25.000Z",
+              "message": "[RawBlock] Support padded payloads in batched io_uring put_many (#3949)\n\n[RawBlock] Support padded batched io_uring writes\n\nRoute padded io_uring writes through batched_write by adding an optional\npayload_lens, so the padding region is zero-filled without falling back\nto per-entry submissions.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 678,
+                "insertions": 579,
+                "deletions": 99
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 60,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 120,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Parman Mohammadalizadeh",
           "email": "prmma23@gmail.com",
           "total_commits": 3,
@@ -4655,6 +5138,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jinyoung Moon",
+          "email": "moon960323@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "1365a00d",
+              "author": "Jinyoung Moon",
+              "email": "moon960323@gmail.com",
+              "date": "2026-09-30T03:48:44.000Z",
+              "message": "[feat] Add HTTP endpoints for runtime L1 Device-DAX reconfiguration (#5077)\n\n* [Refactor] Introduce shared schemas for HTTP reconfiguration\n\nShare size parsing, error responses and engine lookup across the\nreconfiguration handlers while preserving the existing L2 URLs.\nUse StrictInt for byte counts so JSON booleans and floats return\n422, and cover this contract in the L2 HTTP tests.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [feat] Move L2 reconfigure endpoints under the backend-first l2 tier\n\nBREAKING: Move L2 status and operations to /reconfigure/{backend}/l2/*.\nThe previous unscoped URLs return 404. Preserve the generic backend\ncontract and strict request schemas; update API/backend documentation\nand the existing HTTP route tests.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [feat] Add runtime L1 Device-DAX reconfigure HTTP endpoints\n\nExpose status, add and drain-only remove under /reconfigure/dax/l1\nthrough public StorageManager and L1Manager methods. Keep L1 routes\ndisjoint from tier-scoped L2 and reuse shared size and error schemas.\nMap manager errors through L1ReconfigureError in distributed/error.py.\n\nPreserve primary-arena and live-allocation protections during drain.\nReject runtime L1 additions whose device is already owned by DAX L2,\nand interlock multi-arena L1 with adapters that register only one\nmemory region. Use exact registered paths for L1 removal and leave\ndevice provisioning to operators.\n\nInclude HTTP, allocator and portable integration tests and document\nthe endpoint, error and lifetime contracts.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [feat] Publish runtime L1 Device-DAX capacity changes\n\nDerive declared Device-DAX capacity from active arenas and use the\nsame calculation for local report_status and coordinator capacity\ndeclarations. Publish the existing whole-topology event after runtime\nadd and drain, including cleanup failures after drain starts.\n\nResolve the target by its exact registered path when detecting a\nfailed remove that already changed arena state. Serialize snapshot\nconstruction and enqueue while retaining asynchronous, best-effort\ndelivery. Include capacity tests and reporting documentation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [fix] Prevent duplicate DAX mappings during runtime add\n\nCheck L1 and L2 ownership before DAX hotplug and adapter registration.\nHold the lifecycle lock from the ownership check through mapping to\nserialize competing adds, with DAX request handling kept in the adapter\nthrough an ownership callback.\n\nShare physical identity checks for paths and mapped file descriptors.\nDetect aliases within L1/L2 and reject duplicate devices in a DAX\nconfig. Return unknown identity on lookup errors and reject\nunidentified candidate paths.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [fix] Offload blocking work in reconfigure HTTP handlers\n\nRun L1 add/remove/status and L2 reconfigure/status calls in worker\nthreads with asyncio.to_thread, including L2 adapter resolution. Await\ncompletion before responding so these blocking calls do not stall other\nHTTP requests or coordinator heartbeats.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>",
+              "stats": {
+                "files": 31,
+                "lines": 2925,
+                "insertions": 2535,
+                "deletions": 390
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Jay H. Park",
           "email": "jayhpark530@gmail.com",
           "total_commits": 2,
@@ -4711,8 +5233,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 90,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Dongjoo Seo",
@@ -5062,8 +5584,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "PerryZhang01",
@@ -5101,8 +5623,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Tony Lin",
@@ -5123,6 +5645,45 @@
                 "lines": 360,
                 "insertions": 353,
                 "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Ankit Kumar",
+          "email": "33925670+ankit-sam@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "f22dec28",
+              "author": "Ankit Kumar",
+              "email": "33925670+ankit-sam@users.noreply.github.com",
+              "date": "2026-09-30T06:14:34.000Z",
+              "message": "[Feat][MP]: Support 2 MiB hugepages for shared L1 memory (#5393)\n\nBack the MP-mode L1 pool with 2 MiB hugepages, instead of\nregular pinned memory. Can be enabled by --l1-use-hugepages.\nAdd fail-fast checks for free 2MB hugepage availability.\nThe hugepage support doesn't work with options --shm-name and\n--l1-use-lazy, and is no-op for GDS L1 and pure Device-DAX.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\nSigned-off-by: Preetham P Jain <preet.jain@samsung.com>\nCo-authored-by: Preetham P Jain <preet.jain@samsung.com>",
+              "stats": {
+                "files": 10,
+                "lines": 316,
+                "insertions": 311,
+                "deletions": 5
               },
               "scores": {
                 "loc": 30,
@@ -5257,6 +5818,105 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Anthony24601",
+          "email": "60018434+Anthony24601@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "044458f6",
+              "author": "Anthony24601",
+              "email": "60018434+Anthony24601@users.noreply.github.com",
+              "date": "2026-09-30T19:09:40.000Z",
+              "message": "feat(nixl): add IBM_SCALE backend support and fix NIXL transfer performance (#5170)\n\nCo-authored-by: Anthony Hsu <anthony.hsu@ibm.com>",
+              "stats": {
+                "files": 4,
+                "lines": 260,
+                "insertions": 171,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "daitran-tensormesh",
+          "email": "dai@tensormesh.ai",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 76,
+          "commits": [
+            {
+              "hash": "73722117",
+              "author": "daitran-tensormesh",
+              "email": "dai@tensormesh.ai",
+              "date": "2026-09-29T18:11:21.000Z",
+              "message": "[MP][Bugfix] Bound client TCP connect attempts (#4671)\n\n* [MP][Bugfix] Bound client TCP connect attempts\n\nThe MQ client's DEALER set no connect timeout, so a reconnect whose SYN is silently dropped inherits the OS timeout (~127s on Linux) and wedges the socket, stalling every pending request including heartbeat pings and delaying KV re-registration by the same amount. Sets a hardcoded 5s zmq.CONNECT_TIMEOUT and enables reconnect backoff (zmq.RECONNECT_IVL_MAX=1s) on the client socket.\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Drop comments per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n---------\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 23,
+                "insertions": 23,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b4fcfa39",
+              "author": "daitran-tensormesh",
+              "email": "dai@tensormesh.ai",
+              "date": "2026-09-30T01:21:28.000Z",
+              "message": "[MP][Bugfix] Bind a CUDA context before the IPC wrappers' driver calls (#5169)\n\n* platform/cuda: bind a CUDA context before the IPC wrappers' driver calls\n\nThe MP heartbeat re-registers KV caches from its own thread after a server restart. That thread has no current CUDA context, so cuMemGetAddressRange failed with CUDA_ERROR_INVALID_CONTEXT on every retry and the worker never recovered. Bind the device's primary context when the calling thread has none. VmmCudaIPCWrapper relied on torch.cuda.device around its own driver calls, which does not bind on a fresh thread, so it is fixed the same way. Adds a fresh-thread regression test.\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Trim _bind_primary_context docstring per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Drop comment per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n---------\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 75,
+                "insertions": 75,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 7,
+                "total": 44
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 76,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -5416,6 +6076,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 60,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Max",
+          "email": "129373179+Dashener2@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 50,
+          "commits": [
+            {
+              "hash": "7413f652",
+              "author": "Max",
+              "email": "129373179+Dashener2@users.noreply.github.com",
+              "date": "2026-09-30T06:57:34.000Z",
+              "message": "logging: convert eic/s3 adapter f-string logs to %-format (#5110) (#5410)\n\nConvert the remaining eager f-string logger.info calls in the EIC and S3\nconnector adapters to lazy %-format, and drop their now-stale G004\nper-file-ignores from pyproject.toml.\n\nRefs #3372\n\nSigned-off-by: Dashener2 <dashen272@outlook.com>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 2,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "688f7355",
+              "author": "Max",
+              "email": "129373179+Dashener2@users.noreply.github.com",
+              "date": "2026-09-30T02:09:33.000Z",
+              "message": "logging: convert azure/audit adapter f-string logs to %-format (#5112) (#5411)\n\nConvert the remaining eager f-string logger.info calls in the Azure and\nAudit connector adapters to lazy %-format, and drop their now-stale G004\nper-file-ignores from pyproject.toml.\n\nRefs #3372\n\nSigned-off-by: Dashener2 <dashen272@outlook.com>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 2,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 50,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -5771,45 +6491,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "daitran-tensormesh",
-          "email": "dai@tensormesh.ai",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 32,
-          "commits": [
-            {
-              "hash": "73722117",
-              "author": "daitran-tensormesh",
-              "email": "dai@tensormesh.ai",
-              "date": "2026-09-29T18:11:21.000Z",
-              "message": "[MP][Bugfix] Bound client TCP connect attempts (#4671)\n\n* [MP][Bugfix] Bound client TCP connect attempts\n\nThe MQ client's DEALER set no connect timeout, so a reconnect whose SYN is silently dropped inherits the OS timeout (~127s on Linux) and wedges the socket, stalling every pending request including heartbeat pings and delaying KV re-registration by the same amount. Sets a hardcoded 5s zmq.CONNECT_TIMEOUT and enables reconnect backoff (zmq.RECONNECT_IVL_MAX=1s) on the client socket.\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Drop comments per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n---------\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>",
-              "stats": {
-                "files": 2,
-                "lines": 23,
-                "insertions": 23,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 2,
-                "total": 32
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 32,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 32,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "2xdevv",
           "email": "syk0905.kwon@gmail.com",
           "total_commits": 1,
@@ -6101,6 +6782,45 @@
                 "lines": 3,
                 "insertions": 1,
                 "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 25,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Burlin",
+          "email": "chenbeiliuhuo@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 25,
+          "commits": [
+            {
+              "hash": "c6aa2cc1",
+              "author": "Burlin",
+              "email": "chenbeiliuhuo@gmail.com",
+              "date": "2026-09-30T08:04:51.000Z",
+              "message": "[good-first-issue] logging: use lazy formatting in NIXL transfer polling (#4737) (#5421)\n\nConvert polling-loop debug logs in nixl_channel.py to %-format and drop the\nnow-stale G004 per-file ignore for that module.\n\nSigned-off-by: burlinchen <chenbeiliuhuo@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 9,
+                "insertions": 4,
+                "deletions": 5
               },
               "scores": {
                 "loc": 3,
@@ -6539,10 +7259,10 @@
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 11,
-          "significant_commits": 11,
-          "simple_commits": 0,
-          "commit_score": 834,
+          "total_commits": 14,
+          "significant_commits": 12,
+          "simple_commits": 2,
+          "commit_score": 939,
           "commits": [
             {
               "hash": "1a4b40b1",
@@ -6774,14 +7494,77 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "7fb6f912",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-09-30T08:27:32.000Z",
+              "message": "[Bugfix] remove the limit of sglang nightly test (#5427)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 0,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8aa93712",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-09-30T07:29:57.000Z",
+              "message": "[Bugfix] fix verify and update sglang version failed (#5424)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 7,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8c733d48",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-09-30T01:37:19.000Z",
+              "message": "[Doc][SGLang] Update sglang docs (#5419)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 125,
+                "insertions": 79,
+                "deletions": 46
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 75.81818181818181,
-          "significance_ratio": 1,
+          "avg_score": 67.07142857142857,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 834,
+          "total_score": 939,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7479,6 +8262,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 120,
+          "commits": [
+            {
+              "hash": "c89bbe9d",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-09-30T08:45:54.000Z",
+              "message": "[Fix][RawBlock] Require L1 alignment only for O_DIRECT and io_uring_cmd (#5425)\n\n[Fix][RawBlock] Fix buffered io_uring L1 guard\n\nKeep L1 block-alignment checks for O_DIRECT and io_uring_cmd only.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 4,
+                "lines": 31,
+                "insertions": 23,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0f166d0b",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-09-30T04:00:25.000Z",
+              "message": "[RawBlock] Support padded payloads in batched io_uring put_many (#3949)\n\n[RawBlock] Support padded batched io_uring writes\n\nRoute padded io_uring writes through batched_write by adding an optional\npayload_lens, so the padding region is zero-filled without falling back\nto per-entry submissions.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 678,
+                "insertions": 579,
+                "deletions": 99
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 60,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 120,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Parman Mohammadalizadeh",
           "email": "prmma23@gmail.com",
           "total_commits": 3,
@@ -7599,6 +8442,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Jinyoung Moon",
+          "email": "moon960323@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "1365a00d",
+              "author": "Jinyoung Moon",
+              "email": "moon960323@gmail.com",
+              "date": "2026-09-30T03:48:44.000Z",
+              "message": "[feat] Add HTTP endpoints for runtime L1 Device-DAX reconfiguration (#5077)\n\n* [Refactor] Introduce shared schemas for HTTP reconfiguration\n\nShare size parsing, error responses and engine lookup across the\nreconfiguration handlers while preserving the existing L2 URLs.\nUse StrictInt for byte counts so JSON booleans and floats return\n422, and cover this contract in the L2 HTTP tests.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [feat] Move L2 reconfigure endpoints under the backend-first l2 tier\n\nBREAKING: Move L2 status and operations to /reconfigure/{backend}/l2/*.\nThe previous unscoped URLs return 404. Preserve the generic backend\ncontract and strict request schemas; update API/backend documentation\nand the existing HTTP route tests.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [feat] Add runtime L1 Device-DAX reconfigure HTTP endpoints\n\nExpose status, add and drain-only remove under /reconfigure/dax/l1\nthrough public StorageManager and L1Manager methods. Keep L1 routes\ndisjoint from tier-scoped L2 and reuse shared size and error schemas.\nMap manager errors through L1ReconfigureError in distributed/error.py.\n\nPreserve primary-arena and live-allocation protections during drain.\nReject runtime L1 additions whose device is already owned by DAX L2,\nand interlock multi-arena L1 with adapters that register only one\nmemory region. Use exact registered paths for L1 removal and leave\ndevice provisioning to operators.\n\nInclude HTTP, allocator and portable integration tests and document\nthe endpoint, error and lifetime contracts.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [feat] Publish runtime L1 Device-DAX capacity changes\n\nDerive declared Device-DAX capacity from active arenas and use the\nsame calculation for local report_status and coordinator capacity\ndeclarations. Publish the existing whole-topology event after runtime\nadd and drain, including cleanup failures after drain starts.\n\nResolve the target by its exact registered path when detecting a\nfailed remove that already changed arena state. Serialize snapshot\nconstruction and enqueue while retaining asynchronous, best-effort\ndelivery. Include capacity tests and reporting documentation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [fix] Prevent duplicate DAX mappings during runtime add\n\nCheck L1 and L2 ownership before DAX hotplug and adapter registration.\nHold the lifecycle lock from the ownership check through mapping to\nserialize competing adds, with DAX request handling kept in the adapter\nthrough an ownership callback.\n\nShare physical identity checks for paths and mapped file descriptors.\nDetect aliases within L1/L2 and reject duplicate devices in a DAX\nconfig. Return unknown identity on lookup errors and reject\nunidentified candidate paths.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n* [fix] Offload blocking work in reconfigure HTTP handlers\n\nRun L1 add/remove/status and L2 reconfigure/status calls in worker\nthreads with asyncio.to_thread, including L2 adapter resolution. Await\ncompletion before responding so these blocking calls do not stall other\nHTTP requests or coordinator heartbeats.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\nSigned-off-by: jymoon323 <moon960323@gmail.com>\nSigned-off-by: Jinyoung Moon <jy323.moon@samsung.com>",
+              "stats": {
+                "files": 31,
+                "lines": 2925,
+                "insertions": 2535,
+                "deletions": 390
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Jay H. Park",
           "email": "jayhpark530@gmail.com",
           "total_commits": 2,
@@ -7655,8 +8537,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 90,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Dongjoo Seo",
@@ -8006,8 +8888,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "PerryZhang01",
@@ -8045,8 +8927,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Tony Lin",
@@ -8067,6 +8949,45 @@
                 "lines": 360,
                 "insertions": 353,
                 "deletions": 7
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Ankit Kumar",
+          "email": "33925670+ankit-sam@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "f22dec28",
+              "author": "Ankit Kumar",
+              "email": "33925670+ankit-sam@users.noreply.github.com",
+              "date": "2026-09-30T06:14:34.000Z",
+              "message": "[Feat][MP]: Support 2 MiB hugepages for shared L1 memory (#5393)\n\nBack the MP-mode L1 pool with 2 MiB hugepages, instead of\nregular pinned memory. Can be enabled by --l1-use-hugepages.\nAdd fail-fast checks for free 2MB hugepage availability.\nThe hugepage support doesn't work with options --shm-name and\n--l1-use-lazy, and is no-op for GDS L1 and pure Device-DAX.\n\nSigned-off-by: Ankit Kumar <ankit.kumar@samsung.com>\nSigned-off-by: Preetham P Jain <preet.jain@samsung.com>\nCo-authored-by: Preetham P Jain <preet.jain@samsung.com>",
+              "stats": {
+                "files": 10,
+                "lines": 316,
+                "insertions": 311,
+                "deletions": 5
               },
               "scores": {
                 "loc": 30,
@@ -8201,6 +9122,105 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Anthony24601",
+          "email": "60018434+Anthony24601@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "044458f6",
+              "author": "Anthony24601",
+              "email": "60018434+Anthony24601@users.noreply.github.com",
+              "date": "2026-09-30T19:09:40.000Z",
+              "message": "feat(nixl): add IBM_SCALE backend support and fix NIXL transfer performance (#5170)\n\nCo-authored-by: Anthony Hsu <anthony.hsu@ibm.com>",
+              "stats": {
+                "files": 4,
+                "lines": 260,
+                "insertions": 171,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "daitran-tensormesh",
+          "email": "dai@tensormesh.ai",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 76,
+          "commits": [
+            {
+              "hash": "73722117",
+              "author": "daitran-tensormesh",
+              "email": "dai@tensormesh.ai",
+              "date": "2026-09-29T18:11:21.000Z",
+              "message": "[MP][Bugfix] Bound client TCP connect attempts (#4671)\n\n* [MP][Bugfix] Bound client TCP connect attempts\n\nThe MQ client's DEALER set no connect timeout, so a reconnect whose SYN is silently dropped inherits the OS timeout (~127s on Linux) and wedges the socket, stalling every pending request including heartbeat pings and delaying KV re-registration by the same amount. Sets a hardcoded 5s zmq.CONNECT_TIMEOUT and enables reconnect backoff (zmq.RECONNECT_IVL_MAX=1s) on the client socket.\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Drop comments per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n---------\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 23,
+                "insertions": 23,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 2,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b4fcfa39",
+              "author": "daitran-tensormesh",
+              "email": "dai@tensormesh.ai",
+              "date": "2026-09-30T01:21:28.000Z",
+              "message": "[MP][Bugfix] Bind a CUDA context before the IPC wrappers' driver calls (#5169)\n\n* platform/cuda: bind a CUDA context before the IPC wrappers' driver calls\n\nThe MP heartbeat re-registers KV caches from its own thread after a server restart. That thread has no current CUDA context, so cuMemGetAddressRange failed with CUDA_ERROR_INVALID_CONTEXT on every retry and the worker never recovered. Bind the device's primary context when the calling thread has none. VmmCudaIPCWrapper relied on torch.cuda.device around its own driver calls, which does not bind on a fresh thread, so it is fixed the same way. Adds a fresh-thread regression test.\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Trim _bind_primary_context docstring per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Drop comment per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n---------\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>",
+              "stats": {
+                "files": 2,
+                "lines": 75,
+                "insertions": 75,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 7,
+                "total": 44
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 76,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -8360,6 +9380,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 60,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Max",
+          "email": "129373179+Dashener2@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 50,
+          "commits": [
+            {
+              "hash": "7413f652",
+              "author": "Max",
+              "email": "129373179+Dashener2@users.noreply.github.com",
+              "date": "2026-09-30T06:57:34.000Z",
+              "message": "logging: convert eic/s3 adapter f-string logs to %-format (#5110) (#5410)\n\nConvert the remaining eager f-string logger.info calls in the EIC and S3\nconnector adapters to lazy %-format, and drop their now-stale G004\nper-file-ignores from pyproject.toml.\n\nRefs #3372\n\nSigned-off-by: Dashener2 <dashen272@outlook.com>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 2,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "688f7355",
+              "author": "Max",
+              "email": "129373179+Dashener2@users.noreply.github.com",
+              "date": "2026-09-30T02:09:33.000Z",
+              "message": "logging: convert azure/audit adapter f-string logs to %-format (#5112) (#5411)\n\nConvert the remaining eager f-string logger.info calls in the Azure and\nAudit connector adapters to lazy %-format, and drop their now-stale G004\nper-file-ignores from pyproject.toml.\n\nRefs #3372\n\nSigned-off-by: Dashener2 <dashen272@outlook.com>",
+              "stats": {
+                "files": 3,
+                "lines": 6,
+                "insertions": 2,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 50,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -8715,45 +9795,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "daitran-tensormesh",
-          "email": "dai@tensormesh.ai",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 32,
-          "commits": [
-            {
-              "hash": "73722117",
-              "author": "daitran-tensormesh",
-              "email": "dai@tensormesh.ai",
-              "date": "2026-09-29T18:11:21.000Z",
-              "message": "[MP][Bugfix] Bound client TCP connect attempts (#4671)\n\n* [MP][Bugfix] Bound client TCP connect attempts\n\nThe MQ client's DEALER set no connect timeout, so a reconnect whose SYN is silently dropped inherits the OS timeout (~127s on Linux) and wedges the socket, stalling every pending request including heartbeat pings and delaying KV re-registration by the same amount. Sets a hardcoded 5s zmq.CONNECT_TIMEOUT and enables reconnect backoff (zmq.RECONNECT_IVL_MAX=1s) on the client socket.\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n* Drop comments per review\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>\n\n---------\n\nSigned-off-by: daitran-tensormesh <dai@tensormesh.ai>",
-              "stats": {
-                "files": 2,
-                "lines": 23,
-                "insertions": 23,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 2,
-                "total": 32
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 32,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 32,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "2xdevv",
           "email": "syk0905.kwon@gmail.com",
           "total_commits": 1,
@@ -9066,6 +10107,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Burlin",
+          "email": "chenbeiliuhuo@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 25,
+          "commits": [
+            {
+              "hash": "c6aa2cc1",
+              "author": "Burlin",
+              "email": "chenbeiliuhuo@gmail.com",
+              "date": "2026-09-30T08:04:51.000Z",
+              "message": "[good-first-issue] logging: use lazy formatting in NIXL transfer polling (#4737) (#5421)\n\nConvert polling-loop debug logs in nixl_channel.py to %-format and drop the\nnow-stale G004 per-file ignore for that module.\n\nSigned-off-by: burlinchen <chenbeiliuhuo@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 9,
+                "insertions": 4,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 25,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Jinhwan Suk (석진환)",
           "email": "jinhwan.suk@rebellions.ai",
           "total_commits": 1,
@@ -9147,13 +10227,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-09-30T00:30:44.557Z",
+    "analyzedAt": "2026-10-01T00:30:45.556Z",
     "daysBack": 2,
-    "totalCommits": 98,
-    "totalContributors": 49,
+    "totalCommits": 110,
+    "totalContributors": 55,
     "mergedFrom": {
-      "existing": 84,
-      "new": 25
+      "existing": 98,
+      "new": 26
     }
   }
 }
