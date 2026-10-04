@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-03T00:30:07.392Z",
-  "total_commits_analyzed": 114,
+  "last_updated": "2026-10-04T00:30:07.169Z",
+  "total_commits_analyzed": 115,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -2539,6 +2539,66 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "ef6f3662",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-09-29T21:20:51.000Z",
+              "message": "[MP][Coordinator] Make the checkpoint the Kafka cursor (#5354)\n\nThe Kafka cache-event source (#5286) resumes after a restart from the\nconsumer group's own committed offset. That offset and the coordinator's\nown checkpoint save are independent, on independent timers (offsets\ncommit roughly every few seconds; a checkpoint every\n--checkpoint-interval, default 60s, or only at a clean shutdown). On an\nungraceful crash between two checkpoint saves, the committed offset is\nalready ahead of what the last saved checkpoint reflects -- and resuming\nfrom it skips the records in between for good: the broker considers them\ndelivered, and the checkpoint that gets restored does not.\n\nFix it by having one cursor instead of two. StreamPosition records each\npartition's offset as records are admitted and is registered in\ncheckpoint_components, so save_checkpoint captures it under the same\nquiesce as the gate and the views: a checkpoint holds a view and the\nexact offset that produced it, and can hold nothing else.\nKafkaCacheEventSource's on_assign seeks every assigned partition to\nStreamPosition.next_offset(...), which is by construction the right\nplace for the state just restored. The consumer group no longer commits\nat all (enable.auto.commit: False, no store_offsets), so the resume\npoint moves only when a checkpoint is written. The cost is that\nkafka-consumer-groups --describe shows this group no progress; the\nposition lives in the checkpoint instead.\n\nNothing needs to measure how far behind a restarting coordinator is,\nbecause there is no window in which its restored view and its resume\npoint disagree -- it is as consistent as one that has been running for\nan hour, just further from the tip. A partition StreamPosition has never\nseen (a first start, or one added since) falls back to\nauto.offset.reset.\n\nRefs #4226, #4522.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 579,
+                "insertions": 501,
+                "deletions": 78
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1ca53a8a",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-03T00:33:52.000Z",
+              "message": "[MP][Coordinator] Resolve token-addressed content in every object group (#5431)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 16,
+                "lines": 767,
+                "insertions": 715,
+                "deletions": 52
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "nayeonikim",
           "email": "100911844+nayeonikim@users.noreply.github.com",
           "total_commits": 2,
@@ -2733,8 +2793,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Yihua Cheng",
@@ -2872,45 +2932,6 @@
                 "lines": 897,
                 "insertions": 890,
                 "deletions": 7
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "ef6f3662",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-09-29T21:20:51.000Z",
-              "message": "[MP][Coordinator] Make the checkpoint the Kafka cursor (#5354)\n\nThe Kafka cache-event source (#5286) resumes after a restart from the\nconsumer group's own committed offset. That offset and the coordinator's\nown checkpoint save are independent, on independent timers (offsets\ncommit roughly every few seconds; a checkpoint every\n--checkpoint-interval, default 60s, or only at a clean shutdown). On an\nungraceful crash between two checkpoint saves, the committed offset is\nalready ahead of what the last saved checkpoint reflects -- and resuming\nfrom it skips the records in between for good: the broker considers them\ndelivered, and the checkpoint that gets restored does not.\n\nFix it by having one cursor instead of two. StreamPosition records each\npartition's offset as records are admitted and is registered in\ncheckpoint_components, so save_checkpoint captures it under the same\nquiesce as the gate and the views: a checkpoint holds a view and the\nexact offset that produced it, and can hold nothing else.\nKafkaCacheEventSource's on_assign seeks every assigned partition to\nStreamPosition.next_offset(...), which is by construction the right\nplace for the state just restored. The consumer group no longer commits\nat all (enable.auto.commit: False, no store_offsets), so the resume\npoint moves only when a checkpoint is written. The cost is that\nkafka-consumer-groups --describe shows this group no progress; the\nposition lives in the checkpoint instead.\n\nNothing needs to measure how far behind a restarting coordinator is,\nbecause there is no window in which its restored view and its resume\npoint disagree -- it is as consistent as one that has been running for\nan hour, just further from the tip. A partition StreamPosition has never\nseen (a first start, or one added since) falls back to\nauto.offset.reset.\n\nRefs #4226, #4522.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 10,
-                "lines": 579,
-                "insertions": 501,
-                "deletions": 78
               },
               "scores": {
                 "loc": 30,
@@ -7060,45 +7081,6 @@
       ],
       "2026-10": [
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "4d96107c",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-10-02T23:06:51.000Z",
-              "message": "[Fix][MP] Hold imported IPC events (#5439)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 12,
-                "lines": 514,
-                "insertions": 504,
-                "deletions": 10
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "weishu",
           "email": "838677410@qq.com",
           "total_commits": 1,
@@ -7138,6 +7120,45 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "4d96107c",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-10-02T23:06:51.000Z",
+              "message": "[Fix][MP] Hold imported IPC events (#5439)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 12,
+                "lines": 514,
+                "insertions": 504,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 1,
@@ -7156,6 +7177,45 @@
                 "lines": 1168,
                 "insertions": 1149,
                 "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "1ca53a8a",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-03T00:33:52.000Z",
+              "message": "[MP][Coordinator] Resolve token-addressed content in every object group (#5431)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 16,
+                "lines": 767,
+                "insertions": 715,
+                "deletions": 52
               },
               "scores": {
                 "loc": 30,
@@ -10522,45 +10582,6 @@
       ],
       "2026-Q4": [
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "4d96107c",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-10-02T23:06:51.000Z",
-              "message": "[Fix][MP] Hold imported IPC events (#5439)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 12,
-                "lines": 514,
-                "insertions": 504,
-                "deletions": 10
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "weishu",
           "email": "838677410@qq.com",
           "total_commits": 1,
@@ -10600,6 +10621,45 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "4d96107c",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-10-02T23:06:51.000Z",
+              "message": "[Fix][MP] Hold imported IPC events (#5439)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 12,
+                "lines": 514,
+                "insertions": 504,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 1,
@@ -10618,6 +10678,45 @@
                 "lines": 1168,
                 "insertions": 1149,
                 "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "1ca53a8a",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-03T00:33:52.000Z",
+              "message": "[MP][Coordinator] Resolve token-addressed content in every object group (#5431)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 16,
+                "lines": 767,
+                "insertions": 715,
+                "deletions": 52
               },
               "scores": {
                 "loc": 30,
@@ -10681,12 +10780,12 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-03T00:30:07.392Z",
+    "analyzedAt": "2026-10-04T00:30:07.169Z",
     "daysBack": 2,
-    "totalCommits": 114,
+    "totalCommits": 115,
     "totalContributors": 55,
     "mergedFrom": {
-      "existing": 111,
+      "existing": 114,
       "new": 4
     }
   }
