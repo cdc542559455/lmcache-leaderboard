@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-05T00:30:02.081Z",
-  "total_commits_analyzed": 116,
+  "last_updated": "2026-10-06T00:30:15.671Z",
+  "total_commits_analyzed": 122,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3813,6 +3813,242 @@
           "tier": "T3",
           "tier_name": "Contributing"
         }
+      ],
+      "2026-W41": [
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 73,
+          "commits": [
+            {
+              "hash": "8c77a6f7",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-05T22:52:28.000Z",
+              "message": "[MP] Isolate a failing cache-event consumer from the others (#5465)\n\nCacheEventBroadcaster called its consumers in a plain loop. A consumer\nthat raised stopped the loop, so every consumer registered after it\nmissed the batch, while the gate had already admitted it and would drop\na resend as a duplicate. One buggy controller could leave the key\ndirectory or the usage view behind.\n\nbroadcast and fence_instance now catch each consumer's exception, log\nit with the batch's instance, incarnation and seq, and go on to the\nnext consumer. Only the\nconsumer that raised misses the batch.\n\nThe batch is not retried. Consumers only touch memory, so the same\nbatch would fail the same way, and re-sending it to every consumer\nwould apply it twice to the ones that succeeded.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 110,
+                "insertions": 93,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 11,
+                "total": 73
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 73,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "seungrokj",
+          "email": "144636725+seungrokj@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 73,
+          "commits": [
+            {
+              "hash": "96021e12",
+              "author": "seungrokj",
+              "email": "144636725+seungrokj@users.noreply.github.com",
+              "date": "2026-10-05T17:33:11.000Z",
+              "message": "[Perf][MP][ROCm] Enable the direct copy-engine transfer on ROCm/HIP (#5358)\n\n* [Perf][MP][ROCm] Enable the direct copy-engine transfer on ROCm/HIP\n\nPR #5308 gated the LMCache-driven direct copy-engine transfer to CUDA on the\npremise that cudaMemcpyBatchAsync has no HIP equivalent. ROCm 7.x (HIP 7.15)\nships hipMemcpyBatchAsync with the identical 9-arg (failIdx) signature, plus\nhipMemcpyAttributes and hipMemcpySrcAccessOrderStream, so the same path works\nonce the sources are hipified.\n\n- csrc/cuda/mp_mem_kernels.cu: enable LMC_HAS_BATCH_MEMCPY under\n  USE_ROCM && HIP_VERSION >= 71500000; include <hip/hip_version.h>; on ROCm\n  skip the CUDA-versioned (>= 12080) runtime/driver check in\n  batch_memcpy_supported() since the compile-time guard already ensures the API.\n- setup_extensions/build_profiles/rocm.py: torch's bundled hipify map predates\n  the batched-copy API, so patch the hipified output for the tokens it misses\n  (cudaMemcpyBatchAsync, cudaMemcpyAttributes, cudaMemcpySrcAccessOrderStream,\n  cudaStreamPerThread).\n- Docs and GPU-test skip reasons updated for the ROCm path.\n\nIsolated to ROCm: under a CUDA build (USE_ROCM undefined) the preprocessed\nsource is byte-identical to before, and LMC_HAS_BATCH_MEMCPY still resolves to\n1 on CUDA >= 12.8. Verified on MI355X (gfx950): cuda_ops builds for all arches,\nbatch_memcpy_supported() is True, direct-copy GPU parity tests pass (29 passed;\nfull suite 53 passed / 2 skipped).\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\n\n* [ROCm] Gate direct copy-engine path behind opt-in env var\n\nbatch_memcpy_supported() on ROCm previously returned true whenever the\nHIP >= 7.15 compile guard passed, but that guard cannot prove the op is\nfunctional: some HIP builds link hipMemcpyBatchAsync yet return\nhipErrorNotSupported at runtime (observed on ROCm 7.2.3, where the symbol\nexists but the batched copy is a stub). Make the ROCm direct copy-engine\npath opt-in -- it is enabled only when LMCACHE_ROCM_ENABLE_BATCH_MEMCPY is\nset to a non-zero value, otherwise the connector falls back to the staging\nkernel. CUDA behaviour is unchanged.\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\n\n* [ROCm] Require device-addressable host pointers for the direct copy path\n\nhipMemcpyBatchAsync's copy engine dereferences the host operand directly, so\nthe hipHostRegister'd pinned host pool must be device-addressable. On configs\nwhere hipDeviceAttributeCanUseHostPointerForRegisteredMem == 0 (observed on\nMI300/MI355 ROCm builds) a registered host VA is not device-usable, and the\nbatched D2H/H2D copy faults asynchronously with a GPU memory access fault\n(hipHostGetDevicePointer returns the same, still-unusable VA, so translation\ndoes not help). The legacy hipMemcpyAsync kernel path tolerates such memory,\nwhich is why only the copy-engine path faulted.\n\nGate batch_memcpy_supported() on the attribute in addition to the opt-in env\nvar, so the connector transparently falls back to the staging kernel where the\ncopy engine cannot address the registered host pool.\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\n\n* [ROCm] Add LMCACHE_ROCM_FORCE_BATCH_MEMCPY to skip the host-pointer attribute check\n\nSome ROCm builds report hipDeviceAttributeCanUseHostPointerForRegisteredMem\nas 0 even though the hipHostRegister'd host VA is device-addressable\n(MI355X, ROCm 10 / HIP 7.15). There, batch_memcpy_supported() returns\nFalse even with LMCACHE_ROCM_ENABLE_BATCH_MEMCPY=1, so the direct\ncopy-engine path is never used although the batched copy works.\n\nKeep the attribute check as the default, but let an explicit\nLMCACHE_ROCM_FORCE_BATCH_MEMCPY (non-zero, together with\nLMCACHE_ROCM_ENABLE_BATCH_MEMCPY) skip it once the parity tests pass.\nDocument it next to the existing opt-in.\n\nValidated on 8x MI355X (gfx950), torch 2.12.0+rocm10.0.0:\n- ENABLE only: batch_memcpy_supported() == False, direct-copy tests skip.\n- ENABLE + FORCE: True; test_direct_copy_transfer_gpu.py and\n  test_direct_copy_planner_gpu.py 29/29 pass.\n- FORCE alone: False (still requires the opt-in).\n- tests/v1/multiprocess + tests/v1/platform with ENABLE + FORCE:\n  1172 passed, 61 skipped, 0 failed.\n\nSuggested-by: hyukjlee\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n\n* [MP] Update direct-transfer comment for HIP support\n\nThe _HAS_BATCH_MEMCPY_ASYNC comment still said the direct copy-engine\npath is built against CUDA >= 12.8, not HIP. It is now also built\nagainst HIP >= 7.15 (hipMemcpyBatchAsync), gated at runtime by\nLMCACHE_ROCM_ENABLE_BATCH_MEMCPY.\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n\n* style(mp): format ROCm batch memcpy support\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>\n\n* style(tests): wrap direct copy skip reasons\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>\n\n---------\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\nSigned-off-by: andyluo7 <andy.luo@amd.com>\nCo-authored-by: Claude Opus 4.6 <noreply@anthropic.com>\nCo-authored-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 6,
+                "lines": 113,
+                "insertions": 104,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 11,
+                "total": 73
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 73,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "sssqqeer",
+          "email": "166484716+sssqqeer@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 71,
+          "commits": [
+            {
+              "hash": "7ba466fe",
+              "author": "sssqqeer",
+              "email": "166484716+sssqqeer@users.noreply.github.com",
+              "date": "2026-10-05T15:39:52.000Z",
+              "message": "[Bugfix][MP] Limit cache stores to prompt chunks by default (#5239)\n\n* [Bugfix][MP] Limit cache stores to prompt chunks by default\n\nCap MP stores at the request's prompt length unless\nlmcache.mp.save_decode_cache is enabled. Add regression coverage for\nprompt/decode chunk boundaries and document the new option.\n\nSigned-off-by: shibin <306219114@qq.com>\n\n* docs: focus save_decode_cache guidance on intended behavior (review)\n\nSigned-off-by: shibin <306219114@qq.com>\n\n* [Test] Set num_prompt_tokens on the Mamba tracker test request\n\nSigned-off-by: shibin <306219114@qq.com>\n\n---------\n\nSigned-off-by: shibin <306219114@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 161,
+                "insertions": 161,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 16,
+                "total": 71
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 71,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Hyukjoon Lee",
+          "email": "hyukjlee@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 54,
+          "commits": [
+            {
+              "hash": "b6752b4e",
+              "author": "Hyukjoon Lee",
+              "email": "hyukjlee@amd.com",
+              "date": "2026-10-05T18:59:56.000Z",
+              "message": "[Fix][MP] Fail closed in free_lookup_locks; add --session-ttl-seconds (#5457)\n\nfree_lookup_locks rebuilds the lock set from the session's recorded\nprefetch hit length. When none is recorded (the session was reaped while\nthe request sat in the engine queue, or the result was never consumed)\nit still released the whole [start, end) range for full-attention groups.\nThat range can extend past what the prefetch locked, and object keys are\nshared across requests, so it stripped concurrent readers' read locks:\ntheir RETRIEVE then failed with KEY_NOT_READABLE, which the vLLM connector\nreports as invalid_block_ids -- fatal for hybrid models with several KV\ncache groups. Seen on Kimi-K3 (MLA + KDA), TP 8 / DCP 8, 8x MI355X under\na 70-concurrency agentic trace: ~1000 \"finish read on non-read-locked key\"\nwarnings, then EngineCore death ~25 min in. Release nothing in that case\nand leave held locks to the L1 read TTL, as sliding-window groups already\ndid.\n\nSession reaping is what loses the hit length. Requests can wait in vLLM's\nqueue for longer than the hard-coded 600 s session TTL, so expose it as\n--session-ttl-seconds (default unchanged). #4091 proposed the flag and was\nclosed for lack of a concrete scenario; this is one.\n\nAlso document the ROCm 10 / MI355X settings for Kimi-K3 (rocm7.2 wheel on\nROCm 10, DCP 8 chunk size, eager L1 pinning, read/session TTLs).\n\nSigned-off-by: hyukjlee <hyukjlee@amd.com>\nCo-authored-by: Claude Opus 5.5 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 7,
+                "lines": 76,
+                "insertions": 65,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 7,
+                "total": 54
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 54,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 54,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 43,
+          "commits": [
+            {
+              "hash": "0ab02b49",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-10-05T15:53:48.000Z",
+              "message": "[Perf][RawBlock] Batch uring_cmd recovery reads (#4164)\n\nBatch NVMe passthrough slot-header reads during recovery.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 5,
+                "lines": 34,
+                "insertions": 15,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 43,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 43,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "PPg",
+          "email": "18649201011@163.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 34,
+          "commits": [
+            {
+              "hash": "bffb77a7",
+              "author": "PPg",
+              "email": "18649201011@163.com",
+              "date": "2026-10-05T12:53:40.000Z",
+              "message": "fix(cli): guard optional OpenAI imports (#5468)\n\n* fix(cli): guard optional OpenAI imports\n\nSigned-off-by: Pilgrim132333333 <pilgrim137735@gmail.com>\n\n* style(cli): fix optional import ordering\n\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>\n\n---------\n\nSigned-off-by: Pilgrim132333333 <pilgrim137735@gmail.com>\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>\nCo-authored-by: Kuntai Du <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 49,
+                "insertions": 44,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 34,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 34,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -7122,10 +7358,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 87,
+          "commit_score": 160,
           "commits": [
             {
               "hash": "1ca53a8a",
@@ -7147,14 +7383,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8c77a6f7",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-05T22:52:28.000Z",
+              "message": "[MP] Isolate a failing cache-event consumer from the others (#5465)\n\nCacheEventBroadcaster called its consumers in a plain loop. A consumer\nthat raised stopped the loop, so every consumer registered after it\nmissed the batch, while the gate had already admitted it and would drop\na resend as a duplicate. One buggy controller could leave the key\ndirectory or the usage view behind.\n\nbroadcast and fence_instance now catch each consumer's exception, log\nit with the batch's instance, incarnation and seq, and go on to the\nnext consumer. Only the\nconsumer that raised misses the batch.\n\nThe batch is not retried. Consumers only touch memory, so the same\nbatch would fail the same way, and re-sending it to every consumer\nwould apply it twice to the ones that succeeded.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 110,
+                "insertions": 93,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 11,
+                "total": 73
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 87,
+          "avg_score": 80,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 160,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7315,6 +7572,84 @@
           "tier_name": "Elite"
         },
         {
+          "name": "seungrokj",
+          "email": "144636725+seungrokj@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 73,
+          "commits": [
+            {
+              "hash": "96021e12",
+              "author": "seungrokj",
+              "email": "144636725+seungrokj@users.noreply.github.com",
+              "date": "2026-10-05T17:33:11.000Z",
+              "message": "[Perf][MP][ROCm] Enable the direct copy-engine transfer on ROCm/HIP (#5358)\n\n* [Perf][MP][ROCm] Enable the direct copy-engine transfer on ROCm/HIP\n\nPR #5308 gated the LMCache-driven direct copy-engine transfer to CUDA on the\npremise that cudaMemcpyBatchAsync has no HIP equivalent. ROCm 7.x (HIP 7.15)\nships hipMemcpyBatchAsync with the identical 9-arg (failIdx) signature, plus\nhipMemcpyAttributes and hipMemcpySrcAccessOrderStream, so the same path works\nonce the sources are hipified.\n\n- csrc/cuda/mp_mem_kernels.cu: enable LMC_HAS_BATCH_MEMCPY under\n  USE_ROCM && HIP_VERSION >= 71500000; include <hip/hip_version.h>; on ROCm\n  skip the CUDA-versioned (>= 12080) runtime/driver check in\n  batch_memcpy_supported() since the compile-time guard already ensures the API.\n- setup_extensions/build_profiles/rocm.py: torch's bundled hipify map predates\n  the batched-copy API, so patch the hipified output for the tokens it misses\n  (cudaMemcpyBatchAsync, cudaMemcpyAttributes, cudaMemcpySrcAccessOrderStream,\n  cudaStreamPerThread).\n- Docs and GPU-test skip reasons updated for the ROCm path.\n\nIsolated to ROCm: under a CUDA build (USE_ROCM undefined) the preprocessed\nsource is byte-identical to before, and LMC_HAS_BATCH_MEMCPY still resolves to\n1 on CUDA >= 12.8. Verified on MI355X (gfx950): cuda_ops builds for all arches,\nbatch_memcpy_supported() is True, direct-copy GPU parity tests pass (29 passed;\nfull suite 53 passed / 2 skipped).\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\n\n* [ROCm] Gate direct copy-engine path behind opt-in env var\n\nbatch_memcpy_supported() on ROCm previously returned true whenever the\nHIP >= 7.15 compile guard passed, but that guard cannot prove the op is\nfunctional: some HIP builds link hipMemcpyBatchAsync yet return\nhipErrorNotSupported at runtime (observed on ROCm 7.2.3, where the symbol\nexists but the batched copy is a stub). Make the ROCm direct copy-engine\npath opt-in -- it is enabled only when LMCACHE_ROCM_ENABLE_BATCH_MEMCPY is\nset to a non-zero value, otherwise the connector falls back to the staging\nkernel. CUDA behaviour is unchanged.\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\n\n* [ROCm] Require device-addressable host pointers for the direct copy path\n\nhipMemcpyBatchAsync's copy engine dereferences the host operand directly, so\nthe hipHostRegister'd pinned host pool must be device-addressable. On configs\nwhere hipDeviceAttributeCanUseHostPointerForRegisteredMem == 0 (observed on\nMI300/MI355 ROCm builds) a registered host VA is not device-usable, and the\nbatched D2H/H2D copy faults asynchronously with a GPU memory access fault\n(hipHostGetDevicePointer returns the same, still-unusable VA, so translation\ndoes not help). The legacy hipMemcpyAsync kernel path tolerates such memory,\nwhich is why only the copy-engine path faulted.\n\nGate batch_memcpy_supported() on the attribute in addition to the opt-in env\nvar, so the connector transparently falls back to the staging kernel where the\ncopy engine cannot address the registered host pool.\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\n\n* [ROCm] Add LMCACHE_ROCM_FORCE_BATCH_MEMCPY to skip the host-pointer attribute check\n\nSome ROCm builds report hipDeviceAttributeCanUseHostPointerForRegisteredMem\nas 0 even though the hipHostRegister'd host VA is device-addressable\n(MI355X, ROCm 10 / HIP 7.15). There, batch_memcpy_supported() returns\nFalse even with LMCACHE_ROCM_ENABLE_BATCH_MEMCPY=1, so the direct\ncopy-engine path is never used although the batched copy works.\n\nKeep the attribute check as the default, but let an explicit\nLMCACHE_ROCM_FORCE_BATCH_MEMCPY (non-zero, together with\nLMCACHE_ROCM_ENABLE_BATCH_MEMCPY) skip it once the parity tests pass.\nDocument it next to the existing opt-in.\n\nValidated on 8x MI355X (gfx950), torch 2.12.0+rocm10.0.0:\n- ENABLE only: batch_memcpy_supported() == False, direct-copy tests skip.\n- ENABLE + FORCE: True; test_direct_copy_transfer_gpu.py and\n  test_direct_copy_planner_gpu.py 29/29 pass.\n- FORCE alone: False (still requires the opt-in).\n- tests/v1/multiprocess + tests/v1/platform with ENABLE + FORCE:\n  1172 passed, 61 skipped, 0 failed.\n\nSuggested-by: hyukjlee\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n\n* [MP] Update direct-transfer comment for HIP support\n\nThe _HAS_BATCH_MEMCPY_ASYNC comment still said the direct copy-engine\npath is built against CUDA >= 12.8, not HIP. It is now also built\nagainst HIP >= 7.15 (hipMemcpyBatchAsync), gated at runtime by\nLMCACHE_ROCM_ENABLE_BATCH_MEMCPY.\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n\n* style(mp): format ROCm batch memcpy support\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>\n\n* style(tests): wrap direct copy skip reasons\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>\n\n---------\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\nSigned-off-by: andyluo7 <andy.luo@amd.com>\nCo-authored-by: Claude Opus 4.6 <noreply@anthropic.com>\nCo-authored-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 6,
+                "lines": 113,
+                "insertions": 104,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 11,
+                "total": 73
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 73,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "sssqqeer",
+          "email": "166484716+sssqqeer@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 71,
+          "commits": [
+            {
+              "hash": "7ba466fe",
+              "author": "sssqqeer",
+              "email": "166484716+sssqqeer@users.noreply.github.com",
+              "date": "2026-10-05T15:39:52.000Z",
+              "message": "[Bugfix][MP] Limit cache stores to prompt chunks by default (#5239)\n\n* [Bugfix][MP] Limit cache stores to prompt chunks by default\n\nCap MP stores at the request's prompt length unless\nlmcache.mp.save_decode_cache is enabled. Add regression coverage for\nprompt/decode chunk boundaries and document the new option.\n\nSigned-off-by: shibin <306219114@qq.com>\n\n* docs: focus save_decode_cache guidance on intended behavior (review)\n\nSigned-off-by: shibin <306219114@qq.com>\n\n* [Test] Set num_prompt_tokens on the Mamba tracker test request\n\nSigned-off-by: shibin <306219114@qq.com>\n\n---------\n\nSigned-off-by: shibin <306219114@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 161,
+                "insertions": 161,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 16,
+                "total": 71
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 71,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "2xdevv",
           "email": "syk0905.kwon@gmail.com",
           "total_commits": 1,
@@ -7350,6 +7685,123 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 64,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Hyukjoon Lee",
+          "email": "hyukjlee@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 54,
+          "commits": [
+            {
+              "hash": "b6752b4e",
+              "author": "Hyukjoon Lee",
+              "email": "hyukjlee@amd.com",
+              "date": "2026-10-05T18:59:56.000Z",
+              "message": "[Fix][MP] Fail closed in free_lookup_locks; add --session-ttl-seconds (#5457)\n\nfree_lookup_locks rebuilds the lock set from the session's recorded\nprefetch hit length. When none is recorded (the session was reaped while\nthe request sat in the engine queue, or the result was never consumed)\nit still released the whole [start, end) range for full-attention groups.\nThat range can extend past what the prefetch locked, and object keys are\nshared across requests, so it stripped concurrent readers' read locks:\ntheir RETRIEVE then failed with KEY_NOT_READABLE, which the vLLM connector\nreports as invalid_block_ids -- fatal for hybrid models with several KV\ncache groups. Seen on Kimi-K3 (MLA + KDA), TP 8 / DCP 8, 8x MI355X under\na 70-concurrency agentic trace: ~1000 \"finish read on non-read-locked key\"\nwarnings, then EngineCore death ~25 min in. Release nothing in that case\nand leave held locks to the L1 read TTL, as sliding-window groups already\ndid.\n\nSession reaping is what loses the hit length. Requests can wait in vLLM's\nqueue for longer than the hard-coded 600 s session TTL, so expose it as\n--session-ttl-seconds (default unchanged). #4091 proposed the flag and was\nclosed for lack of a concrete scenario; this is one.\n\nAlso document the ROCm 10 / MI355X settings for Kimi-K3 (rocm7.2 wheel on\nROCm 10, DCP 8 chunk size, eager L1 pinning, read/session TTLs).\n\nSigned-off-by: hyukjlee <hyukjlee@amd.com>\nCo-authored-by: Claude Opus 5.5 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 7,
+                "lines": 76,
+                "insertions": 65,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 7,
+                "total": 54
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 54,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 54,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 43,
+          "commits": [
+            {
+              "hash": "0ab02b49",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-10-05T15:53:48.000Z",
+              "message": "[Perf][RawBlock] Batch uring_cmd recovery reads (#4164)\n\nBatch NVMe passthrough slot-header reads during recovery.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 5,
+                "lines": 34,
+                "insertions": 15,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 43,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 43,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "PPg",
+          "email": "18649201011@163.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 34,
+          "commits": [
+            {
+              "hash": "bffb77a7",
+              "author": "PPg",
+              "email": "18649201011@163.com",
+              "date": "2026-10-05T12:53:40.000Z",
+              "message": "fix(cli): guard optional OpenAI imports (#5468)\n\n* fix(cli): guard optional OpenAI imports\n\nSigned-off-by: Pilgrim132333333 <pilgrim137735@gmail.com>\n\n* style(cli): fix optional import ordering\n\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>\n\n---------\n\nSigned-off-by: Pilgrim132333333 <pilgrim137735@gmail.com>\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>\nCo-authored-by: Kuntai Du <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 49,
+                "insertions": 44,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 34,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 34,
           "tier": "T1",
           "tier_name": "Advanced"
         }
@@ -10662,10 +11114,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 87,
+          "commit_score": 160,
           "commits": [
             {
               "hash": "1ca53a8a",
@@ -10687,14 +11139,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8c77a6f7",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-05T22:52:28.000Z",
+              "message": "[MP] Isolate a failing cache-event consumer from the others (#5465)\n\nCacheEventBroadcaster called its consumers in a plain loop. A consumer\nthat raised stopped the loop, so every consumer registered after it\nmissed the batch, while the gate had already admitted it and would drop\na resend as a duplicate. One buggy controller could leave the key\ndirectory or the usage view behind.\n\nbroadcast and fence_instance now catch each consumer's exception, log\nit with the batch's instance, incarnation and seq, and go on to the\nnext consumer. Only the\nconsumer that raised misses the batch.\n\nThe batch is not retried. Consumers only touch memory, so the same\nbatch would fail the same way, and re-sending it to every consumer\nwould apply it twice to the ones that succeeded.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 110,
+                "insertions": 93,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 11,
+                "total": 73
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 87,
+          "avg_score": 80,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 160,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -10855,6 +11328,84 @@
           "tier_name": "Elite"
         },
         {
+          "name": "seungrokj",
+          "email": "144636725+seungrokj@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 73,
+          "commits": [
+            {
+              "hash": "96021e12",
+              "author": "seungrokj",
+              "email": "144636725+seungrokj@users.noreply.github.com",
+              "date": "2026-10-05T17:33:11.000Z",
+              "message": "[Perf][MP][ROCm] Enable the direct copy-engine transfer on ROCm/HIP (#5358)\n\n* [Perf][MP][ROCm] Enable the direct copy-engine transfer on ROCm/HIP\n\nPR #5308 gated the LMCache-driven direct copy-engine transfer to CUDA on the\npremise that cudaMemcpyBatchAsync has no HIP equivalent. ROCm 7.x (HIP 7.15)\nships hipMemcpyBatchAsync with the identical 9-arg (failIdx) signature, plus\nhipMemcpyAttributes and hipMemcpySrcAccessOrderStream, so the same path works\nonce the sources are hipified.\n\n- csrc/cuda/mp_mem_kernels.cu: enable LMC_HAS_BATCH_MEMCPY under\n  USE_ROCM && HIP_VERSION >= 71500000; include <hip/hip_version.h>; on ROCm\n  skip the CUDA-versioned (>= 12080) runtime/driver check in\n  batch_memcpy_supported() since the compile-time guard already ensures the API.\n- setup_extensions/build_profiles/rocm.py: torch's bundled hipify map predates\n  the batched-copy API, so patch the hipified output for the tokens it misses\n  (cudaMemcpyBatchAsync, cudaMemcpyAttributes, cudaMemcpySrcAccessOrderStream,\n  cudaStreamPerThread).\n- Docs and GPU-test skip reasons updated for the ROCm path.\n\nIsolated to ROCm: under a CUDA build (USE_ROCM undefined) the preprocessed\nsource is byte-identical to before, and LMC_HAS_BATCH_MEMCPY still resolves to\n1 on CUDA >= 12.8. Verified on MI355X (gfx950): cuda_ops builds for all arches,\nbatch_memcpy_supported() is True, direct-copy GPU parity tests pass (29 passed;\nfull suite 53 passed / 2 skipped).\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\n\n* [ROCm] Gate direct copy-engine path behind opt-in env var\n\nbatch_memcpy_supported() on ROCm previously returned true whenever the\nHIP >= 7.15 compile guard passed, but that guard cannot prove the op is\nfunctional: some HIP builds link hipMemcpyBatchAsync yet return\nhipErrorNotSupported at runtime (observed on ROCm 7.2.3, where the symbol\nexists but the batched copy is a stub). Make the ROCm direct copy-engine\npath opt-in -- it is enabled only when LMCACHE_ROCM_ENABLE_BATCH_MEMCPY is\nset to a non-zero value, otherwise the connector falls back to the staging\nkernel. CUDA behaviour is unchanged.\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\n\n* [ROCm] Require device-addressable host pointers for the direct copy path\n\nhipMemcpyBatchAsync's copy engine dereferences the host operand directly, so\nthe hipHostRegister'd pinned host pool must be device-addressable. On configs\nwhere hipDeviceAttributeCanUseHostPointerForRegisteredMem == 0 (observed on\nMI300/MI355 ROCm builds) a registered host VA is not device-usable, and the\nbatched D2H/H2D copy faults asynchronously with a GPU memory access fault\n(hipHostGetDevicePointer returns the same, still-unusable VA, so translation\ndoes not help). The legacy hipMemcpyAsync kernel path tolerates such memory,\nwhich is why only the copy-engine path faulted.\n\nGate batch_memcpy_supported() on the attribute in addition to the opt-in env\nvar, so the connector transparently falls back to the staging kernel where the\ncopy engine cannot address the registered host pool.\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\n\n* [ROCm] Add LMCACHE_ROCM_FORCE_BATCH_MEMCPY to skip the host-pointer attribute check\n\nSome ROCm builds report hipDeviceAttributeCanUseHostPointerForRegisteredMem\nas 0 even though the hipHostRegister'd host VA is device-addressable\n(MI355X, ROCm 10 / HIP 7.15). There, batch_memcpy_supported() returns\nFalse even with LMCACHE_ROCM_ENABLE_BATCH_MEMCPY=1, so the direct\ncopy-engine path is never used although the batched copy works.\n\nKeep the attribute check as the default, but let an explicit\nLMCACHE_ROCM_FORCE_BATCH_MEMCPY (non-zero, together with\nLMCACHE_ROCM_ENABLE_BATCH_MEMCPY) skip it once the parity tests pass.\nDocument it next to the existing opt-in.\n\nValidated on 8x MI355X (gfx950), torch 2.12.0+rocm10.0.0:\n- ENABLE only: batch_memcpy_supported() == False, direct-copy tests skip.\n- ENABLE + FORCE: True; test_direct_copy_transfer_gpu.py and\n  test_direct_copy_planner_gpu.py 29/29 pass.\n- FORCE alone: False (still requires the opt-in).\n- tests/v1/multiprocess + tests/v1/platform with ENABLE + FORCE:\n  1172 passed, 61 skipped, 0 failed.\n\nSuggested-by: hyukjlee\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n\n* [MP] Update direct-transfer comment for HIP support\n\nThe _HAS_BATCH_MEMCPY_ASYNC comment still said the direct copy-engine\npath is built against CUDA >= 12.8, not HIP. It is now also built\nagainst HIP >= 7.15 (hipMemcpyBatchAsync), gated at runtime by\nLMCACHE_ROCM_ENABLE_BATCH_MEMCPY.\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n\n* style(mp): format ROCm batch memcpy support\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>\n\n* style(tests): wrap direct copy skip reasons\n\nSigned-off-by: andyluo7 <andy.luo@amd.com>\n\n---------\n\nSigned-off-by: seungrokj <seungrok.jung@amd.com>\nSigned-off-by: andyluo7 <andy.luo@amd.com>\nCo-authored-by: Claude Opus 4.6 <noreply@anthropic.com>\nCo-authored-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 6,
+                "lines": 113,
+                "insertions": 104,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 11,
+                "total": 73
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 73,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "sssqqeer",
+          "email": "166484716+sssqqeer@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 71,
+          "commits": [
+            {
+              "hash": "7ba466fe",
+              "author": "sssqqeer",
+              "email": "166484716+sssqqeer@users.noreply.github.com",
+              "date": "2026-10-05T15:39:52.000Z",
+              "message": "[Bugfix][MP] Limit cache stores to prompt chunks by default (#5239)\n\n* [Bugfix][MP] Limit cache stores to prompt chunks by default\n\nCap MP stores at the request's prompt length unless\nlmcache.mp.save_decode_cache is enabled. Add regression coverage for\nprompt/decode chunk boundaries and document the new option.\n\nSigned-off-by: shibin <306219114@qq.com>\n\n* docs: focus save_decode_cache guidance on intended behavior (review)\n\nSigned-off-by: shibin <306219114@qq.com>\n\n* [Test] Set num_prompt_tokens on the Mamba tracker test request\n\nSigned-off-by: shibin <306219114@qq.com>\n\n---------\n\nSigned-off-by: shibin <306219114@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 161,
+                "insertions": 161,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 16,
+                "total": 71
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 71,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "2xdevv",
           "email": "syk0905.kwon@gmail.com",
           "total_commits": 1,
@@ -10892,18 +11443,135 @@
           "total_score": 64,
           "tier": "T1",
           "tier_name": "Advanced"
+        },
+        {
+          "name": "Hyukjoon Lee",
+          "email": "hyukjlee@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 54,
+          "commits": [
+            {
+              "hash": "b6752b4e",
+              "author": "Hyukjoon Lee",
+              "email": "hyukjlee@amd.com",
+              "date": "2026-10-05T18:59:56.000Z",
+              "message": "[Fix][MP] Fail closed in free_lookup_locks; add --session-ttl-seconds (#5457)\n\nfree_lookup_locks rebuilds the lock set from the session's recorded\nprefetch hit length. When none is recorded (the session was reaped while\nthe request sat in the engine queue, or the result was never consumed)\nit still released the whole [start, end) range for full-attention groups.\nThat range can extend past what the prefetch locked, and object keys are\nshared across requests, so it stripped concurrent readers' read locks:\ntheir RETRIEVE then failed with KEY_NOT_READABLE, which the vLLM connector\nreports as invalid_block_ids -- fatal for hybrid models with several KV\ncache groups. Seen on Kimi-K3 (MLA + KDA), TP 8 / DCP 8, 8x MI355X under\na 70-concurrency agentic trace: ~1000 \"finish read on non-read-locked key\"\nwarnings, then EngineCore death ~25 min in. Release nothing in that case\nand leave held locks to the L1 read TTL, as sliding-window groups already\ndid.\n\nSession reaping is what loses the hit length. Requests can wait in vLLM's\nqueue for longer than the hard-coded 600 s session TTL, so expose it as\n--session-ttl-seconds (default unchanged). #4091 proposed the flag and was\nclosed for lack of a concrete scenario; this is one.\n\nAlso document the ROCm 10 / MI355X settings for Kimi-K3 (rocm7.2 wheel on\nROCm 10, DCP 8 chunk size, eager L1 pinning, read/session TTLs).\n\nSigned-off-by: hyukjlee <hyukjlee@amd.com>\nCo-authored-by: Claude Opus 5.5 (1M context) <noreply@anthropic.com>",
+              "stats": {
+                "files": 7,
+                "lines": 76,
+                "insertions": 65,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 7,
+                "total": 54
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 54,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 54,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 43,
+          "commits": [
+            {
+              "hash": "0ab02b49",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-10-05T15:53:48.000Z",
+              "message": "[Perf][RawBlock] Batch uring_cmd recovery reads (#4164)\n\nBatch NVMe passthrough slot-header reads during recovery.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 5,
+                "lines": 34,
+                "insertions": 15,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 43,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 43,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "PPg",
+          "email": "18649201011@163.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 34,
+          "commits": [
+            {
+              "hash": "bffb77a7",
+              "author": "PPg",
+              "email": "18649201011@163.com",
+              "date": "2026-10-05T12:53:40.000Z",
+              "message": "fix(cli): guard optional OpenAI imports (#5468)\n\n* fix(cli): guard optional OpenAI imports\n\nSigned-off-by: Pilgrim132333333 <pilgrim137735@gmail.com>\n\n* style(cli): fix optional import ordering\n\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>\n\n---------\n\nSigned-off-by: Pilgrim132333333 <pilgrim137735@gmail.com>\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>\nCo-authored-by: Kuntai Du <kuntai@uchicago.edu>",
+              "stats": {
+                "files": 4,
+                "lines": 49,
+                "insertions": 44,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 34,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 34,
+          "tier": "T1",
+          "tier_name": "Advanced"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-05T00:30:02.081Z",
+    "analyzedAt": "2026-10-06T00:30:15.671Z",
     "daysBack": 2,
-    "totalCommits": 116,
-    "totalContributors": 56,
+    "totalCommits": 122,
+    "totalContributors": 59,
     "mergedFrom": {
-      "existing": 115,
-      "new": 2
+      "existing": 116,
+      "new": 7
     }
   }
 }
