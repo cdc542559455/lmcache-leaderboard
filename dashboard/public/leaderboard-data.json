@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-06T00:30:15.671Z",
-  "total_commits_analyzed": 122,
+  "last_updated": "2026-10-07T00:30:19.188Z",
+  "total_commits_analyzed": 126,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3818,10 +3818,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 73,
+          "commit_score": 160,
           "commits": [
             {
               "hash": "8c77a6f7",
@@ -3843,14 +3843,152 @@
                 "total": 73
               },
               "classification": "significant"
+            },
+            {
+              "hash": "508efbff",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-06T20:07:34.000Z",
+              "message": "[MP] Let the Kafka producer buffer and retry cache events (#5464)\n\nKafkaCacheEventSink.publish produced each batch and then flushed,\nblocking the bus drain thread until the broker acknowledged or\ndelivery_timeout (10 s by default) ran out. Anything not acknowledged\nin time raised, and the subscriber dropped the whole flush. A broker\nrestart longer than 10 s therefore became a permanent sequence gap,\nalthough the idempotent producer could have retried it in order.\n\npublish now follows the usual Kafka producer pattern. It hands records\nto the producer's buffer, serves earlier delivery reports with poll(0),\nand returns without waiting. Only close() flushes, for at most 10 s.\nThe producer retries in order for up to delivery_timeout, now 300 s by\ndefault, so a broker restart delays events instead of losing them.\nThe producer's buffer is capped at 64 MB.\n\nA record that does not fit the buffer, or that the producer gives up\non, is dropped and counted in dropped_batches. Its seq is already\nspent, so the coordinator sees the gap. A full buffer still raises\nCacheEventPublishError, so the subscriber restores a capacity\ndeclaration as before. A declaration the producer drops later is not\nre-sent; that is documented as a known limitation.\n\nThe HTTP transport is unchanged.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 321,
+                "insertions": 229,
+                "deletions": 92
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 73,
+          "avg_score": 80,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 73,
+          "total_score": 160,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "e64b43ef",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-06T22:45:08.000Z",
+              "message": "[2/N][Refactor][MP] Enable multi-L1 serving for DRAM, Device-DAX, and GDS (#5461)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 51,
+                "lines": 3308,
+                "insertions": 2596,
+                "deletions": 712
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "f95b576f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-06T18:02:13.000Z",
+              "message": "[Feat]  support for Re-RoPE   KV caches (per-tensor e4m3/e5m2) (#5500)\n\n* [Feat][Blend] Re-RoPE fp8 KV caches (per-tensor e4m3/e5m2)\n\nvLLM allocates --kv-cache-dtype fp8 KV as uint8, which the retrieve-plan\nbuilder could not map to a rope scalar type: every plan came back None,\nso every fp8 request raised \"native plan unavailable\" and degraded to\nfull recompute. The blend did nothing while still paying its overhead.\n\nThe fix threads the fp8 flavor end to end:\n\n- CB_REGISTER_ROPE gains a trailing, defaulted kv_quant payload\n  (\"fp8_e4m3\" / \"fp8_e5m2\"; \"\" keeps today's behavior) stored on\n  _CBRopeState. The buffer dtype alone cannot name the bit layout.\n- The plan builder resolves uint8 K planes through the declared flavor\n  (and true float8 torch dtypes directly), and passes the cos/sin\n  cache's own scalar type: under fp8 KV the cache stays in the model's\n  float dtype, so CBGroupSpec now carries cache_scalar_type (defaulted\n  to key_scalar_type for older planners).\n- The fused ramp rope kernel is templated on key and cache types and\n  dequantizes -> rotates -> requantizes fp8 keys. No scale is involved:\n  rotation commutes with the per-tensor scale, which is identical on\n  input and output. Homogeneous instantiations keep their exact\n  pre-change numerics (the conversion helper is the identity there).\n\nScope: legacy-geometry (standard attention) models. Under a declared\nrope map, rot_for_group still skips non-float kernel groups — a\nquantized index side-plane and quantized main KV are indistinguishable\nby dtype there, so fp8 MLA/GLM stays out of scope.\n\nTested: dequant-rotate-requant parity against a per-op bf16-rounded\nreference through execute_cb_retrieve_plan_flat on H200, scalar-type\nresolution units, and the existing rope/plan/retrieve/store suites.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Inline the key-scalar resolution; one-line kv_quant docs\n\nReview follow-ups on #5500: fold _cb_key_at_scalar into its only call\nsite in the plan builder, pin the flavor maps in the test instead, and\ncut the kv_quant field/arg comments to one line.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Reuse the dispatch machinery; drop the speculative float8 map\n\nMinimize per review: the fused-rope launcher nests an\nLMC_DISPATCH_ROPE_KEY_TYPES switch (floating + fp8 cases) instead of a\nhand-rolled helper and if-chain; the true-float8-dtype map goes (vLLM\nallocates fp8 KV as uint8 — no caller); kv_quant validation keys off\n_FP8_FLAVOR_TO_AT_SCALAR instead of a literal.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the rope_cvt comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the v3 alias comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Apply isort and clang-format from the code-quality hooks\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Tighten the fp8 rope comments\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Add kv_quant to CbRegisterRopeRequest\n\nThe gRPC transport derives its surface from the proto descriptors, so\nthe 8-payload cb_register_rope contract needs the matching field; the\n_proto_gen stubs regenerate at build time.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 375,
+                "insertions": 288,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "ai-jz",
+          "email": "156989844+ai-jz@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 81,
+          "commits": [
+            {
+              "hash": "fc8002ca",
+              "author": "ai-jz",
+              "email": "156989844+ai-jz@users.noreply.github.com",
+              "date": "2026-10-06T15:55:15.000Z",
+              "message": "[Bugfix] Prevent vLLM engine crash on multi-group cache-load failure (#5469)\n\nfix(vllm): prevent engine crash on multi-group cache load failure\n\nSigned-off-by: ai-jz <ai-jz@users.noreply.github.com>\nCo-authored-by: ai-jz <ai-jz@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 197,
+                "insertions": 189,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 81,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3929,8 +4067,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Hyukjoon Lee",
@@ -3968,8 +4106,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 54,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "nayeonikim",
@@ -4007,8 +4145,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "PPg",
@@ -7358,10 +7496,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 160,
+          "commit_score": 247,
           "commits": [
             {
               "hash": "1ca53a8a",
@@ -7404,24 +7542,45 @@
                 "total": 73
               },
               "classification": "significant"
+            },
+            {
+              "hash": "508efbff",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-06T20:07:34.000Z",
+              "message": "[MP] Let the Kafka producer buffer and retry cache events (#5464)\n\nKafkaCacheEventSink.publish produced each batch and then flushed,\nblocking the bus drain thread until the broker acknowledged or\ndelivery_timeout (10 s by default) ran out. Anything not acknowledged\nin time raised, and the subscriber dropped the whole flush. A broker\nrestart longer than 10 s therefore became a permanent sequence gap,\nalthough the idempotent producer could have retried it in order.\n\npublish now follows the usual Kafka producer pattern. It hands records\nto the producer's buffer, serves earlier delivery reports with poll(0),\nand returns without waiting. Only close() flushes, for at most 10 s.\nThe producer retries in order for up to delivery_timeout, now 300 s by\ndefault, so a broker restart delays events instead of losing them.\nThe producer's buffer is capped at 64 MB.\n\nA record that does not fit the buffer, or that the producer gives up\non, is dropped and counted in dropped_batches. Its seq is already\nspent, so the coordinator sees the gap. A full buffer still raises\nCacheEventPublishError, so the subscriber restores a capacity\ndeclaration as before. A declaration the producer drops later is not\nre-sent; that is documented as a known limitation.\n\nThe HTTP transport is unchanged.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 321,
+                "insertions": 229,
+                "deletions": 92
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 82.33333333333333,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 160,
+          "total_score": 247,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 87,
+          "commit_score": 174,
           "commits": [
             {
               "hash": "4abc421a",
@@ -7443,6 +7602,27 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f95b576f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-06T18:02:13.000Z",
+              "message": "[Feat]  support for Re-RoPE   KV caches (per-tensor e4m3/e5m2) (#5500)\n\n* [Feat][Blend] Re-RoPE fp8 KV caches (per-tensor e4m3/e5m2)\n\nvLLM allocates --kv-cache-dtype fp8 KV as uint8, which the retrieve-plan\nbuilder could not map to a rope scalar type: every plan came back None,\nso every fp8 request raised \"native plan unavailable\" and degraded to\nfull recompute. The blend did nothing while still paying its overhead.\n\nThe fix threads the fp8 flavor end to end:\n\n- CB_REGISTER_ROPE gains a trailing, defaulted kv_quant payload\n  (\"fp8_e4m3\" / \"fp8_e5m2\"; \"\" keeps today's behavior) stored on\n  _CBRopeState. The buffer dtype alone cannot name the bit layout.\n- The plan builder resolves uint8 K planes through the declared flavor\n  (and true float8 torch dtypes directly), and passes the cos/sin\n  cache's own scalar type: under fp8 KV the cache stays in the model's\n  float dtype, so CBGroupSpec now carries cache_scalar_type (defaulted\n  to key_scalar_type for older planners).\n- The fused ramp rope kernel is templated on key and cache types and\n  dequantizes -> rotates -> requantizes fp8 keys. No scale is involved:\n  rotation commutes with the per-tensor scale, which is identical on\n  input and output. Homogeneous instantiations keep their exact\n  pre-change numerics (the conversion helper is the identity there).\n\nScope: legacy-geometry (standard attention) models. Under a declared\nrope map, rot_for_group still skips non-float kernel groups — a\nquantized index side-plane and quantized main KV are indistinguishable\nby dtype there, so fp8 MLA/GLM stays out of scope.\n\nTested: dequant-rotate-requant parity against a per-op bf16-rounded\nreference through execute_cb_retrieve_plan_flat on H200, scalar-type\nresolution units, and the existing rope/plan/retrieve/store suites.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Inline the key-scalar resolution; one-line kv_quant docs\n\nReview follow-ups on #5500: fold _cb_key_at_scalar into its only call\nsite in the plan builder, pin the flavor maps in the test instead, and\ncut the kv_quant field/arg comments to one line.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Reuse the dispatch machinery; drop the speculative float8 map\n\nMinimize per review: the fused-rope launcher nests an\nLMC_DISPATCH_ROPE_KEY_TYPES switch (floating + fp8 cases) instead of a\nhand-rolled helper and if-chain; the true-float8-dtype map goes (vLLM\nallocates fp8 KV as uint8 — no caller); kv_quant validation keys off\n_FP8_FLAVOR_TO_AT_SCALAR instead of a literal.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the rope_cvt comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the v3 alias comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Apply isort and clang-format from the code-quality hooks\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Tighten the fp8 rope comments\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Add kv_quant to CbRegisterRopeRequest\n\nThe gRPC transport derives its surface from the proto descriptors, so\nthe 8-payload cb_register_rope contract needs the matching field; the\n_proto_gen stubs regenerate at build time.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 375,
+                "insertions": 288,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
           "avg_score": 87,
@@ -7450,7 +7630,67 @@
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "e9ff3463",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-02T15:37:23.000Z",
+              "message": "[1/N][Refactor][MP] Add ordered L1 write overflow and object owner tags (#5416)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* docs(mp): document multi-L1 configuration and migration\n\nAdd a user-facing guide for tagged L1 managers, per-manager settings, L2 affinity, write and prefetch behavior, GDS migration, reporting, and transport limits. Update existing MP references to the new configuration interface.\n\nValidate all five guide commands with the configuration parser and check the rendered HTML and local links. Documentation pre-commit checks pass. The strict Sphinx build reproduces the same 36 diagnostics as the committed baseline, with none introduced by these changes.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* test(mp): update L1 configuration fixtures for tagged managers\n\nGive the DevDax compatibility test doubles the default L2 affinity tag so they reach the single-region validation instead of raising AttributeError. Preserve the NIXL and Mooncake RDMA rejection checks and the Mooncake TCP acceptance check.\n\nMigrate remaining GDS discovery tests to --l1-manager JSON. Cover separate DevDax and GDS managers while retaining rejection of both backends within one manager.\n\nValidation: 52 DevDax/GDS tests and 14 multi-L1 configuration tests passed. Applicable pre-commit checks passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [MP] Narrow multi-L1 to write overflow and object owner tags\n\nKeep synchronous, ordered OUT_OF_MEMORY overflow at existing batch granularity. Stamp a process-local MemoryObj owner at L1 allocation and route completion using captured owner/key groups through the existing MessagePack callback dispatcher. Reset the tag for recycled paged objects.\n\nPreserve single-L1 production configuration and legacy GDS flags. Restrict internal multi-manager construction to write-only tests with no L2 or eviction. Defer JSON configuration, affinity, parallel lookup, owner side tables, and per-manager reporting.\n\nValidation: 251 focused tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed; full Sphinx reproduces 31 unchanged merge-base diagnostics.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Preserve single-L1 completion trace replay\n\nRecord the existing key-only finish_write trace once for both completion entry points. Keep process-local owner identities in native callback routing, not persistent storage traces. Leave the trace schema and replay dispatcher unchanged.\n\nAdd regressions covering legacy and owner-routed completion, MessagePack trace arguments, and replay into a fresh L1 manager. Both cases reproduced the unsupported or duplicated trace entries before the fix.\n\nValidation: 432 compatibility and trace tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* perf(mp): validate L1 write policy at construction\n\nCapture and validate the candidate order once for the fixed manager set.\nReserve writes through the resolved manager tuple, removing policy calls,\nset creation, and registry checks from the write path. Later mutations of\nthe supplied policy no longer reconfigure the storage manager.\n\nUpdate the constructor validation and snapshot tests and document the\nfixed-order contract.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161736468\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): handle write completion preparation failures\n\nPrepare the owner/key payload inside the existing store failure boundary\nbefore marking the store successful. An ownership validation error now\nreports a failed store and still publishes MP_STORE_END with zero counts.\nRetain staging buffers under the existing write-TTL rules because queued\nGPU copies may still reference them.\n\nCover invalid ownership with one and two managers, verify failure events\nand absence of completion callbacks, and document the cleanup behavior.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161833495\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): guard single-L1 reporting in the overflow harness\n\nRequire one L1 for memcheck, get_l1_usage, report_status, and capacity publication. The internal multi-manager harness is write-only and must not report partial health or capacity from its primary manager.\n\nPreserve single-L1 reporting, document the limitation, and extend the public-interface rejection and compatibility checks. Validation: 107 tests and applicable pre-commit checks passed. The Sphinx build retains the same 31 baseline diagnostics.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1168,
+                "insertions": 1149,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e64b43ef",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-06T22:45:08.000Z",
+              "message": "[2/N][Refactor][MP] Enable multi-L1 serving for DRAM, Device-DAX, and GDS (#5461)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 51,
+                "lines": 3308,
+                "insertions": 2596,
+                "deletions": 712
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7473,45 +7713,6 @@
                 "lines": 514,
                 "insertions": 504,
                 "deletions": 10
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "e9ff3463",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-10-02T15:37:23.000Z",
-              "message": "[1/N][Refactor][MP] Add ordered L1 write overflow and object owner tags (#5416)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* docs(mp): document multi-L1 configuration and migration\n\nAdd a user-facing guide for tagged L1 managers, per-manager settings, L2 affinity, write and prefetch behavior, GDS migration, reporting, and transport limits. Update existing MP references to the new configuration interface.\n\nValidate all five guide commands with the configuration parser and check the rendered HTML and local links. Documentation pre-commit checks pass. The strict Sphinx build reproduces the same 36 diagnostics as the committed baseline, with none introduced by these changes.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* test(mp): update L1 configuration fixtures for tagged managers\n\nGive the DevDax compatibility test doubles the default L2 affinity tag so they reach the single-region validation instead of raising AttributeError. Preserve the NIXL and Mooncake RDMA rejection checks and the Mooncake TCP acceptance check.\n\nMigrate remaining GDS discovery tests to --l1-manager JSON. Cover separate DevDax and GDS managers while retaining rejection of both backends within one manager.\n\nValidation: 52 DevDax/GDS tests and 14 multi-L1 configuration tests passed. Applicable pre-commit checks passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [MP] Narrow multi-L1 to write overflow and object owner tags\n\nKeep synchronous, ordered OUT_OF_MEMORY overflow at existing batch granularity. Stamp a process-local MemoryObj owner at L1 allocation and route completion using captured owner/key groups through the existing MessagePack callback dispatcher. Reset the tag for recycled paged objects.\n\nPreserve single-L1 production configuration and legacy GDS flags. Restrict internal multi-manager construction to write-only tests with no L2 or eviction. Defer JSON configuration, affinity, parallel lookup, owner side tables, and per-manager reporting.\n\nValidation: 251 focused tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed; full Sphinx reproduces 31 unchanged merge-base diagnostics.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Preserve single-L1 completion trace replay\n\nRecord the existing key-only finish_write trace once for both completion entry points. Keep process-local owner identities in native callback routing, not persistent storage traces. Leave the trace schema and replay dispatcher unchanged.\n\nAdd regressions covering legacy and owner-routed completion, MessagePack trace arguments, and replay into a fresh L1 manager. Both cases reproduced the unsupported or duplicated trace entries before the fix.\n\nValidation: 432 compatibility and trace tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* perf(mp): validate L1 write policy at construction\n\nCapture and validate the candidate order once for the fixed manager set.\nReserve writes through the resolved manager tuple, removing policy calls,\nset creation, and registry checks from the write path. Later mutations of\nthe supplied policy no longer reconfigure the storage manager.\n\nUpdate the constructor validation and snapshot tests and document the\nfixed-order contract.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161736468\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): handle write completion preparation failures\n\nPrepare the owner/key payload inside the existing store failure boundary\nbefore marking the store successful. An ownership validation error now\nreports a failed store and still publishes MP_STORE_END with zero counts.\nRetain staging buffers under the existing write-TTL rules because queued\nGPU copies may still reference them.\n\nCover invalid ownership with one and two managers, verify failure events\nand absence of completion callbacks, and document the cleanup behavior.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161833495\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): guard single-L1 reporting in the overflow harness\n\nRequire one L1 for memcheck, get_l1_usage, report_status, and capacity publication. The internal multi-manager harness is write-only and must not report partial health or capacity from its primary manager.\n\nPreserve single-L1 reporting, document the limitation, and extend the public-interface rejection and compatibility checks. Validation: 107 tests and applicable pre-commit checks passed. The Sphinx build retains the same 31 baseline diagnostics.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 14,
-                "lines": 1168,
-                "insertions": 1149,
-                "deletions": 19
               },
               "scores": {
                 "loc": 30,
@@ -7570,6 +7771,45 @@
           "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "ai-jz",
+          "email": "156989844+ai-jz@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 81,
+          "commits": [
+            {
+              "hash": "fc8002ca",
+              "author": "ai-jz",
+              "email": "156989844+ai-jz@users.noreply.github.com",
+              "date": "2026-10-06T15:55:15.000Z",
+              "message": "[Bugfix] Prevent vLLM engine crash on multi-group cache-load failure (#5469)\n\nfix(vllm): prevent engine crash on multi-group cache load failure\n\nSigned-off-by: ai-jz <ai-jz@users.noreply.github.com>\nCo-authored-by: ai-jz <ai-jz@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 197,
+                "insertions": 189,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 81,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "seungrokj",
@@ -11114,10 +11354,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 160,
+          "commit_score": 247,
           "commits": [
             {
               "hash": "1ca53a8a",
@@ -11160,24 +11400,45 @@
                 "total": 73
               },
               "classification": "significant"
+            },
+            {
+              "hash": "508efbff",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-06T20:07:34.000Z",
+              "message": "[MP] Let the Kafka producer buffer and retry cache events (#5464)\n\nKafkaCacheEventSink.publish produced each batch and then flushed,\nblocking the bus drain thread until the broker acknowledged or\ndelivery_timeout (10 s by default) ran out. Anything not acknowledged\nin time raised, and the subscriber dropped the whole flush. A broker\nrestart longer than 10 s therefore became a permanent sequence gap,\nalthough the idempotent producer could have retried it in order.\n\npublish now follows the usual Kafka producer pattern. It hands records\nto the producer's buffer, serves earlier delivery reports with poll(0),\nand returns without waiting. Only close() flushes, for at most 10 s.\nThe producer retries in order for up to delivery_timeout, now 300 s by\ndefault, so a broker restart delays events instead of losing them.\nThe producer's buffer is capped at 64 MB.\n\nA record that does not fit the buffer, or that the producer gives up\non, is dropped and counted in dropped_batches. Its seq is already\nspent, so the coordinator sees the gap. A full buffer still raises\nCacheEventPublishError, so the subscriber restores a capacity\ndeclaration as before. A declaration the producer drops later is not\nre-sent; that is documented as a known limitation.\n\nThe HTTP transport is unchanged.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 321,
+                "insertions": 229,
+                "deletions": 92
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 82.33333333333333,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 160,
+          "total_score": 247,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 87,
+          "commit_score": 174,
           "commits": [
             {
               "hash": "4abc421a",
@@ -11199,6 +11460,27 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f95b576f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-06T18:02:13.000Z",
+              "message": "[Feat]  support for Re-RoPE   KV caches (per-tensor e4m3/e5m2) (#5500)\n\n* [Feat][Blend] Re-RoPE fp8 KV caches (per-tensor e4m3/e5m2)\n\nvLLM allocates --kv-cache-dtype fp8 KV as uint8, which the retrieve-plan\nbuilder could not map to a rope scalar type: every plan came back None,\nso every fp8 request raised \"native plan unavailable\" and degraded to\nfull recompute. The blend did nothing while still paying its overhead.\n\nThe fix threads the fp8 flavor end to end:\n\n- CB_REGISTER_ROPE gains a trailing, defaulted kv_quant payload\n  (\"fp8_e4m3\" / \"fp8_e5m2\"; \"\" keeps today's behavior) stored on\n  _CBRopeState. The buffer dtype alone cannot name the bit layout.\n- The plan builder resolves uint8 K planes through the declared flavor\n  (and true float8 torch dtypes directly), and passes the cos/sin\n  cache's own scalar type: under fp8 KV the cache stays in the model's\n  float dtype, so CBGroupSpec now carries cache_scalar_type (defaulted\n  to key_scalar_type for older planners).\n- The fused ramp rope kernel is templated on key and cache types and\n  dequantizes -> rotates -> requantizes fp8 keys. No scale is involved:\n  rotation commutes with the per-tensor scale, which is identical on\n  input and output. Homogeneous instantiations keep their exact\n  pre-change numerics (the conversion helper is the identity there).\n\nScope: legacy-geometry (standard attention) models. Under a declared\nrope map, rot_for_group still skips non-float kernel groups — a\nquantized index side-plane and quantized main KV are indistinguishable\nby dtype there, so fp8 MLA/GLM stays out of scope.\n\nTested: dequant-rotate-requant parity against a per-op bf16-rounded\nreference through execute_cb_retrieve_plan_flat on H200, scalar-type\nresolution units, and the existing rope/plan/retrieve/store suites.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Inline the key-scalar resolution; one-line kv_quant docs\n\nReview follow-ups on #5500: fold _cb_key_at_scalar into its only call\nsite in the plan builder, pin the flavor maps in the test instead, and\ncut the kv_quant field/arg comments to one line.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Reuse the dispatch machinery; drop the speculative float8 map\n\nMinimize per review: the fused-rope launcher nests an\nLMC_DISPATCH_ROPE_KEY_TYPES switch (floating + fp8 cases) instead of a\nhand-rolled helper and if-chain; the true-float8-dtype map goes (vLLM\nallocates fp8 KV as uint8 — no caller); kv_quant validation keys off\n_FP8_FLAVOR_TO_AT_SCALAR instead of a literal.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the rope_cvt comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the v3 alias comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Apply isort and clang-format from the code-quality hooks\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Tighten the fp8 rope comments\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Add kv_quant to CbRegisterRopeRequest\n\nThe gRPC transport derives its surface from the proto descriptors, so\nthe 8-payload cb_register_rope contract needs the matching field; the\n_proto_gen stubs regenerate at build time.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 375,
+                "insertions": 288,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
           "avg_score": 87,
@@ -11206,7 +11488,67 @@
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "e9ff3463",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-02T15:37:23.000Z",
+              "message": "[1/N][Refactor][MP] Add ordered L1 write overflow and object owner tags (#5416)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* docs(mp): document multi-L1 configuration and migration\n\nAdd a user-facing guide for tagged L1 managers, per-manager settings, L2 affinity, write and prefetch behavior, GDS migration, reporting, and transport limits. Update existing MP references to the new configuration interface.\n\nValidate all five guide commands with the configuration parser and check the rendered HTML and local links. Documentation pre-commit checks pass. The strict Sphinx build reproduces the same 36 diagnostics as the committed baseline, with none introduced by these changes.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* test(mp): update L1 configuration fixtures for tagged managers\n\nGive the DevDax compatibility test doubles the default L2 affinity tag so they reach the single-region validation instead of raising AttributeError. Preserve the NIXL and Mooncake RDMA rejection checks and the Mooncake TCP acceptance check.\n\nMigrate remaining GDS discovery tests to --l1-manager JSON. Cover separate DevDax and GDS managers while retaining rejection of both backends within one manager.\n\nValidation: 52 DevDax/GDS tests and 14 multi-L1 configuration tests passed. Applicable pre-commit checks passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [MP] Narrow multi-L1 to write overflow and object owner tags\n\nKeep synchronous, ordered OUT_OF_MEMORY overflow at existing batch granularity. Stamp a process-local MemoryObj owner at L1 allocation and route completion using captured owner/key groups through the existing MessagePack callback dispatcher. Reset the tag for recycled paged objects.\n\nPreserve single-L1 production configuration and legacy GDS flags. Restrict internal multi-manager construction to write-only tests with no L2 or eviction. Defer JSON configuration, affinity, parallel lookup, owner side tables, and per-manager reporting.\n\nValidation: 251 focused tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed; full Sphinx reproduces 31 unchanged merge-base diagnostics.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Preserve single-L1 completion trace replay\n\nRecord the existing key-only finish_write trace once for both completion entry points. Keep process-local owner identities in native callback routing, not persistent storage traces. Leave the trace schema and replay dispatcher unchanged.\n\nAdd regressions covering legacy and owner-routed completion, MessagePack trace arguments, and replay into a fresh L1 manager. Both cases reproduced the unsupported or duplicated trace entries before the fix.\n\nValidation: 432 compatibility and trace tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* perf(mp): validate L1 write policy at construction\n\nCapture and validate the candidate order once for the fixed manager set.\nReserve writes through the resolved manager tuple, removing policy calls,\nset creation, and registry checks from the write path. Later mutations of\nthe supplied policy no longer reconfigure the storage manager.\n\nUpdate the constructor validation and snapshot tests and document the\nfixed-order contract.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161736468\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): handle write completion preparation failures\n\nPrepare the owner/key payload inside the existing store failure boundary\nbefore marking the store successful. An ownership validation error now\nreports a failed store and still publishes MP_STORE_END with zero counts.\nRetain staging buffers under the existing write-TTL rules because queued\nGPU copies may still reference them.\n\nCover invalid ownership with one and two managers, verify failure events\nand absence of completion callbacks, and document the cleanup behavior.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161833495\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): guard single-L1 reporting in the overflow harness\n\nRequire one L1 for memcheck, get_l1_usage, report_status, and capacity publication. The internal multi-manager harness is write-only and must not report partial health or capacity from its primary manager.\n\nPreserve single-L1 reporting, document the limitation, and extend the public-interface rejection and compatibility checks. Validation: 107 tests and applicable pre-commit checks passed. The Sphinx build retains the same 31 baseline diagnostics.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1168,
+                "insertions": 1149,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e64b43ef",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-06T22:45:08.000Z",
+              "message": "[2/N][Refactor][MP] Enable multi-L1 serving for DRAM, Device-DAX, and GDS (#5461)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 51,
+                "lines": 3308,
+                "insertions": 2596,
+                "deletions": 712
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11229,45 +11571,6 @@
                 "lines": 514,
                 "insertions": 504,
                 "deletions": 10
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "e9ff3463",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-10-02T15:37:23.000Z",
-              "message": "[1/N][Refactor][MP] Add ordered L1 write overflow and object owner tags (#5416)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* docs(mp): document multi-L1 configuration and migration\n\nAdd a user-facing guide for tagged L1 managers, per-manager settings, L2 affinity, write and prefetch behavior, GDS migration, reporting, and transport limits. Update existing MP references to the new configuration interface.\n\nValidate all five guide commands with the configuration parser and check the rendered HTML and local links. Documentation pre-commit checks pass. The strict Sphinx build reproduces the same 36 diagnostics as the committed baseline, with none introduced by these changes.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* test(mp): update L1 configuration fixtures for tagged managers\n\nGive the DevDax compatibility test doubles the default L2 affinity tag so they reach the single-region validation instead of raising AttributeError. Preserve the NIXL and Mooncake RDMA rejection checks and the Mooncake TCP acceptance check.\n\nMigrate remaining GDS discovery tests to --l1-manager JSON. Cover separate DevDax and GDS managers while retaining rejection of both backends within one manager.\n\nValidation: 52 DevDax/GDS tests and 14 multi-L1 configuration tests passed. Applicable pre-commit checks passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [MP] Narrow multi-L1 to write overflow and object owner tags\n\nKeep synchronous, ordered OUT_OF_MEMORY overflow at existing batch granularity. Stamp a process-local MemoryObj owner at L1 allocation and route completion using captured owner/key groups through the existing MessagePack callback dispatcher. Reset the tag for recycled paged objects.\n\nPreserve single-L1 production configuration and legacy GDS flags. Restrict internal multi-manager construction to write-only tests with no L2 or eviction. Defer JSON configuration, affinity, parallel lookup, owner side tables, and per-manager reporting.\n\nValidation: 251 focused tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed; full Sphinx reproduces 31 unchanged merge-base diagnostics.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Preserve single-L1 completion trace replay\n\nRecord the existing key-only finish_write trace once for both completion entry points. Keep process-local owner identities in native callback routing, not persistent storage traces. Leave the trace schema and replay dispatcher unchanged.\n\nAdd regressions covering legacy and owner-routed completion, MessagePack trace arguments, and replay into a fresh L1 manager. Both cases reproduced the unsupported or duplicated trace entries before the fix.\n\nValidation: 432 compatibility and trace tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* perf(mp): validate L1 write policy at construction\n\nCapture and validate the candidate order once for the fixed manager set.\nReserve writes through the resolved manager tuple, removing policy calls,\nset creation, and registry checks from the write path. Later mutations of\nthe supplied policy no longer reconfigure the storage manager.\n\nUpdate the constructor validation and snapshot tests and document the\nfixed-order contract.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161736468\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): handle write completion preparation failures\n\nPrepare the owner/key payload inside the existing store failure boundary\nbefore marking the store successful. An ownership validation error now\nreports a failed store and still publishes MP_STORE_END with zero counts.\nRetain staging buffers under the existing write-TTL rules because queued\nGPU copies may still reference them.\n\nCover invalid ownership with one and two managers, verify failure events\nand absence of completion callbacks, and document the cleanup behavior.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161833495\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): guard single-L1 reporting in the overflow harness\n\nRequire one L1 for memcheck, get_l1_usage, report_status, and capacity publication. The internal multi-manager harness is write-only and must not report partial health or capacity from its primary manager.\n\nPreserve single-L1 reporting, document the limitation, and extend the public-interface rejection and compatibility checks. Validation: 107 tests and applicable pre-commit checks passed. The Sphinx build retains the same 31 baseline diagnostics.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 14,
-                "lines": 1168,
-                "insertions": 1149,
-                "deletions": 19
               },
               "scores": {
                 "loc": 30,
@@ -11326,6 +11629,45 @@
           "total_score": 87,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "ai-jz",
+          "email": "156989844+ai-jz@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 81,
+          "commits": [
+            {
+              "hash": "fc8002ca",
+              "author": "ai-jz",
+              "email": "156989844+ai-jz@users.noreply.github.com",
+              "date": "2026-10-06T15:55:15.000Z",
+              "message": "[Bugfix] Prevent vLLM engine crash on multi-group cache-load failure (#5469)\n\nfix(vllm): prevent engine crash on multi-group cache load failure\n\nSigned-off-by: ai-jz <ai-jz@users.noreply.github.com>\nCo-authored-by: ai-jz <ai-jz@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 197,
+                "insertions": 189,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 19,
+                "total": 81
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 81,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "seungrokj",
@@ -11565,13 +11907,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-06T00:30:15.671Z",
+    "analyzedAt": "2026-10-07T00:30:19.188Z",
     "daysBack": 2,
-    "totalCommits": 122,
-    "totalContributors": 59,
+    "totalCommits": 126,
+    "totalContributors": 60,
     "mergedFrom": {
-      "existing": 116,
-      "new": 7
+      "existing": 122,
+      "new": 10
     }
   }
 }
