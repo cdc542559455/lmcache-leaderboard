@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-07T00:30:19.188Z",
-  "total_commits_analyzed": 126,
+  "last_updated": "2026-10-08T00:30:15.506Z",
+  "total_commits_analyzed": 130,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3818,10 +3818,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 160,
+          "commit_score": 247,
           "commits": [
             {
               "hash": "8c77a6f7",
@@ -3864,14 +3864,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a32e2abd",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-07T23:18:40.000Z",
+              "message": "[MP] Test real MP servers against the coordinator end to end (#5519)\n\nStarts `lmcache server` processes, CPU-only, against a coordinator on a\nthread, and checks both the batches each server sent, read from its own\nevents trace, and what the coordinator's directory made of them.\n\n- MP-1: a store is one STORE batch per backend (L1, node-local L2,\n  shared L2) with tier, backend, shared flag, size, tokens and offset.\n- MP-2: a delete through the server's API is a DELETE for that tier and\n  backend alone; chunks evicted from a full L1 come back as L1 DELETEs\n  and the directory follows.\n- MP-3: every compartment's capacity is declared under one revision on\n  registering, and again under the next revision on registering again.\n- MP-4: a restart reports under a higher incarnation, sequence back at\n  1, without re-reporting; the coordinator fences L1 and keeps L2.\n- MP-5: batches published while the Kafka broker is down are held by\n  the producer and delivered once it is back, in order with the same\n  sequence numbers, and the coordinator ends with every store. This one\n  runs in-process on the fake broker, so it is an ordinary unit test.\n- MP-6: a coordinator delete by token ids reaches the server and its\n  DELETEs empty the directory.\n- MP-7: a prefetch through the coordinator loads L2 back into L1, and\n  its status, read through the coordinator, finds every key.\n\nmp_server_harness.py holds the pieces: the coordinator thread, the\nserver subprocess, and a KV client that stores through the transfer\ncontext over POSIX shared memory, as `lmcache bench server --mode cpu`\ndoes.\n\nThe tests start subprocesses, so unit runs skip them unless RUN_MP_E2E=1.\nThe coordinator integration pipeline (.buildkite/coordinator_controllers/)\nsets it and runs them, CPU-only, before the coordinator-controllers suite;\nthe step fails if either does.\nThe controllers suite now runs with RUN_E2E=1 too, so its own end-to-end\ntests, real MP servers with its controllers loaded, run there as well.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 1165,
+                "insertions": 1157,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 82.33333333333333,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 160,
+          "total_score": 247,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3933,6 +3954,45 @@
                 "lines": 375,
                 "insertions": 288,
                 "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Chris Coleman",
+          "email": "christophercoleman2018@u.northwestern.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "17efd2e5",
+              "author": "Chris Coleman",
+              "email": "christophercoleman2018@u.northwestern.edu",
+              "date": "2026-10-07T22:59:14.000Z",
+              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 474,
+                "insertions": 339,
+                "deletions": 135
               },
               "scores": {
                 "loc": 30,
@@ -4028,8 +4088,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 73,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "yeyang-zhou",
+          "email": "43632064+yeyang-zhou@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 72,
+          "commits": [
+            {
+              "hash": "feb8a524",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-07T18:33:00.000Z",
+              "message": "[Design] GPU-Native Token Dropping in LMCache (#5441)\n\n\nSigned-off-by: Yeyang Zhou <yeyangzhou980315@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 260,
+                "insertions": 260,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 25,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 72,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "sssqqeer",
@@ -4067,6 +4166,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Charlie Fu",
+          "email": "Charlie.Fu@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "5ed783a3",
+              "author": "Charlie Fu",
+              "email": "Charlie.Fu@amd.com",
+              "date": "2026-10-07T18:45:31.000Z",
+              "message": "[Bugfix] Keep vLLM's device in CreateGPUConnector under data parallelism (#5501)\n\n* [Bugfix] Keep vLLM's device in CreateGPUConnector under data parallelism\n\nEach vLLM data-parallel rank is its own engine whose TP/PP world starts\nat rank 0, so metadata.local_worker_id is 0 on every data-parallel rank.\nWith --data-parallel-size-local > 1, CreateGPUConnector called\nset_device(0) on every rank and moved DP rank >= 1 onto rank 0's GPU,\nwhile its weights and KV cache stayed on its own GPU.\n\nvLLM binds each worker to its device in Worker.init_device before the KV\nconnector is created, so use the current device on the vLLM path.\n\nSigned-off-by: charlifu <charlifu@amd.com>\n\n* [Bugfix] Offset vLLM local_worker_id by the data-parallel rank\n\nEach vLLM data-parallel rank is its own engine whose TP/PCP/PP world\nstarts at rank 0, so calculate_local_rank_and_world_size() returned\nlocal_worker_id 0 on every data-parallel rank. CreateGPUConnector then\ncalled set_device(0), moving data-parallel rank 1 off the device vLLM\nbound it to. Later kernels (e.g. Triton, which launches on the current\ndevice's stream) ran on a different GPU than vLLM's work, which caused\n\"Memory access fault by GPU\" with data parallelism + expert parallelism\nunder CUDA/HIP graphs.\n\nCompute the device index the way vLLM's Worker.init_device does: offset\nby the local data-parallel rank times the per-engine world size (except\nfor the ray / external_launcher backends, a ray data-parallel backend,\nor multi-node-per-DP setups, where vLLM does not offset), then map it\nthrough current_platform.logical_device_id_to_visible_device_id.\n\nThis replaces the previous approach of using torch_dev.current_device()\nin CreateGPUConnector, so LMCache no longer relies on the caller having\nset the device, and local_worker_id is correct for other users (e.g. the\nNIXL storage backend's endpoint selection).\n\nSigned-off-by: charlifu <charlifu@amd.com>\n\n---------\n\nSigned-off-by: charlifu <charlifu@amd.com>",
+              "stats": {
+                "files": 2,
+                "lines": 163,
+                "insertions": 162,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7496,10 +7634,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 3,
-          "significant_commits": 3,
+          "total_commits": 4,
+          "significant_commits": 4,
           "simple_commits": 0,
-          "commit_score": 247,
+          "commit_score": 334,
           "commits": [
             {
               "hash": "1ca53a8a",
@@ -7563,14 +7701,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a32e2abd",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-07T23:18:40.000Z",
+              "message": "[MP] Test real MP servers against the coordinator end to end (#5519)\n\nStarts `lmcache server` processes, CPU-only, against a coordinator on a\nthread, and checks both the batches each server sent, read from its own\nevents trace, and what the coordinator's directory made of them.\n\n- MP-1: a store is one STORE batch per backend (L1, node-local L2,\n  shared L2) with tier, backend, shared flag, size, tokens and offset.\n- MP-2: a delete through the server's API is a DELETE for that tier and\n  backend alone; chunks evicted from a full L1 come back as L1 DELETEs\n  and the directory follows.\n- MP-3: every compartment's capacity is declared under one revision on\n  registering, and again under the next revision on registering again.\n- MP-4: a restart reports under a higher incarnation, sequence back at\n  1, without re-reporting; the coordinator fences L1 and keeps L2.\n- MP-5: batches published while the Kafka broker is down are held by\n  the producer and delivered once it is back, in order with the same\n  sequence numbers, and the coordinator ends with every store. This one\n  runs in-process on the fake broker, so it is an ordinary unit test.\n- MP-6: a coordinator delete by token ids reaches the server and its\n  DELETEs empty the directory.\n- MP-7: a prefetch through the coordinator loads L2 back into L1, and\n  its status, read through the coordinator, finds every key.\n\nmp_server_harness.py holds the pieces: the coordinator thread, the\nserver subprocess, and a KV client that stores through the transfer\ncontext over POSIX shared memory, as `lmcache bench server --mode cpu`\ndoes.\n\nThe tests start subprocesses, so unit runs skip them unless RUN_MP_E2E=1.\nThe coordinator integration pipeline (.buildkite/coordinator_controllers/)\nsets it and runs them, CPU-only, before the coordinator-controllers suite;\nthe step fails if either does.\nThe controllers suite now runs with RUN_E2E=1 too, so its own end-to-end\ntests, real MP servers with its controllers loaded, run there as well.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 1165,
+                "insertions": 1157,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 82.33333333333333,
+          "avg_score": 83.5,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 247,
+          "total_score": 334,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7773,6 +7932,45 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Chris Coleman",
+          "email": "christophercoleman2018@u.northwestern.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "17efd2e5",
+              "author": "Chris Coleman",
+              "email": "christophercoleman2018@u.northwestern.edu",
+              "date": "2026-10-07T22:59:14.000Z",
+              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 474,
+                "insertions": 339,
+                "deletions": 135
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "ai-jz",
           "email": "156989844+ai-jz@users.noreply.github.com",
           "total_commits": 1,
@@ -7851,6 +8049,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "yeyang-zhou",
+          "email": "43632064+yeyang-zhou@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 72,
+          "commits": [
+            {
+              "hash": "feb8a524",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-07T18:33:00.000Z",
+              "message": "[Design] GPU-Native Token Dropping in LMCache (#5441)\n\n\nSigned-off-by: Yeyang Zhou <yeyangzhou980315@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 260,
+                "insertions": 260,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 25,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 72,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "sssqqeer",
           "email": "166484716+sssqqeer@users.noreply.github.com",
           "total_commits": 1,
@@ -7886,6 +8123,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Charlie Fu",
+          "email": "Charlie.Fu@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "5ed783a3",
+              "author": "Charlie Fu",
+              "email": "Charlie.Fu@amd.com",
+              "date": "2026-10-07T18:45:31.000Z",
+              "message": "[Bugfix] Keep vLLM's device in CreateGPUConnector under data parallelism (#5501)\n\n* [Bugfix] Keep vLLM's device in CreateGPUConnector under data parallelism\n\nEach vLLM data-parallel rank is its own engine whose TP/PP world starts\nat rank 0, so metadata.local_worker_id is 0 on every data-parallel rank.\nWith --data-parallel-size-local > 1, CreateGPUConnector called\nset_device(0) on every rank and moved DP rank >= 1 onto rank 0's GPU,\nwhile its weights and KV cache stayed on its own GPU.\n\nvLLM binds each worker to its device in Worker.init_device before the KV\nconnector is created, so use the current device on the vLLM path.\n\nSigned-off-by: charlifu <charlifu@amd.com>\n\n* [Bugfix] Offset vLLM local_worker_id by the data-parallel rank\n\nEach vLLM data-parallel rank is its own engine whose TP/PCP/PP world\nstarts at rank 0, so calculate_local_rank_and_world_size() returned\nlocal_worker_id 0 on every data-parallel rank. CreateGPUConnector then\ncalled set_device(0), moving data-parallel rank 1 off the device vLLM\nbound it to. Later kernels (e.g. Triton, which launches on the current\ndevice's stream) ran on a different GPU than vLLM's work, which caused\n\"Memory access fault by GPU\" with data parallelism + expert parallelism\nunder CUDA/HIP graphs.\n\nCompute the device index the way vLLM's Worker.init_device does: offset\nby the local data-parallel rank times the per-engine world size (except\nfor the ray / external_launcher backends, a ray data-parallel backend,\nor multi-node-per-DP setups, where vLLM does not offset), then map it\nthrough current_platform.logical_device_id_to_visible_device_id.\n\nThis replaces the previous approach of using torch_dev.current_device()\nin CreateGPUConnector, so LMCache no longer relies on the caller having\nset the device, and local_worker_id is correct for other users (e.g. the\nNIXL storage backend's endpoint selection).\n\nSigned-off-by: charlifu <charlifu@amd.com>\n\n---------\n\nSigned-off-by: charlifu <charlifu@amd.com>",
+              "stats": {
+                "files": 2,
+                "lines": 163,
+                "insertions": 162,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7964,8 +8240,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 54,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "nayeonikim",
@@ -8003,8 +8279,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "PPg",
@@ -8042,8 +8318,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 34,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -11354,10 +11630,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 3,
-          "significant_commits": 3,
+          "total_commits": 4,
+          "significant_commits": 4,
           "simple_commits": 0,
-          "commit_score": 247,
+          "commit_score": 334,
           "commits": [
             {
               "hash": "1ca53a8a",
@@ -11421,14 +11697,35 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a32e2abd",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-07T23:18:40.000Z",
+              "message": "[MP] Test real MP servers against the coordinator end to end (#5519)\n\nStarts `lmcache server` processes, CPU-only, against a coordinator on a\nthread, and checks both the batches each server sent, read from its own\nevents trace, and what the coordinator's directory made of them.\n\n- MP-1: a store is one STORE batch per backend (L1, node-local L2,\n  shared L2) with tier, backend, shared flag, size, tokens and offset.\n- MP-2: a delete through the server's API is a DELETE for that tier and\n  backend alone; chunks evicted from a full L1 come back as L1 DELETEs\n  and the directory follows.\n- MP-3: every compartment's capacity is declared under one revision on\n  registering, and again under the next revision on registering again.\n- MP-4: a restart reports under a higher incarnation, sequence back at\n  1, without re-reporting; the coordinator fences L1 and keeps L2.\n- MP-5: batches published while the Kafka broker is down are held by\n  the producer and delivered once it is back, in order with the same\n  sequence numbers, and the coordinator ends with every store. This one\n  runs in-process on the fake broker, so it is an ordinary unit test.\n- MP-6: a coordinator delete by token ids reaches the server and its\n  DELETEs empty the directory.\n- MP-7: a prefetch through the coordinator loads L2 back into L1, and\n  its status, read through the coordinator, finds every key.\n\nmp_server_harness.py holds the pieces: the coordinator thread, the\nserver subprocess, and a KV client that stores through the transfer\ncontext over POSIX shared memory, as `lmcache bench server --mode cpu`\ndoes.\n\nThe tests start subprocesses, so unit runs skip them unless RUN_MP_E2E=1.\nThe coordinator integration pipeline (.buildkite/coordinator_controllers/)\nsets it and runs them, CPU-only, before the coordinator-controllers suite;\nthe step fails if either does.\nThe controllers suite now runs with RUN_E2E=1 too, so its own end-to-end\ntests, real MP servers with its controllers loaded, run there as well.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 1165,
+                "insertions": 1157,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 82.33333333333333,
+          "avg_score": 83.5,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 247,
+          "total_score": 334,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11631,6 +11928,45 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Chris Coleman",
+          "email": "christophercoleman2018@u.northwestern.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "17efd2e5",
+              "author": "Chris Coleman",
+              "email": "christophercoleman2018@u.northwestern.edu",
+              "date": "2026-10-07T22:59:14.000Z",
+              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 474,
+                "insertions": 339,
+                "deletions": 135
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "ai-jz",
           "email": "156989844+ai-jz@users.noreply.github.com",
           "total_commits": 1,
@@ -11709,6 +12045,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "yeyang-zhou",
+          "email": "43632064+yeyang-zhou@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 72,
+          "commits": [
+            {
+              "hash": "feb8a524",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-07T18:33:00.000Z",
+              "message": "[Design] GPU-Native Token Dropping in LMCache (#5441)\n\n\nSigned-off-by: Yeyang Zhou <yeyangzhou980315@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 260,
+                "insertions": 260,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 25,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 72,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "sssqqeer",
           "email": "166484716+sssqqeer@users.noreply.github.com",
           "total_commits": 1,
@@ -11744,6 +12119,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Charlie Fu",
+          "email": "Charlie.Fu@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 68,
+          "commits": [
+            {
+              "hash": "5ed783a3",
+              "author": "Charlie Fu",
+              "email": "Charlie.Fu@amd.com",
+              "date": "2026-10-07T18:45:31.000Z",
+              "message": "[Bugfix] Keep vLLM's device in CreateGPUConnector under data parallelism (#5501)\n\n* [Bugfix] Keep vLLM's device in CreateGPUConnector under data parallelism\n\nEach vLLM data-parallel rank is its own engine whose TP/PP world starts\nat rank 0, so metadata.local_worker_id is 0 on every data-parallel rank.\nWith --data-parallel-size-local > 1, CreateGPUConnector called\nset_device(0) on every rank and moved DP rank >= 1 onto rank 0's GPU,\nwhile its weights and KV cache stayed on its own GPU.\n\nvLLM binds each worker to its device in Worker.init_device before the KV\nconnector is created, so use the current device on the vLLM path.\n\nSigned-off-by: charlifu <charlifu@amd.com>\n\n* [Bugfix] Offset vLLM local_worker_id by the data-parallel rank\n\nEach vLLM data-parallel rank is its own engine whose TP/PCP/PP world\nstarts at rank 0, so calculate_local_rank_and_world_size() returned\nlocal_worker_id 0 on every data-parallel rank. CreateGPUConnector then\ncalled set_device(0), moving data-parallel rank 1 off the device vLLM\nbound it to. Later kernels (e.g. Triton, which launches on the current\ndevice's stream) ran on a different GPU than vLLM's work, which caused\n\"Memory access fault by GPU\" with data parallelism + expert parallelism\nunder CUDA/HIP graphs.\n\nCompute the device index the way vLLM's Worker.init_device does: offset\nby the local data-parallel rank times the per-engine world size (except\nfor the ray / external_launcher backends, a ray data-parallel backend,\nor multi-node-per-DP setups, where vLLM does not offset), then map it\nthrough current_platform.logical_device_id_to_visible_device_id.\n\nThis replaces the previous approach of using torch_dev.current_device()\nin CreateGPUConnector, so LMCache no longer relies on the caller having\nset the device, and local_worker_id is correct for other users (e.g. the\nNIXL storage backend's endpoint selection).\n\nSigned-off-by: charlifu <charlifu@amd.com>\n\n---------\n\nSigned-off-by: charlifu <charlifu@amd.com>",
+              "stats": {
+                "files": 2,
+                "lines": 163,
+                "insertions": 162,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 16,
+                "total": 68
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 68,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 68,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -11822,8 +12236,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 54,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "nayeonikim",
@@ -11861,8 +12275,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "PPg",
@@ -11900,20 +12314,20 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 34,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-07T00:30:19.188Z",
+    "analyzedAt": "2026-10-08T00:30:15.506Z",
     "daysBack": 2,
-    "totalCommits": 126,
-    "totalContributors": 60,
+    "totalCommits": 130,
+    "totalContributors": 63,
     "mergedFrom": {
-      "existing": 122,
-      "new": 10
+      "existing": 126,
+      "new": 8
     }
   }
 }
