@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-08T00:30:15.506Z",
-  "total_commits_analyzed": 130,
+  "last_updated": "2026-10-09T00:30:18.877Z",
+  "total_commits_analyzed": 137,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3818,10 +3818,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 3,
-          "significant_commits": 3,
+          "total_commits": 5,
+          "significant_commits": 5,
           "simple_commits": 0,
-          "commit_score": 247,
+          "commit_score": 398,
           "commits": [
             {
               "hash": "8c77a6f7",
@@ -3885,24 +3885,66 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8bf2cf23",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-08T23:18:46.000Z",
+              "message": "[Coordinator][observability] Add observability design and lmcache_coordinator metric names (#5533)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 890,
+                "insertions": 780,
+                "deletions": 110
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "19bf2d5d",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-08T01:18:03.000Z",
+              "message": "[MP] Test that a plugin controller consumes events and keeps durable state (#5538)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 177,
+                "insertions": 177,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 17,
+                "total": 64
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 82.33333333333333,
+          "avg_score": 79.6,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 247,
+          "total_score": 398,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 87,
+          "commit_score": 174,
           "commits": [
             {
               "hash": "e64b43ef",
@@ -3924,6 +3966,27 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "de1e5d86",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-08T01:25:57.000Z",
+              "message": "[3/N][Refactor][MP] Add L1ManagerInterface (#5528)\n\n* [Fix][CUDA] Clear the pending error after a failed host (un)register\n\ncudaHostRegister can fail, for example on a file-backed mapping of a\ndisk filesystem, and the Device-DAX allocators then fall back to\npageable copies. The CUDA runtime kept that failure pending in the\ncalling thread, and torch raised it as \"CUDA error: invalid argument\"\nat the thread's next kernel launch, long after the fallback had been\ntaken.\n\nRead the error back with cudaGetLastError whenever cudaHostRegister or\ncudaHostUnregister returns a non-zero status, through the runtime\nlibrary torch already loaded, so a handled failure stays handled.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [3/N][Refactor][MP] Add L1ManagerInterface\n\nStorageManager, the storage controllers and the serde wrapper were typed\nagainst the concrete L1Manager. Add L1ManagerInterface to\ninternal_api.py, a runtime-checkable Protocol of exactly the calls they\nmake, and type them against it; L1Manager satisfies it unchanged. Make\nthe id counter and read-lock clamp of l1_manager.py public so every\nimplementation shares them. StorageManager.l1_memory_desc now raises\ninstead of returning None for an L1 without a registerable buffer,\nwhich the interface's \"L1MemoryDesc | None\" return made explicit.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 591,
+                "insertions": 528,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
           "avg_score": 87,
@@ -3931,7 +3994,46 @@
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 87,
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "b0b3567b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-08T09:41:21.000Z",
+              "message": "[Refactor] Route pointer tensor construction through DeviceOps (#5541)\n\n* refactor: dispatch pointer tensors through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: keep copy library helper unchanged\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: avoid platform import cycle during device discovery\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 10,
+                "lines": 722,
+                "insertions": 388,
+                "deletions": 334
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4049,8 +4151,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 81,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "JH",
+          "email": "riversky0014@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 78,
+          "commits": [
+            {
+              "hash": "f06af816",
+              "author": "JH",
+              "email": "riversky0014@gmail.com",
+              "date": "2026-10-08T02:48:00.000Z",
+              "message": "[Bugfix] Synchronize the KV tensor device in engine-driven transfers (#5157)\n\n* fix: synchronize the KV tensor device in engine-driven transfers\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n* test: preserve existing callback and unused argument names\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n* test: minimize device synchronization regression coverage\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n* fix: preserve lazy torch import in platform package\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n---------\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 7,
+                "lines": 134,
+                "insertions": 111,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 13,
+                "total": 78
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 78,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "seungrokj",
@@ -4209,6 +4350,45 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Xuetao Li",
+          "email": "xuetaoli@apache.org",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 61,
+          "commits": [
+            {
+              "hash": "c962e725",
+              "author": "Xuetao Li",
+              "email": "xuetaoli@apache.org",
+              "date": "2026-10-08T07:03:06.000Z",
+              "message": "feat(tests): enhance RESP connector tests with timeout diagnostics (#5318)\n\n* feat(tests): enhance RESP connector tests with timeout diagnostics\n\nSigned-off-by: alanxtl <m134679102365478@163.com>\n\n* fix comment\n\nSigned-off-by: alanxtl <m134679102365478@163.com>\n\n---------\n\nSigned-off-by: alanxtl <m134679102365478@163.com>",
+              "stats": {
+                "files": 1,
+                "lines": 149,
+                "insertions": 127,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 14,
+                "total": 61
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 61,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Hyukjoon Lee",
           "email": "hyukjlee@amd.com",
           "total_commits": 1,
@@ -4244,8 +4424,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 54,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "nayeonikim",
@@ -4283,8 +4463,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "nauta",
+          "email": "870284156@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "1a1828ca",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-10-08T05:26:44.000Z",
+              "message": "fix(test): fix flaky test in test_distributed_storage_manager (#5136)\n\n* fix(test): replace fixed sleeps with condition waits in distributed storage manager tests\n\nL2 visibility can precede StoreController releasing its L1 read locks, so a fixed 0.05s sleep before clear/delete is racy. Add clear_l1_and_wait() that retries sm.clear() via wait_for_condition and checks the public report_status() API, and retry the non-force L1 delete in test_sparse_skip_l2_locks_only_l1. Also add type hints to the touched test methods.\n\nSigned-off-by: nautaa <870284156@qq.com>\n\n* ix(test): share L2 store completion wait\n\nSigned-off-by: nautaa <870284156@qq.com>\n\n* fix\n\nSigned-off-by: nautaa <870284156@qq.com>\n\n---------\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 80,
+                "insertions": 32,
+                "deletions": 48
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "PPg",
@@ -4322,8 +4541,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 34,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -7634,10 +7853,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 4,
-          "significant_commits": 4,
+          "total_commits": 6,
+          "significant_commits": 6,
           "simple_commits": 0,
-          "commit_score": 334,
+          "commit_score": 485,
           "commits": [
             {
               "hash": "1ca53a8a",
@@ -7722,14 +7941,137 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8bf2cf23",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-08T23:18:46.000Z",
+              "message": "[Coordinator][observability] Add observability design and lmcache_coordinator metric names (#5533)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 890,
+                "insertions": 780,
+                "deletions": 110
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "19bf2d5d",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-08T01:18:03.000Z",
+              "message": "[MP] Test that a plugin controller consumes events and keeps durable state (#5538)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 177,
+                "insertions": 177,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 17,
+                "total": 64
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 83.5,
+          "avg_score": 80.83333333333333,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 334,
+          "total_score": 485,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 261,
+          "commits": [
+            {
+              "hash": "e9ff3463",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-02T15:37:23.000Z",
+              "message": "[1/N][Refactor][MP] Add ordered L1 write overflow and object owner tags (#5416)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* docs(mp): document multi-L1 configuration and migration\n\nAdd a user-facing guide for tagged L1 managers, per-manager settings, L2 affinity, write and prefetch behavior, GDS migration, reporting, and transport limits. Update existing MP references to the new configuration interface.\n\nValidate all five guide commands with the configuration parser and check the rendered HTML and local links. Documentation pre-commit checks pass. The strict Sphinx build reproduces the same 36 diagnostics as the committed baseline, with none introduced by these changes.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* test(mp): update L1 configuration fixtures for tagged managers\n\nGive the DevDax compatibility test doubles the default L2 affinity tag so they reach the single-region validation instead of raising AttributeError. Preserve the NIXL and Mooncake RDMA rejection checks and the Mooncake TCP acceptance check.\n\nMigrate remaining GDS discovery tests to --l1-manager JSON. Cover separate DevDax and GDS managers while retaining rejection of both backends within one manager.\n\nValidation: 52 DevDax/GDS tests and 14 multi-L1 configuration tests passed. Applicable pre-commit checks passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [MP] Narrow multi-L1 to write overflow and object owner tags\n\nKeep synchronous, ordered OUT_OF_MEMORY overflow at existing batch granularity. Stamp a process-local MemoryObj owner at L1 allocation and route completion using captured owner/key groups through the existing MessagePack callback dispatcher. Reset the tag for recycled paged objects.\n\nPreserve single-L1 production configuration and legacy GDS flags. Restrict internal multi-manager construction to write-only tests with no L2 or eviction. Defer JSON configuration, affinity, parallel lookup, owner side tables, and per-manager reporting.\n\nValidation: 251 focused tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed; full Sphinx reproduces 31 unchanged merge-base diagnostics.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Preserve single-L1 completion trace replay\n\nRecord the existing key-only finish_write trace once for both completion entry points. Keep process-local owner identities in native callback routing, not persistent storage traces. Leave the trace schema and replay dispatcher unchanged.\n\nAdd regressions covering legacy and owner-routed completion, MessagePack trace arguments, and replay into a fresh L1 manager. Both cases reproduced the unsupported or duplicated trace entries before the fix.\n\nValidation: 432 compatibility and trace tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* perf(mp): validate L1 write policy at construction\n\nCapture and validate the candidate order once for the fixed manager set.\nReserve writes through the resolved manager tuple, removing policy calls,\nset creation, and registry checks from the write path. Later mutations of\nthe supplied policy no longer reconfigure the storage manager.\n\nUpdate the constructor validation and snapshot tests and document the\nfixed-order contract.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161736468\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): handle write completion preparation failures\n\nPrepare the owner/key payload inside the existing store failure boundary\nbefore marking the store successful. An ownership validation error now\nreports a failed store and still publishes MP_STORE_END with zero counts.\nRetain staging buffers under the existing write-TTL rules because queued\nGPU copies may still reference them.\n\nCover invalid ownership with one and two managers, verify failure events\nand absence of completion callbacks, and document the cleanup behavior.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161833495\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): guard single-L1 reporting in the overflow harness\n\nRequire one L1 for memcheck, get_l1_usage, report_status, and capacity publication. The internal multi-manager harness is write-only and must not report partial health or capacity from its primary manager.\n\nPreserve single-L1 reporting, document the limitation, and extend the public-interface rejection and compatibility checks. Validation: 107 tests and applicable pre-commit checks passed. The Sphinx build retains the same 31 baseline diagnostics.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1168,
+                "insertions": 1149,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e64b43ef",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-06T22:45:08.000Z",
+              "message": "[2/N][Refactor][MP] Enable multi-L1 serving for DRAM, Device-DAX, and GDS (#5461)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 51,
+                "lines": 3308,
+                "insertions": 2596,
+                "deletions": 712
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "de1e5d86",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-08T01:25:57.000Z",
+              "message": "[3/N][Refactor][MP] Add L1ManagerInterface (#5528)\n\n* [Fix][CUDA] Clear the pending error after a failed host (un)register\n\ncudaHostRegister can fail, for example on a file-backed mapping of a\ndisk filesystem, and the Device-DAX allocators then fall back to\npageable copies. The CUDA runtime kept that failure pending in the\ncalling thread, and torch raised it as \"CUDA error: invalid argument\"\nat the thread's next kernel launch, long after the fallback had been\ntaken.\n\nRead the error back with cudaGetLastError whenever cudaHostRegister or\ncudaHostUnregister returns a non-zero status, through the runtime\nlibrary torch already loaded, so a handled failure stays handled.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [3/N][Refactor][MP] Add L1ManagerInterface\n\nStorageManager, the storage controllers and the serde wrapper were typed\nagainst the concrete L1Manager. Add L1ManagerInterface to\ninternal_api.py, a runtime-checkable Protocol of exactly the calls they\nmake, and type them against it; L1Manager satisfies it unchanged. Make\nthe id counter and read-lock clamp of l1_manager.py public so every\nimplementation shares them. StorageManager.l1_memory_desc now raises\ninstead of returning None for an L1 without a registerable buffer,\nwhich the interface's \"L1MemoryDesc | None\" return made explicit.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 591,
+                "insertions": 528,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 261,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7794,62 +8136,41 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 174,
+          "commit_score": 100,
           "commits": [
             {
-              "hash": "e9ff3463",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-10-02T15:37:23.000Z",
-              "message": "[1/N][Refactor][MP] Add ordered L1 write overflow and object owner tags (#5416)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* docs(mp): document multi-L1 configuration and migration\n\nAdd a user-facing guide for tagged L1 managers, per-manager settings, L2 affinity, write and prefetch behavior, GDS migration, reporting, and transport limits. Update existing MP references to the new configuration interface.\n\nValidate all five guide commands with the configuration parser and check the rendered HTML and local links. Documentation pre-commit checks pass. The strict Sphinx build reproduces the same 36 diagnostics as the committed baseline, with none introduced by these changes.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* test(mp): update L1 configuration fixtures for tagged managers\n\nGive the DevDax compatibility test doubles the default L2 affinity tag so they reach the single-region validation instead of raising AttributeError. Preserve the NIXL and Mooncake RDMA rejection checks and the Mooncake TCP acceptance check.\n\nMigrate remaining GDS discovery tests to --l1-manager JSON. Cover separate DevDax and GDS managers while retaining rejection of both backends within one manager.\n\nValidation: 52 DevDax/GDS tests and 14 multi-L1 configuration tests passed. Applicable pre-commit checks passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [MP] Narrow multi-L1 to write overflow and object owner tags\n\nKeep synchronous, ordered OUT_OF_MEMORY overflow at existing batch granularity. Stamp a process-local MemoryObj owner at L1 allocation and route completion using captured owner/key groups through the existing MessagePack callback dispatcher. Reset the tag for recycled paged objects.\n\nPreserve single-L1 production configuration and legacy GDS flags. Restrict internal multi-manager construction to write-only tests with no L2 or eviction. Defer JSON configuration, affinity, parallel lookup, owner side tables, and per-manager reporting.\n\nValidation: 251 focused tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed; full Sphinx reproduces 31 unchanged merge-base diagnostics.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Preserve single-L1 completion trace replay\n\nRecord the existing key-only finish_write trace once for both completion entry points. Keep process-local owner identities in native callback routing, not persistent storage traces. Leave the trace schema and replay dispatcher unchanged.\n\nAdd regressions covering legacy and owner-routed completion, MessagePack trace arguments, and replay into a fresh L1 manager. Both cases reproduced the unsupported or duplicated trace entries before the fix.\n\nValidation: 432 compatibility and trace tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* perf(mp): validate L1 write policy at construction\n\nCapture and validate the candidate order once for the fixed manager set.\nReserve writes through the resolved manager tuple, removing policy calls,\nset creation, and registry checks from the write path. Later mutations of\nthe supplied policy no longer reconfigure the storage manager.\n\nUpdate the constructor validation and snapshot tests and document the\nfixed-order contract.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161736468\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): handle write completion preparation failures\n\nPrepare the owner/key payload inside the existing store failure boundary\nbefore marking the store successful. An ownership validation error now\nreports a failed store and still publishes MP_STORE_END with zero counts.\nRetain staging buffers under the existing write-TTL rules because queued\nGPU copies may still reference them.\n\nCover invalid ownership with one and two managers, verify failure events\nand absence of completion callbacks, and document the cleanup behavior.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161833495\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): guard single-L1 reporting in the overflow harness\n\nRequire one L1 for memcheck, get_l1_usage, report_status, and capacity publication. The internal multi-manager harness is write-only and must not report partial health or capacity from its primary manager.\n\nPreserve single-L1 reporting, document the limitation, and extend the public-interface rejection and compatibility checks. Validation: 107 tests and applicable pre-commit checks passed. The Sphinx build retains the same 31 baseline diagnostics.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "hash": "b0b3567b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-08T09:41:21.000Z",
+              "message": "[Refactor] Route pointer tensor construction through DeviceOps (#5541)\n\n* refactor: dispatch pointer tensors through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: keep copy library helper unchanged\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: avoid platform import cycle during device discovery\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
               "stats": {
-                "files": 14,
-                "lines": 1168,
-                "insertions": 1149,
-                "deletions": 19
+                "files": 10,
+                "lines": 722,
+                "insertions": 388,
+                "deletions": 334
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
-                "keyword": 12,
+                "keyword": 25,
                 "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e64b43ef",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-10-06T22:45:08.000Z",
-              "message": "[2/N][Refactor][MP] Enable multi-L1 serving for DRAM, Device-DAX, and GDS (#5461)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 51,
-                "lines": 3308,
-                "insertions": 2596,
-                "deletions": 712
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
+                "total": 100
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 87,
+          "avg_score": 100,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 174,
+          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7928,8 +8249,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Chris Coleman",
@@ -8006,6 +8327,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 81,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "JH",
+          "email": "riversky0014@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 78,
+          "commits": [
+            {
+              "hash": "f06af816",
+              "author": "JH",
+              "email": "riversky0014@gmail.com",
+              "date": "2026-10-08T02:48:00.000Z",
+              "message": "[Bugfix] Synchronize the KV tensor device in engine-driven transfers (#5157)\n\n* fix: synchronize the KV tensor device in engine-driven transfers\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n* test: preserve existing callback and unused argument names\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n* test: minimize device synchronization regression coverage\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n* fix: preserve lazy torch import in platform package\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n---------\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 7,
+                "lines": 134,
+                "insertions": 111,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 13,
+                "total": 78
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 78,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -8162,8 +8522,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 68,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "2xdevv",
@@ -8201,8 +8561,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 64,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Xuetao Li",
+          "email": "xuetaoli@apache.org",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 61,
+          "commits": [
+            {
+              "hash": "c962e725",
+              "author": "Xuetao Li",
+              "email": "xuetaoli@apache.org",
+              "date": "2026-10-08T07:03:06.000Z",
+              "message": "feat(tests): enhance RESP connector tests with timeout diagnostics (#5318)\n\n* feat(tests): enhance RESP connector tests with timeout diagnostics\n\nSigned-off-by: alanxtl <m134679102365478@163.com>\n\n* fix comment\n\nSigned-off-by: alanxtl <m134679102365478@163.com>\n\n---------\n\nSigned-off-by: alanxtl <m134679102365478@163.com>",
+              "stats": {
+                "files": 1,
+                "lines": 149,
+                "insertions": 127,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 14,
+                "total": 61
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 61,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Hyukjoon Lee",
@@ -8279,6 +8678,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "nauta",
+          "email": "870284156@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "1a1828ca",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-10-08T05:26:44.000Z",
+              "message": "fix(test): fix flaky test in test_distributed_storage_manager (#5136)\n\n* fix(test): replace fixed sleeps with condition waits in distributed storage manager tests\n\nL2 visibility can precede StoreController releasing its L1 read locks, so a fixed 0.05s sleep before clear/delete is racy. Add clear_l1_and_wait() that retries sm.clear() via wait_for_condition and checks the public report_status() API, and retry the non-force L1 delete in test_sparse_skip_l2_locks_only_l1. Also add type hints to the touched test methods.\n\nSigned-off-by: nautaa <870284156@qq.com>\n\n* ix(test): share L2 store completion wait\n\nSigned-off-by: nautaa <870284156@qq.com>\n\n* fix\n\nSigned-off-by: nautaa <870284156@qq.com>\n\n---------\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 80,
+                "insertions": 32,
+                "deletions": 48
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -11630,10 +12068,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 4,
-          "significant_commits": 4,
+          "total_commits": 6,
+          "significant_commits": 6,
           "simple_commits": 0,
-          "commit_score": 334,
+          "commit_score": 485,
           "commits": [
             {
               "hash": "1ca53a8a",
@@ -11718,14 +12156,137 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8bf2cf23",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-08T23:18:46.000Z",
+              "message": "[Coordinator][observability] Add observability design and lmcache_coordinator metric names (#5533)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 890,
+                "insertions": 780,
+                "deletions": 110
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "19bf2d5d",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-08T01:18:03.000Z",
+              "message": "[MP] Test that a plugin controller consumes events and keeps durable state (#5538)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 177,
+                "insertions": 177,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 17,
+                "total": 64
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 83.5,
+          "avg_score": 80.83333333333333,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 334,
+          "total_score": 485,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 261,
+          "commits": [
+            {
+              "hash": "e9ff3463",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-02T15:37:23.000Z",
+              "message": "[1/N][Refactor][MP] Add ordered L1 write overflow and object owner tags (#5416)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* docs(mp): document multi-L1 configuration and migration\n\nAdd a user-facing guide for tagged L1 managers, per-manager settings, L2 affinity, write and prefetch behavior, GDS migration, reporting, and transport limits. Update existing MP references to the new configuration interface.\n\nValidate all five guide commands with the configuration parser and check the rendered HTML and local links. Documentation pre-commit checks pass. The strict Sphinx build reproduces the same 36 diagnostics as the committed baseline, with none introduced by these changes.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* test(mp): update L1 configuration fixtures for tagged managers\n\nGive the DevDax compatibility test doubles the default L2 affinity tag so they reach the single-region validation instead of raising AttributeError. Preserve the NIXL and Mooncake RDMA rejection checks and the Mooncake TCP acceptance check.\n\nMigrate remaining GDS discovery tests to --l1-manager JSON. Cover separate DevDax and GDS managers while retaining rejection of both backends within one manager.\n\nValidation: 52 DevDax/GDS tests and 14 multi-L1 configuration tests passed. Applicable pre-commit checks passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [MP] Narrow multi-L1 to write overflow and object owner tags\n\nKeep synchronous, ordered OUT_OF_MEMORY overflow at existing batch granularity. Stamp a process-local MemoryObj owner at L1 allocation and route completion using captured owner/key groups through the existing MessagePack callback dispatcher. Reset the tag for recycled paged objects.\n\nPreserve single-L1 production configuration and legacy GDS flags. Restrict internal multi-manager construction to write-only tests with no L2 or eviction. Defer JSON configuration, affinity, parallel lookup, owner side tables, and per-manager reporting.\n\nValidation: 251 focused tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed; full Sphinx reproduces 31 unchanged merge-base diagnostics.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Preserve single-L1 completion trace replay\n\nRecord the existing key-only finish_write trace once for both completion entry points. Keep process-local owner identities in native callback routing, not persistent storage traces. Leave the trace schema and replay dispatcher unchanged.\n\nAdd regressions covering legacy and owner-routed completion, MessagePack trace arguments, and replay into a fresh L1 manager. Both cases reproduced the unsupported or duplicated trace entries before the fix.\n\nValidation: 432 compatibility and trace tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* perf(mp): validate L1 write policy at construction\n\nCapture and validate the candidate order once for the fixed manager set.\nReserve writes through the resolved manager tuple, removing policy calls,\nset creation, and registry checks from the write path. Later mutations of\nthe supplied policy no longer reconfigure the storage manager.\n\nUpdate the constructor validation and snapshot tests and document the\nfixed-order contract.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161736468\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): handle write completion preparation failures\n\nPrepare the owner/key payload inside the existing store failure boundary\nbefore marking the store successful. An ownership validation error now\nreports a failed store and still publishes MP_STORE_END with zero counts.\nRetain staging buffers under the existing write-TTL rules because queued\nGPU copies may still reference them.\n\nCover invalid ownership with one and two managers, verify failure events\nand absence of completion callbacks, and document the cleanup behavior.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161833495\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): guard single-L1 reporting in the overflow harness\n\nRequire one L1 for memcheck, get_l1_usage, report_status, and capacity publication. The internal multi-manager harness is write-only and must not report partial health or capacity from its primary manager.\n\nPreserve single-L1 reporting, document the limitation, and extend the public-interface rejection and compatibility checks. Validation: 107 tests and applicable pre-commit checks passed. The Sphinx build retains the same 31 baseline diagnostics.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1168,
+                "insertions": 1149,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e64b43ef",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-06T22:45:08.000Z",
+              "message": "[2/N][Refactor][MP] Enable multi-L1 serving for DRAM, Device-DAX, and GDS (#5461)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 51,
+                "lines": 3308,
+                "insertions": 2596,
+                "deletions": 712
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "de1e5d86",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-08T01:25:57.000Z",
+              "message": "[3/N][Refactor][MP] Add L1ManagerInterface (#5528)\n\n* [Fix][CUDA] Clear the pending error after a failed host (un)register\n\ncudaHostRegister can fail, for example on a file-backed mapping of a\ndisk filesystem, and the Device-DAX allocators then fall back to\npageable copies. The CUDA runtime kept that failure pending in the\ncalling thread, and torch raised it as \"CUDA error: invalid argument\"\nat the thread's next kernel launch, long after the fallback had been\ntaken.\n\nRead the error back with cudaGetLastError whenever cudaHostRegister or\ncudaHostUnregister returns a non-zero status, through the runtime\nlibrary torch already loaded, so a handled failure stays handled.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [3/N][Refactor][MP] Add L1ManagerInterface\n\nStorageManager, the storage controllers and the serde wrapper were typed\nagainst the concrete L1Manager. Add L1ManagerInterface to\ninternal_api.py, a runtime-checkable Protocol of exactly the calls they\nmake, and type them against it; L1Manager satisfies it unchanged. Make\nthe id counter and read-lock clamp of l1_manager.py public so every\nimplementation shares them. StorageManager.l1_memory_desc now raises\ninstead of returning None for an L1 without a registerable buffer,\nwhich the interface's \"L1MemoryDesc | None\" return made explicit.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 591,
+                "insertions": 528,
+                "deletions": 63
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 261,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11790,62 +12351,41 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
           "simple_commits": 0,
-          "commit_score": 174,
+          "commit_score": 100,
           "commits": [
             {
-              "hash": "e9ff3463",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-10-02T15:37:23.000Z",
-              "message": "[1/N][Refactor][MP] Add ordered L1 write overflow and object owner tags (#5416)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* docs(mp): document multi-L1 configuration and migration\n\nAdd a user-facing guide for tagged L1 managers, per-manager settings, L2 affinity, write and prefetch behavior, GDS migration, reporting, and transport limits. Update existing MP references to the new configuration interface.\n\nValidate all five guide commands with the configuration parser and check the rendered HTML and local links. Documentation pre-commit checks pass. The strict Sphinx build reproduces the same 36 diagnostics as the committed baseline, with none introduced by these changes.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* test(mp): update L1 configuration fixtures for tagged managers\n\nGive the DevDax compatibility test doubles the default L2 affinity tag so they reach the single-region validation instead of raising AttributeError. Preserve the NIXL and Mooncake RDMA rejection checks and the Mooncake TCP acceptance check.\n\nMigrate remaining GDS discovery tests to --l1-manager JSON. Cover separate DevDax and GDS managers while retaining rejection of both backends within one manager.\n\nValidation: 52 DevDax/GDS tests and 14 multi-L1 configuration tests passed. Applicable pre-commit checks passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [MP] Narrow multi-L1 to write overflow and object owner tags\n\nKeep synchronous, ordered OUT_OF_MEMORY overflow at existing batch granularity. Stamp a process-local MemoryObj owner at L1 allocation and route completion using captured owner/key groups through the existing MessagePack callback dispatcher. Reset the tag for recycled paged objects.\n\nPreserve single-L1 production configuration and legacy GDS flags. Restrict internal multi-manager construction to write-only tests with no L2 or eviction. Defer JSON configuration, affinity, parallel lookup, owner side tables, and per-manager reporting.\n\nValidation: 251 focused tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed; full Sphinx reproduces 31 unchanged merge-base diagnostics.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Preserve single-L1 completion trace replay\n\nRecord the existing key-only finish_write trace once for both completion entry points. Keep process-local owner identities in native callback routing, not persistent storage traces. Leave the trace schema and replay dispatcher unchanged.\n\nAdd regressions covering legacy and owner-routed completion, MessagePack trace arguments, and replay into a fresh L1 manager. Both cases reproduced the unsupported or duplicated trace entries before the fix.\n\nValidation: 432 compatibility and trace tests, 47 standalone engine-transfer tests, and 10 real GPU tests passed. Applicable pre-commit checks and focused Sphinx passed.\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* perf(mp): validate L1 write policy at construction\n\nCapture and validate the candidate order once for the fixed manager set.\nReserve writes through the resolved manager tuple, removing policy calls,\nset creation, and registry checks from the write path. Later mutations of\nthe supplied policy no longer reconfigure the storage manager.\n\nUpdate the constructor validation and snapshot tests and document the\nfixed-order contract.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161736468\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): handle write completion preparation failures\n\nPrepare the owner/key payload inside the existing store failure boundary\nbefore marking the store successful. An ownership validation error now\nreports a failed store and still publishes MP_STORE_END with zero counts.\nRetain staging buffers under the existing write-TTL rules because queued\nGPU copies may still reference them.\n\nCover invalid ownership with one and two managers, verify failure events\nand absence of completion callbacks, and document the cleanup behavior.\n\nAddresses: https://github.com/LMCache/LMCache/pull/5416#discussion_r4161833495\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* fix(mp): guard single-L1 reporting in the overflow harness\n\nRequire one L1 for memcheck, get_l1_usage, report_status, and capacity publication. The internal multi-manager harness is write-only and must not report partial health or capacity from its primary manager.\n\nPreserve single-L1 reporting, document the limitation, and extend the public-interface rejection and compatibility checks. Validation: 107 tests and applicable pre-commit checks passed. The Sphinx build retains the same 31 baseline diagnostics.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "hash": "b0b3567b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-08T09:41:21.000Z",
+              "message": "[Refactor] Route pointer tensor construction through DeviceOps (#5541)\n\n* refactor: dispatch pointer tensors through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: keep copy library helper unchanged\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: avoid platform import cycle during device discovery\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
               "stats": {
-                "files": 14,
-                "lines": 1168,
-                "insertions": 1149,
-                "deletions": 19
+                "files": 10,
+                "lines": 722,
+                "insertions": 388,
+                "deletions": 334
               },
               "scores": {
                 "loc": 30,
                 "files": 20,
-                "keyword": 12,
+                "keyword": 25,
                 "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e64b43ef",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-10-06T22:45:08.000Z",
-              "message": "[2/N][Refactor][MP] Enable multi-L1 serving for DRAM, Device-DAX, and GDS (#5461)\n\n* feat(mp): support multiple L1 managers\n\nAdd tagged DRAM and GDS configurations through repeatable --l1-manager\nJSON arguments, retaining legacy DRAM options and moving GDS configuration\nto the new interface.\n\nRoute writes through a placement policy, give each L1 its own eviction\nand store controllers, and bind L2 adapters to L1 affinity tags. Look up\npeer L1s concurrently and preserve read ownership across overlapping\nprefetches. Report per-L1 status and metrics and aggregate capacity by\nbacking medium. Keep the existing single-GDS-slab process limit explicit.\n\nAdd coverage for configuration validation, placement, concurrent lookups,\nfailed-lookup cleanup, overlapping reads, adapter lifecycle, and reporting.\nValidation: 406-test regression suite, 93 follow-up checks, and 98 tests\nafter the concurrent-lookup change passed. Applicable pre-commit checks\npassed; Rust hooks were skipped for this Python-only change.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
-              "stats": {
-                "files": 51,
-                "lines": 3308,
-                "insertions": 2596,
-                "deletions": 712
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
+                "total": 100
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 87,
+          "avg_score": 100,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 174,
+          "total_score": 100,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -11924,8 +12464,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Chris Coleman",
@@ -12002,6 +12542,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 81,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "JH",
+          "email": "riversky0014@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 78,
+          "commits": [
+            {
+              "hash": "f06af816",
+              "author": "JH",
+              "email": "riversky0014@gmail.com",
+              "date": "2026-10-08T02:48:00.000Z",
+              "message": "[Bugfix] Synchronize the KV tensor device in engine-driven transfers (#5157)\n\n* fix: synchronize the KV tensor device in engine-driven transfers\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n* test: preserve existing callback and unused argument names\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n* test: minimize device synchronization regression coverage\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n* fix: preserve lazy torch import in platform package\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\n\n---------\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>\nCo-authored-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 7,
+                "lines": 134,
+                "insertions": 111,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 13,
+                "total": 78
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 78,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -12158,8 +12737,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 68,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "2xdevv",
@@ -12197,8 +12776,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 64,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Xuetao Li",
+          "email": "xuetaoli@apache.org",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 61,
+          "commits": [
+            {
+              "hash": "c962e725",
+              "author": "Xuetao Li",
+              "email": "xuetaoli@apache.org",
+              "date": "2026-10-08T07:03:06.000Z",
+              "message": "feat(tests): enhance RESP connector tests with timeout diagnostics (#5318)\n\n* feat(tests): enhance RESP connector tests with timeout diagnostics\n\nSigned-off-by: alanxtl <m134679102365478@163.com>\n\n* fix comment\n\nSigned-off-by: alanxtl <m134679102365478@163.com>\n\n---------\n\nSigned-off-by: alanxtl <m134679102365478@163.com>",
+              "stats": {
+                "files": 1,
+                "lines": 149,
+                "insertions": 127,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 14,
+                "total": 61
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 61,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Hyukjoon Lee",
@@ -12279,6 +12897,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "nauta",
+          "email": "870284156@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "1a1828ca",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-10-08T05:26:44.000Z",
+              "message": "fix(test): fix flaky test in test_distributed_storage_manager (#5136)\n\n* fix(test): replace fixed sleeps with condition waits in distributed storage manager tests\n\nL2 visibility can precede StoreController releasing its L1 read locks, so a fixed 0.05s sleep before clear/delete is racy. Add clear_l1_and_wait() that retries sm.clear() via wait_for_condition and checks the public report_status() API, and retry the non-force L1 delete in test_sparse_skip_l2_locks_only_l1. Also add type hints to the touched test methods.\n\nSigned-off-by: nautaa <870284156@qq.com>\n\n* ix(test): share L2 store completion wait\n\nSigned-off-by: nautaa <870284156@qq.com>\n\n* fix\n\nSigned-off-by: nautaa <870284156@qq.com>\n\n---------\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 80,
+                "insertions": 32,
+                "deletions": 48
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "PPg",
           "email": "18649201011@163.com",
           "total_commits": 1,
@@ -12321,13 +12978,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-08T00:30:15.506Z",
+    "analyzedAt": "2026-10-09T00:30:18.877Z",
     "daysBack": 2,
-    "totalCommits": 130,
-    "totalContributors": 63,
+    "totalCommits": 137,
+    "totalContributors": 66,
     "mergedFrom": {
-      "existing": 126,
-      "new": 8
+      "existing": 130,
+      "new": 11
     }
   }
 }
