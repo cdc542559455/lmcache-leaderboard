@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-09T00:30:18.877Z",
-  "total_commits_analyzed": 137,
+  "last_updated": "2026-10-10T00:30:33.617Z",
+  "total_commits_analyzed": 150,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3939,6 +3939,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 287,
+          "commits": [
+            {
+              "hash": "b0b3567b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-08T09:41:21.000Z",
+              "message": "[Refactor] Route pointer tensor construction through DeviceOps (#5541)\n\n* refactor: dispatch pointer tensors through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: keep copy library helper unchanged\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: avoid platform import cycle during device discovery\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 10,
+                "lines": 722,
+                "insertions": 388,
+                "deletions": 334
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "68a9c6b5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-09T10:27:31.000Z",
+              "message": "Add gRPC runtime metrics export (#5264)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 413,
+                "insertions": 407,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0356d9f5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-09T06:57:18.000Z",
+              "message": "feat: step1-support pluggable MP server modules (#5159)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1664,
+                "insertions": 1646,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 95.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 287,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -3999,90 +4080,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 100,
-          "commits": [
-            {
-              "hash": "b0b3567b",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-08T09:41:21.000Z",
-              "message": "[Refactor] Route pointer tensor construction through DeviceOps (#5541)\n\n* refactor: dispatch pointer tensors through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: keep copy library helper unchanged\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: avoid platform import cycle during device discovery\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 10,
-                "lines": 722,
-                "insertions": 388,
-                "deletions": 334
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 25,
-                "total": 100
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 100,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 100,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "weishu",
-          "email": "838677410@qq.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "f95b576f",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-06T18:02:13.000Z",
-              "message": "[Feat]  support for Re-RoPE   KV caches (per-tensor e4m3/e5m2) (#5500)\n\n* [Feat][Blend] Re-RoPE fp8 KV caches (per-tensor e4m3/e5m2)\n\nvLLM allocates --kv-cache-dtype fp8 KV as uint8, which the retrieve-plan\nbuilder could not map to a rope scalar type: every plan came back None,\nso every fp8 request raised \"native plan unavailable\" and degraded to\nfull recompute. The blend did nothing while still paying its overhead.\n\nThe fix threads the fp8 flavor end to end:\n\n- CB_REGISTER_ROPE gains a trailing, defaulted kv_quant payload\n  (\"fp8_e4m3\" / \"fp8_e5m2\"; \"\" keeps today's behavior) stored on\n  _CBRopeState. The buffer dtype alone cannot name the bit layout.\n- The plan builder resolves uint8 K planes through the declared flavor\n  (and true float8 torch dtypes directly), and passes the cos/sin\n  cache's own scalar type: under fp8 KV the cache stays in the model's\n  float dtype, so CBGroupSpec now carries cache_scalar_type (defaulted\n  to key_scalar_type for older planners).\n- The fused ramp rope kernel is templated on key and cache types and\n  dequantizes -> rotates -> requantizes fp8 keys. No scale is involved:\n  rotation commutes with the per-tensor scale, which is identical on\n  input and output. Homogeneous instantiations keep their exact\n  pre-change numerics (the conversion helper is the identity there).\n\nScope: legacy-geometry (standard attention) models. Under a declared\nrope map, rot_for_group still skips non-float kernel groups — a\nquantized index side-plane and quantized main KV are indistinguishable\nby dtype there, so fp8 MLA/GLM stays out of scope.\n\nTested: dequant-rotate-requant parity against a per-op bf16-rounded\nreference through execute_cb_retrieve_plan_flat on H200, scalar-type\nresolution units, and the existing rope/plan/retrieve/store suites.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Inline the key-scalar resolution; one-line kv_quant docs\n\nReview follow-ups on #5500: fold _cb_key_at_scalar into its only call\nsite in the plan builder, pin the flavor maps in the test instead, and\ncut the kv_quant field/arg comments to one line.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Reuse the dispatch machinery; drop the speculative float8 map\n\nMinimize per review: the fused-rope launcher nests an\nLMC_DISPATCH_ROPE_KEY_TYPES switch (floating + fp8 cases) instead of a\nhand-rolled helper and if-chain; the true-float8-dtype map goes (vLLM\nallocates fp8 KV as uint8 — no caller); kv_quant validation keys off\n_FP8_FLAVOR_TO_AT_SCALAR instead of a literal.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the rope_cvt comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the v3 alias comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Apply isort and clang-format from the code-quality hooks\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Tighten the fp8 rope comments\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Add kv_quant to CbRegisterRopeRequest\n\nThe gRPC transport derives its surface from the proto descriptors, so\nthe 8-payload cb_register_rope contract needs the matching field; the\n_proto_gen stubs regenerate at build time.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 12,
-                "lines": 375,
-                "insertions": 288,
-                "deletions": 87
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Chris Coleman",
           "email": "christophercoleman2018@u.northwestern.edu",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 87,
+          "commit_score": 167,
           "commits": [
             {
               "hash": "17efd2e5",
@@ -4104,6 +4107,246 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "ee68e5ba",
+              "author": "Chris Coleman",
+              "email": "chriscoleman@tensormesh.ai",
+              "date": "2026-10-09T21:30:54.000Z",
+              "message": "[CLI] Add evidence markers, RAGAS fields and an answer-match scorer to the QA quality modules (#5557)\n\nExtend engine_bench/quality/ with what a CacheBlend answer-quality\ncomparison needs beyond rag-qa-quality's token F1: which passages hold the\nanswer, the RAGAS hand-off record shape, and a scorer that accepts correct\nanswers phrased differently from the gold. Files that loaded before load\nthe same samples, and rag-qa-quality's prompts and scores are unchanged.\n\n- dataset.py: Sample.evidence_indices, filled from MuSiQue is_supporting,\n  HotpotQA supporting_facts (struct and pair forms) and\n  context_metadata[].gold, remapped when empty passages are dropped.\n  load_samples also reads retrieved_contexts, user_input, reference and\n  extra.answer_aliases, as fallbacks after the existing fields.\n- scoring.py: answer_match(prediction, references) accepts a normalized\n  whole-phrase match, or every gold number within 0.5%, with a power-of-1000\n  rescale only when either side names a scale (\"$11.588 billion\" matches\n  \"$11588.00\"; \"3,000\" does not match \"3\"). Bare years are ignored as\n  figures, typographic punctuation is folded to ASCII, hyphens count as\n  word breaks, and an abstaining answer never matches unless the gold is\n  itself a negative. is_abstention(prediction) detects \"not in the\n  passages\" refusals. Both are exported from quality/__init__.py and\n  documented as lexical screens: an LLM judge remains the reference\n  metric.\n- Docs: bench-engine.md and bench.rst list the RAGAS fields and evidence\n  markers.\n- Tests: TestLoadSamplesRagasHandoff, TestLoadSamplesEvidence,\n  TestAnswerMatch, TestIsAbstention.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 7,
+                "lines": 597,
+                "insertions": 579,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 167,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 145,
+          "commits": [
+            {
+              "hash": "28f35f86",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-09T18:53:52.000Z",
+              "message": "[Build] Remove hardcoded C++17 flags from PyTorch extensions (#5564)\n\nRemove C++17 hardcode\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 21,
+                "insertions": 8,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 2,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e8657413",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-09T09:10:00.000Z",
+              "message": "[Bugfix][ROCm] Clear pending HIP errors after host memory registratio… (#5565)\n\n[Bugfix][ROCm] Clear pending HIP errors after host memory registration failures\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 207,
+                "insertions": 133,
+                "deletions": 74
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9edec1df",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-09T06:34:29.000Z",
+              "message": "[Bugfix][Test] Stabilize the coordinator eviction loop test (#5566)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 8,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 48.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 145,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 114,
+          "commits": [
+            {
+              "hash": "f95b576f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-06T18:02:13.000Z",
+              "message": "[Feat]  support for Re-RoPE   KV caches (per-tensor e4m3/e5m2) (#5500)\n\n* [Feat][Blend] Re-RoPE fp8 KV caches (per-tensor e4m3/e5m2)\n\nvLLM allocates --kv-cache-dtype fp8 KV as uint8, which the retrieve-plan\nbuilder could not map to a rope scalar type: every plan came back None,\nso every fp8 request raised \"native plan unavailable\" and degraded to\nfull recompute. The blend did nothing while still paying its overhead.\n\nThe fix threads the fp8 flavor end to end:\n\n- CB_REGISTER_ROPE gains a trailing, defaulted kv_quant payload\n  (\"fp8_e4m3\" / \"fp8_e5m2\"; \"\" keeps today's behavior) stored on\n  _CBRopeState. The buffer dtype alone cannot name the bit layout.\n- The plan builder resolves uint8 K planes through the declared flavor\n  (and true float8 torch dtypes directly), and passes the cos/sin\n  cache's own scalar type: under fp8 KV the cache stays in the model's\n  float dtype, so CBGroupSpec now carries cache_scalar_type (defaulted\n  to key_scalar_type for older planners).\n- The fused ramp rope kernel is templated on key and cache types and\n  dequantizes -> rotates -> requantizes fp8 keys. No scale is involved:\n  rotation commutes with the per-tensor scale, which is identical on\n  input and output. Homogeneous instantiations keep their exact\n  pre-change numerics (the conversion helper is the identity there).\n\nScope: legacy-geometry (standard attention) models. Under a declared\nrope map, rot_for_group still skips non-float kernel groups — a\nquantized index side-plane and quantized main KV are indistinguishable\nby dtype there, so fp8 MLA/GLM stays out of scope.\n\nTested: dequant-rotate-requant parity against a per-op bf16-rounded\nreference through execute_cb_retrieve_plan_flat on H200, scalar-type\nresolution units, and the existing rope/plan/retrieve/store suites.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Inline the key-scalar resolution; one-line kv_quant docs\n\nReview follow-ups on #5500: fold _cb_key_at_scalar into its only call\nsite in the plan builder, pin the flavor maps in the test instead, and\ncut the kv_quant field/arg comments to one line.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Reuse the dispatch machinery; drop the speculative float8 map\n\nMinimize per review: the fused-rope launcher nests an\nLMC_DISPATCH_ROPE_KEY_TYPES switch (floating + fp8 cases) instead of a\nhand-rolled helper and if-chain; the true-float8-dtype map goes (vLLM\nallocates fp8 KV as uint8 — no caller); kv_quant validation keys off\n_FP8_FLAVOR_TO_AT_SCALAR instead of a literal.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the rope_cvt comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the v3 alias comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Apply isort and clang-format from the code-quality hooks\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Tighten the fp8 rope comments\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Add kv_quant to CbRegisterRopeRequest\n\nThe gRPC transport derives its surface from the proto descriptors, so\nthe 8-payload cb_register_rope contract needs the matching field; the\n_proto_gen stubs regenerate at build time.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 375,
+                "insertions": 288,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0b5155d6",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-09T07:12:25.000Z",
+              "message": "[Bugfix][KV format] Detect the rank-4 DSA indexer cache as NL_X_NB_BSV_BSS (#5562)\n\nvLLM >= 0.29 drops the indexer backend's own (num_blocks, block_size, 132)\nshape and allocates the fp8 indexer cache through the MLA spec with a\nsingleton head axis, [NB, BS, 1, 132]. The vLLM detector's rank-4 rule\n(fused K/V rows) ran first, so the blocked [BS x vals | BS x scales] page\nlayout was copied as 132-byte token rows: exact only while a token keeps\nits block offset, scrambled for any CacheBlend hit shifted off the block\ngrid (GLM-5.2: recall 0.0 at 16k, correct at a 64-aligned shift).\n\nSqueeze the singleton head axis of a uint8 width-132 plane before the\nrank-4 rule so it reaches NL_X_NB_BSV_BSS as the rank-3 cache does.\n\nSigned-off-by: weishu <weishu@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 20,
+                "insertions": 19,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 57,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 114,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "ruy-zhang",
+          "email": "128768105+ruy-zhang@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 100,
+          "commits": [
+            {
+              "hash": "ecb031a8",
+              "author": "ruy-zhang",
+              "email": "128768105+ruy-zhang@users.noreply.github.com",
+              "date": "2026-10-09T14:50:04.000Z",
+              "message": "feat: add native 3FS (HF3FS) L2 storage backend (#5131)\n\n* feat: add native 3FS (HF3FS) L2 storage backend\n\nAdd a native C++ 3FS L2 storage backend backed by the 3FS Usrbio API, exposed to Python through the Hf3fsL2Adapter and lmcache_hf3fs CppExtension.\n\n- Native C++ connector (connector.h/.cpp) built on the 3FS Usrbio API, supporting put/get/exists/remove with multi-worker I/O and async key-buffer lookups\n- sharded_flat_hash_set: concurrent sharded set built on absl::flat_hash_set for accelerated exists lookups\n- Hf3fsL2AdapterConfig + Hf3fsL2Adapter factory registration under the 'hf3fs' adapter type\n- hf3fs storage backend build profile (BUILD_WITH_HF3FS) with system Abseil dependency detection\n- Unit tests covering the adapter and connector behavior\n- User docs: hf3fs.rst guide, added to supported_storages and remote_and_distributed toctrees\n\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* fix(hf3fs): harden native 3FS connector I/O and concurrent exists\n\nImprove error handling and thread safety in the native 3FS (HF3FS) L2\nstorage backend.\n\n- read_file/write_file: fail fast on short read/write (cqe.result !=\n  requested length) instead of silently copying incomplete data\n- do_single_get/do_single_set: deregister and close the fd when a\n  read/write throws, preventing an fd leak on the error path\n- do_single_delete: log filesystem-error failures to stderr instead of\n  suppressing them\n- sharded_flat_hash_set: guard the Contains() read path with the shard\n  mutex to avoid a data race with concurrent inserts\n\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* bug fix: scan_and_build_buffer_ only scan part of base_paths\nwhen there are more base paths than workers\n\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* feat: align hf3fs key format to keys.h which includes object_group_id\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* modify copyright info according to maintainer feedback\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* [bug fix] fprintf compiling error\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* Reslove the codespell errors\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n---------\n\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\nSigned-off-by: Wenwen-Chen <wenwen.chen@samsung.com>\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 12,
+                "lines": 2802,
+                "insertions": 2801,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 100,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 100,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "2xdevv",
+          "email": "syk0905.kwon@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "6448b447",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-10-09T16:21:47.000Z",
+              "message": "[Feature][RawBlock] Enable fixed-buffer I/O for MP L1 memory (#4413)\n\n* [Feature][RawBlock] Enable fixed-buffer I/O for MP L1 memory\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [RawBlock] Expose fixed-buffer registration status\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 11,
+                "lines": 1010,
+                "insertions": 921,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
           "avg_score": 87,
@@ -4112,8 +4355,164 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "34d8027d",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-10-09T07:37:03.000Z",
+              "message": "[MUSA]: Add SmartIO muFile backend for MP GDS L1 (#5027)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 797,
+                "insertions": 765,
+                "deletions": 32
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Junyuan",
+          "email": "jjysama@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "3ab00d25",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-10-09T06:49:37.000Z",
+              "message": "[MP][Ascend] NPU platform backends for LMCache-driven transfer (#5341)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: sunshine <72514768+larksudo@users.noreply.github.com>\nCo-authored-by: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-authored-by: larksudo <72514768+larksudo@users.noreply.github.com>",
+              "stats": {
+                "files": 18,
+                "lines": 2314,
+                "insertions": 2279,
+                "deletions": 35
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Mark Nelson",
+          "email": "mark.a.nelson@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "f64d535a",
+              "author": "Mark Nelson",
+              "email": "mark.a.nelson@gmail.com",
+              "date": "2026-10-09T01:58:12.000Z",
+              "message": "[Perf][CLI] Register only the selected command route at startup (#5542)\n\n* [CLI] Direct command registration by invocation route\n\nSigned-off-by: Mark Nelson <mark.a.nelson@gmail.com>\n\n* [CLI] Restore command discovery documentation\n\nSigned-off-by: Mark Nelson <mark.a.nelson@gmail.com>\n\n---------\n\nSigned-off-by: Mark Nelson <mark.a.nelson@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 453,
+                "insertions": 378,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 85,
+          "commits": [
+            {
+              "hash": "a0d4319b",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-09T07:01:48.000Z",
+              "message": "ci: add RBLN MP hardware smoke pipeline (#5543)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 13,
+                "lines": 532,
+                "insertions": 528,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "ai-jz",
@@ -4151,8 +4550,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 81,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "JH",
@@ -4190,8 +4589,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 78,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "seungrokj",
@@ -4229,8 +4628,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 73,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "yeyang-zhou",
@@ -4268,8 +4667,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "sssqqeer",
@@ -4307,8 +4706,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Charlie Fu",
@@ -4346,8 +4745,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 68,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Xuetao Li",
@@ -4385,8 +4784,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 61,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Hyukjoon Lee",
@@ -4541,8 +4940,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 34,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -7995,6 +8394,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 287,
+          "commits": [
+            {
+              "hash": "b0b3567b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-08T09:41:21.000Z",
+              "message": "[Refactor] Route pointer tensor construction through DeviceOps (#5541)\n\n* refactor: dispatch pointer tensors through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: keep copy library helper unchanged\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: avoid platform import cycle during device discovery\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 10,
+                "lines": 722,
+                "insertions": 388,
+                "deletions": 334
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "68a9c6b5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-09T10:27:31.000Z",
+              "message": "Add gRPC runtime metrics export (#5264)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 413,
+                "insertions": 407,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0356d9f5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-09T06:57:18.000Z",
+              "message": "feat: step1-support pluggable MP server modules (#5159)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1664,
+                "insertions": 1646,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 95.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 287,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 3,
@@ -8078,10 +8558,10 @@
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 2,
+          "total_commits": 3,
           "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 174,
+          "simple_commits": 1,
+          "commit_score": 201,
           "commits": [
             {
               "hash": "4abc421a",
@@ -8124,36 +8604,258 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "0b5155d6",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-09T07:12:25.000Z",
+              "message": "[Bugfix][KV format] Detect the rank-4 DSA indexer cache as NL_X_NB_BSV_BSS (#5562)\n\nvLLM >= 0.29 drops the indexer backend's own (num_blocks, block_size, 132)\nshape and allocates the fp8 indexer cache through the MLA spec with a\nsingleton head axis, [NB, BS, 1, 132]. The vLLM detector's rank-4 rule\n(fused K/V rows) ran first, so the blocked [BS x vals | BS x scales] page\nlayout was copied as 132-byte token rows: exact only while a token keeps\nits block offset, scrambled for any CacheBlend hit shifted off the block\ngrid (GLM-5.2: recall 0.0 at 16k, correct at a 64-aligned shift).\n\nSqueeze the singleton head axis of a uint8 width-132 plane before the\nrank-4 rule so it reaches NL_X_NB_BSV_BSS as the rank-3 cache does.\n\nSigned-off-by: weishu <weishu@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 20,
+                "insertions": 19,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 87,
-          "significance_ratio": 1,
+          "avg_score": 67,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 174,
+          "total_score": 201,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
+          "name": "Chris Coleman",
+          "email": "christophercoleman2018@u.northwestern.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 167,
+          "commits": [
+            {
+              "hash": "17efd2e5",
+              "author": "Chris Coleman",
+              "email": "christophercoleman2018@u.northwestern.edu",
+              "date": "2026-10-07T22:59:14.000Z",
+              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 474,
+                "insertions": 339,
+                "deletions": 135
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ee68e5ba",
+              "author": "Chris Coleman",
+              "email": "chriscoleman@tensormesh.ai",
+              "date": "2026-10-09T21:30:54.000Z",
+              "message": "[CLI] Add evidence markers, RAGAS fields and an answer-match scorer to the QA quality modules (#5557)\n\nExtend engine_bench/quality/ with what a CacheBlend answer-quality\ncomparison needs beyond rag-qa-quality's token F1: which passages hold the\nanswer, the RAGAS hand-off record shape, and a scorer that accepts correct\nanswers phrased differently from the gold. Files that loaded before load\nthe same samples, and rag-qa-quality's prompts and scores are unchanged.\n\n- dataset.py: Sample.evidence_indices, filled from MuSiQue is_supporting,\n  HotpotQA supporting_facts (struct and pair forms) and\n  context_metadata[].gold, remapped when empty passages are dropped.\n  load_samples also reads retrieved_contexts, user_input, reference and\n  extra.answer_aliases, as fallbacks after the existing fields.\n- scoring.py: answer_match(prediction, references) accepts a normalized\n  whole-phrase match, or every gold number within 0.5%, with a power-of-1000\n  rescale only when either side names a scale (\"$11.588 billion\" matches\n  \"$11588.00\"; \"3,000\" does not match \"3\"). Bare years are ignored as\n  figures, typographic punctuation is folded to ASCII, hyphens count as\n  word breaks, and an abstaining answer never matches unless the gold is\n  itself a negative. is_abstention(prediction) detects \"not in the\n  passages\" refusals. Both are exported from quality/__init__.py and\n  documented as lexical screens: an LLM judge remains the reference\n  metric.\n- Docs: bench-engine.md and bench.rst list the RAGAS fields and evidence\n  markers.\n- Tests: TestLoadSamplesRagasHandoff, TestLoadSamplesEvidence,\n  TestAnswerMatch, TestIsAbstention.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 7,
+                "lines": 597,
+                "insertions": 579,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 167,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "2xdevv",
+          "email": "syk0905.kwon@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 151,
+          "commits": [
+            {
+              "hash": "8d7d2c47",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-10-01T02:28:00.000Z",
+              "message": "[Fix][NIXL] Fail store tasks atomically on pool exhaustion (#4271)\n\nFix NIXL static pool exhaustion handling\n\nSigned-off-by: 2xdevvv <syk0905.kwon@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 127,
+                "insertions": 116,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6448b447",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-10-09T16:21:47.000Z",
+              "message": "[Feature][RawBlock] Enable fixed-buffer I/O for MP L1 memory (#4413)\n\n* [Feature][RawBlock] Enable fixed-buffer I/O for MP L1 memory\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [RawBlock] Expose fixed-buffer registration status\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 11,
+                "lines": 1010,
+                "insertions": 921,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 151,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 145,
+          "commits": [
+            {
+              "hash": "28f35f86",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-09T18:53:52.000Z",
+              "message": "[Build] Remove hardcoded C++17 flags from PyTorch extensions (#5564)\n\nRemove C++17 hardcode\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 21,
+                "insertions": 8,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 2,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e8657413",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-09T09:10:00.000Z",
+              "message": "[Bugfix][ROCm] Clear pending HIP errors after host memory registratio… (#5565)\n\n[Bugfix][ROCm] Clear pending HIP errors after host memory registration failures\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 207,
+                "insertions": 133,
+                "deletions": 74
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9edec1df",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-09T06:34:29.000Z",
+              "message": "[Bugfix][Test] Stabilize the coordinator eviction loop test (#5566)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 8,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 48.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 145,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "ruy-zhang",
+          "email": "128768105+ruy-zhang@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 100,
           "commits": [
             {
-              "hash": "b0b3567b",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-08T09:41:21.000Z",
-              "message": "[Refactor] Route pointer tensor construction through DeviceOps (#5541)\n\n* refactor: dispatch pointer tensors through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: keep copy library helper unchanged\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: avoid platform import cycle during device discovery\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "hash": "ecb031a8",
+              "author": "ruy-zhang",
+              "email": "128768105+ruy-zhang@users.noreply.github.com",
+              "date": "2026-10-09T14:50:04.000Z",
+              "message": "feat: add native 3FS (HF3FS) L2 storage backend (#5131)\n\n* feat: add native 3FS (HF3FS) L2 storage backend\n\nAdd a native C++ 3FS L2 storage backend backed by the 3FS Usrbio API, exposed to Python through the Hf3fsL2Adapter and lmcache_hf3fs CppExtension.\n\n- Native C++ connector (connector.h/.cpp) built on the 3FS Usrbio API, supporting put/get/exists/remove with multi-worker I/O and async key-buffer lookups\n- sharded_flat_hash_set: concurrent sharded set built on absl::flat_hash_set for accelerated exists lookups\n- Hf3fsL2AdapterConfig + Hf3fsL2Adapter factory registration under the 'hf3fs' adapter type\n- hf3fs storage backend build profile (BUILD_WITH_HF3FS) with system Abseil dependency detection\n- Unit tests covering the adapter and connector behavior\n- User docs: hf3fs.rst guide, added to supported_storages and remote_and_distributed toctrees\n\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* fix(hf3fs): harden native 3FS connector I/O and concurrent exists\n\nImprove error handling and thread safety in the native 3FS (HF3FS) L2\nstorage backend.\n\n- read_file/write_file: fail fast on short read/write (cqe.result !=\n  requested length) instead of silently copying incomplete data\n- do_single_get/do_single_set: deregister and close the fd when a\n  read/write throws, preventing an fd leak on the error path\n- do_single_delete: log filesystem-error failures to stderr instead of\n  suppressing them\n- sharded_flat_hash_set: guard the Contains() read path with the shard\n  mutex to avoid a data race with concurrent inserts\n\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* bug fix: scan_and_build_buffer_ only scan part of base_paths\nwhen there are more base paths than workers\n\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* feat: align hf3fs key format to keys.h which includes object_group_id\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* modify copyright info according to maintainer feedback\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* [bug fix] fprintf compiling error\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* Reslove the codespell errors\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n---------\n\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\nSigned-off-by: Wenwen-Chen <wenwen.chen@samsung.com>\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
               "stats": {
-                "files": 10,
-                "lines": 722,
-                "insertions": 388,
-                "deletions": 334
+                "files": 12,
+                "lines": 2802,
+                "insertions": 2801,
+                "deletions": 1
               },
               "scores": {
                 "loc": 30,
@@ -8171,8 +8873,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 100,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Samuel Shen",
@@ -8210,8 +8912,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Yangyang Qian",
@@ -8253,24 +8955,24 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Chris Coleman",
-          "email": "christophercoleman2018@u.northwestern.edu",
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 87,
           "commits": [
             {
-              "hash": "17efd2e5",
-              "author": "Chris Coleman",
-              "email": "christophercoleman2018@u.northwestern.edu",
-              "date": "2026-10-07T22:59:14.000Z",
-              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "hash": "34d8027d",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-10-09T07:37:03.000Z",
+              "message": "[MUSA]: Add SmartIO muFile backend for MP GDS L1 (#5027)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
               "stats": {
                 "files": 8,
-                "lines": 474,
-                "insertions": 339,
-                "deletions": 135
+                "lines": 797,
+                "insertions": 765,
+                "deletions": 32
               },
               "scores": {
                 "loc": 30,
@@ -8290,6 +8992,123 @@
           "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
+        },
+        {
+          "name": "Junyuan",
+          "email": "jjysama@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "3ab00d25",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-10-09T06:49:37.000Z",
+              "message": "[MP][Ascend] NPU platform backends for LMCache-driven transfer (#5341)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: sunshine <72514768+larksudo@users.noreply.github.com>\nCo-authored-by: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-authored-by: larksudo <72514768+larksudo@users.noreply.github.com>",
+              "stats": {
+                "files": 18,
+                "lines": 2314,
+                "insertions": 2279,
+                "deletions": 35
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Mark Nelson",
+          "email": "mark.a.nelson@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "f64d535a",
+              "author": "Mark Nelson",
+              "email": "mark.a.nelson@gmail.com",
+              "date": "2026-10-09T01:58:12.000Z",
+              "message": "[Perf][CLI] Register only the selected command route at startup (#5542)\n\n* [CLI] Direct command registration by invocation route\n\nSigned-off-by: Mark Nelson <mark.a.nelson@gmail.com>\n\n* [CLI] Restore command discovery documentation\n\nSigned-off-by: Mark Nelson <mark.a.nelson@gmail.com>\n\n---------\n\nSigned-off-by: Mark Nelson <mark.a.nelson@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 453,
+                "insertions": 378,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 85,
+          "commits": [
+            {
+              "hash": "a0d4319b",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-09T07:01:48.000Z",
+              "message": "ci: add RBLN MP hardware smoke pipeline (#5543)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 13,
+                "lines": 532,
+                "insertions": 528,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "ai-jz",
@@ -8327,8 +9146,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 81,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "JH",
@@ -8366,8 +9185,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 78,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "seungrokj",
@@ -8405,8 +9224,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 73,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "yeyang-zhou",
@@ -8444,8 +9263,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "sssqqeer",
@@ -8483,8 +9302,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Charlie Fu",
@@ -8522,45 +9341,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 68,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "2xdevv",
-          "email": "syk0905.kwon@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 64,
-          "commits": [
-            {
-              "hash": "8d7d2c47",
-              "author": "2xdevv",
-              "email": "syk0905.kwon@gmail.com",
-              "date": "2026-10-01T02:28:00.000Z",
-              "message": "[Fix][NIXL] Fail store tasks atomically on pool exhaustion (#4271)\n\nFix NIXL static pool exhaustion handling\n\nSigned-off-by: 2xdevvv <syk0905.kwon@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 127,
-                "insertions": 116,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 12,
-                "total": 64
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 64,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 64,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -8678,8 +9458,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "nauta",
@@ -8717,8 +9497,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 40,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "PPg",
@@ -8756,8 +9536,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 34,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -12210,6 +12990,87 @@
           "tier_name": "Elite"
         },
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 287,
+          "commits": [
+            {
+              "hash": "b0b3567b",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-08T09:41:21.000Z",
+              "message": "[Refactor] Route pointer tensor construction through DeviceOps (#5541)\n\n* refactor: dispatch pointer tensors through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: keep copy library helper unchanged\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: avoid platform import cycle during device discovery\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 10,
+                "lines": 722,
+                "insertions": 388,
+                "deletions": 334
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "68a9c6b5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-09T10:27:31.000Z",
+              "message": "Add gRPC runtime metrics export (#5264)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 413,
+                "insertions": 407,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0356d9f5",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-09T06:57:18.000Z",
+              "message": "feat: step1-support pluggable MP server modules (#5159)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 18,
+                "lines": 1664,
+                "insertions": 1646,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 25,
+                "total": 100
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 95.66666666666667,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 287,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 3,
@@ -12293,10 +13154,10 @@
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 2,
+          "total_commits": 3,
           "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 174,
+          "simple_commits": 1,
+          "commit_score": 201,
           "commits": [
             {
               "hash": "4abc421a",
@@ -12339,36 +13200,258 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "0b5155d6",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-09T07:12:25.000Z",
+              "message": "[Bugfix][KV format] Detect the rank-4 DSA indexer cache as NL_X_NB_BSV_BSS (#5562)\n\nvLLM >= 0.29 drops the indexer backend's own (num_blocks, block_size, 132)\nshape and allocates the fp8 indexer cache through the MLA spec with a\nsingleton head axis, [NB, BS, 1, 132]. The vLLM detector's rank-4 rule\n(fused K/V rows) ran first, so the blocked [BS x vals | BS x scales] page\nlayout was copied as 132-byte token rows: exact only while a token keeps\nits block offset, scrambled for any CacheBlend hit shifted off the block\ngrid (GLM-5.2: recall 0.0 at 16k, correct at a 64-aligned shift).\n\nSqueeze the singleton head axis of a uint8 width-132 plane before the\nrank-4 rule so it reaches NL_X_NB_BSV_BSS as the rank-3 cache does.\n\nSigned-off-by: weishu <weishu@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 20,
+                "insertions": 19,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 87,
-          "significance_ratio": 1,
+          "avg_score": 67,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 174,
+          "total_score": 201,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
+          "name": "Chris Coleman",
+          "email": "christophercoleman2018@u.northwestern.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 167,
+          "commits": [
+            {
+              "hash": "17efd2e5",
+              "author": "Chris Coleman",
+              "email": "christophercoleman2018@u.northwestern.edu",
+              "date": "2026-10-07T22:59:14.000Z",
+              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 474,
+                "insertions": 339,
+                "deletions": 135
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ee68e5ba",
+              "author": "Chris Coleman",
+              "email": "chriscoleman@tensormesh.ai",
+              "date": "2026-10-09T21:30:54.000Z",
+              "message": "[CLI] Add evidence markers, RAGAS fields and an answer-match scorer to the QA quality modules (#5557)\n\nExtend engine_bench/quality/ with what a CacheBlend answer-quality\ncomparison needs beyond rag-qa-quality's token F1: which passages hold the\nanswer, the RAGAS hand-off record shape, and a scorer that accepts correct\nanswers phrased differently from the gold. Files that loaded before load\nthe same samples, and rag-qa-quality's prompts and scores are unchanged.\n\n- dataset.py: Sample.evidence_indices, filled from MuSiQue is_supporting,\n  HotpotQA supporting_facts (struct and pair forms) and\n  context_metadata[].gold, remapped when empty passages are dropped.\n  load_samples also reads retrieved_contexts, user_input, reference and\n  extra.answer_aliases, as fallbacks after the existing fields.\n- scoring.py: answer_match(prediction, references) accepts a normalized\n  whole-phrase match, or every gold number within 0.5%, with a power-of-1000\n  rescale only when either side names a scale (\"$11.588 billion\" matches\n  \"$11588.00\"; \"3,000\" does not match \"3\"). Bare years are ignored as\n  figures, typographic punctuation is folded to ASCII, hyphens count as\n  word breaks, and an abstaining answer never matches unless the gold is\n  itself a negative. is_abstention(prediction) detects \"not in the\n  passages\" refusals. Both are exported from quality/__init__.py and\n  documented as lexical screens: an LLM judge remains the reference\n  metric.\n- Docs: bench-engine.md and bench.rst list the RAGAS fields and evidence\n  markers.\n- Tests: TestLoadSamplesRagasHandoff, TestLoadSamplesEvidence,\n  TestAnswerMatch, TestIsAbstention.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 7,
+                "lines": 597,
+                "insertions": 579,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 167,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "2xdevv",
+          "email": "syk0905.kwon@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 151,
+          "commits": [
+            {
+              "hash": "8d7d2c47",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-10-01T02:28:00.000Z",
+              "message": "[Fix][NIXL] Fail store tasks atomically on pool exhaustion (#4271)\n\nFix NIXL static pool exhaustion handling\n\nSigned-off-by: 2xdevvv <syk0905.kwon@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 127,
+                "insertions": 116,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6448b447",
+              "author": "2xdevv",
+              "email": "syk0905.kwon@gmail.com",
+              "date": "2026-10-09T16:21:47.000Z",
+              "message": "[Feature][RawBlock] Enable fixed-buffer I/O for MP L1 memory (#4413)\n\n* [Feature][RawBlock] Enable fixed-buffer I/O for MP L1 memory\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n* [RawBlock] Expose fixed-buffer registration status\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\n\n---------\n\nSigned-off-by: Sangyoon Kwon <syk0905.kwon@samsung.com>\nCo-authored-by: Sangyoon Kwon <syk0905.kwon@samsung.com>",
+              "stats": {
+                "files": 11,
+                "lines": 1010,
+                "insertions": 921,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 151,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 145,
+          "commits": [
+            {
+              "hash": "28f35f86",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-09T18:53:52.000Z",
+              "message": "[Build] Remove hardcoded C++17 flags from PyTorch extensions (#5564)\n\nRemove C++17 hardcode\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 21,
+                "insertions": 8,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 2,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e8657413",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-09T09:10:00.000Z",
+              "message": "[Bugfix][ROCm] Clear pending HIP errors after host memory registratio… (#5565)\n\n[Bugfix][ROCm] Clear pending HIP errors after host memory registration failures\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 207,
+                "insertions": 133,
+                "deletions": 74
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9edec1df",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-09T06:34:29.000Z",
+              "message": "[Bugfix][Test] Stabilize the coordinator eviction loop test (#5566)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 11,
+                "insertions": 8,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 48.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 145,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "ruy-zhang",
+          "email": "128768105+ruy-zhang@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 100,
           "commits": [
             {
-              "hash": "b0b3567b",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-08T09:41:21.000Z",
-              "message": "[Refactor] Route pointer tensor construction through DeviceOps (#5541)\n\n* refactor: dispatch pointer tensors through device ops\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* refactor: keep copy library helper unchanged\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* fix: avoid platform import cycle during device discovery\n\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "hash": "ecb031a8",
+              "author": "ruy-zhang",
+              "email": "128768105+ruy-zhang@users.noreply.github.com",
+              "date": "2026-10-09T14:50:04.000Z",
+              "message": "feat: add native 3FS (HF3FS) L2 storage backend (#5131)\n\n* feat: add native 3FS (HF3FS) L2 storage backend\n\nAdd a native C++ 3FS L2 storage backend backed by the 3FS Usrbio API, exposed to Python through the Hf3fsL2Adapter and lmcache_hf3fs CppExtension.\n\n- Native C++ connector (connector.h/.cpp) built on the 3FS Usrbio API, supporting put/get/exists/remove with multi-worker I/O and async key-buffer lookups\n- sharded_flat_hash_set: concurrent sharded set built on absl::flat_hash_set for accelerated exists lookups\n- Hf3fsL2AdapterConfig + Hf3fsL2Adapter factory registration under the 'hf3fs' adapter type\n- hf3fs storage backend build profile (BUILD_WITH_HF3FS) with system Abseil dependency detection\n- Unit tests covering the adapter and connector behavior\n- User docs: hf3fs.rst guide, added to supported_storages and remote_and_distributed toctrees\n\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* fix(hf3fs): harden native 3FS connector I/O and concurrent exists\n\nImprove error handling and thread safety in the native 3FS (HF3FS) L2\nstorage backend.\n\n- read_file/write_file: fail fast on short read/write (cqe.result !=\n  requested length) instead of silently copying incomplete data\n- do_single_get/do_single_set: deregister and close the fd when a\n  read/write throws, preventing an fd leak on the error path\n- do_single_delete: log filesystem-error failures to stderr instead of\n  suppressing them\n- sharded_flat_hash_set: guard the Contains() read path with the shard\n  mutex to avoid a data race with concurrent inserts\n\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* bug fix: scan_and_build_buffer_ only scan part of base_paths\nwhen there are more base paths than workers\n\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* feat: align hf3fs key format to keys.h which includes object_group_id\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* modify copyright info according to maintainer feedback\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* [bug fix] fprintf compiling error\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n* Reslove the codespell errors\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\n\n---------\n\nSigned-off-by: Ruyi Zhang <ruyi.zhang@samsung.com>\nSigned-off-by: Wenwen-Chen <wenwen.chen@samsung.com>\nCo-authored-by: Wenwen Chen <wenwen.chen@samsung.com>\nCo-authored-by: Dongjoo Seo <commisori28@gmail.com>",
               "stats": {
-                "files": 10,
-                "lines": 722,
-                "insertions": 388,
-                "deletions": 334
+                "files": 12,
+                "lines": 2802,
+                "insertions": 2801,
+                "deletions": 1
               },
               "scores": {
                 "loc": 30,
@@ -12386,8 +13469,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 100,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Samuel Shen",
@@ -12425,8 +13508,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Yangyang Qian",
@@ -12468,24 +13551,24 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Chris Coleman",
-          "email": "christophercoleman2018@u.northwestern.edu",
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 87,
           "commits": [
             {
-              "hash": "17efd2e5",
-              "author": "Chris Coleman",
-              "email": "christophercoleman2018@u.northwestern.edu",
-              "date": "2026-10-07T22:59:14.000Z",
-              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "hash": "34d8027d",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-10-09T07:37:03.000Z",
+              "message": "[MUSA]: Add SmartIO muFile backend for MP GDS L1 (#5027)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
               "stats": {
                 "files": 8,
-                "lines": 474,
-                "insertions": 339,
-                "deletions": 135
+                "lines": 797,
+                "insertions": 765,
+                "deletions": 32
               },
               "scores": {
                 "loc": 30,
@@ -12505,6 +13588,123 @@
           "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
+        },
+        {
+          "name": "Junyuan",
+          "email": "jjysama@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "3ab00d25",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-10-09T06:49:37.000Z",
+              "message": "[MP][Ascend] NPU platform backends for LMCache-driven transfer (#5341)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: sunshine <72514768+larksudo@users.noreply.github.com>\nCo-authored-by: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-authored-by: larksudo <72514768+larksudo@users.noreply.github.com>",
+              "stats": {
+                "files": 18,
+                "lines": 2314,
+                "insertions": 2279,
+                "deletions": 35
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Mark Nelson",
+          "email": "mark.a.nelson@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "f64d535a",
+              "author": "Mark Nelson",
+              "email": "mark.a.nelson@gmail.com",
+              "date": "2026-10-09T01:58:12.000Z",
+              "message": "[Perf][CLI] Register only the selected command route at startup (#5542)\n\n* [CLI] Direct command registration by invocation route\n\nSigned-off-by: Mark Nelson <mark.a.nelson@gmail.com>\n\n* [CLI] Restore command discovery documentation\n\nSigned-off-by: Mark Nelson <mark.a.nelson@gmail.com>\n\n---------\n\nSigned-off-by: Mark Nelson <mark.a.nelson@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 453,
+                "insertions": 378,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 85,
+          "commits": [
+            {
+              "hash": "a0d4319b",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-09T07:01:48.000Z",
+              "message": "ci: add RBLN MP hardware smoke pipeline (#5543)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 13,
+                "lines": 532,
+                "insertions": 528,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "ai-jz",
@@ -12542,8 +13742,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 81,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "JH",
@@ -12581,8 +13781,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 78,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "seungrokj",
@@ -12620,8 +13820,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 73,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "yeyang-zhou",
@@ -12659,8 +13859,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "sssqqeer",
@@ -12698,8 +13898,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Charlie Fu",
@@ -12737,45 +13937,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 68,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "2xdevv",
-          "email": "syk0905.kwon@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 64,
-          "commits": [
-            {
-              "hash": "8d7d2c47",
-              "author": "2xdevv",
-              "email": "syk0905.kwon@gmail.com",
-              "date": "2026-10-01T02:28:00.000Z",
-              "message": "[Fix][NIXL] Fail store tasks atomically on pool exhaustion (#4271)\n\nFix NIXL static pool exhaustion handling\n\nSigned-off-by: 2xdevvv <syk0905.kwon@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 127,
-                "insertions": 116,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 12,
-                "total": 64
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 64,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 64,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -12893,8 +14054,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "nauta",
@@ -12932,8 +14093,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 40,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "PPg",
@@ -12971,20 +14132,20 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 34,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-09T00:30:18.877Z",
+    "analyzedAt": "2026-10-10T00:30:33.617Z",
     "daysBack": 2,
-    "totalCommits": 137,
-    "totalContributors": 66,
+    "totalCommits": 150,
+    "totalContributors": 69,
     "mergedFrom": {
-      "existing": 130,
-      "new": 11
+      "existing": 137,
+      "new": 20
     }
   }
 }
