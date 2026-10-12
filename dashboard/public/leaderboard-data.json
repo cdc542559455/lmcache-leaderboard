@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-11T00:30:33.490Z",
-  "total_commits_analyzed": 157,
+  "last_updated": "2026-10-12T00:30:22.694Z",
+  "total_commits_analyzed": 164,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -3941,10 +3941,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
+          "total_commits": 5,
           "significant_commits": 4,
-          "simple_commits": 0,
-          "commit_score": 368,
+          "simple_commits": 1,
+          "commit_score": 393,
           "commits": [
             {
               "hash": "b0b3567b",
@@ -4029,14 +4029,35 @@
                 "total": 81
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c019eb9f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-11T12:28:50.000Z",
+              "message": "l1: let L1Manager explicitly inherit L1ManagerInterface (#5645)\n\nThe Protocol is structural, so inheritance is not required, but declaring it\nmakes the contract visible at the implementation site instead of only at the\ncall sites. No behavior change.\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 7,
+                "insertions": 5,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 92,
-          "significance_ratio": 1,
+          "avg_score": 78.6,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 368,
+          "total_score": 393,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4404,6 +4425,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "jxj",
+          "email": "xinjun.jiang@daocloud.io",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 128,
+          "commits": [
+            {
+              "hash": "40ec5d1a",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-11T07:19:56.000Z",
+              "message": "[Bugfix][Operator] Preserve pod selector labels (#5636)\n\nSigned-off-by: xinjun.jiang <xinjun.jiang@daocloud.io>",
+              "stats": {
+                "files": 8,
+                "lines": 205,
+                "insertions": 197,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6f2b5d35",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-11T07:17:40.000Z",
+              "message": "fix(cli): preserve zero completion token counts (#5634)\n\nSigned-off-by: xinjun.jiang <xinjun.jiang@daocloud.io>",
+              "stats": {
+                "files": 4,
+                "lines": 94,
+                "insertions": 87,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 128,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "ruy-zhang",
           "email": "128768105+ruy-zhang@users.noreply.github.com",
           "total_commits": 1,
@@ -4595,8 +4676,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Qian Cao",
@@ -4617,6 +4698,45 @@
                 "lines": 304,
                 "insertions": 303,
                 "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "61e7afe1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-11T07:04:36.000Z",
+              "message": "feat(xpu): add native SYCL block transfer (#5408)\n\n* feat(xpu): add native SYCL block transfer\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix(xpu): support single-plane SGLang block layout\n\nTreat NL_X_NB_BS_NH_HS as kv_size=1 in SYCL block transfer layout validation.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 304,
+                "insertions": 302,
+                "deletions": 2
               },
               "scores": {
                 "loc": 30,
@@ -4911,6 +5031,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "zhongerdeajie",
+          "email": "1283667545@qq.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 63,
+          "commits": [
+            {
+              "hash": "dd1f1830",
+              "author": "zhongerdeajie",
+              "email": "1283667545@qq.com",
+              "date": "2026-10-10T09:44:36.000Z",
+              "message": "[Bugfix][Test] Stabilize the extra_stats throughput test with wall-clock timestamps (#5612)\n\n* test(mp_observability): anchor extra_stats throughput timestamps to wall clock\n\nFixes #4566\n\nThe two extra_stats throughput tests inject events with fabricated\nabsolute timestamps (100.0 / 200.0). The subscriber prunes pending\nSTARTs older than _PENDING_MAX_AGE_SECONDS (60s) against time.time()\n(_prune_pending), so those timestamps are always stale. _maybe_flush\nruns on every event; when a CI runner takes longer than the flush\ninterval between dispatching START and END, that flush prunes the\njust-registered pending START, the END no longer correlates, and the\nlogged throughput degrades to avg_copy=n/a, failing the assertion.\n\nAnchor the synthetic timestamps to time.time() so a fresh START can\nonly be pruned after a real 60s stall, and add a regression test\nparametrized over the store and retrieve pairs that forces a flush\nbetween START and END and asserts the pairing still produces the\nexpected throughput. Test-only change; production pruning behavior is\ncorrect and unchanged.\n\nLocal CPU-only validation (Windows, Python 3.13, torch 2.12 CPU):\nforced-flush reproduction fails on dev with the exact CI signature\n(avg_copy=n/a) and passes after the fix; full file 15 passed\n(14 existing + store/retrieve variants of the new regression test);\nruff check/format clean.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n* test(extra_stats): simplify comments per review\n\nAddress reviewer feedback: shorten the wall-clock comment to one line and\ndrop the docstring on the parametrized regression test.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n---------\n\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\nCo-authored-by: Claude Code <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 50,
+                "insertions": 46,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "eda289d4",
+              "author": "zhongerdeajie",
+              "email": "1283667545@qq.com",
+              "date": "2026-10-11T07:11:14.000Z",
+              "message": "[Bugfix] Read kv_caches from the manager in /cache/kvcache/info (#5622)\n\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\nCo-authored-by: Claude Code <noreply@anthropic.com>",
+              "stats": {
+                "files": 2,
+                "lines": 10,
+                "insertions": 4,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 31.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 63,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Xuetao Li",
           "email": "xuetaoli@apache.org",
           "total_commits": 1,
@@ -4946,8 +5126,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 61,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Hyukjoon Lee",
@@ -4985,8 +5165,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 54,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "nayeonikim",
@@ -5024,6 +5204,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 43,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "小粑",
+          "email": "87469867+xiaoba17@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "1c073646",
+              "author": "小粑",
+              "email": "87469867+xiaoba17@users.noreply.github.com",
+              "date": "2026-10-11T12:43:03.000Z",
+              "message": "lint: convert token dropping experiment logging to %-format (#5276)\n\nstyle(examples): use lazy logging in token dropping experiments\n\nSigned-off-by: xiaoba17 <1171065019@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 50,
+                "insertions": 31,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -5067,45 +5286,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "zhongerdeajie",
-          "email": "1283667545@qq.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 37,
-          "commits": [
-            {
-              "hash": "dd1f1830",
-              "author": "zhongerdeajie",
-              "email": "1283667545@qq.com",
-              "date": "2026-10-10T09:44:36.000Z",
-              "message": "[Bugfix][Test] Stabilize the extra_stats throughput test with wall-clock timestamps (#5612)\n\n* test(mp_observability): anchor extra_stats throughput timestamps to wall clock\n\nFixes #4566\n\nThe two extra_stats throughput tests inject events with fabricated\nabsolute timestamps (100.0 / 200.0). The subscriber prunes pending\nSTARTs older than _PENDING_MAX_AGE_SECONDS (60s) against time.time()\n(_prune_pending), so those timestamps are always stale. _maybe_flush\nruns on every event; when a CI runner takes longer than the flush\ninterval between dispatching START and END, that flush prunes the\njust-registered pending START, the END no longer correlates, and the\nlogged throughput degrades to avg_copy=n/a, failing the assertion.\n\nAnchor the synthetic timestamps to time.time() so a fresh START can\nonly be pruned after a real 60s stall, and add a regression test\nparametrized over the store and retrieve pairs that forces a flush\nbetween START and END and asserts the pairing still produces the\nexpected throughput. Test-only change; production pruning behavior is\ncorrect and unchanged.\n\nLocal CPU-only validation (Windows, Python 3.13, torch 2.12 CPU):\nforced-flush reproduction fails on dev with the exact CI signature\n(avg_copy=n/a) and passes after the fix; full file 15 passed\n(14 existing + store/retrieve variants of the new regression test);\nruff check/format clean.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n* test(extra_stats): simplify comments per review\n\nAddress reviewer feedback: shorten the wall-clock comment to one line and\ndrop the docstring on the parametrized regression test.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n---------\n\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\nCo-authored-by: Claude Code <noreply@anthropic.com>",
-              "stats": {
-                "files": 1,
-                "lines": 50,
-                "insertions": 46,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 15,
-                "files": 5,
-                "keyword": 12,
-                "ai": 5,
-                "total": 37
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 37,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 37,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "PPg",
           "email": "18649201011@163.com",
           "total_commits": 1,
@@ -5141,6 +5321,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 34,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "manojgop",
+          "email": "manoj.gopalakrishnan@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 25,
+          "commits": [
+            {
+              "hash": "5070f183",
+              "author": "manojgop",
+              "email": "manoj.gopalakrishnan@intel.com",
+              "date": "2026-10-11T16:04:31.000Z",
+              "message": "[Bugfix][CLI][L2 Bench] Use L1-relative memory object addresses (#4555)\n\nStore each L2 benchmark object's byte offset within the shared L1\nbuffer instead of its absolute virtual address. This matches the\naddress contract expected by NIXL adapters.\n\nAdd regression assertions that object metadata contains the expected\nbyte offsets within the registered L1 buffer.\n\nSigned-off-by: Manoj Gopalakrishnan <manoj.gopalakrishnan@intel.com>\nCo-authored-by: Zhengfei He <157287166+zhengfeihe@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 4,
+                "insertions": 3,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 25,
           "tier": "T3",
           "tier_name": "Contributing"
         }
@@ -8597,10 +8816,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
+          "total_commits": 5,
           "significant_commits": 4,
-          "simple_commits": 0,
-          "commit_score": 368,
+          "simple_commits": 1,
+          "commit_score": 393,
           "commits": [
             {
               "hash": "b0b3567b",
@@ -8685,14 +8904,35 @@
                 "total": 81
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c019eb9f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-11T12:28:50.000Z",
+              "message": "l1: let L1Manager explicitly inherit L1ManagerInterface (#5645)\n\nThe Protocol is structural, so inheritance is not required, but declaring it\nmakes the contract visible at the implementation site instead of only at the\ncall sites. No behavior change.\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 7,
+                "insertions": 5,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 92,
-          "significance_ratio": 1,
+          "avg_score": 78.6,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 368,
+          "total_score": 393,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9162,6 +9402,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "jxj",
+          "email": "xinjun.jiang@daocloud.io",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 128,
+          "commits": [
+            {
+              "hash": "40ec5d1a",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-11T07:19:56.000Z",
+              "message": "[Bugfix][Operator] Preserve pod selector labels (#5636)\n\nSigned-off-by: xinjun.jiang <xinjun.jiang@daocloud.io>",
+              "stats": {
+                "files": 8,
+                "lines": 205,
+                "insertions": 197,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6f2b5d35",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-11T07:17:40.000Z",
+              "message": "fix(cli): preserve zero completion token counts (#5634)\n\nSigned-off-by: xinjun.jiang <xinjun.jiang@daocloud.io>",
+              "stats": {
+                "files": 4,
+                "lines": 94,
+                "insertions": 87,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 128,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "ruy-zhang",
           "email": "128768105+ruy-zhang@users.noreply.github.com",
           "total_commits": 1,
@@ -9314,8 +9614,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Mark Nelson",
@@ -9414,6 +9714,45 @@
                 "lines": 304,
                 "insertions": 303,
                 "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "61e7afe1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-11T07:04:36.000Z",
+              "message": "feat(xpu): add native SYCL block transfer (#5408)\n\n* feat(xpu): add native SYCL block transfer\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix(xpu): support single-plane SGLang block layout\n\nTreat NL_X_NB_BS_NH_HS as kv_size=1 in SYCL block transfer layout validation.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 304,
+                "insertions": 302,
+                "deletions": 2
               },
               "scores": {
                 "loc": 30,
@@ -9665,8 +10004,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Charlie Fu",
@@ -9704,8 +10043,68 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 68,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "zhongerdeajie",
+          "email": "1283667545@qq.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 63,
+          "commits": [
+            {
+              "hash": "dd1f1830",
+              "author": "zhongerdeajie",
+              "email": "1283667545@qq.com",
+              "date": "2026-10-10T09:44:36.000Z",
+              "message": "[Bugfix][Test] Stabilize the extra_stats throughput test with wall-clock timestamps (#5612)\n\n* test(mp_observability): anchor extra_stats throughput timestamps to wall clock\n\nFixes #4566\n\nThe two extra_stats throughput tests inject events with fabricated\nabsolute timestamps (100.0 / 200.0). The subscriber prunes pending\nSTARTs older than _PENDING_MAX_AGE_SECONDS (60s) against time.time()\n(_prune_pending), so those timestamps are always stale. _maybe_flush\nruns on every event; when a CI runner takes longer than the flush\ninterval between dispatching START and END, that flush prunes the\njust-registered pending START, the END no longer correlates, and the\nlogged throughput degrades to avg_copy=n/a, failing the assertion.\n\nAnchor the synthetic timestamps to time.time() so a fresh START can\nonly be pruned after a real 60s stall, and add a regression test\nparametrized over the store and retrieve pairs that forces a flush\nbetween START and END and asserts the pairing still produces the\nexpected throughput. Test-only change; production pruning behavior is\ncorrect and unchanged.\n\nLocal CPU-only validation (Windows, Python 3.13, torch 2.12 CPU):\nforced-flush reproduction fails on dev with the exact CI signature\n(avg_copy=n/a) and passes after the fix; full file 15 passed\n(14 existing + store/retrieve variants of the new regression test);\nruff check/format clean.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n* test(extra_stats): simplify comments per review\n\nAddress reviewer feedback: shorten the wall-clock comment to one line and\ndrop the docstring on the parametrized regression test.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n---------\n\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\nCo-authored-by: Claude Code <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 50,
+                "insertions": 46,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "eda289d4",
+              "author": "zhongerdeajie",
+              "email": "1283667545@qq.com",
+              "date": "2026-10-11T07:11:14.000Z",
+              "message": "[Bugfix] Read kv_caches from the manager in /cache/kvcache/info (#5622)\n\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\nCo-authored-by: Claude Code <noreply@anthropic.com>",
+              "stats": {
+                "files": 2,
+                "lines": 10,
+                "insertions": 4,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 31.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 63,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Xuetao Li",
@@ -9825,6 +10224,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "小粑",
+          "email": "87469867+xiaoba17@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "1c073646",
+              "author": "小粑",
+              "email": "87469867+xiaoba17@users.noreply.github.com",
+              "date": "2026-10-11T12:43:03.000Z",
+              "message": "lint: convert token dropping experiment logging to %-format (#5276)\n\nstyle(examples): use lazy logging in token dropping experiments\n\nSigned-off-by: xiaoba17 <1171065019@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 50,
+                "insertions": 31,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "nauta",
           "email": "870284156@qq.com",
           "total_commits": 1,
@@ -9864,45 +10302,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "zhongerdeajie",
-          "email": "1283667545@qq.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 37,
-          "commits": [
-            {
-              "hash": "dd1f1830",
-              "author": "zhongerdeajie",
-              "email": "1283667545@qq.com",
-              "date": "2026-10-10T09:44:36.000Z",
-              "message": "[Bugfix][Test] Stabilize the extra_stats throughput test with wall-clock timestamps (#5612)\n\n* test(mp_observability): anchor extra_stats throughput timestamps to wall clock\n\nFixes #4566\n\nThe two extra_stats throughput tests inject events with fabricated\nabsolute timestamps (100.0 / 200.0). The subscriber prunes pending\nSTARTs older than _PENDING_MAX_AGE_SECONDS (60s) against time.time()\n(_prune_pending), so those timestamps are always stale. _maybe_flush\nruns on every event; when a CI runner takes longer than the flush\ninterval between dispatching START and END, that flush prunes the\njust-registered pending START, the END no longer correlates, and the\nlogged throughput degrades to avg_copy=n/a, failing the assertion.\n\nAnchor the synthetic timestamps to time.time() so a fresh START can\nonly be pruned after a real 60s stall, and add a regression test\nparametrized over the store and retrieve pairs that forces a flush\nbetween START and END and asserts the pairing still produces the\nexpected throughput. Test-only change; production pruning behavior is\ncorrect and unchanged.\n\nLocal CPU-only validation (Windows, Python 3.13, torch 2.12 CPU):\nforced-flush reproduction fails on dev with the exact CI signature\n(avg_copy=n/a) and passes after the fix; full file 15 passed\n(14 existing + store/retrieve variants of the new regression test);\nruff check/format clean.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n* test(extra_stats): simplify comments per review\n\nAddress reviewer feedback: shorten the wall-clock comment to one line and\ndrop the docstring on the parametrized regression test.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n---------\n\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\nCo-authored-by: Claude Code <noreply@anthropic.com>",
-              "stats": {
-                "files": 1,
-                "lines": 50,
-                "insertions": 46,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 15,
-                "files": 5,
-                "keyword": 12,
-                "ai": 5,
-                "total": 37
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 37,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 37,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "PPg",
           "email": "18649201011@163.com",
           "total_commits": 1,
@@ -9938,6 +10337,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 34,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "manojgop",
+          "email": "manoj.gopalakrishnan@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 25,
+          "commits": [
+            {
+              "hash": "5070f183",
+              "author": "manojgop",
+              "email": "manoj.gopalakrishnan@intel.com",
+              "date": "2026-10-11T16:04:31.000Z",
+              "message": "[Bugfix][CLI][L2 Bench] Use L1-relative memory object addresses (#4555)\n\nStore each L2 benchmark object's byte offset within the shared L1\nbuffer instead of its absolute virtual address. This matches the\naddress contract expected by NIXL adapters.\n\nAdd regression assertions that object metadata contains the expected\nbyte offsets within the registered L1 buffer.\n\nSigned-off-by: Manoj Gopalakrishnan <manoj.gopalakrishnan@intel.com>\nCo-authored-by: Zhengfei He <157287166+zhengfeihe@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 4,
+                "insertions": 3,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 25,
           "tier": "T3",
           "tier_name": "Contributing"
         }
@@ -13394,10 +13832,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 4,
+          "total_commits": 5,
           "significant_commits": 4,
-          "simple_commits": 0,
-          "commit_score": 368,
+          "simple_commits": 1,
+          "commit_score": 393,
           "commits": [
             {
               "hash": "b0b3567b",
@@ -13482,14 +13920,35 @@
                 "total": 81
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c019eb9f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-11T12:28:50.000Z",
+              "message": "l1: let L1Manager explicitly inherit L1ManagerInterface (#5645)\n\nThe Protocol is structural, so inheritance is not required, but declaring it\nmakes the contract visible at the implementation site instead of only at the\ncall sites. No behavior change.\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 7,
+                "insertions": 5,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 92,
-          "significance_ratio": 1,
+          "avg_score": 78.6,
+          "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 368,
+          "total_score": 393,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -13959,6 +14418,66 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "jxj",
+          "email": "xinjun.jiang@daocloud.io",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 128,
+          "commits": [
+            {
+              "hash": "40ec5d1a",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-11T07:19:56.000Z",
+              "message": "[Bugfix][Operator] Preserve pod selector labels (#5636)\n\nSigned-off-by: xinjun.jiang <xinjun.jiang@daocloud.io>",
+              "stats": {
+                "files": 8,
+                "lines": 205,
+                "insertions": 197,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6f2b5d35",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-11T07:17:40.000Z",
+              "message": "fix(cli): preserve zero completion token counts (#5634)\n\nSigned-off-by: xinjun.jiang <xinjun.jiang@daocloud.io>",
+              "stats": {
+                "files": 4,
+                "lines": 94,
+                "insertions": 87,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 128,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "ruy-zhang",
           "email": "128768105+ruy-zhang@users.noreply.github.com",
           "total_commits": 1,
@@ -14111,8 +14630,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Mark Nelson",
@@ -14211,6 +14730,45 @@
                 "lines": 304,
                 "insertions": 303,
                 "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "61e7afe1",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-11T07:04:36.000Z",
+              "message": "feat(xpu): add native SYCL block transfer (#5408)\n\n* feat(xpu): add native SYCL block transfer\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* fix(xpu): support single-plane SGLang block layout\n\nTreat NL_X_NB_BS_NH_HS as kv_size=1 in SYCL block transfer layout validation.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 304,
+                "insertions": 302,
+                "deletions": 2
               },
               "scores": {
                 "loc": 30,
@@ -14462,8 +15020,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 71,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Charlie Fu",
@@ -14501,8 +15059,68 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 68,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "zhongerdeajie",
+          "email": "1283667545@qq.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 63,
+          "commits": [
+            {
+              "hash": "dd1f1830",
+              "author": "zhongerdeajie",
+              "email": "1283667545@qq.com",
+              "date": "2026-10-10T09:44:36.000Z",
+              "message": "[Bugfix][Test] Stabilize the extra_stats throughput test with wall-clock timestamps (#5612)\n\n* test(mp_observability): anchor extra_stats throughput timestamps to wall clock\n\nFixes #4566\n\nThe two extra_stats throughput tests inject events with fabricated\nabsolute timestamps (100.0 / 200.0). The subscriber prunes pending\nSTARTs older than _PENDING_MAX_AGE_SECONDS (60s) against time.time()\n(_prune_pending), so those timestamps are always stale. _maybe_flush\nruns on every event; when a CI runner takes longer than the flush\ninterval between dispatching START and END, that flush prunes the\njust-registered pending START, the END no longer correlates, and the\nlogged throughput degrades to avg_copy=n/a, failing the assertion.\n\nAnchor the synthetic timestamps to time.time() so a fresh START can\nonly be pruned after a real 60s stall, and add a regression test\nparametrized over the store and retrieve pairs that forces a flush\nbetween START and END and asserts the pairing still produces the\nexpected throughput. Test-only change; production pruning behavior is\ncorrect and unchanged.\n\nLocal CPU-only validation (Windows, Python 3.13, torch 2.12 CPU):\nforced-flush reproduction fails on dev with the exact CI signature\n(avg_copy=n/a) and passes after the fix; full file 15 passed\n(14 existing + store/retrieve variants of the new regression test);\nruff check/format clean.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n* test(extra_stats): simplify comments per review\n\nAddress reviewer feedback: shorten the wall-clock comment to one line and\ndrop the docstring on the parametrized regression test.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n---------\n\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\nCo-authored-by: Claude Code <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 50,
+                "insertions": 46,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "eda289d4",
+              "author": "zhongerdeajie",
+              "email": "1283667545@qq.com",
+              "date": "2026-10-11T07:11:14.000Z",
+              "message": "[Bugfix] Read kv_caches from the manager in /cache/kvcache/info (#5622)\n\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\nCo-authored-by: Claude Code <noreply@anthropic.com>",
+              "stats": {
+                "files": 2,
+                "lines": 10,
+                "insertions": 4,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 31.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 63,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Xuetao Li",
@@ -14622,6 +15240,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "小粑",
+          "email": "87469867+xiaoba17@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 42,
+          "commits": [
+            {
+              "hash": "1c073646",
+              "author": "小粑",
+              "email": "87469867+xiaoba17@users.noreply.github.com",
+              "date": "2026-10-11T12:43:03.000Z",
+              "message": "lint: convert token dropping experiment logging to %-format (#5276)\n\nstyle(examples): use lazy logging in token dropping experiments\n\nSigned-off-by: xiaoba17 <1171065019@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 50,
+                "insertions": 31,
+                "deletions": 19
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 42,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "nauta",
           "email": "870284156@qq.com",
           "total_commits": 1,
@@ -14657,45 +15314,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 40,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "zhongerdeajie",
-          "email": "1283667545@qq.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 37,
-          "commits": [
-            {
-              "hash": "dd1f1830",
-              "author": "zhongerdeajie",
-              "email": "1283667545@qq.com",
-              "date": "2026-10-10T09:44:36.000Z",
-              "message": "[Bugfix][Test] Stabilize the extra_stats throughput test with wall-clock timestamps (#5612)\n\n* test(mp_observability): anchor extra_stats throughput timestamps to wall clock\n\nFixes #4566\n\nThe two extra_stats throughput tests inject events with fabricated\nabsolute timestamps (100.0 / 200.0). The subscriber prunes pending\nSTARTs older than _PENDING_MAX_AGE_SECONDS (60s) against time.time()\n(_prune_pending), so those timestamps are always stale. _maybe_flush\nruns on every event; when a CI runner takes longer than the flush\ninterval between dispatching START and END, that flush prunes the\njust-registered pending START, the END no longer correlates, and the\nlogged throughput degrades to avg_copy=n/a, failing the assertion.\n\nAnchor the synthetic timestamps to time.time() so a fresh START can\nonly be pruned after a real 60s stall, and add a regression test\nparametrized over the store and retrieve pairs that forces a flush\nbetween START and END and asserts the pairing still produces the\nexpected throughput. Test-only change; production pruning behavior is\ncorrect and unchanged.\n\nLocal CPU-only validation (Windows, Python 3.13, torch 2.12 CPU):\nforced-flush reproduction fails on dev with the exact CI signature\n(avg_copy=n/a) and passes after the fix; full file 15 passed\n(14 existing + store/retrieve variants of the new regression test);\nruff check/format clean.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n* test(extra_stats): simplify comments per review\n\nAddress reviewer feedback: shorten the wall-clock comment to one line and\ndrop the docstring on the parametrized regression test.\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\n\n---------\n\nSigned-off-by: zhongerdeajie <1283667545@qq.com>\nCo-authored-by: Claude Code <noreply@anthropic.com>",
-              "stats": {
-                "files": 1,
-                "lines": 50,
-                "insertions": 46,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 15,
-                "files": 5,
-                "keyword": 12,
-                "ai": 5,
-                "total": 37
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 37,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 37,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -14737,18 +15355,57 @@
           "total_score": 34,
           "tier": "T3",
           "tier_name": "Contributing"
+        },
+        {
+          "name": "manojgop",
+          "email": "manoj.gopalakrishnan@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 25,
+          "commits": [
+            {
+              "hash": "5070f183",
+              "author": "manojgop",
+              "email": "manoj.gopalakrishnan@intel.com",
+              "date": "2026-10-11T16:04:31.000Z",
+              "message": "[Bugfix][CLI][L2 Bench] Use L1-relative memory object addresses (#4555)\n\nStore each L2 benchmark object's byte offset within the shared L1\nbuffer instead of its absolute virtual address. This matches the\naddress contract expected by NIXL adapters.\n\nAdd regression assertions that object metadata contains the expected\nbyte offsets within the registered L1 buffer.\n\nSigned-off-by: Manoj Gopalakrishnan <manoj.gopalakrishnan@intel.com>\nCo-authored-by: Zhengfei He <157287166+zhengfeihe@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 4,
+                "insertions": 3,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 25,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 25,
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-11T00:30:33.490Z",
+    "analyzedAt": "2026-10-12T00:30:22.694Z",
     "daysBack": 2,
-    "totalCommits": 157,
-    "totalContributors": 72,
+    "totalCommits": 164,
+    "totalContributors": 74,
     "mergedFrom": {
-      "existing": 150,
-      "new": 20
+      "existing": 157,
+      "new": 14
     }
   }
 }
