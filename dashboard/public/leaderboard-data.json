@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-12T00:30:22.694Z",
-  "total_commits_analyzed": 164,
+  "last_updated": "2026-10-13T00:30:26.678Z",
+  "total_commits_analyzed": 173,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -5363,6 +5363,341 @@
           "tier": "T3",
           "tier_name": "Contributing"
         }
+      ],
+      "2026-W42": [
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 121,
+          "commits": [
+            {
+              "hash": "762df68a",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-12T08:42:46.000Z",
+              "message": "[SGLang] Support engine driven (#5549)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 466,
+                "insertions": 358,
+                "deletions": 108
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6d1aa31a",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-12T08:15:36.000Z",
+              "message": "[Bugfix] Wait for event before engine-driven retrieve (#5668)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 49,
+                "insertions": 48,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 60.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 121,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "86631c15",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-12T21:47:48.000Z",
+              "message": "[Coordinator][observability] Measure cache-event loss per MP server (#5560)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1092,
+                "insertions": 1004,
+                "deletions": 88
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "160b6dec",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-12T06:22:08.000Z",
+              "message": "[Security][MP] Remove pickle from device IPC descriptors (CVE-2026-105192) (#5644)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 730,
+                "insertions": 665,
+                "deletions": 65
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 80,
+          "commits": [
+            {
+              "hash": "e59829cd",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-12T15:09:51.000Z",
+              "message": "[MP] Stream CPU KV events for eviction-aware routing (#5307)\n\n* [feat][mp] publish host-cache evictions and server-side stores as KV events\n\nFollow-up to #5076 (refs #3661). The MP server records the storage\nlayer's key events (L1 write completions and evictions, L2 stores and\ndeletes) in a bounded, sequenced log served by the new POLL_KV_EVENTS\nrequest. The vLLM worker adapter polls it without blocking the step and\npublishes BlockStored / BlockRemoved events with the CPU / STORAGE media,\nso a KV-aware router (Dynamo) drops evicted host-cache placements and\nlearns stores made through the server, including by other engines.\n\nWhile the log is polled, the server's write-finished records are the\nonly source of store announcements: a store result only says the request\nfinished without a fatal error, and chunks the server could not reserve\nare skipped silently. Removals are published only for announced chunks;\na server restart or lost events withdraw every announced placement.\nTensor-parallel batches merge as an order-preserving union instead of\nvLLM's per-step intersection, which loses events under completion skew.\nThe MQ server drops request types it does not define instead of dying.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* fix(mp): one KV event publisher per server, and gate polling on capability\n\nTwo defects in the KV event channel, both found by review and reproduced\nend to end.\n\nEvery rank attached to a server polled its event log, so the same\nBlockRemoved reached the router from different ranks in different steps.\nA KV-aware router aborts the rest of a removal batch on a block it does\nnot hold, unlike a repeated store, so this produced block_not_found\nstatuses. Exactly one rank per server now polls, while every rank\nattached to an advertising server stops announcing its own stores, so the\nengine has a single publisher.\n\nA server that predates POLL_KV_EVENTS decodes the request-type frame\noutside any try in its request loop, so one poll aborted that loop for\nevery engine attached to it. The timeout branch could not catch this\nbecause it requires is_healthy and pings die in the same loop. A worker\nnow polls only a server that advertises kv_events through\nGET_EXPERIMENTAL, and falls back to announcing its own completed stores\notherwise, exactly as #5076 does.\n\nAlso corrects the aggregator rationale in the docs: vLLM counts only the\nranks that reported in a step, so skew drops events rather than\nduplicating them.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* refactor(mp): drop defensive handling the capability gate makes dead\n\nThe KV event channel carried guards for situations it can no longer\nreach, and a few that never happen. Removing them shrinks the change\nwithout touching any guarantee.\n\nThe MQ loop hardening leaves this branch entirely: the capability gate is\nthis feature's version-skew fix, and hardening the loop against unknown\nrequest types affects every request type, so it belongs in its own PR.\nThe MP_TOKENS compatibility branch goes with it, since the only publisher\nof that event ships in this repository and always sets parent hashes.\n\nOn the worker, the poll page size becomes a constant rather than a knob\nnobody tunes, and the guards around issuing a poll collapse into the\nexcept that already disables polling: both shipped clients implement the\nrequest, and the response type is fixed by the protocol definition. The\nstore-event re-check was vacuous, because nothing enqueues while the\nserver's log is the source. In the connector, argument validation\ninherited from vLLM's aggregator goes away, as both callers pass a\nliteral and a real list, and the merge no longer guards against\nunhashable events, which neither published event type can be.\n\nAlso documents in-process KV cache events accurately: that mode publishes\nstores only, and emits a lowercase, non-canonical medium, which the page\ncontradicted.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* refactor(mp): shrink the first PR to the eviction channel\n\nDefers what is separable so the reviewable change is the channel itself.\n\nThe gRPC contract leaves this branch: the capability is now advertised on\nthe ZMQ transport only, because the gRPC client derives its methods from\nthe generated service descriptors and does not carry this request yet. A\ngRPC deployment therefore keeps #5076 behavior instead of resolving the\nrequest to a Protocol stub and silently publishing nothing.\n\nThe protocol definition folds into the existing observability module,\nwhich already carries the other event-reporting request, and the operator\nknobs move into the MP configuration page beside the settings they sit\nwith, replacing a page of their own.\n\nThe wire record drops block_size: the worker already holds the server's\nchunk size from the chunk-size query, and the two cannot diverge within a\nserver process. The design doc keeps its rationale and loses the prose\nthat repeated the code.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* refactor(mp): keep this PR to the channel itself\n\nMoves the in-process KV events documentation fix to its own change, since\nit corrects a different mode and has no bearing on this channel. Reverts\ngenerated protobuf stub drift, and collapses a polling test that triggered\nthe same path as its neighbour.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* fix(mp): preserve eviction updates and consolidate event handling\n\nMove the KV event log and subscriber into ManagementModule and merge worker\nevents directly in the MP connector. Reuse the existing transport, config\ndefault, and connector tests; replace token-binding wrappers with tuples.\n\nPreserve store/remove/store transitions and withdraw announced placements\nwhen polling fails. Start the existing worker heartbeat when events are\npolled and document that idle delivery waits for engine steps.\n\nValidation:\n- MP/observability/adapter/connector regression: 1,383 passed, 14 skipped,\n  39 deselected.\n- Serving-runtime connector tests: 48 passed.\n- Dynamo TP=2 E2E: all nine checks passed, 6/6 correct routes with full hits,\n  zero event-application errors, using vLLM without a companion patch.\n- Applicable pre-commit checks passed; Sphinx completed with the same\n  31 unrelated baseline diagnostics.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Minimize CPU eviction routing changes\n\nKeep KVEventAggregator and its existing bookkeeping, with an ordered batch\nbuffer for eviction transitions. Scope routing events to CPU/L1 and defer L2.\nKeep the bounded event deque and callbacks directly in ManagementModule.\n\nReuse existing documentation and test files, and replace the fake polling\nserver with MessagingFuture. Preserve buffer metrics and withdrawal after\nrestart, event loss, or polling failure.\n\nValidation:\n- Regression: 1,478 passed, 15 skipped, 39 deselected.\n- Serving-runtime management and connector tests: 74 passed.\n- Dynamo TP=2 E2E: all nine checks passed; 6/6 correct routes with full hits\n  and zero event errors, without a vLLM companion patch.\n- Applicable pre-commit checks passed; Sphinx completed with the same\n  30 existing diagnostics.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Stream CPU KV events over ZMQ and gRPC\n\nReplace periodic KV-event fetches with persistent subscriptions backed by\nthe existing event bus and bounded replay log. Keep ordinary request workers\navailable while subscriptions are idle, and bound ZMQ in-flight batches\nthrough acknowledgments.\n\nReceive events into the existing worker buffer, preserving its metrics,\nordered aggregation, and withdrawal after loss, restart, or disconnect.\nReuse existing files and document vLLM's engine-step publishing boundary.\n\nValidation:\n- Selected regression: 1,497 passed, 13 skipped.\n- Dynamo/ZMQ and llm-d/gRPC: 6/6 full-hit routes each, zero event errors.\n- llm-d verified 3,000 CPU-cache chunk reads after GPU eviction.\n- ZMQ transport tests: 24 passed.\n- Full repository non-Rust pre-commit checks passed.\n- Sphinx retains 30 existing warnings.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Reuse RPC validation and gRPC dispatch for event streams\n\nUse the shared RPC handler validator and existing gRPC dispatch path for\nKV-event subscriptions. Derive streaming behavior from gRPC callables and\nprotobuf descriptors instead of duplicating flags in transport metadata.\n\nRemove the obsolete ZMQ wire-ID comment and fix merge-introduced whitespace\nin MP configuration. Preserve event-driven delivery on both transports.\n\nValidation:\n- Transport, contract, management, and request-server tests: 83 passed.\n- ZMQ, transport factory, future, and worker-adapter tests: 145 passed.\n- Full repository non-Rust pre-commit checks passed.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Separate KV event handling from management\n\nMove CPU event recording, replay, token bindings, and subscriptions into\nKVEventModule. Reuse InstanceLivenessTarget hooks for heartbeat refresh and\ncleanup by management's existing reaper. Subscription expiry closes only\nthe stream and preserves the worker's cache registrations.\n\nWire capability advertisement, status reporting, and shutdown ordering\nthrough the server compositor. Update module documentation and tests while\npreserving ZMQ and gRPC event delivery.\n\nValidation:\n- Focused module and transport tests: 97 passed.\n- Transport, worker, connector, and event-bus regression: 197 passed.\n- Full repository non-Rust pre-commit checks passed.\n- Clean Sphinx build completed with 30 existing warnings.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Trim KV event worker state and configuration\n\nRemove the unused worker replay cursor: subscriptions always start at zero\nafter withdrawing prior announcements. Inline the metric reason labels while\npreserving their initialization, and accept event sequences to avoid copying\nthe completed-store list.\n\nRemove the per-worker stream override. Workers subscribe when vLLM KV events\nare enabled and the server advertises support; the server's log-size setting\ncontrols channel disablement. Keep fallback reporting for unsupported servers.\n\nValidation:\n- Worker, connector, subscription, and server-wiring tests: 152 passed.\n- Full repository non-Rust pre-commit checks passed.\n- Clean Sphinx build completed with 30 existing warnings.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 34,
+                "lines": 1863,
+                "insertions": 1737,
+                "deletions": 126
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 80,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 80,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "93cb69ce",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-12T21:34:45.000Z",
+              "message": "Revert \"Update SECURITY.md (#5677)\" (#5680)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 83,
+                "insertions": 3,
+                "deletions": 80
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Nicolas (Nick) Barcet",
+          "email": "nijaba@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "3e11e108",
+              "author": "Nicolas (Nick) Barcet",
+              "email": "nijaba@tensormesh.ai",
+              "date": "2026-10-12T20:28:11.000Z",
+              "message": "Update SECURITY.md (#5677)\n\nFollwowing up on the published CVE without our knowledge last week, we need to completely revise our process.  This is a proposed revision, let's discuss before merging.\n\nSigned-off-by: Nicolas (Nick) Barcet <nijaba@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 83,
+                "insertions": 80,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "awsyshah",
+          "email": "131969794+awsyshah@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 37,
+          "commits": [
+            {
+              "hash": "110caf52",
+              "author": "awsyshah",
+              "email": "131969794+awsyshah@users.noreply.github.com",
+              "date": "2026-10-12T15:14:43.000Z",
+              "message": "fix: return [None] from BytesBufferMemoryObj.get_dtypes (#5322)\n\nBytesBufferMemoryObj.get_shapes() returns one shape but get_dtypes()\nreturned []. RemoteMetadata._prepare_params() zips shapes and dtypes\nwith strict=True, so any byte-buffer serde (e.g. cachegen) over a remote\nconnector such as fs raised \"zip() argument 2 is shorter than argument 1\"\non every put.\n\nReturn [None] instead so the dtypes list is parallel to get_shapes()\n(one entry per shape). None encodes via DTYPE_TO_INT[None] == 0 and\nround-trips through INT_TO_DTYPE[0], so the metadata serializes and\ndeserializes correctly for a raw byte buffer.\n\nAdd regression tests covering the shapes/dtypes cardinality and the\nRemoteMetadata None-dtype round-trip that mirrors the fs connector's put.\n\nSigned-off-by: Yomesh Shah <yomesh@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 41,
+                "insertions": 40,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 15,
+                "ai": 4,
+                "total": 37
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 37,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Prajjwal Chittori",
+          "email": "prajjwal@ether.fi",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "ce56d95a",
+              "author": "Prajjwal Chittori",
+              "email": "prajjwal@ether.fi",
+              "date": "2026-10-12T21:27:45.000Z",
+              "message": "Fix KeyError on lookup_cache re-query after async lookup timeout (#3766)\n\n* Fix KeyError on lookup_cache re-query after async lookup timeout\n\nWhen an async lookup times out, lookup_cache() pops the request's\nfirst_lookup_time entry but leaves reqs_status[lookup_id] as None\n(still pending). A subsequent lookup_cache() for the same id re-enters\nthe 'ongoing' branch and indexes self.first_lookup_time[lookup_id]\ndirectly, raising KeyError and bringing vLLM down (observed when nixl\nand enable_async_loading are configured together).\n\nTreat a missing first_lookup_time the same as an expired one, so the\nrequest reports a cache miss (0) and vLLM recomputes instead of crashing.\n\nAdds a regression test that drives the timeout-then-requery sequence\nthrough the public lookup_cache interface.\n\nSigned-off-by: Prajjwal Chittori <adobearakap@gmail.com>\n\n* Drop regression test and explanatory comment per review\n\nSigned-off-by: Prajjwal Chittori <adobearakap@gmail.com>\n\n---------\n\nSigned-off-by: Prajjwal Chittori <adobearakap@gmail.com>\nCo-authored-by: Prajjwal Chittori <adobearakap@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 4,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -8672,10 +9007,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 6,
-          "significant_commits": 6,
+          "total_commits": 7,
+          "significant_commits": 7,
           "simple_commits": 0,
-          "commit_score": 485,
+          "commit_score": 572,
           "commits": [
             {
               "hash": "1ca53a8a",
@@ -8802,24 +9137,45 @@
                 "total": 64
               },
               "classification": "significant"
+            },
+            {
+              "hash": "86631c15",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-12T21:47:48.000Z",
+              "message": "[Coordinator][observability] Measure cache-event loss per MP server (#5560)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1092,
+                "insertions": 1004,
+                "deletions": 88
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 80.83333333333333,
+          "avg_score": 81.71428571428571,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 485,
+          "total_score": 572,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 5,
-          "significant_commits": 4,
+          "total_commits": 6,
+          "significant_commits": 5,
           "simple_commits": 1,
-          "commit_score": 393,
+          "commit_score": 480,
           "commits": [
             {
               "hash": "b0b3567b",
@@ -8925,24 +9281,45 @@
                 "total": 25
               },
               "classification": "simple"
+            },
+            {
+              "hash": "160b6dec",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-12T06:22:08.000Z",
+              "message": "[Security][MP] Remove pickle from device IPC descriptors (CVE-2026-105192) (#5644)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 730,
+                "insertions": 665,
+                "deletions": 65
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 78.6,
-          "significance_ratio": 0.8,
+          "avg_score": 80,
+          "significance_ratio": 0.8333333333333334,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 393,
+          "total_score": 480,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 3,
+          "total_commits": 4,
+          "significant_commits": 4,
           "simple_commits": 0,
-          "commit_score": 261,
+          "commit_score": 341,
           "commits": [
             {
               "hash": "e9ff3463",
@@ -9006,219 +9383,18 @@
                 "total": 87
               },
               "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 261,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "weishu",
-          "email": "838677410@qq.com",
-          "total_commits": 4,
-          "significant_commits": 2,
-          "simple_commits": 2,
-          "commit_score": 227,
-          "commits": [
-            {
-              "hash": "4abc421a",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-02T15:40:58.000Z",
-              "message": "[cb] Best-effort whole-chunk L2 loading: whole-column staging + partial-chunk handling (#5434)\n\n* [Bugfix][Blend] A partially loaded chunk is not stale: no strike, release its locks\n\nThe sparse leg's prefetch is best-effort: under L1 pressure the prefetch\ncontroller loads what fits, so a chunk can come back with some of its\n(read group x rank) keys loaded and the rest not. _sparse_classify\nalready (correctly) refuses to blend such a chunk, but it then handled\nit as if the chunk were gone from storage:\n\n1. It took a stale strike, and at 2 strikes the chunk was removed from\n   the fingerprint index permanently -- for content that is still stored\n   and merely did not fit L1 at that moment. Under sustained L1 pressure\n   this guts the index and the blend hit rate never recovers.\n\n2. Its loaded keys stayed read-locked for the read TTL (300 s default).\n   Only found chunks are stashed for the retrieve/release path, so a\n   partial chunk's landed rows were locked for a caller that can never\n   use them, deepening the very L1 pressure that caused the shortfall.\n\nClassify such chunks as partial: no strike (the strike path is kept for\nchunks with NO rows loaded -- those are genuinely gone), and release the\nlanded keys' whole reservation immediately.\n\nBlend-module only; the prefetch controller and \"full\"-policy semantics\nare unchanged (other \"full\" callers -- warm prefetch, P2P -- legitimately\nconsume per-row gaps).\n\nMeasured on GLM-5.2-FP8 TP8, 750-permutation blend workload, 100 GB L1 +\nfs_native L2, where reservation shortfalls made partial chunks routine.\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 11,
-                "lines": 502,
-                "insertions": 462,
-                "deletions": 40
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
             },
             {
-              "hash": "f95b576f",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-06T18:02:13.000Z",
-              "message": "[Feat]  support for Re-RoPE   KV caches (per-tensor e4m3/e5m2) (#5500)\n\n* [Feat][Blend] Re-RoPE fp8 KV caches (per-tensor e4m3/e5m2)\n\nvLLM allocates --kv-cache-dtype fp8 KV as uint8, which the retrieve-plan\nbuilder could not map to a rope scalar type: every plan came back None,\nso every fp8 request raised \"native plan unavailable\" and degraded to\nfull recompute. The blend did nothing while still paying its overhead.\n\nThe fix threads the fp8 flavor end to end:\n\n- CB_REGISTER_ROPE gains a trailing, defaulted kv_quant payload\n  (\"fp8_e4m3\" / \"fp8_e5m2\"; \"\" keeps today's behavior) stored on\n  _CBRopeState. The buffer dtype alone cannot name the bit layout.\n- The plan builder resolves uint8 K planes through the declared flavor\n  (and true float8 torch dtypes directly), and passes the cos/sin\n  cache's own scalar type: under fp8 KV the cache stays in the model's\n  float dtype, so CBGroupSpec now carries cache_scalar_type (defaulted\n  to key_scalar_type for older planners).\n- The fused ramp rope kernel is templated on key and cache types and\n  dequantizes -> rotates -> requantizes fp8 keys. No scale is involved:\n  rotation commutes with the per-tensor scale, which is identical on\n  input and output. Homogeneous instantiations keep their exact\n  pre-change numerics (the conversion helper is the identity there).\n\nScope: legacy-geometry (standard attention) models. Under a declared\nrope map, rot_for_group still skips non-float kernel groups — a\nquantized index side-plane and quantized main KV are indistinguishable\nby dtype there, so fp8 MLA/GLM stays out of scope.\n\nTested: dequant-rotate-requant parity against a per-op bf16-rounded\nreference through execute_cb_retrieve_plan_flat on H200, scalar-type\nresolution units, and the existing rope/plan/retrieve/store suites.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Inline the key-scalar resolution; one-line kv_quant docs\n\nReview follow-ups on #5500: fold _cb_key_at_scalar into its only call\nsite in the plan builder, pin the flavor maps in the test instead, and\ncut the kv_quant field/arg comments to one line.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Reuse the dispatch machinery; drop the speculative float8 map\n\nMinimize per review: the fused-rope launcher nests an\nLMC_DISPATCH_ROPE_KEY_TYPES switch (floating + fp8 cases) instead of a\nhand-rolled helper and if-chain; the true-float8-dtype map goes (vLLM\nallocates fp8 KV as uint8 — no caller); kv_quant validation keys off\n_FP8_FLAVOR_TO_AT_SCALAR instead of a literal.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the rope_cvt comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the v3 alias comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Apply isort and clang-format from the code-quality hooks\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Tighten the fp8 rope comments\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Add kv_quant to CbRegisterRopeRequest\n\nThe gRPC transport derives its surface from the proto descriptors, so\nthe 8-payload cb_register_rope contract needs the matching field; the\n_proto_gen stubs regenerate at build time.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "e59829cd",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-12T15:09:51.000Z",
+              "message": "[MP] Stream CPU KV events for eviction-aware routing (#5307)\n\n* [feat][mp] publish host-cache evictions and server-side stores as KV events\n\nFollow-up to #5076 (refs #3661). The MP server records the storage\nlayer's key events (L1 write completions and evictions, L2 stores and\ndeletes) in a bounded, sequenced log served by the new POLL_KV_EVENTS\nrequest. The vLLM worker adapter polls it without blocking the step and\npublishes BlockStored / BlockRemoved events with the CPU / STORAGE media,\nso a KV-aware router (Dynamo) drops evicted host-cache placements and\nlearns stores made through the server, including by other engines.\n\nWhile the log is polled, the server's write-finished records are the\nonly source of store announcements: a store result only says the request\nfinished without a fatal error, and chunks the server could not reserve\nare skipped silently. Removals are published only for announced chunks;\na server restart or lost events withdraw every announced placement.\nTensor-parallel batches merge as an order-preserving union instead of\nvLLM's per-step intersection, which loses events under completion skew.\nThe MQ server drops request types it does not define instead of dying.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* fix(mp): one KV event publisher per server, and gate polling on capability\n\nTwo defects in the KV event channel, both found by review and reproduced\nend to end.\n\nEvery rank attached to a server polled its event log, so the same\nBlockRemoved reached the router from different ranks in different steps.\nA KV-aware router aborts the rest of a removal batch on a block it does\nnot hold, unlike a repeated store, so this produced block_not_found\nstatuses. Exactly one rank per server now polls, while every rank\nattached to an advertising server stops announcing its own stores, so the\nengine has a single publisher.\n\nA server that predates POLL_KV_EVENTS decodes the request-type frame\noutside any try in its request loop, so one poll aborted that loop for\nevery engine attached to it. The timeout branch could not catch this\nbecause it requires is_healthy and pings die in the same loop. A worker\nnow polls only a server that advertises kv_events through\nGET_EXPERIMENTAL, and falls back to announcing its own completed stores\notherwise, exactly as #5076 does.\n\nAlso corrects the aggregator rationale in the docs: vLLM counts only the\nranks that reported in a step, so skew drops events rather than\nduplicating them.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* refactor(mp): drop defensive handling the capability gate makes dead\n\nThe KV event channel carried guards for situations it can no longer\nreach, and a few that never happen. Removing them shrinks the change\nwithout touching any guarantee.\n\nThe MQ loop hardening leaves this branch entirely: the capability gate is\nthis feature's version-skew fix, and hardening the loop against unknown\nrequest types affects every request type, so it belongs in its own PR.\nThe MP_TOKENS compatibility branch goes with it, since the only publisher\nof that event ships in this repository and always sets parent hashes.\n\nOn the worker, the poll page size becomes a constant rather than a knob\nnobody tunes, and the guards around issuing a poll collapse into the\nexcept that already disables polling: both shipped clients implement the\nrequest, and the response type is fixed by the protocol definition. The\nstore-event re-check was vacuous, because nothing enqueues while the\nserver's log is the source. In the connector, argument validation\ninherited from vLLM's aggregator goes away, as both callers pass a\nliteral and a real list, and the merge no longer guards against\nunhashable events, which neither published event type can be.\n\nAlso documents in-process KV cache events accurately: that mode publishes\nstores only, and emits a lowercase, non-canonical medium, which the page\ncontradicted.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* refactor(mp): shrink the first PR to the eviction channel\n\nDefers what is separable so the reviewable change is the channel itself.\n\nThe gRPC contract leaves this branch: the capability is now advertised on\nthe ZMQ transport only, because the gRPC client derives its methods from\nthe generated service descriptors and does not carry this request yet. A\ngRPC deployment therefore keeps #5076 behavior instead of resolving the\nrequest to a Protocol stub and silently publishing nothing.\n\nThe protocol definition folds into the existing observability module,\nwhich already carries the other event-reporting request, and the operator\nknobs move into the MP configuration page beside the settings they sit\nwith, replacing a page of their own.\n\nThe wire record drops block_size: the worker already holds the server's\nchunk size from the chunk-size query, and the two cannot diverge within a\nserver process. The design doc keeps its rationale and loses the prose\nthat repeated the code.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* refactor(mp): keep this PR to the channel itself\n\nMoves the in-process KV events documentation fix to its own change, since\nit corrects a different mode and has no bearing on this channel. Reverts\ngenerated protobuf stub drift, and collapses a polling test that triggered\nthe same path as its neighbour.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* fix(mp): preserve eviction updates and consolidate event handling\n\nMove the KV event log and subscriber into ManagementModule and merge worker\nevents directly in the MP connector. Reuse the existing transport, config\ndefault, and connector tests; replace token-binding wrappers with tuples.\n\nPreserve store/remove/store transitions and withdraw announced placements\nwhen polling fails. Start the existing worker heartbeat when events are\npolled and document that idle delivery waits for engine steps.\n\nValidation:\n- MP/observability/adapter/connector regression: 1,383 passed, 14 skipped,\n  39 deselected.\n- Serving-runtime connector tests: 48 passed.\n- Dynamo TP=2 E2E: all nine checks passed, 6/6 correct routes with full hits,\n  zero event-application errors, using vLLM without a companion patch.\n- Applicable pre-commit checks passed; Sphinx completed with the same\n  31 unrelated baseline diagnostics.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Minimize CPU eviction routing changes\n\nKeep KVEventAggregator and its existing bookkeeping, with an ordered batch\nbuffer for eviction transitions. Scope routing events to CPU/L1 and defer L2.\nKeep the bounded event deque and callbacks directly in ManagementModule.\n\nReuse existing documentation and test files, and replace the fake polling\nserver with MessagingFuture. Preserve buffer metrics and withdrawal after\nrestart, event loss, or polling failure.\n\nValidation:\n- Regression: 1,478 passed, 15 skipped, 39 deselected.\n- Serving-runtime management and connector tests: 74 passed.\n- Dynamo TP=2 E2E: all nine checks passed; 6/6 correct routes with full hits\n  and zero event errors, without a vLLM companion patch.\n- Applicable pre-commit checks passed; Sphinx completed with the same\n  30 existing diagnostics.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Stream CPU KV events over ZMQ and gRPC\n\nReplace periodic KV-event fetches with persistent subscriptions backed by\nthe existing event bus and bounded replay log. Keep ordinary request workers\navailable while subscriptions are idle, and bound ZMQ in-flight batches\nthrough acknowledgments.\n\nReceive events into the existing worker buffer, preserving its metrics,\nordered aggregation, and withdrawal after loss, restart, or disconnect.\nReuse existing files and document vLLM's engine-step publishing boundary.\n\nValidation:\n- Selected regression: 1,497 passed, 13 skipped.\n- Dynamo/ZMQ and llm-d/gRPC: 6/6 full-hit routes each, zero event errors.\n- llm-d verified 3,000 CPU-cache chunk reads after GPU eviction.\n- ZMQ transport tests: 24 passed.\n- Full repository non-Rust pre-commit checks passed.\n- Sphinx retains 30 existing warnings.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Reuse RPC validation and gRPC dispatch for event streams\n\nUse the shared RPC handler validator and existing gRPC dispatch path for\nKV-event subscriptions. Derive streaming behavior from gRPC callables and\nprotobuf descriptors instead of duplicating flags in transport metadata.\n\nRemove the obsolete ZMQ wire-ID comment and fix merge-introduced whitespace\nin MP configuration. Preserve event-driven delivery on both transports.\n\nValidation:\n- Transport, contract, management, and request-server tests: 83 passed.\n- ZMQ, transport factory, future, and worker-adapter tests: 145 passed.\n- Full repository non-Rust pre-commit checks passed.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Separate KV event handling from management\n\nMove CPU event recording, replay, token bindings, and subscriptions into\nKVEventModule. Reuse InstanceLivenessTarget hooks for heartbeat refresh and\ncleanup by management's existing reaper. Subscription expiry closes only\nthe stream and preserves the worker's cache registrations.\n\nWire capability advertisement, status reporting, and shutdown ordering\nthrough the server compositor. Update module documentation and tests while\npreserving ZMQ and gRPC event delivery.\n\nValidation:\n- Focused module and transport tests: 97 passed.\n- Transport, worker, connector, and event-bus regression: 197 passed.\n- Full repository non-Rust pre-commit checks passed.\n- Clean Sphinx build completed with 30 existing warnings.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Trim KV event worker state and configuration\n\nRemove the unused worker replay cursor: subscriptions always start at zero\nafter withdrawing prior announcements. Inline the metric reason labels while\npreserving their initialization, and accept event sequences to avoid copying\nthe completed-store list.\n\nRemove the per-worker stream override. Workers subscribe when vLLM KV events\nare enabled and the server advertises support; the server's log-size setting\ncontrols channel disablement. Keep fallback reporting for unsupported servers.\n\nValidation:\n- Worker, connector, subscription, and server-wiring tests: 152 passed.\n- Full repository non-Rust pre-commit checks passed.\n- Clean Sphinx build completed with 30 existing warnings.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>",
               "stats": {
-                "files": 12,
-                "lines": 375,
-                "insertions": 288,
-                "deletions": 87
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0b5155d6",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-09T07:12:25.000Z",
-              "message": "[Bugfix][KV format] Detect the rank-4 DSA indexer cache as NL_X_NB_BSV_BSS (#5562)\n\nvLLM >= 0.29 drops the indexer backend's own (num_blocks, block_size, 132)\nshape and allocates the fp8 indexer cache through the MLA spec with a\nsingleton head axis, [NB, BS, 1, 132]. The vLLM detector's rank-4 rule\n(fused K/V rows) ran first, so the blocked [BS x vals | BS x scales] page\nlayout was copied as 132-byte token rows: exact only while a token keeps\nits block offset, scrambled for any CacheBlend hit shifted off the block\ngrid (GLM-5.2: recall 0.0 at 16k, correct at a 64-aligned shift).\n\nSqueeze the singleton head axis of a uint8 width-132 plane before the\nrank-4 rule so it reaches NL_X_NB_BSV_BSS as the rank-3 cache does.\n\nSigned-off-by: weishu <weishu@tensormesh.ai>",
-              "stats": {
-                "files": 1,
-                "lines": 20,
-                "insertions": 19,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 2,
-                "total": 27
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "b51bc408",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-10T08:28:41.000Z",
-              "message": "[CI] Fix XPU smoke-check quoting and RC image tag validation (#5609)\n\nTwo release-workflow bugs blocked artifact publication for 0.5.6rc4.\n\n1. The XPU wheel smoke check embedded `{', '.join(missing)}` inside a\n   single-quoted `bash -lc '...'` block. The literal `'` terminated that\n   quoted word, unbalancing the remaining `\\\"` escapes, so the container\n   shell aborted with \"unexpected EOF while looking for matching\" before\n   running the check. Formatting the list directly avoids the inner\n   quotes entirely. Present since #4616, so the check has never actually\n   run; it failed identically on v0.5.6rc1..rc3.\n\n2. The RC image job's tag check was the bare `[[ ]] && ...` as the last\n   command of a `set -e` step, so a non-matching tag killed the job with\n   no diagnostic at all. 0.5.6rc4 was tagged without the `v` prefix every\n   prior release carried, so it failed there and no RC image was pushed.\n\n   The `v` is load-bearing rather than cosmetic: setuptools-scm only\n   matches v-prefixed tags, and build-artifacts deletes non-matching tags\n   before resolving a version, so a bare tag silently produces wheels\n   labeled with the previous release. Keep requiring it and emit an\n   explicit ::error:: naming the offending tag, so the mis-tag is\n   diagnosable instead of silent.\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 2,
-                "lines": 13,
-                "insertions": 11,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 1,
-                "total": 26
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 56.75,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 227,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Junyuan",
-          "email": "jjysama@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 174,
-          "commits": [
-            {
-              "hash": "3ab00d25",
-              "author": "Junyuan",
-              "email": "jjysama@gmail.com",
-              "date": "2026-10-09T06:49:37.000Z",
-              "message": "[MP][Ascend] NPU platform backends for LMCache-driven transfer (#5341)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: sunshine <72514768+larksudo@users.noreply.github.com>\nCo-authored-by: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-authored-by: larksudo <72514768+larksudo@users.noreply.github.com>",
-              "stats": {
-                "files": 18,
-                "lines": 2314,
-                "insertions": 2279,
-                "deletions": 35
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "93baaa59",
-              "author": "Junyuan",
-              "email": "jjysama@gmail.com",
-              "date": "2026-10-10T08:12:26.000Z",
-              "message": "[MP] Resolve AUTO transfer mode via DeviceSpec-declared default (#5567)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 310,
-                "insertions": 231,
-                "deletions": 79
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 174,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Chris Coleman",
-          "email": "christophercoleman2018@u.northwestern.edu",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 167,
-          "commits": [
-            {
-              "hash": "17efd2e5",
-              "author": "Chris Coleman",
-              "email": "christophercoleman2018@u.northwestern.edu",
-              "date": "2026-10-07T22:59:14.000Z",
-              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
-              "stats": {
-                "files": 8,
-                "lines": 474,
-                "insertions": 339,
-                "deletions": 135
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ee68e5ba",
-              "author": "Chris Coleman",
-              "email": "chriscoleman@tensormesh.ai",
-              "date": "2026-10-09T21:30:54.000Z",
-              "message": "[CLI] Add evidence markers, RAGAS fields and an answer-match scorer to the QA quality modules (#5557)\n\nExtend engine_bench/quality/ with what a CacheBlend answer-quality\ncomparison needs beyond rag-qa-quality's token F1: which passages hold the\nanswer, the RAGAS hand-off record shape, and a scorer that accepts correct\nanswers phrased differently from the gold. Files that loaded before load\nthe same samples, and rag-qa-quality's prompts and scores are unchanged.\n\n- dataset.py: Sample.evidence_indices, filled from MuSiQue is_supporting,\n  HotpotQA supporting_facts (struct and pair forms) and\n  context_metadata[].gold, remapped when empty passages are dropped.\n  load_samples also reads retrieved_contexts, user_input, reference and\n  extra.answer_aliases, as fallbacks after the existing fields.\n- scoring.py: answer_match(prediction, references) accepts a normalized\n  whole-phrase match, or every gold number within 0.5%, with a power-of-1000\n  rescale only when either side names a scale (\"$11.588 billion\" matches\n  \"$11588.00\"; \"3,000\" does not match \"3\"). Bare years are ignored as\n  figures, typographic punctuation is folded to ASCII, hyphens count as\n  word breaks, and an abstaining answer never matches unless the gold is\n  itself a negative. is_abstention(prediction) detects \"not in the\n  passages\" refusals. Both are exported from quality/__init__.py and\n  documented as lexical screens: an LLM judge remains the reference\n  metric.\n- Docs: bench-engine.md and bench.rst list the RAGAS fields and evidence\n  markers.\n- Tests: TestLoadSamplesRagasHandoff, TestLoadSamplesEvidence,\n  TestAnswerMatch, TestIsAbstention.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
-              "stats": {
-                "files": 7,
-                "lines": 597,
-                "insertions": 579,
-                "deletions": 18
+                "files": 34,
+                "lines": 1863,
+                "insertions": 1737,
+                "deletions": 126
               },
               "scores": {
                 "loc": 30,
@@ -9230,22 +9406,22 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 83.5,
+          "avg_score": 85.25,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 167,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "total_score": 341,
+          "tier": "T0",
+          "tier_name": "Elite"
         },
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 1,
-          "simple_commits": 3,
-          "commit_score": 165,
+          "total_commits": 6,
+          "significant_commits": 2,
+          "simple_commits": 4,
+          "commit_score": 286,
           "commits": [
             {
               "hash": "28f35f86",
@@ -9330,14 +9506,299 @@
                 "total": 20
               },
               "classification": "simple"
+            },
+            {
+              "hash": "762df68a",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-12T08:42:46.000Z",
+              "message": "[SGLang] Support engine driven (#5549)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 466,
+                "insertions": 358,
+                "deletions": 108
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6d1aa31a",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-12T08:15:36.000Z",
+              "message": "[Bugfix] Wait for event before engine-driven retrieve (#5668)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 49,
+                "insertions": 48,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 41.25,
-          "significance_ratio": 0.25,
+          "avg_score": 47.666666666666664,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 165,
+          "total_score": 286,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 5,
+          "significant_commits": 2,
+          "simple_commits": 3,
+          "commit_score": 267,
+          "commits": [
+            {
+              "hash": "4abc421a",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-02T15:40:58.000Z",
+              "message": "[cb] Best-effort whole-chunk L2 loading: whole-column staging + partial-chunk handling (#5434)\n\n* [Bugfix][Blend] A partially loaded chunk is not stale: no strike, release its locks\n\nThe sparse leg's prefetch is best-effort: under L1 pressure the prefetch\ncontroller loads what fits, so a chunk can come back with some of its\n(read group x rank) keys loaded and the rest not. _sparse_classify\nalready (correctly) refuses to blend such a chunk, but it then handled\nit as if the chunk were gone from storage:\n\n1. It took a stale strike, and at 2 strikes the chunk was removed from\n   the fingerprint index permanently -- for content that is still stored\n   and merely did not fit L1 at that moment. Under sustained L1 pressure\n   this guts the index and the blend hit rate never recovers.\n\n2. Its loaded keys stayed read-locked for the read TTL (300 s default).\n   Only found chunks are stashed for the retrieve/release path, so a\n   partial chunk's landed rows were locked for a caller that can never\n   use them, deepening the very L1 pressure that caused the shortfall.\n\nClassify such chunks as partial: no strike (the strike path is kept for\nchunks with NO rows loaded -- those are genuinely gone), and release the\nlanded keys' whole reservation immediately.\n\nBlend-module only; the prefetch controller and \"full\"-policy semantics\nare unchanged (other \"full\" callers -- warm prefetch, P2P -- legitimately\nconsume per-row gaps).\n\nMeasured on GLM-5.2-FP8 TP8, 750-permutation blend workload, 100 GB L1 +\nfs_native L2, where reservation shortfalls made partial chunks routine.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 11,
+                "lines": 502,
+                "insertions": 462,
+                "deletions": 40
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f95b576f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-06T18:02:13.000Z",
+              "message": "[Feat]  support for Re-RoPE   KV caches (per-tensor e4m3/e5m2) (#5500)\n\n* [Feat][Blend] Re-RoPE fp8 KV caches (per-tensor e4m3/e5m2)\n\nvLLM allocates --kv-cache-dtype fp8 KV as uint8, which the retrieve-plan\nbuilder could not map to a rope scalar type: every plan came back None,\nso every fp8 request raised \"native plan unavailable\" and degraded to\nfull recompute. The blend did nothing while still paying its overhead.\n\nThe fix threads the fp8 flavor end to end:\n\n- CB_REGISTER_ROPE gains a trailing, defaulted kv_quant payload\n  (\"fp8_e4m3\" / \"fp8_e5m2\"; \"\" keeps today's behavior) stored on\n  _CBRopeState. The buffer dtype alone cannot name the bit layout.\n- The plan builder resolves uint8 K planes through the declared flavor\n  (and true float8 torch dtypes directly), and passes the cos/sin\n  cache's own scalar type: under fp8 KV the cache stays in the model's\n  float dtype, so CBGroupSpec now carries cache_scalar_type (defaulted\n  to key_scalar_type for older planners).\n- The fused ramp rope kernel is templated on key and cache types and\n  dequantizes -> rotates -> requantizes fp8 keys. No scale is involved:\n  rotation commutes with the per-tensor scale, which is identical on\n  input and output. Homogeneous instantiations keep their exact\n  pre-change numerics (the conversion helper is the identity there).\n\nScope: legacy-geometry (standard attention) models. Under a declared\nrope map, rot_for_group still skips non-float kernel groups — a\nquantized index side-plane and quantized main KV are indistinguishable\nby dtype there, so fp8 MLA/GLM stays out of scope.\n\nTested: dequant-rotate-requant parity against a per-op bf16-rounded\nreference through execute_cb_retrieve_plan_flat on H200, scalar-type\nresolution units, and the existing rope/plan/retrieve/store suites.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Inline the key-scalar resolution; one-line kv_quant docs\n\nReview follow-ups on #5500: fold _cb_key_at_scalar into its only call\nsite in the plan builder, pin the flavor maps in the test instead, and\ncut the kv_quant field/arg comments to one line.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Reuse the dispatch machinery; drop the speculative float8 map\n\nMinimize per review: the fused-rope launcher nests an\nLMC_DISPATCH_ROPE_KEY_TYPES switch (floating + fp8 cases) instead of a\nhand-rolled helper and if-chain; the true-float8-dtype map goes (vLLM\nallocates fp8 KV as uint8 — no caller); kv_quant validation keys off\n_FP8_FLAVOR_TO_AT_SCALAR instead of a literal.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the rope_cvt comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the v3 alias comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Apply isort and clang-format from the code-quality hooks\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Tighten the fp8 rope comments\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Add kv_quant to CbRegisterRopeRequest\n\nThe gRPC transport derives its surface from the proto descriptors, so\nthe 8-payload cb_register_rope contract needs the matching field; the\n_proto_gen stubs regenerate at build time.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 375,
+                "insertions": 288,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0b5155d6",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-09T07:12:25.000Z",
+              "message": "[Bugfix][KV format] Detect the rank-4 DSA indexer cache as NL_X_NB_BSV_BSS (#5562)\n\nvLLM >= 0.29 drops the indexer backend's own (num_blocks, block_size, 132)\nshape and allocates the fp8 indexer cache through the MLA spec with a\nsingleton head axis, [NB, BS, 1, 132]. The vLLM detector's rank-4 rule\n(fused K/V rows) ran first, so the blocked [BS x vals | BS x scales] page\nlayout was copied as 132-byte token rows: exact only while a token keeps\nits block offset, scrambled for any CacheBlend hit shifted off the block\ngrid (GLM-5.2: recall 0.0 at 16k, correct at a 64-aligned shift).\n\nSqueeze the singleton head axis of a uint8 width-132 plane before the\nrank-4 rule so it reaches NL_X_NB_BSV_BSS as the rank-3 cache does.\n\nSigned-off-by: weishu <weishu@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 20,
+                "insertions": 19,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b51bc408",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-10T08:28:41.000Z",
+              "message": "[CI] Fix XPU smoke-check quoting and RC image tag validation (#5609)\n\nTwo release-workflow bugs blocked artifact publication for 0.5.6rc4.\n\n1. The XPU wheel smoke check embedded `{', '.join(missing)}` inside a\n   single-quoted `bash -lc '...'` block. The literal `'` terminated that\n   quoted word, unbalancing the remaining `\\\"` escapes, so the container\n   shell aborted with \"unexpected EOF while looking for matching\" before\n   running the check. Formatting the list directly avoids the inner\n   quotes entirely. Present since #4616, so the check has never actually\n   run; it failed identically on v0.5.6rc1..rc3.\n\n2. The RC image job's tag check was the bare `[[ ]] && ...` as the last\n   command of a `set -e` step, so a non-matching tag killed the job with\n   no diagnostic at all. 0.5.6rc4 was tagged without the `v` prefix every\n   prior release carried, so it failed there and no RC image was pushed.\n\n   The `v` is load-bearing rather than cosmetic: setuptools-scm only\n   matches v-prefixed tags, and build-artifacts deletes non-matching tags\n   before resolving a version, so a bare tag silently produces wheels\n   labeled with the previous release. Keep requiring it and emit an\n   explicit ::error:: naming the offending tag, so the mis-tag is\n   diagnosable instead of silent.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 13,
+                "insertions": 11,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "93cb69ce",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-12T21:34:45.000Z",
+              "message": "Revert \"Update SECURITY.md (#5677)\" (#5680)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 83,
+                "insertions": 3,
+                "deletions": 80
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 53.4,
+          "significance_ratio": 0.4,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 267,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Junyuan",
+          "email": "jjysama@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "3ab00d25",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-10-09T06:49:37.000Z",
+              "message": "[MP][Ascend] NPU platform backends for LMCache-driven transfer (#5341)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: sunshine <72514768+larksudo@users.noreply.github.com>\nCo-authored-by: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-authored-by: larksudo <72514768+larksudo@users.noreply.github.com>",
+              "stats": {
+                "files": 18,
+                "lines": 2314,
+                "insertions": 2279,
+                "deletions": 35
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "93baaa59",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-10-10T08:12:26.000Z",
+              "message": "[MP] Resolve AUTO transfer mode via DeviceSpec-declared default (#5567)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 310,
+                "insertions": 231,
+                "deletions": 79
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Chris Coleman",
+          "email": "christophercoleman2018@u.northwestern.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 167,
+          "commits": [
+            {
+              "hash": "17efd2e5",
+              "author": "Chris Coleman",
+              "email": "christophercoleman2018@u.northwestern.edu",
+              "date": "2026-10-07T22:59:14.000Z",
+              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 474,
+                "insertions": 339,
+                "deletions": 135
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ee68e5ba",
+              "author": "Chris Coleman",
+              "email": "chriscoleman@tensormesh.ai",
+              "date": "2026-10-09T21:30:54.000Z",
+              "message": "[CLI] Add evidence markers, RAGAS fields and an answer-match scorer to the QA quality modules (#5557)\n\nExtend engine_bench/quality/ with what a CacheBlend answer-quality\ncomparison needs beyond rag-qa-quality's token F1: which passages hold the\nanswer, the RAGAS hand-off record shape, and a scorer that accepts correct\nanswers phrased differently from the gold. Files that loaded before load\nthe same samples, and rag-qa-quality's prompts and scores are unchanged.\n\n- dataset.py: Sample.evidence_indices, filled from MuSiQue is_supporting,\n  HotpotQA supporting_facts (struct and pair forms) and\n  context_metadata[].gold, remapped when empty passages are dropped.\n  load_samples also reads retrieved_contexts, user_input, reference and\n  extra.answer_aliases, as fallbacks after the existing fields.\n- scoring.py: answer_match(prediction, references) accepts a normalized\n  whole-phrase match, or every gold number within 0.5%, with a power-of-1000\n  rescale only when either side names a scale (\"$11.588 billion\" matches\n  \"$11588.00\"; \"3,000\" does not match \"3\"). Bare years are ignored as\n  figures, typographic punctuation is folded to ASCII, hyphens count as\n  word breaks, and an abstaining answer never matches unless the gold is\n  itself a negative. is_abstention(prediction) detects \"not in the\n  passages\" refusals. Both are exported from quality/__init__.py and\n  documented as lexical screens: an LLM judge remains the reference\n  metric.\n- Docs: bench-engine.md and bench.rst list the RAGAS fields and evidence\n  markers.\n- Tests: TestLoadSamplesRagasHandoff, TestLoadSamplesEvidence,\n  TestAnswerMatch, TestIsAbstention.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 7,
+                "lines": 597,
+                "insertions": 579,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 167,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10302,6 +10763,84 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Nicolas (Nick) Barcet",
+          "email": "nijaba@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "3e11e108",
+              "author": "Nicolas (Nick) Barcet",
+              "email": "nijaba@tensormesh.ai",
+              "date": "2026-10-12T20:28:11.000Z",
+              "message": "Update SECURITY.md (#5677)\n\nFollwowing up on the published CVE without our knowledge last week, we need to completely revise our process.  This is a proposed revision, let's discuss before merging.\n\nSigned-off-by: Nicolas (Nick) Barcet <nijaba@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 83,
+                "insertions": 80,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "awsyshah",
+          "email": "131969794+awsyshah@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 37,
+          "commits": [
+            {
+              "hash": "110caf52",
+              "author": "awsyshah",
+              "email": "131969794+awsyshah@users.noreply.github.com",
+              "date": "2026-10-12T15:14:43.000Z",
+              "message": "fix: return [None] from BytesBufferMemoryObj.get_dtypes (#5322)\n\nBytesBufferMemoryObj.get_shapes() returns one shape but get_dtypes()\nreturned []. RemoteMetadata._prepare_params() zips shapes and dtypes\nwith strict=True, so any byte-buffer serde (e.g. cachegen) over a remote\nconnector such as fs raised \"zip() argument 2 is shorter than argument 1\"\non every put.\n\nReturn [None] instead so the dtypes list is parallel to get_shapes()\n(one entry per shape). None encodes via DTYPE_TO_INT[None] == 0 and\nround-trips through INT_TO_DTYPE[0], so the metadata serializes and\ndeserializes correctly for a raw byte buffer.\n\nAdd regression tests covering the shapes/dtypes cardinality and the\nRemoteMetadata None-dtype round-trip that mirrors the fs connector's put.\n\nSigned-off-by: Yomesh Shah <yomesh@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 41,
+                "insertions": 40,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 15,
+                "ai": 4,
+                "total": 37
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 37,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "PPg",
           "email": "18649201011@163.com",
           "total_commits": 1,
@@ -10376,6 +10915,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 25,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Prajjwal Chittori",
+          "email": "prajjwal@ether.fi",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "ce56d95a",
+              "author": "Prajjwal Chittori",
+              "email": "prajjwal@ether.fi",
+              "date": "2026-10-12T21:27:45.000Z",
+              "message": "Fix KeyError on lookup_cache re-query after async lookup timeout (#3766)\n\n* Fix KeyError on lookup_cache re-query after async lookup timeout\n\nWhen an async lookup times out, lookup_cache() pops the request's\nfirst_lookup_time entry but leaves reqs_status[lookup_id] as None\n(still pending). A subsequent lookup_cache() for the same id re-enters\nthe 'ongoing' branch and indexes self.first_lookup_time[lookup_id]\ndirectly, raising KeyError and bringing vLLM down (observed when nixl\nand enable_async_loading are configured together).\n\nTreat a missing first_lookup_time the same as an expired one, so the\nrequest reports a cache miss (0) and vLLM recomputes instead of crashing.\n\nAdds a regression test that drives the timeout-then-requery sequence\nthrough the public lookup_cache interface.\n\nSigned-off-by: Prajjwal Chittori <adobearakap@gmail.com>\n\n* Drop regression test and explanatory comment per review\n\nSigned-off-by: Prajjwal Chittori <adobearakap@gmail.com>\n\n---------\n\nSigned-off-by: Prajjwal Chittori <adobearakap@gmail.com>\nCo-authored-by: Prajjwal Chittori <adobearakap@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 4,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
           "tier": "T3",
           "tier_name": "Contributing"
         }
@@ -13688,10 +14266,10 @@
         {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 6,
-          "significant_commits": 6,
+          "total_commits": 7,
+          "significant_commits": 7,
           "simple_commits": 0,
-          "commit_score": 485,
+          "commit_score": 572,
           "commits": [
             {
               "hash": "1ca53a8a",
@@ -13818,24 +14396,45 @@
                 "total": 64
               },
               "classification": "significant"
+            },
+            {
+              "hash": "86631c15",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-12T21:47:48.000Z",
+              "message": "[Coordinator][observability] Measure cache-event loss per MP server (#5560)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1092,
+                "insertions": 1004,
+                "deletions": 88
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 80.83333333333333,
+          "avg_score": 81.71428571428571,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 485,
+          "total_score": 572,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 5,
-          "significant_commits": 4,
+          "total_commits": 6,
+          "significant_commits": 5,
           "simple_commits": 1,
-          "commit_score": 393,
+          "commit_score": 480,
           "commits": [
             {
               "hash": "b0b3567b",
@@ -13941,24 +14540,45 @@
                 "total": 25
               },
               "classification": "simple"
+            },
+            {
+              "hash": "160b6dec",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-12T06:22:08.000Z",
+              "message": "[Security][MP] Remove pickle from device IPC descriptors (CVE-2026-105192) (#5644)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 730,
+                "insertions": 665,
+                "deletions": 65
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 78.6,
-          "significance_ratio": 0.8,
+          "avg_score": 80,
+          "significance_ratio": 0.8333333333333334,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 393,
+          "total_score": 480,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 3,
+          "total_commits": 4,
+          "significant_commits": 4,
           "simple_commits": 0,
-          "commit_score": 261,
+          "commit_score": 341,
           "commits": [
             {
               "hash": "e9ff3463",
@@ -14022,219 +14642,18 @@
                 "total": 87
               },
               "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 261,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "weishu",
-          "email": "838677410@qq.com",
-          "total_commits": 4,
-          "significant_commits": 2,
-          "simple_commits": 2,
-          "commit_score": 227,
-          "commits": [
-            {
-              "hash": "4abc421a",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-02T15:40:58.000Z",
-              "message": "[cb] Best-effort whole-chunk L2 loading: whole-column staging + partial-chunk handling (#5434)\n\n* [Bugfix][Blend] A partially loaded chunk is not stale: no strike, release its locks\n\nThe sparse leg's prefetch is best-effort: under L1 pressure the prefetch\ncontroller loads what fits, so a chunk can come back with some of its\n(read group x rank) keys loaded and the rest not. _sparse_classify\nalready (correctly) refuses to blend such a chunk, but it then handled\nit as if the chunk were gone from storage:\n\n1. It took a stale strike, and at 2 strikes the chunk was removed from\n   the fingerprint index permanently -- for content that is still stored\n   and merely did not fit L1 at that moment. Under sustained L1 pressure\n   this guts the index and the blend hit rate never recovers.\n\n2. Its loaded keys stayed read-locked for the read TTL (300 s default).\n   Only found chunks are stashed for the retrieve/release path, so a\n   partial chunk's landed rows were locked for a caller that can never\n   use them, deepening the very L1 pressure that caused the shortfall.\n\nClassify such chunks as partial: no strike (the strike path is kept for\nchunks with NO rows loaded -- those are genuinely gone), and release the\nlanded keys' whole reservation immediately.\n\nBlend-module only; the prefetch controller and \"full\"-policy semantics\nare unchanged (other \"full\" callers -- warm prefetch, P2P -- legitimately\nconsume per-row gaps).\n\nMeasured on GLM-5.2-FP8 TP8, 750-permutation blend workload, 100 GB L1 +\nfs_native L2, where reservation shortfalls made partial chunks routine.\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 11,
-                "lines": 502,
-                "insertions": 462,
-                "deletions": 40
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
             },
             {
-              "hash": "f95b576f",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-06T18:02:13.000Z",
-              "message": "[Feat]  support for Re-RoPE   KV caches (per-tensor e4m3/e5m2) (#5500)\n\n* [Feat][Blend] Re-RoPE fp8 KV caches (per-tensor e4m3/e5m2)\n\nvLLM allocates --kv-cache-dtype fp8 KV as uint8, which the retrieve-plan\nbuilder could not map to a rope scalar type: every plan came back None,\nso every fp8 request raised \"native plan unavailable\" and degraded to\nfull recompute. The blend did nothing while still paying its overhead.\n\nThe fix threads the fp8 flavor end to end:\n\n- CB_REGISTER_ROPE gains a trailing, defaulted kv_quant payload\n  (\"fp8_e4m3\" / \"fp8_e5m2\"; \"\" keeps today's behavior) stored on\n  _CBRopeState. The buffer dtype alone cannot name the bit layout.\n- The plan builder resolves uint8 K planes through the declared flavor\n  (and true float8 torch dtypes directly), and passes the cos/sin\n  cache's own scalar type: under fp8 KV the cache stays in the model's\n  float dtype, so CBGroupSpec now carries cache_scalar_type (defaulted\n  to key_scalar_type for older planners).\n- The fused ramp rope kernel is templated on key and cache types and\n  dequantizes -> rotates -> requantizes fp8 keys. No scale is involved:\n  rotation commutes with the per-tensor scale, which is identical on\n  input and output. Homogeneous instantiations keep their exact\n  pre-change numerics (the conversion helper is the identity there).\n\nScope: legacy-geometry (standard attention) models. Under a declared\nrope map, rot_for_group still skips non-float kernel groups — a\nquantized index side-plane and quantized main KV are indistinguishable\nby dtype there, so fp8 MLA/GLM stays out of scope.\n\nTested: dequant-rotate-requant parity against a per-op bf16-rounded\nreference through execute_cb_retrieve_plan_flat on H200, scalar-type\nresolution units, and the existing rope/plan/retrieve/store suites.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Inline the key-scalar resolution; one-line kv_quant docs\n\nReview follow-ups on #5500: fold _cb_key_at_scalar into its only call\nsite in the plan builder, pin the flavor maps in the test instead, and\ncut the kv_quant field/arg comments to one line.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Reuse the dispatch machinery; drop the speculative float8 map\n\nMinimize per review: the fused-rope launcher nests an\nLMC_DISPATCH_ROPE_KEY_TYPES switch (floating + fp8 cases) instead of a\nhand-rolled helper and if-chain; the true-float8-dtype map goes (vLLM\nallocates fp8 KV as uint8 — no caller); kv_quant validation keys off\n_FP8_FLAVOR_TO_AT_SCALAR instead of a literal.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the rope_cvt comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the v3 alias comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Apply isort and clang-format from the code-quality hooks\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Tighten the fp8 rope comments\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Add kv_quant to CbRegisterRopeRequest\n\nThe gRPC transport derives its surface from the proto descriptors, so\nthe 8-payload cb_register_rope contract needs the matching field; the\n_proto_gen stubs regenerate at build time.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "e59829cd",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-12T15:09:51.000Z",
+              "message": "[MP] Stream CPU KV events for eviction-aware routing (#5307)\n\n* [feat][mp] publish host-cache evictions and server-side stores as KV events\n\nFollow-up to #5076 (refs #3661). The MP server records the storage\nlayer's key events (L1 write completions and evictions, L2 stores and\ndeletes) in a bounded, sequenced log served by the new POLL_KV_EVENTS\nrequest. The vLLM worker adapter polls it without blocking the step and\npublishes BlockStored / BlockRemoved events with the CPU / STORAGE media,\nso a KV-aware router (Dynamo) drops evicted host-cache placements and\nlearns stores made through the server, including by other engines.\n\nWhile the log is polled, the server's write-finished records are the\nonly source of store announcements: a store result only says the request\nfinished without a fatal error, and chunks the server could not reserve\nare skipped silently. Removals are published only for announced chunks;\na server restart or lost events withdraw every announced placement.\nTensor-parallel batches merge as an order-preserving union instead of\nvLLM's per-step intersection, which loses events under completion skew.\nThe MQ server drops request types it does not define instead of dying.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* fix(mp): one KV event publisher per server, and gate polling on capability\n\nTwo defects in the KV event channel, both found by review and reproduced\nend to end.\n\nEvery rank attached to a server polled its event log, so the same\nBlockRemoved reached the router from different ranks in different steps.\nA KV-aware router aborts the rest of a removal batch on a block it does\nnot hold, unlike a repeated store, so this produced block_not_found\nstatuses. Exactly one rank per server now polls, while every rank\nattached to an advertising server stops announcing its own stores, so the\nengine has a single publisher.\n\nA server that predates POLL_KV_EVENTS decodes the request-type frame\noutside any try in its request loop, so one poll aborted that loop for\nevery engine attached to it. The timeout branch could not catch this\nbecause it requires is_healthy and pings die in the same loop. A worker\nnow polls only a server that advertises kv_events through\nGET_EXPERIMENTAL, and falls back to announcing its own completed stores\notherwise, exactly as #5076 does.\n\nAlso corrects the aggregator rationale in the docs: vLLM counts only the\nranks that reported in a step, so skew drops events rather than\nduplicating them.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* refactor(mp): drop defensive handling the capability gate makes dead\n\nThe KV event channel carried guards for situations it can no longer\nreach, and a few that never happen. Removing them shrinks the change\nwithout touching any guarantee.\n\nThe MQ loop hardening leaves this branch entirely: the capability gate is\nthis feature's version-skew fix, and hardening the loop against unknown\nrequest types affects every request type, so it belongs in its own PR.\nThe MP_TOKENS compatibility branch goes with it, since the only publisher\nof that event ships in this repository and always sets parent hashes.\n\nOn the worker, the poll page size becomes a constant rather than a knob\nnobody tunes, and the guards around issuing a poll collapse into the\nexcept that already disables polling: both shipped clients implement the\nrequest, and the response type is fixed by the protocol definition. The\nstore-event re-check was vacuous, because nothing enqueues while the\nserver's log is the source. In the connector, argument validation\ninherited from vLLM's aggregator goes away, as both callers pass a\nliteral and a real list, and the merge no longer guards against\nunhashable events, which neither published event type can be.\n\nAlso documents in-process KV cache events accurately: that mode publishes\nstores only, and emits a lowercase, non-canonical medium, which the page\ncontradicted.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* refactor(mp): shrink the first PR to the eviction channel\n\nDefers what is separable so the reviewable change is the channel itself.\n\nThe gRPC contract leaves this branch: the capability is now advertised on\nthe ZMQ transport only, because the gRPC client derives its methods from\nthe generated service descriptors and does not carry this request yet. A\ngRPC deployment therefore keeps #5076 behavior instead of resolving the\nrequest to a Protocol stub and silently publishing nothing.\n\nThe protocol definition folds into the existing observability module,\nwhich already carries the other event-reporting request, and the operator\nknobs move into the MP configuration page beside the settings they sit\nwith, replacing a page of their own.\n\nThe wire record drops block_size: the worker already holds the server's\nchunk size from the chunk-size query, and the two cannot diverge within a\nserver process. The design doc keeps its rationale and loses the prose\nthat repeated the code.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* refactor(mp): keep this PR to the channel itself\n\nMoves the in-process KV events documentation fix to its own change, since\nit corrects a different mode and has no bearing on this channel. Reverts\ngenerated protobuf stub drift, and collapses a polling test that triggered\nthe same path as its neighbour.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* fix(mp): preserve eviction updates and consolidate event handling\n\nMove the KV event log and subscriber into ManagementModule and merge worker\nevents directly in the MP connector. Reuse the existing transport, config\ndefault, and connector tests; replace token-binding wrappers with tuples.\n\nPreserve store/remove/store transitions and withdraw announced placements\nwhen polling fails. Start the existing worker heartbeat when events are\npolled and document that idle delivery waits for engine steps.\n\nValidation:\n- MP/observability/adapter/connector regression: 1,383 passed, 14 skipped,\n  39 deselected.\n- Serving-runtime connector tests: 48 passed.\n- Dynamo TP=2 E2E: all nine checks passed, 6/6 correct routes with full hits,\n  zero event-application errors, using vLLM without a companion patch.\n- Applicable pre-commit checks passed; Sphinx completed with the same\n  31 unrelated baseline diagnostics.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Minimize CPU eviction routing changes\n\nKeep KVEventAggregator and its existing bookkeeping, with an ordered batch\nbuffer for eviction transitions. Scope routing events to CPU/L1 and defer L2.\nKeep the bounded event deque and callbacks directly in ManagementModule.\n\nReuse existing documentation and test files, and replace the fake polling\nserver with MessagingFuture. Preserve buffer metrics and withdrawal after\nrestart, event loss, or polling failure.\n\nValidation:\n- Regression: 1,478 passed, 15 skipped, 39 deselected.\n- Serving-runtime management and connector tests: 74 passed.\n- Dynamo TP=2 E2E: all nine checks passed; 6/6 correct routes with full hits\n  and zero event errors, without a vLLM companion patch.\n- Applicable pre-commit checks passed; Sphinx completed with the same\n  30 existing diagnostics.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Stream CPU KV events over ZMQ and gRPC\n\nReplace periodic KV-event fetches with persistent subscriptions backed by\nthe existing event bus and bounded replay log. Keep ordinary request workers\navailable while subscriptions are idle, and bound ZMQ in-flight batches\nthrough acknowledgments.\n\nReceive events into the existing worker buffer, preserving its metrics,\nordered aggregation, and withdrawal after loss, restart, or disconnect.\nReuse existing files and document vLLM's engine-step publishing boundary.\n\nValidation:\n- Selected regression: 1,497 passed, 13 skipped.\n- Dynamo/ZMQ and llm-d/gRPC: 6/6 full-hit routes each, zero event errors.\n- llm-d verified 3,000 CPU-cache chunk reads after GPU eviction.\n- ZMQ transport tests: 24 passed.\n- Full repository non-Rust pre-commit checks passed.\n- Sphinx retains 30 existing warnings.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Reuse RPC validation and gRPC dispatch for event streams\n\nUse the shared RPC handler validator and existing gRPC dispatch path for\nKV-event subscriptions. Derive streaming behavior from gRPC callables and\nprotobuf descriptors instead of duplicating flags in transport metadata.\n\nRemove the obsolete ZMQ wire-ID comment and fix merge-introduced whitespace\nin MP configuration. Preserve event-driven delivery on both transports.\n\nValidation:\n- Transport, contract, management, and request-server tests: 83 passed.\n- ZMQ, transport factory, future, and worker-adapter tests: 145 passed.\n- Full repository non-Rust pre-commit checks passed.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Separate KV event handling from management\n\nMove CPU event recording, replay, token bindings, and subscriptions into\nKVEventModule. Reuse InstanceLivenessTarget hooks for heartbeat refresh and\ncleanup by management's existing reaper. Subscription expiry closes only\nthe stream and preserves the worker's cache registrations.\n\nWire capability advertisement, status reporting, and shutdown ordering\nthrough the server compositor. Update module documentation and tests while\npreserving ZMQ and gRPC event delivery.\n\nValidation:\n- Focused module and transport tests: 97 passed.\n- Transport, worker, connector, and event-bus regression: 197 passed.\n- Full repository non-Rust pre-commit checks passed.\n- Clean Sphinx build completed with 30 existing warnings.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* [MP] Trim KV event worker state and configuration\n\nRemove the unused worker replay cursor: subscriptions always start at zero\nafter withdrawing prior announcements. Inline the metric reason labels while\npreserving their initialization, and accept event sequences to avoid copying\nthe completed-store list.\n\nRemove the per-worker stream override. Workers subscribe when vLLM KV events\nare enabled and the server advertises support; the server's log-size setting\ncontrols channel disablement. Keep fallback reporting for unsupported servers.\n\nValidation:\n- Worker, connector, subscription, and server-wiring tests: 152 passed.\n- Full repository non-Rust pre-commit checks passed.\n- Clean Sphinx build completed with 30 existing warnings.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>",
               "stats": {
-                "files": 12,
-                "lines": 375,
-                "insertions": 288,
-                "deletions": 87
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0b5155d6",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-09T07:12:25.000Z",
-              "message": "[Bugfix][KV format] Detect the rank-4 DSA indexer cache as NL_X_NB_BSV_BSS (#5562)\n\nvLLM >= 0.29 drops the indexer backend's own (num_blocks, block_size, 132)\nshape and allocates the fp8 indexer cache through the MLA spec with a\nsingleton head axis, [NB, BS, 1, 132]. The vLLM detector's rank-4 rule\n(fused K/V rows) ran first, so the blocked [BS x vals | BS x scales] page\nlayout was copied as 132-byte token rows: exact only while a token keeps\nits block offset, scrambled for any CacheBlend hit shifted off the block\ngrid (GLM-5.2: recall 0.0 at 16k, correct at a 64-aligned shift).\n\nSqueeze the singleton head axis of a uint8 width-132 plane before the\nrank-4 rule so it reaches NL_X_NB_BSV_BSS as the rank-3 cache does.\n\nSigned-off-by: weishu <weishu@tensormesh.ai>",
-              "stats": {
-                "files": 1,
-                "lines": 20,
-                "insertions": 19,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 8,
-                "files": 5,
-                "keyword": 12,
-                "ai": 2,
-                "total": 27
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "b51bc408",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-10T08:28:41.000Z",
-              "message": "[CI] Fix XPU smoke-check quoting and RC image tag validation (#5609)\n\nTwo release-workflow bugs blocked artifact publication for 0.5.6rc4.\n\n1. The XPU wheel smoke check embedded `{', '.join(missing)}` inside a\n   single-quoted `bash -lc '...'` block. The literal `'` terminated that\n   quoted word, unbalancing the remaining `\\\"` escapes, so the container\n   shell aborted with \"unexpected EOF while looking for matching\" before\n   running the check. Formatting the list directly avoids the inner\n   quotes entirely. Present since #4616, so the check has never actually\n   run; it failed identically on v0.5.6rc1..rc3.\n\n2. The RC image job's tag check was the bare `[[ ]] && ...` as the last\n   command of a `set -e` step, so a non-matching tag killed the job with\n   no diagnostic at all. 0.5.6rc4 was tagged without the `v` prefix every\n   prior release carried, so it failed there and no RC image was pushed.\n\n   The `v` is load-bearing rather than cosmetic: setuptools-scm only\n   matches v-prefixed tags, and build-artifacts deletes non-matching tags\n   before resolving a version, so a bare tag silently produces wheels\n   labeled with the previous release. Keep requiring it and emit an\n   explicit ::error:: naming the offending tag, so the mis-tag is\n   diagnosable instead of silent.\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 2,
-                "lines": 13,
-                "insertions": 11,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 1,
-                "total": 26
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 56.75,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 227,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Junyuan",
-          "email": "jjysama@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 174,
-          "commits": [
-            {
-              "hash": "3ab00d25",
-              "author": "Junyuan",
-              "email": "jjysama@gmail.com",
-              "date": "2026-10-09T06:49:37.000Z",
-              "message": "[MP][Ascend] NPU platform backends for LMCache-driven transfer (#5341)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: sunshine <72514768+larksudo@users.noreply.github.com>\nCo-authored-by: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-authored-by: larksudo <72514768+larksudo@users.noreply.github.com>",
-              "stats": {
-                "files": 18,
-                "lines": 2314,
-                "insertions": 2279,
-                "deletions": 35
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "93baaa59",
-              "author": "Junyuan",
-              "email": "jjysama@gmail.com",
-              "date": "2026-10-10T08:12:26.000Z",
-              "message": "[MP] Resolve AUTO transfer mode via DeviceSpec-declared default (#5567)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>",
-              "stats": {
-                "files": 20,
-                "lines": 310,
-                "insertions": 231,
-                "deletions": 79
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 174,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Chris Coleman",
-          "email": "christophercoleman2018@u.northwestern.edu",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 167,
-          "commits": [
-            {
-              "hash": "17efd2e5",
-              "author": "Chris Coleman",
-              "email": "christophercoleman2018@u.northwestern.edu",
-              "date": "2026-10-07T22:59:14.000Z",
-              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
-              "stats": {
-                "files": 8,
-                "lines": 474,
-                "insertions": 339,
-                "deletions": 135
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ee68e5ba",
-              "author": "Chris Coleman",
-              "email": "chriscoleman@tensormesh.ai",
-              "date": "2026-10-09T21:30:54.000Z",
-              "message": "[CLI] Add evidence markers, RAGAS fields and an answer-match scorer to the QA quality modules (#5557)\n\nExtend engine_bench/quality/ with what a CacheBlend answer-quality\ncomparison needs beyond rag-qa-quality's token F1: which passages hold the\nanswer, the RAGAS hand-off record shape, and a scorer that accepts correct\nanswers phrased differently from the gold. Files that loaded before load\nthe same samples, and rag-qa-quality's prompts and scores are unchanged.\n\n- dataset.py: Sample.evidence_indices, filled from MuSiQue is_supporting,\n  HotpotQA supporting_facts (struct and pair forms) and\n  context_metadata[].gold, remapped when empty passages are dropped.\n  load_samples also reads retrieved_contexts, user_input, reference and\n  extra.answer_aliases, as fallbacks after the existing fields.\n- scoring.py: answer_match(prediction, references) accepts a normalized\n  whole-phrase match, or every gold number within 0.5%, with a power-of-1000\n  rescale only when either side names a scale (\"$11.588 billion\" matches\n  \"$11588.00\"; \"3,000\" does not match \"3\"). Bare years are ignored as\n  figures, typographic punctuation is folded to ASCII, hyphens count as\n  word breaks, and an abstaining answer never matches unless the gold is\n  itself a negative. is_abstention(prediction) detects \"not in the\n  passages\" refusals. Both are exported from quality/__init__.py and\n  documented as lexical screens: an LLM judge remains the reference\n  metric.\n- Docs: bench-engine.md and bench.rst list the RAGAS fields and evidence\n  markers.\n- Tests: TestLoadSamplesRagasHandoff, TestLoadSamplesEvidence,\n  TestAnswerMatch, TestIsAbstention.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
-              "stats": {
-                "files": 7,
-                "lines": 597,
-                "insertions": 579,
-                "deletions": 18
+                "files": 34,
+                "lines": 1863,
+                "insertions": 1737,
+                "deletions": 126
               },
               "scores": {
                 "loc": 30,
@@ -14246,22 +14665,22 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 83.5,
+          "avg_score": 85.25,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 167,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "total_score": 341,
+          "tier": "T0",
+          "tier_name": "Elite"
         },
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 4,
-          "significant_commits": 1,
-          "simple_commits": 3,
-          "commit_score": 165,
+          "total_commits": 6,
+          "significant_commits": 2,
+          "simple_commits": 4,
+          "commit_score": 286,
           "commits": [
             {
               "hash": "28f35f86",
@@ -14346,14 +14765,299 @@
                 "total": 20
               },
               "classification": "simple"
+            },
+            {
+              "hash": "762df68a",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-12T08:42:46.000Z",
+              "message": "[SGLang] Support engine driven (#5549)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 466,
+                "insertions": 358,
+                "deletions": 108
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6d1aa31a",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-12T08:15:36.000Z",
+              "message": "[Bugfix] Wait for event before engine-driven retrieve (#5668)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 49,
+                "insertions": 48,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 41.25,
-          "significance_ratio": 0.25,
+          "avg_score": 47.666666666666664,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 165,
+          "total_score": 286,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 5,
+          "significant_commits": 2,
+          "simple_commits": 3,
+          "commit_score": 267,
+          "commits": [
+            {
+              "hash": "4abc421a",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-02T15:40:58.000Z",
+              "message": "[cb] Best-effort whole-chunk L2 loading: whole-column staging + partial-chunk handling (#5434)\n\n* [Bugfix][Blend] A partially loaded chunk is not stale: no strike, release its locks\n\nThe sparse leg's prefetch is best-effort: under L1 pressure the prefetch\ncontroller loads what fits, so a chunk can come back with some of its\n(read group x rank) keys loaded and the rest not. _sparse_classify\nalready (correctly) refuses to blend such a chunk, but it then handled\nit as if the chunk were gone from storage:\n\n1. It took a stale strike, and at 2 strikes the chunk was removed from\n   the fingerprint index permanently -- for content that is still stored\n   and merely did not fit L1 at that moment. Under sustained L1 pressure\n   this guts the index and the blend hit rate never recovers.\n\n2. Its loaded keys stayed read-locked for the read TTL (300 s default).\n   Only found chunks are stashed for the retrieve/release path, so a\n   partial chunk's landed rows were locked for a caller that can never\n   use them, deepening the very L1 pressure that caused the shortfall.\n\nClassify such chunks as partial: no strike (the strike path is kept for\nchunks with NO rows loaded -- those are genuinely gone), and release the\nlanded keys' whole reservation immediately.\n\nBlend-module only; the prefetch controller and \"full\"-policy semantics\nare unchanged (other \"full\" callers -- warm prefetch, P2P -- legitimately\nconsume per-row gaps).\n\nMeasured on GLM-5.2-FP8 TP8, 750-permutation blend workload, 100 GB L1 +\nfs_native L2, where reservation shortfalls made partial chunks routine.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 11,
+                "lines": 502,
+                "insertions": 462,
+                "deletions": 40
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f95b576f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-06T18:02:13.000Z",
+              "message": "[Feat]  support for Re-RoPE   KV caches (per-tensor e4m3/e5m2) (#5500)\n\n* [Feat][Blend] Re-RoPE fp8 KV caches (per-tensor e4m3/e5m2)\n\nvLLM allocates --kv-cache-dtype fp8 KV as uint8, which the retrieve-plan\nbuilder could not map to a rope scalar type: every plan came back None,\nso every fp8 request raised \"native plan unavailable\" and degraded to\nfull recompute. The blend did nothing while still paying its overhead.\n\nThe fix threads the fp8 flavor end to end:\n\n- CB_REGISTER_ROPE gains a trailing, defaulted kv_quant payload\n  (\"fp8_e4m3\" / \"fp8_e5m2\"; \"\" keeps today's behavior) stored on\n  _CBRopeState. The buffer dtype alone cannot name the bit layout.\n- The plan builder resolves uint8 K planes through the declared flavor\n  (and true float8 torch dtypes directly), and passes the cos/sin\n  cache's own scalar type: under fp8 KV the cache stays in the model's\n  float dtype, so CBGroupSpec now carries cache_scalar_type (defaulted\n  to key_scalar_type for older planners).\n- The fused ramp rope kernel is templated on key and cache types and\n  dequantizes -> rotates -> requantizes fp8 keys. No scale is involved:\n  rotation commutes with the per-tensor scale, which is identical on\n  input and output. Homogeneous instantiations keep their exact\n  pre-change numerics (the conversion helper is the identity there).\n\nScope: legacy-geometry (standard attention) models. Under a declared\nrope map, rot_for_group still skips non-float kernel groups — a\nquantized index side-plane and quantized main KV are indistinguishable\nby dtype there, so fp8 MLA/GLM stays out of scope.\n\nTested: dequant-rotate-requant parity against a per-op bf16-rounded\nreference through execute_cb_retrieve_plan_flat on H200, scalar-type\nresolution units, and the existing rope/plan/retrieve/store suites.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Inline the key-scalar resolution; one-line kv_quant docs\n\nReview follow-ups on #5500: fold _cb_key_at_scalar into its only call\nsite in the plan builder, pin the flavor maps in the test instead, and\ncut the kv_quant field/arg comments to one line.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Reuse the dispatch machinery; drop the speculative float8 map\n\nMinimize per review: the fused-rope launcher nests an\nLMC_DISPATCH_ROPE_KEY_TYPES switch (floating + fp8 cases) instead of a\nhand-rolled helper and if-chain; the true-float8-dtype map goes (vLLM\nallocates fp8 KV as uint8 — no caller); kv_quant validation keys off\n_FP8_FLAVOR_TO_AT_SCALAR instead of a literal.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the rope_cvt comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] One-line the v3 alias comment\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Apply isort and clang-format from the code-quality hooks\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Review] Tighten the fp8 rope comments\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [CI] Add kv_quant to CbRegisterRopeRequest\n\nThe gRPC transport derives its surface from the proto descriptors, so\nthe 8-payload cb_register_rope contract needs the matching field; the\n_proto_gen stubs regenerate at build time.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 375,
+                "insertions": 288,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0b5155d6",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-09T07:12:25.000Z",
+              "message": "[Bugfix][KV format] Detect the rank-4 DSA indexer cache as NL_X_NB_BSV_BSS (#5562)\n\nvLLM >= 0.29 drops the indexer backend's own (num_blocks, block_size, 132)\nshape and allocates the fp8 indexer cache through the MLA spec with a\nsingleton head axis, [NB, BS, 1, 132]. The vLLM detector's rank-4 rule\n(fused K/V rows) ran first, so the blocked [BS x vals | BS x scales] page\nlayout was copied as 132-byte token rows: exact only while a token keeps\nits block offset, scrambled for any CacheBlend hit shifted off the block\ngrid (GLM-5.2: recall 0.0 at 16k, correct at a 64-aligned shift).\n\nSqueeze the singleton head axis of a uint8 width-132 plane before the\nrank-4 rule so it reaches NL_X_NB_BSV_BSS as the rank-3 cache does.\n\nSigned-off-by: weishu <weishu@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 20,
+                "insertions": 19,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 2,
+                "total": 27
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "b51bc408",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-10T08:28:41.000Z",
+              "message": "[CI] Fix XPU smoke-check quoting and RC image tag validation (#5609)\n\nTwo release-workflow bugs blocked artifact publication for 0.5.6rc4.\n\n1. The XPU wheel smoke check embedded `{', '.join(missing)}` inside a\n   single-quoted `bash -lc '...'` block. The literal `'` terminated that\n   quoted word, unbalancing the remaining `\\\"` escapes, so the container\n   shell aborted with \"unexpected EOF while looking for matching\" before\n   running the check. Formatting the list directly avoids the inner\n   quotes entirely. Present since #4616, so the check has never actually\n   run; it failed identically on v0.5.6rc1..rc3.\n\n2. The RC image job's tag check was the bare `[[ ]] && ...` as the last\n   command of a `set -e` step, so a non-matching tag killed the job with\n   no diagnostic at all. 0.5.6rc4 was tagged without the `v` prefix every\n   prior release carried, so it failed there and no RC image was pushed.\n\n   The `v` is load-bearing rather than cosmetic: setuptools-scm only\n   matches v-prefixed tags, and build-artifacts deletes non-matching tags\n   before resolving a version, so a bare tag silently produces wheels\n   labeled with the previous release. Keep requiring it and emit an\n   explicit ::error:: naming the offending tag, so the mis-tag is\n   diagnosable instead of silent.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 13,
+                "insertions": 11,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "93cb69ce",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-12T21:34:45.000Z",
+              "message": "Revert \"Update SECURITY.md (#5677)\" (#5680)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 83,
+                "insertions": 3,
+                "deletions": 80
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 53.4,
+          "significance_ratio": 0.4,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 267,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Junyuan",
+          "email": "jjysama@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "3ab00d25",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-10-09T06:49:37.000Z",
+              "message": "[MP][Ascend] NPU platform backends for LMCache-driven transfer (#5341)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>\nSigned-off-by: sunshine <72514768+larksudo@users.noreply.github.com>\nCo-authored-by: Marco Barletta <65128997+marcobarlo@users.noreply.github.com>\nCo-authored-by: larksudo <72514768+larksudo@users.noreply.github.com>",
+              "stats": {
+                "files": 18,
+                "lines": 2314,
+                "insertions": 2279,
+                "deletions": 35
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "93baaa59",
+              "author": "Junyuan",
+              "email": "jjysama@gmail.com",
+              "date": "2026-10-10T08:12:26.000Z",
+              "message": "[MP] Resolve AUTO transfer mode via DeviceSpec-declared default (#5567)\n\nSigned-off-by: chloroethylene <jjysama@gmail.com>",
+              "stats": {
+                "files": 20,
+                "lines": 310,
+                "insertions": 231,
+                "deletions": 79
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Chris Coleman",
+          "email": "christophercoleman2018@u.northwestern.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 167,
+          "commits": [
+            {
+              "hash": "17efd2e5",
+              "author": "Chris Coleman",
+              "email": "christophercoleman2018@u.northwestern.edu",
+              "date": "2026-10-07T22:59:14.000Z",
+              "message": "[CLI] Move rag-qa-quality chunk alignment and QA prompt into shared modules (#5532)\n\nMove the chunk-alignment padding and the QA prompt text out of the\nrag-qa-quality workload into engine_bench/quality/, so another\nanswer-quality benchmark can build byte-identical prompts without copying\nthem. No functional change.\n\n- quality/alignment.py: new ChunkAligner holding the workload's former\n  _token_length, _chat_prefix_tokens and _pad_to_multiple, the filler pool\n  and the template sentinel. Public API: token_length(), system_block(),\n  passage_block().\n- quality/prompts.py: QA_SYSTEM_PROMPT, QA_QUESTION_TEMPLATE,\n  compose_qa_messages() for the measured request and\n  compose_store_messages() for the prefill request.\n- rag_qa_quality.py delegates to both. System block, padded documents,\n  prefill and measured prompts, and run_fingerprint are unchanged.\n- Tests: add test_alignment.py; point the rag-qa-quality and\n  create_workload tests at alignment._FILLER_VOCAB_SIZE instead of the\n  workload's removed private helpers.\n- bench-engine.md: list the new modules.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 474,
+                "insertions": 339,
+                "deletions": 135
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ee68e5ba",
+              "author": "Chris Coleman",
+              "email": "chriscoleman@tensormesh.ai",
+              "date": "2026-10-09T21:30:54.000Z",
+              "message": "[CLI] Add evidence markers, RAGAS fields and an answer-match scorer to the QA quality modules (#5557)\n\nExtend engine_bench/quality/ with what a CacheBlend answer-quality\ncomparison needs beyond rag-qa-quality's token F1: which passages hold the\nanswer, the RAGAS hand-off record shape, and a scorer that accepts correct\nanswers phrased differently from the gold. Files that loaded before load\nthe same samples, and rag-qa-quality's prompts and scores are unchanged.\n\n- dataset.py: Sample.evidence_indices, filled from MuSiQue is_supporting,\n  HotpotQA supporting_facts (struct and pair forms) and\n  context_metadata[].gold, remapped when empty passages are dropped.\n  load_samples also reads retrieved_contexts, user_input, reference and\n  extra.answer_aliases, as fallbacks after the existing fields.\n- scoring.py: answer_match(prediction, references) accepts a normalized\n  whole-phrase match, or every gold number within 0.5%, with a power-of-1000\n  rescale only when either side names a scale (\"$11.588 billion\" matches\n  \"$11588.00\"; \"3,000\" does not match \"3\"). Bare years are ignored as\n  figures, typographic punctuation is folded to ASCII, hyphens count as\n  word breaks, and an abstaining answer never matches unless the gold is\n  itself a negative. is_abstention(prediction) detects \"not in the\n  passages\" refusals. Both are exported from quality/__init__.py and\n  documented as lexical screens: an LLM judge remains the reference\n  metric.\n- Docs: bench-engine.md and bench.rst list the RAGAS fields and evidence\n  markers.\n- Tests: TestLoadSamplesRagasHandoff, TestLoadSamplesEvidence,\n  TestAnswerMatch, TestIsAbstention.\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 7,
+                "lines": 597,
+                "insertions": 579,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 5,
+                "ai": 25,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 167,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -15318,6 +16022,84 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Nicolas (Nick) Barcet",
+          "email": "nijaba@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "3e11e108",
+              "author": "Nicolas (Nick) Barcet",
+              "email": "nijaba@tensormesh.ai",
+              "date": "2026-10-12T20:28:11.000Z",
+              "message": "Update SECURITY.md (#5677)\n\nFollwowing up on the published CVE without our knowledge last week, we need to completely revise our process.  This is a proposed revision, let's discuss before merging.\n\nSigned-off-by: Nicolas (Nick) Barcet <nijaba@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 83,
+                "insertions": 80,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "awsyshah",
+          "email": "131969794+awsyshah@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 37,
+          "commits": [
+            {
+              "hash": "110caf52",
+              "author": "awsyshah",
+              "email": "131969794+awsyshah@users.noreply.github.com",
+              "date": "2026-10-12T15:14:43.000Z",
+              "message": "fix: return [None] from BytesBufferMemoryObj.get_dtypes (#5322)\n\nBytesBufferMemoryObj.get_shapes() returns one shape but get_dtypes()\nreturned []. RemoteMetadata._prepare_params() zips shapes and dtypes\nwith strict=True, so any byte-buffer serde (e.g. cachegen) over a remote\nconnector such as fs raised \"zip() argument 2 is shorter than argument 1\"\non every put.\n\nReturn [None] instead so the dtypes list is parallel to get_shapes()\n(one entry per shape). None encodes via DTYPE_TO_INT[None] == 0 and\nround-trips through INT_TO_DTYPE[0], so the metadata serializes and\ndeserializes correctly for a raw byte buffer.\n\nAdd regression tests covering the shapes/dtypes cardinality and the\nRemoteMetadata None-dtype round-trip that mirrors the fs connector's put.\n\nSigned-off-by: Yomesh Shah <yomesh@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 41,
+                "insertions": 40,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 15,
+                "ai": 4,
+                "total": 37
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 37,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "PPg",
           "email": "18649201011@163.com",
           "total_commits": 1,
@@ -15394,18 +16176,57 @@
           "total_score": 25,
           "tier": "T3",
           "tier_name": "Contributing"
+        },
+        {
+          "name": "Prajjwal Chittori",
+          "email": "prajjwal@ether.fi",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "ce56d95a",
+              "author": "Prajjwal Chittori",
+              "email": "prajjwal@ether.fi",
+              "date": "2026-10-12T21:27:45.000Z",
+              "message": "Fix KeyError on lookup_cache re-query after async lookup timeout (#3766)\n\n* Fix KeyError on lookup_cache re-query after async lookup timeout\n\nWhen an async lookup times out, lookup_cache() pops the request's\nfirst_lookup_time entry but leaves reqs_status[lookup_id] as None\n(still pending). A subsequent lookup_cache() for the same id re-enters\nthe 'ongoing' branch and indexes self.first_lookup_time[lookup_id]\ndirectly, raising KeyError and bringing vLLM down (observed when nixl\nand enable_async_loading are configured together).\n\nTreat a missing first_lookup_time the same as an expired one, so the\nrequest reports a cache miss (0) and vLLM recomputes instead of crashing.\n\nAdds a regression test that drives the timeout-then-requery sequence\nthrough the public lookup_cache interface.\n\nSigned-off-by: Prajjwal Chittori <adobearakap@gmail.com>\n\n* Drop regression test and explanatory comment per review\n\nSigned-off-by: Prajjwal Chittori <adobearakap@gmail.com>\n\n---------\n\nSigned-off-by: Prajjwal Chittori <adobearakap@gmail.com>\nCo-authored-by: Prajjwal Chittori <adobearakap@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 5,
+                "insertions": 4,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-12T00:30:22.694Z",
+    "analyzedAt": "2026-10-13T00:30:26.678Z",
     "daysBack": 2,
-    "totalCommits": 164,
-    "totalContributors": 74,
+    "totalCommits": 173,
+    "totalContributors": 77,
     "mergedFrom": {
-      "existing": 157,
-      "new": 14
+      "existing": 164,
+      "new": 16
     }
   }
 }
