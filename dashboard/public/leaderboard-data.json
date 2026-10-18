@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-17T00:30:47.229Z",
-  "total_commits_analyzed": 25,
+  "last_updated": "2026-10-18T00:30:22.948Z",
+  "total_commits_analyzed": 31,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -101,6 +101,111 @@
           "avg_score": 90.25,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 361,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "MinJun Choi",
+          "email": "mj04300017@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 2,
+          "simple_commits": 2,
+          "commit_score": 244,
+          "commits": [
+            {
+              "hash": "32cbdcb7",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-16T22:38:35.000Z",
+              "message": "[Bugfix][MP] Keep L1 placements of departed instances out of the coordinator (#5627)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 177,
+                "insertions": 169,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 17,
+                "total": 79
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a22b292f",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-15T15:02:55.000Z",
+              "message": "[Feat][CLI] Add --concurrency to lmcache bench server (#5735)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 477,
+                "insertions": 453,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f62d85e4",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-15T08:09:57.000Z",
+              "message": "[Perf][MP] Flush gRPC runtime metrics in smaller batches (#5760)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 37,
+                "insertions": 37,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9f79322d",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-17T11:25:23.000Z",
+              "message": "[Bugfix][MP] Retry buffer-only L1 deletions refused by a reader (#5802)\n\nWith skip_l1, a key a request is still reading when its L2 store finishes\ncould not be deleted and was never retried, so L1 filled up under noop.\nDefer those deletions and retry them from the store loop.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 84,
+                "insertions": 80,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 61,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 244,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -179,94 +284,19 @@
           "avg_score": 71.66666666666667,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "MinJun Choi",
-          "email": "mj04300017@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 199,
-          "commits": [
-            {
-              "hash": "32cbdcb7",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-16T22:38:35.000Z",
-              "message": "[Bugfix][MP] Keep L1 placements of departed instances out of the coordinator (#5627)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 177,
-                "insertions": 169,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 17,
-                "total": 79
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a22b292f",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-15T15:02:55.000Z",
-              "message": "[Feat][CLI] Add --concurrency to lmcache bench server (#5735)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 10,
-                "lines": 477,
-                "insertions": 453,
-                "deletions": 24
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f62d85e4",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-15T08:09:57.000Z",
-              "message": "[Perf][MP] Flush gRPC runtime metrics in smaller batches (#5760)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 3,
-                "lines": 37,
-                "insertions": 37,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 3,
-                "total": 33
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 66.33333333333333,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 215,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 2,
-          "significant_commits": 1,
+          "total_commits": 3,
+          "significant_commits": 2,
           "simple_commits": 1,
-          "commit_score": 89,
+          "commit_score": 176,
           "commits": [
             {
               "hash": "1ed386c4",
@@ -309,13 +339,157 @@
                 "total": 64
               },
               "classification": "significant"
+            },
+            {
+              "hash": "60538a08",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-17T02:22:08.000Z",
+              "message": "[core] Skip lookup/prefetch of APC-covered prefix (non-pin / re-lookup method) (#5383)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1016,
+                "insertions": 902,
+                "deletions": 114
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 44.5,
-          "significance_ratio": 0.5,
+          "avg_score": 58.666666666666664,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 176,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 158,
+          "commits": [
+            {
+              "hash": "ddcbe3ed",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-15T22:48:03.000Z",
+              "message": "[CI] Add CacheBlend coordinator global-match smoke to blend pipeline (#5747)\n\n* [Coordinator][CacheBlend][Doc] Fleet blend lookup replaces the local matcher\n\nblend_lookup.md described fleet CacheBlend matching as additive (local\nmatcher always runs, results unioned). The code skips the local matcher\nwhenever a coordinator client is configured and uses the coordinator's\nmatches as the only non-prefix source (lookup.py, unchanged since before\nthe #5012 refactor). Update the intro, lookup-flow diagram and steps,\nrationale, gating note, failure-mode table, and code paths to match.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [CI][CacheBlend][Coordinator] Add coordinator global-match smoke to the blend pipeline\n\nAdd a second step to .buildkite/k3_tests/blend/pipeline.yml that runs the\ncacheblend-plugin's coordinator_match harness against the PR's LMCache: a\ncoordinator with --enable-blend-lookup plus two blend server + vLLM\nstacks (gpt-oss-20b, --load-format dummy) sharing an fs_native L2. Stack B\nmust blend a body only stack A stored, found through the coordinator's\nfleet blend index. Two GPUs, 40 min, one automatic retry.\n\nrun.sh now takes the test name as its first argument and dispatches to\nscripts/run-<test>.sh; no argument keeps running the compat check.\n\nRequires the plugin harness (.buildkite/harness/coordinator_match.py) on\nCB_PLUGIN_REF.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 198,
+                "insertions": 147,
+                "deletions": 51
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 19,
+                "total": 71
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "15675629",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-17T03:54:32.000Z",
+              "message": "[Coordinator][observability] Keep background loops alive and report their liveness (#5714)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 24,
+                "lines": 1735,
+                "insertions": 1239,
+                "deletions": 496
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 79,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 158,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "nauta",
+          "email": "870284156@qq.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 123,
+          "commits": [
+            {
+              "hash": "e6f0a372",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-10-17T11:24:50.000Z",
+              "message": "fix(ci): fix flaky ci, prevent KV event reconnect spin and test thread leak (#5823)\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 314,
+                "insertions": 184,
+                "deletions": 130
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6e690158",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-10-17T03:51:21.000Z",
+              "message": "fix: Use temporary files for atomic HF3FS writes (#5808)\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 60,
+                "insertions": 51,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 6,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 61.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 123,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Ola",
@@ -371,8 +545,11 @@
           "avg_score": 44,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 88,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Yihua Cheng",
@@ -407,6 +584,9 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -443,6 +623,9 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -479,6 +662,9 @@
           "avg_score": 76,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 76,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -515,42 +701,69 @@
           "avg_score": 72,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
           "tier": "T1",
           "tier_name": "Advanced"
         },
         {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 71,
+          "name": "mohan",
+          "email": "2948579997@qq.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 54,
           "commits": [
             {
-              "hash": "ddcbe3ed",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-15T22:48:03.000Z",
-              "message": "[CI] Add CacheBlend coordinator global-match smoke to blend pipeline (#5747)\n\n* [Coordinator][CacheBlend][Doc] Fleet blend lookup replaces the local matcher\n\nblend_lookup.md described fleet CacheBlend matching as additive (local\nmatcher always runs, results unioned). The code skips the local matcher\nwhenever a coordinator client is configured and uses the coordinator's\nmatches as the only non-prefix source (lookup.py, unchanged since before\nthe #5012 refactor). Update the intro, lookup-flow diagram and steps,\nrationale, gating note, failure-mode table, and code paths to match.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [CI][CacheBlend][Coordinator] Add coordinator global-match smoke to the blend pipeline\n\nAdd a second step to .buildkite/k3_tests/blend/pipeline.yml that runs the\ncacheblend-plugin's coordinator_match harness against the PR's LMCache: a\ncoordinator with --enable-blend-lookup plus two blend server + vLLM\nstacks (gpt-oss-20b, --load-format dummy) sharing an fs_native L2. Stack B\nmust blend a body only stack A stored, found through the coordinator's\nfleet blend index. Two GPUs, 40 min, one automatic retry.\n\nrun.sh now takes the test name as its first argument and dispatches to\nscripts/run-<test>.sh; no argument keeps running the compat check.\n\nRequires the plugin harness (.buildkite/harness/coordinator_match.py) on\nCB_PLUGIN_REF.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "hash": "46e33e85",
+              "author": "mohan",
+              "email": "2948579997@qq.com",
+              "date": "2026-10-16T09:39:07.000Z",
+              "message": "[good-second-issue] [Bugfix] Report NIXL pool capacity in allocation-slot units (#5800)\n\n\nSigned-off-by: mohan-zeyu <2948579997@qq.com>",
               "stats": {
-                "files": 4,
-                "lines": 198,
-                "insertions": 147,
-                "deletions": 51
+                "files": 2,
+                "lines": 41,
+                "insertions": 38,
+                "deletions": 3
               },
               "scores": {
-                "loc": 30,
+                "loc": 8,
                 "files": 10,
                 "keyword": 12,
-                "ai": 19,
-                "total": 71
+                "ai": 4,
+                "total": 34
               },
-              "classification": "significant"
+              "classification": "simple"
+            },
+            {
+              "hash": "f24bfe98",
+              "author": "mohan",
+              "email": "2948579997@qq.com",
+              "date": "2026-10-17T11:52:23.000Z",
+              "message": "[Doc] DeepWiki badge display error in README.md (#5643)\n\n[Doc]: DeepWiki badge display error in README.md\n\nSigned-off-by: mohan-zeyu <2948579997@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 71,
-          "significance_ratio": 1,
+          "avg_score": 27,
+          "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 54,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -587,8 +800,11 @@
           "avg_score": 45,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 45,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Lin Sun",
@@ -623,8 +839,11 @@
           "avg_score": 44,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 44,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "chunxiaozheng",
@@ -659,6 +878,9 @@
           "avg_score": 43,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 43,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -695,42 +917,9 @@
           "avg_score": 42,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "mohan",
-          "email": "2948579997@qq.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 34,
-          "commits": [
-            {
-              "hash": "46e33e85",
-              "author": "mohan",
-              "email": "2948579997@qq.com",
-              "date": "2026-10-16T09:39:07.000Z",
-              "message": "[good-second-issue] [Bugfix] Report NIXL pool capacity in allocation-slot units (#5800)\n\n\nSigned-off-by: mohan-zeyu <2948579997@qq.com>",
-              "stats": {
-                "files": 2,
-                "lines": 41,
-                "insertions": 38,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 4,
-                "total": 34
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 34,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -767,6 +956,9 @@
           "avg_score": 21,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
           "tier": "T2",
           "tier_name": "Intermediate"
         }
@@ -870,6 +1062,111 @@
           "avg_score": 90.25,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 361,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "MinJun Choi",
+          "email": "mj04300017@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 2,
+          "simple_commits": 2,
+          "commit_score": 244,
+          "commits": [
+            {
+              "hash": "32cbdcb7",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-16T22:38:35.000Z",
+              "message": "[Bugfix][MP] Keep L1 placements of departed instances out of the coordinator (#5627)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 177,
+                "insertions": 169,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 17,
+                "total": 79
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a22b292f",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-15T15:02:55.000Z",
+              "message": "[Feat][CLI] Add --concurrency to lmcache bench server (#5735)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 477,
+                "insertions": 453,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f62d85e4",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-15T08:09:57.000Z",
+              "message": "[Perf][MP] Flush gRPC runtime metrics in smaller batches (#5760)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 37,
+                "insertions": 37,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9f79322d",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-17T11:25:23.000Z",
+              "message": "[Bugfix][MP] Retry buffer-only L1 deletions refused by a reader (#5802)\n\nWith skip_l1, a key a request is still reading when its L2 store finishes\ncould not be deleted and was never retried, so L1 filled up under noop.\nDefer those deletions and retry them from the store loop.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 84,
+                "insertions": 80,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 61,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 244,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -948,94 +1245,19 @@
           "avg_score": 71.66666666666667,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "MinJun Choi",
-          "email": "mj04300017@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 199,
-          "commits": [
-            {
-              "hash": "32cbdcb7",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-16T22:38:35.000Z",
-              "message": "[Bugfix][MP] Keep L1 placements of departed instances out of the coordinator (#5627)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 177,
-                "insertions": 169,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 17,
-                "total": 79
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a22b292f",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-15T15:02:55.000Z",
-              "message": "[Feat][CLI] Add --concurrency to lmcache bench server (#5735)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 10,
-                "lines": 477,
-                "insertions": 453,
-                "deletions": 24
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f62d85e4",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-15T08:09:57.000Z",
-              "message": "[Perf][MP] Flush gRPC runtime metrics in smaller batches (#5760)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 3,
-                "lines": 37,
-                "insertions": 37,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 3,
-                "total": 33
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 66.33333333333333,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 215,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 2,
-          "significant_commits": 1,
+          "total_commits": 3,
+          "significant_commits": 2,
           "simple_commits": 1,
-          "commit_score": 89,
+          "commit_score": 176,
           "commits": [
             {
               "hash": "1ed386c4",
@@ -1078,13 +1300,157 @@
                 "total": 64
               },
               "classification": "significant"
+            },
+            {
+              "hash": "60538a08",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-17T02:22:08.000Z",
+              "message": "[core] Skip lookup/prefetch of APC-covered prefix (non-pin / re-lookup method) (#5383)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1016,
+                "insertions": 902,
+                "deletions": 114
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 44.5,
-          "significance_ratio": 0.5,
+          "avg_score": 58.666666666666664,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 176,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 158,
+          "commits": [
+            {
+              "hash": "ddcbe3ed",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-15T22:48:03.000Z",
+              "message": "[CI] Add CacheBlend coordinator global-match smoke to blend pipeline (#5747)\n\n* [Coordinator][CacheBlend][Doc] Fleet blend lookup replaces the local matcher\n\nblend_lookup.md described fleet CacheBlend matching as additive (local\nmatcher always runs, results unioned). The code skips the local matcher\nwhenever a coordinator client is configured and uses the coordinator's\nmatches as the only non-prefix source (lookup.py, unchanged since before\nthe #5012 refactor). Update the intro, lookup-flow diagram and steps,\nrationale, gating note, failure-mode table, and code paths to match.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [CI][CacheBlend][Coordinator] Add coordinator global-match smoke to the blend pipeline\n\nAdd a second step to .buildkite/k3_tests/blend/pipeline.yml that runs the\ncacheblend-plugin's coordinator_match harness against the PR's LMCache: a\ncoordinator with --enable-blend-lookup plus two blend server + vLLM\nstacks (gpt-oss-20b, --load-format dummy) sharing an fs_native L2. Stack B\nmust blend a body only stack A stored, found through the coordinator's\nfleet blend index. Two GPUs, 40 min, one automatic retry.\n\nrun.sh now takes the test name as its first argument and dispatches to\nscripts/run-<test>.sh; no argument keeps running the compat check.\n\nRequires the plugin harness (.buildkite/harness/coordinator_match.py) on\nCB_PLUGIN_REF.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 198,
+                "insertions": 147,
+                "deletions": 51
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 19,
+                "total": 71
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "15675629",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-17T03:54:32.000Z",
+              "message": "[Coordinator][observability] Keep background loops alive and report their liveness (#5714)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 24,
+                "lines": 1735,
+                "insertions": 1239,
+                "deletions": 496
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 79,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 158,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "nauta",
+          "email": "870284156@qq.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 123,
+          "commits": [
+            {
+              "hash": "e6f0a372",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-10-17T11:24:50.000Z",
+              "message": "fix(ci): fix flaky ci, prevent KV event reconnect spin and test thread leak (#5823)\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 314,
+                "insertions": 184,
+                "deletions": 130
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6e690158",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-10-17T03:51:21.000Z",
+              "message": "fix: Use temporary files for atomic HF3FS writes (#5808)\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 60,
+                "insertions": 51,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 6,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 61.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 123,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Ola",
@@ -1140,8 +1506,11 @@
           "avg_score": 44,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 88,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Yihua Cheng",
@@ -1176,6 +1545,9 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1212,6 +1584,9 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1248,6 +1623,9 @@
           "avg_score": 76,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 76,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1284,42 +1662,69 @@
           "avg_score": 72,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
           "tier": "T1",
           "tier_name": "Advanced"
         },
         {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 71,
+          "name": "mohan",
+          "email": "2948579997@qq.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 54,
           "commits": [
             {
-              "hash": "ddcbe3ed",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-15T22:48:03.000Z",
-              "message": "[CI] Add CacheBlend coordinator global-match smoke to blend pipeline (#5747)\n\n* [Coordinator][CacheBlend][Doc] Fleet blend lookup replaces the local matcher\n\nblend_lookup.md described fleet CacheBlend matching as additive (local\nmatcher always runs, results unioned). The code skips the local matcher\nwhenever a coordinator client is configured and uses the coordinator's\nmatches as the only non-prefix source (lookup.py, unchanged since before\nthe #5012 refactor). Update the intro, lookup-flow diagram and steps,\nrationale, gating note, failure-mode table, and code paths to match.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [CI][CacheBlend][Coordinator] Add coordinator global-match smoke to the blend pipeline\n\nAdd a second step to .buildkite/k3_tests/blend/pipeline.yml that runs the\ncacheblend-plugin's coordinator_match harness against the PR's LMCache: a\ncoordinator with --enable-blend-lookup plus two blend server + vLLM\nstacks (gpt-oss-20b, --load-format dummy) sharing an fs_native L2. Stack B\nmust blend a body only stack A stored, found through the coordinator's\nfleet blend index. Two GPUs, 40 min, one automatic retry.\n\nrun.sh now takes the test name as its first argument and dispatches to\nscripts/run-<test>.sh; no argument keeps running the compat check.\n\nRequires the plugin harness (.buildkite/harness/coordinator_match.py) on\nCB_PLUGIN_REF.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "hash": "46e33e85",
+              "author": "mohan",
+              "email": "2948579997@qq.com",
+              "date": "2026-10-16T09:39:07.000Z",
+              "message": "[good-second-issue] [Bugfix] Report NIXL pool capacity in allocation-slot units (#5800)\n\n\nSigned-off-by: mohan-zeyu <2948579997@qq.com>",
               "stats": {
-                "files": 4,
-                "lines": 198,
-                "insertions": 147,
-                "deletions": 51
+                "files": 2,
+                "lines": 41,
+                "insertions": 38,
+                "deletions": 3
               },
               "scores": {
-                "loc": 30,
+                "loc": 8,
                 "files": 10,
                 "keyword": 12,
-                "ai": 19,
-                "total": 71
+                "ai": 4,
+                "total": 34
               },
-              "classification": "significant"
+              "classification": "simple"
+            },
+            {
+              "hash": "f24bfe98",
+              "author": "mohan",
+              "email": "2948579997@qq.com",
+              "date": "2026-10-17T11:52:23.000Z",
+              "message": "[Doc] DeepWiki badge display error in README.md (#5643)\n\n[Doc]: DeepWiki badge display error in README.md\n\nSigned-off-by: mohan-zeyu <2948579997@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 71,
-          "significance_ratio": 1,
+          "avg_score": 27,
+          "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 54,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1356,8 +1761,11 @@
           "avg_score": 45,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 45,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Lin Sun",
@@ -1392,8 +1800,11 @@
           "avg_score": 44,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 44,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "chunxiaozheng",
@@ -1428,6 +1839,9 @@
           "avg_score": 43,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 43,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -1464,42 +1878,9 @@
           "avg_score": 42,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "mohan",
-          "email": "2948579997@qq.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 34,
-          "commits": [
-            {
-              "hash": "46e33e85",
-              "author": "mohan",
-              "email": "2948579997@qq.com",
-              "date": "2026-10-16T09:39:07.000Z",
-              "message": "[good-second-issue] [Bugfix] Report NIXL pool capacity in allocation-slot units (#5800)\n\n\nSigned-off-by: mohan-zeyu <2948579997@qq.com>",
-              "stats": {
-                "files": 2,
-                "lines": 41,
-                "insertions": 38,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 4,
-                "total": 34
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 34,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -1536,6 +1917,9 @@
           "avg_score": 21,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
           "tier": "T2",
           "tier_name": "Intermediate"
         }
@@ -1639,6 +2023,111 @@
           "avg_score": 90.25,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 361,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "MinJun Choi",
+          "email": "mj04300017@gmail.com",
+          "total_commits": 4,
+          "significant_commits": 2,
+          "simple_commits": 2,
+          "commit_score": 244,
+          "commits": [
+            {
+              "hash": "32cbdcb7",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-16T22:38:35.000Z",
+              "message": "[Bugfix][MP] Keep L1 placements of departed instances out of the coordinator (#5627)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 177,
+                "insertions": 169,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 17,
+                "total": 79
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a22b292f",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-15T15:02:55.000Z",
+              "message": "[Feat][CLI] Add --concurrency to lmcache bench server (#5735)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 477,
+                "insertions": 453,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f62d85e4",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-15T08:09:57.000Z",
+              "message": "[Perf][MP] Flush gRPC runtime metrics in smaller batches (#5760)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 37,
+                "insertions": 37,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9f79322d",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-17T11:25:23.000Z",
+              "message": "[Bugfix][MP] Retry buffer-only L1 deletions refused by a reader (#5802)\n\nWith skip_l1, a key a request is still reading when its L2 store finishes\ncould not be deleted and was never retried, so L1 filled up under noop.\nDefer those deletions and retry them from the store loop.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 84,
+                "insertions": 80,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 61,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 244,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1717,94 +2206,19 @@
           "avg_score": 71.66666666666667,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "MinJun Choi",
-          "email": "mj04300017@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 199,
-          "commits": [
-            {
-              "hash": "32cbdcb7",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-16T22:38:35.000Z",
-              "message": "[Bugfix][MP] Keep L1 placements of departed instances out of the coordinator (#5627)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 177,
-                "insertions": 169,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 17,
-                "total": 79
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a22b292f",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-15T15:02:55.000Z",
-              "message": "[Feat][CLI] Add --concurrency to lmcache bench server (#5735)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 10,
-                "lines": 477,
-                "insertions": 453,
-                "deletions": 24
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f62d85e4",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-15T08:09:57.000Z",
-              "message": "[Perf][MP] Flush gRPC runtime metrics in smaller batches (#5760)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 3,
-                "lines": 37,
-                "insertions": 37,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 3,
-                "total": 33
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 66.33333333333333,
-          "significance_ratio": 0.6666666666666666,
-          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 215,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 2,
-          "significant_commits": 1,
+          "total_commits": 3,
+          "significant_commits": 2,
           "simple_commits": 1,
-          "commit_score": 89,
+          "commit_score": 176,
           "commits": [
             {
               "hash": "1ed386c4",
@@ -1847,13 +2261,157 @@
                 "total": 64
               },
               "classification": "significant"
+            },
+            {
+              "hash": "60538a08",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-17T02:22:08.000Z",
+              "message": "[core] Skip lookup/prefetch of APC-covered prefix (non-pin / re-lookup method) (#5383)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1016,
+                "insertions": 902,
+                "deletions": 114
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 44.5,
-          "significance_ratio": 0.5,
+          "avg_score": 58.666666666666664,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 176,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 158,
+          "commits": [
+            {
+              "hash": "ddcbe3ed",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-15T22:48:03.000Z",
+              "message": "[CI] Add CacheBlend coordinator global-match smoke to blend pipeline (#5747)\n\n* [Coordinator][CacheBlend][Doc] Fleet blend lookup replaces the local matcher\n\nblend_lookup.md described fleet CacheBlend matching as additive (local\nmatcher always runs, results unioned). The code skips the local matcher\nwhenever a coordinator client is configured and uses the coordinator's\nmatches as the only non-prefix source (lookup.py, unchanged since before\nthe #5012 refactor). Update the intro, lookup-flow diagram and steps,\nrationale, gating note, failure-mode table, and code paths to match.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [CI][CacheBlend][Coordinator] Add coordinator global-match smoke to the blend pipeline\n\nAdd a second step to .buildkite/k3_tests/blend/pipeline.yml that runs the\ncacheblend-plugin's coordinator_match harness against the PR's LMCache: a\ncoordinator with --enable-blend-lookup plus two blend server + vLLM\nstacks (gpt-oss-20b, --load-format dummy) sharing an fs_native L2. Stack B\nmust blend a body only stack A stored, found through the coordinator's\nfleet blend index. Two GPUs, 40 min, one automatic retry.\n\nrun.sh now takes the test name as its first argument and dispatches to\nscripts/run-<test>.sh; no argument keeps running the compat check.\n\nRequires the plugin harness (.buildkite/harness/coordinator_match.py) on\nCB_PLUGIN_REF.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 198,
+                "insertions": 147,
+                "deletions": 51
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 19,
+                "total": 71
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "15675629",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-17T03:54:32.000Z",
+              "message": "[Coordinator][observability] Keep background loops alive and report their liveness (#5714)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 24,
+                "lines": 1735,
+                "insertions": 1239,
+                "deletions": 496
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 79,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 158,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "nauta",
+          "email": "870284156@qq.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 123,
+          "commits": [
+            {
+              "hash": "e6f0a372",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-10-17T11:24:50.000Z",
+              "message": "fix(ci): fix flaky ci, prevent KV event reconnect spin and test thread leak (#5823)\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 314,
+                "insertions": 184,
+                "deletions": 130
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 25,
+                "total": 77
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "6e690158",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-10-17T03:51:21.000Z",
+              "message": "fix: Use temporary files for atomic HF3FS writes (#5808)\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 60,
+                "insertions": 51,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 6,
+                "total": 46
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 61.5,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 123,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Ola",
@@ -1909,8 +2467,11 @@
           "avg_score": 44,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 88,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Yihua Cheng",
@@ -1945,6 +2506,9 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1981,6 +2545,9 @@
           "avg_score": 87,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2017,6 +2584,9 @@
           "avg_score": 76,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 76,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2053,42 +2623,69 @@
           "avg_score": 72,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
           "tier": "T1",
           "tier_name": "Advanced"
         },
         {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 71,
+          "name": "mohan",
+          "email": "2948579997@qq.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 54,
           "commits": [
             {
-              "hash": "ddcbe3ed",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-15T22:48:03.000Z",
-              "message": "[CI] Add CacheBlend coordinator global-match smoke to blend pipeline (#5747)\n\n* [Coordinator][CacheBlend][Doc] Fleet blend lookup replaces the local matcher\n\nblend_lookup.md described fleet CacheBlend matching as additive (local\nmatcher always runs, results unioned). The code skips the local matcher\nwhenever a coordinator client is configured and uses the coordinator's\nmatches as the only non-prefix source (lookup.py, unchanged since before\nthe #5012 refactor). Update the intro, lookup-flow diagram and steps,\nrationale, gating note, failure-mode table, and code paths to match.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [CI][CacheBlend][Coordinator] Add coordinator global-match smoke to the blend pipeline\n\nAdd a second step to .buildkite/k3_tests/blend/pipeline.yml that runs the\ncacheblend-plugin's coordinator_match harness against the PR's LMCache: a\ncoordinator with --enable-blend-lookup plus two blend server + vLLM\nstacks (gpt-oss-20b, --load-format dummy) sharing an fs_native L2. Stack B\nmust blend a body only stack A stored, found through the coordinator's\nfleet blend index. Two GPUs, 40 min, one automatic retry.\n\nrun.sh now takes the test name as its first argument and dispatches to\nscripts/run-<test>.sh; no argument keeps running the compat check.\n\nRequires the plugin harness (.buildkite/harness/coordinator_match.py) on\nCB_PLUGIN_REF.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "hash": "46e33e85",
+              "author": "mohan",
+              "email": "2948579997@qq.com",
+              "date": "2026-10-16T09:39:07.000Z",
+              "message": "[good-second-issue] [Bugfix] Report NIXL pool capacity in allocation-slot units (#5800)\n\n\nSigned-off-by: mohan-zeyu <2948579997@qq.com>",
               "stats": {
-                "files": 4,
-                "lines": 198,
-                "insertions": 147,
-                "deletions": 51
+                "files": 2,
+                "lines": 41,
+                "insertions": 38,
+                "deletions": 3
               },
               "scores": {
-                "loc": 30,
+                "loc": 8,
                 "files": 10,
                 "keyword": 12,
-                "ai": 19,
-                "total": 71
+                "ai": 4,
+                "total": 34
               },
-              "classification": "significant"
+              "classification": "simple"
+            },
+            {
+              "hash": "f24bfe98",
+              "author": "mohan",
+              "email": "2948579997@qq.com",
+              "date": "2026-10-17T11:52:23.000Z",
+              "message": "[Doc] DeepWiki badge display error in README.md (#5643)\n\n[Doc]: DeepWiki badge display error in README.md\n\nSigned-off-by: mohan-zeyu <2948579997@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 71,
-          "significance_ratio": 1,
+          "avg_score": 27,
+          "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 54,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2125,8 +2722,11 @@
           "avg_score": 45,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 45,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Lin Sun",
@@ -2161,8 +2761,11 @@
           "avg_score": 44,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 44,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "chunxiaozheng",
@@ -2197,6 +2800,9 @@
           "avg_score": 43,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 43,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -2233,42 +2839,9 @@
           "avg_score": 42,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "mohan",
-          "email": "2948579997@qq.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 34,
-          "commits": [
-            {
-              "hash": "46e33e85",
-              "author": "mohan",
-              "email": "2948579997@qq.com",
-              "date": "2026-10-16T09:39:07.000Z",
-              "message": "[good-second-issue] [Bugfix] Report NIXL pool capacity in allocation-slot units (#5800)\n\n\nSigned-off-by: mohan-zeyu <2948579997@qq.com>",
-              "stats": {
-                "files": 2,
-                "lines": 41,
-                "insertions": 38,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 4,
-                "total": 34
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 34,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 42,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -2305,6 +2878,9 @@
           "avg_score": 21,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 21,
           "tier": "T2",
           "tier_name": "Intermediate"
         }
@@ -2312,9 +2888,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-17T00:30:47.229Z",
+    "analyzedAt": "2026-10-18T00:30:22.948Z",
     "daysBack": 2,
-    "totalCommits": 25,
-    "totalContributors": 16
+    "totalCommits": 31,
+    "totalContributors": 17,
+    "mergedFrom": {
+      "existing": 25,
+      "new": 13
+    }
   }
 }
