@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-20T00:30:32.199Z",
-  "total_commits_analyzed": 49,
+  "last_updated": "2026-10-21T00:30:46.028Z",
+  "total_commits_analyzed": 63,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -1130,6 +1130,327 @@
       ],
       "2026-W43": [
         {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 208,
+          "commits": [
+            {
+              "hash": "654aa568",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-19T02:45:35.000Z",
+              "message": "[SGLang] Remove legacy connector integrations (#5610)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 38,
+                "lines": 6623,
+                "insertions": 53,
+                "deletions": 6570
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e7a4f238",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-20T06:45:18.000Z",
+              "message": "[SGLang][Bugfix] Support kimi linear model (#5892)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 47,
+                "insertions": 41,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bc9b1141",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-20T06:35:27.000Z",
+              "message": "[CI][SGLang] Add integration test for dsv4 flash (#5859)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 440,
+                "insertions": 277,
+                "deletions": 163
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 69.33333333333333,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 208,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "c3a6f1d8",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-19T11:44:23.000Z",
+              "message": "[Bugfix] Remove deprecated legacy TCP cache server (#5785)\n\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 35,
+                "lines": 1065,
+                "insertions": 71,
+                "deletions": 994
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "df19cd68",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-20T06:51:13.000Z",
+              "message": "[Refactor] Isolate in-process GPU connectors (#5872)\n\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 50,
+                "lines": 1444,
+                "insertions": 771,
+                "deletions": 673
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 174,
+          "commits": [
+            {
+              "hash": "e8dc1a1d",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-20T10:24:52.000Z",
+              "message": "[Feat][MP] Device offset for Device-DAX L1 and CXL L1 user guide (#5874)\n\n* [Doc][MP] Document CXL / Device-DAX as the L1 tier\n\nDevice-DAX L1 support was documented piecemeal: the tagged JSON schema\nin multi_l1, the --l1-devdax-path flag row in configuration, the\nhotplug routes in http_api, and a one-paragraph architecture note.\nNothing told an operator how to go from a CXL expander to a running\nserver, and the only page titled \"DAX\" covers the L2 adapter.\n\nAdd a \"Device-DAX / CXL L1\" subsection under L1 Memory Manager in the\nconfiguration reference: finding the /dev/dax path and switching it to\ndevdax mode, alignment and aliasing rules, the tagged and legacy\ninvocations including the legacy hybrid rule that consumes a matching\ndax L2 adapter as overflow, how to verify the tier came up on the\ndevice, runtime add/drain limits, and transfer-channel restrictions.\nCross-reference it from the MP overview, multi_l1, and the L2 DAX page.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Feat][MP] Add a device offset for Device-DAX L1 mappings\n\nEvery Device-DAX L1 arena was mapped from byte 0 of its device, so two\nLMCache servers pointed at the same CXL device clobbered each other and\nthe only way to share a region was to carve it into separate dax nodes\nat the kernel level.\n\nAdd an explicit mapping offset to every surface that maps a Device-DAX\nL1 range:\n\n- L1MemoryManagerConfig.devdax_offset_in_bytes, validated as a\n  non-negative page-aligned value that requires devdax_path.\n- CLI --l1-devdax-offset-gb and the tagged --l1-manager key offset_gb.\n- DevDaxMemoryAllocator maps [offset, offset + size) and rejects ranges\n  that overlap one already mapped from the same physical device; the\n  same device may now back several disjoint arenas in one pool.\n- add_device / remove_device / arena_status and the storage manager,\n  L1 manager, and protocol delegates accept the offset. Removal and\n  status lookups require it only when a path is mapped more than once.\n- POST /reconfigure/dax/l1/add and /remove accept \"offset\" as a byte\n  count or size string; status reports offset_in_bytes per arena.\n\nCharacter devices report st_size 0, so the kernel keeps enforcing the\ndevice bounds and alignment at mmap time. Nothing coordinates offsets\nacross servers; the operator owns the partitioning.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Bugfix][MP] Validate Device-DAX ranges against the sysfs size before mapping\n\nfstat reports st_size == 0 for a character device, so the L1 capacity check\nnever ran on a real /dev/daxX.Y, and the kernel does not check Device-DAX\nbounds at mmap time: an out-of-range mapping succeeds and the first access\nkills the server with SIGBUS (reported on hardware in review of #5874).\n\nAdd lmcache.utils.get_dax_device_geometry / check_dax_range, which read the\ndevice size and align from /sys/dev/char/<major>:<minor>/ and reject a range\nthat does not fit or is not aligned before mmap. A character device whose\nsize sysfs cannot report is rejected rather than mapped. Regular files keep\nusing st_size. The L1 allocator uses the check; docs no longer claim the\nkernel enforces bounds.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 21,
+                "lines": 1092,
+                "insertions": 957,
+                "deletions": 135
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "168130df",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-20T06:10:10.000Z",
+              "message": "[observability] Keep the APC-covered prefix out of lookup hit counters (#5836)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 16,
+                "lines": 661,
+                "insertions": 603,
+                "deletions": 58
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 174,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 172,
+          "commits": [
+            {
+              "hash": "162cbe72",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-20T06:01:48.000Z",
+              "message": "[CI] Add file-backed DevDAX L1 and DAX L2 integration coverage (#5635)\n\n* ci: run file-backed DAX L1 and L2 integration tests\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* ci: enable file-backed DAX tests in default Buildkite pipeline\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 428,
+                "insertions": 390,
+                "deletions": 38
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "258746ce",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-20T02:25:36.000Z",
+              "message": "[4/N][Feat][MP] Add the memory orchestrator for shared L1 regions (#5559)\n\n* [Feat][MP] Add the memory orchestrator's region state\n\nRegionState is the allocation and readiness authority for one shared\nregion: monotonic extents, object states (WRITING -> VALID, or CONSUMED\nwhen the writer aborts, closes or registers again), write tokens, read\nleases, client incarnations and idempotent request replay. api.py holds\nthe dataclasses and enums that the state, the RPC layer and the shared\nL1 share. Pure Python; no transport yet.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Feat][MP] Add the memory orchestrator service, client and lmcache memory\n\nExpose RegionState over nine batched gRPC calls: the proto schema, the\ncodec between api dataclasses and protobuf, the servicer with its\nregion, epoch and incarnation checks, the server process with a startup\nmarker (one instance per region; an unclean restart reports\nRESET_REQUIRED) and the client with deadlines, retries and batch\nsplitting. `lmcache memory` and `python -m lmcache.v1.memory_orchestrator`\nrun it.\n\n_generate.py now builds the bindings of any _proto_gen package and\nsetup.py builds this one too; they are gitignored like the MP protos,\nwith the message stub tracked for static analysis.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Document the memory orchestrator\n\nThe design doc covers why a shared region needs an owner outside every\nserver, the protocol and object states, what a restart or a vanished\nwriter means, and what each later step adds.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Expire abandoned memory-orchestrator writes\n\nExpire write reservations lazily on key and token access, invalidating the old token while retaining its consumed extent. Add a configurable 600-second default and cover lost replies, replacement ownership, late completion, cleanup, and configuration validation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Refactor][MP] Reuse P2P key and layout schemas in the orchestrator\n\nShare the existing ObjectKey, TensorShape and MemoryLayoutDesc protobuf messages. Preserve the primitive Python API, check key field alignment and round trips, and verify generation with the cross-package dependency.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Explain the memory region contract fields\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Explain reservation tokens at the L1 RPC boundary\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Clarify the deferred shared-region eviction API\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Test][MP] Cover memory-orchestrator bind failure\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Reject incompatible metadata for existing region keys\n\nCheck shapes, dtypes and payload size before returning EXISTS_VALID or BUSY_WRITING. Validate the entire batch before allocation or expiry, and allow expired writes to receive a fresh extent with new metadata.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Clarify startup markers across Kubernetes pods\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Refactor][MP] Reuse the canonical ObjectKey in the orchestrator\n\nReplace the duplicate key dataclass with an import alias. Reject invalid wire keys as INVALID_ARGUMENT before reserving writes or read leases, and cover canonical identity and whole-batch rejection.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Refactor][MP] Name the region allocation type ExtentHandle\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Test][MP] Isolate native protobuf generation from pytest\n\nExercise the generator CLI in a fresh Python process using copied schemas. Keep compilation and generated-import checks, propagate failures, and bound subprocess execution with a timeout.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 24,
+                "lines": 4408,
+                "insertions": 4378,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 86,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 172,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "MinJun Choi",
+          "email": "mj04300017@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 106,
+          "commits": [
+            {
+              "hash": "d181fafa",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-19T08:25:33.000Z",
+              "message": "[MP] Bound read-ahead of aio gRPC server streams (#5858)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 78,
+                "insertions": 74,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 7,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "dbe22ef8",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-20T14:05:25.000Z",
+              "message": "[Perf][MP] Compile the gRPC response writer once per method (#5906)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 101,
+                "insertions": 79,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 53,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 106,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 1,
@@ -1165,8 +1486,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "lepam",
@@ -1204,28 +1525,28 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
+          "name": "Kartik Hans",
+          "email": "hans@tensormesh.ai",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 87,
           "commits": [
             {
-              "hash": "c3a6f1d8",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-19T11:44:23.000Z",
-              "message": "[Bugfix] Remove deprecated legacy TCP cache server (#5785)\n\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "hash": "22857abc",
+              "author": "Kartik Hans",
+              "email": "hans@tensormesh.ai",
+              "date": "2026-10-20T23:34:58.000Z",
+              "message": "[Build] Ship the raw_block Rust module in PyPI wheels and images (#5882)\n\nSigned-off-by: Kartik Hans <hans@tensormesh.ai>",
               "stats": {
-                "files": 35,
-                "lines": 1065,
-                "insertions": 71,
-                "deletions": 994
+                "files": 12,
+                "lines": 465,
+                "insertions": 453,
+                "deletions": 12
               },
               "scores": {
                 "loc": 30,
@@ -1243,28 +1564,28 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 87,
           "commits": [
             {
-              "hash": "654aa568",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-10-19T02:45:35.000Z",
-              "message": "[SGLang] Remove legacy connector integrations (#5610)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "hash": "462006ab",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-20T06:08:58.000Z",
+              "message": "[RBLN] Support vLLM-RBLN's blocks-first KV cache layout (#5748)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 38,
-                "lines": 6623,
-                "insertions": 53,
-                "deletions": 6570
+                "files": 20,
+                "lines": 1063,
+                "insertions": 896,
+                "deletions": 167
               },
               "scores": {
                 "loc": 30,
@@ -1282,8 +1603,86 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 85,
+          "commits": [
+            {
+              "hash": "52fcb210",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-10-20T11:48:36.000Z",
+              "message": "test: enforce platform device APIs in tests (#5688)\n\n* test: enforce platform device APIs in tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n\n---------\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 16,
+                "lines": 1685,
+                "insertions": 1604,
+                "deletions": 81
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Hyukjoon Lee",
+          "email": "hyukjlee@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "4f7d283a",
+              "author": "Hyukjoon Lee",
+              "email": "hyukjlee@amd.com",
+              "date": "2026-10-20T23:18:07.000Z",
+              "message": "[Fix][MP] Bound stores by vLLM's computed position (#5911)\n\nSigned-off-by: Hyukjoon Lee <hyukjlee@amd.com>",
+              "stats": {
+                "files": 4,
+                "lines": 131,
+                "insertions": 128,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Kael",
@@ -1342,8 +1741,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 64,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Rui Zhang",
@@ -1381,47 +1780,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 46,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "MinJun Choi",
-          "email": "mj04300017@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 44,
-          "commits": [
-            {
-              "hash": "d181fafa",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-19T08:25:33.000Z",
-              "message": "[MP] Bound read-ahead of aio gRPC server streams (#5858)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 78,
-                "insertions": 74,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 7,
-                "total": 44
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 44,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 44,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Youngju KIM",
@@ -1459,8 +1819,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "jxj",
+          "email": "xinjun.jiang@daocloud.io",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "8b34857e",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-20T10:46:03.000Z",
+              "message": "[Doc] Correct standalone starter command options (#5904)\n\nSigned-off-by: xinjun.jiang <xinjun.jiang@daocloud.io>",
+              "stats": {
+                "files": 1,
+                "lines": 85,
+                "insertions": 41,
+                "deletions": 44
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Samridh",
@@ -1498,8 +1897,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 26,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Harsh Raj Singhania",
+          "email": "40535627+HarshRajSinghania@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 24,
+          "commits": [
+            {
+              "hash": "58e32cd0",
+              "author": "Harsh Raj Singhania",
+              "email": "40535627+HarshRajSinghania@users.noreply.github.com",
+              "date": "2026-10-20T03:54:33.000Z",
+              "message": "fix: convert f-string log calls to %-format in cachegen_basics.py (#5732)\n\n\nSigned-off-by: Harsh Raj Singhania <harshrajsinghania@proton.me>\nSigned-off-by: Harsh Raj Singhania <raj.harshraut@gmail.com>\nSigned-off-by: chunxiaozheng <idellzheng@tencent.com>\nCo-authored-by: Harsh Raj Singhania <harshrajsinghania@proton.me>\nCo-authored-by: chunxiaozheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 12,
+                "insertions": 6,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 1,
+                "total": 24
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 24,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 24,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "nauta",
@@ -1537,8 +1975,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 20,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
@@ -1547,10 +1985,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 7,
-          "significant_commits": 6,
+          "total_commits": 8,
+          "significant_commits": 7,
           "simple_commits": 1,
-          "commit_score": 553,
+          "commit_score": 640,
           "commits": [
             {
               "hash": "a3658dba",
@@ -1698,24 +2136,45 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "df19cd68",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-20T06:51:13.000Z",
+              "message": "[Refactor] Isolate in-process GPU connectors (#5872)\n\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 50,
+                "lines": 1444,
+                "insertions": 771,
+                "deletions": 673
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 79,
-          "significance_ratio": 0.8571428571428571,
+          "avg_score": 80,
+          "significance_ratio": 0.875,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 553,
+          "total_score": 640,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 8,
-          "significant_commits": 4,
+          "total_commits": 9,
+          "significant_commits": 5,
           "simple_commits": 4,
-          "commit_score": 462,
+          "commit_score": 524,
           "commits": [
             {
               "hash": "32cbdcb7",
@@ -1884,14 +2343,260 @@
                 "total": 44
               },
               "classification": "simple"
+            },
+            {
+              "hash": "dbe22ef8",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-20T14:05:25.000Z",
+              "message": "[Perf][MP] Compile the gRPC response writer once per method (#5906)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 101,
+                "insertions": 79,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 57.75,
+          "avg_score": 58.22222222222222,
+          "significance_ratio": 0.5555555555555556,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 524,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 350,
+          "commits": [
+            {
+              "hash": "1ed386c4",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-16T02:12:16.000Z",
+              "message": "[CI] Build release/nightly images with the docker buildx driver (#5792)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 6,
+                "insertions": 6,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "06bacd8b",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-15T04:49:05.000Z",
+              "message": "[Bugfix][MP] Drop abandoned P2P lookup jobs on the owner (#5712)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 128,
+                "insertions": 127,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "60538a08",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-17T02:22:08.000Z",
+              "message": "[core] Skip lookup/prefetch of APC-covered prefix (non-pin / re-lookup method) (#5383)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1016,
+                "insertions": 902,
+                "deletions": 114
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e8dc1a1d",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-20T10:24:52.000Z",
+              "message": "[Feat][MP] Device offset for Device-DAX L1 and CXL L1 user guide (#5874)\n\n* [Doc][MP] Document CXL / Device-DAX as the L1 tier\n\nDevice-DAX L1 support was documented piecemeal: the tagged JSON schema\nin multi_l1, the --l1-devdax-path flag row in configuration, the\nhotplug routes in http_api, and a one-paragraph architecture note.\nNothing told an operator how to go from a CXL expander to a running\nserver, and the only page titled \"DAX\" covers the L2 adapter.\n\nAdd a \"Device-DAX / CXL L1\" subsection under L1 Memory Manager in the\nconfiguration reference: finding the /dev/dax path and switching it to\ndevdax mode, alignment and aliasing rules, the tagged and legacy\ninvocations including the legacy hybrid rule that consumes a matching\ndax L2 adapter as overflow, how to verify the tier came up on the\ndevice, runtime add/drain limits, and transfer-channel restrictions.\nCross-reference it from the MP overview, multi_l1, and the L2 DAX page.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Feat][MP] Add a device offset for Device-DAX L1 mappings\n\nEvery Device-DAX L1 arena was mapped from byte 0 of its device, so two\nLMCache servers pointed at the same CXL device clobbered each other and\nthe only way to share a region was to carve it into separate dax nodes\nat the kernel level.\n\nAdd an explicit mapping offset to every surface that maps a Device-DAX\nL1 range:\n\n- L1MemoryManagerConfig.devdax_offset_in_bytes, validated as a\n  non-negative page-aligned value that requires devdax_path.\n- CLI --l1-devdax-offset-gb and the tagged --l1-manager key offset_gb.\n- DevDaxMemoryAllocator maps [offset, offset + size) and rejects ranges\n  that overlap one already mapped from the same physical device; the\n  same device may now back several disjoint arenas in one pool.\n- add_device / remove_device / arena_status and the storage manager,\n  L1 manager, and protocol delegates accept the offset. Removal and\n  status lookups require it only when a path is mapped more than once.\n- POST /reconfigure/dax/l1/add and /remove accept \"offset\" as a byte\n  count or size string; status reports offset_in_bytes per arena.\n\nCharacter devices report st_size 0, so the kernel keeps enforcing the\ndevice bounds and alignment at mmap time. Nothing coordinates offsets\nacross servers; the operator owns the partitioning.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Bugfix][MP] Validate Device-DAX ranges against the sysfs size before mapping\n\nfstat reports st_size == 0 for a character device, so the L1 capacity check\nnever ran on a real /dev/daxX.Y, and the kernel does not check Device-DAX\nbounds at mmap time: an out-of-range mapping succeeds and the first access\nkills the server with SIGBUS (reported on hardware in review of #5874).\n\nAdd lmcache.utils.get_dax_device_geometry / check_dax_range, which read the\ndevice size and align from /sys/dev/char/<major>:<minor>/ and reject a range\nthat does not fit or is not aligned before mmap. A character device whose\nsize sysfs cannot report is rejected rather than mapped. Regular files keep\nusing st_size. The L1 allocator uses the check; docs no longer claim the\nkernel enforces bounds.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 21,
+                "lines": 1092,
+                "insertions": 957,
+                "deletions": 135
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "168130df",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-20T06:10:10.000Z",
+              "message": "[observability] Keep the APC-covered prefix out of lookup hit counters (#5836)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 16,
+                "lines": 661,
+                "insertions": 603,
+                "deletions": 58
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 350,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 4,
+          "significant_commits": 2,
+          "simple_commits": 2,
+          "commit_score": 251,
+          "commits": [
+            {
+              "hash": "b61b5b4e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-15T11:21:25.000Z",
+              "message": "[CI] Update skip k3 tests label name (#5764)\n\n* [CI] Update skip k3 tests label name\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>\n\n* update\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>\n\n---------\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 36,
+                "insertions": 18,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "654aa568",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-19T02:45:35.000Z",
+              "message": "[SGLang] Remove legacy connector integrations (#5610)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 38,
+                "lines": 6623,
+                "insertions": 53,
+                "deletions": 6570
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e7a4f238",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-20T06:45:18.000Z",
+              "message": "[SGLang][Bugfix] Support kimi linear model (#5892)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 47,
+                "insertions": 41,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bc9b1141",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-20T06:35:27.000Z",
+              "message": "[CI][SGLang] Add integration test for dsv4 flash (#5859)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 440,
+                "insertions": 277,
+                "deletions": 163
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62.75,
           "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 462,
+          "total_score": 251,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -2075,70 +2780,49 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 204,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "weishu",
-          "email": "838677410@qq.com",
-          "total_commits": 3,
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 2,
           "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 176,
+          "simple_commits": 0,
+          "commit_score": 174,
           "commits": [
             {
-              "hash": "1ed386c4",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-16T02:12:16.000Z",
-              "message": "[CI] Build release/nightly images with the docker buildx driver (#5792)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "9ce1d25b",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-15T00:38:32.000Z",
+              "message": "[Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts (#5667)\n\n* [Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts\n\nRblnDeviceOps.multi_layer_block_kv_transfer gated its two op sequences on\nexact EngineKVFormat values (NL_X_TWO_NB_NH_ONE_BS_HS / NL_X_NB_BS_HS).\nResolve the format to its KVFormatSpec once and dispatch on the layout\nfacts instead, matching the shared torch path after #4776:\n\n- per-layer two-major HND (is_layer_list, is_hnd, is_two_major, not\n  is_fused_packed) -> HND sequence\n- per-layer [NB, BS, HS] MLA (is_layer_list, is_mla, not is_pbs_fused /\n  is_kv_second_tuple) -> MLA sequence\n\nThe native 6-D layout and NL_X_TWO_NB_NH_BS_HS share those facts, so the\nnew kv_layout.hnd_layer_views squeezes 6-D tensors and passes 5-D ones\nthrough. The spec registry is imported lazily because importing it at\nmodule scope raises ImportError while lmcache resolves device_ops to\nthis module on an RBLN host.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Drop speculative 5-D HND support from block transfer\n\nvLLM-RBLN only allocates the 6-D NL_X_TWO_NB_NH_ONE_BS_HS layout, so\naccepting 5-D NL_X_TWO_NB_NH_BS_HS tensors handled an input that never\nreaches RBLN. Remove hnd_layer_views and go back to the strict\nsqueeze_singleton_axis: a 5-D cache passes the layout-fact check but\nfails loudly in the squeeze.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Skip layouts RBLN refuses by design on the RBLN lane\n\nRblnDeviceOps now moves only the layouts vLLM-RBLN allocates: per-layer\ntwo-major HND (with the RBLN singleton axis) and per-layer [NB, BS, HS]\nMLA. The MP tests that feed NHD, fused K/V, or 5-D HND caches therefore\nfail on an RBLN host, by design rather than by regression.\n\nSkip those 9 cases when torch_device_type is \"rbln\", under one\n_UNSUPPORTED_ON_RBLN mark (plus the fused K/V round trip in\ntest_blocks_first_cs_kv_format). Every other device still runs them.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Drop RBLN skips from shared multiprocess and gpu_connector tests\n\nThe RBLN CI lane runs only tests/v1/platform/devices/rbln, so these\nmarkers never take effect in CI, and RBLN refused these layouts before\nthis PR as well.\n\nThis reverts commit d0de6759.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Refuse blocked-scale MLA pages; repack them in the torch fallback\n\nNL_X_NB_BSV_BSS inherits is_mla from the per-layer MLA spec, so the RBLN\nlayout-fact dispatch admitted it and its whole-block copy wrote the\nblocked [BS x vals][BS x scales] page into a chunk as if it were\ntoken-major.\n\n- KVFormatSpec: add the requires_blocked_scale_repacking layout fact,\n  set only on NL_X_NB_BSV_BSS.\n- RBLN: exclude that fact from the MLA predicate, so the format is\n  refused with the layout ValueError.\n- torch fallback: the MP block transfer splits each block into value\n  and scale views and gathers/scatters token-major rows, matching the\n  CUDA kernels.\n- Tests: an RBLN refusal regression, a golden check that only\n  NL_X_NB_BSV_BSS carries the fact, and a CPU round trip of the torch\n  block transfer against a hand-written blocked page.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 2,
-                "lines": 6,
-                "insertions": 6,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
                 "files": 10,
-                "keyword": 12,
-                "ai": 0,
-                "total": 25
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "06bacd8b",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-15T04:49:05.000Z",
-              "message": "[Bugfix][MP] Drop abandoned P2P lookup jobs on the owner (#5712)\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 3,
-                "lines": 128,
-                "insertions": 127,
-                "deletions": 1
+                "lines": 341,
+                "insertions": 284,
+                "deletions": 57
               },
               "scores": {
                 "loc": 30,
-                "files": 10,
+                "files": 20,
                 "keyword": 12,
-                "ai": 12,
-                "total": 64
+                "ai": 25,
+                "total": 87
               },
               "classification": "significant"
             },
             {
-              "hash": "60538a08",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-17T02:22:08.000Z",
-              "message": "[core] Skip lookup/prefetch of APC-covered prefix (non-pin / re-lookup method) (#5383)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "462006ab",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-20T06:08:58.000Z",
+              "message": "[RBLN] Support vLLM-RBLN's blocks-first KV cache layout (#5748)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 19,
-                "lines": 1016,
-                "insertions": 902,
-                "deletions": 114
+                "files": 20,
+                "lines": 1063,
+                "insertions": 896,
+                "deletions": 167
               },
               "scores": {
                 "loc": 30,
@@ -2150,14 +2834,74 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 58.666666666666664,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 87,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 176,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "total_score": 174,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 172,
+          "commits": [
+            {
+              "hash": "162cbe72",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-20T06:01:48.000Z",
+              "message": "[CI] Add file-backed DevDAX L1 and DAX L2 integration coverage (#5635)\n\n* ci: run file-backed DAX L1 and L2 integration tests\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* ci: enable file-backed DAX tests in default Buildkite pipeline\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 428,
+                "insertions": 390,
+                "deletions": 38
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "258746ce",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-20T02:25:36.000Z",
+              "message": "[4/N][Feat][MP] Add the memory orchestrator for shared L1 regions (#5559)\n\n* [Feat][MP] Add the memory orchestrator's region state\n\nRegionState is the allocation and readiness authority for one shared\nregion: monotonic extents, object states (WRITING -> VALID, or CONSUMED\nwhen the writer aborts, closes or registers again), write tokens, read\nleases, client incarnations and idempotent request replay. api.py holds\nthe dataclasses and enums that the state, the RPC layer and the shared\nL1 share. Pure Python; no transport yet.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Feat][MP] Add the memory orchestrator service, client and lmcache memory\n\nExpose RegionState over nine batched gRPC calls: the proto schema, the\ncodec between api dataclasses and protobuf, the servicer with its\nregion, epoch and incarnation checks, the server process with a startup\nmarker (one instance per region; an unclean restart reports\nRESET_REQUIRED) and the client with deadlines, retries and batch\nsplitting. `lmcache memory` and `python -m lmcache.v1.memory_orchestrator`\nrun it.\n\n_generate.py now builds the bindings of any _proto_gen package and\nsetup.py builds this one too; they are gitignored like the MP protos,\nwith the message stub tracked for static analysis.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Document the memory orchestrator\n\nThe design doc covers why a shared region needs an owner outside every\nserver, the protocol and object states, what a restart or a vanished\nwriter means, and what each later step adds.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Expire abandoned memory-orchestrator writes\n\nExpire write reservations lazily on key and token access, invalidating the old token while retaining its consumed extent. Add a configurable 600-second default and cover lost replies, replacement ownership, late completion, cleanup, and configuration validation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Refactor][MP] Reuse P2P key and layout schemas in the orchestrator\n\nShare the existing ObjectKey, TensorShape and MemoryLayoutDesc protobuf messages. Preserve the primitive Python API, check key field alignment and round trips, and verify generation with the cross-package dependency.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Explain the memory region contract fields\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Explain reservation tokens at the L1 RPC boundary\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Clarify the deferred shared-region eviction API\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Test][MP] Cover memory-orchestrator bind failure\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Reject incompatible metadata for existing region keys\n\nCheck shapes, dtypes and payload size before returning EXISTS_VALID or BUSY_WRITING. Validate the entire batch before allocation or expiry, and allow expired writes to receive a fresh extent with new metadata.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Clarify startup markers across Kubernetes pods\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Refactor][MP] Reuse the canonical ObjectKey in the orchestrator\n\nReplace the duplicate key dataclass with an import alias. Reject invalid wire keys as INVALID_ARGUMENT before reserving writes or read leases, and cover canonical identity and whole-batch rejection.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Refactor][MP] Name the region allocation type ExtentHandle\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Test][MP] Isolate native protobuf generation from pytest\n\nExercise the generator CLI in a fresh Python process using copied schemas. Keep compilation and generated-import checks, propagate failures, and bound subprocess execution with a timeout.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 24,
+                "lines": 4408,
+                "insertions": 4378,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 86,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 172,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "nauta",
@@ -2237,66 +2981,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 143,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 130,
-          "commits": [
-            {
-              "hash": "b61b5b4e",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-10-15T11:21:25.000Z",
-              "message": "[CI] Update skip k3 tests label name (#5764)\n\n* [CI] Update skip k3 tests label name\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>\n\n* update\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>\n\n---------\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
-              "stats": {
-                "files": 5,
-                "lines": 36,
-                "insertions": 18,
-                "deletions": 18
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 3,
-                "total": 43
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "654aa568",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-10-19T02:45:35.000Z",
-              "message": "[SGLang] Remove legacy connector integrations (#5610)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
-              "stats": {
-                "files": 38,
-                "lines": 6623,
-                "insertions": 53,
-                "deletions": 6570
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 65,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 130,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -2400,45 +3084,6 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Jinhwan Suk (석진환)",
-          "email": "jinhwan.suk@rebellions.ai",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "9ce1d25b",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-15T00:38:32.000Z",
-              "message": "[Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts (#5667)\n\n* [Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts\n\nRblnDeviceOps.multi_layer_block_kv_transfer gated its two op sequences on\nexact EngineKVFormat values (NL_X_TWO_NB_NH_ONE_BS_HS / NL_X_NB_BS_HS).\nResolve the format to its KVFormatSpec once and dispatch on the layout\nfacts instead, matching the shared torch path after #4776:\n\n- per-layer two-major HND (is_layer_list, is_hnd, is_two_major, not\n  is_fused_packed) -> HND sequence\n- per-layer [NB, BS, HS] MLA (is_layer_list, is_mla, not is_pbs_fused /\n  is_kv_second_tuple) -> MLA sequence\n\nThe native 6-D layout and NL_X_TWO_NB_NH_BS_HS share those facts, so the\nnew kv_layout.hnd_layer_views squeezes 6-D tensors and passes 5-D ones\nthrough. The spec registry is imported lazily because importing it at\nmodule scope raises ImportError while lmcache resolves device_ops to\nthis module on an RBLN host.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Drop speculative 5-D HND support from block transfer\n\nvLLM-RBLN only allocates the 6-D NL_X_TWO_NB_NH_ONE_BS_HS layout, so\naccepting 5-D NL_X_TWO_NB_NH_BS_HS tensors handled an input that never\nreaches RBLN. Remove hnd_layer_views and go back to the strict\nsqueeze_singleton_axis: a 5-D cache passes the layout-fact check but\nfails loudly in the squeeze.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Skip layouts RBLN refuses by design on the RBLN lane\n\nRblnDeviceOps now moves only the layouts vLLM-RBLN allocates: per-layer\ntwo-major HND (with the RBLN singleton axis) and per-layer [NB, BS, HS]\nMLA. The MP tests that feed NHD, fused K/V, or 5-D HND caches therefore\nfail on an RBLN host, by design rather than by regression.\n\nSkip those 9 cases when torch_device_type is \"rbln\", under one\n_UNSUPPORTED_ON_RBLN mark (plus the fused K/V round trip in\ntest_blocks_first_cs_kv_format). Every other device still runs them.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Drop RBLN skips from shared multiprocess and gpu_connector tests\n\nThe RBLN CI lane runs only tests/v1/platform/devices/rbln, so these\nmarkers never take effect in CI, and RBLN refused these layouts before\nthis PR as well.\n\nThis reverts commit d0de6759.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Refuse blocked-scale MLA pages; repack them in the torch fallback\n\nNL_X_NB_BSV_BSS inherits is_mla from the per-layer MLA spec, so the RBLN\nlayout-fact dispatch admitted it and its whole-block copy wrote the\nblocked [BS x vals][BS x scales] page into a chunk as if it were\ntoken-major.\n\n- KVFormatSpec: add the requires_blocked_scale_repacking layout fact,\n  set only on NL_X_NB_BSV_BSS.\n- RBLN: exclude that fact from the MLA predicate, so the format is\n  refused with the layout ValueError.\n- torch fallback: the MP block transfer splits each block into value\n  and scale views and gathers/scatters token-major rows, matching the\n  CUDA kernels.\n- Tests: an RBLN refusal regression, a golden check that only\n  NL_X_NB_BSV_BSS carries the fact, and a CPU round trip of the torch\n  block transfer against a hand-written blocked page.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-              "stats": {
-                "files": 10,
-                "lines": 341,
-                "insertions": 284,
-                "deletions": 57
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 1,
@@ -2513,8 +3158,86 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Kartik Hans",
+          "email": "hans@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "22857abc",
+              "author": "Kartik Hans",
+              "email": "hans@tensormesh.ai",
+              "date": "2026-10-20T23:34:58.000Z",
+              "message": "[Build] Ship the raw_block Rust module in PyPI wheels and images (#5882)\n\nSigned-off-by: Kartik Hans <hans@tensormesh.ai>",
+              "stats": {
+                "files": 12,
+                "lines": 465,
+                "insertions": 453,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 85,
+          "commits": [
+            {
+              "hash": "52fcb210",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-10-20T11:48:36.000Z",
+              "message": "test: enforce platform device APIs in tests (#5688)\n\n* test: enforce platform device APIs in tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n\n---------\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 16,
+                "lines": 1685,
+                "insertions": 1604,
+                "deletions": 81
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "yeyang-zhou",
@@ -2630,6 +3353,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Hyukjoon Lee",
+          "email": "hyukjlee@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "4f7d283a",
+              "author": "Hyukjoon Lee",
+              "email": "hyukjlee@amd.com",
+              "date": "2026-10-20T23:18:07.000Z",
+              "message": "[Fix][MP] Bound stores by vLLM's computed position (#5911)\n\nSigned-off-by: Hyukjoon Lee <hyukjlee@amd.com>",
+              "stats": {
+                "files": 4,
+                "lines": 131,
+                "insertions": 128,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -2828,8 +3590,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "PPg",
@@ -2867,8 +3629,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Youngju KIM",
@@ -2906,8 +3668,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "jxj",
+          "email": "xinjun.jiang@daocloud.io",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "8b34857e",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-20T10:46:03.000Z",
+              "message": "[Doc] Correct standalone starter command options (#5904)\n\nSigned-off-by: xinjun.jiang <xinjun.jiang@daocloud.io>",
+              "stats": {
+                "files": 1,
+                "lines": 85,
+                "insertions": 41,
+                "deletions": 44
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Samridh",
@@ -2945,8 +3746,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 26,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Harsh Raj Singhania",
+          "email": "40535627+HarshRajSinghania@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 24,
+          "commits": [
+            {
+              "hash": "58e32cd0",
+              "author": "Harsh Raj Singhania",
+              "email": "40535627+HarshRajSinghania@users.noreply.github.com",
+              "date": "2026-10-20T03:54:33.000Z",
+              "message": "fix: convert f-string log calls to %-format in cachegen_basics.py (#5732)\n\n\nSigned-off-by: Harsh Raj Singhania <harshrajsinghania@proton.me>\nSigned-off-by: Harsh Raj Singhania <raj.harshraut@gmail.com>\nSigned-off-by: chunxiaozheng <idellzheng@tencent.com>\nCo-authored-by: Harsh Raj Singhania <harshrajsinghania@proton.me>\nCo-authored-by: chunxiaozheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 12,
+                "insertions": 6,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 1,
+                "total": 24
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 24,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 24,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Tony Lin",
@@ -2994,10 +3834,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 7,
-          "significant_commits": 6,
+          "total_commits": 8,
+          "significant_commits": 7,
           "simple_commits": 1,
-          "commit_score": 553,
+          "commit_score": 640,
           "commits": [
             {
               "hash": "a3658dba",
@@ -3145,24 +3985,45 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "df19cd68",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-20T06:51:13.000Z",
+              "message": "[Refactor] Isolate in-process GPU connectors (#5872)\n\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 50,
+                "lines": 1444,
+                "insertions": 771,
+                "deletions": 673
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 79,
-          "significance_ratio": 0.8571428571428571,
+          "avg_score": 80,
+          "significance_ratio": 0.875,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 553,
+          "total_score": 640,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 8,
-          "significant_commits": 4,
+          "total_commits": 9,
+          "significant_commits": 5,
           "simple_commits": 4,
-          "commit_score": 462,
+          "commit_score": 524,
           "commits": [
             {
               "hash": "32cbdcb7",
@@ -3331,14 +4192,260 @@
                 "total": 44
               },
               "classification": "simple"
+            },
+            {
+              "hash": "dbe22ef8",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-20T14:05:25.000Z",
+              "message": "[Perf][MP] Compile the gRPC response writer once per method (#5906)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 101,
+                "insertions": 79,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 57.75,
+          "avg_score": 58.22222222222222,
+          "significance_ratio": 0.5555555555555556,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 524,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 5,
+          "significant_commits": 4,
+          "simple_commits": 1,
+          "commit_score": 350,
+          "commits": [
+            {
+              "hash": "1ed386c4",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-16T02:12:16.000Z",
+              "message": "[CI] Build release/nightly images with the docker buildx driver (#5792)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 6,
+                "insertions": 6,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 0,
+                "total": 25
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "06bacd8b",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-15T04:49:05.000Z",
+              "message": "[Bugfix][MP] Drop abandoned P2P lookup jobs on the owner (#5712)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 128,
+                "insertions": 127,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "60538a08",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-17T02:22:08.000Z",
+              "message": "[core] Skip lookup/prefetch of APC-covered prefix (non-pin / re-lookup method) (#5383)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 19,
+                "lines": 1016,
+                "insertions": 902,
+                "deletions": 114
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e8dc1a1d",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-20T10:24:52.000Z",
+              "message": "[Feat][MP] Device offset for Device-DAX L1 and CXL L1 user guide (#5874)\n\n* [Doc][MP] Document CXL / Device-DAX as the L1 tier\n\nDevice-DAX L1 support was documented piecemeal: the tagged JSON schema\nin multi_l1, the --l1-devdax-path flag row in configuration, the\nhotplug routes in http_api, and a one-paragraph architecture note.\nNothing told an operator how to go from a CXL expander to a running\nserver, and the only page titled \"DAX\" covers the L2 adapter.\n\nAdd a \"Device-DAX / CXL L1\" subsection under L1 Memory Manager in the\nconfiguration reference: finding the /dev/dax path and switching it to\ndevdax mode, alignment and aliasing rules, the tagged and legacy\ninvocations including the legacy hybrid rule that consumes a matching\ndax L2 adapter as overflow, how to verify the tier came up on the\ndevice, runtime add/drain limits, and transfer-channel restrictions.\nCross-reference it from the MP overview, multi_l1, and the L2 DAX page.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Feat][MP] Add a device offset for Device-DAX L1 mappings\n\nEvery Device-DAX L1 arena was mapped from byte 0 of its device, so two\nLMCache servers pointed at the same CXL device clobbered each other and\nthe only way to share a region was to carve it into separate dax nodes\nat the kernel level.\n\nAdd an explicit mapping offset to every surface that maps a Device-DAX\nL1 range:\n\n- L1MemoryManagerConfig.devdax_offset_in_bytes, validated as a\n  non-negative page-aligned value that requires devdax_path.\n- CLI --l1-devdax-offset-gb and the tagged --l1-manager key offset_gb.\n- DevDaxMemoryAllocator maps [offset, offset + size) and rejects ranges\n  that overlap one already mapped from the same physical device; the\n  same device may now back several disjoint arenas in one pool.\n- add_device / remove_device / arena_status and the storage manager,\n  L1 manager, and protocol delegates accept the offset. Removal and\n  status lookups require it only when a path is mapped more than once.\n- POST /reconfigure/dax/l1/add and /remove accept \"offset\" as a byte\n  count or size string; status reports offset_in_bytes per arena.\n\nCharacter devices report st_size 0, so the kernel keeps enforcing the\ndevice bounds and alignment at mmap time. Nothing coordinates offsets\nacross servers; the operator owns the partitioning.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Bugfix][MP] Validate Device-DAX ranges against the sysfs size before mapping\n\nfstat reports st_size == 0 for a character device, so the L1 capacity check\nnever ran on a real /dev/daxX.Y, and the kernel does not check Device-DAX\nbounds at mmap time: an out-of-range mapping succeeds and the first access\nkills the server with SIGBUS (reported on hardware in review of #5874).\n\nAdd lmcache.utils.get_dax_device_geometry / check_dax_range, which read the\ndevice size and align from /sys/dev/char/<major>:<minor>/ and reject a range\nthat does not fit or is not aligned before mmap. A character device whose\nsize sysfs cannot report is rejected rather than mapped. Regular files keep\nusing st_size. The L1 allocator uses the check; docs no longer claim the\nkernel enforces bounds.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 21,
+                "lines": 1092,
+                "insertions": 957,
+                "deletions": 135
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "168130df",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-20T06:10:10.000Z",
+              "message": "[observability] Keep the APC-covered prefix out of lookup hit counters (#5836)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 16,
+                "lines": 661,
+                "insertions": 603,
+                "deletions": 58
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70,
+          "significance_ratio": 0.8,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 350,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 4,
+          "significant_commits": 2,
+          "simple_commits": 2,
+          "commit_score": 251,
+          "commits": [
+            {
+              "hash": "b61b5b4e",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-15T11:21:25.000Z",
+              "message": "[CI] Update skip k3 tests label name (#5764)\n\n* [CI] Update skip k3 tests label name\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>\n\n* update\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>\n\n---------\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 36,
+                "insertions": 18,
+                "deletions": 18
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 3,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "654aa568",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-19T02:45:35.000Z",
+              "message": "[SGLang] Remove legacy connector integrations (#5610)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 38,
+                "lines": 6623,
+                "insertions": 53,
+                "deletions": 6570
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e7a4f238",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-20T06:45:18.000Z",
+              "message": "[SGLang][Bugfix] Support kimi linear model (#5892)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 47,
+                "insertions": 41,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 4,
+                "total": 34
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "bc9b1141",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-20T06:35:27.000Z",
+              "message": "[CI][SGLang] Add integration test for dsv4 flash (#5859)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 440,
+                "insertions": 277,
+                "deletions": 163
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62.75,
           "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 462,
+          "total_score": 251,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3522,70 +4629,49 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 204,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "weishu",
-          "email": "838677410@qq.com",
-          "total_commits": 3,
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 2,
           "significant_commits": 2,
-          "simple_commits": 1,
-          "commit_score": 176,
+          "simple_commits": 0,
+          "commit_score": 174,
           "commits": [
             {
-              "hash": "1ed386c4",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-16T02:12:16.000Z",
-              "message": "[CI] Build release/nightly images with the docker buildx driver (#5792)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "9ce1d25b",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-15T00:38:32.000Z",
+              "message": "[Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts (#5667)\n\n* [Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts\n\nRblnDeviceOps.multi_layer_block_kv_transfer gated its two op sequences on\nexact EngineKVFormat values (NL_X_TWO_NB_NH_ONE_BS_HS / NL_X_NB_BS_HS).\nResolve the format to its KVFormatSpec once and dispatch on the layout\nfacts instead, matching the shared torch path after #4776:\n\n- per-layer two-major HND (is_layer_list, is_hnd, is_two_major, not\n  is_fused_packed) -> HND sequence\n- per-layer [NB, BS, HS] MLA (is_layer_list, is_mla, not is_pbs_fused /\n  is_kv_second_tuple) -> MLA sequence\n\nThe native 6-D layout and NL_X_TWO_NB_NH_BS_HS share those facts, so the\nnew kv_layout.hnd_layer_views squeezes 6-D tensors and passes 5-D ones\nthrough. The spec registry is imported lazily because importing it at\nmodule scope raises ImportError while lmcache resolves device_ops to\nthis module on an RBLN host.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Drop speculative 5-D HND support from block transfer\n\nvLLM-RBLN only allocates the 6-D NL_X_TWO_NB_NH_ONE_BS_HS layout, so\naccepting 5-D NL_X_TWO_NB_NH_BS_HS tensors handled an input that never\nreaches RBLN. Remove hnd_layer_views and go back to the strict\nsqueeze_singleton_axis: a 5-D cache passes the layout-fact check but\nfails loudly in the squeeze.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Skip layouts RBLN refuses by design on the RBLN lane\n\nRblnDeviceOps now moves only the layouts vLLM-RBLN allocates: per-layer\ntwo-major HND (with the RBLN singleton axis) and per-layer [NB, BS, HS]\nMLA. The MP tests that feed NHD, fused K/V, or 5-D HND caches therefore\nfail on an RBLN host, by design rather than by regression.\n\nSkip those 9 cases when torch_device_type is \"rbln\", under one\n_UNSUPPORTED_ON_RBLN mark (plus the fused K/V round trip in\ntest_blocks_first_cs_kv_format). Every other device still runs them.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Drop RBLN skips from shared multiprocess and gpu_connector tests\n\nThe RBLN CI lane runs only tests/v1/platform/devices/rbln, so these\nmarkers never take effect in CI, and RBLN refused these layouts before\nthis PR as well.\n\nThis reverts commit d0de6759.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Refuse blocked-scale MLA pages; repack them in the torch fallback\n\nNL_X_NB_BSV_BSS inherits is_mla from the per-layer MLA spec, so the RBLN\nlayout-fact dispatch admitted it and its whole-block copy wrote the\nblocked [BS x vals][BS x scales] page into a chunk as if it were\ntoken-major.\n\n- KVFormatSpec: add the requires_blocked_scale_repacking layout fact,\n  set only on NL_X_NB_BSV_BSS.\n- RBLN: exclude that fact from the MLA predicate, so the format is\n  refused with the layout ValueError.\n- torch fallback: the MP block transfer splits each block into value\n  and scale views and gathers/scatters token-major rows, matching the\n  CUDA kernels.\n- Tests: an RBLN refusal regression, a golden check that only\n  NL_X_NB_BSV_BSS carries the fact, and a CPU round trip of the torch\n  block transfer against a hand-written blocked page.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 2,
-                "lines": 6,
-                "insertions": 6,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
                 "files": 10,
-                "keyword": 12,
-                "ai": 0,
-                "total": 25
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "06bacd8b",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-15T04:49:05.000Z",
-              "message": "[Bugfix][MP] Drop abandoned P2P lookup jobs on the owner (#5712)\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 3,
-                "lines": 128,
-                "insertions": 127,
-                "deletions": 1
+                "lines": 341,
+                "insertions": 284,
+                "deletions": 57
               },
               "scores": {
                 "loc": 30,
-                "files": 10,
+                "files": 20,
                 "keyword": 12,
-                "ai": 12,
-                "total": 64
+                "ai": 25,
+                "total": 87
               },
               "classification": "significant"
             },
             {
-              "hash": "60538a08",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-17T02:22:08.000Z",
-              "message": "[core] Skip lookup/prefetch of APC-covered prefix (non-pin / re-lookup method) (#5383)\n\n \nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "462006ab",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-20T06:08:58.000Z",
+              "message": "[RBLN] Support vLLM-RBLN's blocks-first KV cache layout (#5748)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 19,
-                "lines": 1016,
-                "insertions": 902,
-                "deletions": 114
+                "files": 20,
+                "lines": 1063,
+                "insertions": 896,
+                "deletions": 167
               },
               "scores": {
                 "loc": 30,
@@ -3597,14 +4683,74 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 58.666666666666664,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 87,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 176,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "total_score": 174,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 172,
+          "commits": [
+            {
+              "hash": "162cbe72",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-20T06:01:48.000Z",
+              "message": "[CI] Add file-backed DevDAX L1 and DAX L2 integration coverage (#5635)\n\n* ci: run file-backed DAX L1 and L2 integration tests\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n* ci: enable file-backed DAX tests in default Buildkite pipeline\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 428,
+                "insertions": 390,
+                "deletions": 38
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "258746ce",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-20T02:25:36.000Z",
+              "message": "[4/N][Feat][MP] Add the memory orchestrator for shared L1 regions (#5559)\n\n* [Feat][MP] Add the memory orchestrator's region state\n\nRegionState is the allocation and readiness authority for one shared\nregion: monotonic extents, object states (WRITING -> VALID, or CONSUMED\nwhen the writer aborts, closes or registers again), write tokens, read\nleases, client incarnations and idempotent request replay. api.py holds\nthe dataclasses and enums that the state, the RPC layer and the shared\nL1 share. Pure Python; no transport yet.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Feat][MP] Add the memory orchestrator service, client and lmcache memory\n\nExpose RegionState over nine batched gRPC calls: the proto schema, the\ncodec between api dataclasses and protobuf, the servicer with its\nregion, epoch and incarnation checks, the server process with a startup\nmarker (one instance per region; an unclean restart reports\nRESET_REQUIRED) and the client with deadlines, retries and batch\nsplitting. `lmcache memory` and `python -m lmcache.v1.memory_orchestrator`\nrun it.\n\n_generate.py now builds the bindings of any _proto_gen package and\nsetup.py builds this one too; they are gitignored like the MP protos,\nwith the message stub tracked for static analysis.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Document the memory orchestrator\n\nThe design doc covers why a shared region needs an owner outside every\nserver, the protocol and object states, what a restart or a vanished\nwriter means, and what each later step adds.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Expire abandoned memory-orchestrator writes\n\nExpire write reservations lazily on key and token access, invalidating the old token while retaining its consumed extent. Add a configurable 600-second default and cover lost replies, replacement ownership, late completion, cleanup, and configuration validation.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Refactor][MP] Reuse P2P key and layout schemas in the orchestrator\n\nShare the existing ObjectKey, TensorShape and MemoryLayoutDesc protobuf messages. Preserve the primitive Python API, check key field alignment and round trips, and verify generation with the cross-package dependency.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Explain the memory region contract fields\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Explain reservation tokens at the L1 RPC boundary\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Clarify the deferred shared-region eviction API\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Test][MP] Cover memory-orchestrator bind failure\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Fix][MP] Reject incompatible metadata for existing region keys\n\nCheck shapes, dtypes and payload size before returning EXISTS_VALID or BUSY_WRITING. Validate the entire batch before allocation or expiry, and allow expired writes to receive a fresh extent with new metadata.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Docs][MP] Clarify startup markers across Kubernetes pods\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Refactor][MP] Reuse the canonical ObjectKey in the orchestrator\n\nReplace the duplicate key dataclass with an import alias. Reject invalid wire keys as INVALID_ARGUMENT before reserving writes or read leases, and cover canonical identity and whole-batch rejection.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Refactor][MP] Name the region allocation type ExtentHandle\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n* [Test][MP] Isolate native protobuf generation from pytest\n\nExercise the generator CLI in a fresh Python process using copied schemas. Keep compilation and generated-import checks, propagate failures, and bound subprocess execution with a timeout.\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>\n\n---------\n\nSigned-off-by: DongDongJu <commisori28@gmail.com>",
+              "stats": {
+                "files": 24,
+                "lines": 4408,
+                "insertions": 4378,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 86,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 172,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "nauta",
@@ -3684,66 +4830,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 143,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 130,
-          "commits": [
-            {
-              "hash": "b61b5b4e",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-10-15T11:21:25.000Z",
-              "message": "[CI] Update skip k3 tests label name (#5764)\n\n* [CI] Update skip k3 tests label name\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>\n\n* update\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>\n\n---------\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
-              "stats": {
-                "files": 5,
-                "lines": 36,
-                "insertions": 18,
-                "deletions": 18
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 3,
-                "total": 43
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "654aa568",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-10-19T02:45:35.000Z",
-              "message": "[SGLang] Remove legacy connector integrations (#5610)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
-              "stats": {
-                "files": 38,
-                "lines": 6623,
-                "insertions": 53,
-                "deletions": 6570
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 65,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 130,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -3847,45 +4933,6 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Jinhwan Suk (석진환)",
-          "email": "jinhwan.suk@rebellions.ai",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "9ce1d25b",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-15T00:38:32.000Z",
-              "message": "[Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts (#5667)\n\n* [Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts\n\nRblnDeviceOps.multi_layer_block_kv_transfer gated its two op sequences on\nexact EngineKVFormat values (NL_X_TWO_NB_NH_ONE_BS_HS / NL_X_NB_BS_HS).\nResolve the format to its KVFormatSpec once and dispatch on the layout\nfacts instead, matching the shared torch path after #4776:\n\n- per-layer two-major HND (is_layer_list, is_hnd, is_two_major, not\n  is_fused_packed) -> HND sequence\n- per-layer [NB, BS, HS] MLA (is_layer_list, is_mla, not is_pbs_fused /\n  is_kv_second_tuple) -> MLA sequence\n\nThe native 6-D layout and NL_X_TWO_NB_NH_BS_HS share those facts, so the\nnew kv_layout.hnd_layer_views squeezes 6-D tensors and passes 5-D ones\nthrough. The spec registry is imported lazily because importing it at\nmodule scope raises ImportError while lmcache resolves device_ops to\nthis module on an RBLN host.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Drop speculative 5-D HND support from block transfer\n\nvLLM-RBLN only allocates the 6-D NL_X_TWO_NB_NH_ONE_BS_HS layout, so\naccepting 5-D NL_X_TWO_NB_NH_BS_HS tensors handled an input that never\nreaches RBLN. Remove hnd_layer_views and go back to the strict\nsqueeze_singleton_axis: a 5-D cache passes the layout-fact check but\nfails loudly in the squeeze.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Skip layouts RBLN refuses by design on the RBLN lane\n\nRblnDeviceOps now moves only the layouts vLLM-RBLN allocates: per-layer\ntwo-major HND (with the RBLN singleton axis) and per-layer [NB, BS, HS]\nMLA. The MP tests that feed NHD, fused K/V, or 5-D HND caches therefore\nfail on an RBLN host, by design rather than by regression.\n\nSkip those 9 cases when torch_device_type is \"rbln\", under one\n_UNSUPPORTED_ON_RBLN mark (plus the fused K/V round trip in\ntest_blocks_first_cs_kv_format). Every other device still runs them.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Drop RBLN skips from shared multiprocess and gpu_connector tests\n\nThe RBLN CI lane runs only tests/v1/platform/devices/rbln, so these\nmarkers never take effect in CI, and RBLN refused these layouts before\nthis PR as well.\n\nThis reverts commit d0de6759.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Refuse blocked-scale MLA pages; repack them in the torch fallback\n\nNL_X_NB_BSV_BSS inherits is_mla from the per-layer MLA spec, so the RBLN\nlayout-fact dispatch admitted it and its whole-block copy wrote the\nblocked [BS x vals][BS x scales] page into a chunk as if it were\ntoken-major.\n\n- KVFormatSpec: add the requires_blocked_scale_repacking layout fact,\n  set only on NL_X_NB_BSV_BSS.\n- RBLN: exclude that fact from the MLA predicate, so the format is\n  refused with the layout ValueError.\n- torch fallback: the MP block transfer splits each block into value\n  and scale views and gathers/scatters token-major rows, matching the\n  CUDA kernels.\n- Tests: an RBLN refusal regression, a golden check that only\n  NL_X_NB_BSV_BSS carries the fact, and a CPU round trip of the torch\n  block transfer against a hand-written blocked page.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-              "stats": {
-                "files": 10,
-                "lines": 341,
-                "insertions": 284,
-                "deletions": 57
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Samuel Shen",
           "email": "slshen@tensormesh.ai",
           "total_commits": 1,
@@ -3960,8 +5007,86 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Kartik Hans",
+          "email": "hans@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "22857abc",
+              "author": "Kartik Hans",
+              "email": "hans@tensormesh.ai",
+              "date": "2026-10-20T23:34:58.000Z",
+              "message": "[Build] Ship the raw_block Rust module in PyPI wheels and images (#5882)\n\nSigned-off-by: Kartik Hans <hans@tensormesh.ai>",
+              "stats": {
+                "files": 12,
+                "lines": 465,
+                "insertions": 453,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 85,
+          "commits": [
+            {
+              "hash": "52fcb210",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-10-20T11:48:36.000Z",
+              "message": "test: enforce platform device APIs in tests (#5688)\n\n* test: enforce platform device APIs in tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\n\n\n---------\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 16,
+                "lines": 1685,
+                "insertions": 1604,
+                "deletions": 81
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 10,
+                "ai": 25,
+                "total": 85
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 85,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 85,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "yeyang-zhou",
@@ -4077,6 +5202,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 72,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Hyukjoon Lee",
+          "email": "hyukjlee@amd.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "4f7d283a",
+              "author": "Hyukjoon Lee",
+              "email": "hyukjlee@amd.com",
+              "date": "2026-10-20T23:18:07.000Z",
+              "message": "[Fix][MP] Bound stores by vLLM's computed position (#5911)\n\nSigned-off-by: Hyukjoon Lee <hyukjlee@amd.com>",
+              "stats": {
+                "files": 4,
+                "lines": 131,
+                "insertions": 128,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 13,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -4275,8 +5439,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "PPg",
@@ -4314,8 +5478,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Youngju KIM",
@@ -4353,8 +5517,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "jxj",
+          "email": "xinjun.jiang@daocloud.io",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "8b34857e",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-20T10:46:03.000Z",
+              "message": "[Doc] Correct standalone starter command options (#5904)\n\nSigned-off-by: xinjun.jiang <xinjun.jiang@daocloud.io>",
+              "stats": {
+                "files": 1,
+                "lines": 85,
+                "insertions": 41,
+                "deletions": 44
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 8,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Samridh",
@@ -4392,8 +5595,47 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 26,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Harsh Raj Singhania",
+          "email": "40535627+HarshRajSinghania@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 24,
+          "commits": [
+            {
+              "hash": "58e32cd0",
+              "author": "Harsh Raj Singhania",
+              "email": "40535627+HarshRajSinghania@users.noreply.github.com",
+              "date": "2026-10-20T03:54:33.000Z",
+              "message": "fix: convert f-string log calls to %-format in cachegen_basics.py (#5732)\n\n\nSigned-off-by: Harsh Raj Singhania <harshrajsinghania@proton.me>\nSigned-off-by: Harsh Raj Singhania <raj.harshraut@gmail.com>\nSigned-off-by: chunxiaozheng <idellzheng@tencent.com>\nCo-authored-by: Harsh Raj Singhania <harshrajsinghania@proton.me>\nCo-authored-by: chunxiaozheng <idellzheng@tencent.com>",
+              "stats": {
+                "files": 1,
+                "lines": 12,
+                "insertions": 6,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 1,
+                "total": 24
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 24,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 24,
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Tony Lin",
@@ -4438,13 +5680,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-20T00:30:32.199Z",
+    "analyzedAt": "2026-10-21T00:30:46.028Z",
     "daysBack": 2,
-    "totalCommits": 49,
-    "totalContributors": 23,
+    "totalCommits": 63,
+    "totalContributors": 29,
     "mergedFrom": {
-      "existing": 38,
-      "new": 18
+      "existing": 49,
+      "new": 25
     }
   }
 }
