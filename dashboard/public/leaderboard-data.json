@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-22T00:31:17.773Z",
-  "total_commits_analyzed": 93,
+  "last_updated": "2026-10-23T00:31:30.967Z",
+  "total_commits_analyzed": 114,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -1132,10 +1132,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 10,
-          "significant_commits": 9,
+          "total_commits": 13,
+          "significant_commits": 12,
           "simple_commits": 1,
-          "commit_score": 754,
+          "commit_score": 1001,
           "commits": [
             {
               "hash": "c3a6f1d8",
@@ -1346,14 +1346,158 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "bf2e52b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-22T14:40:09.000Z",
+              "message": "[Refactor] Move InProcess-only internal_api_server modules under inprocess (#5973)",
+              "stats": {
+                "files": 59,
+                "lines": 141,
+                "insertions": 66,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 14,
+                "total": 76
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2d4f4bdf",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-22T09:28:44.000Z",
+              "message": "[Refactor] Move cache_controller under inprocess/v1 (#5970)\n\nSigned-off-by: baoloongmao <m307499405@qq.com>\nCo-authored-by: baoloongmao <m307499405@qq.com>",
+              "stats": {
+                "files": 67,
+                "lines": 371,
+                "insertions": 208,
+                "deletions": 163
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9dd64001",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-22T03:34:34.000Z",
+              "message": "[Refactor] Consolidate deprecated InProcess modules under inprocess (#5953)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 68,
+                "lines": 229,
+                "insertions": 118,
+                "deletions": 111
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 75.4,
-          "significance_ratio": 0.9,
+          "avg_score": 77,
+          "significance_ratio": 0.9230769230769231,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 754,
+          "total_score": 1001,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 261,
+          "commits": [
+            {
+              "hash": "e8dc1a1d",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-20T10:24:52.000Z",
+              "message": "[Feat][MP] Device offset for Device-DAX L1 and CXL L1 user guide (#5874)\n\n* [Doc][MP] Document CXL / Device-DAX as the L1 tier\n\nDevice-DAX L1 support was documented piecemeal: the tagged JSON schema\nin multi_l1, the --l1-devdax-path flag row in configuration, the\nhotplug routes in http_api, and a one-paragraph architecture note.\nNothing told an operator how to go from a CXL expander to a running\nserver, and the only page titled \"DAX\" covers the L2 adapter.\n\nAdd a \"Device-DAX / CXL L1\" subsection under L1 Memory Manager in the\nconfiguration reference: finding the /dev/dax path and switching it to\ndevdax mode, alignment and aliasing rules, the tagged and legacy\ninvocations including the legacy hybrid rule that consumes a matching\ndax L2 adapter as overflow, how to verify the tier came up on the\ndevice, runtime add/drain limits, and transfer-channel restrictions.\nCross-reference it from the MP overview, multi_l1, and the L2 DAX page.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Feat][MP] Add a device offset for Device-DAX L1 mappings\n\nEvery Device-DAX L1 arena was mapped from byte 0 of its device, so two\nLMCache servers pointed at the same CXL device clobbered each other and\nthe only way to share a region was to carve it into separate dax nodes\nat the kernel level.\n\nAdd an explicit mapping offset to every surface that maps a Device-DAX\nL1 range:\n\n- L1MemoryManagerConfig.devdax_offset_in_bytes, validated as a\n  non-negative page-aligned value that requires devdax_path.\n- CLI --l1-devdax-offset-gb and the tagged --l1-manager key offset_gb.\n- DevDaxMemoryAllocator maps [offset, offset + size) and rejects ranges\n  that overlap one already mapped from the same physical device; the\n  same device may now back several disjoint arenas in one pool.\n- add_device / remove_device / arena_status and the storage manager,\n  L1 manager, and protocol delegates accept the offset. Removal and\n  status lookups require it only when a path is mapped more than once.\n- POST /reconfigure/dax/l1/add and /remove accept \"offset\" as a byte\n  count or size string; status reports offset_in_bytes per arena.\n\nCharacter devices report st_size 0, so the kernel keeps enforcing the\ndevice bounds and alignment at mmap time. Nothing coordinates offsets\nacross servers; the operator owns the partitioning.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Bugfix][MP] Validate Device-DAX ranges against the sysfs size before mapping\n\nfstat reports st_size == 0 for a character device, so the L1 capacity check\nnever ran on a real /dev/daxX.Y, and the kernel does not check Device-DAX\nbounds at mmap time: an out-of-range mapping succeeds and the first access\nkills the server with SIGBUS (reported on hardware in review of #5874).\n\nAdd lmcache.utils.get_dax_device_geometry / check_dax_range, which read the\ndevice size and align from /sys/dev/char/<major>:<minor>/ and reject a range\nthat does not fit or is not aligned before mmap. A character device whose\nsize sysfs cannot report is rejected rather than mapped. Regular files keep\nusing st_size. The L1 allocator uses the check; docs no longer claim the\nkernel enforces bounds.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 21,
+                "lines": 1092,
+                "insertions": 957,
+                "deletions": 135
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "168130df",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-20T06:10:10.000Z",
+              "message": "[observability] Keep the APC-covered prefix out of lookup hit counters (#5836)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 16,
+                "lines": 661,
+                "insertions": 603,
+                "deletions": 58
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8afb6da4",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-22T02:40:51.000Z",
+              "message": "[Feat][MP] Device offset for DAX L2 mappings and range-based ownership (#5878)\n\n[Feat][MP] Add a device offset for DAX L2 mappings and range-based ownership\n\nThe dax L2 adapter and the single-process DaxBackend plugin mapped every\ndevice from byte 0, and the cross-tier ownership checks compared physical\ndevice identity only. Neither L1 and L2 in one server nor two servers\ncould share one CXL device for L2, even with disjoint ranges.\n\n- DaxDeviceConfig gains offset_gb (legacy and multi-device JSON forms);\n  DaxCore maps [offset, offset + size), validates the range with the\n  existing check_dax_range before mmap, and reports offset_bytes. The\n  plugin takes dax.offset_gb.\n- A device range is identified by (device_path, offset_bytes). Hotplug\n  add accepts offset_bytes and rejects ranges overlapping an active entry\n  on the same physical device; remove and resize take the same pair, and\n  a growing resize is range-checked like an add.\n  /reconfigure/dax/l2/{add,remove,resize} accept \"offset\".\n- Ownership is now range-based across tiers: owns_device(path) becomes\n  owns_range(path, offset, size) on the L1 manager, the Device-DAX\n  allocator, and the L2DeviceOwner protocol, and the storage manager\n  checks the range on every L1 and L2 add, on L2 resize, and when static\n  L2 adapters are built at startup. The legacy hybrid rule that consumes\n  a matching dax L2 device as L1 overflow matches on offset too.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 23,
+                "lines": 846,
+                "insertions": 698,
+                "deletions": 148
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 261,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1520,24 +1664,24 @@
           "tier_name": "Elite"
         },
         {
-          "name": "weishu",
-          "email": "838677410@qq.com",
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
           "commit_score": 174,
           "commits": [
             {
-              "hash": "e8dc1a1d",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-20T10:24:52.000Z",
-              "message": "[Feat][MP] Device offset for Device-DAX L1 and CXL L1 user guide (#5874)\n\n* [Doc][MP] Document CXL / Device-DAX as the L1 tier\n\nDevice-DAX L1 support was documented piecemeal: the tagged JSON schema\nin multi_l1, the --l1-devdax-path flag row in configuration, the\nhotplug routes in http_api, and a one-paragraph architecture note.\nNothing told an operator how to go from a CXL expander to a running\nserver, and the only page titled \"DAX\" covers the L2 adapter.\n\nAdd a \"Device-DAX / CXL L1\" subsection under L1 Memory Manager in the\nconfiguration reference: finding the /dev/dax path and switching it to\ndevdax mode, alignment and aliasing rules, the tagged and legacy\ninvocations including the legacy hybrid rule that consumes a matching\ndax L2 adapter as overflow, how to verify the tier came up on the\ndevice, runtime add/drain limits, and transfer-channel restrictions.\nCross-reference it from the MP overview, multi_l1, and the L2 DAX page.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Feat][MP] Add a device offset for Device-DAX L1 mappings\n\nEvery Device-DAX L1 arena was mapped from byte 0 of its device, so two\nLMCache servers pointed at the same CXL device clobbered each other and\nthe only way to share a region was to carve it into separate dax nodes\nat the kernel level.\n\nAdd an explicit mapping offset to every surface that maps a Device-DAX\nL1 range:\n\n- L1MemoryManagerConfig.devdax_offset_in_bytes, validated as a\n  non-negative page-aligned value that requires devdax_path.\n- CLI --l1-devdax-offset-gb and the tagged --l1-manager key offset_gb.\n- DevDaxMemoryAllocator maps [offset, offset + size) and rejects ranges\n  that overlap one already mapped from the same physical device; the\n  same device may now back several disjoint arenas in one pool.\n- add_device / remove_device / arena_status and the storage manager,\n  L1 manager, and protocol delegates accept the offset. Removal and\n  status lookups require it only when a path is mapped more than once.\n- POST /reconfigure/dax/l1/add and /remove accept \"offset\" as a byte\n  count or size string; status reports offset_in_bytes per arena.\n\nCharacter devices report st_size 0, so the kernel keeps enforcing the\ndevice bounds and alignment at mmap time. Nothing coordinates offsets\nacross servers; the operator owns the partitioning.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Bugfix][MP] Validate Device-DAX ranges against the sysfs size before mapping\n\nfstat reports st_size == 0 for a character device, so the L1 capacity check\nnever ran on a real /dev/daxX.Y, and the kernel does not check Device-DAX\nbounds at mmap time: an out-of-range mapping succeeds and the first access\nkills the server with SIGBUS (reported on hardware in review of #5874).\n\nAdd lmcache.utils.get_dax_device_geometry / check_dax_range, which read the\ndevice size and align from /sys/dev/char/<major>:<minor>/ and reject a range\nthat does not fit or is not aligned before mmap. A character device whose\nsize sysfs cannot report is rejected rather than mapped. Regular files keep\nusing st_size. The L1 allocator uses the check; docs no longer claim the\nkernel enforces bounds.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "a6accee6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-21T20:56:50.000Z",
+              "message": "[Feat] dynamic prefetch admission logic in the prefetch controller (#5889)\n\n[Add] prefetch admission logic for new prefetch controller\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
               "stats": {
-                "files": 21,
-                "lines": 1092,
-                "insertions": 957,
-                "deletions": 135
+                "files": 10,
+                "lines": 408,
+                "insertions": 352,
+                "deletions": 56
               },
               "scores": {
                 "loc": 30,
@@ -1549,16 +1693,16 @@
               "classification": "significant"
             },
             {
-              "hash": "168130df",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-10-20T06:10:10.000Z",
-              "message": "[observability] Keep the APC-covered prefix out of lookup hit counters (#5836)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "hash": "7e4f499a",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-22T03:30:32.000Z",
+              "message": "[Core] Add tags for L1 managers and L2 adapters for affinity and prefetch filtering (#5919)\n\n* add memory tags system\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* add unit tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* update docs and examples\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* fix mooncake tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
               "stats": {
-                "files": 16,
-                "lines": 661,
-                "insertions": 603,
-                "deletions": 58
+                "files": 53,
+                "lines": 1165,
+                "insertions": 989,
+                "deletions": 176
               },
               "scores": {
                 "loc": 30,
@@ -1636,8 +1780,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 172,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "MinJun Choi",
@@ -1723,10 +1867,10 @@
         {
           "name": "jxj",
           "email": "xinjun.jiang@daocloud.io",
-          "total_commits": 2,
+          "total_commits": 3,
           "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 102,
+          "simple_commits": 2,
+          "commit_score": 115,
           "commits": [
             {
               "hash": "8b34857e",
@@ -1769,14 +1913,35 @@
                 "total": 62
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f4bd5cd2",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-22T09:04:53.000Z",
+              "message": "[Doc] Fix S3 configuration in AES-GCM example (#5459)\n\ndocs: fix S3 configuration in AES-GCM example\n\nSigned-off-by: git-jxj <65210887+git-jxj@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 3,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 5,
+                "ai": 0,
+                "total": 13
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 51,
-          "significance_ratio": 0.5,
+          "avg_score": 38.333333333333336,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 102,
+          "total_score": 115,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1993,8 +2158,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Yuhan Liu",
@@ -2015,45 +2180,6 @@
                 "lines": 335,
                 "insertions": 303,
                 "deletions": 32
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 87,
-          "commits": [
-            {
-              "hash": "a6accee6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-21T20:56:50.000Z",
-              "message": "[Feat] dynamic prefetch admission logic in the prefetch controller (#5889)\n\n[Add] prefetch admission logic for new prefetch controller\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 10,
-                "lines": 408,
-                "insertions": 352,
-                "deletions": 56
               },
               "scores": {
                 "loc": 30,
@@ -2192,6 +2318,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Sylvie Wu",
+          "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "d0540179",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-22T02:37:59.000Z",
+              "message": "[Bugfix][Coordinator] Serve /cache/delete from the eviction controller (#5918)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 7,
+                "lines": 306,
+                "insertions": 154,
+                "deletions": 152
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "VincyZhang",
           "email": "wenxin.zhang@intel.com",
           "total_commits": 1,
@@ -2309,6 +2474,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Zupeng Wang",
+          "email": "zupenwang@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "b9bb2614",
+              "author": "Zupeng Wang",
+              "email": "zupenwang@gmail.com",
+              "date": "2026-10-21T15:26:46.000Z",
+              "message": "[Bugfix] Correct L2 adapter CLI help example (#4470)\n\n* fix(cli): correct L2 adapter help example\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n* test: avoid L2 adapter config module collision\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n---------\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>\nCo-authored-by: Wang Zupeng <wangzupeng12061@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 41,
+                "insertions": 39,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 10,
+                "ai": 4,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "a3b1ebd9",
+              "author": "Zupeng Wang",
+              "email": "zupenwang@gmail.com",
+              "date": "2026-10-22T15:35:09.000Z",
+              "message": "[Bugfix][MP] Report failure for rejected Bigtable L2 stores (#5471)\n\nFail store tasks when a payload exceeds either Bigtable size limit.\nThis preserves the L1 copy under the buffer-only store policy while\nkeeping valid writes and their usage accounting in mixed batches.\n\nAdd regression coverage for both rejection paths and the size boundary,\nand document the task-level failure semantics.\n\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 81,
+                "insertions": 80,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Xiao Liu",
           "email": "liuxiao2103@qq.com",
           "total_commits": 1,
@@ -2344,8 +2569,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 76,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Hyukjoon Lee",
@@ -2383,8 +2608,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 65,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Kael",
@@ -2443,6 +2668,162 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 64,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Sudhersan Srinivasan Kunnavakkam Vinchimoor",
+          "email": "94358947+sudhersankv@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 64,
+          "commits": [
+            {
+              "hash": "562517ad",
+              "author": "Sudhersan Srinivasan Kunnavakkam Vinchimoor",
+              "email": "94358947+sudhersankv@users.noreply.github.com",
+              "date": "2026-10-22T08:12:43.000Z",
+              "message": "[Bugfix] Release StorageManager refs when a backend raises in batched_put (#5940)\n\nSigned-off-by: sudhersankv <kvsudhersan11@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 123,
+                "insertions": 101,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 64,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "manv",
+          "email": "143290598+vmanvs@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 63,
+          "commits": [
+            {
+              "hash": "e0e92b83",
+              "author": "manv",
+              "email": "143290598+vmanvs@users.noreply.github.com",
+              "date": "2026-10-22T01:22:13.000Z",
+              "message": "[Bug] PeriodicThread restart overlaps a live worker after stop timeout (#5281)\n\nprevent overlapping PeriodicThread workers\n\nSigned-off-by: vmanvs <manvendravsvats@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 119,
+                "insertions": 75,
+                "deletions": 44
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 11,
+                "total": 63
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 63,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 63,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Shuhan Zhang",
+          "email": "14250491@cumt.edu.cn",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 62,
+          "commits": [
+            {
+              "hash": "48fc9d48",
+              "author": "Shuhan Zhang",
+              "email": "14250491@cumt.edu.cn",
+              "date": "2026-10-22T08:17:06.000Z",
+              "message": "[Bugfix][Test][Doc] Recognize legacy vLLM scratch-group markers (#5696)\n\nSigned-off-by: Manifold68575 <14250491@cumt.edu.cn>",
+              "stats": {
+                "files": 4,
+                "lines": 101,
+                "insertions": 81,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 62,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "7konigsberg",
+          "email": "77811205+7konigsberg@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 62,
+          "commits": [
+            {
+              "hash": "e45d4d5a",
+              "author": "7konigsberg",
+              "email": "77811205+7konigsberg@users.noreply.github.com",
+              "date": "2026-10-22T01:18:05.000Z",
+              "message": "[Bugfix] Include request tags in MooncakeLookupClient lookup keys (#5449)\n\nSigned-off-by: 7konigsberg <77811205+7konigsberg@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 102,
+                "insertions": 101,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 62,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -2546,6 +2927,66 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 44,
+          "commits": [
+            {
+              "hash": "8bfcdfde",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-22T23:48:30.000Z",
+              "message": "fix: make foreign tools import independent of safe path (#5986)\n\ntest: make foreign tools import independent of safe path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 9,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 1,
+                "total": 24
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9486005a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-22T11:58:39.000Z",
+              "message": "Fix server CLI help test with installed LMCache wheel (#5975)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 6,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 22,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 44,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Youngju KIM",
           "email": "fjvbn2003@gmail.com",
           "total_commits": 1,
@@ -2585,41 +3026,80 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Zupeng Wang",
-          "email": "zupenwang@gmail.com",
+          "name": "Teja Chavali",
+          "email": "tejachavali@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 32,
+          "commit_score": 37,
           "commits": [
             {
-              "hash": "b9bb2614",
-              "author": "Zupeng Wang",
-              "email": "zupenwang@gmail.com",
-              "date": "2026-10-21T15:26:46.000Z",
-              "message": "[Bugfix] Correct L2 adapter CLI help example (#4470)\n\n* fix(cli): correct L2 adapter help example\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n* test: avoid L2 adapter config module collision\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n---------\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>\nCo-authored-by: Wang Zupeng <wangzupeng12061@gmail.com>",
+              "hash": "577cca98",
+              "author": "Teja Chavali",
+              "email": "tejachavali@users.noreply.github.com",
+              "date": "2026-10-22T05:27:02.000Z",
+              "message": "[Test] Add cache_salt isolation regression tests for the unified SGLang MP connector (#5964)\n\nSigned-off-by: Teja Chavali <tejachavali@Tejas-MacBook-Pro.local>\nCo-authored-by: Teja Chavali <tejachavali@Tejas-MacBook-Pro.local>",
               "stats": {
-                "files": 2,
-                "lines": 41,
-                "insertions": 39,
-                "deletions": 2
+                "files": 1,
+                "lines": 54,
+                "insertions": 54,
+                "deletions": 0
               },
               "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 10,
-                "ai": 4,
-                "total": 32
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 32,
+          "avg_score": 37,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 32,
+          "total_score": 37,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "SANJAY ROHITH L",
+          "email": "sanjayrohith1802@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 33,
+          "commits": [
+            {
+              "hash": "30be8486",
+              "author": "SANJAY ROHITH L",
+              "email": "sanjayrohith1802@gmail.com",
+              "date": "2026-10-22T14:45:56.000Z",
+              "message": "[good-first-issue] distributed: convert f-string log calls to %-format (#5167)\n\n[good-first-issue] distributed: convert f-string log calls to %-format (#5118)\n\nFollow-up step for the G004 rollout in #5118. #5125 enabled G004 repo-wide with\ntemporary per-file-ignores for the not-yet-migrated files, and the plan agreed\nthere is to remove those entries directory by directory as each area is cleaned\nup.\n\nThis does that for lmcache/v1/distributed/, the last two files under it that\nwere still ignored:\n\n- l2_adapters/bigtable_l2_adapter.py (5 call sites)\n- transfer_channel/impl/mooncake_te_impl.py (4 call sites)\n\nand deletes both per-file-ignores entries, so the directory can no longer\nregress. Together with lmcache/v1/multiprocess/ (already clean), both\ndirectories that enforce SLF now enforce G004 as well.\n\nFormat style only, no behaviour change. Format specifiers were chosen from each\nvariable's type annotation per docs/coding_standards.md 7.4: %d for the int\ntimestamps, sizes, byte limits, port and batch id; %s for the str keys, column\nname, session id, host, protocol and device; %.2f for the float second-diff.\nAll nine messages render byte-identically to the f-strings they replace.\n\nget_rpc_port() is intentionally left as a call in the argument list: lazy\nformatting defers interpolation, not argument evaluation, so this keeps the\nexisting behaviour rather than making an unrelated change.\n\nPart of #5118\n\nSigned-off-by: sanjayrohith <sanjayrohith1802@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 38,
+                "insertions": 24,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 33,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 33,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -2702,6 +3182,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "DaMi",
+          "email": "118408678+Dami-wq-k03@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 29,
+          "commits": [
+            {
+              "hash": "8510ceb4",
+              "author": "DaMi",
+              "email": "118408678+Dami-wq-k03@users.noreply.github.com",
+              "date": "2026-10-22T12:22:37.000Z",
+              "message": "Continue shutdown process after timeout in steps (#5927)\n\nSigned-off-by: Kangwenqiao <118408678+Kangwenqiao@users.noreply.github.com>\nCo-authored-by: Kangwenqiao <118408678+Kangwenqiao@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 45,
+                "insertions": 18,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 29,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 29,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Samridh",
           "email": "109811970+samridh10exe@users.noreply.github.com",
           "total_commits": 1,
@@ -2780,6 +3299,84 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Neev Modh",
+          "email": "141932641+neevmodh@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "af714f33",
+              "author": "Neev Modh",
+              "email": "141932641+neevmodh@users.noreply.github.com",
+              "date": "2026-10-22T09:04:27.000Z",
+              "message": "docs(mp): clarify kv_load_failure_policy is not enforced by LMCache (#5364)\n\nSigned-off-by: Neev Modh <141932641+neevmodh@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 15,
+                "insertions": 15,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Mohammad Hijjawi",
+          "email": "51020382+MohammadHijjawi97@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "33dd6123",
+              "author": "Mohammad Hijjawi",
+              "email": "51020382+MohammadHijjawi97@users.noreply.github.com",
+              "date": "2026-10-22T01:01:28.000Z",
+              "message": "[Bugfix][CLI] Create the output dir when bench engine exports only JSON (#5395)\n\nSigned-off-by: Mohammad Hijjawi <mohammad.hijjawi1997@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 13,
+                "insertions": 13,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Harsh Raj Singhania",
           "email": "40535627+HarshRajSinghania@users.noreply.github.com",
           "total_commits": 1,
@@ -2815,6 +3412,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 24,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "hellojun",
+          "email": "hello_jun@163.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 23,
+          "commits": [
+            {
+              "hash": "4acfc90f",
+              "author": "hellojun",
+              "email": "hello_jun@163.com",
+              "date": "2026-10-22T06:04:52.000Z",
+              "message": "[Doc] zh_CN: fix inline literal escaping before fullwidth parens (#5003)\n\nThree inline literals in the zh_CN catalog for mp/index.rst are followed immediately by a fullwidth left parenthesis (U+FF08). docutils only closes an inline markup span when the end-string is followed by whitespace or closing/final punctuation, so the span is never recognised and the backticks leak into the rendered page. The unmatched backticks then mis-pair with the following span, so the rest of the sentence loses its markup as well.\r\n\r\nCurrently rendered on docs.lmcache.ai/zh_CN/mp/index.html:\r\n\r\n  由进程全局的 GDSContext``（``gpu_connector/gds_context.py）驱动\r\n\r\nFix: add the escaped-space separator (backslash + space) that this same file already uses in 58 other places, and that s3.po, hfbucket.po and mp/l2_storage/index.po already use for exactly this fullwidth-parenthesis case. Those pages render with no stray backticks.\r\n\r\nOnly msgstr lines change; no msgid is touched, so the catalog mapping stays intact.\r\n\r\nThe same pattern appears in roughly 17 other zh_CN catalogs (cli/tool.po, cli/bench.po, mp/http_api.po, mp/coordinator.po and others). Happy to send follow-up PRs per directory if this approach looks right.\n\nSigned-off-by: hellojun <hello_jun@163.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 23,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 23,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -2876,6 +3512,45 @@
                 "lines": 7,
                 "insertions": 7,
                 "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "0andy",
+          "email": "3870326+0andy@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "c4a5b54b",
+              "author": "0andy",
+              "email": "3870326+0andy@users.noreply.github.com",
+              "date": "2026-10-22T03:37:47.000Z",
+              "message": "[Docs][MP] Use num_chunks_loaded to confirm retrieves in the SGLang quickstart (#5540)\n\nSigned-off-by: 0andy <3870326+0andy@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
               },
               "scores": {
                 "loc": 3,
@@ -2903,10 +3578,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 16,
-          "significant_commits": 14,
+          "total_commits": 19,
+          "significant_commits": 17,
           "simple_commits": 2,
-          "commit_score": 1220,
+          "commit_score": 1467,
           "commits": [
             {
               "hash": "a3658dba",
@@ -3243,14 +3918,77 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "bf2e52b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-22T14:40:09.000Z",
+              "message": "[Refactor] Move InProcess-only internal_api_server modules under inprocess (#5973)",
+              "stats": {
+                "files": 59,
+                "lines": 141,
+                "insertions": 66,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 14,
+                "total": 76
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2d4f4bdf",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-22T09:28:44.000Z",
+              "message": "[Refactor] Move cache_controller under inprocess/v1 (#5970)\n\nSigned-off-by: baoloongmao <m307499405@qq.com>\nCo-authored-by: baoloongmao <m307499405@qq.com>",
+              "stats": {
+                "files": 67,
+                "lines": 371,
+                "insertions": 208,
+                "deletions": 163
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9dd64001",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-22T03:34:34.000Z",
+              "message": "[Refactor] Consolidate deprecated InProcess modules under inprocess (#5953)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 68,
+                "lines": 229,
+                "insertions": 118,
+                "deletions": 111
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 76.25,
-          "significance_ratio": 0.875,
+          "avg_score": 77.21052631578948,
+          "significance_ratio": 0.8947368421052632,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1220,
+          "total_score": 1467,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3485,10 +4223,10 @@
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 5,
-          "significant_commits": 4,
+          "total_commits": 6,
+          "significant_commits": 5,
           "simple_commits": 1,
-          "commit_score": 350,
+          "commit_score": 437,
           "commits": [
             {
               "hash": "1ed386c4",
@@ -3594,14 +4332,116 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8afb6da4",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-22T02:40:51.000Z",
+              "message": "[Feat][MP] Device offset for DAX L2 mappings and range-based ownership (#5878)\n\n[Feat][MP] Add a device offset for DAX L2 mappings and range-based ownership\n\nThe dax L2 adapter and the single-process DaxBackend plugin mapped every\ndevice from byte 0, and the cross-tier ownership checks compared physical\ndevice identity only. Neither L1 and L2 in one server nor two servers\ncould share one CXL device for L2, even with disjoint ranges.\n\n- DaxDeviceConfig gains offset_gb (legacy and multi-device JSON forms);\n  DaxCore maps [offset, offset + size), validates the range with the\n  existing check_dax_range before mmap, and reports offset_bytes. The\n  plugin takes dax.offset_gb.\n- A device range is identified by (device_path, offset_bytes). Hotplug\n  add accepts offset_bytes and rejects ranges overlapping an active entry\n  on the same physical device; remove and resize take the same pair, and\n  a growing resize is range-checked like an add.\n  /reconfigure/dax/l2/{add,remove,resize} accept \"offset\".\n- Ownership is now range-based across tiers: owns_device(path) becomes\n  owns_range(path, offset, size) on the L1 manager, the Device-DAX\n  allocator, and the L2DeviceOwner protocol, and the storage manager\n  checks the range on every L1 and L2 add, on L2 resize, and when static\n  L2 adapters are built at startup. The legacy hybrid rule that consumes\n  a matching dax L2 device as L1 overflow matches on offset too.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 23,
+                "lines": 846,
+                "insertions": 698,
+                "deletions": 148
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 70,
-          "significance_ratio": 0.8,
+          "avg_score": 72.83333333333333,
+          "significance_ratio": 0.8333333333333334,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 350,
+          "total_score": 437,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 261,
+          "commits": [
+            {
+              "hash": "e64f0a56",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-16T19:02:02.000Z",
+              "message": "[Refactor] Make qstore a plugin module and rename confusing functions (#5793)\n\n[Refactor] remove the --enable flag and make qstore become an in-tree plugin module\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 32,
+                "lines": 569,
+                "insertions": 305,
+                "deletions": 264
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a6accee6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-21T20:56:50.000Z",
+              "message": "[Feat] dynamic prefetch admission logic in the prefetch controller (#5889)\n\n[Add] prefetch admission logic for new prefetch controller\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 10,
+                "lines": 408,
+                "insertions": 352,
+                "deletions": 56
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7e4f499a",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-22T03:30:32.000Z",
+              "message": "[Core] Add tags for L1 managers and L2 adapters for affinity and prefetch filtering (#5919)\n\n* add memory tags system\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* add unit tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* update docs and examples\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* fix mooncake tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 53,
+                "lines": 1165,
+                "insertions": 989,
+                "deletions": 176
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 261,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3785,8 +4625,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 251,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Karsten Wade",
@@ -3968,66 +4808,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 204,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 174,
-          "commits": [
-            {
-              "hash": "e64f0a56",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-16T19:02:02.000Z",
-              "message": "[Refactor] Make qstore a plugin module and rename confusing functions (#5793)\n\n[Refactor] remove the --enable flag and make qstore become an in-tree plugin module\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 32,
-                "lines": 569,
-                "insertions": 305,
-                "deletions": 264
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a6accee6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-21T20:56:50.000Z",
-              "message": "[Feat] dynamic prefetch admission logic in the prefetch controller (#5889)\n\n[Add] prefetch admission logic for new prefetch controller\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 10,
-                "lines": 408,
-                "insertions": 352,
-                "deletions": 56
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 174,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4235,10 +5015,10 @@
         {
           "name": "jxj",
           "email": "xinjun.jiang@daocloud.io",
-          "total_commits": 2,
+          "total_commits": 3,
           "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 102,
+          "simple_commits": 2,
+          "commit_score": 115,
           "commits": [
             {
               "hash": "8b34857e",
@@ -4281,14 +5061,35 @@
                 "total": 62
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f4bd5cd2",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-22T09:04:53.000Z",
+              "message": "[Doc] Fix S3 configuration in AES-GCM example (#5459)\n\ndocs: fix S3 configuration in AES-GCM example\n\nSigned-off-by: git-jxj <65210887+git-jxj@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 3,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 5,
+                "ai": 0,
+                "total": 13
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 51,
-          "significance_ratio": 0.5,
+          "avg_score": 38.333333333333336,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 102,
+          "total_score": 115,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4686,6 +5487,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Sylvie Wu",
+          "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "d0540179",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-22T02:37:59.000Z",
+              "message": "[Bugfix][Coordinator] Serve /cache/delete from the eviction controller (#5918)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 7,
+                "lines": 306,
+                "insertions": 154,
+                "deletions": 152
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "VincyZhang",
           "email": "wenxin.zhang@intel.com",
           "total_commits": 1,
@@ -4721,8 +5561,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 85,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Marco Barletta",
@@ -4795,6 +5635,66 @@
           ],
           "avg_score": 77,
           "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Zupeng Wang",
+          "email": "zupenwang@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "b9bb2614",
+              "author": "Zupeng Wang",
+              "email": "zupenwang@gmail.com",
+              "date": "2026-10-21T15:26:46.000Z",
+              "message": "[Bugfix] Correct L2 adapter CLI help example (#4470)\n\n* fix(cli): correct L2 adapter help example\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n* test: avoid L2 adapter config module collision\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n---------\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>\nCo-authored-by: Wang Zupeng <wangzupeng12061@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 41,
+                "insertions": 39,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 10,
+                "ai": 4,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "a3b1ebd9",
+              "author": "Zupeng Wang",
+              "email": "zupenwang@gmail.com",
+              "date": "2026-10-22T15:35:09.000Z",
+              "message": "[Bugfix][MP] Report failure for rejected Bigtable L2 stores (#5471)\n\nFail store tasks when a payload exceeds either Bigtable size limit.\nThis preserves the L1 copy under the buffer-only store policy while\nkeeping valid writes and their usage accounting in mixed batches.\n\nAdd regression coverage for both rejection paths and the size boundary,\nand document the task-level failure semantics.\n\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 81,
+                "insertions": 80,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38.5,
+          "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
@@ -4959,6 +5859,87 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 3,
+          "significant_commits": 0,
+          "simple_commits": 3,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "d75ab6f3",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-16T06:33:07.000Z",
+              "message": "Align XPU MP eval with CUDA batch-invariant exact sample comparison (#5761)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 7,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8bfcdfde",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-22T23:48:30.000Z",
+              "message": "fix: make foreign tools import independent of safe path (#5986)\n\ntest: make foreign tools import independent of safe path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 9,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 1,
+                "total": 24
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9486005a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-22T11:58:39.000Z",
+              "message": "Fix server CLI help test with installed LMCache wheel (#5975)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 6,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21.666666666666668,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Hyukjoon Lee",
           "email": "hyukjlee@amd.com",
           "total_commits": 1,
@@ -5054,6 +6035,162 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 64,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Sudhersan Srinivasan Kunnavakkam Vinchimoor",
+          "email": "94358947+sudhersankv@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 64,
+          "commits": [
+            {
+              "hash": "562517ad",
+              "author": "Sudhersan Srinivasan Kunnavakkam Vinchimoor",
+              "email": "94358947+sudhersankv@users.noreply.github.com",
+              "date": "2026-10-22T08:12:43.000Z",
+              "message": "[Bugfix] Release StorageManager refs when a backend raises in batched_put (#5940)\n\nSigned-off-by: sudhersankv <kvsudhersan11@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 123,
+                "insertions": 101,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 64,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "manv",
+          "email": "143290598+vmanvs@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 63,
+          "commits": [
+            {
+              "hash": "e0e92b83",
+              "author": "manv",
+              "email": "143290598+vmanvs@users.noreply.github.com",
+              "date": "2026-10-22T01:22:13.000Z",
+              "message": "[Bug] PeriodicThread restart overlaps a live worker after stop timeout (#5281)\n\nprevent overlapping PeriodicThread workers\n\nSigned-off-by: vmanvs <manvendravsvats@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 119,
+                "insertions": 75,
+                "deletions": 44
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 11,
+                "total": 63
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 63,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 63,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Shuhan Zhang",
+          "email": "14250491@cumt.edu.cn",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 62,
+          "commits": [
+            {
+              "hash": "48fc9d48",
+              "author": "Shuhan Zhang",
+              "email": "14250491@cumt.edu.cn",
+              "date": "2026-10-22T08:17:06.000Z",
+              "message": "[Bugfix][Test][Doc] Recognize legacy vLLM scratch-group markers (#5696)\n\nSigned-off-by: Manifold68575 <14250491@cumt.edu.cn>",
+              "stats": {
+                "files": 4,
+                "lines": 101,
+                "insertions": 81,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 62,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "7konigsberg",
+          "email": "77811205+7konigsberg@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 62,
+          "commits": [
+            {
+              "hash": "e45d4d5a",
+              "author": "7konigsberg",
+              "email": "77811205+7konigsberg@users.noreply.github.com",
+              "date": "2026-10-22T01:18:05.000Z",
+              "message": "[Bugfix] Include request tags in MooncakeLookupClient lookup keys (#5449)\n\nSigned-off-by: 7konigsberg <77811205+7konigsberg@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 102,
+                "insertions": 101,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 62,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -5334,41 +6471,80 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Zupeng Wang",
-          "email": "zupenwang@gmail.com",
+          "name": "Teja Chavali",
+          "email": "tejachavali@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 32,
+          "commit_score": 37,
           "commits": [
             {
-              "hash": "b9bb2614",
-              "author": "Zupeng Wang",
-              "email": "zupenwang@gmail.com",
-              "date": "2026-10-21T15:26:46.000Z",
-              "message": "[Bugfix] Correct L2 adapter CLI help example (#4470)\n\n* fix(cli): correct L2 adapter help example\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n* test: avoid L2 adapter config module collision\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n---------\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>\nCo-authored-by: Wang Zupeng <wangzupeng12061@gmail.com>",
+              "hash": "577cca98",
+              "author": "Teja Chavali",
+              "email": "tejachavali@users.noreply.github.com",
+              "date": "2026-10-22T05:27:02.000Z",
+              "message": "[Test] Add cache_salt isolation regression tests for the unified SGLang MP connector (#5964)\n\nSigned-off-by: Teja Chavali <tejachavali@Tejas-MacBook-Pro.local>\nCo-authored-by: Teja Chavali <tejachavali@Tejas-MacBook-Pro.local>",
               "stats": {
-                "files": 2,
-                "lines": 41,
-                "insertions": 39,
-                "deletions": 2
+                "files": 1,
+                "lines": 54,
+                "insertions": 54,
+                "deletions": 0
               },
               "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 10,
-                "ai": 4,
-                "total": 32
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 32,
+          "avg_score": 37,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 32,
+          "total_score": 37,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "SANJAY ROHITH L",
+          "email": "sanjayrohith1802@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 33,
+          "commits": [
+            {
+              "hash": "30be8486",
+              "author": "SANJAY ROHITH L",
+              "email": "sanjayrohith1802@gmail.com",
+              "date": "2026-10-22T14:45:56.000Z",
+              "message": "[good-first-issue] distributed: convert f-string log calls to %-format (#5167)\n\n[good-first-issue] distributed: convert f-string log calls to %-format (#5118)\n\nFollow-up step for the G004 rollout in #5118. #5125 enabled G004 repo-wide with\ntemporary per-file-ignores for the not-yet-migrated files, and the plan agreed\nthere is to remove those entries directory by directory as each area is cleaned\nup.\n\nThis does that for lmcache/v1/distributed/, the last two files under it that\nwere still ignored:\n\n- l2_adapters/bigtable_l2_adapter.py (5 call sites)\n- transfer_channel/impl/mooncake_te_impl.py (4 call sites)\n\nand deletes both per-file-ignores entries, so the directory can no longer\nregress. Together with lmcache/v1/multiprocess/ (already clean), both\ndirectories that enforce SLF now enforce G004 as well.\n\nFormat style only, no behaviour change. Format specifiers were chosen from each\nvariable's type annotation per docs/coding_standards.md 7.4: %d for the int\ntimestamps, sizes, byte limits, port and batch id; %s for the str keys, column\nname, session id, host, protocol and device; %.2f for the float second-diff.\nAll nine messages render byte-identically to the f-strings they replace.\n\nget_rpc_port() is intentionally left as a call in the argument list: lazy\nformatting defers interpolation, not argument evaluation, so this keeps the\nexisting behaviour rather than making an unrelated change.\n\nPart of #5118\n\nSigned-off-by: sanjayrohith <sanjayrohith1802@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 38,
+                "insertions": 24,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 33,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 33,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -5451,6 +6627,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "DaMi",
+          "email": "118408678+Dami-wq-k03@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 29,
+          "commits": [
+            {
+              "hash": "8510ceb4",
+              "author": "DaMi",
+              "email": "118408678+Dami-wq-k03@users.noreply.github.com",
+              "date": "2026-10-22T12:22:37.000Z",
+              "message": "Continue shutdown process after timeout in steps (#5927)\n\nSigned-off-by: Kangwenqiao <118408678+Kangwenqiao@users.noreply.github.com>\nCo-authored-by: Kangwenqiao <118408678+Kangwenqiao@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 45,
+                "insertions": 18,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 29,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 29,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Samridh",
           "email": "109811970+samridh10exe@users.noreply.github.com",
           "total_commits": 1,
@@ -5529,6 +6744,84 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Neev Modh",
+          "email": "141932641+neevmodh@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "af714f33",
+              "author": "Neev Modh",
+              "email": "141932641+neevmodh@users.noreply.github.com",
+              "date": "2026-10-22T09:04:27.000Z",
+              "message": "docs(mp): clarify kv_load_failure_policy is not enforced by LMCache (#5364)\n\nSigned-off-by: Neev Modh <141932641+neevmodh@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 15,
+                "insertions": 15,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Mohammad Hijjawi",
+          "email": "51020382+MohammadHijjawi97@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "33dd6123",
+              "author": "Mohammad Hijjawi",
+              "email": "51020382+MohammadHijjawi97@users.noreply.github.com",
+              "date": "2026-10-22T01:01:28.000Z",
+              "message": "[Bugfix][CLI] Create the output dir when bench engine exports only JSON (#5395)\n\nSigned-off-by: Mohammad Hijjawi <mohammad.hijjawi1997@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 13,
+                "insertions": 13,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Harsh Raj Singhania",
           "email": "40535627+HarshRajSinghania@users.noreply.github.com",
           "total_commits": 1,
@@ -5568,41 +6861,41 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
+          "name": "hellojun",
+          "email": "hello_jun@163.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 21,
+          "commit_score": 23,
           "commits": [
             {
-              "hash": "d75ab6f3",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-10-16T06:33:07.000Z",
-              "message": "Align XPU MP eval with CUDA batch-invariant exact sample comparison (#5761)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "hash": "4acfc90f",
+              "author": "hellojun",
+              "email": "hello_jun@163.com",
+              "date": "2026-10-22T06:04:52.000Z",
+              "message": "[Doc] zh_CN: fix inline literal escaping before fullwidth parens (#5003)\n\nThree inline literals in the zh_CN catalog for mp/index.rst are followed immediately by a fullwidth left parenthesis (U+FF08). docutils only closes an inline markup span when the end-string is followed by whitespace or closing/final punctuation, so the span is never recognised and the backticks leak into the rendered page. The unmatched backticks then mis-pair with the following span, so the rest of the sentence loses its markup as well.\r\n\r\nCurrently rendered on docs.lmcache.ai/zh_CN/mp/index.html:\r\n\r\n  由进程全局的 GDSContext``（``gpu_connector/gds_context.py）驱动\r\n\r\nFix: add the escaped-space separator (backslash + space) that this same file already uses in 58 other places, and that s3.po, hfbucket.po and mp/l2_storage/index.po already use for exactly this fullwidth-parenthesis case. Those pages render with no stray backticks.\r\n\r\nOnly msgstr lines change; no msgid is touched, so the catalog mapping stays intact.\r\n\r\nThe same pattern appears in roughly 17 other zh_CN catalogs (cli/tool.po, cli/bench.po, mp/http_api.po, mp/coordinator.po and others). Happy to send follow-up PRs per directory if this approach looks right.\n\nSigned-off-by: hellojun <hello_jun@163.com>",
               "stats": {
                 "files": 1,
-                "lines": 10,
-                "insertions": 7,
-                "deletions": 3
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
               },
               "scores": {
                 "loc": 3,
                 "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 21,
+          "avg_score": 23,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 21,
+          "total_score": 23,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -5625,6 +6918,45 @@
                 "lines": 7,
                 "insertions": 7,
                 "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "0andy",
+          "email": "3870326+0andy@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "c4a5b54b",
+              "author": "0andy",
+              "email": "3870326+0andy@users.noreply.github.com",
+              "date": "2026-10-22T03:37:47.000Z",
+              "message": "[Docs][MP] Use num_chunks_loaded to confirm retrieves in the SGLang quickstart (#5540)\n\nSigned-off-by: 0andy <3870326+0andy@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
               },
               "scores": {
                 "loc": 3,
@@ -5652,10 +6984,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 16,
-          "significant_commits": 14,
+          "total_commits": 19,
+          "significant_commits": 17,
           "simple_commits": 2,
-          "commit_score": 1220,
+          "commit_score": 1467,
           "commits": [
             {
               "hash": "a3658dba",
@@ -5992,14 +7324,77 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "bf2e52b0",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-22T14:40:09.000Z",
+              "message": "[Refactor] Move InProcess-only internal_api_server modules under inprocess (#5973)",
+              "stats": {
+                "files": 59,
+                "lines": 141,
+                "insertions": 66,
+                "deletions": 75
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 14,
+                "total": 76
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2d4f4bdf",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-22T09:28:44.000Z",
+              "message": "[Refactor] Move cache_controller under inprocess/v1 (#5970)\n\nSigned-off-by: baoloongmao <m307499405@qq.com>\nCo-authored-by: baoloongmao <m307499405@qq.com>",
+              "stats": {
+                "files": 67,
+                "lines": 371,
+                "insertions": 208,
+                "deletions": 163
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9dd64001",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-22T03:34:34.000Z",
+              "message": "[Refactor] Consolidate deprecated InProcess modules under inprocess (#5953)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 68,
+                "lines": 229,
+                "insertions": 118,
+                "deletions": 111
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 76.25,
-          "significance_ratio": 0.875,
+          "avg_score": 77.21052631578948,
+          "significance_ratio": 0.8947368421052632,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1220,
+          "total_score": 1467,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6234,10 +7629,10 @@
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 5,
-          "significant_commits": 4,
+          "total_commits": 6,
+          "significant_commits": 5,
           "simple_commits": 1,
-          "commit_score": 350,
+          "commit_score": 437,
           "commits": [
             {
               "hash": "1ed386c4",
@@ -6343,14 +7738,116 @@
                 "total": 87
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8afb6da4",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-22T02:40:51.000Z",
+              "message": "[Feat][MP] Device offset for DAX L2 mappings and range-based ownership (#5878)\n\n[Feat][MP] Add a device offset for DAX L2 mappings and range-based ownership\n\nThe dax L2 adapter and the single-process DaxBackend plugin mapped every\ndevice from byte 0, and the cross-tier ownership checks compared physical\ndevice identity only. Neither L1 and L2 in one server nor two servers\ncould share one CXL device for L2, even with disjoint ranges.\n\n- DaxDeviceConfig gains offset_gb (legacy and multi-device JSON forms);\n  DaxCore maps [offset, offset + size), validates the range with the\n  existing check_dax_range before mmap, and reports offset_bytes. The\n  plugin takes dax.offset_gb.\n- A device range is identified by (device_path, offset_bytes). Hotplug\n  add accepts offset_bytes and rejects ranges overlapping an active entry\n  on the same physical device; remove and resize take the same pair, and\n  a growing resize is range-checked like an add.\n  /reconfigure/dax/l2/{add,remove,resize} accept \"offset\".\n- Ownership is now range-based across tiers: owns_device(path) becomes\n  owns_range(path, offset, size) on the L1 manager, the Device-DAX\n  allocator, and the L2DeviceOwner protocol, and the storage manager\n  checks the range on every L1 and L2 add, on L2 resize, and when static\n  L2 adapters are built at startup. The legacy hybrid rule that consumes\n  a matching dax L2 device as L1 overflow matches on offset too.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 23,
+                "lines": 846,
+                "insertions": 698,
+                "deletions": 148
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 70,
-          "significance_ratio": 0.8,
+          "avg_score": 72.83333333333333,
+          "significance_ratio": 0.8333333333333334,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 350,
+          "total_score": 437,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 261,
+          "commits": [
+            {
+              "hash": "e64f0a56",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-16T19:02:02.000Z",
+              "message": "[Refactor] Make qstore a plugin module and rename confusing functions (#5793)\n\n[Refactor] remove the --enable flag and make qstore become an in-tree plugin module\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 32,
+                "lines": 569,
+                "insertions": 305,
+                "deletions": 264
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a6accee6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-21T20:56:50.000Z",
+              "message": "[Feat] dynamic prefetch admission logic in the prefetch controller (#5889)\n\n[Add] prefetch admission logic for new prefetch controller\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 10,
+                "lines": 408,
+                "insertions": 352,
+                "deletions": 56
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7e4f499a",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-22T03:30:32.000Z",
+              "message": "[Core] Add tags for L1 managers and L2 adapters for affinity and prefetch filtering (#5919)\n\n* add memory tags system\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* add unit tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* update docs and examples\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* fix mooncake tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 53,
+                "lines": 1165,
+                "insertions": 989,
+                "deletions": 176
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 261,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6534,8 +8031,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 251,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "Karsten Wade",
@@ -6717,66 +8214,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 204,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 174,
-          "commits": [
-            {
-              "hash": "e64f0a56",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-16T19:02:02.000Z",
-              "message": "[Refactor] Make qstore a plugin module and rename confusing functions (#5793)\n\n[Refactor] remove the --enable flag and make qstore become an in-tree plugin module\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 32,
-                "lines": 569,
-                "insertions": 305,
-                "deletions": 264
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a6accee6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-21T20:56:50.000Z",
-              "message": "[Feat] dynamic prefetch admission logic in the prefetch controller (#5889)\n\n[Add] prefetch admission logic for new prefetch controller\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 10,
-                "lines": 408,
-                "insertions": 352,
-                "deletions": 56
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 174,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -6984,10 +8421,10 @@
         {
           "name": "jxj",
           "email": "xinjun.jiang@daocloud.io",
-          "total_commits": 2,
+          "total_commits": 3,
           "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 102,
+          "simple_commits": 2,
+          "commit_score": 115,
           "commits": [
             {
               "hash": "8b34857e",
@@ -7030,14 +8467,35 @@
                 "total": 62
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f4bd5cd2",
+              "author": "jxj",
+              "email": "xinjun.jiang@daocloud.io",
+              "date": "2026-10-22T09:04:53.000Z",
+              "message": "[Doc] Fix S3 configuration in AES-GCM example (#5459)\n\ndocs: fix S3 configuration in AES-GCM example\n\nSigned-off-by: git-jxj <65210887+git-jxj@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 3,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 5,
+                "ai": 0,
+                "total": 13
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 51,
-          "significance_ratio": 0.5,
+          "avg_score": 38.333333333333336,
+          "significance_ratio": 0.3333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 102,
+          "total_score": 115,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7435,6 +8893,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Sylvie Wu",
+          "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 87,
+          "commits": [
+            {
+              "hash": "d0540179",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-22T02:37:59.000Z",
+              "message": "[Bugfix][Coordinator] Serve /cache/delete from the eviction controller (#5918)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 7,
+                "lines": 306,
+                "insertions": 154,
+                "deletions": 152
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 87,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 87,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "VincyZhang",
           "email": "wenxin.zhang@intel.com",
           "total_commits": 1,
@@ -7470,8 +8967,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 85,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Marco Barletta",
@@ -7544,6 +9041,66 @@
           ],
           "avg_score": 77,
           "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 77,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Zupeng Wang",
+          "email": "zupenwang@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 77,
+          "commits": [
+            {
+              "hash": "b9bb2614",
+              "author": "Zupeng Wang",
+              "email": "zupenwang@gmail.com",
+              "date": "2026-10-21T15:26:46.000Z",
+              "message": "[Bugfix] Correct L2 adapter CLI help example (#4470)\n\n* fix(cli): correct L2 adapter help example\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n* test: avoid L2 adapter config module collision\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n---------\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>\nCo-authored-by: Wang Zupeng <wangzupeng12061@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 41,
+                "insertions": 39,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 10,
+                "ai": 4,
+                "total": 32
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "a3b1ebd9",
+              "author": "Zupeng Wang",
+              "email": "zupenwang@gmail.com",
+              "date": "2026-10-22T15:35:09.000Z",
+              "message": "[Bugfix][MP] Report failure for rejected Bigtable L2 stores (#5471)\n\nFail store tasks when a payload exceeds either Bigtable size limit.\nThis preserves the L1 copy under the buffer-only store policy while\nkeeping valid writes and their usage accounting in mixed batches.\n\nAdd regression coverage for both rejection paths and the size boundary,\nand document the task-level failure semantics.\n\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 81,
+                "insertions": 80,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 8,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38.5,
+          "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
@@ -7708,6 +9265,87 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 3,
+          "significant_commits": 0,
+          "simple_commits": 3,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "d75ab6f3",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-16T06:33:07.000Z",
+              "message": "Align XPU MP eval with CUDA batch-invariant exact sample comparison (#5761)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 7,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8bfcdfde",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-22T23:48:30.000Z",
+              "message": "fix: make foreign tools import independent of safe path (#5986)\n\ntest: make foreign tools import independent of safe path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 9,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 1,
+                "total": 24
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9486005a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-22T11:58:39.000Z",
+              "message": "Fix server CLI help test with installed LMCache wheel (#5975)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 6,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 21.666666666666668,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Hyukjoon Lee",
           "email": "hyukjlee@amd.com",
           "total_commits": 1,
@@ -7803,6 +9441,162 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 64,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Sudhersan Srinivasan Kunnavakkam Vinchimoor",
+          "email": "94358947+sudhersankv@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 64,
+          "commits": [
+            {
+              "hash": "562517ad",
+              "author": "Sudhersan Srinivasan Kunnavakkam Vinchimoor",
+              "email": "94358947+sudhersankv@users.noreply.github.com",
+              "date": "2026-10-22T08:12:43.000Z",
+              "message": "[Bugfix] Release StorageManager refs when a backend raises in batched_put (#5940)\n\nSigned-off-by: sudhersankv <kvsudhersan11@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 123,
+                "insertions": 101,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 12,
+                "total": 64
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 64,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "manv",
+          "email": "143290598+vmanvs@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 63,
+          "commits": [
+            {
+              "hash": "e0e92b83",
+              "author": "manv",
+              "email": "143290598+vmanvs@users.noreply.github.com",
+              "date": "2026-10-22T01:22:13.000Z",
+              "message": "[Bug] PeriodicThread restart overlaps a live worker after stop timeout (#5281)\n\nprevent overlapping PeriodicThread workers\n\nSigned-off-by: vmanvs <manvendravsvats@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 119,
+                "insertions": 75,
+                "deletions": 44
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 11,
+                "total": 63
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 63,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 63,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Shuhan Zhang",
+          "email": "14250491@cumt.edu.cn",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 62,
+          "commits": [
+            {
+              "hash": "48fc9d48",
+              "author": "Shuhan Zhang",
+              "email": "14250491@cumt.edu.cn",
+              "date": "2026-10-22T08:17:06.000Z",
+              "message": "[Bugfix][Test][Doc] Recognize legacy vLLM scratch-group markers (#5696)\n\nSigned-off-by: Manifold68575 <14250491@cumt.edu.cn>",
+              "stats": {
+                "files": 4,
+                "lines": 101,
+                "insertions": 81,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 62,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "7konigsberg",
+          "email": "77811205+7konigsberg@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 62,
+          "commits": [
+            {
+              "hash": "e45d4d5a",
+              "author": "7konigsberg",
+              "email": "77811205+7konigsberg@users.noreply.github.com",
+              "date": "2026-10-22T01:18:05.000Z",
+              "message": "[Bugfix] Include request tags in MooncakeLookupClient lookup keys (#5449)\n\nSigned-off-by: 7konigsberg <77811205+7konigsberg@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 102,
+                "insertions": 101,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 10,
+                "total": 62
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 62,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -8083,41 +9877,80 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Zupeng Wang",
-          "email": "zupenwang@gmail.com",
+          "name": "Teja Chavali",
+          "email": "tejachavali@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 32,
+          "commit_score": 37,
           "commits": [
             {
-              "hash": "b9bb2614",
-              "author": "Zupeng Wang",
-              "email": "zupenwang@gmail.com",
-              "date": "2026-10-21T15:26:46.000Z",
-              "message": "[Bugfix] Correct L2 adapter CLI help example (#4470)\n\n* fix(cli): correct L2 adapter help example\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n* test: avoid L2 adapter config module collision\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\n\n---------\n\nSigned-off-by: Wang Zupeng <wangzupeng12061@gmail.com>\nSigned-off-by: Wang Zupeng <zupenwang@gmail.com>\nCo-authored-by: Wang Zupeng <wangzupeng12061@gmail.com>",
+              "hash": "577cca98",
+              "author": "Teja Chavali",
+              "email": "tejachavali@users.noreply.github.com",
+              "date": "2026-10-22T05:27:02.000Z",
+              "message": "[Test] Add cache_salt isolation regression tests for the unified SGLang MP connector (#5964)\n\nSigned-off-by: Teja Chavali <tejachavali@Tejas-MacBook-Pro.local>\nCo-authored-by: Teja Chavali <tejachavali@Tejas-MacBook-Pro.local>",
               "stats": {
-                "files": 2,
-                "lines": 41,
-                "insertions": 39,
-                "deletions": 2
+                "files": 1,
+                "lines": 54,
+                "insertions": 54,
+                "deletions": 0
               },
               "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 10,
-                "ai": 4,
-                "total": 32
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 32,
+          "avg_score": 37,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 32,
+          "total_score": 37,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "SANJAY ROHITH L",
+          "email": "sanjayrohith1802@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 33,
+          "commits": [
+            {
+              "hash": "30be8486",
+              "author": "SANJAY ROHITH L",
+              "email": "sanjayrohith1802@gmail.com",
+              "date": "2026-10-22T14:45:56.000Z",
+              "message": "[good-first-issue] distributed: convert f-string log calls to %-format (#5167)\n\n[good-first-issue] distributed: convert f-string log calls to %-format (#5118)\n\nFollow-up step for the G004 rollout in #5118. #5125 enabled G004 repo-wide with\ntemporary per-file-ignores for the not-yet-migrated files, and the plan agreed\nthere is to remove those entries directory by directory as each area is cleaned\nup.\n\nThis does that for lmcache/v1/distributed/, the last two files under it that\nwere still ignored:\n\n- l2_adapters/bigtable_l2_adapter.py (5 call sites)\n- transfer_channel/impl/mooncake_te_impl.py (4 call sites)\n\nand deletes both per-file-ignores entries, so the directory can no longer\nregress. Together with lmcache/v1/multiprocess/ (already clean), both\ndirectories that enforce SLF now enforce G004 as well.\n\nFormat style only, no behaviour change. Format specifiers were chosen from each\nvariable's type annotation per docs/coding_standards.md 7.4: %d for the int\ntimestamps, sizes, byte limits, port and batch id; %s for the str keys, column\nname, session id, host, protocol and device; %.2f for the float second-diff.\nAll nine messages render byte-identically to the f-strings they replace.\n\nget_rpc_port() is intentionally left as a call in the argument list: lazy\nformatting defers interpolation, not argument evaluation, so this keeps the\nexisting behaviour rather than making an unrelated change.\n\nPart of #5118\n\nSigned-off-by: sanjayrohith <sanjayrohith1802@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 38,
+                "insertions": 24,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 33,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 33,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -8200,6 +10033,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "DaMi",
+          "email": "118408678+Dami-wq-k03@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 29,
+          "commits": [
+            {
+              "hash": "8510ceb4",
+              "author": "DaMi",
+              "email": "118408678+Dami-wq-k03@users.noreply.github.com",
+              "date": "2026-10-22T12:22:37.000Z",
+              "message": "Continue shutdown process after timeout in steps (#5927)\n\nSigned-off-by: Kangwenqiao <118408678+Kangwenqiao@users.noreply.github.com>\nCo-authored-by: Kangwenqiao <118408678+Kangwenqiao@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 45,
+                "insertions": 18,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 4,
+                "total": 29
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 29,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 29,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Samridh",
           "email": "109811970+samridh10exe@users.noreply.github.com",
           "total_commits": 1,
@@ -8278,6 +10150,84 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Neev Modh",
+          "email": "141932641+neevmodh@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "af714f33",
+              "author": "Neev Modh",
+              "email": "141932641+neevmodh@users.noreply.github.com",
+              "date": "2026-10-22T09:04:27.000Z",
+              "message": "docs(mp): clarify kv_load_failure_policy is not enforced by LMCache (#5364)\n\nSigned-off-by: Neev Modh <141932641+neevmodh@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 15,
+                "insertions": 15,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Mohammad Hijjawi",
+          "email": "51020382+MohammadHijjawi97@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 26,
+          "commits": [
+            {
+              "hash": "33dd6123",
+              "author": "Mohammad Hijjawi",
+              "email": "51020382+MohammadHijjawi97@users.noreply.github.com",
+              "date": "2026-10-22T01:01:28.000Z",
+              "message": "[Bugfix][CLI] Create the output dir when bench engine exports only JSON (#5395)\n\nSigned-off-by: Mohammad Hijjawi <mohammad.hijjawi1997@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 13,
+                "insertions": 13,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 1,
+                "total": 26
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 26,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 26,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Harsh Raj Singhania",
           "email": "40535627+HarshRajSinghania@users.noreply.github.com",
           "total_commits": 1,
@@ -8317,41 +10267,41 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
+          "name": "hellojun",
+          "email": "hello_jun@163.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 21,
+          "commit_score": 23,
           "commits": [
             {
-              "hash": "d75ab6f3",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-10-16T06:33:07.000Z",
-              "message": "Align XPU MP eval with CUDA batch-invariant exact sample comparison (#5761)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "hash": "4acfc90f",
+              "author": "hellojun",
+              "email": "hello_jun@163.com",
+              "date": "2026-10-22T06:04:52.000Z",
+              "message": "[Doc] zh_CN: fix inline literal escaping before fullwidth parens (#5003)\n\nThree inline literals in the zh_CN catalog for mp/index.rst are followed immediately by a fullwidth left parenthesis (U+FF08). docutils only closes an inline markup span when the end-string is followed by whitespace or closing/final punctuation, so the span is never recognised and the backticks leak into the rendered page. The unmatched backticks then mis-pair with the following span, so the rest of the sentence loses its markup as well.\r\n\r\nCurrently rendered on docs.lmcache.ai/zh_CN/mp/index.html:\r\n\r\n  由进程全局的 GDSContext``（``gpu_connector/gds_context.py）驱动\r\n\r\nFix: add the escaped-space separator (backslash + space) that this same file already uses in 58 other places, and that s3.po, hfbucket.po and mp/l2_storage/index.po already use for exactly this fullwidth-parenthesis case. Those pages render with no stray backticks.\r\n\r\nOnly msgstr lines change; no msgid is touched, so the catalog mapping stays intact.\r\n\r\nThe same pattern appears in roughly 17 other zh_CN catalogs (cli/tool.po, cli/bench.po, mp/http_api.po, mp/coordinator.po and others). Happy to send follow-up PRs per directory if this approach looks right.\n\nSigned-off-by: hellojun <hello_jun@163.com>",
               "stats": {
                 "files": 1,
-                "lines": 10,
-                "insertions": 7,
-                "deletions": 3
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
               },
               "scores": {
                 "loc": 3,
                 "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
+                "keyword": 15,
+                "ai": 0,
+                "total": 23
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 21,
+          "avg_score": 23,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 21,
+          "total_score": 23,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -8393,18 +10343,57 @@
           "total_score": 20,
           "tier": "T3",
           "tier_name": "Contributing"
+        },
+        {
+          "name": "0andy",
+          "email": "3870326+0andy@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 20,
+          "commits": [
+            {
+              "hash": "c4a5b54b",
+              "author": "0andy",
+              "email": "3870326+0andy@users.noreply.github.com",
+              "date": "2026-10-22T03:37:47.000Z",
+              "message": "[Docs][MP] Use num_chunks_loaded to confirm retrieves in the SGLang quickstart (#5540)\n\nSigned-off-by: 0andy <3870326+0andy@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 20,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 20,
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-22T00:31:17.773Z",
+    "analyzedAt": "2026-10-23T00:31:30.967Z",
     "daysBack": 2,
-    "totalCommits": 93,
-    "totalContributors": 44,
+    "totalCommits": 114,
+    "totalContributors": 56,
     "mergedFrom": {
-      "existing": 63,
-      "new": 44
+      "existing": 93,
+      "new": 51
     }
   }
 }
