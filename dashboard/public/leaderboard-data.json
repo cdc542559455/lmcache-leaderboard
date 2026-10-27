@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-26T00:30:06.686Z",
-  "total_commits_analyzed": 135,
+  "last_updated": "2026-10-27T00:30:14.010Z",
+  "total_commits_analyzed": 146,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4066,6 +4066,383 @@
           "tier": "T3",
           "tier_name": "Contributing"
         }
+      ],
+      "2026-W44": [
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 148,
+          "commits": [
+            {
+              "hash": "d2245fff",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-26T09:39:22.000Z",
+              "message": "[CI][XPU] Add engine-driven sliding-window coverage with Gemma3 (#6017)\n\n* [CI][XPU] Add engine-driven SWA evaluation with Gemma3\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* ci(xpu): compare HMA SWA cache restores against GPU prefix cache\n\nCompare GPU APC and LMCache token IDs and logprobs with matching cache boundaries across inline and SHM transports. Check the model's sliding window and per-request cache-hit counts, and fail the SWA workload on KV load errors instead of silently recomputing. Preserve recompute as the default for other workloads.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 256,
+                "insertions": 255,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "894415ee",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-26T07:07:19.000Z",
+              "message": "[CI][XPU] Preinstall PR dependencies after nightly validation (#6044)\n\n* [CI][XPU] Preinstall PR dependencies after nightly validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* ci(xpu): preinstall dependencies before candidate validation\n\n- Install runtime, test, and multiprocess dependencies directly from requirements and extras.\n- Remove the post-validation wheel install/uninstall and derived-image build.\n- Promote the same candidate image digest used by hardware validation and document the flow.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 18,
+                "insertions": 14,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ae06b425",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-26T05:32:37.000Z",
+              "message": "[CI][XPU] refactor gdn test to speed up CI execution (#6049)\n\nci: tune XPU GDN evaluation batching\n\nRename the XPU pipeline label to lm_eval_gdn, set the token budget to 32768, and use 64 concurrent requests. Keep the chunk size and workload invocation unchanged.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 5,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 15,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 49.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 148,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 95,
+          "commits": [
+            {
+              "hash": "76bc242d",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-10-26T07:31:17.000Z",
+              "message": "[MUSA]Feat: musa kvformat convergence (#5573)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
+              "stats": {
+                "files": 9,
+                "lines": 411,
+                "insertions": 346,
+                "deletions": 65
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 95,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 95,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "MinJun Choi",
+          "email": "mj04300017@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "a873f152",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-26T03:32:00.000Z",
+              "message": "[Perf][MP] Add an optional native gRPC server mode backed by pygrpc-native (#6031)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1401,
+                "insertions": 1380,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 75,
+          "commits": [
+            {
+              "hash": "bf85b41f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-26T19:57:04.000Z",
+              "message": "[CI] Stage the payload under /tmp so extraction works as non-root (#6056)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 6,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "21fecfd8",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-26T19:35:33.000Z",
+              "message": "[Build] Add lmcache[raw-block] extra for the Rust raw-block wheel (#6037)\n\nLet users install the raw-block L2 adapter's Rust module with\n'lmcache[raw-block]'. The extra is unpinned; users who need an exact\nmatch pin lmcache-rust-raw-block-io to their lmcache version.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 12,
+                "insertions": 12,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 75,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 55,
+          "commits": [
+            {
+              "hash": "016a27cc",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-10-27T00:12:03.000Z",
+              "message": "[CI][ROCm] Build the ROCm wheel against torch 2.13 (#6080)\n\nci(rocm): build the ROCm wheel against torch 2.13\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 32,
+                "insertions": 16,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 55
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 55,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 55,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 48,
+          "commits": [
+            {
+              "hash": "4de5b9ad",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-26T18:38:43.000Z",
+              "message": "[SGLang][Optimize] Support direct copy in mem kernel (#6062)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 27,
+                "insertions": 24,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 48,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 48,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "d0a86807",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-10-26T10:33:20.000Z",
+              "message": "[Bugfix][Test] Close HF3FS adapter in test fixture (#6052)\n\nClose the adapter, not only the client, so its demux thread cannot\nabort pytest at interpreter exit.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Pratik Gandhi",
+          "email": "travpreneur@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 30,
+          "commits": [
+            {
+              "hash": "0a8fc66a",
+              "author": "Pratik Gandhi",
+              "email": "travpreneur@gmail.com",
+              "date": "2026-10-26T18:06:06.000Z",
+              "message": "[Doc] Fix chunk statistics example links to legacy observability docs (#6071)\n\nThe Additional Resources links in examples/chunk_statistics/README.md pointed to\ndocs/source/production/observability/{chunk_statistics,internal_api_server}.rst,\nwhich moved under docs/source/legacy/production/observability/.\n\nSigned-off-by: Pratik Gandhi <travpreneur@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 30,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 30,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -4593,177 +4970,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 7,
-          "significant_commits": 6,
-          "simple_commits": 1,
-          "commit_score": 555,
-          "commits": [
-            {
-              "hash": "e64f0a56",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-16T19:02:02.000Z",
-              "message": "[Refactor] Make qstore a plugin module and rename confusing functions (#5793)\n\n[Refactor] remove the --enable flag and make qstore become an in-tree plugin module\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 32,
-                "lines": 569,
-                "insertions": 305,
-                "deletions": 264
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a6accee6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-21T20:56:50.000Z",
-              "message": "[Feat] dynamic prefetch admission logic in the prefetch controller (#5889)\n\n[Add] prefetch admission logic for new prefetch controller\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 10,
-                "lines": 408,
-                "insertions": 352,
-                "deletions": 56
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "7e4f499a",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-22T03:30:32.000Z",
-              "message": "[Core] Add tags for L1 managers and L2 adapters for affinity and prefetch filtering (#5919)\n\n* add memory tags system\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* add unit tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* update docs and examples\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* fix mooncake tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 53,
-                "lines": 1165,
-                "insertions": 989,
-                "deletions": 176
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "c90e6862",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-23T23:33:52.000Z",
-              "message": "[Misc] Limit p2p controller to only look up in local DRAM segment (#6014)\n\n[Fix] limit P2P to local DRAM L1 only\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 4,
-                "lines": 36,
-                "insertions": 27,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 3,
-                "total": 33
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "71d9f914",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-23T22:57:26.000Z",
-              "message": "[Docs] Update recipes for linear models to drop the requirements for [N, 2N-1] (#6013)\n\n[Doc] Drop the [N, 2N-1] max-num-batched-tokens guidance for linear-state hybrids\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 250,
-                "insertions": 67,
-                "deletions": 183
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ff9185d4",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-23T05:58:11.000Z",
-              "message": "[Perf][MP] Callback-driven LookupState for scheduler lookups (#5960)\n\n* Pick from 5925 and refactor the lookup states\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 11,
-                "lines": 1856,
-                "insertions": 1487,
-                "deletions": 369
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a81b4e5a",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-23T05:50:11.000Z",
-              "message": "[Core] Add the allowed list for L1 and L2 when submit prefetch requests to the storage manager (#5922)\n\n* [Add] prefetch submission with filters\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* address trace replayer schema issue\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 23,
-                "lines": 571,
-                "insertions": 482,
-                "deletions": 89
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 79.28571428571429,
-          "significance_ratio": 0.8571428571428571,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 555,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 10,
-          "significant_commits": 5,
+          "total_commits": 11,
+          "significant_commits": 6,
           "simple_commits": 5,
-          "commit_score": 551,
+          "commit_score": 633,
           "commits": [
             {
               "hash": "32cbdcb7",
@@ -4974,24 +5186,45 @@
                 "total": 27
               },
               "classification": "simple"
+            },
+            {
+              "hash": "a873f152",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-26T03:32:00.000Z",
+              "message": "[Perf][MP] Add an optional native gRPC server mode backed by pygrpc-native (#6031)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1401,
+                "insertions": 1380,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 55.1,
-          "significance_ratio": 0.5,
+          "avg_score": 57.54545454545455,
+          "significance_ratio": 0.5454545454545454,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 551,
+          "total_score": 633,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 7,
+          "total_commits": 9,
           "significant_commits": 5,
-          "simple_commits": 2,
-          "commit_score": 483,
+          "simple_commits": 4,
+          "commit_score": 558,
           "commits": [
             {
               "hash": "1ed386c4",
@@ -5139,24 +5372,231 @@
                 "total": 46
               },
               "classification": "simple"
+            },
+            {
+              "hash": "bf85b41f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-26T19:57:04.000Z",
+              "message": "[CI] Stage the payload under /tmp so extraction works as non-root (#6056)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 6,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "21fecfd8",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-26T19:35:33.000Z",
+              "message": "[Build] Add lmcache[raw-block] extra for the Rust raw-block wheel (#6037)\n\nLet users install the raw-block L2 adapter's Rust module with\n'lmcache[raw-block]'. The extra is unpinned; users who need an exact\nmatch pin lmcache-rust-raw-block-io to their lmcache version.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 12,
+                "insertions": 12,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 69,
-          "significance_ratio": 0.7142857142857143,
+          "avg_score": 62,
+          "significance_ratio": 0.5555555555555556,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 483,
+          "total_score": 558,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 7,
+          "significant_commits": 6,
+          "simple_commits": 1,
+          "commit_score": 555,
+          "commits": [
+            {
+              "hash": "e64f0a56",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-16T19:02:02.000Z",
+              "message": "[Refactor] Make qstore a plugin module and rename confusing functions (#5793)\n\n[Refactor] remove the --enable flag and make qstore become an in-tree plugin module\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 32,
+                "lines": 569,
+                "insertions": 305,
+                "deletions": 264
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a6accee6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-21T20:56:50.000Z",
+              "message": "[Feat] dynamic prefetch admission logic in the prefetch controller (#5889)\n\n[Add] prefetch admission logic for new prefetch controller\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 10,
+                "lines": 408,
+                "insertions": 352,
+                "deletions": 56
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7e4f499a",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-22T03:30:32.000Z",
+              "message": "[Core] Add tags for L1 managers and L2 adapters for affinity and prefetch filtering (#5919)\n\n* add memory tags system\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* add unit tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* update docs and examples\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* fix mooncake tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 53,
+                "lines": 1165,
+                "insertions": 989,
+                "deletions": 176
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c90e6862",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-23T23:33:52.000Z",
+              "message": "[Misc] Limit p2p controller to only look up in local DRAM segment (#6014)\n\n[Fix] limit P2P to local DRAM L1 only\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 36,
+                "insertions": 27,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "71d9f914",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-23T22:57:26.000Z",
+              "message": "[Docs] Update recipes for linear models to drop the requirements for [N, 2N-1] (#6013)\n\n[Doc] Drop the [N, 2N-1] max-num-batched-tokens guidance for linear-state hybrids\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 250,
+                "insertions": 67,
+                "deletions": 183
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ff9185d4",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-23T05:58:11.000Z",
+              "message": "[Perf][MP] Callback-driven LookupState for scheduler lookups (#5960)\n\n* Pick from 5925 and refactor the lookup states\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 11,
+                "lines": 1856,
+                "insertions": 1487,
+                "deletions": 369
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a81b4e5a",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-23T05:50:11.000Z",
+              "message": "[Core] Add the allowed list for L1 and L2 when submit prefetch requests to the storage manager (#5922)\n\n* [Add] prefetch submission with filters\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* address trace replayer schema issue\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 23,
+                "lines": 571,
+                "insertions": 482,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 79.28571428571429,
+          "significance_ratio": 0.8571428571428571,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 555,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 5,
+          "total_commits": 6,
           "significant_commits": 3,
-          "simple_commits": 2,
-          "commit_score": 331,
+          "simple_commits": 3,
+          "commit_score": 379,
           "commits": [
             {
               "hash": "b61b5b4e",
@@ -5262,14 +5702,35 @@
                 "total": 80
               },
               "classification": "significant"
+            },
+            {
+              "hash": "4de5b9ad",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-26T18:38:43.000Z",
+              "message": "[SGLang][Optimize] Support direct copy in mem kernel (#6062)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 27,
+                "insertions": 24,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 66.2,
-          "significance_ratio": 0.6,
+          "avg_score": 63.166666666666664,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 331,
+          "total_score": 379,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -5499,6 +5960,171 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 7,
+          "significant_commits": 1,
+          "simple_commits": 6,
+          "commit_score": 261,
+          "commits": [
+            {
+              "hash": "d75ab6f3",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-16T06:33:07.000Z",
+              "message": "Align XPU MP eval with CUDA batch-invariant exact sample comparison (#5761)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 7,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8bfcdfde",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-22T23:48:30.000Z",
+              "message": "fix: make foreign tools import independent of safe path (#5986)\n\ntest: make foreign tools import independent of safe path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 9,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 1,
+                "total": 24
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9486005a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-22T11:58:39.000Z",
+              "message": "Fix server CLI help test with installed LMCache wheel (#5975)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 6,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f104a053",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-25T06:41:32.000Z",
+              "message": "[CI][XPU] Cover inline and SHM transports in lm_eval (#6026)",
+              "stats": {
+                "files": 2,
+                "lines": 23,
+                "insertions": 14,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "d2245fff",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-26T09:39:22.000Z",
+              "message": "[CI][XPU] Add engine-driven sliding-window coverage with Gemma3 (#6017)\n\n* [CI][XPU] Add engine-driven SWA evaluation with Gemma3\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* ci(xpu): compare HMA SWA cache restores against GPU prefix cache\n\nCompare GPU APC and LMCache token IDs and logprobs with matching cache boundaries across inline and SHM transports. Check the model's sliding window and per-request cache-hit counts, and fail the SWA workload on KV load errors instead of silently recomputing. Preserve recompute as the default for other workloads.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 256,
+                "insertions": 255,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "894415ee",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-26T07:07:19.000Z",
+              "message": "[CI][XPU] Preinstall PR dependencies after nightly validation (#6044)\n\n* [CI][XPU] Preinstall PR dependencies after nightly validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* ci(xpu): preinstall dependencies before candidate validation\n\n- Install runtime, test, and multiprocess dependencies directly from requirements and extras.\n- Remove the post-validation wheel install/uninstall and derived-image build.\n- Promote the same candidate image digest used by hardware validation and document the flow.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 18,
+                "insertions": 14,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ae06b425",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-26T05:32:37.000Z",
+              "message": "[CI][XPU] refactor gdn test to speed up CI execution (#6049)\n\nci: tune XPU GDN evaluation batching\n\nRename the XPU pipeline label to lm_eval_gdn, set the token budget to 32768, and use 64 concurrent requests. Keep the chunk size and workload invocation unchanged.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 5,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 15,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37.285714285714285,
+          "significance_ratio": 0.14285714285714285,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 261,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "zxue2",
           "email": "zhan.xue@intel.com",
           "total_commits": 3,
@@ -5576,6 +6202,87 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 257,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 229,
+          "commits": [
+            {
+              "hash": "2ef13a37",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-10-19T19:59:53.000Z",
+              "message": "[Feat] Emit a per-request prompt trace span from the MP server (#5817)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 276,
+                "insertions": 270,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "aa12d34e",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-10-23T22:19:20.000Z",
+              "message": "[Feat] Add `lmcache bench trace-analyze` for offline request-trace ca… (#5821)\n\n* [Feat] Add `lmcache bench trace-analyze` for offline request-trace cache analysis\n\nReplay the `mp.request.trace` spans exported by an OpenTelemetry Collector\nfile exporter (OTLP JSON, one batch per line) through a simulated cache for\na grid of (chunk size, capacity) pairs and report, per cell, prefix hit\ntokens and the non-prefix tokens CacheBlend would retrieve.\n\nThe prefix leg sorts requests by timestamp, chunks the prompt with\nTokenHasher (trailing partial chunk dropped) and replays the chained chunk\nhashes through the cache simulator's LRU: the leading run of present chunks\nis the hit, hits are touched, all chunks are inserted, evictions follow LRU\norder. The CacheBlend leg registers each stored request with the real\nBlendTokenRangeMatcher, probes it on every lookup and reconciles the matches\nthe way the blend lookup does (prefix coverage first, then non-overlapping\nsegments outside it); evicted chunks are removed from the matcher.\nLRUCacheFast.insert now returns the evicted key so the matcher can be kept\nin sync.\n\nCapacity is in tokens, or in bytes with --kv-bytes-per-token, since the\ntrace carries no KV shape. --isolate-by session seeds each request's hash\nchain with its session id to model per-tenant isolation.\n\nOutput is a self-contained HTML report whose two sliders select a\nprecomputed grid cell (prefix hit rate, non-prefix hit tokens, request and\ntoken totals, a table over capacities) plus the usual Metrics summary on\nstdout. Tests cover the OTLP reader on a hand-written fixture, the prefix\nreplay on a trace with a known answer, the blend leg on a shared segment\nfound at a different offset, and the CLI wiring.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Mount a writable directory for the collector file exporter\n\nThe contrib collector image is built from scratch and runs as user\n10001, so the `file` exporter cannot create `/var/log/otel/...` on its\nown and the collector restarts in a loop. Add the host directory and the\ncompose volume to the trace-analyze collection steps.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat] Make the trace-analyze capacity grid a token budget\n\nThe trace carries no KV shape, so bytes were only ever a display\nconversion. Drop `--kv-bytes-per-token` and the byte labels; `--capacity`\nis a token budget and the report's sliders are token budget and chunk\nsize.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat] Add --trace-format to trace-analyze and describe non-matching input\n\n`--trace-format` names the producer format of the input spans; `lmcache`\n(the MP server's `mp.request.trace` span) is the first and default. Each\nformat is a span-to-record function in `TRACE_FORMATS`, so a second\nproducer is one entry. `lmcache.input_ids` may be the OTLP array as\nemitted or one JSON string of the same ids, as a collector transform may\nwrite it. When no span matches, the error lists how many spans the files\nheld and their names, so a wrong file, a server without the token trace,\nor a collector pipeline that renamed the span can be told apart.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Document the lmcache trace format as a tested contract\n\nEach `--trace-format` value is a contract on the fields trace-analyze\nreads. Keep it honest with a sample file per format under\n`tests/tools/data/trace_formats/` that the test suite replays, and\ndocument it in a Trace formats section: span name, each attribute's type\nand meaning, the replay and dedup fields, and an example line.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Refactor] State the minimal trace contract and read formats line by line\n\nWhat the analyzer needs from any producer is a record per request: token\nids, a timestamp, a request id to collapse repeat lookups, and a model\nname for filtering. TraceRecord's docstring now says so, in that order.\nA format adapter turns one parsed input line into records, so a format\nmay be OTLP spans, OTLP logs or flat JSON lines; the loader no longer\nassumes spans. Each format also states what it expects, for the error\nwhen nothing matches. The session count in the summary always equalled\nthe request count and is gone.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Say where repeated trace records come from\n\nRepeated records for one request are an artefact of the LMCache server\nemitting a span per lookup while the engine looks a request up again\nafter preemption, not a property of traces in general. Say so where the\nrequest id is described.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 1461,
+                "insertions": 1453,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "016a27cc",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-10-27T00:12:03.000Z",
+              "message": "[CI][ROCm] Build the ROCm wheel against torch 2.13 (#6080)\n\nci(rocm): build the ROCm wheel against torch 2.13\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 32,
+                "insertions": 16,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 55
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 76.33333333333333,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 229,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -5721,66 +6428,6 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 174,
-          "commits": [
-            {
-              "hash": "2ef13a37",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-10-19T19:59:53.000Z",
-              "message": "[Feat] Emit a per-request prompt trace span from the MP server (#5817)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 8,
-                "lines": 276,
-                "insertions": 270,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "aa12d34e",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-10-23T22:19:20.000Z",
-              "message": "[Feat] Add `lmcache bench trace-analyze` for offline request-trace ca… (#5821)\n\n* [Feat] Add `lmcache bench trace-analyze` for offline request-trace cache analysis\n\nReplay the `mp.request.trace` spans exported by an OpenTelemetry Collector\nfile exporter (OTLP JSON, one batch per line) through a simulated cache for\na grid of (chunk size, capacity) pairs and report, per cell, prefix hit\ntokens and the non-prefix tokens CacheBlend would retrieve.\n\nThe prefix leg sorts requests by timestamp, chunks the prompt with\nTokenHasher (trailing partial chunk dropped) and replays the chained chunk\nhashes through the cache simulator's LRU: the leading run of present chunks\nis the hit, hits are touched, all chunks are inserted, evictions follow LRU\norder. The CacheBlend leg registers each stored request with the real\nBlendTokenRangeMatcher, probes it on every lookup and reconciles the matches\nthe way the blend lookup does (prefix coverage first, then non-overlapping\nsegments outside it); evicted chunks are removed from the matcher.\nLRUCacheFast.insert now returns the evicted key so the matcher can be kept\nin sync.\n\nCapacity is in tokens, or in bytes with --kv-bytes-per-token, since the\ntrace carries no KV shape. --isolate-by session seeds each request's hash\nchain with its session id to model per-tenant isolation.\n\nOutput is a self-contained HTML report whose two sliders select a\nprecomputed grid cell (prefix hit rate, non-prefix hit tokens, request and\ntoken totals, a table over capacities) plus the usual Metrics summary on\nstdout. Tests cover the OTLP reader on a hand-written fixture, the prefix\nreplay on a trace with a known answer, the blend leg on a shared segment\nfound at a different offset, and the CLI wiring.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Mount a writable directory for the collector file exporter\n\nThe contrib collector image is built from scratch and runs as user\n10001, so the `file` exporter cannot create `/var/log/otel/...` on its\nown and the collector restarts in a loop. Add the host directory and the\ncompose volume to the trace-analyze collection steps.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat] Make the trace-analyze capacity grid a token budget\n\nThe trace carries no KV shape, so bytes were only ever a display\nconversion. Drop `--kv-bytes-per-token` and the byte labels; `--capacity`\nis a token budget and the report's sliders are token budget and chunk\nsize.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat] Add --trace-format to trace-analyze and describe non-matching input\n\n`--trace-format` names the producer format of the input spans; `lmcache`\n(the MP server's `mp.request.trace` span) is the first and default. Each\nformat is a span-to-record function in `TRACE_FORMATS`, so a second\nproducer is one entry. `lmcache.input_ids` may be the OTLP array as\nemitted or one JSON string of the same ids, as a collector transform may\nwrite it. When no span matches, the error lists how many spans the files\nheld and their names, so a wrong file, a server without the token trace,\nor a collector pipeline that renamed the span can be told apart.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Document the lmcache trace format as a tested contract\n\nEach `--trace-format` value is a contract on the fields trace-analyze\nreads. Keep it honest with a sample file per format under\n`tests/tools/data/trace_formats/` that the test suite replays, and\ndocument it in a Trace formats section: span name, each attribute's type\nand meaning, the replay and dedup fields, and an example line.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Refactor] State the minimal trace contract and read formats line by line\n\nWhat the analyzer needs from any producer is a record per request: token\nids, a timestamp, a request id to collapse repeat lookups, and a model\nname for filtering. TraceRecord's docstring now says so, in that order.\nA format adapter turns one parsed input line into records, so a format\nmay be OTLP spans, OTLP logs or flat JSON lines; the loader no longer\nassumes spans. Each format also states what it expects, for the error\nwhen nothing matches. The session count in the summary always equalled\nthe request count and is gone.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Say where repeated trace records come from\n\nRepeated records for one request are an artefact of the LMCache server\nemitting a span per lookup while the engine looks a request up again\nafter preemption, not a property of traces in general. Say so where the\nrequest id is described.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 8,
-                "lines": 1461,
-                "insertions": 1453,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 174,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -5837,8 +6484,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 172,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "lepam",
@@ -6123,104 +6770,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 4,
-          "significant_commits": 0,
-          "simple_commits": 4,
-          "commit_score": 113,
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 95,
           "commits": [
             {
-              "hash": "d75ab6f3",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-10-16T06:33:07.000Z",
-              "message": "Align XPU MP eval with CUDA batch-invariant exact sample comparison (#5761)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "hash": "76bc242d",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-10-26T07:31:17.000Z",
+              "message": "[MUSA]Feat: musa kvformat convergence (#5573)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
               "stats": {
-                "files": 1,
-                "lines": 10,
-                "insertions": 7,
-                "deletions": 3
+                "files": 9,
+                "lines": 411,
+                "insertions": 346,
+                "deletions": 65
               },
               "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
               },
-              "classification": "simple"
-            },
-            {
-              "hash": "8bfcdfde",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-10-22T23:48:30.000Z",
-              "message": "fix: make foreign tools import independent of safe path (#5986)\n\ntest: make foreign tools import independent of safe path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 10,
-                "insertions": 9,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 1,
-                "total": 24
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "9486005a",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-10-22T11:58:39.000Z",
-              "message": "Fix server CLI help test with installed LMCache wheel (#5975)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 9,
-                "insertions": 6,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "f104a053",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-10-25T06:41:32.000Z",
-              "message": "[CI][XPU] Cover inline and SHM transports in lm_eval (#6026)",
-              "stats": {
-                "files": 2,
-                "lines": 23,
-                "insertions": 14,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 48
-              },
-              "classification": "simple"
+              "classification": "significant"
             }
           ],
-          "avg_score": 28.25,
-          "significance_ratio": 0,
+          "avg_score": 95,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 113,
+          "total_score": 95,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -6458,8 +7042,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Sylvie Wu",
@@ -6791,6 +7375,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 76,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Pratik Gandhi",
+          "email": "travpreneur@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "8e378c74",
+              "author": "Pratik Gandhi",
+              "email": "travpreneur@gmail.com",
+              "date": "2026-10-23T02:02:40.000Z",
+              "message": "[Doc] Fix relative links after mp_coordinator reorg (#5436)\n\nSigned-off-by: Pratik Gandhi <travpreneur@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 46,
+                "insertions": 23,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0a8fc66a",
+              "author": "Pratik Gandhi",
+              "email": "travpreneur@gmail.com",
+              "date": "2026-10-26T18:06:06.000Z",
+              "message": "[Doc] Fix chunk statistics example links to legacy observability docs (#6071)\n\nThe Additional Resources links in examples/chunk_statistics/README.md pointed to\ndocs/source/production/observability/{chunk_statistics,internal_api_server}.rst,\nwhich moved under docs/source/legacy/production/observability/.\n\nSigned-off-by: Pratik Gandhi <travpreneur@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -7326,45 +7970,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Pratik Gandhi",
-          "email": "travpreneur@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 44,
-          "commits": [
-            {
-              "hash": "8e378c74",
-              "author": "Pratik Gandhi",
-              "email": "travpreneur@gmail.com",
-              "date": "2026-10-23T02:02:40.000Z",
-              "message": "[Doc] Fix relative links after mp_coordinator reorg (#5436)\n\nSigned-off-by: Pratik Gandhi <travpreneur@gmail.com>",
-              "stats": {
-                "files": 8,
-                "lines": 46,
-                "insertions": 23,
-                "deletions": 23
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 4,
-                "total": 44
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 44,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 44,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "PPg",
           "email": "18649201011@163.com",
           "total_commits": 1,
@@ -7439,6 +8044,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "d0a86807",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-10-26T10:33:20.000Z",
+              "message": "[Bugfix][Test] Close HF3FS adapter in test fixture (#6052)\n\nClose the adapter, not only the client, so its demux thread cannot\nabort pytest at interpreter exit.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -8476,177 +9120,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 7,
-          "significant_commits": 6,
-          "simple_commits": 1,
-          "commit_score": 555,
-          "commits": [
-            {
-              "hash": "e64f0a56",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-16T19:02:02.000Z",
-              "message": "[Refactor] Make qstore a plugin module and rename confusing functions (#5793)\n\n[Refactor] remove the --enable flag and make qstore become an in-tree plugin module\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 32,
-                "lines": 569,
-                "insertions": 305,
-                "deletions": 264
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a6accee6",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-21T20:56:50.000Z",
-              "message": "[Feat] dynamic prefetch admission logic in the prefetch controller (#5889)\n\n[Add] prefetch admission logic for new prefetch controller\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 10,
-                "lines": 408,
-                "insertions": 352,
-                "deletions": 56
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "7e4f499a",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-22T03:30:32.000Z",
-              "message": "[Core] Add tags for L1 managers and L2 adapters for affinity and prefetch filtering (#5919)\n\n* add memory tags system\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* add unit tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* update docs and examples\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* fix mooncake tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 53,
-                "lines": 1165,
-                "insertions": 989,
-                "deletions": 176
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "c90e6862",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-23T23:33:52.000Z",
-              "message": "[Misc] Limit p2p controller to only look up in local DRAM segment (#6014)\n\n[Fix] limit P2P to local DRAM L1 only\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 4,
-                "lines": 36,
-                "insertions": 27,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 3,
-                "total": 33
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "71d9f914",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-23T22:57:26.000Z",
-              "message": "[Docs] Update recipes for linear models to drop the requirements for [N, 2N-1] (#6013)\n\n[Doc] Drop the [N, 2N-1] max-num-batched-tokens guidance for linear-state hybrids\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 7,
-                "lines": 250,
-                "insertions": 67,
-                "deletions": 183
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "ff9185d4",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-23T05:58:11.000Z",
-              "message": "[Perf][MP] Callback-driven LookupState for scheduler lookups (#5960)\n\n* Pick from 5925 and refactor the lookup states\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 11,
-                "lines": 1856,
-                "insertions": 1487,
-                "deletions": 369
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a81b4e5a",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-23T05:50:11.000Z",
-              "message": "[Core] Add the allowed list for L1 and L2 when submit prefetch requests to the storage manager (#5922)\n\n* [Add] prefetch submission with filters\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* address trace replayer schema issue\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
-              "stats": {
-                "files": 23,
-                "lines": 571,
-                "insertions": 482,
-                "deletions": 89
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 79.28571428571429,
-          "significance_ratio": 0.8571428571428571,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 555,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 10,
-          "significant_commits": 5,
+          "total_commits": 11,
+          "significant_commits": 6,
           "simple_commits": 5,
-          "commit_score": 551,
+          "commit_score": 633,
           "commits": [
             {
               "hash": "32cbdcb7",
@@ -8857,24 +9336,45 @@
                 "total": 27
               },
               "classification": "simple"
+            },
+            {
+              "hash": "a873f152",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-26T03:32:00.000Z",
+              "message": "[Perf][MP] Add an optional native gRPC server mode backed by pygrpc-native (#6031)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1401,
+                "insertions": 1380,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 55.1,
-          "significance_ratio": 0.5,
+          "avg_score": 57.54545454545455,
+          "significance_ratio": 0.5454545454545454,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 551,
+          "total_score": 633,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 7,
+          "total_commits": 9,
           "significant_commits": 5,
-          "simple_commits": 2,
-          "commit_score": 483,
+          "simple_commits": 4,
+          "commit_score": 558,
           "commits": [
             {
               "hash": "1ed386c4",
@@ -9022,24 +9522,231 @@
                 "total": 46
               },
               "classification": "simple"
+            },
+            {
+              "hash": "bf85b41f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-26T19:57:04.000Z",
+              "message": "[CI] Stage the payload under /tmp so extraction works as non-root (#6056)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 6,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "21fecfd8",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-26T19:35:33.000Z",
+              "message": "[Build] Add lmcache[raw-block] extra for the Rust raw-block wheel (#6037)\n\nLet users install the raw-block L2 adapter's Rust module with\n'lmcache[raw-block]'. The extra is unpinned; users who need an exact\nmatch pin lmcache-rust-raw-block-io to their lmcache version.\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 12,
+                "insertions": 12,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 69,
-          "significance_ratio": 0.7142857142857143,
+          "avg_score": 62,
+          "significance_ratio": 0.5555555555555556,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 483,
+          "total_score": 558,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 7,
+          "significant_commits": 6,
+          "simple_commits": 1,
+          "commit_score": 555,
+          "commits": [
+            {
+              "hash": "e64f0a56",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-16T19:02:02.000Z",
+              "message": "[Refactor] Make qstore a plugin module and rename confusing functions (#5793)\n\n[Refactor] remove the --enable flag and make qstore become an in-tree plugin module\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 32,
+                "lines": 569,
+                "insertions": 305,
+                "deletions": 264
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a6accee6",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-21T20:56:50.000Z",
+              "message": "[Feat] dynamic prefetch admission logic in the prefetch controller (#5889)\n\n[Add] prefetch admission logic for new prefetch controller\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 10,
+                "lines": 408,
+                "insertions": 352,
+                "deletions": 56
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7e4f499a",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-22T03:30:32.000Z",
+              "message": "[Core] Add tags for L1 managers and L2 adapters for affinity and prefetch filtering (#5919)\n\n* add memory tags system\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* add unit tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* update docs and examples\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* fix mooncake tests\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 53,
+                "lines": 1165,
+                "insertions": 989,
+                "deletions": 176
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c90e6862",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-23T23:33:52.000Z",
+              "message": "[Misc] Limit p2p controller to only look up in local DRAM segment (#6014)\n\n[Fix] limit P2P to local DRAM L1 only\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 36,
+                "insertions": 27,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 3,
+                "total": 33
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "71d9f914",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-23T22:57:26.000Z",
+              "message": "[Docs] Update recipes for linear models to drop the requirements for [N, 2N-1] (#6013)\n\n[Doc] Drop the [N, 2N-1] max-num-batched-tokens guidance for linear-state hybrids\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 7,
+                "lines": 250,
+                "insertions": 67,
+                "deletions": 183
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ff9185d4",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-23T05:58:11.000Z",
+              "message": "[Perf][MP] Callback-driven LookupState for scheduler lookups (#5960)\n\n* Pick from 5925 and refactor the lookup states\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 11,
+                "lines": 1856,
+                "insertions": 1487,
+                "deletions": 369
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a81b4e5a",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-23T05:50:11.000Z",
+              "message": "[Core] Add the allowed list for L1 and L2 when submit prefetch requests to the storage manager (#5922)\n\n* [Add] prefetch submission with filters\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n* address trace replayer schema issue\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>\n\n---------\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 23,
+                "lines": 571,
+                "insertions": 482,
+                "deletions": 89
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 79.28571428571429,
+          "significance_ratio": 0.8571428571428571,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 555,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 5,
+          "total_commits": 6,
           "significant_commits": 3,
-          "simple_commits": 2,
-          "commit_score": 331,
+          "simple_commits": 3,
+          "commit_score": 379,
           "commits": [
             {
               "hash": "b61b5b4e",
@@ -9145,14 +9852,35 @@
                 "total": 80
               },
               "classification": "significant"
+            },
+            {
+              "hash": "4de5b9ad",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-26T18:38:43.000Z",
+              "message": "[SGLang][Optimize] Support direct copy in mem kernel (#6062)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 27,
+                "insertions": 24,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 66.2,
-          "significance_ratio": 0.6,
+          "avg_score": 63.166666666666664,
+          "significance_ratio": 0.5,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 331,
+          "total_score": 379,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -9382,6 +10110,171 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 7,
+          "significant_commits": 1,
+          "simple_commits": 6,
+          "commit_score": 261,
+          "commits": [
+            {
+              "hash": "d75ab6f3",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-16T06:33:07.000Z",
+              "message": "Align XPU MP eval with CUDA batch-invariant exact sample comparison (#5761)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 7,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 1,
+                "total": 21
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8bfcdfde",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-22T23:48:30.000Z",
+              "message": "fix: make foreign tools import independent of safe path (#5986)\n\ntest: make foreign tools import independent of safe path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 10,
+                "insertions": 9,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 15,
+                "ai": 1,
+                "total": 24
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9486005a",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-22T11:58:39.000Z",
+              "message": "Fix server CLI help test with installed LMCache wheel (#5975)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 6,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "f104a053",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-25T06:41:32.000Z",
+              "message": "[CI][XPU] Cover inline and SHM transports in lm_eval (#6026)",
+              "stats": {
+                "files": 2,
+                "lines": 23,
+                "insertions": 14,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "d2245fff",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-26T09:39:22.000Z",
+              "message": "[CI][XPU] Add engine-driven sliding-window coverage with Gemma3 (#6017)\n\n* [CI][XPU] Add engine-driven SWA evaluation with Gemma3\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* ci(xpu): compare HMA SWA cache restores against GPU prefix cache\n\nCompare GPU APC and LMCache token IDs and logprobs with matching cache boundaries across inline and SHM transports. Check the model's sliding window and per-request cache-hit counts, and fail the SWA workload on KV load errors instead of silently recomputing. Preserve recompute as the default for other workloads.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+              "stats": {
+                "files": 4,
+                "lines": 256,
+                "insertions": 255,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "894415ee",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-26T07:07:19.000Z",
+              "message": "[CI][XPU] Preinstall PR dependencies after nightly validation (#6044)\n\n* [CI][XPU] Preinstall PR dependencies after nightly validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* ci(xpu): preinstall dependencies before candidate validation\n\n- Install runtime, test, and multiprocess dependencies directly from requirements and extras.\n- Remove the post-validation wheel install/uninstall and derived-image build.\n- Promote the same candidate image digest used by hardware validation and document the flow.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 2,
+                "lines": 18,
+                "insertions": 14,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 43
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ae06b425",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-26T05:32:37.000Z",
+              "message": "[CI][XPU] refactor gdn test to speed up CI execution (#6049)\n\nci: tune XPU GDN evaluation batching\n\nRename the XPU pipeline label to lm_eval_gdn, set the token budget to 32768, and use 64 concurrent requests. Keep the chunk size and workload invocation unchanged.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 5,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 15,
+                "total": 33
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37.285714285714285,
+          "significance_ratio": 0.14285714285714285,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 261,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "zxue2",
           "email": "zhan.xue@intel.com",
           "total_commits": 3,
@@ -9459,6 +10352,87 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 257,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Samuel Shen",
+          "email": "slshen@tensormesh.ai",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 229,
+          "commits": [
+            {
+              "hash": "2ef13a37",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-10-19T19:59:53.000Z",
+              "message": "[Feat] Emit a per-request prompt trace span from the MP server (#5817)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 276,
+                "insertions": 270,
+                "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "aa12d34e",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-10-23T22:19:20.000Z",
+              "message": "[Feat] Add `lmcache bench trace-analyze` for offline request-trace ca… (#5821)\n\n* [Feat] Add `lmcache bench trace-analyze` for offline request-trace cache analysis\n\nReplay the `mp.request.trace` spans exported by an OpenTelemetry Collector\nfile exporter (OTLP JSON, one batch per line) through a simulated cache for\na grid of (chunk size, capacity) pairs and report, per cell, prefix hit\ntokens and the non-prefix tokens CacheBlend would retrieve.\n\nThe prefix leg sorts requests by timestamp, chunks the prompt with\nTokenHasher (trailing partial chunk dropped) and replays the chained chunk\nhashes through the cache simulator's LRU: the leading run of present chunks\nis the hit, hits are touched, all chunks are inserted, evictions follow LRU\norder. The CacheBlend leg registers each stored request with the real\nBlendTokenRangeMatcher, probes it on every lookup and reconciles the matches\nthe way the blend lookup does (prefix coverage first, then non-overlapping\nsegments outside it); evicted chunks are removed from the matcher.\nLRUCacheFast.insert now returns the evicted key so the matcher can be kept\nin sync.\n\nCapacity is in tokens, or in bytes with --kv-bytes-per-token, since the\ntrace carries no KV shape. --isolate-by session seeds each request's hash\nchain with its session id to model per-tenant isolation.\n\nOutput is a self-contained HTML report whose two sliders select a\nprecomputed grid cell (prefix hit rate, non-prefix hit tokens, request and\ntoken totals, a table over capacities) plus the usual Metrics summary on\nstdout. Tests cover the OTLP reader on a hand-written fixture, the prefix\nreplay on a trace with a known answer, the blend leg on a shared segment\nfound at a different offset, and the CLI wiring.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Mount a writable directory for the collector file exporter\n\nThe contrib collector image is built from scratch and runs as user\n10001, so the `file` exporter cannot create `/var/log/otel/...` on its\nown and the collector restarts in a loop. Add the host directory and the\ncompose volume to the trace-analyze collection steps.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat] Make the trace-analyze capacity grid a token budget\n\nThe trace carries no KV shape, so bytes were only ever a display\nconversion. Drop `--kv-bytes-per-token` and the byte labels; `--capacity`\nis a token budget and the report's sliders are token budget and chunk\nsize.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat] Add --trace-format to trace-analyze and describe non-matching input\n\n`--trace-format` names the producer format of the input spans; `lmcache`\n(the MP server's `mp.request.trace` span) is the first and default. Each\nformat is a span-to-record function in `TRACE_FORMATS`, so a second\nproducer is one entry. `lmcache.input_ids` may be the OTLP array as\nemitted or one JSON string of the same ids, as a collector transform may\nwrite it. When no span matches, the error lists how many spans the files\nheld and their names, so a wrong file, a server without the token trace,\nor a collector pipeline that renamed the span can be told apart.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Document the lmcache trace format as a tested contract\n\nEach `--trace-format` value is a contract on the fields trace-analyze\nreads. Keep it honest with a sample file per format under\n`tests/tools/data/trace_formats/` that the test suite replays, and\ndocument it in a Trace formats section: span name, each attribute's type\nand meaning, the replay and dedup fields, and an example line.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Refactor] State the minimal trace contract and read formats line by line\n\nWhat the analyzer needs from any producer is a record per request: token\nids, a timestamp, a request id to collapse repeat lookups, and a model\nname for filtering. TraceRecord's docstring now says so, in that order.\nA format adapter turns one parsed input line into records, so a format\nmay be OTLP spans, OTLP logs or flat JSON lines; the loader no longer\nassumes spans. Each format also states what it expects, for the error\nwhen nothing matches. The session count in the summary always equalled\nthe request count and is gone.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Say where repeated trace records come from\n\nRepeated records for one request are an artefact of the LMCache server\nemitting a span per lookup while the engine looks a request up again\nafter preemption, not a property of traces in general. Say so where the\nrequest id is described.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 8,
+                "lines": 1461,
+                "insertions": 1453,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "016a27cc",
+              "author": "Samuel Shen",
+              "email": "slshen@tensormesh.ai",
+              "date": "2026-10-27T00:12:03.000Z",
+              "message": "[CI][ROCm] Build the ROCm wheel against torch 2.13 (#6080)\n\nci(rocm): build the ROCm wheel against torch 2.13\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
+              "stats": {
+                "files": 5,
+                "lines": 32,
+                "insertions": 16,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 55
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 76.33333333333333,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 229,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -9604,66 +10578,6 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Samuel Shen",
-          "email": "slshen@tensormesh.ai",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 174,
-          "commits": [
-            {
-              "hash": "2ef13a37",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-10-19T19:59:53.000Z",
-              "message": "[Feat] Emit a per-request prompt trace span from the MP server (#5817)\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 8,
-                "lines": 276,
-                "insertions": 270,
-                "deletions": 6
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "aa12d34e",
-              "author": "Samuel Shen",
-              "email": "slshen@tensormesh.ai",
-              "date": "2026-10-23T22:19:20.000Z",
-              "message": "[Feat] Add `lmcache bench trace-analyze` for offline request-trace ca… (#5821)\n\n* [Feat] Add `lmcache bench trace-analyze` for offline request-trace cache analysis\n\nReplay the `mp.request.trace` spans exported by an OpenTelemetry Collector\nfile exporter (OTLP JSON, one batch per line) through a simulated cache for\na grid of (chunk size, capacity) pairs and report, per cell, prefix hit\ntokens and the non-prefix tokens CacheBlend would retrieve.\n\nThe prefix leg sorts requests by timestamp, chunks the prompt with\nTokenHasher (trailing partial chunk dropped) and replays the chained chunk\nhashes through the cache simulator's LRU: the leading run of present chunks\nis the hit, hits are touched, all chunks are inserted, evictions follow LRU\norder. The CacheBlend leg registers each stored request with the real\nBlendTokenRangeMatcher, probes it on every lookup and reconciles the matches\nthe way the blend lookup does (prefix coverage first, then non-overlapping\nsegments outside it); evicted chunks are removed from the matcher.\nLRUCacheFast.insert now returns the evicted key so the matcher can be kept\nin sync.\n\nCapacity is in tokens, or in bytes with --kv-bytes-per-token, since the\ntrace carries no KV shape. --isolate-by session seeds each request's hash\nchain with its session id to model per-tenant isolation.\n\nOutput is a self-contained HTML report whose two sliders select a\nprecomputed grid cell (prefix hit rate, non-prefix hit tokens, request and\ntoken totals, a table over capacities) plus the usual Metrics summary on\nstdout. Tests cover the OTLP reader on a hand-written fixture, the prefix\nreplay on a trace with a known answer, the blend leg on a shared segment\nfound at a different offset, and the CLI wiring.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Mount a writable directory for the collector file exporter\n\nThe contrib collector image is built from scratch and runs as user\n10001, so the `file` exporter cannot create `/var/log/otel/...` on its\nown and the collector restarts in a loop. Add the host directory and the\ncompose volume to the trace-analyze collection steps.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat] Make the trace-analyze capacity grid a token budget\n\nThe trace carries no KV shape, so bytes were only ever a display\nconversion. Drop `--kv-bytes-per-token` and the byte labels; `--capacity`\nis a token budget and the report's sliders are token budget and chunk\nsize.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Feat] Add --trace-format to trace-analyze and describe non-matching input\n\n`--trace-format` names the producer format of the input spans; `lmcache`\n(the MP server's `mp.request.trace` span) is the first and default. Each\nformat is a span-to-record function in `TRACE_FORMATS`, so a second\nproducer is one entry. `lmcache.input_ids` may be the OTLP array as\nemitted or one JSON string of the same ids, as a collector transform may\nwrite it. When no span matches, the error lists how many spans the files\nheld and their names, so a wrong file, a server without the token trace,\nor a collector pipeline that renamed the span can be told apart.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Document the lmcache trace format as a tested contract\n\nEach `--trace-format` value is a contract on the fields trace-analyze\nreads. Keep it honest with a sample file per format under\n`tests/tools/data/trace_formats/` that the test suite replays, and\ndocument it in a Trace formats section: span name, each attribute's type\nand meaning, the replay and dedup fields, and an example line.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Refactor] State the minimal trace contract and read formats line by line\n\nWhat the analyzer needs from any producer is a record per request: token\nids, a timestamp, a request id to collapse repeat lookups, and a model\nname for filtering. TraceRecord's docstring now says so, in that order.\nA format adapter turns one parsed input line into records, so a format\nmay be OTLP spans, OTLP logs or flat JSON lines; the loader no longer\nassumes spans. Each format also states what it expects, for the error\nwhen nothing matches. The session count in the summary always equalled\nthe request count and is gone.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n* [Docs] Say where repeated trace records come from\n\nRepeated records for one request are an artefact of the LMCache server\nemitting a span per lookup while the engine looks a request up again\nafter preemption, not a property of traces in general. Say so where the\nrequest id is described.\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>\n\n---------\n\nSigned-off-by: Samuel Shen <slshen@tensormesh.ai>",
-              "stats": {
-                "files": 8,
-                "lines": 1461,
-                "insertions": 1453,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 87,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 174,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "Dongjoo Seo",
           "email": "commisori28@gmail.com",
           "total_commits": 2,
@@ -9720,8 +10634,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 172,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "lepam",
@@ -10006,104 +10920,41 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Tony Lin",
-          "email": "tony.lin@intel.com",
-          "total_commits": 4,
-          "significant_commits": 0,
-          "simple_commits": 4,
-          "commit_score": 113,
+          "name": "Xiao Lei",
+          "email": "xlei.boll@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 95,
           "commits": [
             {
-              "hash": "d75ab6f3",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-10-16T06:33:07.000Z",
-              "message": "Align XPU MP eval with CUDA batch-invariant exact sample comparison (#5761)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "hash": "76bc242d",
+              "author": "Xiao Lei",
+              "email": "xlei.boll@gmail.com",
+              "date": "2026-10-26T07:31:17.000Z",
+              "message": "[MUSA]Feat: musa kvformat convergence (#5573)\n\nSigned-off-by: superleo <xlei.boll@gmail.com>",
               "stats": {
-                "files": 1,
-                "lines": 10,
-                "insertions": 7,
-                "deletions": 3
+                "files": 9,
+                "lines": 411,
+                "insertions": 346,
+                "deletions": 65
               },
               "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 1,
-                "total": 21
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
               },
-              "classification": "simple"
-            },
-            {
-              "hash": "8bfcdfde",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-10-22T23:48:30.000Z",
-              "message": "fix: make foreign tools import independent of safe path (#5986)\n\ntest: make foreign tools import independent of safe path\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 10,
-                "insertions": 9,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 15,
-                "ai": 1,
-                "total": 24
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "9486005a",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-10-22T11:58:39.000Z",
-              "message": "Fix server CLI help test with installed LMCache wheel (#5975)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
-              "stats": {
-                "files": 1,
-                "lines": 9,
-                "insertions": 6,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "f104a053",
-              "author": "Tony Lin",
-              "email": "tony.lin@intel.com",
-              "date": "2026-10-25T06:41:32.000Z",
-              "message": "[CI][XPU] Cover inline and SHM transports in lm_eval (#6026)",
-              "stats": {
-                "files": 2,
-                "lines": 23,
-                "insertions": 14,
-                "deletions": 9
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 48
-              },
-              "classification": "simple"
+              "classification": "significant"
             }
           ],
-          "avg_score": 28.25,
-          "significance_ratio": 0,
+          "avg_score": 95,
+          "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 113,
+          "total_score": 95,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -10341,8 +11192,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 87,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Sylvie Wu",
@@ -10674,6 +11525,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 76,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Pratik Gandhi",
+          "email": "travpreneur@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 74,
+          "commits": [
+            {
+              "hash": "8e378c74",
+              "author": "Pratik Gandhi",
+              "email": "travpreneur@gmail.com",
+              "date": "2026-10-23T02:02:40.000Z",
+              "message": "[Doc] Fix relative links after mp_coordinator reorg (#5436)\n\nSigned-off-by: Pratik Gandhi <travpreneur@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 46,
+                "insertions": 23,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 4,
+                "total": 44
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0a8fc66a",
+              "author": "Pratik Gandhi",
+              "email": "travpreneur@gmail.com",
+              "date": "2026-10-26T18:06:06.000Z",
+              "message": "[Doc] Fix chunk statistics example links to legacy observability docs (#6071)\n\nThe Additional Resources links in examples/chunk_statistics/README.md pointed to\ndocs/source/production/observability/{chunk_statistics,internal_api_server}.rst,\nwhich moved under docs/source/legacy/production/observability/.\n\nSigned-off-by: Pratik Gandhi <travpreneur@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 4,
+                "insertions": 2,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 37,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 74,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -11209,45 +12120,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Pratik Gandhi",
-          "email": "travpreneur@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 44,
-          "commits": [
-            {
-              "hash": "8e378c74",
-              "author": "Pratik Gandhi",
-              "email": "travpreneur@gmail.com",
-              "date": "2026-10-23T02:02:40.000Z",
-              "message": "[Doc] Fix relative links after mp_coordinator reorg (#5436)\n\nSigned-off-by: Pratik Gandhi <travpreneur@gmail.com>",
-              "stats": {
-                "files": 8,
-                "lines": 46,
-                "insertions": 23,
-                "deletions": 23
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 4,
-                "total": 44
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 44,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 44,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "PPg",
           "email": "18649201011@163.com",
           "total_commits": 1,
@@ -11322,6 +12194,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 42,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "nayeonikim",
+          "email": "100911844+nayeonikim@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "d0a86807",
+              "author": "nayeonikim",
+              "email": "100911844+nayeonikim@users.noreply.github.com",
+              "date": "2026-10-26T10:33:20.000Z",
+              "message": "[Bugfix][Test] Close HF3FS adapter in test fixture (#6052)\n\nClose the adapter, not only the client, so its demux thread cannot\nabort pytest at interpreter exit.\n\nSigned-off-by: Nayeon Kim <nayeoni.kim@samsung.com>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 7,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -11836,13 +12747,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-26T00:30:06.686Z",
+    "analyzedAt": "2026-10-27T00:30:14.010Z",
     "daysBack": 2,
-    "totalCommits": 135,
-    "totalContributors": 58,
+    "totalCommits": 146,
+    "totalContributors": 60,
     "mergedFrom": {
-      "existing": 128,
-      "new": 11
+      "existing": 135,
+      "new": 18
     }
   }
 }
