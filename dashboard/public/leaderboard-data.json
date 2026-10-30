@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-29T00:30:28.834Z",
-  "total_commits_analyzed": 178,
+  "last_updated": "2026-10-30T00:30:35.040Z",
+  "total_commits_analyzed": 196,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4071,10 +4071,10 @@
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 8,
-          "significant_commits": 6,
+          "total_commits": 9,
+          "significant_commits": 7,
           "simple_commits": 2,
-          "commit_score": 502,
+          "commit_score": 584,
           "commits": [
             {
               "hash": "d2245fff",
@@ -4243,24 +4243,231 @@
                 "total": 55
               },
               "classification": "significant"
+            },
+            {
+              "hash": "d04ed1d9",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-29T03:37:11.000Z",
+              "message": "[Feature] Support compressed KV groups(dsv4) in engine-driven transfers (#6124)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 447,
+                "insertions": 360,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 62.75,
-          "significance_ratio": 0.75,
+          "avg_score": 64.88888888888889,
+          "significance_ratio": 0.7777777777777778,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 502,
+          "total_score": 584,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "MinJun Choi",
+          "email": "mj04300017@gmail.com",
+          "total_commits": 8,
+          "significant_commits": 8,
+          "simple_commits": 0,
+          "commit_score": 570,
+          "commits": [
+            {
+              "hash": "a873f152",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-26T03:32:00.000Z",
+              "message": "[Perf][MP] Add an optional native gRPC server mode backed by pygrpc-native (#6031)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1401,
+                "insertions": 1380,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d7c0b05a",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-28T11:53:19.000Z",
+              "message": "[Docker] Include pygrpc-native in the vLLM and standalone images (#6048)\n\nAdd an lmcache[grpc-native] extra and install it in the images that run\nthe MP server, so --grpc-server-mode native works there out of the box.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 39,
+                "insertions": 28,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 60
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1065aac9",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-28T05:31:21.000Z",
+              "message": "[CI] Run the CPU device e2e on the native gRPC server (#6046)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 52,
+                "insertions": 41,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 62
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4995e604",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T15:27:23.000Z",
+              "message": "[MP][gRPC] Raise transport errors instead of grpc.RpcError from the client (#6161)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 142,
+                "insertions": 127,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a5043db0",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T12:07:01.000Z",
+              "message": "[MP][gRPC] Support grpc+unix in native mode (#6154)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 31,
+                "insertions": 9,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 58
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4756c4d7",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T03:54:36.000Z",
+              "message": "[MP][gRPC] Fail fast on a ZMQ server and refuse a shared port (#5998)\n\n* [MP][gRPC] Fail fast on a ZMQ server and refuse a shared port\n\nA gRPC client pointed at a ZMQ server waited until its caller timed out,\nbecause calls wait for the server to come up. When the channel fails to\nconnect, the client now reads the first bytes on the port once; a ZMTP\ngreeting fails pending and new calls with a ConnectionError naming the\ntcp:// URL to use. A refused or silent port still counts as a server that\nis starting.\n\nThe server also binds with grpc.so_reuseport off, so a second server on\nthe same port fails like it does with ZMQ instead of splitting clients.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Drop the design doc section; the code comments cover it\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Fix import order and type errors flagged by pre-commit\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Release the sync server's threads when its bind fails\n\nThe aio server already does this. Without it, every failed attempt to start\na second server on a served port left its affinity workers running.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Raise a new ConnectionError for each call to a ZMQ server\n\nReusing one exception object kept extending its traceback and holding on\nto the callers' frames. Keep the message and build the error per call.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 196,
+                "insertions": 191,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5fbf3c55",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T03:23:26.000Z",
+              "message": "[Feat][MP] Auto-start a gRPC MP server for grpc:// connector endpoints (#6001)\n\nMP server auto-start only accepted tcp:// endpoints, so a connector set up\nfor the gRPC transport could not use it. The launcher now picks the server\ntransport from the endpoint scheme and passes --transport grpc for grpc://,\nso the readiness PING and the connector reach the server over the same\ntransport. --transport is rejected in server_args for the same reason\n--host and --port are.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 117,
+                "insertions": 89,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "215dfd55",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T02:11:06.000Z",
+              "message": "[MP][gRPC] Export gRPC server metrics in native mode (#6061)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 413,
+                "insertions": 403,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71.25,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 570,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 5,
-          "significant_commits": 5,
+          "total_commits": 7,
+          "significant_commits": 7,
           "simple_commits": 0,
-          "commit_score": 413,
+          "commit_score": 560,
           "commits": [
             {
               "hash": "39b4020d",
@@ -4320,8 +4527,8 @@
                 "loc": 30,
                 "files": 5,
                 "keyword": 10,
-                "ai": 10,
-                "total": 55
+                "ai": 15,
+                "total": 60
               },
               "classification": "significant"
             },
@@ -4366,36 +4573,39 @@
                 "total": 82
               },
               "classification": "significant"
-            }
-          ],
-          "avg_score": 82.6,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 413,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "MinJun Choi",
-          "email": "mj04300017@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 202,
-          "commits": [
+            },
             {
-              "hash": "a873f152",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-26T03:32:00.000Z",
-              "message": "[Perf][MP] Add an optional native gRPC server mode backed by pygrpc-native (#6031)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "hash": "f7c0768a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-29T15:07:30.000Z",
+              "message": "fix: bound RESP authentication reply length (#6108)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
               "stats": {
-                "files": 14,
-                "lines": 1401,
-                "insertions": 1380,
-                "deletions": 21
+                "files": 2,
+                "lines": 94,
+                "insertions": 94,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 60
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c4e9e9e4",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-29T07:50:50.000Z",
+              "message": "[Refactor][MP] Centralize L2 object key codecs (#5989)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 466,
+                "insertions": 210,
+                "deletions": 256
               },
               "scores": {
                 "loc": 30,
@@ -4405,66 +4615,24 @@
                 "total": 82
               },
               "classification": "significant"
-            },
-            {
-              "hash": "d7c0b05a",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-28T11:53:19.000Z",
-              "message": "[Docker] Include pygrpc-native in the vLLM and standalone images (#6048)\n\nAdd an lmcache[grpc-native] extra and install it in the images that run\nthe MP server, so --grpc-server-mode native works there out of the box.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 39,
-                "insertions": 28,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 58
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "1065aac9",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-28T05:31:21.000Z",
-              "message": "[CI] Run the CPU device e2e on the native gRPC server (#6046)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 5,
-                "lines": 52,
-                "insertions": 41,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 62
-              },
-              "classification": "significant"
             }
           ],
-          "avg_score": 67.33333333333333,
+          "avg_score": 80,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 202,
+          "total_score": 560,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "JH",
           "email": "riversky0014@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 3,
+          "significant_commits": 3,
           "simple_commits": 0,
-          "commit_score": 164,
+          "commit_score": 246,
           "commits": [
             {
               "hash": "d67052bc",
@@ -4507,36 +4675,18 @@
                 "total": 82
               },
               "classification": "significant"
-            }
-          ],
-          "avg_score": 82,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 164,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 162,
-          "commits": [
+            },
             {
-              "hash": "8367e01f",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-27T23:15:47.000Z",
-              "message": "[Coordinator] Add the P1 view, persistence and prefetch metrics (#5881)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "hash": "dce11e43",
+              "author": "JH",
+              "email": "riversky0014@gmail.com",
+              "date": "2026-10-29T03:13:03.000Z",
+              "message": "feat(bench): verify checksums through the server HTTP API (#5952)\n\nfeat(bench): verify worker checksums through the server HTTP API\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>",
               "stats": {
-                "files": 23,
-                "lines": 1995,
-                "insertions": 1900,
-                "deletions": 95
+                "files": 11,
+                "lines": 308,
+                "insertions": 221,
+                "deletions": 87
               },
               "scores": {
                 "loc": 30,
@@ -4546,105 +4696,24 @@
                 "total": 82
               },
               "classification": "significant"
-            },
-            {
-              "hash": "a5c23648",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-27T07:10:04.000Z",
-              "message": "[Fix] Validate trace schemas by level (#6083)\n\nfix(trace): validate storage schemas only for storage traces\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 113,
-                "insertions": 96,
-                "deletions": 17
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
             }
           ],
-          "avg_score": 81,
+          "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 162,
+          "total_score": 246,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
-          "name": "Dongjoo Seo",
-          "email": "commisori28@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 112,
-          "commits": [
-            {
-              "hash": "a0d918a7",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-10-27T01:17:00.000Z",
-              "message": "[Refactor][MP] Extract the shared KV event subscriber (#6074)\n\nKeep client, heartbeat, event conversion, and source policy in the vLLM adapter while sharing stream reception and shutdown. Cover lifecycle ordering through public subscriber APIs. Refs #5932.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>",
-              "stats": {
-                "files": 4,
-                "lines": 718,
-                "insertions": 653,
-                "deletions": 65
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "7f70fee8",
-              "author": "Dongjoo Seo",
-              "email": "commisori28@gmail.com",
-              "date": "2026-10-28T02:37:03.000Z",
-              "message": "[Doc] Expose the PR explainer skill to Codex (#6120)\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 7,
-                "insertions": 7,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 56,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 112,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 3,
-          "significant_commits": 0,
+          "total_commits": 4,
+          "significant_commits": 1,
           "simple_commits": 3,
-          "commit_score": 110,
+          "commit_score": 165,
           "commits": [
             {
               "hash": "bf85b41f",
@@ -4708,14 +4777,476 @@
                 "total": 35
               },
               "classification": "simple"
+            },
+            {
+              "hash": "ca05e44f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-29T22:07:14.000Z",
+              "message": "[CI] Build lmcache/sglang on the newest SGLang release with LMCache's torch (#6123)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 50,
+                "insertions": 34,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 36.666666666666664,
-          "significance_ratio": 0,
+          "avg_score": 41.25,
+          "significance_ratio": 0.25,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 110,
+          "total_score": 165,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 162,
+          "commits": [
+            {
+              "hash": "8367e01f",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-27T23:15:47.000Z",
+              "message": "[Coordinator] Add the P1 view, persistence and prefetch metrics (#5881)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 23,
+                "lines": 1995,
+                "insertions": 1900,
+                "deletions": 95
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a5c23648",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-27T07:10:04.000Z",
+              "message": "[Fix] Validate trace schemas by level (#6083)\n\nfix(trace): validate storage schemas only for storage traces\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 113,
+                "insertions": 96,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 81,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 162,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Sylvie Wu",
+          "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 132,
+          "commits": [
+            {
+              "hash": "7660f4ef",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-28T09:07:02.000Z",
+              "message": "[Bugfix][Coordinator] Return 503, not 200, when a quota or pin can't be saved to disk (#6077)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 9,
+                "lines": 361,
+                "insertions": 337,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ad1d7389",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-29T02:18:52.000Z",
+              "message": "[Docker] Include confluent-kafka in the vLLM and standalone images (#6147)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 4,
+                "lines": 28,
+                "insertions": 21,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 66,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 132,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 130,
+          "commits": [
+            {
+              "hash": "cb5a3b56",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-28T20:34:45.000Z",
+              "message": "[Misc] Update the MAINTAINERS.md to up to date (#6148)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 8,
+                "insertions": 8,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 25
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "7b41993f",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-28T01:34:58.000Z",
+              "message": "docs: daily drift check — multi-process mode (2026-10-27) (#6113)\n\ndocs: update supported Python version to 3.10-3.14\n\nThe installation page's Prerequisites line still read\n\"Python 3.9–3.13\". `requires-python` in `pyproject.toml` is now\n`>=3.10,<3.15` after #5289 added CPython 3.14 to the supported\nrange (and the lower bound has been `>=3.10` for a while). The\nprerequisites line now matches `pyproject.toml` exactly.\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 5,
+                "ai": 10,
+                "total": 23
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "0d9c874c",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-29T21:11:22.000Z",
+              "message": "[Core] Refactor the multi-l1 implementation with a default write policy. (#6117)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 88,
+                "lines": 5182,
+                "insertions": 2666,
+                "deletions": 2516
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 43.333333333333336,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 130,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Michael Borokhovich",
+          "email": "michaelbor@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 129,
+          "commits": [
+            {
+              "hash": "d32ff3a2",
+              "author": "Michael Borokhovich",
+              "email": "michaelbor@gmail.com",
+              "date": "2026-10-27T22:52:55.000Z",
+              "message": "[Bugfix] S3 L2 adapter: bounds-check GET bodies and treat a wrong-sized object as a miss (#6015)\n\nSigned-off-by: Michael Borokhovich <mborokhovich@nvidia.com>",
+              "stats": {
+                "files": 3,
+                "lines": 292,
+                "insertions": 265,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c01c30ea",
+              "author": "Michael Borokhovich",
+              "email": "mborokhovich@nvidia.com",
+              "date": "2026-10-29T15:15:31.000Z",
+              "message": "[Bugfix][MP] L1 staging bytes: subtract the charge recorded at reserve (#6152)\n\n_put_staging added memory_obj.get_size() to the staging counter and\n_pop_staging subtracted memory_obj.get_size() again. Between the two,\nAsyncSerdeProcessor narrows the serialized temp with set_used_size(n)\nwhenever serialize() writes fewer bytes than estimate_serialized_size(),\nwhich the Serializer contract defines as an upper bound. Every such\nstore left (estimate - n) phantom bytes in the counter, which feeds the\nprefetch controller's admission check and the l1_staging_bytes metric.\nThe allocator itself was not affected.\n\nRecord the charge on the staging entry at put and subtract exactly that\nat pop. None of the registered serdes (aesgcm, fp8, turboquant) narrows\ntoday, so this only shows with a variable-length serde.\n\nTests: narrowed buffers released through finish_write_and_delete,\nfinish_write_and_reserve_read + finish_read, and finish_write; an\nexpired reservation handed to a new writer; delete of an expired\nnarrowed reservation. All three fail without the fix.\n\nSigned-off-by: Michael Borokhovich <mborokhovich@nvidia.com>",
+              "stats": {
+                "files": 2,
+                "lines": 88,
+                "insertions": 86,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 57
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 64.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 129,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "yeyang-zhou",
+          "email": "43632064+yeyang-zhou@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 125,
+          "commits": [
+            {
+              "hash": "0395e677",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-27T01:29:26.000Z",
+              "message": "[Token Dropping] [MVP 1/12] Define request-local token-drop state (#5870)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 51,
+                "insertions": 50,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "fa34a708",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-29T05:56:51.000Z",
+              "message": "[Token Dropping] [KV Compaction 2/3] Compact paged GPU K/V (#5737)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 227,
+                "insertions": 227,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 62.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 125,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "zxue2",
+          "email": "zhan.xue@intel.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 120,
+          "commits": [
+            {
+              "hash": "b540ae9e",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-28T02:19:02.000Z",
+              "message": "[MP] Type lmcache_objects_ptrs as uintptr_t (#5672)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 16,
+                "insertions": 8,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 50
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ebe3edde",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-29T09:57:29.000Z",
+              "message": "refactor(csrc): split mp kernel internals into a header (#5954)\n\nrefactor(csrc): move the mp transfer kernel into a header\n\nMove the multi-layer block KV transfer kernel and its device helpers\nfrom mp_mem_kernels.cu into mp_mem_kernels_detail.cuh, under namespace\nlmcache_mp, so another launcher can reuse them instead of copying them.\nMemoryObj4 moves there too, from mp_mem_kernels.cuh.\n\nPure move: the code unchanged, and mp_mem_kernels.cu only gains the\ninclude and a using-directive. The header includes only cudart and\nkv_transfer_plan_types.h and calls nothing defined out of line.\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 3,
+                "lines": 640,
+                "insertions": 332,
+                "deletions": 308
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 60,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 120,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Dongjoo Seo",
+          "email": "commisori28@gmail.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 112,
+          "commits": [
+            {
+              "hash": "a0d918a7",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-27T01:17:00.000Z",
+              "message": "[Refactor][MP] Extract the shared KV event subscriber (#6074)\n\nKeep client, heartbeat, event conversion, and source policy in the vLLM adapter while sharing stream reception and shutdown. Cover lifecycle ordering through public subscriber APIs. Refs #5932.\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 718,
+                "insertions": 653,
+                "deletions": 65
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7f70fee8",
+              "author": "Dongjoo Seo",
+              "email": "commisori28@gmail.com",
+              "date": "2026-10-28T02:37:03.000Z",
+              "message": "[Doc] Expose the PR explainer skill to Codex (#6120)\n\nSigned-off-by: Dongjoo Seo <commisori28@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 7,
+                "insertions": 7,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 56,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 112,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4776,8 +5307,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 107,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Xiao Lei",
@@ -4815,8 +5346,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 95,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "nayeonikim",
@@ -4875,28 +5406,28 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 90,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
-          "name": "Sylvie Wu",
-          "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+          "name": "Chris Coleman",
+          "email": "chriscoleman@tensormesh.ai",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 82,
           "commits": [
             {
-              "hash": "7660f4ef",
-              "author": "Sylvie Wu",
-              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
-              "date": "2026-10-28T09:07:02.000Z",
-              "message": "[Bugfix][Coordinator] Return 503, not 200, when a quota or pin can't be saved to disk (#6077)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "hash": "f30d2a6a",
+              "author": "Chris Coleman",
+              "email": "chriscoleman@tensormesh.ai",
+              "date": "2026-10-29T20:24:15.000Z",
+              "message": "[CLI] Add lmcache bench quality: checking answer quality vs full recompute (#5711)\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
               "stats": {
-                "files": 9,
-                "lines": 361,
-                "insertions": 337,
-                "deletions": 24
+                "files": 42,
+                "lines": 11408,
+                "insertions": 11365,
+                "deletions": 43
               },
               "scores": {
                 "loc": 30,
@@ -4914,47 +5445,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 82,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Michael Borokhovich",
-          "email": "michaelbor@gmail.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 72,
-          "commits": [
-            {
-              "hash": "d32ff3a2",
-              "author": "Michael Borokhovich",
-              "email": "michaelbor@gmail.com",
-              "date": "2026-10-27T22:52:55.000Z",
-              "message": "[Bugfix] S3 L2 adapter: bounds-check GET bodies and treat a wrong-sized object as a miss (#6015)\n\nSigned-off-by: Michael Borokhovich <mborokhovich@nvidia.com>",
-              "stats": {
-                "files": 3,
-                "lines": 292,
-                "insertions": 265,
-                "deletions": 27
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 72,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 72,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Mlight7",
@@ -4975,6 +5467,84 @@
                 "lines": 209,
                 "insertions": 206,
                 "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 72,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "PPg",
+          "email": "18649201011@163.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 72,
+          "commits": [
+            {
+              "hash": "e0a7a769",
+              "author": "PPg",
+              "email": "18649201011@163.com",
+              "date": "2026-10-29T20:02:17.000Z",
+              "message": "fix(mp): reply with explicit error for unregistered RPC operations (#6095)\n\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>",
+              "stats": {
+                "files": 3,
+                "lines": 114,
+                "insertions": 113,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 72,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "sssqqeer",
+          "email": "166484716+sssqqeer@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 72,
+          "commits": [
+            {
+              "hash": "eed45edd",
+              "author": "sssqqeer",
+              "email": "166484716+sssqqeer@users.noreply.github.com",
+              "date": "2026-10-29T04:25:55.000Z",
+              "message": "[Perf][MP] Skip L2 lookups when L1 already has the whole prefetch request (#5652)\n\nSigned-off-by: shibin <306219114@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 144,
+                "insertions": 131,
+                "deletions": 13
               },
               "scores": {
                 "loc": 30,
@@ -5113,84 +5683,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "yeyang-zhou",
-          "email": "43632064+yeyang-zhou@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 55,
-          "commits": [
-            {
-              "hash": "0395e677",
-              "author": "yeyang-zhou",
-              "email": "43632064+yeyang-zhou@users.noreply.github.com",
-              "date": "2026-10-27T01:29:26.000Z",
-              "message": "[Token Dropping] [MVP 1/12] Define request-local token-drop state (#5870)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
-              "stats": {
-                "files": 2,
-                "lines": 51,
-                "insertions": 50,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 55
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 55,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 55,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "zxue2",
-          "email": "zhan.xue@intel.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 50,
-          "commits": [
-            {
-              "hash": "b540ae9e",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-10-28T02:19:02.000Z",
-              "message": "[MP] Type lmcache_objects_ptrs as uintptr_t (#5672)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
-              "stats": {
-                "files": 5,
-                "lines": 16,
-                "insertions": 8,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 3,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 50
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 50,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 50,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
           "total_commits": 1,
@@ -5226,68 +5718,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 48,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
-          "name": "Yihua Cheng",
-          "email": "yihua98@uchicago.edu",
-          "total_commits": 2,
-          "significant_commits": 0,
-          "simple_commits": 2,
-          "commit_score": 48,
-          "commits": [
-            {
-              "hash": "cb5a3b56",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-28T20:34:45.000Z",
-              "message": "[Misc] Update the MAINTAINERS.md to up to date (#6148)\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 8,
-                "insertions": 8,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 5,
-                "total": 25
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "7b41993f",
-              "author": "Yihua Cheng",
-              "email": "yihua98@uchicago.edu",
-              "date": "2026-10-28T01:34:58.000Z",
-              "message": "docs: daily drift check — multi-process mode (2026-10-27) (#6113)\n\ndocs: update supported Python version to 3.10-3.14\n\nThe installation page's Prerequisites line still read\n\"Python 3.9–3.13\". `requires-python` in `pyproject.toml` is now\n`>=3.10,<3.15` after #5289 added CPython 3.14 to the supported\nrange (and the lower bound has been `>=3.10` for a while). The\nprerequisites line now matches `pyproject.toml` exactly.\n\nSigned-off-by: ApostaC <yihua98@uchicago.edu>",
-              "stats": {
-                "files": 1,
-                "lines": 2,
-                "insertions": 1,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 5,
-                "ai": 10,
-                "total": 23
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 24,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 48,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Luis Chamberlain",
@@ -5325,8 +5757,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 45,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Pratik Gandhi",
@@ -5364,8 +5796,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 30,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         }
       ]
     },
@@ -5374,10 +5806,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 29,
-          "significant_commits": 27,
+          "total_commits": 31,
+          "significant_commits": 29,
           "simple_commits": 2,
-          "commit_score": 2305,
+          "commit_score": 2452,
           "commits": [
             {
               "hash": "a3658dba",
@@ -5941,8 +6373,8 @@
                 "loc": 30,
                 "files": 5,
                 "keyword": 10,
-                "ai": 10,
-                "total": 55
+                "ai": 15,
+                "total": 60
               },
               "classification": "significant"
             },
@@ -5987,24 +6419,66 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f7c0768a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-29T15:07:30.000Z",
+              "message": "fix: bound RESP authentication reply length (#6108)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 94,
+                "insertions": 94,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 60
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c4e9e9e4",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-29T07:50:50.000Z",
+              "message": "[Refactor][MP] Centralize L2 object key codecs (#5989)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 466,
+                "insertions": 210,
+                "deletions": 256
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 79.48275862068965,
-          "significance_ratio": 0.9310344827586207,
+          "avg_score": 79.09677419354838,
+          "significance_ratio": 0.9354838709677419,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2305,
+          "total_score": 2452,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 13,
-          "significant_commits": 8,
+          "total_commits": 18,
+          "significant_commits": 13,
           "simple_commits": 5,
-          "commit_score": 753,
+          "commit_score": 1121,
           "commits": [
             {
               "hash": "32cbdcb7",
@@ -6253,8 +6727,8 @@
                 "loc": 8,
                 "files": 20,
                 "keyword": 12,
-                "ai": 18,
-                "total": 58
+                "ai": 20,
+                "total": 60
               },
               "classification": "significant"
             },
@@ -6278,24 +6752,129 @@
                 "total": 62
               },
               "classification": "significant"
+            },
+            {
+              "hash": "4995e604",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T15:27:23.000Z",
+              "message": "[MP][gRPC] Raise transport errors instead of grpc.RpcError from the client (#6161)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 142,
+                "insertions": 127,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a5043db0",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T12:07:01.000Z",
+              "message": "[MP][gRPC] Support grpc+unix in native mode (#6154)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 31,
+                "insertions": 9,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 58
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4756c4d7",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T03:54:36.000Z",
+              "message": "[MP][gRPC] Fail fast on a ZMQ server and refuse a shared port (#5998)\n\n* [MP][gRPC] Fail fast on a ZMQ server and refuse a shared port\n\nA gRPC client pointed at a ZMQ server waited until its caller timed out,\nbecause calls wait for the server to come up. When the channel fails to\nconnect, the client now reads the first bytes on the port once; a ZMTP\ngreeting fails pending and new calls with a ConnectionError naming the\ntcp:// URL to use. A refused or silent port still counts as a server that\nis starting.\n\nThe server also binds with grpc.so_reuseport off, so a second server on\nthe same port fails like it does with ZMQ instead of splitting clients.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Drop the design doc section; the code comments cover it\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Fix import order and type errors flagged by pre-commit\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Release the sync server's threads when its bind fails\n\nThe aio server already does this. Without it, every failed attempt to start\na second server on a served port left its affinity workers running.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Raise a new ConnectionError for each call to a ZMQ server\n\nReusing one exception object kept extending its traceback and holding on\nto the callers' frames. Keep the message and build the error per call.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 196,
+                "insertions": 191,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5fbf3c55",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T03:23:26.000Z",
+              "message": "[Feat][MP] Auto-start a gRPC MP server for grpc:// connector endpoints (#6001)\n\nMP server auto-start only accepted tcp:// endpoints, so a connector set up\nfor the gRPC transport could not use it. The launcher now picks the server\ntransport from the endpoint scheme and passes --transport grpc for grpc://,\nso the readiness PING and the connector reach the server over the same\ntransport. --transport is rejected in server_args for the same reason\n--host and --port are.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 117,
+                "insertions": 89,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "215dfd55",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T02:11:06.000Z",
+              "message": "[MP][gRPC] Export gRPC server metrics in native mode (#6061)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 413,
+                "insertions": 403,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 57.92307692307692,
-          "significance_ratio": 0.6153846153846154,
+          "avg_score": 62.27777777777778,
+          "significance_ratio": 0.7222222222222222,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 753,
+          "total_score": 1121,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 12,
-          "significant_commits": 6,
+          "total_commits": 13,
+          "significant_commits": 7,
           "simple_commits": 6,
-          "commit_score": 615,
+          "commit_score": 697,
           "commits": [
             {
               "hash": "d75ab6f3",
@@ -6548,24 +7127,45 @@
                 "total": 55
               },
               "classification": "significant"
+            },
+            {
+              "hash": "d04ed1d9",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-29T03:37:11.000Z",
+              "message": "[Feature] Support compressed KV groups(dsv4) in engine-driven transfers (#6124)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 447,
+                "insertions": 360,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 51.25,
-          "significance_ratio": 0.5,
+          "avg_score": 53.61538461538461,
+          "significance_ratio": 0.5384615384615384,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 615,
+          "total_score": 697,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 9,
-          "significant_commits": 6,
+          "total_commits": 10,
+          "significant_commits": 7,
           "simple_commits": 3,
-          "commit_score": 603,
+          "commit_score": 685,
           "commits": [
             {
               "hash": "e64f0a56",
@@ -6755,24 +7355,45 @@
                 "total": 23
               },
               "classification": "simple"
+            },
+            {
+              "hash": "0d9c874c",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-29T21:11:22.000Z",
+              "message": "[Core] Refactor the multi-l1 implementation with a default write policy. (#6117)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 88,
+                "lines": 5182,
+                "insertions": 2666,
+                "deletions": 2516
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 67,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 68.5,
+          "significance_ratio": 0.7,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 603,
+          "total_score": 685,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 10,
-          "significant_commits": 5,
+          "total_commits": 11,
+          "significant_commits": 6,
           "simple_commits": 5,
-          "commit_score": 593,
+          "commit_score": 648,
           "commits": [
             {
               "hash": "1ed386c4",
@@ -6983,24 +7604,45 @@
                 "total": 35
               },
               "classification": "simple"
+            },
+            {
+              "hash": "ca05e44f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-29T22:07:14.000Z",
+              "message": "[CI] Build lmcache/sglang on the newest SGLang release with LMCache's torch (#6123)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 50,
+                "insertions": 34,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.3,
-          "significance_ratio": 0.5,
+          "avg_score": 58.90909090909091,
+          "significance_ratio": 0.5454545454545454,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 593,
+          "total_score": 648,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "JH",
           "email": "riversky0014@gmail.com",
-          "total_commits": 6,
-          "significant_commits": 5,
+          "total_commits": 7,
+          "significant_commits": 6,
           "simple_commits": 1,
-          "commit_score": 433,
+          "commit_score": 515,
           "commits": [
             {
               "hash": "9ce85fe4",
@@ -7127,14 +7769,35 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "dce11e43",
+              "author": "JH",
+              "email": "riversky0014@gmail.com",
+              "date": "2026-10-29T03:13:03.000Z",
+              "message": "feat(bench): verify checksums through the server HTTP API (#5952)\n\nfeat(bench): verify worker checksums through the server HTTP API\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>",
+              "stats": {
+                "files": 11,
+                "lines": 308,
+                "insertions": 221,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 72.16666666666667,
-          "significance_ratio": 0.8333333333333334,
+          "avg_score": 73.57142857142857,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 433,
+          "total_score": 515,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7283,6 +7946,129 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "zxue2",
+          "email": "zhan.xue@intel.com",
+          "total_commits": 5,
+          "significant_commits": 5,
+          "simple_commits": 0,
+          "commit_score": 377,
+          "commits": [
+            {
+              "hash": "151c6c4f",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-21T13:49:40.000Z",
+              "message": "feat(mp): add extension hooks for plugin transfer modules (#5805)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 539,
+                "insertions": 505,
+                "deletions": 34
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "12ade888",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-21T10:48:25.000Z",
+              "message": "feat(mp): let a server module replace a built-in module (#5807)\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 213,
+                "insertions": 200,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 21,
+                "total": 83
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b28250e7",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-21T04:42:03.000Z",
+              "message": "feat(mp): add server_module_affinity_call for client-affinity plug-in (#5803)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 7,
+                "lines": 378,
+                "insertions": 366,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b540ae9e",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-28T02:19:02.000Z",
+              "message": "[MP] Type lmcache_objects_ptrs as uintptr_t (#5672)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 16,
+                "insertions": 8,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 50
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ebe3edde",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-29T09:57:29.000Z",
+              "message": "refactor(csrc): split mp kernel internals into a header (#5954)\n\nrefactor(csrc): move the mp transfer kernel into a header\n\nMove the multi-layer block KV transfer kernel and its device helpers\nfrom mp_mem_kernels.cu into mp_mem_kernels_detail.cuh, under namespace\nlmcache_mp, so another launcher can reuse them instead of copying them.\nMemoryObj4 moves there too, from mp_mem_kernels.cuh.\n\nPure move: the code unchanged, and mp_mem_kernels.cu only gains the\ninclude and a using-directive. The header includes only cudart and\nkv_transfer_plan_types.h and calls nothing defined out of line.\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 3,
+                "lines": 640,
+                "insertions": 332,
+                "deletions": 308
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.4,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 377,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
           "total_commits": 5,
@@ -7402,108 +8188,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 366,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "zxue2",
-          "email": "zhan.xue@intel.com",
-          "total_commits": 4,
-          "significant_commits": 4,
-          "simple_commits": 0,
-          "commit_score": 307,
-          "commits": [
-            {
-              "hash": "151c6c4f",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-10-21T13:49:40.000Z",
-              "message": "feat(mp): add extension hooks for plugin transfer modules (#5805)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
-              "stats": {
-                "files": 10,
-                "lines": 539,
-                "insertions": 505,
-                "deletions": 34
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "12ade888",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-10-21T10:48:25.000Z",
-              "message": "feat(mp): let a server module replace a built-in module (#5807)\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 5,
-                "lines": 213,
-                "insertions": 200,
-                "deletions": 13
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 21,
-                "total": 83
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b28250e7",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-10-21T04:42:03.000Z",
-              "message": "feat(mp): add server_module_affinity_call for client-affinity plug-in (#5803)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
-              "stats": {
-                "files": 7,
-                "lines": 378,
-                "insertions": 366,
-                "deletions": 12
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b540ae9e",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-10-28T02:19:02.000Z",
-              "message": "[MP] Type lmcache_objects_ptrs as uintptr_t (#5672)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
-              "stats": {
-                "files": 5,
-                "lines": 16,
-                "insertions": 8,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 3,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 50
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 76.75,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 307,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7916,6 +8600,168 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Sylvie Wu",
+          "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 219,
+          "commits": [
+            {
+              "hash": "d0540179",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-22T02:37:59.000Z",
+              "message": "[Bugfix][Coordinator] Serve /cache/delete from the eviction controller (#5918)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 7,
+                "lines": 306,
+                "insertions": 154,
+                "deletions": 152
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7660f4ef",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-28T09:07:02.000Z",
+              "message": "[Bugfix][Coordinator] Return 503, not 200, when a quota or pin can't be saved to disk (#6077)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 9,
+                "lines": 361,
+                "insertions": 337,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ad1d7389",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-29T02:18:52.000Z",
+              "message": "[Docker] Include confluent-kafka in the vLLM and standalone images (#6147)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 4,
+                "lines": 28,
+                "insertions": 21,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 219,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "yeyang-zhou",
+          "email": "43632064+yeyang-zhou@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 201,
+          "commits": [
+            {
+              "hash": "04555d0d",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-16T01:51:08.000Z",
+              "message": "[Token Dropping] [Config 2/3] Load request-local algorithm plugins (#5736)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 248,
+                "insertions": 248,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 24,
+                "total": 76
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0395e677",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-27T01:29:26.000Z",
+              "message": "[Token Dropping] [MVP 1/12] Define request-local token-drop state (#5870)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 51,
+                "insertions": 50,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "fa34a708",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-29T05:56:51.000Z",
+              "message": "[Token Dropping] [KV Compaction 2/3] Compact paged GPU K/V (#5737)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 227,
+                "insertions": 227,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 201,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "lepam",
           "email": "69680504+lhzds@users.noreply.github.com",
           "total_commits": 2,
@@ -8036,66 +8882,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Sylvie Wu",
-          "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 169,
-          "commits": [
-            {
-              "hash": "d0540179",
-              "author": "Sylvie Wu",
-              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
-              "date": "2026-10-22T02:37:59.000Z",
-              "message": "[Bugfix][Coordinator] Serve /cache/delete from the eviction controller (#5918)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
-              "stats": {
-                "files": 7,
-                "lines": 306,
-                "insertions": 154,
-                "deletions": 152
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "7660f4ef",
-              "author": "Sylvie Wu",
-              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
-              "date": "2026-10-28T09:07:02.000Z",
-              "message": "[Bugfix][Coordinator] Return 503, not 200, when a quota or pin can't be saved to disk (#6077)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
-              "stats": {
-                "files": 9,
-                "lines": 361,
-                "insertions": 337,
-                "deletions": 24
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 84.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 169,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "nauta",
           "email": "870284156@qq.com",
           "total_commits": 3,
@@ -8177,62 +8963,62 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "yeyang-zhou",
-          "email": "43632064+yeyang-zhou@users.noreply.github.com",
+          "name": "Michael Borokhovich",
+          "email": "michaelbor@gmail.com",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 131,
+          "commit_score": 129,
           "commits": [
             {
-              "hash": "04555d0d",
-              "author": "yeyang-zhou",
-              "email": "43632064+yeyang-zhou@users.noreply.github.com",
-              "date": "2026-10-16T01:51:08.000Z",
-              "message": "[Token Dropping] [Config 2/3] Load request-local algorithm plugins (#5736)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "hash": "d32ff3a2",
+              "author": "Michael Borokhovich",
+              "email": "michaelbor@gmail.com",
+              "date": "2026-10-27T22:52:55.000Z",
+              "message": "[Bugfix] S3 L2 adapter: bounds-check GET bodies and treat a wrong-sized object as a miss (#6015)\n\nSigned-off-by: Michael Borokhovich <mborokhovich@nvidia.com>",
               "stats": {
                 "files": 3,
-                "lines": 248,
-                "insertions": 248,
-                "deletions": 0
+                "lines": 292,
+                "insertions": 265,
+                "deletions": 27
               },
               "scores": {
                 "loc": 30,
                 "files": 10,
                 "keyword": 12,
-                "ai": 24,
-                "total": 76
+                "ai": 20,
+                "total": 72
               },
               "classification": "significant"
             },
             {
-              "hash": "0395e677",
-              "author": "yeyang-zhou",
-              "email": "43632064+yeyang-zhou@users.noreply.github.com",
-              "date": "2026-10-27T01:29:26.000Z",
-              "message": "[Token Dropping] [MVP 1/12] Define request-local token-drop state (#5870)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "hash": "c01c30ea",
+              "author": "Michael Borokhovich",
+              "email": "mborokhovich@nvidia.com",
+              "date": "2026-10-29T15:15:31.000Z",
+              "message": "[Bugfix][MP] L1 staging bytes: subtract the charge recorded at reserve (#6152)\n\n_put_staging added memory_obj.get_size() to the staging counter and\n_pop_staging subtracted memory_obj.get_size() again. Between the two,\nAsyncSerdeProcessor narrows the serialized temp with set_used_size(n)\nwhenever serialize() writes fewer bytes than estimate_serialized_size(),\nwhich the Serializer contract defines as an upper bound. Every such\nstore left (estimate - n) phantom bytes in the counter, which feeds the\nprefetch controller's admission check and the l1_staging_bytes metric.\nThe allocator itself was not affected.\n\nRecord the charge on the staging entry at put and subtract exactly that\nat pop. None of the registered serdes (aesgcm, fp8, turboquant) narrows\ntoday, so this only shows with a variable-length serde.\n\nTests: narrowed buffers released through finish_write_and_delete,\nfinish_write_and_reserve_read + finish_read, and finish_write; an\nexpired reservation handed to a new writer; delete of an expired\nnarrowed reservation. All three fail without the fix.\n\nSigned-off-by: Michael Borokhovich <mborokhovich@nvidia.com>",
               "stats": {
                 "files": 2,
-                "lines": 51,
-                "insertions": 50,
-                "deletions": 1
+                "lines": 88,
+                "insertions": 86,
+                "deletions": 2
               },
               "scores": {
                 "loc": 15,
                 "files": 10,
                 "keyword": 12,
-                "ai": 18,
-                "total": 55
+                "ai": 20,
+                "total": 57
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 65.5,
+          "avg_score": 64.5,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 131,
+          "total_score": 129,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -8314,6 +9100,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 115,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "PPg",
+          "email": "18649201011@163.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 114,
+          "commits": [
+            {
+              "hash": "2ebdc77d",
+              "author": "PPg",
+              "email": "18649201011@163.com",
+              "date": "2026-10-15T13:11:34.000Z",
+              "message": "[Bugfix] Respect TRT-LLM kernel object batch limit (#5762)\n\nfix(trtllm): respect kernel object batch limit\n\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>",
+              "stats": {
+                "files": 2,
+                "lines": 54,
+                "insertions": 52,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e0a7a769",
+              "author": "PPg",
+              "email": "18649201011@163.com",
+              "date": "2026-10-29T20:02:17.000Z",
+              "message": "fix(mp): reply with explicit error for unregistered RPC operations (#6095)\n\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>",
+              "stats": {
+                "files": 3,
+                "lines": 114,
+                "insertions": 113,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 57,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 114,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -8434,8 +9280,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 95,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "nayeonikim",
@@ -8494,8 +9340,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 90,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Ola",
@@ -8809,6 +9655,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 84,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Chris Coleman",
+          "email": "chriscoleman@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "f30d2a6a",
+              "author": "Chris Coleman",
+              "email": "chriscoleman@tensormesh.ai",
+              "date": "2026-10-29T20:24:15.000Z",
+              "message": "[CLI] Add lmcache bench quality: checking answer quality vs full recompute (#5711)\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 42,
+                "lines": 11408,
+                "insertions": 11365,
+                "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -9128,24 +10013,24 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Michael Borokhovich",
-          "email": "michaelbor@gmail.com",
+          "name": "Mlight7",
+          "email": "88367366+Mlight7@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 72,
           "commits": [
             {
-              "hash": "d32ff3a2",
-              "author": "Michael Borokhovich",
-              "email": "michaelbor@gmail.com",
-              "date": "2026-10-27T22:52:55.000Z",
-              "message": "[Bugfix] S3 L2 adapter: bounds-check GET bodies and treat a wrong-sized object as a miss (#6015)\n\nSigned-off-by: Michael Borokhovich <mborokhovich@nvidia.com>",
+              "hash": "b377915c",
+              "author": "Mlight7",
+              "email": "88367366+Mlight7@users.noreply.github.com",
+              "date": "2026-10-28T10:17:32.000Z",
+              "message": "[Bugfix] Load the Mooncake SDK only when its backend is selected (#6134)\n\nfix(distributed): load Mooncake SDK only when its context is created\n\nKeep optional native SDK loading out of transfer-channel discovery. Preserve\ntype information, document the selection-time dependency error, and add\nfresh-process public lifecycle regressions for SDK loading and failures.\n\nSigned-off-by: Mlight7 <Mlight7@users.noreply.github.com>\nCo-authored-by: Mlight7 <Mlight7@users.noreply.github.com>",
               "stats": {
                 "files": 3,
-                "lines": 292,
-                "insertions": 265,
-                "deletions": 27
+                "lines": 209,
+                "insertions": 206,
+                "deletions": 3
               },
               "scores": {
                 "loc": 30,
@@ -9167,24 +10052,24 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Mlight7",
-          "email": "88367366+Mlight7@users.noreply.github.com",
+          "name": "sssqqeer",
+          "email": "166484716+sssqqeer@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 72,
           "commits": [
             {
-              "hash": "b377915c",
-              "author": "Mlight7",
-              "email": "88367366+Mlight7@users.noreply.github.com",
-              "date": "2026-10-28T10:17:32.000Z",
-              "message": "[Bugfix] Load the Mooncake SDK only when its backend is selected (#6134)\n\nfix(distributed): load Mooncake SDK only when its context is created\n\nKeep optional native SDK loading out of transfer-channel discovery. Preserve\ntype information, document the selection-time dependency error, and add\nfresh-process public lifecycle regressions for SDK loading and failures.\n\nSigned-off-by: Mlight7 <Mlight7@users.noreply.github.com>\nCo-authored-by: Mlight7 <Mlight7@users.noreply.github.com>",
+              "hash": "eed45edd",
+              "author": "sssqqeer",
+              "email": "166484716+sssqqeer@users.noreply.github.com",
+              "date": "2026-10-29T04:25:55.000Z",
+              "message": "[Perf][MP] Skip L2 lookups when L1 already has the whole prefetch request (#5652)\n\nSigned-off-by: shibin <306219114@qq.com>",
               "stats": {
-                "files": 3,
-                "lines": 209,
-                "insertions": 206,
-                "deletions": 3
+                "files": 4,
+                "lines": 144,
+                "insertions": 131,
+                "deletions": 13
               },
               "scores": {
                 "loc": 30,
@@ -9673,45 +10558,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "PPg",
-          "email": "18649201011@163.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 42,
-          "commits": [
-            {
-              "hash": "2ebdc77d",
-              "author": "PPg",
-              "email": "18649201011@163.com",
-              "date": "2026-10-15T13:11:34.000Z",
-              "message": "[Bugfix] Respect TRT-LLM kernel object batch limit (#5762)\n\nfix(trtllm): respect kernel object batch limit\n\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>",
-              "stats": {
-                "files": 2,
-                "lines": 54,
-                "insertions": 52,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 5,
-                "total": 42
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 42,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 42,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -10268,10 +11114,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 29,
-          "significant_commits": 27,
+          "total_commits": 31,
+          "significant_commits": 29,
           "simple_commits": 2,
-          "commit_score": 2305,
+          "commit_score": 2452,
           "commits": [
             {
               "hash": "a3658dba",
@@ -10835,8 +11681,8 @@
                 "loc": 30,
                 "files": 5,
                 "keyword": 10,
-                "ai": 10,
-                "total": 55
+                "ai": 15,
+                "total": 60
               },
               "classification": "significant"
             },
@@ -10881,24 +11727,66 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "f7c0768a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-29T15:07:30.000Z",
+              "message": "fix: bound RESP authentication reply length (#6108)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 94,
+                "insertions": 94,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 60
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c4e9e9e4",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-29T07:50:50.000Z",
+              "message": "[Refactor][MP] Centralize L2 object key codecs (#5989)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 466,
+                "insertions": 210,
+                "deletions": 256
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 79.48275862068965,
-          "significance_ratio": 0.9310344827586207,
+          "avg_score": 79.09677419354838,
+          "significance_ratio": 0.9354838709677419,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2305,
+          "total_score": 2452,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 13,
-          "significant_commits": 8,
+          "total_commits": 18,
+          "significant_commits": 13,
           "simple_commits": 5,
-          "commit_score": 753,
+          "commit_score": 1121,
           "commits": [
             {
               "hash": "32cbdcb7",
@@ -11147,8 +12035,8 @@
                 "loc": 8,
                 "files": 20,
                 "keyword": 12,
-                "ai": 18,
-                "total": 58
+                "ai": 20,
+                "total": 60
               },
               "classification": "significant"
             },
@@ -11172,24 +12060,129 @@
                 "total": 62
               },
               "classification": "significant"
+            },
+            {
+              "hash": "4995e604",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T15:27:23.000Z",
+              "message": "[MP][gRPC] Raise transport errors instead of grpc.RpcError from the client (#6161)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 142,
+                "insertions": 127,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a5043db0",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T12:07:01.000Z",
+              "message": "[MP][gRPC] Support grpc+unix in native mode (#6154)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 31,
+                "insertions": 9,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 58
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4756c4d7",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T03:54:36.000Z",
+              "message": "[MP][gRPC] Fail fast on a ZMQ server and refuse a shared port (#5998)\n\n* [MP][gRPC] Fail fast on a ZMQ server and refuse a shared port\n\nA gRPC client pointed at a ZMQ server waited until its caller timed out,\nbecause calls wait for the server to come up. When the channel fails to\nconnect, the client now reads the first bytes on the port once; a ZMTP\ngreeting fails pending and new calls with a ConnectionError naming the\ntcp:// URL to use. A refused or silent port still counts as a server that\nis starting.\n\nThe server also binds with grpc.so_reuseport off, so a second server on\nthe same port fails like it does with ZMQ instead of splitting clients.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Drop the design doc section; the code comments cover it\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Fix import order and type errors flagged by pre-commit\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Release the sync server's threads when its bind fails\n\nThe aio server already does this. Without it, every failed attempt to start\na second server on a served port left its affinity workers running.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Raise a new ConnectionError for each call to a ZMQ server\n\nReusing one exception object kept extending its traceback and holding on\nto the callers' frames. Keep the message and build the error per call.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 196,
+                "insertions": 191,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5fbf3c55",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T03:23:26.000Z",
+              "message": "[Feat][MP] Auto-start a gRPC MP server for grpc:// connector endpoints (#6001)\n\nMP server auto-start only accepted tcp:// endpoints, so a connector set up\nfor the gRPC transport could not use it. The launcher now picks the server\ntransport from the endpoint scheme and passes --transport grpc for grpc://,\nso the readiness PING and the connector reach the server over the same\ntransport. --transport is rejected in server_args for the same reason\n--host and --port are.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 117,
+                "insertions": 89,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "215dfd55",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T02:11:06.000Z",
+              "message": "[MP][gRPC] Export gRPC server metrics in native mode (#6061)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 413,
+                "insertions": 403,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 57.92307692307692,
-          "significance_ratio": 0.6153846153846154,
+          "avg_score": 62.27777777777778,
+          "significance_ratio": 0.7222222222222222,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 753,
+          "total_score": 1121,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 12,
-          "significant_commits": 6,
+          "total_commits": 13,
+          "significant_commits": 7,
           "simple_commits": 6,
-          "commit_score": 615,
+          "commit_score": 697,
           "commits": [
             {
               "hash": "d75ab6f3",
@@ -11442,24 +12435,45 @@
                 "total": 55
               },
               "classification": "significant"
+            },
+            {
+              "hash": "d04ed1d9",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-29T03:37:11.000Z",
+              "message": "[Feature] Support compressed KV groups(dsv4) in engine-driven transfers (#6124)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 447,
+                "insertions": 360,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 51.25,
-          "significance_ratio": 0.5,
+          "avg_score": 53.61538461538461,
+          "significance_ratio": 0.5384615384615384,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 615,
+          "total_score": 697,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Yihua Cheng",
           "email": "yihua98@uchicago.edu",
-          "total_commits": 9,
-          "significant_commits": 6,
+          "total_commits": 10,
+          "significant_commits": 7,
           "simple_commits": 3,
-          "commit_score": 603,
+          "commit_score": 685,
           "commits": [
             {
               "hash": "e64f0a56",
@@ -11649,24 +12663,45 @@
                 "total": 23
               },
               "classification": "simple"
+            },
+            {
+              "hash": "0d9c874c",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-10-29T21:11:22.000Z",
+              "message": "[Core] Refactor the multi-l1 implementation with a default write policy. (#6117)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 88,
+                "lines": 5182,
+                "insertions": 2666,
+                "deletions": 2516
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 67,
-          "significance_ratio": 0.6666666666666666,
+          "avg_score": 68.5,
+          "significance_ratio": 0.7,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 603,
+          "total_score": 685,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 10,
-          "significant_commits": 5,
+          "total_commits": 11,
+          "significant_commits": 6,
           "simple_commits": 5,
-          "commit_score": 593,
+          "commit_score": 648,
           "commits": [
             {
               "hash": "1ed386c4",
@@ -11877,24 +12912,45 @@
                 "total": 35
               },
               "classification": "simple"
+            },
+            {
+              "hash": "ca05e44f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-10-29T22:07:14.000Z",
+              "message": "[CI] Build lmcache/sglang on the newest SGLang release with LMCache's torch (#6123)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 50,
+                "insertions": 34,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.3,
-          "significance_ratio": 0.5,
+          "avg_score": 58.90909090909091,
+          "significance_ratio": 0.5454545454545454,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 593,
+          "total_score": 648,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "JH",
           "email": "riversky0014@gmail.com",
-          "total_commits": 6,
-          "significant_commits": 5,
+          "total_commits": 7,
+          "significant_commits": 6,
           "simple_commits": 1,
-          "commit_score": 433,
+          "commit_score": 515,
           "commits": [
             {
               "hash": "9ce85fe4",
@@ -12021,14 +13077,35 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "dce11e43",
+              "author": "JH",
+              "email": "riversky0014@gmail.com",
+              "date": "2026-10-29T03:13:03.000Z",
+              "message": "feat(bench): verify checksums through the server HTTP API (#5952)\n\nfeat(bench): verify worker checksums through the server HTTP API\n\nSigned-off-by: riversky0014 <riversky0014@gmail.com>",
+              "stats": {
+                "files": 11,
+                "lines": 308,
+                "insertions": 221,
+                "deletions": 87
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 72.16666666666667,
-          "significance_ratio": 0.8333333333333334,
+          "avg_score": 73.57142857142857,
+          "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 433,
+          "total_score": 515,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -12177,6 +13254,129 @@
           "tier_name": "Advanced"
         },
         {
+          "name": "zxue2",
+          "email": "zhan.xue@intel.com",
+          "total_commits": 5,
+          "significant_commits": 5,
+          "simple_commits": 0,
+          "commit_score": 377,
+          "commits": [
+            {
+              "hash": "151c6c4f",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-21T13:49:40.000Z",
+              "message": "feat(mp): add extension hooks for plugin transfer modules (#5805)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 10,
+                "lines": 539,
+                "insertions": 505,
+                "deletions": 34
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "12ade888",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-21T10:48:25.000Z",
+              "message": "feat(mp): let a server module replace a built-in module (#5807)\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 5,
+                "lines": 213,
+                "insertions": 200,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 21,
+                "total": 83
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b28250e7",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-21T04:42:03.000Z",
+              "message": "feat(mp): add server_module_affinity_call for client-affinity plug-in (#5803)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 7,
+                "lines": 378,
+                "insertions": 366,
+                "deletions": 12
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b540ae9e",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-28T02:19:02.000Z",
+              "message": "[MP] Type lmcache_objects_ptrs as uintptr_t (#5672)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 16,
+                "insertions": 8,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 3,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 50
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ebe3edde",
+              "author": "zxue2",
+              "email": "zhan.xue@intel.com",
+              "date": "2026-10-29T09:57:29.000Z",
+              "message": "refactor(csrc): split mp kernel internals into a header (#5954)\n\nrefactor(csrc): move the mp transfer kernel into a header\n\nMove the multi-layer block KV transfer kernel and its device helpers\nfrom mp_mem_kernels.cu into mp_mem_kernels_detail.cuh, under namespace\nlmcache_mp, so another launcher can reuse them instead of copying them.\nMemoryObj4 moves there too, from mp_mem_kernels.cuh.\n\nPure move: the code unchanged, and mp_mem_kernels.cu only gains the\ninclude and a using-directive. The header includes only cudart and\nkv_transfer_plan_types.h and calls nothing defined out of line.\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
+              "stats": {
+                "files": 3,
+                "lines": 640,
+                "insertions": 332,
+                "deletions": 308
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.4,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 377,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
           "total_commits": 5,
@@ -12296,108 +13496,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 366,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "zxue2",
-          "email": "zhan.xue@intel.com",
-          "total_commits": 4,
-          "significant_commits": 4,
-          "simple_commits": 0,
-          "commit_score": 307,
-          "commits": [
-            {
-              "hash": "151c6c4f",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-10-21T13:49:40.000Z",
-              "message": "feat(mp): add extension hooks for plugin transfer modules (#5805)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
-              "stats": {
-                "files": 10,
-                "lines": 539,
-                "insertions": 505,
-                "deletions": 34
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "12ade888",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-10-21T10:48:25.000Z",
-              "message": "feat(mp): let a server module replace a built-in module (#5807)\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>\nCo-authored-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 5,
-                "lines": 213,
-                "insertions": 200,
-                "deletions": 13
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 21,
-                "total": 83
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b28250e7",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-10-21T04:42:03.000Z",
-              "message": "feat(mp): add server_module_affinity_call for client-affinity plug-in (#5803)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
-              "stats": {
-                "files": 7,
-                "lines": 378,
-                "insertions": 366,
-                "deletions": 12
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "b540ae9e",
-              "author": "zxue2",
-              "email": "zhan.xue@intel.com",
-              "date": "2026-10-28T02:19:02.000Z",
-              "message": "[MP] Type lmcache_objects_ptrs as uintptr_t (#5672)\n\nSigned-off-by: Zhan Xue <zhan.xue@intel.com>",
-              "stats": {
-                "files": 5,
-                "lines": 16,
-                "insertions": 8,
-                "deletions": 8
-              },
-              "scores": {
-                "loc": 3,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 50
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 76.75,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 307,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -12810,6 +13908,168 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Sylvie Wu",
+          "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 219,
+          "commits": [
+            {
+              "hash": "d0540179",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-22T02:37:59.000Z",
+              "message": "[Bugfix][Coordinator] Serve /cache/delete from the eviction controller (#5918)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 7,
+                "lines": 306,
+                "insertions": 154,
+                "deletions": 152
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7660f4ef",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-28T09:07:02.000Z",
+              "message": "[Bugfix][Coordinator] Return 503, not 200, when a quota or pin can't be saved to disk (#6077)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 9,
+                "lines": 361,
+                "insertions": 337,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "ad1d7389",
+              "author": "Sylvie Wu",
+              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
+              "date": "2026-10-29T02:18:52.000Z",
+              "message": "[Docker] Include confluent-kafka in the vLLM and standalone images (#6147)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
+              "stats": {
+                "files": 4,
+                "lines": 28,
+                "insertions": 21,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 50
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 73,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 219,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "yeyang-zhou",
+          "email": "43632064+yeyang-zhou@users.noreply.github.com",
+          "total_commits": 3,
+          "significant_commits": 3,
+          "simple_commits": 0,
+          "commit_score": 201,
+          "commits": [
+            {
+              "hash": "04555d0d",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-16T01:51:08.000Z",
+              "message": "[Token Dropping] [Config 2/3] Load request-local algorithm plugins (#5736)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "stats": {
+                "files": 3,
+                "lines": 248,
+                "insertions": 248,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 24,
+                "total": 76
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0395e677",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-27T01:29:26.000Z",
+              "message": "[Token Dropping] [MVP 1/12] Define request-local token-drop state (#5870)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 51,
+                "insertions": 50,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "fa34a708",
+              "author": "yeyang-zhou",
+              "email": "43632064+yeyang-zhou@users.noreply.github.com",
+              "date": "2026-10-29T05:56:51.000Z",
+              "message": "[Token Dropping] [KV Compaction 2/3] Compact paged GPU K/V (#5737)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 227,
+                "insertions": 227,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 67,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 201,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "lepam",
           "email": "69680504+lhzds@users.noreply.github.com",
           "total_commits": 2,
@@ -12930,66 +14190,6 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "Sylvie Wu",
-          "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 169,
-          "commits": [
-            {
-              "hash": "d0540179",
-              "author": "Sylvie Wu",
-              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
-              "date": "2026-10-22T02:37:59.000Z",
-              "message": "[Bugfix][Coordinator] Serve /cache/delete from the eviction controller (#5918)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
-              "stats": {
-                "files": 7,
-                "lines": 306,
-                "insertions": 154,
-                "deletions": 152
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "7660f4ef",
-              "author": "Sylvie Wu",
-              "email": "129717259+Sylvie-Wxr@users.noreply.github.com",
-              "date": "2026-10-28T09:07:02.000Z",
-              "message": "[Bugfix][Coordinator] Return 503, not 200, when a quota or pin can't be saved to disk (#6077)\n\nSigned-off-by: Sylvie-Wxr <sylvie_wu125@outlook.com>",
-              "stats": {
-                "files": 9,
-                "lines": 361,
-                "insertions": 337,
-                "deletions": 24
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 84.5,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 169,
-          "tier": "T2",
-          "tier_name": "Intermediate"
-        },
-        {
           "name": "nauta",
           "email": "870284156@qq.com",
           "total_commits": 3,
@@ -13071,62 +14271,62 @@
           "tier_name": "Intermediate"
         },
         {
-          "name": "yeyang-zhou",
-          "email": "43632064+yeyang-zhou@users.noreply.github.com",
+          "name": "Michael Borokhovich",
+          "email": "michaelbor@gmail.com",
           "total_commits": 2,
           "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 131,
+          "commit_score": 129,
           "commits": [
             {
-              "hash": "04555d0d",
-              "author": "yeyang-zhou",
-              "email": "43632064+yeyang-zhou@users.noreply.github.com",
-              "date": "2026-10-16T01:51:08.000Z",
-              "message": "[Token Dropping] [Config 2/3] Load request-local algorithm plugins (#5736)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "hash": "d32ff3a2",
+              "author": "Michael Borokhovich",
+              "email": "michaelbor@gmail.com",
+              "date": "2026-10-27T22:52:55.000Z",
+              "message": "[Bugfix] S3 L2 adapter: bounds-check GET bodies and treat a wrong-sized object as a miss (#6015)\n\nSigned-off-by: Michael Borokhovich <mborokhovich@nvidia.com>",
               "stats": {
                 "files": 3,
-                "lines": 248,
-                "insertions": 248,
-                "deletions": 0
+                "lines": 292,
+                "insertions": 265,
+                "deletions": 27
               },
               "scores": {
                 "loc": 30,
                 "files": 10,
                 "keyword": 12,
-                "ai": 24,
-                "total": 76
+                "ai": 20,
+                "total": 72
               },
               "classification": "significant"
             },
             {
-              "hash": "0395e677",
-              "author": "yeyang-zhou",
-              "email": "43632064+yeyang-zhou@users.noreply.github.com",
-              "date": "2026-10-27T01:29:26.000Z",
-              "message": "[Token Dropping] [MVP 1/12] Define request-local token-drop state (#5870)\n\nSigned-off-by: yeyang-zhou <43632064+yeyang-zhou@users.noreply.github.com>",
+              "hash": "c01c30ea",
+              "author": "Michael Borokhovich",
+              "email": "mborokhovich@nvidia.com",
+              "date": "2026-10-29T15:15:31.000Z",
+              "message": "[Bugfix][MP] L1 staging bytes: subtract the charge recorded at reserve (#6152)\n\n_put_staging added memory_obj.get_size() to the staging counter and\n_pop_staging subtracted memory_obj.get_size() again. Between the two,\nAsyncSerdeProcessor narrows the serialized temp with set_used_size(n)\nwhenever serialize() writes fewer bytes than estimate_serialized_size(),\nwhich the Serializer contract defines as an upper bound. Every such\nstore left (estimate - n) phantom bytes in the counter, which feeds the\nprefetch controller's admission check and the l1_staging_bytes metric.\nThe allocator itself was not affected.\n\nRecord the charge on the staging entry at put and subtract exactly that\nat pop. None of the registered serdes (aesgcm, fp8, turboquant) narrows\ntoday, so this only shows with a variable-length serde.\n\nTests: narrowed buffers released through finish_write_and_delete,\nfinish_write_and_reserve_read + finish_read, and finish_write; an\nexpired reservation handed to a new writer; delete of an expired\nnarrowed reservation. All three fail without the fix.\n\nSigned-off-by: Michael Borokhovich <mborokhovich@nvidia.com>",
               "stats": {
                 "files": 2,
-                "lines": 51,
-                "insertions": 50,
-                "deletions": 1
+                "lines": 88,
+                "insertions": 86,
+                "deletions": 2
               },
               "scores": {
                 "loc": 15,
                 "files": 10,
                 "keyword": 12,
-                "ai": 18,
-                "total": 55
+                "ai": 20,
+                "total": 57
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 65.5,
+          "avg_score": 64.5,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 131,
+          "total_score": 129,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -13208,6 +14408,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 115,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "PPg",
+          "email": "18649201011@163.com",
+          "total_commits": 2,
+          "significant_commits": 1,
+          "simple_commits": 1,
+          "commit_score": 114,
+          "commits": [
+            {
+              "hash": "2ebdc77d",
+              "author": "PPg",
+              "email": "18649201011@163.com",
+              "date": "2026-10-15T13:11:34.000Z",
+              "message": "[Bugfix] Respect TRT-LLM kernel object batch limit (#5762)\n\nfix(trtllm): respect kernel object batch limit\n\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>",
+              "stats": {
+                "files": 2,
+                "lines": 54,
+                "insertions": 52,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 5,
+                "total": 42
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "e0a7a769",
+              "author": "PPg",
+              "email": "18649201011@163.com",
+              "date": "2026-10-29T20:02:17.000Z",
+              "message": "fix(mp): reply with explicit error for unregistered RPC operations (#6095)\n\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>",
+              "stats": {
+                "files": 3,
+                "lines": 114,
+                "insertions": 113,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 57,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 114,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -13328,8 +14588,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 95,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "nayeonikim",
@@ -13388,8 +14648,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 90,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Ola",
@@ -13703,6 +14963,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 84,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Chris Coleman",
+          "email": "chriscoleman@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "f30d2a6a",
+              "author": "Chris Coleman",
+              "email": "chriscoleman@tensormesh.ai",
+              "date": "2026-10-29T20:24:15.000Z",
+              "message": "[CLI] Add lmcache bench quality: checking answer quality vs full recompute (#5711)\n\nSigned-off-by: Chris Coleman <chriscoleman@tensormesh.ai>",
+              "stats": {
+                "files": 42,
+                "lines": 11408,
+                "insertions": 11365,
+                "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -14022,24 +15321,24 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Michael Borokhovich",
-          "email": "michaelbor@gmail.com",
+          "name": "Mlight7",
+          "email": "88367366+Mlight7@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 72,
           "commits": [
             {
-              "hash": "d32ff3a2",
-              "author": "Michael Borokhovich",
-              "email": "michaelbor@gmail.com",
-              "date": "2026-10-27T22:52:55.000Z",
-              "message": "[Bugfix] S3 L2 adapter: bounds-check GET bodies and treat a wrong-sized object as a miss (#6015)\n\nSigned-off-by: Michael Borokhovich <mborokhovich@nvidia.com>",
+              "hash": "b377915c",
+              "author": "Mlight7",
+              "email": "88367366+Mlight7@users.noreply.github.com",
+              "date": "2026-10-28T10:17:32.000Z",
+              "message": "[Bugfix] Load the Mooncake SDK only when its backend is selected (#6134)\n\nfix(distributed): load Mooncake SDK only when its context is created\n\nKeep optional native SDK loading out of transfer-channel discovery. Preserve\ntype information, document the selection-time dependency error, and add\nfresh-process public lifecycle regressions for SDK loading and failures.\n\nSigned-off-by: Mlight7 <Mlight7@users.noreply.github.com>\nCo-authored-by: Mlight7 <Mlight7@users.noreply.github.com>",
               "stats": {
                 "files": 3,
-                "lines": 292,
-                "insertions": 265,
-                "deletions": 27
+                "lines": 209,
+                "insertions": 206,
+                "deletions": 3
               },
               "scores": {
                 "loc": 30,
@@ -14061,24 +15360,24 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "Mlight7",
-          "email": "88367366+Mlight7@users.noreply.github.com",
+          "name": "sssqqeer",
+          "email": "166484716+sssqqeer@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 1,
           "simple_commits": 0,
           "commit_score": 72,
           "commits": [
             {
-              "hash": "b377915c",
-              "author": "Mlight7",
-              "email": "88367366+Mlight7@users.noreply.github.com",
-              "date": "2026-10-28T10:17:32.000Z",
-              "message": "[Bugfix] Load the Mooncake SDK only when its backend is selected (#6134)\n\nfix(distributed): load Mooncake SDK only when its context is created\n\nKeep optional native SDK loading out of transfer-channel discovery. Preserve\ntype information, document the selection-time dependency error, and add\nfresh-process public lifecycle regressions for SDK loading and failures.\n\nSigned-off-by: Mlight7 <Mlight7@users.noreply.github.com>\nCo-authored-by: Mlight7 <Mlight7@users.noreply.github.com>",
+              "hash": "eed45edd",
+              "author": "sssqqeer",
+              "email": "166484716+sssqqeer@users.noreply.github.com",
+              "date": "2026-10-29T04:25:55.000Z",
+              "message": "[Perf][MP] Skip L2 lookups when L1 already has the whole prefetch request (#5652)\n\nSigned-off-by: shibin <306219114@qq.com>",
               "stats": {
-                "files": 3,
-                "lines": 209,
-                "insertions": 206,
-                "deletions": 3
+                "files": 4,
+                "lines": 144,
+                "insertions": 131,
+                "deletions": 13
               },
               "scores": {
                 "loc": 30,
@@ -14567,45 +15866,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 44,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "PPg",
-          "email": "18649201011@163.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 42,
-          "commits": [
-            {
-              "hash": "2ebdc77d",
-              "author": "PPg",
-              "email": "18649201011@163.com",
-              "date": "2026-10-15T13:11:34.000Z",
-              "message": "[Bugfix] Respect TRT-LLM kernel object batch limit (#5762)\n\nfix(trtllm): respect kernel object batch limit\n\nSigned-off-by: Pilgrim132333333 <18649201011@163.com>",
-              "stats": {
-                "files": 2,
-                "lines": 54,
-                "insertions": 52,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 5,
-                "total": 42
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 42,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 42,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -15159,13 +16419,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-29T00:30:28.834Z",
+    "analyzedAt": "2026-10-30T00:30:35.040Z",
     "daysBack": 2,
-    "totalCommits": 178,
-    "totalContributors": 64,
+    "totalCommits": 196,
+    "totalContributors": 66,
     "mergedFrom": {
-      "existing": 158,
-      "new": 32
+      "existing": 178,
+      "new": 38
     }
   }
 }
