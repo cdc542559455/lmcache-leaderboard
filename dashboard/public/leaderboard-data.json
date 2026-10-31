@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-30T00:30:35.040Z",
-  "total_commits_analyzed": 196,
+  "last_updated": "2026-10-31T00:30:19.427Z",
+  "total_commits_analyzed": 206,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4071,10 +4071,10 @@
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 9,
-          "significant_commits": 7,
-          "simple_commits": 2,
-          "commit_score": 584,
+          "total_commits": 11,
+          "significant_commits": 8,
+          "simple_commits": 3,
+          "commit_score": 696,
           "commits": [
             {
               "hash": "d2245fff",
@@ -4264,24 +4264,273 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9a1654ad",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-30T12:59:19.000Z",
+              "message": "[Test][XPU] Preserve wheel imports in Mooncake subprocess probes (#6194)",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "1f3d4f0c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-30T09:38:14.000Z",
+              "message": "[CI][XPU] Add deterministic DeepSeek V4 HMA correctness coverage (#6167)\n\n* [CI][XPU] Add deterministic DeepSeek V4 HMA correctness coverage\n\nRun reduced four-layer DeepSeek V4 through the shared HMA launch flow with engine-driven SHM transfer and strict token and logprob comparisons.\n\nSelect deterministic worker configuration in the XPU pipeline and reuse the HMA verifier module for the worker extension. Preserve the existing self-contained DSV4 workload and XPU entrypoint.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* [CI][XPU] Keep HMA worker discoverable during wheel validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 139,
+                "insertions": 119,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 64.88888888888889,
-          "significance_ratio": 0.7777777777777778,
+          "avg_score": 63.27272727272727,
+          "significance_ratio": 0.7272727272727273,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 584,
+          "total_score": 696,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 9,
+          "significant_commits": 8,
+          "simple_commits": 1,
+          "commit_score": 665,
+          "commits": [
+            {
+              "hash": "39b4020d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-27T04:56:53.000Z",
+              "message": "[Doc] Standardize AI-assisted PR review workflow (#6066)\n\n* [Doc] Require draft-first PR self-review\n\nAlign the contributor and agent submission flow around draft pull requests. Require the submitting human to review every changed line, verify validation evidence, and explicitly decide when a PR is ready for maintainer review.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Extend AI-assisted PR review guidance\n\nRequire repeated draft and human-review cycles after AI-generated updates, and keep PR metadata and a self-contained HTML explainer synchronized with each head.\n\nDocument extensibility, readable dispatch, and engine, model, hardware, storage, and transport independence as LMCache design boundaries.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Link HTML explainers from PR descriptions\n\nKeep single-file reviewer explainers as direct HTML attachments in the pull request description without a separate comment or zip archive.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Require browser-viewable AI PR explainers\n\nMake AI tools publish reviewer explainers through a project-approved static preview so PR descriptions open them directly in the browser. Keep PRs draft when no approved publisher is configured, and prohibit silently provisioning resources in contributor accounts.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Attach HTML explainers in PR descriptions\n\nHave AI tools upload a single self-contained HTML reviewer guide and link it from the pull request description. Downloading the HTML for local viewing is acceptable; separate comments, zip archives, and auxiliary hosting resources are not needed.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Require bilingual AI PR explainers\n\nRequire each self-contained reviewer guide to provide complete English and Chinese views with a one-click offline language switch.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Raise the AI PR explainer quality bar\n\nRequire detailed reviewer-oriented narratives, multiple substantive diagrams, annotated call chains, and controlled offline animation when it improves understanding.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Extract the PR explainer workflow into a skill\n\nKeep AGENTS.md concise by moving the detailed bilingual visual explainer requirements into a dedicated create-pr-explainer skill and invoking it from create-pr.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nCo-authored-by: OpenAI Codex <noreply@openai.com>",
+              "stats": {
+                "files": 7,
+                "lines": 314,
+                "insertions": 298,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "92eb56cd",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-28T20:37:26.000Z",
+              "message": "Refactor remaining InProcess core modules and remove PinMonitor (#6135)\n\nrefactor: isolate remaining in-process core modules\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 184,
+                "lines": 1974,
+                "insertions": 735,
+                "deletions": 1239
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 22,
+                "total": 97
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "99cdd3ee",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-28T13:15:41.000Z",
+              "message": "Fix HF3FS test mixed line endings (#6137)\n\nchore: normalize hf3fs test line endings\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1312,
+                "insertions": 656,
+                "deletions": 656
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 10,
+                "ai": 15,
+                "total": 60
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "78b6b80f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-28T06:34:02.000Z",
+              "message": "[Refactor] Move legacy storage backends under inprocess (#6007)\n\nrefactor: move storage backends under inprocess\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 172,
+                "lines": 1228,
+                "insertions": 712,
+                "deletions": 516
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0108f5b6",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-28T04:59:11.000Z",
+              "message": "[Refactor][MP] Add ObjectKeyIdentity with non-breaking constructors (#5988)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 389,
+                "insertions": 280,
+                "deletions": 109
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f7c0768a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-29T15:07:30.000Z",
+              "message": "fix: bound RESP authentication reply length (#6108)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 94,
+                "insertions": 94,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 60
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c4e9e9e4",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-29T07:50:50.000Z",
+              "message": "[Refactor][MP] Centralize L2 object key codecs (#5989)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 466,
+                "insertions": 210,
+                "deletions": 256
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a6ad3bd2",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-30T03:33:47.000Z",
+              "message": "Move InProcess-only memory allocators (#6138)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 76,
+                "insertions": 49,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "963120be",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-30T03:04:27.000Z",
+              "message": "[Refactor][NIXL] Keep storage sharding local to NIXL (#6178)\n\nrefactor(nixl): keep storage sharding local\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 13,
+                "insertions": 3,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 73.88888888888889,
+          "significance_ratio": 0.8888888888888888,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 665,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 8,
-          "significant_commits": 8,
+          "total_commits": 9,
+          "significant_commits": 9,
           "simple_commits": 0,
-          "commit_score": 570,
+          "commit_score": 637,
           "commits": [
             {
               "hash": "a873f152",
@@ -4450,120 +4699,57 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8a85b8c9",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-30T05:21:54.000Z",
+              "message": "[MP][gRPC] Keep a client's affinity calls in order in native mode (#6184)\n\nThe native front could hand a client's pipelined calls to Python out of order, so affinity handlers broke their documented per-client order. pygrpc-native 0.7.0 adds ordered=True, which keeps a connection's calls in the order the client started them. Require it and pin CI to it.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 50,
+                "insertions": 47,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 71.25,
+          "avg_score": 70.77777777777777,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 570,
+          "total_score": 637,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 7,
-          "significant_commits": 7,
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 4,
+          "significant_commits": 4,
           "simple_commits": 0,
-          "commit_score": 560,
+          "commit_score": 324,
           "commits": [
             {
-              "hash": "39b4020d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-27T04:56:53.000Z",
-              "message": "[Doc] Standardize AI-assisted PR review workflow (#6066)\n\n* [Doc] Require draft-first PR self-review\n\nAlign the contributor and agent submission flow around draft pull requests. Require the submitting human to review every changed line, verify validation evidence, and explicitly decide when a PR is ready for maintainer review.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Extend AI-assisted PR review guidance\n\nRequire repeated draft and human-review cycles after AI-generated updates, and keep PR metadata and a self-contained HTML explainer synchronized with each head.\n\nDocument extensibility, readable dispatch, and engine, model, hardware, storage, and transport independence as LMCache design boundaries.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Link HTML explainers from PR descriptions\n\nKeep single-file reviewer explainers as direct HTML attachments in the pull request description without a separate comment or zip archive.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Require browser-viewable AI PR explainers\n\nMake AI tools publish reviewer explainers through a project-approved static preview so PR descriptions open them directly in the browser. Keep PRs draft when no approved publisher is configured, and prohibit silently provisioning resources in contributor accounts.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Attach HTML explainers in PR descriptions\n\nHave AI tools upload a single self-contained HTML reviewer guide and link it from the pull request description. Downloading the HTML for local viewing is acceptable; separate comments, zip archives, and auxiliary hosting resources are not needed.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Require bilingual AI PR explainers\n\nRequire each self-contained reviewer guide to provide complete English and Chinese views with a one-click offline language switch.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Raise the AI PR explainer quality bar\n\nRequire detailed reviewer-oriented narratives, multiple substantive diagrams, annotated call chains, and controlled offline animation when it improves understanding.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Extract the PR explainer workflow into a skill\n\nKeep AGENTS.md concise by moving the detailed bilingual visual explainer requirements into a dedicated create-pr-explainer skill and invoking it from create-pr.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nCo-authored-by: OpenAI Codex <noreply@openai.com>",
+              "hash": "8367e01f",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-27T23:15:47.000Z",
+              "message": "[Coordinator] Add the P1 view, persistence and prefetch metrics (#5881)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
               "stats": {
-                "files": 7,
-                "lines": 314,
-                "insertions": 298,
-                "deletions": 16
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 22,
-                "total": 84
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "92eb56cd",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-10-28T20:37:26.000Z",
-              "message": "Refactor remaining InProcess core modules and remove PinMonitor (#6135)\n\nrefactor: isolate remaining in-process core modules\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 184,
-                "lines": 1974,
-                "insertions": 735,
-                "deletions": 1239
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 22,
-                "total": 97
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "99cdd3ee",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-10-28T13:15:41.000Z",
-              "message": "Fix HF3FS test mixed line endings (#6137)\n\nchore: normalize hf3fs test line endings\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 1,
-                "lines": 1312,
-                "insertions": 656,
-                "deletions": 656
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 10,
-                "ai": 15,
-                "total": 60
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "78b6b80f",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-28T06:34:02.000Z",
-              "message": "[Refactor] Move legacy storage backends under inprocess (#6007)\n\nrefactor: move storage backends under inprocess\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 172,
-                "lines": 1228,
-                "insertions": 712,
-                "deletions": 516
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 20,
-                "total": 95
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0108f5b6",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-10-28T04:59:11.000Z",
-              "message": "[Refactor][MP] Add ObjectKeyIdentity with non-breaking constructors (#5988)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 14,
-                "lines": 389,
-                "insertions": 280,
-                "deletions": 109
+                "files": 23,
+                "lines": 1995,
+                "insertions": 1900,
+                "deletions": 95
               },
               "scores": {
                 "loc": 30,
@@ -4575,37 +4761,37 @@
               "classification": "significant"
             },
             {
-              "hash": "f7c0768a",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-29T15:07:30.000Z",
-              "message": "fix: bound RESP authentication reply length (#6108)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "hash": "a5c23648",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-27T07:10:04.000Z",
+              "message": "[Fix] Validate trace schemas by level (#6083)\n\nfix(trace): validate storage schemas only for storage traces\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
               "stats": {
-                "files": 2,
-                "lines": 94,
-                "insertions": 94,
-                "deletions": 0
+                "files": 6,
+                "lines": 113,
+                "insertions": 96,
+                "deletions": 17
               },
               "scores": {
-                "loc": 15,
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f8e119c0",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-30T23:55:01.000Z",
+              "message": "[Coordinator] Add GET /status, a JSON snapshot for debugging (#5879)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
                 "files": 10,
-                "keyword": 15,
-                "ai": 20,
-                "total": 60
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "c4e9e9e4",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-29T07:50:50.000Z",
-              "message": "[Refactor][MP] Centralize L2 object key codecs (#5989)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 12,
-                "lines": 466,
-                "insertions": 210,
-                "deletions": 256
+                "lines": 415,
+                "insertions": 400,
+                "deletions": 15
               },
               "scores": {
                 "loc": 30,
@@ -4613,16 +4799,37 @@
                 "keyword": 12,
                 "ai": 20,
                 "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a005bb19",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-30T17:51:35.000Z",
+              "message": "[Coordinator] Add a coordinator Grafana dashboard; fix instance id and loop jitter (#6179)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 3078,
+                "insertions": 3068,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 80,
+          "avg_score": 81,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 560,
+          "total_score": 324,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4706,6 +4913,87 @@
           "total_score": 246,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 3,
+          "significant_commits": 2,
+          "simple_commits": 1,
+          "commit_score": 189,
+          "commits": [
+            {
+              "hash": "3f7c2017",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-27T04:58:46.000Z",
+              "message": "[Docs][RBLN] Document the Rebellions NPU backend (#6042)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 114,
+                "insertions": 110,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3981ee51",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-27T01:08:27.000Z",
+              "message": "[Misc] Add Python 3.14 support (#5289)\n\nExtend the supported Python range to 3.14 (requires-python `<3.15`),\nadd the 3.14 trove classifier to both distributions, and add 3.14 to\nthe CPU unit-test matrix.\n \nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 15,
+                "insertions": 11,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "5ad523e5",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-30T03:21:46.000Z",
+              "message": "[CI][RBLN] Build and publish an RBLN wheel to GitHub Releases (#6140)\n\n* [CI][RBLN] Build and publish an RBLN wheel to GitHub Releases\n\nPyPI's lmcache wheel is built against the CUDA torch, so its C++\nextensions only load on an RBLN host while that torch matches the one\ntorch-rbln pins. Build the common extensions against torch-rbln's torch\nin the manylinux_2_34 image (torch-rbln's own glibc floor), smoke-install\nthe wheel next to torch-rbln, and publish it as lmcache==X.Y.Z+rbln to a\ndedicated vX.Y.Z-rbln GitHub Release, plus a rolling nightly-rbln.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [Docs][RBLN] Use an X.Y.Z placeholder in the RBLN wheel install examples\n\nA concrete release number in the examples would need an edit on every\nrelease.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 7,
+                "lines": 499,
+                "insertions": 496,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 63,
+          "significance_ratio": 0.6666666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 189,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "weishu",
@@ -4806,66 +5094,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 165,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 162,
-          "commits": [
-            {
-              "hash": "8367e01f",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-27T23:15:47.000Z",
-              "message": "[Coordinator] Add the P1 view, persistence and prefetch metrics (#5881)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 23,
-                "lines": 1995,
-                "insertions": 1900,
-                "deletions": 95
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a5c23648",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-27T07:10:04.000Z",
-              "message": "[Fix] Validate trace schemas by level (#6083)\n\nfix(trace): validate storage schemas only for storage traces\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 113,
-                "insertions": 96,
-                "deletions": 17
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 81,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 162,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -5247,66 +5475,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 112,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Jinhwan Suk (석진환)",
-          "email": "jinhwan.suk@rebellions.ai",
-          "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 107,
-          "commits": [
-            {
-              "hash": "3f7c2017",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-27T04:58:46.000Z",
-              "message": "[Docs][RBLN] Document the Rebellions NPU backend (#6042)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-              "stats": {
-                "files": 1,
-                "lines": 114,
-                "insertions": 110,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 12,
-                "ai": 20,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3981ee51",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-27T01:08:27.000Z",
-              "message": "[Misc] Add Python 3.14 support (#5289)\n\nExtend the supported Python range to 3.14 (requires-python `<3.15`),\nadd the 3.14 trove classifier to both distributions, and add 3.14 to\nthe CPU unit-test matrix.\n \nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>",
-              "stats": {
-                "files": 4,
-                "lines": 15,
-                "insertions": 11,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 53.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 107,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -5566,6 +5734,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "RAGHVENDRA KUMAR YADAV",
+          "email": "raghavmnnit@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 72,
+          "commits": [
+            {
+              "hash": "708cb05c",
+              "author": "RAGHVENDRA KUMAR YADAV",
+              "email": "raghavmnnit@gmail.com",
+              "date": "2026-10-30T05:08:39.000Z",
+              "message": "[Bugfix] Fall back to buffered I/O when an fs L2 O_DIRECT buffer is unaligned or refused (#6158)\n\nThe fs L2 adapter checked only the length before using O_DIRECT. A\nbuffer whose address was not aligned, or a filesystem that refused the\nflag at write(), failed every store, and the read path swallowed every\nerror into a 0-byte read.\n\n- check the buffer address as well as the length, and use buffered I/O\n  when either is unaligned\n- fall back to buffered I/O on EINVAL or EOPNOTSUPP, at open() or at\n  the transfer, starting the write over so no partial file survives\n- loop short writes instead of discarding the os.write return value\n- let a missing file reach the load loop as a plain miss\n- take alignment from the device logical block size, falling back to\n  statvfs f_bsize\n- log each kind of fallback once per adapter\n\nPart of #4364.\n\nSigned-off-by: Raghav Yadav <raghavmnnit@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 497,
+                "insertions": 437,
+                "deletions": 60
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 72,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 72,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Rishika Vaish",
           "email": "69987324+rishika7006@users.noreply.github.com",
           "total_commits": 1,
@@ -5605,6 +5812,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "manv",
+          "email": "143290598+vmanvs@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 65,
+          "commits": [
+            {
+              "hash": "45a0bb42",
+              "author": "manv",
+              "email": "143290598+vmanvs@users.noreply.github.com",
+              "date": "2026-10-30T20:07:13.000Z",
+              "message": "[MP][Coordinator] Read position-less Kafka partitions from the beginning (#5458)\n\nread positionless kafka partitions from beginning\n\nSigned-off-by: vmanvs <manvendravsvats@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 97,
+                "insertions": 72,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 65,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 65,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "mohan",
           "email": "2948579997@qq.com",
           "total_commits": 1,
@@ -5640,8 +5886,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 57,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Samuel Shen",
@@ -5679,8 +5925,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 55,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "chunxiaozheng",
@@ -5806,10 +6052,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 31,
-          "significant_commits": 29,
-          "simple_commits": 2,
-          "commit_score": 2452,
+          "total_commits": 33,
+          "significant_commits": 30,
+          "simple_commits": 3,
+          "commit_score": 2557,
           "commits": [
             {
               "hash": "a3658dba",
@@ -6461,24 +6707,66 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a6ad3bd2",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-30T03:33:47.000Z",
+              "message": "Move InProcess-only memory allocators (#6138)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 76,
+                "insertions": 49,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "963120be",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-30T03:04:27.000Z",
+              "message": "[Refactor][NIXL] Keep storage sharding local to NIXL (#6178)\n\nrefactor(nixl): keep storage sharding local\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 13,
+                "insertions": 3,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 79.09677419354838,
-          "significance_ratio": 0.9354838709677419,
+          "avg_score": 77.48484848484848,
+          "significance_ratio": 0.9090909090909091,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2452,
+          "total_score": 2557,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 18,
-          "significant_commits": 13,
+          "total_commits": 19,
+          "significant_commits": 14,
           "simple_commits": 5,
-          "commit_score": 1121,
+          "commit_score": 1188,
           "commits": [
             {
               "hash": "32cbdcb7",
@@ -6857,24 +7145,45 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8a85b8c9",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-30T05:21:54.000Z",
+              "message": "[MP][gRPC] Keep a client's affinity calls in order in native mode (#6184)\n\nThe native front could hand a client's pipelined calls to Python out of order, so affinity handlers broke their documented per-client order. pygrpc-native 0.7.0 adds ordered=True, which keeps a connection's calls in the order the client started them. Require it and pin CI to it.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 50,
+                "insertions": 47,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 62.27777777777778,
-          "significance_ratio": 0.7222222222222222,
+          "avg_score": 62.526315789473685,
+          "significance_ratio": 0.7368421052631579,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1121,
+          "total_score": 1188,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 13,
-          "significant_commits": 7,
-          "simple_commits": 6,
-          "commit_score": 697,
+          "total_commits": 15,
+          "significant_commits": 8,
+          "simple_commits": 7,
+          "commit_score": 809,
           "commits": [
             {
               "hash": "d75ab6f3",
@@ -7148,14 +7457,56 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9a1654ad",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-30T12:59:19.000Z",
+              "message": "[Test][XPU] Preserve wheel imports in Mooncake subprocess probes (#6194)",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "1f3d4f0c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-30T09:38:14.000Z",
+              "message": "[CI][XPU] Add deterministic DeepSeek V4 HMA correctness coverage (#6167)\n\n* [CI][XPU] Add deterministic DeepSeek V4 HMA correctness coverage\n\nRun reduced four-layer DeepSeek V4 through the shared HMA launch flow with engine-driven SHM transfer and strict token and logprob comparisons.\n\nSelect deterministic worker configuration in the XPU pipeline and reuse the HMA verifier module for the worker extension. Preserve the existing self-contained DSV4 workload and XPU entrypoint.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* [CI][XPU] Keep HMA worker discoverable during wheel validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 139,
+                "insertions": 119,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 53.61538461538461,
-          "significance_ratio": 0.5384615384615384,
+          "avg_score": 53.93333333333333,
+          "significance_ratio": 0.5333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 697,
+          "total_score": 809,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7637,6 +7988,171 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 7,
+          "significant_commits": 6,
+          "simple_commits": 1,
+          "commit_score": 528,
+          "commits": [
+            {
+              "hash": "ddcbe3ed",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-15T22:48:03.000Z",
+              "message": "[CI] Add CacheBlend coordinator global-match smoke to blend pipeline (#5747)\n\n* [Coordinator][CacheBlend][Doc] Fleet blend lookup replaces the local matcher\n\nblend_lookup.md described fleet CacheBlend matching as additive (local\nmatcher always runs, results unioned). The code skips the local matcher\nwhenever a coordinator client is configured and uses the coordinator's\nmatches as the only non-prefix source (lookup.py, unchanged since before\nthe #5012 refactor). Update the intro, lookup-flow diagram and steps,\nrationale, gating note, failure-mode table, and code paths to match.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [CI][CacheBlend][Coordinator] Add coordinator global-match smoke to the blend pipeline\n\nAdd a second step to .buildkite/k3_tests/blend/pipeline.yml that runs the\ncacheblend-plugin's coordinator_match harness against the PR's LMCache: a\ncoordinator with --enable-blend-lookup plus two blend server + vLLM\nstacks (gpt-oss-20b, --load-format dummy) sharing an fs_native L2. Stack B\nmust blend a body only stack A stored, found through the coordinator's\nfleet blend index. Two GPUs, 40 min, one automatic retry.\n\nrun.sh now takes the test name as its first argument and dispatches to\nscripts/run-<test>.sh; no argument keeps running the compat check.\n\nRequires the plugin harness (.buildkite/harness/coordinator_match.py) on\nCB_PLUGIN_REF.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 198,
+                "insertions": 147,
+                "deletions": 51
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 19,
+                "total": 71
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "15675629",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-17T03:54:32.000Z",
+              "message": "[Coordinator][observability] Keep background loops alive and report their liveness (#5714)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 24,
+                "lines": 1735,
+                "insertions": 1239,
+                "deletions": 496
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2a34fa82",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-19T22:34:02.000Z",
+              "message": "[Bugfix] Skip scratch groups in lazy offload block estimate (#5818)\n\n \nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 97,
+                "insertions": 96,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8367e01f",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-27T23:15:47.000Z",
+              "message": "[Coordinator] Add the P1 view, persistence and prefetch metrics (#5881)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 23,
+                "lines": 1995,
+                "insertions": 1900,
+                "deletions": 95
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a5c23648",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-27T07:10:04.000Z",
+              "message": "[Fix] Validate trace schemas by level (#6083)\n\nfix(trace): validate storage schemas only for storage traces\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 113,
+                "insertions": 96,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f8e119c0",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-30T23:55:01.000Z",
+              "message": "[Coordinator] Add GET /status, a JSON snapshot for debugging (#5879)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 415,
+                "insertions": 400,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a005bb19",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-30T17:51:35.000Z",
+              "message": "[Coordinator] Add a coordinator Grafana dashboard; fix instance id and loop jitter (#6179)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 3078,
+                "insertions": 3068,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.42857142857143,
+          "significance_ratio": 0.8571428571428571,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 528,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "JH",
           "email": "riversky0014@gmail.com",
           "total_commits": 7,
@@ -8069,45 +8585,24 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
           "total_commits": 5,
           "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 366,
+          "commit_score": 363,
           "commits": [
             {
-              "hash": "ddcbe3ed",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-15T22:48:03.000Z",
-              "message": "[CI] Add CacheBlend coordinator global-match smoke to blend pipeline (#5747)\n\n* [Coordinator][CacheBlend][Doc] Fleet blend lookup replaces the local matcher\n\nblend_lookup.md described fleet CacheBlend matching as additive (local\nmatcher always runs, results unioned). The code skips the local matcher\nwhenever a coordinator client is configured and uses the coordinator's\nmatches as the only non-prefix source (lookup.py, unchanged since before\nthe #5012 refactor). Update the intro, lookup-flow diagram and steps,\nrationale, gating note, failure-mode table, and code paths to match.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [CI][CacheBlend][Coordinator] Add coordinator global-match smoke to the blend pipeline\n\nAdd a second step to .buildkite/k3_tests/blend/pipeline.yml that runs the\ncacheblend-plugin's coordinator_match harness against the PR's LMCache: a\ncoordinator with --enable-blend-lookup plus two blend server + vLLM\nstacks (gpt-oss-20b, --load-format dummy) sharing an fs_native L2. Stack B\nmust blend a body only stack A stored, found through the coordinator's\nfleet blend index. Two GPUs, 40 min, one automatic retry.\n\nrun.sh now takes the test name as its first argument and dispatches to\nscripts/run-<test>.sh; no argument keeps running the compat check.\n\nRequires the plugin harness (.buildkite/harness/coordinator_match.py) on\nCB_PLUGIN_REF.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "hash": "9ce1d25b",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-15T00:38:32.000Z",
+              "message": "[Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts (#5667)\n\n* [Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts\n\nRblnDeviceOps.multi_layer_block_kv_transfer gated its two op sequences on\nexact EngineKVFormat values (NL_X_TWO_NB_NH_ONE_BS_HS / NL_X_NB_BS_HS).\nResolve the format to its KVFormatSpec once and dispatch on the layout\nfacts instead, matching the shared torch path after #4776:\n\n- per-layer two-major HND (is_layer_list, is_hnd, is_two_major, not\n  is_fused_packed) -> HND sequence\n- per-layer [NB, BS, HS] MLA (is_layer_list, is_mla, not is_pbs_fused /\n  is_kv_second_tuple) -> MLA sequence\n\nThe native 6-D layout and NL_X_TWO_NB_NH_BS_HS share those facts, so the\nnew kv_layout.hnd_layer_views squeezes 6-D tensors and passes 5-D ones\nthrough. The spec registry is imported lazily because importing it at\nmodule scope raises ImportError while lmcache resolves device_ops to\nthis module on an RBLN host.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Drop speculative 5-D HND support from block transfer\n\nvLLM-RBLN only allocates the 6-D NL_X_TWO_NB_NH_ONE_BS_HS layout, so\naccepting 5-D NL_X_TWO_NB_NH_BS_HS tensors handled an input that never\nreaches RBLN. Remove hnd_layer_views and go back to the strict\nsqueeze_singleton_axis: a 5-D cache passes the layout-fact check but\nfails loudly in the squeeze.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Skip layouts RBLN refuses by design on the RBLN lane\n\nRblnDeviceOps now moves only the layouts vLLM-RBLN allocates: per-layer\ntwo-major HND (with the RBLN singleton axis) and per-layer [NB, BS, HS]\nMLA. The MP tests that feed NHD, fused K/V, or 5-D HND caches therefore\nfail on an RBLN host, by design rather than by regression.\n\nSkip those 9 cases when torch_device_type is \"rbln\", under one\n_UNSUPPORTED_ON_RBLN mark (plus the fused K/V round trip in\ntest_blocks_first_cs_kv_format). Every other device still runs them.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Drop RBLN skips from shared multiprocess and gpu_connector tests\n\nThe RBLN CI lane runs only tests/v1/platform/devices/rbln, so these\nmarkers never take effect in CI, and RBLN refused these layouts before\nthis PR as well.\n\nThis reverts commit d0de6759.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Refuse blocked-scale MLA pages; repack them in the torch fallback\n\nNL_X_NB_BSV_BSS inherits is_mla from the per-layer MLA spec, so the RBLN\nlayout-fact dispatch admitted it and its whole-block copy wrote the\nblocked [BS x vals][BS x scales] page into a chunk as if it were\ntoken-major.\n\n- KVFormatSpec: add the requires_blocked_scale_repacking layout fact,\n  set only on NL_X_NB_BSV_BSS.\n- RBLN: exclude that fact from the MLA predicate, so the format is\n  refused with the layout ValueError.\n- torch fallback: the MP block transfer splits each block into value\n  and scale views and gathers/scatters token-major rows, matching the\n  CUDA kernels.\n- Tests: an RBLN refusal regression, a golden check that only\n  NL_X_NB_BSV_BSS carries the fact, and a CPU round trip of the torch\n  block transfer against a hand-written blocked page.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 4,
-                "lines": 198,
-                "insertions": 147,
-                "deletions": 51
-              },
-              "scores": {
-                "loc": 30,
                 "files": 10,
-                "keyword": 12,
-                "ai": 19,
-                "total": 71
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "15675629",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-17T03:54:32.000Z",
-              "message": "[Coordinator][observability] Keep background loops alive and report their liveness (#5714)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 24,
-                "lines": 1735,
-                "insertions": 1239,
-                "deletions": 496
+                "lines": 341,
+                "insertions": 284,
+                "deletions": 57
               },
               "scores": {
                 "loc": 30,
@@ -8119,37 +8614,79 @@
               "classification": "significant"
             },
             {
-              "hash": "2a34fa82",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-19T22:34:02.000Z",
-              "message": "[Bugfix] Skip scratch groups in lazy offload block estimate (#5818)\n\n \nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "hash": "462006ab",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-20T06:08:58.000Z",
+              "message": "[RBLN] Support vLLM-RBLN's blocks-first KV cache layout (#5748)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 2,
-                "lines": 97,
-                "insertions": 96,
-                "deletions": 1
+                "files": 20,
+                "lines": 1063,
+                "insertions": 896,
+                "deletions": 167
               },
               "scores": {
-                "loc": 15,
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3f7c2017",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-27T04:58:46.000Z",
+              "message": "[Docs][RBLN] Document the Rebellions NPU backend (#6042)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 114,
+                "insertions": 110,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3981ee51",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-27T01:08:27.000Z",
+              "message": "[Misc] Add Python 3.14 support (#5289)\n\nExtend the supported Python range to 3.14 (requires-python `<3.15`),\nadd the 3.14 trove classifier to both distributions, and add 3.14 to\nthe CPU unit-test matrix.\n \nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 15,
+                "insertions": 11,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
                 "files": 10,
                 "keyword": 12,
-                "ai": 9,
-                "total": 46
+                "ai": 15,
+                "total": 40
               },
               "classification": "simple"
             },
             {
-              "hash": "8367e01f",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-27T23:15:47.000Z",
-              "message": "[Coordinator] Add the P1 view, persistence and prefetch metrics (#5881)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "hash": "5ad523e5",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-30T03:21:46.000Z",
+              "message": "[CI][RBLN] Build and publish an RBLN wheel to GitHub Releases (#6140)\n\n* [CI][RBLN] Build and publish an RBLN wheel to GitHub Releases\n\nPyPI's lmcache wheel is built against the CUDA torch, so its C++\nextensions only load on an RBLN host while that torch matches the one\ntorch-rbln pins. Build the common extensions against torch-rbln's torch\nin the manylinux_2_34 image (torch-rbln's own glibc floor), smoke-install\nthe wheel next to torch-rbln, and publish it as lmcache==X.Y.Z+rbln to a\ndedicated vX.Y.Z-rbln GitHub Release, plus a rolling nightly-rbln.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [Docs][RBLN] Use an X.Y.Z placeholder in the RBLN wheel install examples\n\nA concrete release number in the examples would need an edit on every\nrelease.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 23,
-                "lines": 1995,
-                "insertions": 1900,
-                "deletions": 95
+                "files": 7,
+                "lines": 499,
+                "insertions": 496,
+                "deletions": 3
               },
               "scores": {
                 "loc": 30,
@@ -8159,35 +8696,14 @@
                 "total": 82
               },
               "classification": "significant"
-            },
-            {
-              "hash": "a5c23648",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-27T07:10:04.000Z",
-              "message": "[Fix] Validate trace schemas by level (#6083)\n\nfix(trace): validate storage schemas only for storage traces\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 113,
-                "insertions": 96,
-                "deletions": 17
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
             }
           ],
-          "avg_score": 73.2,
+          "avg_score": 72.6,
           "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 366,
+          "total_score": 363,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -8413,108 +8929,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 284,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Jinhwan Suk (석진환)",
-          "email": "jinhwan.suk@rebellions.ai",
-          "total_commits": 4,
-          "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 281,
-          "commits": [
-            {
-              "hash": "9ce1d25b",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-15T00:38:32.000Z",
-              "message": "[Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts (#5667)\n\n* [Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts\n\nRblnDeviceOps.multi_layer_block_kv_transfer gated its two op sequences on\nexact EngineKVFormat values (NL_X_TWO_NB_NH_ONE_BS_HS / NL_X_NB_BS_HS).\nResolve the format to its KVFormatSpec once and dispatch on the layout\nfacts instead, matching the shared torch path after #4776:\n\n- per-layer two-major HND (is_layer_list, is_hnd, is_two_major, not\n  is_fused_packed) -> HND sequence\n- per-layer [NB, BS, HS] MLA (is_layer_list, is_mla, not is_pbs_fused /\n  is_kv_second_tuple) -> MLA sequence\n\nThe native 6-D layout and NL_X_TWO_NB_NH_BS_HS share those facts, so the\nnew kv_layout.hnd_layer_views squeezes 6-D tensors and passes 5-D ones\nthrough. The spec registry is imported lazily because importing it at\nmodule scope raises ImportError while lmcache resolves device_ops to\nthis module on an RBLN host.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Drop speculative 5-D HND support from block transfer\n\nvLLM-RBLN only allocates the 6-D NL_X_TWO_NB_NH_ONE_BS_HS layout, so\naccepting 5-D NL_X_TWO_NB_NH_BS_HS tensors handled an input that never\nreaches RBLN. Remove hnd_layer_views and go back to the strict\nsqueeze_singleton_axis: a 5-D cache passes the layout-fact check but\nfails loudly in the squeeze.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Skip layouts RBLN refuses by design on the RBLN lane\n\nRblnDeviceOps now moves only the layouts vLLM-RBLN allocates: per-layer\ntwo-major HND (with the RBLN singleton axis) and per-layer [NB, BS, HS]\nMLA. The MP tests that feed NHD, fused K/V, or 5-D HND caches therefore\nfail on an RBLN host, by design rather than by regression.\n\nSkip those 9 cases when torch_device_type is \"rbln\", under one\n_UNSUPPORTED_ON_RBLN mark (plus the fused K/V round trip in\ntest_blocks_first_cs_kv_format). Every other device still runs them.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Drop RBLN skips from shared multiprocess and gpu_connector tests\n\nThe RBLN CI lane runs only tests/v1/platform/devices/rbln, so these\nmarkers never take effect in CI, and RBLN refused these layouts before\nthis PR as well.\n\nThis reverts commit d0de6759.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Refuse blocked-scale MLA pages; repack them in the torch fallback\n\nNL_X_NB_BSV_BSS inherits is_mla from the per-layer MLA spec, so the RBLN\nlayout-fact dispatch admitted it and its whole-block copy wrote the\nblocked [BS x vals][BS x scales] page into a chunk as if it were\ntoken-major.\n\n- KVFormatSpec: add the requires_blocked_scale_repacking layout fact,\n  set only on NL_X_NB_BSV_BSS.\n- RBLN: exclude that fact from the MLA predicate, so the format is\n  refused with the layout ValueError.\n- torch fallback: the MP block transfer splits each block into value\n  and scale views and gathers/scatters token-major rows, matching the\n  CUDA kernels.\n- Tests: an RBLN refusal regression, a golden check that only\n  NL_X_NB_BSV_BSS carries the fact, and a CPU round trip of the torch\n  block transfer against a hand-written blocked page.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-              "stats": {
-                "files": 10,
-                "lines": 341,
-                "insertions": 284,
-                "deletions": 57
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "462006ab",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-20T06:08:58.000Z",
-              "message": "[RBLN] Support vLLM-RBLN's blocks-first KV cache layout (#5748)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-              "stats": {
-                "files": 20,
-                "lines": 1063,
-                "insertions": 896,
-                "deletions": 167
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3f7c2017",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-27T04:58:46.000Z",
-              "message": "[Docs][RBLN] Document the Rebellions NPU backend (#6042)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-              "stats": {
-                "files": 1,
-                "lines": 114,
-                "insertions": 110,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 12,
-                "ai": 20,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3981ee51",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-27T01:08:27.000Z",
-              "message": "[Misc] Add Python 3.14 support (#5289)\n\nExtend the supported Python range to 3.14 (requires-python `<3.15`),\nadd the 3.14 trove classifier to both distributions, and add 3.14 to\nthe CPU unit-test matrix.\n \nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>",
-              "stats": {
-                "files": 4,
-                "lines": 15,
-                "insertions": 11,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 70.25,
-          "significance_ratio": 0.75,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 281,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -8963,6 +9377,87 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "RAGHVENDRA KUMAR YADAV",
+          "email": "raghavmnnit@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 129,
+          "commits": [
+            {
+              "hash": "aa2dc97f",
+              "author": "RAGHVENDRA KUMAR YADAV",
+              "email": "raghavmnnit@gmail.com",
+              "date": "2026-10-21T06:53:02.000Z",
+              "message": "[Test] Add contract tests for LocalCPUBackend.clear() (#5850)\n\nclear() was only exercised as cleanup at the end of an allocator test.\nCover its contract through the public API: it removes evictable entries\nand returns the cleared token count, keeps pinned entries, keeps entries\nwhose MemoryObj is still referenced, returns 0 on an empty cache, and\nreturns 0 when the hot cache is disabled.\n\nSigned-off-by: Raghvendra Yadav <raghavmnnit@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 57,
+                "insertions": 57,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "4279129b",
+              "author": "RAGHVENDRA KUMAR YADAV",
+              "email": "raghavmnnit@gmail.com",
+              "date": "2026-10-21T06:29:08.000Z",
+              "message": "[Doc] Fix LocalCPUBackend.clear() docstring: it returns tokens, not objects (#5849)\n\nThe docstring said clear() counts the number of memory objects removed,\nbut it returns num_cleared_tokens. Describe what it removes, what it keeps\n(pinned or still-referenced entries) and the return value, including the\nhot-cache-disabled case.\n\nSigned-off-by: Raghvendra Yadav <raghavmnnit@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 7,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "708cb05c",
+              "author": "RAGHVENDRA KUMAR YADAV",
+              "email": "raghavmnnit@gmail.com",
+              "date": "2026-10-30T05:08:39.000Z",
+              "message": "[Bugfix] Fall back to buffered I/O when an fs L2 O_DIRECT buffer is unaligned or refused (#6158)\n\nThe fs L2 adapter checked only the length before using O_DIRECT. A\nbuffer whose address was not aligned, or a filesystem that refused the\nflag at write(), failed every store, and the read path swallowed every\nerror into a 0-byte read.\n\n- check the buffer address as well as the length, and use buffered I/O\n  when either is unaligned\n- fall back to buffered I/O on EINVAL or EOPNOTSUPP, at open() or at\n  the transfer, starting the write over so no partial file survives\n- loop short writes instead of discarding the os.write return value\n- let a missing file reach the load loop as a plain miss\n- take alignment from the device logical block size, falling back to\n  statvfs f_bsize\n- log each kind of fallback once per adapter\n\nPart of #4364.\n\nSigned-off-by: Raghav Yadav <raghavmnnit@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 497,
+                "insertions": 437,
+                "deletions": 60
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 43,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 129,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Michael Borokhovich",
           "email": "michaelbor@gmail.com",
           "total_commits": 2,
@@ -9019,6 +9514,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 129,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "manv",
+          "email": "143290598+vmanvs@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 128,
+          "commits": [
+            {
+              "hash": "e0e92b83",
+              "author": "manv",
+              "email": "143290598+vmanvs@users.noreply.github.com",
+              "date": "2026-10-22T01:22:13.000Z",
+              "message": "[Bug] PeriodicThread restart overlaps a live worker after stop timeout (#5281)\n\nprevent overlapping PeriodicThread workers\n\nSigned-off-by: vmanvs <manvendravsvats@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 119,
+                "insertions": 75,
+                "deletions": 44
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 11,
+                "total": 63
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "45a0bb42",
+              "author": "manv",
+              "email": "143290598+vmanvs@users.noreply.github.com",
+              "date": "2026-10-30T20:07:13.000Z",
+              "message": "[MP][Coordinator] Read position-less Kafka partitions from the beginning (#5458)\n\nread positionless kafka partitions from beginning\n\nSigned-off-by: vmanvs <manvendravsvats@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 97,
+                "insertions": 72,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 128,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -9160,8 +9715,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 114,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "mohan",
@@ -9241,8 +9796,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 111,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Xiao Lei",
@@ -10268,45 +10823,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "manv",
-          "email": "143290598+vmanvs@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 63,
-          "commits": [
-            {
-              "hash": "e0e92b83",
-              "author": "manv",
-              "email": "143290598+vmanvs@users.noreply.github.com",
-              "date": "2026-10-22T01:22:13.000Z",
-              "message": "[Bug] PeriodicThread restart overlaps a live worker after stop timeout (#5281)\n\nprevent overlapping PeriodicThread workers\n\nSigned-off-by: vmanvs <manvendravsvats@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 2,
-                "lines": 119,
-                "insertions": 75,
-                "deletions": 44
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 11,
-                "total": 63
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 63,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 63,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "Shuhan Zhang",
           "email": "14250491@cumt.edu.cn",
           "total_commits": 1,
@@ -10381,66 +10897,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 62,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "RAGHVENDRA KUMAR YADAV",
-          "email": "raghavmnnit@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 0,
-          "simple_commits": 2,
-          "commit_score": 57,
-          "commits": [
-            {
-              "hash": "aa2dc97f",
-              "author": "RAGHVENDRA KUMAR YADAV",
-              "email": "raghavmnnit@gmail.com",
-              "date": "2026-10-21T06:53:02.000Z",
-              "message": "[Test] Add contract tests for LocalCPUBackend.clear() (#5850)\n\nclear() was only exercised as cleanup at the end of an allocator test.\nCover its contract through the public API: it removes evictable entries\nand returns the cleared token count, keeps pinned entries, keeps entries\nwhose MemoryObj is still referenced, returns 0 on an empty cache, and\nreturns 0 when the hot cache is disabled.\n\nSigned-off-by: Raghvendra Yadav <raghavmnnit@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 57,
-                "insertions": 57,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 15,
-                "files": 5,
-                "keyword": 12,
-                "ai": 5,
-                "total": 37
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "4279129b",
-              "author": "RAGHVENDRA KUMAR YADAV",
-              "email": "raghavmnnit@gmail.com",
-              "date": "2026-10-21T06:29:08.000Z",
-              "message": "[Doc] Fix LocalCPUBackend.clear() docstring: it returns tokens, not objects (#5849)\n\nThe docstring said clear() counts the number of memory objects removed,\nbut it returns num_cleared_tokens. Describe what it removes, what it keeps\n(pinned or still-referenced entries) and the return value, including the\nhot-cache-disabled case.\n\nSigned-off-by: Raghvendra Yadav <raghavmnnit@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 9,
-                "insertions": 7,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 28.5,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 57,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -11114,10 +11570,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 31,
-          "significant_commits": 29,
-          "simple_commits": 2,
-          "commit_score": 2452,
+          "total_commits": 33,
+          "significant_commits": 30,
+          "simple_commits": 3,
+          "commit_score": 2557,
           "commits": [
             {
               "hash": "a3658dba",
@@ -11769,24 +12225,66 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "a6ad3bd2",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-30T03:33:47.000Z",
+              "message": "Move InProcess-only memory allocators (#6138)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 76,
+                "insertions": 49,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "963120be",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-30T03:04:27.000Z",
+              "message": "[Refactor][NIXL] Keep storage sharding local to NIXL (#6178)\n\nrefactor(nixl): keep storage sharding local\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 13,
+                "insertions": 3,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 79.09677419354838,
-          "significance_ratio": 0.9354838709677419,
+          "avg_score": 77.48484848484848,
+          "significance_ratio": 0.9090909090909091,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2452,
+          "total_score": 2557,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 18,
-          "significant_commits": 13,
+          "total_commits": 19,
+          "significant_commits": 14,
           "simple_commits": 5,
-          "commit_score": 1121,
+          "commit_score": 1188,
           "commits": [
             {
               "hash": "32cbdcb7",
@@ -12165,24 +12663,45 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "8a85b8c9",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-30T05:21:54.000Z",
+              "message": "[MP][gRPC] Keep a client's affinity calls in order in native mode (#6184)\n\nThe native front could hand a client's pipelined calls to Python out of order, so affinity handlers broke their documented per-client order. pygrpc-native 0.7.0 adds ordered=True, which keeps a connection's calls in the order the client started them. Require it and pin CI to it.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 50,
+                "insertions": 47,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 62.27777777777778,
-          "significance_ratio": 0.7222222222222222,
+          "avg_score": 62.526315789473685,
+          "significance_ratio": 0.7368421052631579,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1121,
+          "total_score": 1188,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
-          "total_commits": 13,
-          "significant_commits": 7,
-          "simple_commits": 6,
-          "commit_score": 697,
+          "total_commits": 15,
+          "significant_commits": 8,
+          "simple_commits": 7,
+          "commit_score": 809,
           "commits": [
             {
               "hash": "d75ab6f3",
@@ -12456,14 +12975,56 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "9a1654ad",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-30T12:59:19.000Z",
+              "message": "[Test][XPU] Preserve wheel imports in Mooncake subprocess probes (#6194)",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "1f3d4f0c",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-10-30T09:38:14.000Z",
+              "message": "[CI][XPU] Add deterministic DeepSeek V4 HMA correctness coverage (#6167)\n\n* [CI][XPU] Add deterministic DeepSeek V4 HMA correctness coverage\n\nRun reduced four-layer DeepSeek V4 through the shared HMA launch flow with engine-driven SHM transfer and strict token and logprob comparisons.\n\nSelect deterministic worker configuration in the XPU pipeline and reuse the HMA verifier module for the worker extension. Preserve the existing self-contained DSV4 workload and XPU entrypoint.\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n* [CI][XPU] Keep HMA worker discoverable during wheel validation\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>\n\n---------\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 5,
+                "lines": 139,
+                "insertions": 119,
+                "deletions": 20
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 53.61538461538461,
-          "significance_ratio": 0.5384615384615384,
+          "avg_score": 53.93333333333333,
+          "significance_ratio": 0.5333333333333333,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 697,
+          "total_score": 809,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -12945,6 +13506,171 @@
           "tier_name": "Elite"
         },
         {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 7,
+          "significant_commits": 6,
+          "simple_commits": 1,
+          "commit_score": 528,
+          "commits": [
+            {
+              "hash": "ddcbe3ed",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-15T22:48:03.000Z",
+              "message": "[CI] Add CacheBlend coordinator global-match smoke to blend pipeline (#5747)\n\n* [Coordinator][CacheBlend][Doc] Fleet blend lookup replaces the local matcher\n\nblend_lookup.md described fleet CacheBlend matching as additive (local\nmatcher always runs, results unioned). The code skips the local matcher\nwhenever a coordinator client is configured and uses the coordinator's\nmatches as the only non-prefix source (lookup.py, unchanged since before\nthe #5012 refactor). Update the intro, lookup-flow diagram and steps,\nrationale, gating note, failure-mode table, and code paths to match.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [CI][CacheBlend][Coordinator] Add coordinator global-match smoke to the blend pipeline\n\nAdd a second step to .buildkite/k3_tests/blend/pipeline.yml that runs the\ncacheblend-plugin's coordinator_match harness against the PR's LMCache: a\ncoordinator with --enable-blend-lookup plus two blend server + vLLM\nstacks (gpt-oss-20b, --load-format dummy) sharing an fs_native L2. Stack B\nmust blend a body only stack A stored, found through the coordinator's\nfleet blend index. Two GPUs, 40 min, one automatic retry.\n\nrun.sh now takes the test name as its first argument and dispatches to\nscripts/run-<test>.sh; no argument keeps running the compat check.\n\nRequires the plugin harness (.buildkite/harness/coordinator_match.py) on\nCB_PLUGIN_REF.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 198,
+                "insertions": 147,
+                "deletions": 51
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 19,
+                "total": 71
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "15675629",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-17T03:54:32.000Z",
+              "message": "[Coordinator][observability] Keep background loops alive and report their liveness (#5714)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 24,
+                "lines": 1735,
+                "insertions": 1239,
+                "deletions": 496
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "2a34fa82",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-19T22:34:02.000Z",
+              "message": "[Bugfix] Skip scratch groups in lazy offload block estimate (#5818)\n\n \nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 97,
+                "insertions": 96,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 9,
+                "total": 46
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "8367e01f",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-27T23:15:47.000Z",
+              "message": "[Coordinator] Add the P1 view, persistence and prefetch metrics (#5881)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 23,
+                "lines": 1995,
+                "insertions": 1900,
+                "deletions": 95
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a5c23648",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-27T07:10:04.000Z",
+              "message": "[Fix] Validate trace schemas by level (#6083)\n\nfix(trace): validate storage schemas only for storage traces\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 113,
+                "insertions": 96,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f8e119c0",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-30T23:55:01.000Z",
+              "message": "[Coordinator] Add GET /status, a JSON snapshot for debugging (#5879)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 415,
+                "insertions": 400,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a005bb19",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-10-30T17:51:35.000Z",
+              "message": "[Coordinator] Add a coordinator Grafana dashboard; fix instance id and loop jitter (#6179)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 3078,
+                "insertions": 3068,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.42857142857143,
+          "significance_ratio": 0.8571428571428571,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 528,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
           "name": "JH",
           "email": "riversky0014@gmail.com",
           "total_commits": 7,
@@ -13377,45 +14103,24 @@
           "tier_name": "Advanced"
         },
         {
-          "name": "Rui Zhang",
-          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
           "total_commits": 5,
           "significant_commits": 4,
           "simple_commits": 1,
-          "commit_score": 366,
+          "commit_score": 363,
           "commits": [
             {
-              "hash": "ddcbe3ed",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-15T22:48:03.000Z",
-              "message": "[CI] Add CacheBlend coordinator global-match smoke to blend pipeline (#5747)\n\n* [Coordinator][CacheBlend][Doc] Fleet blend lookup replaces the local matcher\n\nblend_lookup.md described fleet CacheBlend matching as additive (local\nmatcher always runs, results unioned). The code skips the local matcher\nwhenever a coordinator client is configured and uses the coordinator's\nmatches as the only non-prefix source (lookup.py, unchanged since before\nthe #5012 refactor). Update the intro, lookup-flow diagram and steps,\nrationale, gating note, failure-mode table, and code paths to match.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n* [CI][CacheBlend][Coordinator] Add coordinator global-match smoke to the blend pipeline\n\nAdd a second step to .buildkite/k3_tests/blend/pipeline.yml that runs the\ncacheblend-plugin's coordinator_match harness against the PR's LMCache: a\ncoordinator with --enable-blend-lookup plus two blend server + vLLM\nstacks (gpt-oss-20b, --load-format dummy) sharing an fs_native L2. Stack B\nmust blend a body only stack A stored, found through the coordinator's\nfleet blend index. Two GPUs, 40 min, one automatic retry.\n\nrun.sh now takes the test name as its first argument and dispatches to\nscripts/run-<test>.sh; no argument keeps running the compat check.\n\nRequires the plugin harness (.buildkite/harness/coordinator_match.py) on\nCB_PLUGIN_REF.\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>\n\n---------\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "hash": "9ce1d25b",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-15T00:38:32.000Z",
+              "message": "[Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts (#5667)\n\n* [Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts\n\nRblnDeviceOps.multi_layer_block_kv_transfer gated its two op sequences on\nexact EngineKVFormat values (NL_X_TWO_NB_NH_ONE_BS_HS / NL_X_NB_BS_HS).\nResolve the format to its KVFormatSpec once and dispatch on the layout\nfacts instead, matching the shared torch path after #4776:\n\n- per-layer two-major HND (is_layer_list, is_hnd, is_two_major, not\n  is_fused_packed) -> HND sequence\n- per-layer [NB, BS, HS] MLA (is_layer_list, is_mla, not is_pbs_fused /\n  is_kv_second_tuple) -> MLA sequence\n\nThe native 6-D layout and NL_X_TWO_NB_NH_BS_HS share those facts, so the\nnew kv_layout.hnd_layer_views squeezes 6-D tensors and passes 5-D ones\nthrough. The spec registry is imported lazily because importing it at\nmodule scope raises ImportError while lmcache resolves device_ops to\nthis module on an RBLN host.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Drop speculative 5-D HND support from block transfer\n\nvLLM-RBLN only allocates the 6-D NL_X_TWO_NB_NH_ONE_BS_HS layout, so\naccepting 5-D NL_X_TWO_NB_NH_BS_HS tensors handled an input that never\nreaches RBLN. Remove hnd_layer_views and go back to the strict\nsqueeze_singleton_axis: a 5-D cache passes the layout-fact check but\nfails loudly in the squeeze.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Skip layouts RBLN refuses by design on the RBLN lane\n\nRblnDeviceOps now moves only the layouts vLLM-RBLN allocates: per-layer\ntwo-major HND (with the RBLN singleton axis) and per-layer [NB, BS, HS]\nMLA. The MP tests that feed NHD, fused K/V, or 5-D HND caches therefore\nfail on an RBLN host, by design rather than by regression.\n\nSkip those 9 cases when torch_device_type is \"rbln\", under one\n_UNSUPPORTED_ON_RBLN mark (plus the fused K/V round trip in\ntest_blocks_first_cs_kv_format). Every other device still runs them.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Drop RBLN skips from shared multiprocess and gpu_connector tests\n\nThe RBLN CI lane runs only tests/v1/platform/devices/rbln, so these\nmarkers never take effect in CI, and RBLN refused these layouts before\nthis PR as well.\n\nThis reverts commit d0de6759.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Refuse blocked-scale MLA pages; repack them in the torch fallback\n\nNL_X_NB_BSV_BSS inherits is_mla from the per-layer MLA spec, so the RBLN\nlayout-fact dispatch admitted it and its whole-block copy wrote the\nblocked [BS x vals][BS x scales] page into a chunk as if it were\ntoken-major.\n\n- KVFormatSpec: add the requires_blocked_scale_repacking layout fact,\n  set only on NL_X_NB_BSV_BSS.\n- RBLN: exclude that fact from the MLA predicate, so the format is\n  refused with the layout ValueError.\n- torch fallback: the MP block transfer splits each block into value\n  and scale views and gathers/scatters token-major rows, matching the\n  CUDA kernels.\n- Tests: an RBLN refusal regression, a golden check that only\n  NL_X_NB_BSV_BSS carries the fact, and a CPU round trip of the torch\n  block transfer against a hand-written blocked page.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 4,
-                "lines": 198,
-                "insertions": 147,
-                "deletions": 51
-              },
-              "scores": {
-                "loc": 30,
                 "files": 10,
-                "keyword": 12,
-                "ai": 19,
-                "total": 71
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "15675629",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-17T03:54:32.000Z",
-              "message": "[Coordinator][observability] Keep background loops alive and report their liveness (#5714)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 24,
-                "lines": 1735,
-                "insertions": 1239,
-                "deletions": 496
+                "lines": 341,
+                "insertions": 284,
+                "deletions": 57
               },
               "scores": {
                 "loc": 30,
@@ -13427,37 +14132,79 @@
               "classification": "significant"
             },
             {
-              "hash": "2a34fa82",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-19T22:34:02.000Z",
-              "message": "[Bugfix] Skip scratch groups in lazy offload block estimate (#5818)\n\n \nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "hash": "462006ab",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-20T06:08:58.000Z",
+              "message": "[RBLN] Support vLLM-RBLN's blocks-first KV cache layout (#5748)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 2,
-                "lines": 97,
-                "insertions": 96,
-                "deletions": 1
+                "files": 20,
+                "lines": 1063,
+                "insertions": 896,
+                "deletions": 167
               },
               "scores": {
-                "loc": 15,
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 25,
+                "total": 87
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3f7c2017",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-27T04:58:46.000Z",
+              "message": "[Docs][RBLN] Document the Rebellions NPU backend (#6042)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 1,
+                "lines": 114,
+                "insertions": 110,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "3981ee51",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-27T01:08:27.000Z",
+              "message": "[Misc] Add Python 3.14 support (#5289)\n\nExtend the supported Python range to 3.14 (requires-python `<3.15`),\nadd the 3.14 trove classifier to both distributions, and add 3.14 to\nthe CPU unit-test matrix.\n \nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>",
+              "stats": {
+                "files": 4,
+                "lines": 15,
+                "insertions": 11,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 3,
                 "files": 10,
                 "keyword": 12,
-                "ai": 9,
-                "total": 46
+                "ai": 15,
+                "total": 40
               },
               "classification": "simple"
             },
             {
-              "hash": "8367e01f",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-27T23:15:47.000Z",
-              "message": "[Coordinator] Add the P1 view, persistence and prefetch metrics (#5881)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "hash": "5ad523e5",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-10-30T03:21:46.000Z",
+              "message": "[CI][RBLN] Build and publish an RBLN wheel to GitHub Releases (#6140)\n\n* [CI][RBLN] Build and publish an RBLN wheel to GitHub Releases\n\nPyPI's lmcache wheel is built against the CUDA torch, so its C++\nextensions only load on an RBLN host while that torch matches the one\ntorch-rbln pins. Build the common extensions against torch-rbln's torch\nin the manylinux_2_34 image (torch-rbln's own glibc floor), smoke-install\nthe wheel next to torch-rbln, and publish it as lmcache==X.Y.Z+rbln to a\ndedicated vX.Y.Z-rbln GitHub Release, plus a rolling nightly-rbln.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [Docs][RBLN] Use an X.Y.Z placeholder in the RBLN wheel install examples\n\nA concrete release number in the examples would need an edit on every\nrelease.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
               "stats": {
-                "files": 23,
-                "lines": 1995,
-                "insertions": 1900,
-                "deletions": 95
+                "files": 7,
+                "lines": 499,
+                "insertions": 496,
+                "deletions": 3
               },
               "scores": {
                 "loc": 30,
@@ -13467,35 +14214,14 @@
                 "total": 82
               },
               "classification": "significant"
-            },
-            {
-              "hash": "a5c23648",
-              "author": "Rui Zhang",
-              "email": "51696593+ruizhang0101@users.noreply.github.com",
-              "date": "2026-10-27T07:10:04.000Z",
-              "message": "[Fix] Validate trace schemas by level (#6083)\n\nfix(trace): validate storage schemas only for storage traces\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 113,
-                "insertions": 96,
-                "deletions": 17
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
             }
           ],
-          "avg_score": 73.2,
+          "avg_score": 72.6,
           "significance_ratio": 0.8,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 366,
+          "total_score": 363,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -13721,108 +14447,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 284,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Jinhwan Suk (석진환)",
-          "email": "jinhwan.suk@rebellions.ai",
-          "total_commits": 4,
-          "significant_commits": 3,
-          "simple_commits": 1,
-          "commit_score": 281,
-          "commits": [
-            {
-              "hash": "9ce1d25b",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-15T00:38:32.000Z",
-              "message": "[Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts (#5667)\n\n* [Refactor][RBLN] Dispatch block transfer on KVFormatSpec layout facts\n\nRblnDeviceOps.multi_layer_block_kv_transfer gated its two op sequences on\nexact EngineKVFormat values (NL_X_TWO_NB_NH_ONE_BS_HS / NL_X_NB_BS_HS).\nResolve the format to its KVFormatSpec once and dispatch on the layout\nfacts instead, matching the shared torch path after #4776:\n\n- per-layer two-major HND (is_layer_list, is_hnd, is_two_major, not\n  is_fused_packed) -> HND sequence\n- per-layer [NB, BS, HS] MLA (is_layer_list, is_mla, not is_pbs_fused /\n  is_kv_second_tuple) -> MLA sequence\n\nThe native 6-D layout and NL_X_TWO_NB_NH_BS_HS share those facts, so the\nnew kv_layout.hnd_layer_views squeezes 6-D tensors and passes 5-D ones\nthrough. The spec registry is imported lazily because importing it at\nmodule scope raises ImportError while lmcache resolves device_ops to\nthis module on an RBLN host.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Drop speculative 5-D HND support from block transfer\n\nvLLM-RBLN only allocates the 6-D NL_X_TWO_NB_NH_ONE_BS_HS layout, so\naccepting 5-D NL_X_TWO_NB_NH_BS_HS tensors handled an input that never\nreaches RBLN. Remove hnd_layer_views and go back to the strict\nsqueeze_singleton_axis: a 5-D cache passes the layout-fact check but\nfails loudly in the squeeze.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Skip layouts RBLN refuses by design on the RBLN lane\n\nRblnDeviceOps now moves only the layouts vLLM-RBLN allocates: per-layer\ntwo-major HND (with the RBLN singleton axis) and per-layer [NB, BS, HS]\nMLA. The MP tests that feed NHD, fused K/V, or 5-D HND caches therefore\nfail on an RBLN host, by design rather than by regression.\n\nSkip those 9 cases when torch_device_type is \"rbln\", under one\n_UNSUPPORTED_ON_RBLN mark (plus the fused K/V round trip in\ntest_blocks_first_cs_kv_format). Every other device still runs them.\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN][Test] Drop RBLN skips from shared multiprocess and gpu_connector tests\n\nThe RBLN CI lane runs only tests/v1/platform/devices/rbln, so these\nmarkers never take effect in CI, and RBLN refused these layouts before\nthis PR as well.\n\nThis reverts commit d0de6759.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n* [RBLN] Refuse blocked-scale MLA pages; repack them in the torch fallback\n\nNL_X_NB_BSV_BSS inherits is_mla from the per-layer MLA spec, so the RBLN\nlayout-fact dispatch admitted it and its whole-block copy wrote the\nblocked [BS x vals][BS x scales] page into a chunk as if it were\ntoken-major.\n\n- KVFormatSpec: add the requires_blocked_scale_repacking layout fact,\n  set only on NL_X_NB_BSV_BSS.\n- RBLN: exclude that fact from the MLA predicate, so the format is\n  refused with the layout ValueError.\n- torch fallback: the MP block transfer splits each block into value\n  and scale views and gathers/scatters token-major rows, matching the\n  CUDA kernels.\n- Tests: an RBLN refusal regression, a golden check that only\n  NL_X_NB_BSV_BSS carries the fact, and a CPU round trip of the torch\n  block transfer against a hand-written blocked page.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\n\n---------\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-              "stats": {
-                "files": 10,
-                "lines": 341,
-                "insertions": 284,
-                "deletions": 57
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "462006ab",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-20T06:08:58.000Z",
-              "message": "[RBLN] Support vLLM-RBLN's blocks-first KV cache layout (#5748)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-              "stats": {
-                "files": 20,
-                "lines": 1063,
-                "insertions": 896,
-                "deletions": 167
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 25,
-                "total": 87
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3f7c2017",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-27T04:58:46.000Z",
-              "message": "[Docs][RBLN] Document the Rebellions NPU backend (#6042)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-              "stats": {
-                "files": 1,
-                "lines": 114,
-                "insertions": 110,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 12,
-                "ai": 20,
-                "total": 67
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "3981ee51",
-              "author": "Jinhwan Suk (석진환)",
-              "email": "jinhwan.suk@rebellions.ai",
-              "date": "2026-10-27T01:08:27.000Z",
-              "message": "[Misc] Add Python 3.14 support (#5289)\n\nExtend the supported Python range to 3.14 (requires-python `<3.15`),\nadd the 3.14 trove classifier to both distributions, and add 3.14 to\nthe CPU unit-test matrix.\n \nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>",
-              "stats": {
-                "files": 4,
-                "lines": 15,
-                "insertions": 11,
-                "deletions": 4
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 70.25,
-          "significance_ratio": 0.75,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 281,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -14271,6 +14895,87 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "RAGHVENDRA KUMAR YADAV",
+          "email": "raghavmnnit@gmail.com",
+          "total_commits": 3,
+          "significant_commits": 1,
+          "simple_commits": 2,
+          "commit_score": 129,
+          "commits": [
+            {
+              "hash": "aa2dc97f",
+              "author": "RAGHVENDRA KUMAR YADAV",
+              "email": "raghavmnnit@gmail.com",
+              "date": "2026-10-21T06:53:02.000Z",
+              "message": "[Test] Add contract tests for LocalCPUBackend.clear() (#5850)\n\nclear() was only exercised as cleanup at the end of an allocator test.\nCover its contract through the public API: it removes evictable entries\nand returns the cleared token count, keeps pinned entries, keeps entries\nwhose MemoryObj is still referenced, returns 0 on an empty cache, and\nreturns 0 when the hot cache is disabled.\n\nSigned-off-by: Raghvendra Yadav <raghavmnnit@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 57,
+                "insertions": 57,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 5,
+                "total": 37
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "4279129b",
+              "author": "RAGHVENDRA KUMAR YADAV",
+              "email": "raghavmnnit@gmail.com",
+              "date": "2026-10-21T06:29:08.000Z",
+              "message": "[Doc] Fix LocalCPUBackend.clear() docstring: it returns tokens, not objects (#5849)\n\nThe docstring said clear() counts the number of memory objects removed,\nbut it returns num_cleared_tokens. Describe what it removes, what it keeps\n(pinned or still-referenced entries) and the return value, including the\nhot-cache-disabled case.\n\nSigned-off-by: Raghvendra Yadav <raghavmnnit@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 9,
+                "insertions": 7,
+                "deletions": 2
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 0,
+                "total": 20
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "708cb05c",
+              "author": "RAGHVENDRA KUMAR YADAV",
+              "email": "raghavmnnit@gmail.com",
+              "date": "2026-10-30T05:08:39.000Z",
+              "message": "[Bugfix] Fall back to buffered I/O when an fs L2 O_DIRECT buffer is unaligned or refused (#6158)\n\nThe fs L2 adapter checked only the length before using O_DIRECT. A\nbuffer whose address was not aligned, or a filesystem that refused the\nflag at write(), failed every store, and the read path swallowed every\nerror into a 0-byte read.\n\n- check the buffer address as well as the length, and use buffered I/O\n  when either is unaligned\n- fall back to buffered I/O on EINVAL or EOPNOTSUPP, at open() or at\n  the transfer, starting the write over so no partial file survives\n- loop short writes instead of discarding the os.write return value\n- let a missing file reach the load loop as a plain miss\n- take alignment from the device logical block size, falling back to\n  statvfs f_bsize\n- log each kind of fallback once per adapter\n\nPart of #4364.\n\nSigned-off-by: Raghav Yadav <raghavmnnit@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 497,
+                "insertions": 437,
+                "deletions": 60
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 43,
+          "significance_ratio": 0.3333333333333333,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 129,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "Michael Borokhovich",
           "email": "michaelbor@gmail.com",
           "total_commits": 2,
@@ -14327,6 +15032,66 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 129,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "manv",
+          "email": "143290598+vmanvs@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 128,
+          "commits": [
+            {
+              "hash": "e0e92b83",
+              "author": "manv",
+              "email": "143290598+vmanvs@users.noreply.github.com",
+              "date": "2026-10-22T01:22:13.000Z",
+              "message": "[Bug] PeriodicThread restart overlaps a live worker after stop timeout (#5281)\n\nprevent overlapping PeriodicThread workers\n\nSigned-off-by: vmanvs <manvendravsvats@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 2,
+                "lines": 119,
+                "insertions": 75,
+                "deletions": 44
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 11,
+                "total": 63
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "45a0bb42",
+              "author": "manv",
+              "email": "143290598+vmanvs@users.noreply.github.com",
+              "date": "2026-10-30T20:07:13.000Z",
+              "message": "[MP][Coordinator] Read position-less Kafka partitions from the beginning (#5458)\n\nread positionless kafka partitions from beginning\n\nSigned-off-by: vmanvs <manvendravsvats@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 97,
+                "insertions": 72,
+                "deletions": 25
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 64,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 128,
           "tier": "T2",
           "tier_name": "Intermediate"
         },
@@ -14468,8 +15233,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 114,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "mohan",
@@ -14549,8 +15314,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 111,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Xiao Lei",
@@ -15576,45 +16341,6 @@
           "tier_name": "Contributing"
         },
         {
-          "name": "manv",
-          "email": "143290598+vmanvs@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 63,
-          "commits": [
-            {
-              "hash": "e0e92b83",
-              "author": "manv",
-              "email": "143290598+vmanvs@users.noreply.github.com",
-              "date": "2026-10-22T01:22:13.000Z",
-              "message": "[Bug] PeriodicThread restart overlaps a live worker after stop timeout (#5281)\n\nprevent overlapping PeriodicThread workers\n\nSigned-off-by: vmanvs <manvendravsvats@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 2,
-                "lines": 119,
-                "insertions": 75,
-                "deletions": 44
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 11,
-                "total": 63
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 63,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 63,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
           "name": "Shuhan Zhang",
           "email": "14250491@cumt.edu.cn",
           "total_commits": 1,
@@ -15689,66 +16415,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 62,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "RAGHVENDRA KUMAR YADAV",
-          "email": "raghavmnnit@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 0,
-          "simple_commits": 2,
-          "commit_score": 57,
-          "commits": [
-            {
-              "hash": "aa2dc97f",
-              "author": "RAGHVENDRA KUMAR YADAV",
-              "email": "raghavmnnit@gmail.com",
-              "date": "2026-10-21T06:53:02.000Z",
-              "message": "[Test] Add contract tests for LocalCPUBackend.clear() (#5850)\n\nclear() was only exercised as cleanup at the end of an allocator test.\nCover its contract through the public API: it removes evictable entries\nand returns the cleared token count, keeps pinned entries, keeps entries\nwhose MemoryObj is still referenced, returns 0 on an empty cache, and\nreturns 0 when the hot cache is disabled.\n\nSigned-off-by: Raghvendra Yadav <raghavmnnit@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 57,
-                "insertions": 57,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 15,
-                "files": 5,
-                "keyword": 12,
-                "ai": 5,
-                "total": 37
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "4279129b",
-              "author": "RAGHVENDRA KUMAR YADAV",
-              "email": "raghavmnnit@gmail.com",
-              "date": "2026-10-21T06:29:08.000Z",
-              "message": "[Doc] Fix LocalCPUBackend.clear() docstring: it returns tokens, not objects (#5849)\n\nThe docstring said clear() counts the number of memory objects removed,\nbut it returns num_cleared_tokens. Describe what it removes, what it keeps\n(pinned or still-referenced entries) and the return value, including the\nhot-cache-disabled case.\n\nSigned-off-by: Raghvendra Yadav <raghavmnnit@gmail.com>",
-              "stats": {
-                "files": 1,
-                "lines": 9,
-                "insertions": 7,
-                "deletions": 2
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 0,
-                "total": 20
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 28.5,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 57,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -16419,13 +17085,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-30T00:30:35.040Z",
+    "analyzedAt": "2026-10-31T00:30:19.427Z",
     "daysBack": 2,
-    "totalCommits": 196,
+    "totalCommits": 206,
     "totalContributors": 66,
     "mergedFrom": {
-      "existing": 178,
-      "new": 38
+      "existing": 196,
+      "new": 28
     }
   }
 }
