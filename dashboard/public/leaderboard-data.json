@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-31T00:30:19.427Z",
-  "total_commits_analyzed": 206,
+  "last_updated": "2026-11-01T00:30:11.511Z",
+  "total_commits_analyzed": 213,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -4069,6 +4069,525 @@
       ],
       "2026-W44": [
         {
+          "name": "maobaolong",
+          "email": "baoloongmao@tencent.com",
+          "total_commits": 12,
+          "significant_commits": 11,
+          "simple_commits": 1,
+          "commit_score": 911,
+          "commits": [
+            {
+              "hash": "39b4020d",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-27T04:56:53.000Z",
+              "message": "[Doc] Standardize AI-assisted PR review workflow (#6066)\n\n* [Doc] Require draft-first PR self-review\n\nAlign the contributor and agent submission flow around draft pull requests. Require the submitting human to review every changed line, verify validation evidence, and explicitly decide when a PR is ready for maintainer review.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Extend AI-assisted PR review guidance\n\nRequire repeated draft and human-review cycles after AI-generated updates, and keep PR metadata and a self-contained HTML explainer synchronized with each head.\n\nDocument extensibility, readable dispatch, and engine, model, hardware, storage, and transport independence as LMCache design boundaries.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Link HTML explainers from PR descriptions\n\nKeep single-file reviewer explainers as direct HTML attachments in the pull request description without a separate comment or zip archive.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Require browser-viewable AI PR explainers\n\nMake AI tools publish reviewer explainers through a project-approved static preview so PR descriptions open them directly in the browser. Keep PRs draft when no approved publisher is configured, and prohibit silently provisioning resources in contributor accounts.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Attach HTML explainers in PR descriptions\n\nHave AI tools upload a single self-contained HTML reviewer guide and link it from the pull request description. Downloading the HTML for local viewing is acceptable; separate comments, zip archives, and auxiliary hosting resources are not needed.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Require bilingual AI PR explainers\n\nRequire each self-contained reviewer guide to provide complete English and Chinese views with a one-click offline language switch.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Raise the AI PR explainer quality bar\n\nRequire detailed reviewer-oriented narratives, multiple substantive diagrams, annotated call chains, and controlled offline animation when it improves understanding.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Extract the PR explainer workflow into a skill\n\nKeep AGENTS.md concise by moving the detailed bilingual visual explainer requirements into a dedicated create-pr-explainer skill and invoking it from create-pr.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nCo-authored-by: OpenAI Codex <noreply@openai.com>",
+              "stats": {
+                "files": 7,
+                "lines": 314,
+                "insertions": 298,
+                "deletions": 16
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "92eb56cd",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-28T20:37:26.000Z",
+              "message": "Refactor remaining InProcess core modules and remove PinMonitor (#6135)\n\nrefactor: isolate remaining in-process core modules\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 184,
+                "lines": 1974,
+                "insertions": 735,
+                "deletions": 1239
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 22,
+                "total": 97
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "99cdd3ee",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-28T13:15:41.000Z",
+              "message": "Fix HF3FS test mixed line endings (#6137)\n\nchore: normalize hf3fs test line endings\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1312,
+                "insertions": 656,
+                "deletions": 656
+              },
+              "scores": {
+                "loc": 30,
+                "files": 5,
+                "keyword": 10,
+                "ai": 15,
+                "total": 60
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "78b6b80f",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-28T06:34:02.000Z",
+              "message": "[Refactor] Move legacy storage backends under inprocess (#6007)\n\nrefactor: move storage backends under inprocess\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 172,
+                "lines": 1228,
+                "insertions": 712,
+                "deletions": 516
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0108f5b6",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-28T04:59:11.000Z",
+              "message": "[Refactor][MP] Add ObjectKeyIdentity with non-breaking constructors (#5988)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 389,
+                "insertions": 280,
+                "deletions": 109
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "f7c0768a",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-29T15:07:30.000Z",
+              "message": "fix: bound RESP authentication reply length (#6108)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 94,
+                "insertions": 94,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 15,
+                "ai": 20,
+                "total": 60
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c4e9e9e4",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-29T07:50:50.000Z",
+              "message": "[Refactor][MP] Centralize L2 object key codecs (#5989)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 12,
+                "lines": 466,
+                "insertions": 210,
+                "deletions": 256
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a6ad3bd2",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-30T03:33:47.000Z",
+              "message": "Move InProcess-only memory allocators (#6138)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 14,
+                "lines": 76,
+                "insertions": 49,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "963120be",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-30T03:04:27.000Z",
+              "message": "[Refactor][NIXL] Keep storage sharding local to NIXL (#6178)\n\nrefactor(nixl): keep storage sharding local\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 13,
+                "insertions": 3,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "ac34be47",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-31T06:11:02.000Z",
+              "message": "Add frontend HTTP API key authentication (#5767)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 6,
+                "lines": 568,
+                "insertions": 529,
+                "deletions": 39
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "371108bf",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-31T01:43:43.000Z",
+              "message": "[Security][Coordinator] Authenticate coordinator outbound requests using configured key file (#6174)\n\nSigned-off-by: maobaolong <307499405@qq.com>",
+              "stats": {
+                "files": 15,
+                "lines": 706,
+                "insertions": 683,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "71a826f4",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-31T00:48:25.000Z",
+              "message": "[Core][MP] Pass request configs to L2 adapters (#6104)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 174,
+                "insertions": 161,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 75.91666666666667,
+          "significance_ratio": 0.9166666666666666,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 911,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "MinJun Choi",
+          "email": "mj04300017@gmail.com",
+          "total_commits": 11,
+          "significant_commits": 11,
+          "simple_commits": 0,
+          "commit_score": 791,
+          "commits": [
+            {
+              "hash": "a873f152",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-26T03:32:00.000Z",
+              "message": "[Perf][MP] Add an optional native gRPC server mode backed by pygrpc-native (#6031)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 14,
+                "lines": 1401,
+                "insertions": 1380,
+                "deletions": 21
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d7c0b05a",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-28T11:53:19.000Z",
+              "message": "[Docker] Include pygrpc-native in the vLLM and standalone images (#6048)\n\nAdd an lmcache[grpc-native] extra and install it in the images that run\nthe MP server, so --grpc-server-mode native works there out of the box.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 6,
+                "lines": 39,
+                "insertions": 28,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 60
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1065aac9",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-28T05:31:21.000Z",
+              "message": "[CI] Run the CPU device e2e on the native gRPC server (#6046)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 52,
+                "insertions": 41,
+                "deletions": 11
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 15,
+                "total": 62
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4995e604",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T15:27:23.000Z",
+              "message": "[MP][gRPC] Raise transport errors instead of grpc.RpcError from the client (#6161)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 142,
+                "insertions": 127,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a5043db0",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T12:07:01.000Z",
+              "message": "[MP][gRPC] Support grpc+unix in native mode (#6154)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 31,
+                "insertions": 9,
+                "deletions": 22
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 58
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4756c4d7",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T03:54:36.000Z",
+              "message": "[MP][gRPC] Fail fast on a ZMQ server and refuse a shared port (#5998)\n\n* [MP][gRPC] Fail fast on a ZMQ server and refuse a shared port\n\nA gRPC client pointed at a ZMQ server waited until its caller timed out,\nbecause calls wait for the server to come up. When the channel fails to\nconnect, the client now reads the first bytes on the port once; a ZMTP\ngreeting fails pending and new calls with a ConnectionError naming the\ntcp:// URL to use. A refused or silent port still counts as a server that\nis starting.\n\nThe server also binds with grpc.so_reuseport off, so a second server on\nthe same port fails like it does with ZMQ instead of splitting clients.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Drop the design doc section; the code comments cover it\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Fix import order and type errors flagged by pre-commit\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Release the sync server's threads when its bind fails\n\nThe aio server already does this. Without it, every failed attempt to start\na second server on a served port left its affinity workers running.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Raise a new ConnectionError for each call to a ZMQ server\n\nReusing one exception object kept extending its traceback and holding on\nto the callers' frames. Keep the message and build the error per call.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
+              "stats": {
+                "files": 4,
+                "lines": 196,
+                "insertions": 191,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "5fbf3c55",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T03:23:26.000Z",
+              "message": "[Feat][MP] Auto-start a gRPC MP server for grpc:// connector endpoints (#6001)\n\nMP server auto-start only accepted tcp:// endpoints, so a connector set up\nfor the gRPC transport could not use it. The launcher now picks the server\ntransport from the endpoint scheme and passes --transport grpc for grpc://,\nso the readiness PING and the connector reach the server over the same\ntransport. --transport is rejected in server_args for the same reason\n--host and --port are.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 117,
+                "insertions": 89,
+                "deletions": 28
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "215dfd55",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-29T02:11:06.000Z",
+              "message": "[MP][gRPC] Export gRPC server metrics in native mode (#6061)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 413,
+                "insertions": 403,
+                "deletions": 10
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "8a85b8c9",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-30T05:21:54.000Z",
+              "message": "[MP][gRPC] Keep a client's affinity calls in order in native mode (#6184)\n\nThe native front could hand a client's pipelined calls to Python out of order, so affinity handlers broke their documented per-client order. pygrpc-native 0.7.0 adds ordered=True, which keeps a connection's calls in the order the client started them. Require it and pin CI to it.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 5,
+                "lines": 50,
+                "insertions": 47,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 67
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "acaca416",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-31T09:59:53.000Z",
+              "message": "[CI] Test the gRPC server modes against a real server (#6196)\n\nThe CPU device job had zmq, grpc and grpc-native legs, so the aio server never started in CI, and no test restarted a real gRPC server. Adds a grpc-aio leg that checks the server log for the requested mode, and a test that crashes and restarts a real server in each mode.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 163,
+                "insertions": 146,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b1d93907",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-31T06:50:47.000Z",
+              "message": "[Bugfix][MP] Let the gRPC server process exit after shutdown (#6193)\n\n* [Bugfix][MP] Let the gRPC server process exit after shutdown\n\nThe gRPC metrics plugin was registered at startup and never deregistered, and grpcio-observability's export thread isn't a daemon, so a gRPC server stayed alive after shutting down on SIGTERM or Ctrl+C. Deregister it once the server and engine are closed.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Test] Raise AssertionError so mypy sees the helper always returns\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 105,
+                "insertions": 105,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 71.9090909090909,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 791,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
           "name": "Tony Lin",
           "email": "tony.lin@intel.com",
           "total_commits": 11,
@@ -4318,426 +4837,12 @@
           "tier_name": "Elite"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tencent.com",
-          "total_commits": 9,
-          "significant_commits": 8,
-          "simple_commits": 1,
-          "commit_score": 665,
-          "commits": [
-            {
-              "hash": "39b4020d",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-27T04:56:53.000Z",
-              "message": "[Doc] Standardize AI-assisted PR review workflow (#6066)\n\n* [Doc] Require draft-first PR self-review\n\nAlign the contributor and agent submission flow around draft pull requests. Require the submitting human to review every changed line, verify validation evidence, and explicitly decide when a PR is ready for maintainer review.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Extend AI-assisted PR review guidance\n\nRequire repeated draft and human-review cycles after AI-generated updates, and keep PR metadata and a self-contained HTML explainer synchronized with each head.\n\nDocument extensibility, readable dispatch, and engine, model, hardware, storage, and transport independence as LMCache design boundaries.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Link HTML explainers from PR descriptions\n\nKeep single-file reviewer explainers as direct HTML attachments in the pull request description without a separate comment or zip archive.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Require browser-viewable AI PR explainers\n\nMake AI tools publish reviewer explainers through a project-approved static preview so PR descriptions open them directly in the browser. Keep PRs draft when no approved publisher is configured, and prohibit silently provisioning resources in contributor accounts.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Attach HTML explainers in PR descriptions\n\nHave AI tools upload a single self-contained HTML reviewer guide and link it from the pull request description. Downloading the HTML for local viewing is acceptable; separate comments, zip archives, and auxiliary hosting resources are not needed.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Require bilingual AI PR explainers\n\nRequire each self-contained reviewer guide to provide complete English and Chinese views with a one-click offline language switch.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Raise the AI PR explainer quality bar\n\nRequire detailed reviewer-oriented narratives, multiple substantive diagrams, annotated call chains, and controlled offline animation when it improves understanding.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n* [Doc] Extract the PR explainer workflow into a skill\n\nKeep AGENTS.md concise by moving the detailed bilingual visual explainer requirements into a dedicated create-pr-explainer skill and invoking it from create-pr.\n\nCo-authored-by: OpenAI Codex <noreply@openai.com>\nSigned-off-by: baoloongmao <307499405@qq.com>\n\n---------\n\nSigned-off-by: baoloongmao <307499405@qq.com>\nCo-authored-by: OpenAI Codex <noreply@openai.com>",
-              "stats": {
-                "files": 7,
-                "lines": 314,
-                "insertions": 298,
-                "deletions": 16
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 22,
-                "total": 84
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "92eb56cd",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-10-28T20:37:26.000Z",
-              "message": "Refactor remaining InProcess core modules and remove PinMonitor (#6135)\n\nrefactor: isolate remaining in-process core modules\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 184,
-                "lines": 1974,
-                "insertions": 735,
-                "deletions": 1239
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 22,
-                "total": 97
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "99cdd3ee",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-10-28T13:15:41.000Z",
-              "message": "Fix HF3FS test mixed line endings (#6137)\n\nchore: normalize hf3fs test line endings\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 1,
-                "lines": 1312,
-                "insertions": 656,
-                "deletions": 656
-              },
-              "scores": {
-                "loc": 30,
-                "files": 5,
-                "keyword": 10,
-                "ai": 15,
-                "total": 60
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "78b6b80f",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-28T06:34:02.000Z",
-              "message": "[Refactor] Move legacy storage backends under inprocess (#6007)\n\nrefactor: move storage backends under inprocess\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 172,
-                "lines": 1228,
-                "insertions": 712,
-                "deletions": 516
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 20,
-                "total": 95
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0108f5b6",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-10-28T04:59:11.000Z",
-              "message": "[Refactor][MP] Add ObjectKeyIdentity with non-breaking constructors (#5988)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 14,
-                "lines": 389,
-                "insertions": 280,
-                "deletions": 109
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "f7c0768a",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-29T15:07:30.000Z",
-              "message": "fix: bound RESP authentication reply length (#6108)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 2,
-                "lines": 94,
-                "insertions": 94,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 15,
-                "ai": 20,
-                "total": 60
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "c4e9e9e4",
-              "author": "maobaolong",
-              "email": "baoloongmao@tencent.com",
-              "date": "2026-10-29T07:50:50.000Z",
-              "message": "[Refactor][MP] Centralize L2 object key codecs (#5989)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 12,
-                "lines": 466,
-                "insertions": 210,
-                "deletions": 256
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a6ad3bd2",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-10-30T03:33:47.000Z",
-              "message": "Move InProcess-only memory allocators (#6138)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 14,
-                "lines": 76,
-                "insertions": 49,
-                "deletions": 27
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 65
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "963120be",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-10-30T03:04:27.000Z",
-              "message": "[Refactor][NIXL] Keep storage sharding local to NIXL (#6178)\n\nrefactor(nixl): keep storage sharding local\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
-              "stats": {
-                "files": 3,
-                "lines": 13,
-                "insertions": 3,
-                "deletions": 10
-              },
-              "scores": {
-                "loc": 3,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 40
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 73.88888888888889,
-          "significance_ratio": 0.8888888888888888,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 665,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "MinJun Choi",
-          "email": "mj04300017@gmail.com",
-          "total_commits": 9,
-          "significant_commits": 9,
-          "simple_commits": 0,
-          "commit_score": 637,
-          "commits": [
-            {
-              "hash": "a873f152",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-26T03:32:00.000Z",
-              "message": "[Perf][MP] Add an optional native gRPC server mode backed by pygrpc-native (#6031)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 14,
-                "lines": 1401,
-                "insertions": 1380,
-                "deletions": 21
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "d7c0b05a",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-28T11:53:19.000Z",
-              "message": "[Docker] Include pygrpc-native in the vLLM and standalone images (#6048)\n\nAdd an lmcache[grpc-native] extra and install it in the images that run\nthe MP server, so --grpc-server-mode native works there out of the box.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 6,
-                "lines": 39,
-                "insertions": 28,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 60
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "1065aac9",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-28T05:31:21.000Z",
-              "message": "[CI] Run the CPU device e2e on the native gRPC server (#6046)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 5,
-                "lines": 52,
-                "insertions": 41,
-                "deletions": 11
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 15,
-                "total": 62
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "4995e604",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-29T15:27:23.000Z",
-              "message": "[MP][gRPC] Raise transport errors instead of grpc.RpcError from the client (#6161)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 5,
-                "lines": 142,
-                "insertions": 127,
-                "deletions": 15
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "a5043db0",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-29T12:07:01.000Z",
-              "message": "[MP][gRPC] Support grpc+unix in native mode (#6154)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 5,
-                "lines": 31,
-                "insertions": 9,
-                "deletions": 22
-              },
-              "scores": {
-                "loc": 8,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 58
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "4756c4d7",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-29T03:54:36.000Z",
-              "message": "[MP][gRPC] Fail fast on a ZMQ server and refuse a shared port (#5998)\n\n* [MP][gRPC] Fail fast on a ZMQ server and refuse a shared port\n\nA gRPC client pointed at a ZMQ server waited until its caller timed out,\nbecause calls wait for the server to come up. When the channel fails to\nconnect, the client now reads the first bytes on the port once; a ZMTP\ngreeting fails pending and new calls with a ConnectionError naming the\ntcp:// URL to use. A refused or silent port still counts as a server that\nis starting.\n\nThe server also binds with grpc.so_reuseport off, so a second server on\nthe same port fails like it does with ZMQ instead of splitting clients.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Drop the design doc section; the code comments cover it\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Fix import order and type errors flagged by pre-commit\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Release the sync server's threads when its bind fails\n\nThe aio server already does this. Without it, every failed attempt to start\na second server on a served port left its affinity workers running.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* Raise a new ConnectionError for each call to a ZMQ server\n\nReusing one exception object kept extending its traceback and holding on\nto the callers' frames. Keep the message and build the error per call.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\nCo-authored-by: maobaolong <baoloongmao@tencent.com>",
-              "stats": {
-                "files": 4,
-                "lines": 196,
-                "insertions": 191,
-                "deletions": 5
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "5fbf3c55",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-29T03:23:26.000Z",
-              "message": "[Feat][MP] Auto-start a gRPC MP server for grpc:// connector endpoints (#6001)\n\nMP server auto-start only accepted tcp:// endpoints, so a connector set up\nfor the gRPC transport could not use it. The launcher now picks the server\ntransport from the endpoint scheme and passes --transport grpc for grpc://,\nso the readiness PING and the connector reach the server over the same\ntransport. --transport is rejected in server_args for the same reason\n--host and --port are.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 4,
-                "lines": 117,
-                "insertions": 89,
-                "deletions": 28
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 20,
-                "total": 72
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "215dfd55",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-29T02:11:06.000Z",
-              "message": "[MP][gRPC] Export gRPC server metrics in native mode (#6061)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 8,
-                "lines": 413,
-                "insertions": 403,
-                "deletions": 10
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "8a85b8c9",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-10-30T05:21:54.000Z",
-              "message": "[MP][gRPC] Keep a client's affinity calls in order in native mode (#6184)\n\nThe native front could hand a client's pipelined calls to Python out of order, so affinity handlers broke their documented per-client order. pygrpc-native 0.7.0 adds ordered=True, which keeps a connection's calls in the order the client started them. Require it and pin CI to it.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 5,
-                "lines": 50,
-                "insertions": 47,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 67
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 70.77777777777777,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 637,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "Rui Zhang",
           "email": "51696593+ruizhang0101@users.noreply.github.com",
           "total_commits": 4,
           "significant_commits": 4,
           "simple_commits": 0,
-          "commit_score": 324,
+          "commit_score": 326,
           "commits": [
             {
               "hash": "8367e01f",
@@ -4818,18 +4923,18 @@
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 18,
-                "total": 80
+                "ai": 20,
+                "total": 82
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 81,
+          "avg_score": 81.5,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 324,
+          "total_score": 326,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -5518,6 +5623,66 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 2,
+          "significant_commits": 0,
+          "simple_commits": 2,
+          "commit_score": 93,
+          "commits": [
+            {
+              "hash": "4de5b9ad",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-26T18:38:43.000Z",
+              "message": "[SGLang][Optimize] Support direct copy in mem kernel (#6062)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 27,
+                "insertions": 24,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 48
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "12dfa321",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-31T07:45:07.000Z",
+              "message": "[Bugfix] print actual stored tokens (#6188)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 22,
+                "insertions": 17,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 45
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 46.5,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 93,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
           "name": "nayeonikim",
           "email": "100911844+nayeonikim@users.noreply.github.com",
           "total_commits": 2,
@@ -5596,6 +5761,45 @@
                 "lines": 11408,
                 "insertions": 11365,
                 "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Rayna-2024",
+          "email": "rui2024@uw.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "8166f246",
+              "author": "Rayna-2024",
+              "email": "rui2024@uw.edu",
+              "date": "2026-10-31T05:20:26.000Z",
+              "message": "[Bugfix][Core][Ascend] Split KV groups by physical block stride (#6127)\n\nSigned-off-by: Rayna-2024 <rui2024@uw.edu>",
+              "stats": {
+                "files": 8,
+                "lines": 270,
+                "insertions": 199,
+                "deletions": 71
               },
               "scores": {
                 "loc": 30,
@@ -5808,8 +6012,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 70,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "manv",
@@ -5847,8 +6051,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 65,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "mohan",
@@ -5925,45 +6129,6 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 55,
-          "tier": "T3",
-          "tier_name": "Contributing"
-        },
-        {
-          "name": "chunxiaozheng",
-          "email": "idellzheng@tencent.com",
-          "total_commits": 1,
-          "significant_commits": 0,
-          "simple_commits": 1,
-          "commit_score": 48,
-          "commits": [
-            {
-              "hash": "4de5b9ad",
-              "author": "chunxiaozheng",
-              "email": "idellzheng@tencent.com",
-              "date": "2026-10-26T18:38:43.000Z",
-              "message": "[SGLang][Optimize] Support direct copy in mem kernel (#6062)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
-              "stats": {
-                "files": 4,
-                "lines": 27,
-                "insertions": 24,
-                "deletions": 3
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 48
-              },
-              "classification": "simple"
-            }
-          ],
-          "avg_score": 48,
-          "significance_ratio": 0,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 48,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -6052,10 +6217,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 33,
-          "significant_commits": 30,
+          "total_commits": 36,
+          "significant_commits": 33,
           "simple_commits": 3,
-          "commit_score": 2557,
+          "commit_score": 2803,
           "commits": [
             {
               "hash": "a3658dba",
@@ -6749,24 +6914,87 @@
                 "total": 40
               },
               "classification": "simple"
+            },
+            {
+              "hash": "ac34be47",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-31T06:11:02.000Z",
+              "message": "Add frontend HTTP API key authentication (#5767)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 6,
+                "lines": 568,
+                "insertions": 529,
+                "deletions": 39
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "371108bf",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-31T01:43:43.000Z",
+              "message": "[Security][Coordinator] Authenticate coordinator outbound requests using configured key file (#6174)\n\nSigned-off-by: maobaolong <307499405@qq.com>",
+              "stats": {
+                "files": 15,
+                "lines": 706,
+                "insertions": 683,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "71a826f4",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-31T00:48:25.000Z",
+              "message": "[Core][MP] Pass request configs to L2 adapters (#6104)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 174,
+                "insertions": 161,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 77.48484848484848,
-          "significance_ratio": 0.9090909090909091,
+          "avg_score": 77.86111111111111,
+          "significance_ratio": 0.9166666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2557,
+          "total_score": 2803,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 19,
-          "significant_commits": 14,
+          "total_commits": 21,
+          "significant_commits": 16,
           "simple_commits": 5,
-          "commit_score": 1188,
+          "commit_score": 1342,
           "commits": [
             {
               "hash": "32cbdcb7",
@@ -7166,14 +7394,56 @@
                 "total": 67
               },
               "classification": "significant"
+            },
+            {
+              "hash": "acaca416",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-31T09:59:53.000Z",
+              "message": "[CI] Test the gRPC server modes against a real server (#6196)\n\nThe CPU device job had zmq, grpc and grpc-native legs, so the aio server never started in CI, and no test restarted a real gRPC server. Adds a grpc-aio leg that checks the server log for the requested mode, and a test that crashes and restarts a real server in each mode.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 163,
+                "insertions": 146,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b1d93907",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-31T06:50:47.000Z",
+              "message": "[Bugfix][MP] Let the gRPC server process exit after shutdown (#6193)\n\n* [Bugfix][MP] Let the gRPC server process exit after shutdown\n\nThe gRPC metrics plugin was registered at startup and never deregistered, and grpcio-observability's export thread isn't a daemon, so a gRPC server stayed alive after shutting down on SIGTERM or Ctrl+C. Deregister it once the server and engine are closed.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Test] Raise AssertionError so mypy sees the helper always returns\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 105,
+                "insertions": 105,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 62.526315789473685,
-          "significance_ratio": 0.7368421052631579,
+          "avg_score": 63.904761904761905,
+          "significance_ratio": 0.7619047619047619,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1188,
+          "total_score": 1342,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -7993,7 +8263,7 @@
           "total_commits": 7,
           "significant_commits": 6,
           "simple_commits": 1,
-          "commit_score": 528,
+          "commit_score": 530,
           "commits": [
             {
               "hash": "ddcbe3ed",
@@ -8137,18 +8407,18 @@
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 18,
-                "total": 80
+                "ai": 20,
+                "total": 82
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 75.42857142857143,
+          "avg_score": 75.71428571428571,
           "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 528,
+          "total_score": 530,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -8320,10 +8590,10 @@
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 6,
+          "total_commits": 7,
           "significant_commits": 3,
-          "simple_commits": 3,
-          "commit_score": 379,
+          "simple_commits": 4,
+          "commit_score": 424,
           "commits": [
             {
               "hash": "b61b5b4e",
@@ -8450,14 +8720,35 @@
                 "total": 48
               },
               "classification": "simple"
+            },
+            {
+              "hash": "12dfa321",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-31T07:45:07.000Z",
+              "message": "[Bugfix] print actual stored tokens (#6188)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 22,
+                "insertions": 17,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 45
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 63.166666666666664,
-          "significance_ratio": 0.5,
+          "avg_score": 60.57142857142857,
+          "significance_ratio": 0.42857142857142855,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 379,
+          "total_score": 424,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -10232,6 +10523,45 @@
                 "lines": 11408,
                 "insertions": 11365,
                 "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Rayna-2024",
+          "email": "rui2024@uw.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "8166f246",
+              "author": "Rayna-2024",
+              "email": "rui2024@uw.edu",
+              "date": "2026-10-31T05:20:26.000Z",
+              "message": "[Bugfix][Core][Ascend] Split KV groups by physical block stride (#6127)\n\nSigned-off-by: Rayna-2024 <rui2024@uw.edu>",
+              "stats": {
+                "files": 8,
+                "lines": 270,
+                "insertions": 199,
+                "deletions": 71
               },
               "scores": {
                 "loc": 30,
@@ -11570,10 +11900,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tencent.com",
-          "total_commits": 33,
-          "significant_commits": 30,
+          "total_commits": 36,
+          "significant_commits": 33,
           "simple_commits": 3,
-          "commit_score": 2557,
+          "commit_score": 2803,
           "commits": [
             {
               "hash": "a3658dba",
@@ -12267,24 +12597,87 @@
                 "total": 40
               },
               "classification": "simple"
+            },
+            {
+              "hash": "ac34be47",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-31T06:11:02.000Z",
+              "message": "Add frontend HTTP API key authentication (#5767)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 6,
+                "lines": 568,
+                "insertions": 529,
+                "deletions": 39
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "371108bf",
+              "author": "maobaolong",
+              "email": "baoloongmao@tencent.com",
+              "date": "2026-10-31T01:43:43.000Z",
+              "message": "[Security][Coordinator] Authenticate coordinator outbound requests using configured key file (#6174)\n\nSigned-off-by: maobaolong <307499405@qq.com>",
+              "stats": {
+                "files": 15,
+                "lines": 706,
+                "insertions": 683,
+                "deletions": 23
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "71a826f4",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-10-31T00:48:25.000Z",
+              "message": "[Core][MP] Pass request configs to L2 adapters (#6104)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 174,
+                "insertions": 161,
+                "deletions": 13
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 77.48484848484848,
-          "significance_ratio": 0.9090909090909091,
+          "avg_score": 77.86111111111111,
+          "significance_ratio": 0.9166666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 2557,
+          "total_score": 2803,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 19,
-          "significant_commits": 14,
+          "total_commits": 21,
+          "significant_commits": 16,
           "simple_commits": 5,
-          "commit_score": 1188,
+          "commit_score": 1342,
           "commits": [
             {
               "hash": "32cbdcb7",
@@ -12684,14 +13077,56 @@
                 "total": 67
               },
               "classification": "significant"
+            },
+            {
+              "hash": "acaca416",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-31T09:59:53.000Z",
+              "message": "[CI] Test the gRPC server modes against a real server (#6196)\n\nThe CPU device job had zmq, grpc and grpc-native legs, so the aio server never started in CI, and no test restarted a real gRPC server. Adds a grpc-aio leg that checks the server log for the requested mode, and a test that crashes and restarts a real server in each mode.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 7,
+                "lines": 163,
+                "insertions": 146,
+                "deletions": 17
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "b1d93907",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-10-31T06:50:47.000Z",
+              "message": "[Bugfix][MP] Let the gRPC server process exit after shutdown (#6193)\n\n* [Bugfix][MP] Let the gRPC server process exit after shutdown\n\nThe gRPC metrics plugin was registered at startup and never deregistered, and grpcio-observability's export thread isn't a daemon, so a gRPC server stayed alive after shutting down on SIGTERM or Ctrl+C. Deregister it once the server and engine are closed.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Test] Raise AssertionError so mypy sees the helper always returns\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 105,
+                "insertions": 105,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 62.526315789473685,
-          "significance_ratio": 0.7368421052631579,
+          "avg_score": 63.904761904761905,
+          "significance_ratio": 0.7619047619047619,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 1188,
+          "total_score": 1342,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -13511,7 +13946,7 @@
           "total_commits": 7,
           "significant_commits": 6,
           "simple_commits": 1,
-          "commit_score": 528,
+          "commit_score": 530,
           "commits": [
             {
               "hash": "ddcbe3ed",
@@ -13655,18 +14090,18 @@
                 "loc": 30,
                 "files": 20,
                 "keyword": 12,
-                "ai": 18,
-                "total": 80
+                "ai": 20,
+                "total": 82
               },
               "classification": "significant"
             }
           ],
-          "avg_score": 75.42857142857143,
+          "avg_score": 75.71428571428571,
           "significance_ratio": 0.8571428571428571,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 528,
+          "total_score": 530,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -13838,10 +14273,10 @@
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 6,
+          "total_commits": 7,
           "significant_commits": 3,
-          "simple_commits": 3,
-          "commit_score": 379,
+          "simple_commits": 4,
+          "commit_score": 424,
           "commits": [
             {
               "hash": "b61b5b4e",
@@ -13968,14 +14403,35 @@
                 "total": 48
               },
               "classification": "simple"
+            },
+            {
+              "hash": "12dfa321",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-10-31T07:45:07.000Z",
+              "message": "[Bugfix] print actual stored tokens (#6188)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 2,
+                "lines": 22,
+                "insertions": 17,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 45
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 63.166666666666664,
-          "significance_ratio": 0.5,
+          "avg_score": 60.57142857142857,
+          "significance_ratio": 0.42857142857142855,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 379,
+          "total_score": 424,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -15771,6 +16227,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Rayna-2024",
+          "email": "rui2024@uw.edu",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "8166f246",
+              "author": "Rayna-2024",
+              "email": "rui2024@uw.edu",
+              "date": "2026-10-31T05:20:26.000Z",
+              "message": "[Bugfix][Core][Ascend] Split KV groups by physical block stride (#6127)\n\nSigned-off-by: Rayna-2024 <rui2024@uw.edu>",
+              "stats": {
+                "files": 8,
+                "lines": 270,
+                "insertions": 199,
+                "deletions": 71
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Marco Barletta",
           "email": "65128997+marcobarlo@users.noreply.github.com",
           "total_commits": 1,
@@ -17085,13 +17580,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-10-31T00:30:19.427Z",
+    "analyzedAt": "2026-11-01T00:30:11.511Z",
     "daysBack": 2,
-    "totalCommits": 206,
-    "totalContributors": 66,
+    "totalCommits": 213,
+    "totalContributors": 67,
     "mergedFrom": {
-      "existing": 196,
-      "new": 28
+      "existing": 206,
+      "new": 17
     }
   }
 }
