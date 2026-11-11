@@ -1,74 +1,17 @@
 {
-  "last_updated": "2026-11-10T00:30:12.791Z",
-  "total_commits_analyzed": 18,
+  "last_updated": "2026-11-11T00:30:26.148Z",
+  "total_commits_analyzed": 39,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
       "2026-W46": [
         {
-          "name": "Xiao Liu",
-          "email": "liuxiao2103@qq.com",
-          "total_commits": 2,
-          "significant_commits": 2,
-          "simple_commits": 0,
-          "commit_score": 152,
-          "commits": [
-            {
-              "hash": "d0959e00",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-09T09:31:32.000Z",
-              "message": "[MP][Refactor] Move the ZMQ client polling loop to client.transport (#6472)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 4,
-                "lines": 479,
-                "insertions": 278,
-                "deletions": 201
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 70
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "cd29b563",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-09T05:02:45.000Z",
-              "message": "[MP][Refactor] Move the gRPC client to client.transport (#6426)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 20,
-                "lines": 507,
-                "insertions": 292,
-                "deletions": 215
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 76,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 2,
-          "significant_commits": 2,
+          "total_commits": 5,
+          "significant_commits": 5,
           "simple_commits": 0,
-          "commit_score": 142,
+          "commit_score": 388,
           "commits": [
             {
               "hash": "a1b238ec",
@@ -111,21 +54,312 @@
                 "total": 65
               },
               "classification": "significant"
+            },
+            {
+              "hash": "0ab32d33",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-10T17:01:11.000Z",
+              "message": "[MP][Refactor] Move the shared transport contracts and two platform modules out of multiprocess (#6504)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 43,
+                "lines": 112,
+                "insertions": 57,
+                "deletions": 55
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "427b6fa8",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-10T10:55:34.000Z",
+              "message": "[MP][Refactor] Move the token hasher and the messaging futures out of multiprocess (#6502)\n\n* [MP][Refactor] Move the token hasher and token codec to lmcache.v1.common\n\nMove lmcache/v1/multiprocess/token_hasher.py and token_codec.py to\nlmcache/v1/common/ and update the imports. The vLLM worker and the server\nboth use them, and they only depend on the standard library, numba,\nnumpy and blake3. The code is unchanged apart from import paths, and the\nold paths are not re-exported.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [MP][Refactor] Move the messaging futures to lmcache.v1.transport\n\nMove lmcache/v1/multiprocess/futures.py to lmcache/v1/transport/futures.py\nand update the imports. The client transports return these futures for\npending requests and the server transports stream responses through them,\nso they belong with the shared transport. The code is unchanged apart from\nimport paths, and the old path is not re-exported.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [MP][Refactor] Point the new Q ring SDK test at lmcache.v1.common.token_codec\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 84,
+                "lines": 264,
+                "insertions": 132,
+                "deletions": 132
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9522428a",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-10T03:25:29.000Z",
+              "message": "[MP][gRPC] Authenticate requests on the native gRPC server (#6439)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 168,
+                "insertions": 138,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 71,
+          "avg_score": 77.6,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 388,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Xiao Liu",
+          "email": "liuxiao2103@qq.com",
+          "total_commits": 4,
+          "significant_commits": 4,
+          "simple_commits": 0,
+          "commit_score": 299,
+          "commits": [
+            {
+              "hash": "d0959e00",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-09T09:31:32.000Z",
+              "message": "[MP][Refactor] Move the ZMQ client polling loop to client.transport (#6472)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 479,
+                "insertions": 278,
+                "deletions": 201
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "cd29b563",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-09T05:02:45.000Z",
+              "message": "[MP][Refactor] Move the gRPC client to client.transport (#6426)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 20,
+                "lines": 507,
+                "insertions": 292,
+                "deletions": 215
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e028a2bb",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-10T18:26:02.000Z",
+              "message": "[MP][Refactor] Move gRPC protos and generated bindings to transport (#6506)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 39,
+                "lines": 87,
+                "insertions": 41,
+                "deletions": 46
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d51d3e60",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-10T05:23:44.000Z",
+              "message": "[MP][Refactor] Move MessageQueueClient to client.transport (#6483)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 638,
+                "insertions": 332,
+                "deletions": 306
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 74.75,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 299,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tensormesh.ai",
+          "total_commits": 5,
+          "significant_commits": 2,
+          "simple_commits": 3,
+          "commit_score": 286,
+          "commits": [
+            {
+              "hash": "e733effd",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-09T03:37:43.000Z",
+              "message": "[Docs] Describe client affinity as mutual exclusion, not ordering (#6467)\n\nSigned-off-by: baoloongmao <m307499405@qq.com>\nCo-authored-by: baoloongmao <m307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 42,
+                "insertions": 38,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 45
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "069a4765",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T16:10:13.000Z",
+              "message": "[CI] Avoid requeueing code quality checks (#6507)\n\n[CI] Keep code quality on one runner\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 68,
+                "insertions": 34,
+                "deletions": 34
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 47
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "78b138fe",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T13:47:35.000Z",
+              "message": "[Bugfix][MP] Fix ZMQ auth test futures import (#6508)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "41346927",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T10:41:10.000Z",
+              "message": "Add ZMQ API key authentication (#5769)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 460,
+                "insertions": 352,
+                "deletions": 108
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c7563a08",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T08:34:44.000Z",
+              "message": "[Feat][MP] Address tagged objects through cache controls (#6200)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 18,
+                "lines": 370,
+                "insertions": 317,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 57.2,
+          "significance_ratio": 0.4,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 286,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Ben Kugler",
           "email": "benkug@momentohq.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 95,
+          "commit_score": 177,
           "commits": [
             {
               "hash": "ad2cb65f",
@@ -147,21 +381,45 @@
                 "total": 95
               },
               "classification": "significant"
+            },
+            {
+              "hash": "78ee369f",
+              "author": "Ben Kugler",
+              "email": "benkug@momentohq.com",
+              "date": "2026-11-10T20:37:33.000Z",
+              "message": "[Feature][Valkey] Add blob-tcp transport to the Valkey L2 adapter (#6400)\n\nSigned-off-by: Ben Kugler <benkug@momentohq.com>",
+              "stats": {
+                "files": 8,
+                "lines": 1243,
+                "insertions": 1206,
+                "deletions": 37
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 95,
+          "avg_score": 88.5,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 177,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 85,
+          "commit_score": 167,
           "commits": [
             {
               "hash": "115e09a4",
@@ -183,21 +441,45 @@
                 "total": 85
               },
               "classification": "significant"
+            },
+            {
+              "hash": "1fd2776f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-11-10T08:59:10.000Z",
+              "message": "[Core] BorrowedMemoryObj: a tensorless MemoryObj in memory_management.py (#6488)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 585,
+                "insertions": 346,
+                "deletions": 239
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 85,
+          "avg_score": 83.5,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 167,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "Maharani Ayu Putri Irawan",
           "email": "72875641+rannnayy@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
+          "total_commits": 2,
+          "significant_commits": 2,
           "simple_commits": 0,
-          "commit_score": 84,
+          "commit_score": 156,
           "commits": [
             {
               "hash": "3262c732",
@@ -219,13 +501,196 @@
                 "total": 84
               },
               "classification": "significant"
+            },
+            {
+              "hash": "aa78f3c5",
+              "author": "Maharani Ayu Putri Irawan",
+              "email": "72875641+rannnayy@users.noreply.github.com",
+              "date": "2026-11-10T06:10:21.000Z",
+              "message": "[SDK] Tests for the LMCache-driven Q ring transfer path (#6371)\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 1222,
+                "insertions": 1219,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 84,
+          "avg_score": 78,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 156,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 154,
+          "commits": [
+            {
+              "hash": "ac34cafe",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-11-10T07:24:44.000Z",
+              "message": "[P2P][TransferChannel] Add RDMA writes to the transfer channel and a write mode to its benchmark (#6401)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 14,
+                "lines": 996,
+                "insertions": 797,
+                "deletions": 199
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9239503d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-11-10T03:49:03.000Z",
+              "message": "[MP][vLLM] Declare kv_cache_access on LMCacheMPConnector (#6487)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 191,
+                "insertions": 182,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 154,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Jason",
+          "email": "31175216+thegoldenflow@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 123,
+          "commits": [
+            {
+              "hash": "90c8259c",
+              "author": "Jason",
+              "email": "31175216+thegoldenflow@users.noreply.github.com",
+              "date": "2026-11-10T16:05:11.000Z",
+              "message": "[MP][Refactor] Move server-module call envelopes to transport (#6466)\n\nSigned-off-by: Jason Yao <wsyjh8@gmail.com>",
+              "stats": {
+                "files": 10,
+                "lines": 48,
+                "insertions": 24,
+                "deletions": 24
+              },
+              "scores": {
+                "loc": 8,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 58
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "26889748",
+              "author": "Jason",
+              "email": "31175216+thegoldenflow@users.noreply.github.com",
+              "date": "2026-11-10T15:48:32.000Z",
+              "message": "[MP][Refactor] Move transfer-channel data types to common (#6374)\n\nSigned-off-by: Jason Yao <wsyjh8@gmail.com>",
+              "stats": {
+                "files": 16,
+                "lines": 76,
+                "insertions": 49,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 123,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "30dc05fb",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-11-10T05:20:20.000Z",
+              "message": "[MP] Store and load the unfull chunk at the prompt end (#5886)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 53,
+                "lines": 3248,
+                "insertions": 3119,
+                "deletions": 129
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "yeyang-zhou",
@@ -260,6 +725,48 @@
           "avg_score": 70,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 70,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Qian Cao",
+          "email": "talexcao@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 57,
+          "commits": [
+            {
+              "hash": "80f72143",
+              "author": "Qian Cao",
+              "email": "talexcao@gmail.com",
+              "date": "2026-11-10T02:17:32.000Z",
+              "message": "[Bugfix][MP] fs_native: report deletes of keys stored before restart (#6484)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 77,
+                "insertions": 69,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 57
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 57,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 57,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -296,44 +803,128 @@
           "avg_score": 48,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 48,
           "tier": "T1",
           "tier_name": "Advanced"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tensormesh.ai",
+          "name": "Hope Wang",
+          "email": "88800869+hopechong@users.noreply.github.com",
           "total_commits": 1,
           "significant_commits": 0,
           "simple_commits": 1,
-          "commit_score": 45,
+          "commit_score": 40,
           "commits": [
             {
-              "hash": "e733effd",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-11-09T03:37:43.000Z",
-              "message": "[Docs] Describe client affinity as mutual exclusion, not ordering (#6467)\n\nSigned-off-by: baoloongmao <m307499405@qq.com>\nCo-authored-by: baoloongmao <m307499405@qq.com>",
+              "hash": "4e8a9806",
+              "author": "Hope Wang",
+              "email": "88800869+hopechong@users.noreply.github.com",
+              "date": "2026-11-10T04:56:55.000Z",
+              "message": "[Bugfix][CLI] Reuse case-insensitive URL normalization for quota and coordinator (#6368)\n\n* [Bugfix][CLI] Reuse case-insensitive URL normalization for quota and coordinator\n\n \n\nSigned-off-by: Hope Wang <88800869+hopechong@users.noreply.github.com>",
               "stats": {
-                "files": 1,
-                "lines": 42,
-                "insertions": 38,
-                "deletions": 4
+                "files": 2,
+                "lines": 16,
+                "insertions": 2,
+                "deletions": 14
               },
               "scores": {
-                "loc": 8,
-                "files": 5,
+                "loc": 3,
+                "files": 10,
                 "keyword": 12,
-                "ai": 20,
-                "total": 45
+                "ai": 15,
+                "total": 40
               },
               "classification": "simple"
             }
           ],
-          "avg_score": 45,
+          "avg_score": 40,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "13eaf920",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-11-10T20:45:44.000Z",
+              "message": "[Bugfix] Add missing retries to XPU multiprocess CI tests (#6510)\n\nadd flaky-retry for xpu mp tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 3,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "github-actions[bot]",
+          "email": "41898282+github-actions[bot]@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 30,
+          "commits": [
+            {
+              "hash": "5f970931",
+              "author": "github-actions[bot]",
+              "email": "41898282+github-actions[bot]@users.noreply.github.com",
+              "date": "2026-11-10T07:20:45.000Z",
+              "message": "[Build] sync torch version with vLLM v0.33.0rc3 (2.14.0) (#6465)\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: ApostaC <25103655+ApostaC@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 30,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 30,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ],
       "2026-W45": [
@@ -412,6 +1003,9 @@
           "avg_score": 59.666666666666664,
           "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 179,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -469,6 +1063,9 @@
           "avg_score": 69.5,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 139,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -505,6 +1102,9 @@
           "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -541,6 +1141,9 @@
           "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -577,6 +1180,9 @@
           "avg_score": 55,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 55,
           "tier": "T0",
           "tier_name": "Elite"
         }
@@ -585,90 +1191,12 @@
     "monthly": {
       "2026-11": [
         {
-          "name": "Xiao Liu",
-          "email": "liuxiao2103@qq.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 234,
-          "commits": [
-            {
-              "hash": "d0959e00",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-09T09:31:32.000Z",
-              "message": "[MP][Refactor] Move the ZMQ client polling loop to client.transport (#6472)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 4,
-                "lines": 479,
-                "insertions": 278,
-                "deletions": 201
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 70
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "cd29b563",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-09T05:02:45.000Z",
-              "message": "[MP][Refactor] Move the gRPC client to client.transport (#6426)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 20,
-                "lines": 507,
-                "insertions": 292,
-                "deletions": 215
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "9f98811d",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-08T04:52:46.000Z",
-              "message": "[Bugfix][MP] Skip unsupported FD channels during startup (#6387)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 9,
-                "lines": 207,
-                "insertions": 180,
-                "deletions": 27
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 78,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 3,
+          "total_commits": 6,
+          "significant_commits": 6,
           "simple_commits": 0,
-          "commit_score": 197,
+          "commit_score": 443,
           "commits": [
             {
               "hash": "a1b238ec",
@@ -732,11 +1260,344 @@
                 "total": 55
               },
               "classification": "significant"
+            },
+            {
+              "hash": "0ab32d33",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-10T17:01:11.000Z",
+              "message": "[MP][Refactor] Move the shared transport contracts and two platform modules out of multiprocess (#6504)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 43,
+                "lines": 112,
+                "insertions": 57,
+                "deletions": 55
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "427b6fa8",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-10T10:55:34.000Z",
+              "message": "[MP][Refactor] Move the token hasher and the messaging futures out of multiprocess (#6502)\n\n* [MP][Refactor] Move the token hasher and token codec to lmcache.v1.common\n\nMove lmcache/v1/multiprocess/token_hasher.py and token_codec.py to\nlmcache/v1/common/ and update the imports. The vLLM worker and the server\nboth use them, and they only depend on the standard library, numba,\nnumpy and blake3. The code is unchanged apart from import paths, and the\nold paths are not re-exported.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [MP][Refactor] Move the messaging futures to lmcache.v1.transport\n\nMove lmcache/v1/multiprocess/futures.py to lmcache/v1/transport/futures.py\nand update the imports. The client transports return these futures for\npending requests and the server transports stream responses through them,\nso they belong with the shared transport. The code is unchanged apart from\nimport paths, and the old path is not re-exported.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [MP][Refactor] Point the new Q ring SDK test at lmcache.v1.common.token_codec\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 84,
+                "lines": 264,
+                "insertions": 132,
+                "deletions": 132
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9522428a",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-10T03:25:29.000Z",
+              "message": "[MP][gRPC] Authenticate requests on the native gRPC server (#6439)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 168,
+                "insertions": 138,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 65.66666666666667,
+          "avg_score": 73.83333333333333,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 443,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Xiao Liu",
+          "email": "liuxiao2103@qq.com",
+          "total_commits": 5,
+          "significant_commits": 5,
+          "simple_commits": 0,
+          "commit_score": 381,
+          "commits": [
+            {
+              "hash": "d0959e00",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-09T09:31:32.000Z",
+              "message": "[MP][Refactor] Move the ZMQ client polling loop to client.transport (#6472)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 479,
+                "insertions": 278,
+                "deletions": 201
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "cd29b563",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-09T05:02:45.000Z",
+              "message": "[MP][Refactor] Move the gRPC client to client.transport (#6426)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 20,
+                "lines": 507,
+                "insertions": 292,
+                "deletions": 215
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9f98811d",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-08T04:52:46.000Z",
+              "message": "[Bugfix][MP] Skip unsupported FD channels during startup (#6387)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 207,
+                "insertions": 180,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e028a2bb",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-10T18:26:02.000Z",
+              "message": "[MP][Refactor] Move gRPC protos and generated bindings to transport (#6506)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 39,
+                "lines": 87,
+                "insertions": 41,
+                "deletions": 46
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d51d3e60",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-10T05:23:44.000Z",
+              "message": "[MP][Refactor] Move MessageQueueClient to client.transport (#6483)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 638,
+                "insertions": 332,
+                "deletions": 306
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 76.2,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 381,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tensormesh.ai",
+          "total_commits": 6,
+          "significant_commits": 3,
+          "simple_commits": 3,
+          "commit_score": 368,
+          "commits": [
+            {
+              "hash": "e733effd",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-09T03:37:43.000Z",
+              "message": "[Docs] Describe client affinity as mutual exclusion, not ordering (#6467)\n\nSigned-off-by: baoloongmao <m307499405@qq.com>\nCo-authored-by: baoloongmao <m307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 42,
+                "insertions": 38,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 45
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "a9db7485",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-08T01:17:52.000Z",
+              "message": "Add gRPC API key authentication for sync and aio servers (#5770)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 16,
+                "lines": 699,
+                "insertions": 684,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "069a4765",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T16:10:13.000Z",
+              "message": "[CI] Avoid requeueing code quality checks (#6507)\n\n[CI] Keep code quality on one runner\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 68,
+                "insertions": 34,
+                "deletions": 34
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 47
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "78b138fe",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T13:47:35.000Z",
+              "message": "[Bugfix][MP] Fix ZMQ auth test futures import (#6508)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "41346927",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T10:41:10.000Z",
+              "message": "Add ZMQ API key authentication (#5769)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 460,
+                "insertions": 352,
+                "deletions": 108
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c7563a08",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T08:34:44.000Z",
+              "message": "[Feat][MP] Address tagged objects through cache controls (#6200)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 18,
+                "lines": 370,
+                "insertions": 317,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61.333333333333336,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 368,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -815,8 +1676,251 @@
           "avg_score": 59.666666666666664,
           "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 179,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Ben Kugler",
+          "email": "benkug@momentohq.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 177,
+          "commits": [
+            {
+              "hash": "ad2cb65f",
+              "author": "Ben Kugler",
+              "email": "benkug@momentohq.com",
+              "date": "2026-11-09T21:37:42.000Z",
+              "message": "feat: spread RDMA workers across a list of fabric interfaces (#6293)\n\nSigned-off-by: Ben Kugler <benkug@momentohq.com>",
+              "stats": {
+                "files": 6,
+                "lines": 198,
+                "insertions": 155,
+                "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "78ee369f",
+              "author": "Ben Kugler",
+              "email": "benkug@momentohq.com",
+              "date": "2026-11-10T20:37:33.000Z",
+              "message": "[Feature][Valkey] Add blob-tcp transport to the Valkey L2 adapter (#6400)\n\nSigned-off-by: Ben Kugler <benkug@momentohq.com>",
+              "stats": {
+                "files": 8,
+                "lines": 1243,
+                "insertions": 1206,
+                "deletions": 37
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 88.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 177,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 167,
+          "commits": [
+            {
+              "hash": "115e09a4",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-11-09T23:38:17.000Z",
+              "message": "[Core] Shadow L1: index borrowed views of a peer's bytes without payload (#6207)\n\n* [Core] Shadow L1: index borrowed views of a peer's bytes without payload\n\nLet an L2 adapter lend a peer's KV bytes instead of copying them into\nlocal L1. The read path only serves what an L1 indexes, so lending needs\nan L1 that indexes bytes it does not own: a shadow L1.\n\n- `LendingPeerL2AdapterBase(PeerL2AdapterBase)`: the abstract lender. It\n  wants a `REMOTE` L1, carries the shadow L1 the storage manager creates\n  for it (`bind_shadow_l1`) and closes it with itself.\n- `BorrowedMemoryObj`: the lease contract a lender hands over (`lease`,\n  `release`, `same_bytes` for lease adoption, `local_device` for the fence\n  on close); `BorrowedTensorMemoryObj` is the view of locally mapped\n  bytes. `ShadowL1Manager` indexes them and owns no memory; `admit`\n  read-locks each view for one request, and a key already resident adopts\n  the fresh lease when both views alias the same bytes. A shadow holds a\n  disabled event bus, which now registers no gauges.\n- `StorageManager` creates the shadow for a `REMOTE`-first config, refuses\n  serde on a lender and a lender/config mismatch, and undoes a failed\n  `add_l2_adapter`. `PrefetchController` looks the lender up on every\n  prefetch, admits its views, unlocks the keys that did not become views,\n  and holds a lender until its views drain.\n- Independent fix: the copy-load path counts only `SUCCESS` admissions as\n  hits.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: implement the L1 primitives; lenders go through the ordinary load pipeline\n\nReview (ApostaC): let the shadow L1 implement reserve_write and the other\nprimitives so the prefetch controller needs no lender-specific path.\n\n- `ShadowL1Manager.reserve_write` stages a `BorrowedMemoryObj` placeholder\n  per key with no capacity check, always temporary; a key another request\n  still reads is staged too. `finish_write_and_reserve_read` admits bound\n  placeholders; a resident view adopts the fresh lease of the same bytes.\n  `reserve_read` misses every key: every request borrows afresh. `admit`\n  and `take_borrowed_objects` are gone.\n- `BorrowedMemoryObj` is one concrete class: a placeholder the shadow's\n  memory manager hands out, which the lender's `submit_load_task` binds to\n  its lease and to the bytes (a tensor view, or `read_into` for remote\n  bytes). `BorrowedTensorMemoryObj` is gone.\n- The prefetch controller keeps only the lender's affinity (its shadow)\n  and the NO_LOCK exclusion. The storage manager's `delete_l2_adapter`\n  waits for the lender's borrowed views to drain, sweeping lapsed readers.\n- `MemoryResidency.DUMMY` becomes `SHADOW`; shadows are tagged\n  `(segment, SHADOW)` and a lender wants `SHADOW` first.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a remote-bound BorrowedMemoryObj has no tensor, byte array or data pointer\n\nThe lending mock also unlocks through PeerL2AdapterBase directly, as its\nlease release does, so a subclass between them can keep its own\nreservations without the mock's unlocks going through them.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: shorter docstrings and docs; one L1-container rebuild per side; fold overlapping tests\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] memory tags: drop the shadow sentence under the L1 tag table\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: admission refuses nothing; the copy-admission filter leaves this PR\n\nA lease that ends between a lender's load and the admission is the same\nrace as one ending right after: the view is resident and unreadable, and\nits holder's finish_read returns the lease. So the shadow's\nfinish_write_and_reserve_read only adopts a fresh lease into a resident\nview and defers to the base, and `_poll_load_results` is back to dev. The\nexpired-write-reservation bug of owned L1s is unrelated and gets its own PR.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a failed lender add only unlists its shadow\n\nThe general add_l2_adapter rollback leaves this PR: as on dev, an adapter\nwhose controller registration failed stays for delete_l2_adapter to\nremove. What a lender needs is one guard: its shadow L1 is not listed when\nnothing routes to it. Removal recognises a lender by type, so a\nhalf-registered lender can be deleted.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: inline the single-call borrowed_segment into _build_l2_adapter\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: reword the SHADOW residency\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: one lends flag and one cleanup path in _build_l2_adapter\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: get_local_borrow_count, the count is this node's\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: BorrowingPeerL2AdapterBase; the owner lends, this adapter borrows\n\nThe adapter borrows a peer's bytes on behalf of this node; \"lender\" named\nthe wrong side. The mock and its registry names follow.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: reclaim expired placeholders; a remote binding needs the owner's address; one critical section per override\n\nReview findings:\n- A placeholder whose write reservation expired before admission stayed\n  staged forever (a shadow has no eviction) and the base handed it, still\n  bound, to the next writer. The shadow's sweep now reclaims expired\n  staging entries too.\n- `bind(read_into=...)` accepted the default address, so two remote views\n  of different copies compared as the same bytes. The address is required.\n- `reserve_write` and `finish_write_and_reserve_read` swapped leases and\n  then re-entered the base under a second lock acquisition; a reader's\n  `finish_read` in between could free the resident view. The shadow uses a\n  reentrant lock so each override is one critical section.\nAlso: `for_borrower`, borrower names in the tests, no hard-coded memory\nformat on placeholders.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: restore the is_multi_l1 docstring\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a configured L1, not one the borrower brings\n\nThe shadow L1 is configured like any other L1 (`--l1-manager '{\"type\":\n\"SHADOW\", \"tag\": ..., \"segment\": ...}'`, `ShadowL1ManagerConfig`) and is\nthe affinity of the borrowing L2 adapters of its segment, resolved by\ntags like every adapter's. It owns no memory, so an idle shadow costs\nnothing; its store and eviction controllers are inert because a shadow\ncalls no listener. The storage manager no longer creates, attaches or\ndetaches a shadow per borrower; the prefetch controller skips an L1\nwithout capacity at admission and keeps borrowers out of NO_LOCK by the\naffinity L1's residency tag. `BorrowingPeerL2AdapterBase` loses\n`shadow_l1` / `bind_shadow_l1`; removal still waits for a borrower's\nviews to be released. A shadow cannot be the first L1, which receives\nthe engine's writes.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: removal is the borrower's business, not the storage manager's\n\nThe storage manager and the P2P adapter base are back to dev. A\nborrower's `close` refuses while a view holds a live lease, and\n`delete_l2_adapter` keeps a failed close for a retry as it does for any\nadapter; the shadow's public `sweep_lapsed` goes with the drain loop\n(entries whose readers' TTL lapsed are swept at the next reservation).\n`BorrowingPeerL2AdapterBase` leaves this PR: nothing here needs to tell a\nborrower apart, since affinity, admission and NO_LOCK go by the shadow's\ntags. The borrowing mock subclasses `PeerL2AdapterBase`.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] Shadow L1: a shorter design section\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Tests] Shadow L1: type the borrowing test helpers for mypy\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] Shadow L1: a shorter class docstring\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: same_bytes compares the owner as well as the address\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1835,
+                "insertions": 1790,
+                "deletions": 45
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 20,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1fd2776f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-11-10T08:59:10.000Z",
+              "message": "[Core] BorrowedMemoryObj: a tensorless MemoryObj in memory_management.py (#6488)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 585,
+                "insertions": 346,
+                "deletions": 239
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 167,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Maharani Ayu Putri Irawan",
+          "email": "72875641+rannnayy@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 156,
+          "commits": [
+            {
+              "hash": "3262c732",
+              "author": "Maharani Ayu Putri Irawan",
+              "email": "72875641+rannnayy@users.noreply.github.com",
+              "date": "2026-11-09T23:38:54.000Z",
+              "message": "[SDK][token dropping] Switch from Engine-driven transfer path to LMCache-driven (#6365)\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2437,
+                "insertions": 2008,
+                "deletions": 429
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "aa78f3c5",
+              "author": "Maharani Ayu Putri Irawan",
+              "email": "72875641+rannnayy@users.noreply.github.com",
+              "date": "2026-11-10T06:10:21.000Z",
+              "message": "[SDK] Tests for the LMCache-driven Q ring transfer path (#6371)\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 1222,
+                "insertions": 1219,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 156,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 154,
+          "commits": [
+            {
+              "hash": "ac34cafe",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-11-10T07:24:44.000Z",
+              "message": "[P2P][TransferChannel] Add RDMA writes to the transfer channel and a write mode to its benchmark (#6401)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 14,
+                "lines": 996,
+                "insertions": 797,
+                "deletions": 199
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9239503d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-11-10T03:49:03.000Z",
+              "message": "[MP][vLLM] Declare kv_cache_access on LMCacheMPConnector (#6487)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 191,
+                "insertions": 182,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 154,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "nauta",
@@ -872,49 +1976,91 @@
           "avg_score": 69.5,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 139,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tensormesh.ai",
+          "name": "Jason",
+          "email": "31175216+thegoldenflow@users.noreply.github.com",
           "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 127,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 123,
           "commits": [
             {
-              "hash": "e733effd",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-11-09T03:37:43.000Z",
-              "message": "[Docs] Describe client affinity as mutual exclusion, not ordering (#6467)\n\nSigned-off-by: baoloongmao <m307499405@qq.com>\nCo-authored-by: baoloongmao <m307499405@qq.com>",
+              "hash": "90c8259c",
+              "author": "Jason",
+              "email": "31175216+thegoldenflow@users.noreply.github.com",
+              "date": "2026-11-10T16:05:11.000Z",
+              "message": "[MP][Refactor] Move server-module call envelopes to transport (#6466)\n\nSigned-off-by: Jason Yao <wsyjh8@gmail.com>",
               "stats": {
-                "files": 1,
-                "lines": 42,
-                "insertions": 38,
-                "deletions": 4
+                "files": 10,
+                "lines": 48,
+                "insertions": 24,
+                "deletions": 24
               },
               "scores": {
                 "loc": 8,
-                "files": 5,
+                "files": 20,
                 "keyword": 12,
-                "ai": 20,
-                "total": 45
+                "ai": 18,
+                "total": 58
               },
-              "classification": "simple"
+              "classification": "significant"
             },
             {
-              "hash": "a9db7485",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-11-08T01:17:52.000Z",
-              "message": "Add gRPC API key authentication for sync and aio servers (#5770)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "hash": "26889748",
+              "author": "Jason",
+              "email": "31175216+thegoldenflow@users.noreply.github.com",
+              "date": "2026-11-10T15:48:32.000Z",
+              "message": "[MP][Refactor] Move transfer-channel data types to common (#6374)\n\nSigned-off-by: Jason Yao <wsyjh8@gmail.com>",
               "stats": {
                 "files": 16,
-                "lines": 699,
-                "insertions": 684,
-                "deletions": 15
+                "lines": 76,
+                "insertions": 49,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 123,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "30dc05fb",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-11-10T05:20:20.000Z",
+              "message": "[MP] Store and load the unfull chunk at the prompt end (#5886)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 53,
+                "lines": 3248,
+                "insertions": 3119,
+                "deletions": 129
               },
               "scores": {
                 "loc": 30,
@@ -926,117 +2072,12 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 63.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Ben Kugler",
-          "email": "benkug@momentohq.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 95,
-          "commits": [
-            {
-              "hash": "ad2cb65f",
-              "author": "Ben Kugler",
-              "email": "benkug@momentohq.com",
-              "date": "2026-11-09T21:37:42.000Z",
-              "message": "feat: spread RDMA workers across a list of fabric interfaces (#6293)\n\nSigned-off-by: Ben Kugler <benkug@momentohq.com>",
-              "stats": {
-                "files": 6,
-                "lines": 198,
-                "insertions": 155,
-                "deletions": 43
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 20,
-                "total": 95
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 95,
+          "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "weishu",
-          "email": "838677410@qq.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 85,
-          "commits": [
-            {
-              "hash": "115e09a4",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-11-09T23:38:17.000Z",
-              "message": "[Core] Shadow L1: index borrowed views of a peer's bytes without payload (#6207)\n\n* [Core] Shadow L1: index borrowed views of a peer's bytes without payload\n\nLet an L2 adapter lend a peer's KV bytes instead of copying them into\nlocal L1. The read path only serves what an L1 indexes, so lending needs\nan L1 that indexes bytes it does not own: a shadow L1.\n\n- `LendingPeerL2AdapterBase(PeerL2AdapterBase)`: the abstract lender. It\n  wants a `REMOTE` L1, carries the shadow L1 the storage manager creates\n  for it (`bind_shadow_l1`) and closes it with itself.\n- `BorrowedMemoryObj`: the lease contract a lender hands over (`lease`,\n  `release`, `same_bytes` for lease adoption, `local_device` for the fence\n  on close); `BorrowedTensorMemoryObj` is the view of locally mapped\n  bytes. `ShadowL1Manager` indexes them and owns no memory; `admit`\n  read-locks each view for one request, and a key already resident adopts\n  the fresh lease when both views alias the same bytes. A shadow holds a\n  disabled event bus, which now registers no gauges.\n- `StorageManager` creates the shadow for a `REMOTE`-first config, refuses\n  serde on a lender and a lender/config mismatch, and undoes a failed\n  `add_l2_adapter`. `PrefetchController` looks the lender up on every\n  prefetch, admits its views, unlocks the keys that did not become views,\n  and holds a lender until its views drain.\n- Independent fix: the copy-load path counts only `SUCCESS` admissions as\n  hits.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: implement the L1 primitives; lenders go through the ordinary load pipeline\n\nReview (ApostaC): let the shadow L1 implement reserve_write and the other\nprimitives so the prefetch controller needs no lender-specific path.\n\n- `ShadowL1Manager.reserve_write` stages a `BorrowedMemoryObj` placeholder\n  per key with no capacity check, always temporary; a key another request\n  still reads is staged too. `finish_write_and_reserve_read` admits bound\n  placeholders; a resident view adopts the fresh lease of the same bytes.\n  `reserve_read` misses every key: every request borrows afresh. `admit`\n  and `take_borrowed_objects` are gone.\n- `BorrowedMemoryObj` is one concrete class: a placeholder the shadow's\n  memory manager hands out, which the lender's `submit_load_task` binds to\n  its lease and to the bytes (a tensor view, or `read_into` for remote\n  bytes). `BorrowedTensorMemoryObj` is gone.\n- The prefetch controller keeps only the lender's affinity (its shadow)\n  and the NO_LOCK exclusion. The storage manager's `delete_l2_adapter`\n  waits for the lender's borrowed views to drain, sweeping lapsed readers.\n- `MemoryResidency.DUMMY` becomes `SHADOW`; shadows are tagged\n  `(segment, SHADOW)` and a lender wants `SHADOW` first.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a remote-bound BorrowedMemoryObj has no tensor, byte array or data pointer\n\nThe lending mock also unlocks through PeerL2AdapterBase directly, as its\nlease release does, so a subclass between them can keep its own\nreservations without the mock's unlocks going through them.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: shorter docstrings and docs; one L1-container rebuild per side; fold overlapping tests\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] memory tags: drop the shadow sentence under the L1 tag table\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: admission refuses nothing; the copy-admission filter leaves this PR\n\nA lease that ends between a lender's load and the admission is the same\nrace as one ending right after: the view is resident and unreadable, and\nits holder's finish_read returns the lease. So the shadow's\nfinish_write_and_reserve_read only adopts a fresh lease into a resident\nview and defers to the base, and `_poll_load_results` is back to dev. The\nexpired-write-reservation bug of owned L1s is unrelated and gets its own PR.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a failed lender add only unlists its shadow\n\nThe general add_l2_adapter rollback leaves this PR: as on dev, an adapter\nwhose controller registration failed stays for delete_l2_adapter to\nremove. What a lender needs is one guard: its shadow L1 is not listed when\nnothing routes to it. Removal recognises a lender by type, so a\nhalf-registered lender can be deleted.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: inline the single-call borrowed_segment into _build_l2_adapter\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: reword the SHADOW residency\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: one lends flag and one cleanup path in _build_l2_adapter\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: get_local_borrow_count, the count is this node's\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: BorrowingPeerL2AdapterBase; the owner lends, this adapter borrows\n\nThe adapter borrows a peer's bytes on behalf of this node; \"lender\" named\nthe wrong side. The mock and its registry names follow.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: reclaim expired placeholders; a remote binding needs the owner's address; one critical section per override\n\nReview findings:\n- A placeholder whose write reservation expired before admission stayed\n  staged forever (a shadow has no eviction) and the base handed it, still\n  bound, to the next writer. The shadow's sweep now reclaims expired\n  staging entries too.\n- `bind(read_into=...)` accepted the default address, so two remote views\n  of different copies compared as the same bytes. The address is required.\n- `reserve_write` and `finish_write_and_reserve_read` swapped leases and\n  then re-entered the base under a second lock acquisition; a reader's\n  `finish_read` in between could free the resident view. The shadow uses a\n  reentrant lock so each override is one critical section.\nAlso: `for_borrower`, borrower names in the tests, no hard-coded memory\nformat on placeholders.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: restore the is_multi_l1 docstring\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a configured L1, not one the borrower brings\n\nThe shadow L1 is configured like any other L1 (`--l1-manager '{\"type\":\n\"SHADOW\", \"tag\": ..., \"segment\": ...}'`, `ShadowL1ManagerConfig`) and is\nthe affinity of the borrowing L2 adapters of its segment, resolved by\ntags like every adapter's. It owns no memory, so an idle shadow costs\nnothing; its store and eviction controllers are inert because a shadow\ncalls no listener. The storage manager no longer creates, attaches or\ndetaches a shadow per borrower; the prefetch controller skips an L1\nwithout capacity at admission and keeps borrowers out of NO_LOCK by the\naffinity L1's residency tag. `BorrowingPeerL2AdapterBase` loses\n`shadow_l1` / `bind_shadow_l1`; removal still waits for a borrower's\nviews to be released. A shadow cannot be the first L1, which receives\nthe engine's writes.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: removal is the borrower's business, not the storage manager's\n\nThe storage manager and the P2P adapter base are back to dev. A\nborrower's `close` refuses while a view holds a live lease, and\n`delete_l2_adapter` keeps a failed close for a retry as it does for any\nadapter; the shadow's public `sweep_lapsed` goes with the drain loop\n(entries whose readers' TTL lapsed are swept at the next reservation).\n`BorrowingPeerL2AdapterBase` leaves this PR: nothing here needs to tell a\nborrower apart, since affinity, admission and NO_LOCK go by the shadow's\ntags. The borrowing mock subclasses `PeerL2AdapterBase`.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] Shadow L1: a shorter design section\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Tests] Shadow L1: type the borrowing test helpers for mypy\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] Shadow L1: a shorter class docstring\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: same_bytes compares the owner as well as the address\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 20,
-                "lines": 1835,
-                "insertions": 1790,
-                "deletions": 45
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 20,
-                "total": 85
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 85,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Maharani Ayu Putri Irawan",
-          "email": "72875641+rannnayy@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 84,
-          "commits": [
-            {
-              "hash": "3262c732",
-              "author": "Maharani Ayu Putri Irawan",
-              "email": "72875641+rannnayy@users.noreply.github.com",
-              "date": "2026-11-09T23:38:54.000Z",
-              "message": "[SDK][token dropping] Switch from Engine-driven transfer path to LMCache-driven (#6365)\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>",
-              "stats": {
-                "files": 17,
-                "lines": 2437,
-                "insertions": 2008,
-                "deletions": 429
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 22,
-                "total": 84
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 84,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1073,8 +2114,50 @@
           "avg_score": 70,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 70,
           "tier": "T1",
           "tier_name": "Advanced"
+        },
+        {
+          "name": "Qian Cao",
+          "email": "talexcao@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 57,
+          "commits": [
+            {
+              "hash": "80f72143",
+              "author": "Qian Cao",
+              "email": "talexcao@gmail.com",
+              "date": "2026-11-10T02:17:32.000Z",
+              "message": "[Bugfix][MP] fs_native: report deletes of keys stored before restart (#6484)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 77,
+                "insertions": 69,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 57
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 57,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 57,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Cheng Rui",
@@ -1109,98 +2192,140 @@
           "avg_score": 48,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 48,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Hope Wang",
+          "email": "88800869+hopechong@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "4e8a9806",
+              "author": "Hope Wang",
+              "email": "88800869+hopechong@users.noreply.github.com",
+              "date": "2026-11-10T04:56:55.000Z",
+              "message": "[Bugfix][CLI] Reuse case-insensitive URL normalization for quota and coordinator (#6368)\n\n* [Bugfix][CLI] Reuse case-insensitive URL normalization for quota and coordinator\n\n \n\nSigned-off-by: Hope Wang <88800869+hopechong@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 16,
+                "insertions": 2,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "13eaf920",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-11-10T20:45:44.000Z",
+              "message": "[Bugfix] Add missing retries to XPU multiprocess CI tests (#6510)\n\nadd flaky-retry for xpu mp tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 3,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "github-actions[bot]",
+          "email": "41898282+github-actions[bot]@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 30,
+          "commits": [
+            {
+              "hash": "5f970931",
+              "author": "github-actions[bot]",
+              "email": "41898282+github-actions[bot]@users.noreply.github.com",
+              "date": "2026-11-10T07:20:45.000Z",
+              "message": "[Build] sync torch version with vLLM v0.33.0rc3 (2.14.0) (#6465)\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: ApostaC <25103655+ApostaC@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 30,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 30,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     },
     "quarterly": {
       "2026-Q4": [
         {
-          "name": "Xiao Liu",
-          "email": "liuxiao2103@qq.com",
-          "total_commits": 3,
-          "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 234,
-          "commits": [
-            {
-              "hash": "d0959e00",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-09T09:31:32.000Z",
-              "message": "[MP][Refactor] Move the ZMQ client polling loop to client.transport (#6472)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 4,
-                "lines": 479,
-                "insertions": 278,
-                "deletions": 201
-              },
-              "scores": {
-                "loc": 30,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 70
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "cd29b563",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-09T05:02:45.000Z",
-              "message": "[MP][Refactor] Move the gRPC client to client.transport (#6426)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 20,
-                "lines": 507,
-                "insertions": 292,
-                "deletions": 215
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "9f98811d",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-08T04:52:46.000Z",
-              "message": "[Bugfix][MP] Skip unsupported FD channels during startup (#6387)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 9,
-                "lines": 207,
-                "insertions": 180,
-                "deletions": 27
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 78,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
           "name": "MinJun Choi",
           "email": "mj04300017@gmail.com",
-          "total_commits": 3,
-          "significant_commits": 3,
+          "total_commits": 6,
+          "significant_commits": 6,
           "simple_commits": 0,
-          "commit_score": 197,
+          "commit_score": 443,
           "commits": [
             {
               "hash": "a1b238ec",
@@ -1264,11 +2389,344 @@
                 "total": 55
               },
               "classification": "significant"
+            },
+            {
+              "hash": "0ab32d33",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-10T17:01:11.000Z",
+              "message": "[MP][Refactor] Move the shared transport contracts and two platform modules out of multiprocess (#6504)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 43,
+                "lines": 112,
+                "insertions": 57,
+                "deletions": 55
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "427b6fa8",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-10T10:55:34.000Z",
+              "message": "[MP][Refactor] Move the token hasher and the messaging futures out of multiprocess (#6502)\n\n* [MP][Refactor] Move the token hasher and token codec to lmcache.v1.common\n\nMove lmcache/v1/multiprocess/token_hasher.py and token_codec.py to\nlmcache/v1/common/ and update the imports. The vLLM worker and the server\nboth use them, and they only depend on the standard library, numba,\nnumpy and blake3. The code is unchanged apart from import paths, and the\nold paths are not re-exported.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [MP][Refactor] Move the messaging futures to lmcache.v1.transport\n\nMove lmcache/v1/multiprocess/futures.py to lmcache/v1/transport/futures.py\nand update the imports. The client transports return these futures for\npending requests and the server transports stream responses through them,\nso they belong with the shared transport. The code is unchanged apart from\nimport paths, and the old path is not re-exported.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [MP][Refactor] Point the new Q ring SDK test at lmcache.v1.common.token_codec\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 84,
+                "lines": 264,
+                "insertions": 132,
+                "deletions": 132
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9522428a",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-10T03:25:29.000Z",
+              "message": "[MP][gRPC] Authenticate requests on the native gRPC server (#6439)\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 8,
+                "lines": 168,
+                "insertions": 138,
+                "deletions": 30
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 65.66666666666667,
+          "avg_score": 73.83333333333333,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 443,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Xiao Liu",
+          "email": "liuxiao2103@qq.com",
+          "total_commits": 5,
+          "significant_commits": 5,
+          "simple_commits": 0,
+          "commit_score": 381,
+          "commits": [
+            {
+              "hash": "d0959e00",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-09T09:31:32.000Z",
+              "message": "[MP][Refactor] Move the ZMQ client polling loop to client.transport (#6472)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 479,
+                "insertions": 278,
+                "deletions": 201
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "cd29b563",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-09T05:02:45.000Z",
+              "message": "[MP][Refactor] Move the gRPC client to client.transport (#6426)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 20,
+                "lines": 507,
+                "insertions": 292,
+                "deletions": 215
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9f98811d",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-08T04:52:46.000Z",
+              "message": "[Bugfix][MP] Skip unsupported FD channels during startup (#6387)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 207,
+                "insertions": 180,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e028a2bb",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-10T18:26:02.000Z",
+              "message": "[MP][Refactor] Move gRPC protos and generated bindings to transport (#6506)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 39,
+                "lines": 87,
+                "insertions": 41,
+                "deletions": 46
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d51d3e60",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-10T05:23:44.000Z",
+              "message": "[MP][Refactor] Move MessageQueueClient to client.transport (#6483)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 638,
+                "insertions": 332,
+                "deletions": 306
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 76.2,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 381,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tensormesh.ai",
+          "total_commits": 6,
+          "significant_commits": 3,
+          "simple_commits": 3,
+          "commit_score": 368,
+          "commits": [
+            {
+              "hash": "e733effd",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-09T03:37:43.000Z",
+              "message": "[Docs] Describe client affinity as mutual exclusion, not ordering (#6467)\n\nSigned-off-by: baoloongmao <m307499405@qq.com>\nCo-authored-by: baoloongmao <m307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 42,
+                "insertions": 38,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 8,
+                "files": 5,
+                "keyword": 12,
+                "ai": 20,
+                "total": 45
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "a9db7485",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-08T01:17:52.000Z",
+              "message": "Add gRPC API key authentication for sync and aio servers (#5770)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 16,
+                "lines": 699,
+                "insertions": 684,
+                "deletions": 15
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "069a4765",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T16:10:13.000Z",
+              "message": "[CI] Avoid requeueing code quality checks (#6507)\n\n[CI] Keep code quality on one runner\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 68,
+                "insertions": 34,
+                "deletions": 34
+              },
+              "scores": {
+                "loc": 15,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 47
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "78b138fe",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T13:47:35.000Z",
+              "message": "[Bugfix][MP] Fix ZMQ auth test futures import (#6508)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "41346927",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T10:41:10.000Z",
+              "message": "Add ZMQ API key authentication (#5769)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 13,
+                "lines": 460,
+                "insertions": 352,
+                "deletions": 108
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "c7563a08",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-10T08:34:44.000Z",
+              "message": "[Feat][MP] Address tagged objects through cache controls (#6200)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 18,
+                "lines": 370,
+                "insertions": 317,
+                "deletions": 53
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61.333333333333336,
+          "significance_ratio": 0.5,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 368,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -1347,8 +2805,251 @@
           "avg_score": 59.666666666666664,
           "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 179,
           "tier": "T0",
           "tier_name": "Elite"
+        },
+        {
+          "name": "Ben Kugler",
+          "email": "benkug@momentohq.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 177,
+          "commits": [
+            {
+              "hash": "ad2cb65f",
+              "author": "Ben Kugler",
+              "email": "benkug@momentohq.com",
+              "date": "2026-11-09T21:37:42.000Z",
+              "message": "feat: spread RDMA workers across a list of fabric interfaces (#6293)\n\nSigned-off-by: Ben Kugler <benkug@momentohq.com>",
+              "stats": {
+                "files": 6,
+                "lines": 198,
+                "insertions": 155,
+                "deletions": 43
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 25,
+                "ai": 20,
+                "total": 95
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "78ee369f",
+              "author": "Ben Kugler",
+              "email": "benkug@momentohq.com",
+              "date": "2026-11-10T20:37:33.000Z",
+              "message": "[Feature][Valkey] Add blob-tcp transport to the Valkey L2 adapter (#6400)\n\nSigned-off-by: Ben Kugler <benkug@momentohq.com>",
+              "stats": {
+                "files": 8,
+                "lines": 1243,
+                "insertions": 1206,
+                "deletions": 37
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 88.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 177,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 167,
+          "commits": [
+            {
+              "hash": "115e09a4",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-11-09T23:38:17.000Z",
+              "message": "[Core] Shadow L1: index borrowed views of a peer's bytes without payload (#6207)\n\n* [Core] Shadow L1: index borrowed views of a peer's bytes without payload\n\nLet an L2 adapter lend a peer's KV bytes instead of copying them into\nlocal L1. The read path only serves what an L1 indexes, so lending needs\nan L1 that indexes bytes it does not own: a shadow L1.\n\n- `LendingPeerL2AdapterBase(PeerL2AdapterBase)`: the abstract lender. It\n  wants a `REMOTE` L1, carries the shadow L1 the storage manager creates\n  for it (`bind_shadow_l1`) and closes it with itself.\n- `BorrowedMemoryObj`: the lease contract a lender hands over (`lease`,\n  `release`, `same_bytes` for lease adoption, `local_device` for the fence\n  on close); `BorrowedTensorMemoryObj` is the view of locally mapped\n  bytes. `ShadowL1Manager` indexes them and owns no memory; `admit`\n  read-locks each view for one request, and a key already resident adopts\n  the fresh lease when both views alias the same bytes. A shadow holds a\n  disabled event bus, which now registers no gauges.\n- `StorageManager` creates the shadow for a `REMOTE`-first config, refuses\n  serde on a lender and a lender/config mismatch, and undoes a failed\n  `add_l2_adapter`. `PrefetchController` looks the lender up on every\n  prefetch, admits its views, unlocks the keys that did not become views,\n  and holds a lender until its views drain.\n- Independent fix: the copy-load path counts only `SUCCESS` admissions as\n  hits.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: implement the L1 primitives; lenders go through the ordinary load pipeline\n\nReview (ApostaC): let the shadow L1 implement reserve_write and the other\nprimitives so the prefetch controller needs no lender-specific path.\n\n- `ShadowL1Manager.reserve_write` stages a `BorrowedMemoryObj` placeholder\n  per key with no capacity check, always temporary; a key another request\n  still reads is staged too. `finish_write_and_reserve_read` admits bound\n  placeholders; a resident view adopts the fresh lease of the same bytes.\n  `reserve_read` misses every key: every request borrows afresh. `admit`\n  and `take_borrowed_objects` are gone.\n- `BorrowedMemoryObj` is one concrete class: a placeholder the shadow's\n  memory manager hands out, which the lender's `submit_load_task` binds to\n  its lease and to the bytes (a tensor view, or `read_into` for remote\n  bytes). `BorrowedTensorMemoryObj` is gone.\n- The prefetch controller keeps only the lender's affinity (its shadow)\n  and the NO_LOCK exclusion. The storage manager's `delete_l2_adapter`\n  waits for the lender's borrowed views to drain, sweeping lapsed readers.\n- `MemoryResidency.DUMMY` becomes `SHADOW`; shadows are tagged\n  `(segment, SHADOW)` and a lender wants `SHADOW` first.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a remote-bound BorrowedMemoryObj has no tensor, byte array or data pointer\n\nThe lending mock also unlocks through PeerL2AdapterBase directly, as its\nlease release does, so a subclass between them can keep its own\nreservations without the mock's unlocks going through them.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: shorter docstrings and docs; one L1-container rebuild per side; fold overlapping tests\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] memory tags: drop the shadow sentence under the L1 tag table\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: admission refuses nothing; the copy-admission filter leaves this PR\n\nA lease that ends between a lender's load and the admission is the same\nrace as one ending right after: the view is resident and unreadable, and\nits holder's finish_read returns the lease. So the shadow's\nfinish_write_and_reserve_read only adopts a fresh lease into a resident\nview and defers to the base, and `_poll_load_results` is back to dev. The\nexpired-write-reservation bug of owned L1s is unrelated and gets its own PR.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a failed lender add only unlists its shadow\n\nThe general add_l2_adapter rollback leaves this PR: as on dev, an adapter\nwhose controller registration failed stays for delete_l2_adapter to\nremove. What a lender needs is one guard: its shadow L1 is not listed when\nnothing routes to it. Removal recognises a lender by type, so a\nhalf-registered lender can be deleted.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: inline the single-call borrowed_segment into _build_l2_adapter\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: reword the SHADOW residency\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: one lends flag and one cleanup path in _build_l2_adapter\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: get_local_borrow_count, the count is this node's\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: BorrowingPeerL2AdapterBase; the owner lends, this adapter borrows\n\nThe adapter borrows a peer's bytes on behalf of this node; \"lender\" named\nthe wrong side. The mock and its registry names follow.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: reclaim expired placeholders; a remote binding needs the owner's address; one critical section per override\n\nReview findings:\n- A placeholder whose write reservation expired before admission stayed\n  staged forever (a shadow has no eviction) and the base handed it, still\n  bound, to the next writer. The shadow's sweep now reclaims expired\n  staging entries too.\n- `bind(read_into=...)` accepted the default address, so two remote views\n  of different copies compared as the same bytes. The address is required.\n- `reserve_write` and `finish_write_and_reserve_read` swapped leases and\n  then re-entered the base under a second lock acquisition; a reader's\n  `finish_read` in between could free the resident view. The shadow uses a\n  reentrant lock so each override is one critical section.\nAlso: `for_borrower`, borrower names in the tests, no hard-coded memory\nformat on placeholders.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: restore the is_multi_l1 docstring\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a configured L1, not one the borrower brings\n\nThe shadow L1 is configured like any other L1 (`--l1-manager '{\"type\":\n\"SHADOW\", \"tag\": ..., \"segment\": ...}'`, `ShadowL1ManagerConfig`) and is\nthe affinity of the borrowing L2 adapters of its segment, resolved by\ntags like every adapter's. It owns no memory, so an idle shadow costs\nnothing; its store and eviction controllers are inert because a shadow\ncalls no listener. The storage manager no longer creates, attaches or\ndetaches a shadow per borrower; the prefetch controller skips an L1\nwithout capacity at admission and keeps borrowers out of NO_LOCK by the\naffinity L1's residency tag. `BorrowingPeerL2AdapterBase` loses\n`shadow_l1` / `bind_shadow_l1`; removal still waits for a borrower's\nviews to be released. A shadow cannot be the first L1, which receives\nthe engine's writes.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: removal is the borrower's business, not the storage manager's\n\nThe storage manager and the P2P adapter base are back to dev. A\nborrower's `close` refuses while a view holds a live lease, and\n`delete_l2_adapter` keeps a failed close for a retry as it does for any\nadapter; the shadow's public `sweep_lapsed` goes with the drain loop\n(entries whose readers' TTL lapsed are swept at the next reservation).\n`BorrowingPeerL2AdapterBase` leaves this PR: nothing here needs to tell a\nborrower apart, since affinity, admission and NO_LOCK go by the shadow's\ntags. The borrowing mock subclasses `PeerL2AdapterBase`.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] Shadow L1: a shorter design section\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Tests] Shadow L1: type the borrowing test helpers for mypy\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] Shadow L1: a shorter class docstring\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: same_bytes compares the owner as well as the address\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 20,
+                "lines": 1835,
+                "insertions": 1790,
+                "deletions": 45
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 15,
+                "ai": 20,
+                "total": 85
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "1fd2776f",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-11-10T08:59:10.000Z",
+              "message": "[Core] BorrowedMemoryObj: a tensorless MemoryObj in memory_management.py (#6488)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 585,
+                "insertions": 346,
+                "deletions": 239
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 83.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 167,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Maharani Ayu Putri Irawan",
+          "email": "72875641+rannnayy@users.noreply.github.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 156,
+          "commits": [
+            {
+              "hash": "3262c732",
+              "author": "Maharani Ayu Putri Irawan",
+              "email": "72875641+rannnayy@users.noreply.github.com",
+              "date": "2026-11-09T23:38:54.000Z",
+              "message": "[SDK][token dropping] Switch from Engine-driven transfer path to LMCache-driven (#6365)\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>",
+              "stats": {
+                "files": 17,
+                "lines": 2437,
+                "insertions": 2008,
+                "deletions": 429
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "aa78f3c5",
+              "author": "Maharani Ayu Putri Irawan",
+              "email": "72875641+rannnayy@users.noreply.github.com",
+              "date": "2026-11-10T06:10:21.000Z",
+              "message": "[SDK] Tests for the LMCache-driven Q ring transfer path (#6371)\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>",
+              "stats": {
+                "files": 4,
+                "lines": 1222,
+                "insertions": 1219,
+                "deletions": 3
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 72
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 78,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 156,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Yihua Cheng",
+          "email": "yihua98@uchicago.edu",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 154,
+          "commits": [
+            {
+              "hash": "ac34cafe",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-11-10T07:24:44.000Z",
+              "message": "[P2P][TransferChannel] Add RDMA writes to the transfer channel and a write mode to its benchmark (#6401)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 14,
+                "lines": 996,
+                "insertions": 797,
+                "deletions": 199
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 22,
+                "total": 84
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "9239503d",
+              "author": "Yihua Cheng",
+              "email": "yihua98@uchicago.edu",
+              "date": "2026-11-10T03:49:03.000Z",
+              "message": "[MP][vLLM] Declare kv_cache_access on LMCacheMPConnector (#6487)\n\nSigned-off-by: ApostaC <yihua@tensormesh.ai>",
+              "stats": {
+                "files": 3,
+                "lines": 191,
+                "insertions": 182,
+                "deletions": 9
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 77,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 154,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
           "name": "nauta",
@@ -1404,49 +3105,91 @@
           "avg_score": 69.5,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 139,
+          "tier": "T1",
+          "tier_name": "Advanced"
         },
         {
-          "name": "maobaolong",
-          "email": "baoloongmao@tensormesh.ai",
+          "name": "Jason",
+          "email": "31175216+thegoldenflow@users.noreply.github.com",
           "total_commits": 2,
-          "significant_commits": 1,
-          "simple_commits": 1,
-          "commit_score": 127,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 123,
           "commits": [
             {
-              "hash": "e733effd",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-11-09T03:37:43.000Z",
-              "message": "[Docs] Describe client affinity as mutual exclusion, not ordering (#6467)\n\nSigned-off-by: baoloongmao <m307499405@qq.com>\nCo-authored-by: baoloongmao <m307499405@qq.com>",
+              "hash": "90c8259c",
+              "author": "Jason",
+              "email": "31175216+thegoldenflow@users.noreply.github.com",
+              "date": "2026-11-10T16:05:11.000Z",
+              "message": "[MP][Refactor] Move server-module call envelopes to transport (#6466)\n\nSigned-off-by: Jason Yao <wsyjh8@gmail.com>",
               "stats": {
-                "files": 1,
-                "lines": 42,
-                "insertions": 38,
-                "deletions": 4
+                "files": 10,
+                "lines": 48,
+                "insertions": 24,
+                "deletions": 24
               },
               "scores": {
                 "loc": 8,
-                "files": 5,
+                "files": 20,
                 "keyword": 12,
-                "ai": 20,
-                "total": 45
+                "ai": 18,
+                "total": 58
               },
-              "classification": "simple"
+              "classification": "significant"
             },
             {
-              "hash": "a9db7485",
-              "author": "maobaolong",
-              "email": "baoloongmao@tensormesh.ai",
-              "date": "2026-11-08T01:17:52.000Z",
-              "message": "Add gRPC API key authentication for sync and aio servers (#5770)\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "hash": "26889748",
+              "author": "Jason",
+              "email": "31175216+thegoldenflow@users.noreply.github.com",
+              "date": "2026-11-10T15:48:32.000Z",
+              "message": "[MP][Refactor] Move transfer-channel data types to common (#6374)\n\nSigned-off-by: Jason Yao <wsyjh8@gmail.com>",
               "stats": {
                 "files": 16,
-                "lines": 699,
-                "insertions": 684,
-                "deletions": 15
+                "lines": 76,
+                "insertions": 49,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 61.5,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 123,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Rui Zhang",
+          "email": "51696593+ruizhang0101@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "30dc05fb",
+              "author": "Rui Zhang",
+              "email": "51696593+ruizhang0101@users.noreply.github.com",
+              "date": "2026-11-10T05:20:20.000Z",
+              "message": "[MP] Store and load the unfull chunk at the prompt end (#5886)\n\nSigned-off-by: Rui Zhang <zrfishnoodles@gmail.com>",
+              "stats": {
+                "files": 53,
+                "lines": 3248,
+                "insertions": 3119,
+                "deletions": 129
               },
               "scores": {
                 "loc": 30,
@@ -1458,117 +3201,12 @@
               "classification": "significant"
             }
           ],
-          "avg_score": 63.5,
-          "significance_ratio": 0.5,
-          "additional_contribution_score": 0,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Ben Kugler",
-          "email": "benkug@momentohq.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 95,
-          "commits": [
-            {
-              "hash": "ad2cb65f",
-              "author": "Ben Kugler",
-              "email": "benkug@momentohq.com",
-              "date": "2026-11-09T21:37:42.000Z",
-              "message": "feat: spread RDMA workers across a list of fabric interfaces (#6293)\n\nSigned-off-by: Ben Kugler <benkug@momentohq.com>",
-              "stats": {
-                "files": 6,
-                "lines": 198,
-                "insertions": 155,
-                "deletions": 43
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 25,
-                "ai": 20,
-                "total": 95
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 95,
+          "avg_score": 82,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "weishu",
-          "email": "838677410@qq.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 85,
-          "commits": [
-            {
-              "hash": "115e09a4",
-              "author": "weishu",
-              "email": "838677410@qq.com",
-              "date": "2026-11-09T23:38:17.000Z",
-              "message": "[Core] Shadow L1: index borrowed views of a peer's bytes without payload (#6207)\n\n* [Core] Shadow L1: index borrowed views of a peer's bytes without payload\n\nLet an L2 adapter lend a peer's KV bytes instead of copying them into\nlocal L1. The read path only serves what an L1 indexes, so lending needs\nan L1 that indexes bytes it does not own: a shadow L1.\n\n- `LendingPeerL2AdapterBase(PeerL2AdapterBase)`: the abstract lender. It\n  wants a `REMOTE` L1, carries the shadow L1 the storage manager creates\n  for it (`bind_shadow_l1`) and closes it with itself.\n- `BorrowedMemoryObj`: the lease contract a lender hands over (`lease`,\n  `release`, `same_bytes` for lease adoption, `local_device` for the fence\n  on close); `BorrowedTensorMemoryObj` is the view of locally mapped\n  bytes. `ShadowL1Manager` indexes them and owns no memory; `admit`\n  read-locks each view for one request, and a key already resident adopts\n  the fresh lease when both views alias the same bytes. A shadow holds a\n  disabled event bus, which now registers no gauges.\n- `StorageManager` creates the shadow for a `REMOTE`-first config, refuses\n  serde on a lender and a lender/config mismatch, and undoes a failed\n  `add_l2_adapter`. `PrefetchController` looks the lender up on every\n  prefetch, admits its views, unlocks the keys that did not become views,\n  and holds a lender until its views drain.\n- Independent fix: the copy-load path counts only `SUCCESS` admissions as\n  hits.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: implement the L1 primitives; lenders go through the ordinary load pipeline\n\nReview (ApostaC): let the shadow L1 implement reserve_write and the other\nprimitives so the prefetch controller needs no lender-specific path.\n\n- `ShadowL1Manager.reserve_write` stages a `BorrowedMemoryObj` placeholder\n  per key with no capacity check, always temporary; a key another request\n  still reads is staged too. `finish_write_and_reserve_read` admits bound\n  placeholders; a resident view adopts the fresh lease of the same bytes.\n  `reserve_read` misses every key: every request borrows afresh. `admit`\n  and `take_borrowed_objects` are gone.\n- `BorrowedMemoryObj` is one concrete class: a placeholder the shadow's\n  memory manager hands out, which the lender's `submit_load_task` binds to\n  its lease and to the bytes (a tensor view, or `read_into` for remote\n  bytes). `BorrowedTensorMemoryObj` is gone.\n- The prefetch controller keeps only the lender's affinity (its shadow)\n  and the NO_LOCK exclusion. The storage manager's `delete_l2_adapter`\n  waits for the lender's borrowed views to drain, sweeping lapsed readers.\n- `MemoryResidency.DUMMY` becomes `SHADOW`; shadows are tagged\n  `(segment, SHADOW)` and a lender wants `SHADOW` first.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a remote-bound BorrowedMemoryObj has no tensor, byte array or data pointer\n\nThe lending mock also unlocks through PeerL2AdapterBase directly, as its\nlease release does, so a subclass between them can keep its own\nreservations without the mock's unlocks going through them.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: shorter docstrings and docs; one L1-container rebuild per side; fold overlapping tests\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] memory tags: drop the shadow sentence under the L1 tag table\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: admission refuses nothing; the copy-admission filter leaves this PR\n\nA lease that ends between a lender's load and the admission is the same\nrace as one ending right after: the view is resident and unreadable, and\nits holder's finish_read returns the lease. So the shadow's\nfinish_write_and_reserve_read only adopts a fresh lease into a resident\nview and defers to the base, and `_poll_load_results` is back to dev. The\nexpired-write-reservation bug of owned L1s is unrelated and gets its own PR.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a failed lender add only unlists its shadow\n\nThe general add_l2_adapter rollback leaves this PR: as on dev, an adapter\nwhose controller registration failed stays for delete_l2_adapter to\nremove. What a lender needs is one guard: its shadow L1 is not listed when\nnothing routes to it. Removal recognises a lender by type, so a\nhalf-registered lender can be deleted.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: inline the single-call borrowed_segment into _build_l2_adapter\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: reword the SHADOW residency\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: one lends flag and one cleanup path in _build_l2_adapter\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: get_local_borrow_count, the count is this node's\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: BorrowingPeerL2AdapterBase; the owner lends, this adapter borrows\n\nThe adapter borrows a peer's bytes on behalf of this node; \"lender\" named\nthe wrong side. The mock and its registry names follow.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: reclaim expired placeholders; a remote binding needs the owner's address; one critical section per override\n\nReview findings:\n- A placeholder whose write reservation expired before admission stayed\n  staged forever (a shadow has no eviction) and the base handed it, still\n  bound, to the next writer. The shadow's sweep now reclaims expired\n  staging entries too.\n- `bind(read_into=...)` accepted the default address, so two remote views\n  of different copies compared as the same bytes. The address is required.\n- `reserve_write` and `finish_write_and_reserve_read` swapped leases and\n  then re-entered the base under a second lock acquisition; a reader's\n  `finish_read` in between could free the resident view. The shadow uses a\n  reentrant lock so each override is one critical section.\nAlso: `for_borrower`, borrower names in the tests, no hard-coded memory\nformat on placeholders.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: restore the is_multi_l1 docstring\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: a configured L1, not one the borrower brings\n\nThe shadow L1 is configured like any other L1 (`--l1-manager '{\"type\":\n\"SHADOW\", \"tag\": ..., \"segment\": ...}'`, `ShadowL1ManagerConfig`) and is\nthe affinity of the borrowing L2 adapters of its segment, resolved by\ntags like every adapter's. It owns no memory, so an idle shadow costs\nnothing; its store and eviction controllers are inert because a shadow\ncalls no listener. The storage manager no longer creates, attaches or\ndetaches a shadow per borrower; the prefetch controller skips an L1\nwithout capacity at admission and keeps borrowers out of NO_LOCK by the\naffinity L1's residency tag. `BorrowingPeerL2AdapterBase` loses\n`shadow_l1` / `bind_shadow_l1`; removal still waits for a borrower's\nviews to be released. A shadow cannot be the first L1, which receives\nthe engine's writes.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: removal is the borrower's business, not the storage manager's\n\nThe storage manager and the P2P adapter base are back to dev. A\nborrower's `close` refuses while a view holds a live lease, and\n`delete_l2_adapter` keeps a failed close for a retry as it does for any\nadapter; the shadow's public `sweep_lapsed` goes with the drain loop\n(entries whose readers' TTL lapsed are swept at the next reservation).\n`BorrowingPeerL2AdapterBase` leaves this PR: nothing here needs to tell a\nborrower apart, since affinity, admission and NO_LOCK go by the shadow's\ntags. The borrowing mock subclasses `PeerL2AdapterBase`.\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] Shadow L1: a shorter design section\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Tests] Shadow L1: type the borrowing test helpers for mypy\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Docs] Shadow L1: a shorter class docstring\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n* [Core] Shadow L1: same_bytes compares the owner as well as the address\n\nSigned-off-by: deng451e <838677410@qq.com>\n\n---------\n\nSigned-off-by: deng451e <838677410@qq.com>",
-              "stats": {
-                "files": 20,
-                "lines": 1835,
-                "insertions": 1790,
-                "deletions": 45
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 15,
-                "ai": 20,
-                "total": 85
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 85,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
-        },
-        {
-          "name": "Maharani Ayu Putri Irawan",
-          "email": "72875641+rannnayy@users.noreply.github.com",
-          "total_commits": 1,
-          "significant_commits": 1,
-          "simple_commits": 0,
-          "commit_score": 84,
-          "commits": [
-            {
-              "hash": "3262c732",
-              "author": "Maharani Ayu Putri Irawan",
-              "email": "72875641+rannnayy@users.noreply.github.com",
-              "date": "2026-11-09T23:38:54.000Z",
-              "message": "[SDK][token dropping] Switch from Engine-driven transfer path to LMCache-driven (#6365)\n\nSigned-off-by: rannnayy <rani.api3939@gmail.com>",
-              "stats": {
-                "files": 17,
-                "lines": 2437,
-                "insertions": 2008,
-                "deletions": 429
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 22,
-                "total": 84
-              },
-              "classification": "significant"
-            }
-          ],
-          "avg_score": 84,
-          "significance_ratio": 1,
-          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -1605,8 +3243,50 @@
           "avg_score": 70,
           "significance_ratio": 1,
           "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 70,
           "tier": "T1",
           "tier_name": "Advanced"
+        },
+        {
+          "name": "Qian Cao",
+          "email": "talexcao@gmail.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 57,
+          "commits": [
+            {
+              "hash": "80f72143",
+              "author": "Qian Cao",
+              "email": "talexcao@gmail.com",
+              "date": "2026-11-10T02:17:32.000Z",
+              "message": "[Bugfix][MP] fs_native: report deletes of keys stored before restart (#6484)\n\nSigned-off-by: aeon-x <talexcao@gmail.com>",
+              "stats": {
+                "files": 3,
+                "lines": 77,
+                "insertions": 69,
+                "deletions": 8
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 20,
+                "total": 57
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 57,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 57,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "Cheng Rui",
@@ -1641,16 +3321,140 @@
           "avg_score": 48,
           "significance_ratio": 0,
           "additional_contribution_score": 0,
-          "tier": "T1",
-          "tier_name": "Advanced"
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 48,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "Hope Wang",
+          "email": "88800869+hopechong@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 40,
+          "commits": [
+            {
+              "hash": "4e8a9806",
+              "author": "Hope Wang",
+              "email": "88800869+hopechong@users.noreply.github.com",
+              "date": "2026-11-10T04:56:55.000Z",
+              "message": "[Bugfix][CLI] Reuse case-insensitive URL normalization for quota and coordinator (#6368)\n\n* [Bugfix][CLI] Reuse case-insensitive URL normalization for quota and coordinator\n\n \n\nSigned-off-by: Hope Wang <88800869+hopechong@users.noreply.github.com>",
+              "stats": {
+                "files": 2,
+                "lines": 16,
+                "insertions": 2,
+                "deletions": 14
+              },
+              "scores": {
+                "loc": 3,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 40
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 40,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 40,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "VincyZhang",
+          "email": "wenxin.zhang@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 35,
+          "commits": [
+            {
+              "hash": "13eaf920",
+              "author": "VincyZhang",
+              "email": "wenxin.zhang@intel.com",
+              "date": "2026-11-10T20:45:44.000Z",
+              "message": "[Bugfix] Add missing retries to XPU multiprocess CI tests (#6510)\n\nadd flaky-retry for xpu mp tests\n\nSigned-off-by: Wenxin Zhang <wenxin.zhang@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 3,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 35,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 35,
+          "tier": "T2",
+          "tier_name": "Intermediate"
+        },
+        {
+          "name": "github-actions[bot]",
+          "email": "41898282+github-actions[bot]@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 30,
+          "commits": [
+            {
+              "hash": "5f970931",
+              "author": "github-actions[bot]",
+              "email": "41898282+github-actions[bot]@users.noreply.github.com",
+              "date": "2026-11-10T07:20:45.000Z",
+              "message": "[Build] sync torch version with vLLM v0.33.0rc3 (2.14.0) (#6465)\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: ApostaC <25103655+ApostaC@users.noreply.github.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 30,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 30,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         }
       ]
     }
   },
   "metadata": {
-    "analyzedAt": "2026-11-10T00:30:12.791Z",
+    "analyzedAt": "2026-11-11T00:30:26.148Z",
     "daysBack": 2,
-    "totalCommits": 18,
-    "totalContributors": 10
+    "totalCommits": 39,
+    "totalContributors": 17,
+    "mergedFrom": {
+      "existing": 18,
+      "new": 31
+    }
   }
 }
