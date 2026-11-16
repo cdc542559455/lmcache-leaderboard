@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15T00:30:15.616Z",
+  "last_updated": "2026-11-16T00:30:02.023Z",
   "total_commits_analyzed": 98,
   "analysis_period_days": 2,
   "leaderboards": {
@@ -3266,27 +3266,6 @@
               "classification": "significant"
             },
             {
-              "hash": "a4a68882",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-11-08T07:05:27.000Z",
-              "message": "[Bugfix][MP] Log handler errors on the gRPC sync and aio servers (#6382)\n\n* [Bugfix][MP] Log handler errors on the gRPC sync and aio servers\n\ngrpcio logs handler exceptions to its grpc logger, which only has a NullHandler, so they never reached the server log. Set the logger up when a gRPC server is created.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Drop the comment on the grpc logger setup\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Fix mypy errors in the handler error test\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Import the moved request client modules in the handler error test\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n#6390 moved the request errors and factory to lmcache.v1.client.transport.\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 63,
-                "insertions": 63,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 55
-              },
-              "classification": "significant"
-            },
-            {
               "hash": "bcafb031",
               "author": "MinJun Choi",
               "email": "mj04300017@gmail.com",
@@ -3304,6 +3283,27 @@
                 "keyword": 12,
                 "ai": 20,
                 "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a4a68882",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-08T07:05:27.000Z",
+              "message": "[Bugfix][MP] Log handler errors on the gRPC sync and aio servers (#6382)\n\n* [Bugfix][MP] Log handler errors on the gRPC sync and aio servers\n\ngrpcio logs handler exceptions to its grpc logger, which only has a NullHandler, so they never reached the server log. Set the logger up when a gRPC server is created.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Drop the comment on the grpc logger setup\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Fix mypy errors in the handler error test\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Import the moved request client modules in the handler error test\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n#6390 moved the request errors and factory to lmcache.v1.client.transport.\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 63,
+                "insertions": 63,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
               },
               "classification": "significant"
             }
@@ -4229,6 +4229,27 @@
           "commit_score": 184,
           "commits": [
             {
+              "hash": "93b0df7a",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-11-14T03:28:01.000Z",
+              "message": "[CI][SGLang] Enable SGLang `restart_recovery` (#6612)\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 20,
+                "insertions": 13,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 45
+              },
+              "classification": "simple"
+            },
+            {
               "hash": "8fca3b78",
               "author": "nauta",
               "email": "870284156@qq.com",
@@ -4269,27 +4290,6 @@
                 "total": 62
               },
               "classification": "significant"
-            },
-            {
-              "hash": "93b0df7a",
-              "author": "nauta",
-              "email": "870284156@qq.com",
-              "date": "2026-11-14T03:28:01.000Z",
-              "message": "[CI][SGLang] Enable SGLang `restart_recovery` (#6612)\n\nSigned-off-by: nautaa <870284156@qq.com>",
-              "stats": {
-                "files": 3,
-                "lines": 20,
-                "insertions": 13,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 45
-              },
-              "classification": "simple"
             }
           ],
           "avg_score": 61.333333333333336,
@@ -5904,27 +5904,6 @@
               "classification": "significant"
             },
             {
-              "hash": "a4a68882",
-              "author": "MinJun Choi",
-              "email": "mj04300017@gmail.com",
-              "date": "2026-11-08T07:05:27.000Z",
-              "message": "[Bugfix][MP] Log handler errors on the gRPC sync and aio servers (#6382)\n\n* [Bugfix][MP] Log handler errors on the gRPC sync and aio servers\n\ngrpcio logs handler exceptions to its grpc logger, which only has a NullHandler, so they never reached the server log. Set the logger up when a gRPC server is created.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Drop the comment on the grpc logger setup\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Fix mypy errors in the handler error test\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Import the moved request client modules in the handler error test\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n#6390 moved the request errors and factory to lmcache.v1.client.transport.\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
-              "stats": {
-                "files": 2,
-                "lines": 63,
-                "insertions": 63,
-                "deletions": 0
-              },
-              "scores": {
-                "loc": 15,
-                "files": 10,
-                "keyword": 12,
-                "ai": 18,
-                "total": 55
-              },
-              "classification": "significant"
-            },
-            {
               "hash": "bcafb031",
               "author": "MinJun Choi",
               "email": "mj04300017@gmail.com",
@@ -5942,6 +5921,27 @@
                 "keyword": 12,
                 "ai": 20,
                 "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "a4a68882",
+              "author": "MinJun Choi",
+              "email": "mj04300017@gmail.com",
+              "date": "2026-11-08T07:05:27.000Z",
+              "message": "[Bugfix][MP] Log handler errors on the gRPC sync and aio servers (#6382)\n\n* [Bugfix][MP] Log handler errors on the gRPC sync and aio servers\n\ngrpcio logs handler exceptions to its grpc logger, which only has a NullHandler, so they never reached the server log. Set the logger up when a gRPC server is created.\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Drop the comment on the grpc logger setup\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Fix mypy errors in the handler error test\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n* [Bugfix][MP] Import the moved request client modules in the handler error test\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>\n\n#6390 moved the request errors and factory to lmcache.v1.client.transport.\n\n---------\n\nSigned-off-by: MinJun Choi <mj04300017@gmail.com>",
+              "stats": {
+                "files": 2,
+                "lines": 63,
+                "insertions": 63,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
               },
               "classification": "significant"
             }
@@ -6867,6 +6867,27 @@
           "commit_score": 184,
           "commits": [
             {
+              "hash": "93b0df7a",
+              "author": "nauta",
+              "email": "870284156@qq.com",
+              "date": "2026-11-14T03:28:01.000Z",
+              "message": "[CI][SGLang] Enable SGLang `restart_recovery` (#6612)\n\nSigned-off-by: nautaa <870284156@qq.com>",
+              "stats": {
+                "files": 3,
+                "lines": 20,
+                "insertions": 13,
+                "deletions": 7
+              },
+              "scores": {
+                "loc": 8,
+                "files": 10,
+                "keyword": 12,
+                "ai": 15,
+                "total": 45
+              },
+              "classification": "simple"
+            },
+            {
               "hash": "8fca3b78",
               "author": "nauta",
               "email": "870284156@qq.com",
@@ -6907,27 +6928,6 @@
                 "total": 62
               },
               "classification": "significant"
-            },
-            {
-              "hash": "93b0df7a",
-              "author": "nauta",
-              "email": "870284156@qq.com",
-              "date": "2026-11-14T03:28:01.000Z",
-              "message": "[CI][SGLang] Enable SGLang `restart_recovery` (#6612)\n\nSigned-off-by: nautaa <870284156@qq.com>",
-              "stats": {
-                "files": 3,
-                "lines": 20,
-                "insertions": 13,
-                "deletions": 7
-              },
-              "scores": {
-                "loc": 8,
-                "files": 10,
-                "keyword": 12,
-                "ai": 15,
-                "total": 45
-              },
-              "classification": "simple"
             }
           ],
           "avg_score": 61.333333333333336,
@@ -8011,13 +8011,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-11-15T00:30:15.616Z",
+    "analyzedAt": "2026-11-16T00:30:02.023Z",
     "daysBack": 2,
     "totalCommits": 98,
     "totalContributors": 32,
     "mergedFrom": {
-      "existing": 93,
-      "new": 20
+      "existing": 98,
+      "new": 5
     }
   }
 }
