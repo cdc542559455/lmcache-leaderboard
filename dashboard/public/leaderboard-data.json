@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-11-16T00:30:02.023Z",
-  "total_commits_analyzed": 98,
+  "last_updated": "2026-11-17T00:30:06.384Z",
+  "total_commits_analyzed": 107,
   "analysis_period_days": 2,
   "leaderboards": {
     "weekly": {
@@ -2731,6 +2731,341 @@
           "tier": "T0",
           "tier_name": "Elite"
         }
+      ],
+      "2026-W47": [
+        {
+          "name": "Lin Sun",
+          "email": "linsun12@amd.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "a391b206",
+              "author": "Lin Sun",
+              "email": "linsun12@amd.com",
+              "date": "2026-11-16T22:01:32.000Z",
+              "message": "[MP][ROCm] Opt-in host-side wait for the engine's event (`--rocm-host-event-wait`) (#6212)\n\n* [MP] Affinity pool: let a handler answer later with a DeferredResponse\n\nA task may return a DeferredResponse (a concurrent.futures.Future) instead of\nits result. The worker thread is then free for the next task, and the future\nreturned by AffinityThreadPool.submit() completes with the deferred\nresponse's result or exception. Tasks returning anything else behave as\nbefore.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: opt-in host-side producer-event wait (ROCm workaround)\n\nOn MI3xx the command processor cannot keep an unsatisfied cross-queue\nbarrier resident: a stream wait on the engine's pending IPC event\n(hipStreamWaitEvent on an imported event) is offloaded and reconnected on a\ntimer, and those wakeups slow the engine's kernels on the same hardware pipe\nwhile the engine runs the step (about 30 % for prefill steps on MI355X).\n\nNew server flag --rocm-host-event-wait (default off; also\nLMCACHE_ROCM_HOST_EVENT_WAIT=1). When it is set on ROCm, LMCache-driven\nSTORE / RETRIEVE enqueue their copies only once the producer event has\ncompleted, checked with non-blocking query() calls:\n\n- a transfer whose event has completed, with nothing queued ahead of it for\n  the same instance, runs inline in the handler;\n- otherwise it joins a per-instance FIFO drained by one poller thread\n  (50 us backoff doubling to 1 ms) and the handler answers with a\n  DeferredResponse, so the affinity thread that serves every rank is never\n  blocked;\n- a transfer still waiting after 60 s or at shutdown submits no device work\n  and answers (b\"\", False); a waiting retrieve releases its lookup locks.\n\nThe store / retrieve bodies are unchanged: the waiter re-runs the same\nhandler, and inside that run the instance's event backend returns the event\nit polled and skips the stream wait on it. Counters (inline, deferred,\ntimeout, shutdown, device_waits, pending) are reported in the module status.\n\nOff (the default) on every platform, and on + not ROCm (one warning), no\nwaiter or thread is created and store / retrieve run the upstream code;\nthe only lines they execute that differ are the \"waiter is None\" checks.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: poller only checks events, transfers run on the affinity worker\n\n- The poller only checks events; a completed transfer is handed back to the\n  affinity worker that received it (current_worker_poster). This keeps the\n  affinity pool's existing design that all operations for an instance run on\n  one thread (no locks on its shared temporary GPU buffer, ordered with the\n  other affinity handlers such as CacheBlend), which running transfers on the\n  poller thread broke.\n- stop() vs the inline probe: the probe and inline run count as active work,\n  _stopped is re-checked before running or enqueueing, and stop() fails every\n  transfer not started yet and waits for the running ones.\n- A waiting transfer runs only against the registration that supplied its\n  event; otherwise the existing unregistered-instance path rejects it.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: drop the lock release on a failed waiting RETRIEVE\n\nAfter merging dev: dev now includes #6252, which removed\n_release_failed_retrieve_locks. This PR's _fail_waiting_retrieve still\ncalled it, so mypy failed (attr-defined). The tests in\ntest_rocm_host_event_wait.py failed too: their setup replaced the removed\nmethod with a function that only records the request ID, and that\nreplacement fails once the method no longer exists.\n\nChanges:\n- Remove _fail_waiting_retrieve. A RETRIEVE whose producer-event wait\n  timed out or was stopped now answers (b\"\", False) without releasing\n  locks, like #6252's rejection path: the unconsumed lookup read-lock\n  share expires with the L1 read-lock TTL.\n- Tests: remove that replacement and the three assertions that checked\n  its recorded request IDs; rename\n  test_timeout_fails_store_and_releases_retrieve_locks to\n  test_timeout_fails_store_and_retrieve.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: close the remaining registration and shutdown gaps\n\n1. A STORE / RETRIEVE for an instance that is not registered is rejected\n   right away.\n\n   An engine worker registers its KV cache once (REGISTER_KV_CACHE): the\n   server maps the worker's KV memory and keeps a ContextEntry under the\n   worker's instance ID. STORE / RETRIEVE look that entry up by instance\n   ID. There is none when the worker sends a transfer before it has\n   registered with this server (e.g. after a server restart), or after\n   it was unregistered or reaped for being silent.\n\n   Without this option the handler looks the instance up once and, if\n   there is no entry, answers (b\"\", False) without any device work. With\n   the option, submit_after_event instead ran the handler again, which\n   looked the instance up a second time. REGISTER runs on the MQ main\n   loop, not on the affinity worker, so the instance could be registered\n   between the two lookups, and the request then ran against a\n   registration it was not sent to, waiting on its event on the device.\n   Now, when that one lookup finds no entry, the waiter returns\n   (b\"\", False) directly and does not call the handler: no second\n   lookup, no event import, no device work, the same answer as without\n   the option.\n\n2. A waiting transfer keeps only a weak reference to its registration.\n\n   A weak reference (weakref.ref) does not keep the entry alive: once\n   the registry and the release path drop the entry, it is freed and the\n   reference returns None. Unregistering or reaping an instance passes\n   the entry to _release_entries, which relies on holding the last\n   reference: with the default CudaIPCWrapper, ipc_collect() unmaps the\n   worker's KV memory only after the last tensor reference is gone. A\n   waiting transfer held the entry, so the memory of an unregistered or\n   reaped worker stayed mapped while the transfer waited (up to the 60 s\n   event timeout), after _release_entries had already run ipc_collect().\n   Now the entry is freed when it is released, and the waiting transfer\n   is rejected as stale ((b\"\", False)) when its event completes.\n\n3. stop() handles only the waiter's own queue and poller.\n\n   close() (server shutdown) calls stop() before it releases the cache\n   contexts. The server's shutdown does not wait for its handlers: the\n   transport shuts the affinity pool down with wait=False, and then\n   engine.close() closes the modules. stop() instead also failed the\n   transfers it had handed to an affinity worker, and waited up to 10 s\n   for the running ones before it returned anyway. Now stop() fails only\n   the transfers still waiting for their event in its queue, which the\n   stopped poller would never run, and stops the poller. A transfer\n   already handed to its affinity worker, or running, is left to that\n   worker, as without the option; so is an inline transfer whose event\n   has completed. The 60 s timeout for a producer event that never\n   completes is unchanged.\n\nTests: a registration made right after a missing-entry lookup is not\nused (STORE and RETRIEVE); a re-registration before an inline run drops\nthe transfer; unregistering frees the entry of a waiting transfer (STORE\nand RETRIEVE); stop() neither waits for a running transfer nor fails one\nhanded to its worker; after stop(), an inline transfer runs if its event\ncompleted and fails if not.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: stop() fails hand-offs that have not started\n\nThe server shuts down in two steps: server.close() queues the affinity\npool's shutdown sentinel, then engine.close() closes the modules, which\nstops the waiter. The poller still runs until stop(): a transfer whose\nevent completes in between is handed to its affinity worker behind the\nsentinel, the worker exits first, and the transfer's response was never\nsettled.\n\nThe poller now records a hand-off until the worker starts it, and stop()\nfails the hand-offs that have not started along with the transfers still\nwaiting for their event. Whichever of the worker and stop() takes a\nhand-off first settles it. A running transfer is still left to its\nworker.\n\nTests: a hand-off queued after the worker shutdown sentinel is failed by\nstop(); so is one queued behind a busy worker.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n---------\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\nCo-authored-by: andyluo7 <43718156+andyluo7@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 1250,
+                "insertions": 1245,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4628ce8e",
+              "author": "Lin Sun",
+              "email": "linsun12@amd.com",
+              "date": "2026-11-16T03:34:03.000Z",
+              "message": "[MP][ROCm] VMM KV-cache IPC on ROCm through rocm.bindings (#6626)\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\nSigned-off-by: andyluo7 <andy.luo@amd.com>\nCo-authored-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 10,
+                "lines": 695,
+                "insertions": 566,
+                "deletions": 129
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "1a95bad9",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-11-16T11:48:32.000Z",
+              "message": "[CI][RBLN] Add a nightly rbln-serve lane and promote its verified image to PR builds (#6157)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 11,
+                "lines": 568,
+                "insertions": 529,
+                "deletions": 39
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "weishu",
+          "email": "838677410@qq.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 70,
+          "commits": [
+            {
+              "hash": "0cc57f64",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-11-16T22:12:10.000Z",
+              "message": "[Coordinator][Blend] Drop a chunk's fingerprint entry once any of its rows is gone (#6632)\n\nSigned-off-by: deng451e <838677410@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 141,
+                "insertions": 84,
+                "deletions": 57
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 70,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Eric (Fengwei) Zhang",
+          "email": "42017768+Super262@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 70,
+          "commits": [
+            {
+              "hash": "61faa902",
+              "author": "Eric (Fengwei) Zhang",
+              "email": "42017768+Super262@users.noreply.github.com",
+              "date": "2026-11-16T06:07:59.000Z",
+              "message": "[Bugfix] Preserve chunk prefixes when touching prefetched keys (#6551)\n\nSigned-off-by: Super262 <fengweiz929@yahoo.com>",
+              "stats": {
+                "files": 3,
+                "lines": 364,
+                "insertions": 360,
+                "deletions": 4
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 70,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "chunxiaozheng",
+          "email": "idellzheng@tencent.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 55,
+          "commits": [
+            {
+              "hash": "c0572702",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-11-16T19:23:46.000Z",
+              "message": "[Docker][SGLang] Fix SGLang image build with its native PyTorch version (#6658)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 92,
+                "insertions": 51,
+                "deletions": 41
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 55,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 55,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 38,
+          "commits": [
+            {
+              "hash": "03ee5b82",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-11-16T12:53:25.000Z",
+              "message": "[Fix][XPU nightly] Fix XPU nightly failures on xpu-nightly branch (#6629)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 16,
+                "insertions": 16,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 38,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "Jason",
+          "email": "31175216+thegoldenflow@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 30,
+          "commits": [
+            {
+              "hash": "711aa048",
+              "author": "Jason",
+              "email": "31175216+thegoldenflow@users.noreply.github.com",
+              "date": "2026-11-16T03:39:33.000Z",
+              "message": "[CI] Give the CPU artifact workflow its own concurrency group (#6598)\n\nSigned-off-by: Jason Yao <wsyjh8@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 30,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 30,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        },
+        {
+          "name": "maobaolong",
+          "email": "baoloongmao@tensormesh.ai",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 28,
+          "commits": [
+            {
+              "hash": "2f3accd7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-16T02:25:02.000Z",
+              "message": "[CI][SGLang] Preserve Kimi chunk checkpoints (#6645)\n\nci: preserve Kimi chunk checkpoints\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 10,
+                "total": 28
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 28,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 28,
+          "tier": "T1",
+          "tier_name": "Advanced"
+        }
       ]
     },
     "monthly": {
@@ -2738,10 +3073,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tensormesh.ai",
-          "total_commits": 15,
+          "total_commits": 16,
           "significant_commits": 9,
-          "simple_commits": 6,
-          "commit_score": 959,
+          "simple_commits": 7,
+          "commit_score": 987,
           "commits": [
             {
               "hash": "e733effd",
@@ -3057,14 +3392,35 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "2f3accd7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-16T02:25:02.000Z",
+              "message": "[CI][SGLang] Preserve Kimi chunk checkpoints (#6645)\n\nci: preserve Kimi chunk checkpoints\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 10,
+                "total": 28
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 63.93333333333333,
-          "significance_ratio": 0.6,
+          "avg_score": 61.6875,
+          "significance_ratio": 0.5625,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 959,
+          "total_score": 987,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -3320,10 +3676,10 @@
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 9,
-          "significant_commits": 8,
+          "total_commits": 10,
+          "significant_commits": 9,
           "simple_commits": 1,
-          "commit_score": 692,
+          "commit_score": 762,
           "commits": [
             {
               "hash": "115e09a4",
@@ -3513,36 +3869,18 @@
                 "total": 82
               },
               "classification": "significant"
-            }
-          ],
-          "avg_score": 76.88888888888889,
-          "significance_ratio": 0.8888888888888888,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 692,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Xiao Liu",
-          "email": "liuxiao2103@qq.com",
-          "total_commits": 7,
-          "significant_commits": 6,
-          "simple_commits": 1,
-          "commit_score": 496,
-          "commits": [
+            },
             {
-              "hash": "d0959e00",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-09T09:31:32.000Z",
-              "message": "[MP][Refactor] Move the ZMQ client polling loop to client.transport (#6472)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "hash": "0cc57f64",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-11-16T22:12:10.000Z",
+              "message": "[Coordinator][Blend] Drop a chunk's fingerprint entry once any of its rows is gone (#6632)\n\nSigned-off-by: deng451e <838677410@qq.com>",
               "stats": {
                 "files": 4,
-                "lines": 479,
-                "insertions": 278,
-                "deletions": 201
+                "lines": 141,
+                "insertions": 84,
+                "deletions": 57
               },
               "scores": {
                 "loc": 30,
@@ -3552,150 +3890,24 @@
                 "total": 70
               },
               "classification": "significant"
-            },
-            {
-              "hash": "cd29b563",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-09T05:02:45.000Z",
-              "message": "[MP][Refactor] Move the gRPC client to client.transport (#6426)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 20,
-                "lines": 507,
-                "insertions": 292,
-                "deletions": 215
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e028a2bb",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-10T18:26:02.000Z",
-              "message": "[MP][Refactor] Move gRPC protos and generated bindings to transport (#6506)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 39,
-                "lines": 87,
-                "insertions": 41,
-                "deletions": 46
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 65
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "d51d3e60",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-10T05:23:44.000Z",
-              "message": "[MP][Refactor] Move MessageQueueClient to client.transport (#6483)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 7,
-                "lines": 638,
-                "insertions": 332,
-                "deletions": 306
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0b95bd82",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-11T05:38:45.000Z",
-              "message": "[MP][Refactor] Move the gRPC codecs to transport (#6515)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 19,
-                "lines": 102,
-                "insertions": 50,
-                "deletions": 52
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "7fcde087",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-11T02:33:05.000Z",
-              "message": "[Test][MP] Keep the compressed-group roundtrip SHM name under the macOS limit (#6468)\n\ntest_single_compressed_group_worker_server_roundtrip named its L1 pool\nsegment lmcache_l1_pool_test_compressed_<uuid4 hex>, 65 bytes with the\nleading '/'. macOS caps POSIX shared-memory names at 31 bytes, so the\n[full-shm] and [sliding-shm] cases failed with ENAMETOOLONG there. Use\nlmcache_l1_pool_<12 hex> (29 bytes), keeping the prefix that the stale\nsegment cleanup recognises.\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>\nCo-authored-by: maobaolong <baoloongmao@tensormesh.ai>",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 2,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "9f98811d",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-08T04:52:46.000Z",
-              "message": "[Bugfix][MP] Skip unsupported FD channels during startup (#6387)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 9,
-                "lines": 207,
-                "insertions": 180,
-                "deletions": 27
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
             }
           ],
-          "avg_score": 70.85714285714286,
-          "significance_ratio": 0.8571428571428571,
+          "avg_score": 76.2,
+          "significance_ratio": 0.9,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 496,
+          "total_score": 762,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 8,
-          "significant_commits": 5,
+          "total_commits": 9,
+          "significant_commits": 6,
           "simple_commits": 3,
-          "commit_score": 473,
+          "commit_score": 528,
           "commits": [
             {
               "hash": "7e4e7366",
@@ -3864,14 +4076,200 @@
                 "total": 67
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c0572702",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-11-16T19:23:46.000Z",
+              "message": "[Docker][SGLang] Fix SGLang image build with its native PyTorch version (#6658)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 92,
+                "insertions": 51,
+                "deletions": 41
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.125,
-          "significance_ratio": 0.625,
+          "avg_score": 58.666666666666664,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 473,
+          "total_score": 528,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Xiao Liu",
+          "email": "liuxiao2103@qq.com",
+          "total_commits": 7,
+          "significant_commits": 6,
+          "simple_commits": 1,
+          "commit_score": 496,
+          "commits": [
+            {
+              "hash": "d0959e00",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-09T09:31:32.000Z",
+              "message": "[MP][Refactor] Move the ZMQ client polling loop to client.transport (#6472)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 479,
+                "insertions": 278,
+                "deletions": 201
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "cd29b563",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-09T05:02:45.000Z",
+              "message": "[MP][Refactor] Move the gRPC client to client.transport (#6426)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 20,
+                "lines": 507,
+                "insertions": 292,
+                "deletions": 215
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e028a2bb",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-10T18:26:02.000Z",
+              "message": "[MP][Refactor] Move gRPC protos and generated bindings to transport (#6506)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 39,
+                "lines": 87,
+                "insertions": 41,
+                "deletions": 46
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d51d3e60",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-10T05:23:44.000Z",
+              "message": "[MP][Refactor] Move MessageQueueClient to client.transport (#6483)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 638,
+                "insertions": 332,
+                "deletions": 306
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0b95bd82",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-11T05:38:45.000Z",
+              "message": "[MP][Refactor] Move the gRPC codecs to transport (#6515)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 19,
+                "lines": 102,
+                "insertions": 50,
+                "deletions": 52
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7fcde087",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-11T02:33:05.000Z",
+              "message": "[Test][MP] Keep the compressed-group roundtrip SHM name under the macOS limit (#6468)\n\ntest_single_compressed_group_worker_server_roundtrip named its L1 pool\nsegment lmcache_l1_pool_test_compressed_<uuid4 hex>, 65 bytes with the\nleading '/'. macOS caps POSIX shared-memory names at 31 bytes, so the\n[full-shm] and [sliding-shm] cases failed with ENAMETOOLONG there. Use\nlmcache_l1_pool_<12 hex> (29 bytes), keeping the prefix that the stale\nsegment cleanup recognises.\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>\nCo-authored-by: maobaolong <baoloongmao@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9f98811d",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-08T04:52:46.000Z",
+              "message": "[Bugfix][MP] Skip unsupported FD channels during startup (#6387)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 207,
+                "insertions": 180,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70.85714285714286,
+          "significance_ratio": 0.8571428571428571,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 496,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -4142,10 +4540,10 @@
         {
           "name": "Jason",
           "email": "31175216+thegoldenflow@users.noreply.github.com",
-          "total_commits": 3,
+          "total_commits": 4,
           "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 205,
+          "simple_commits": 1,
+          "commit_score": 235,
           "commits": [
             {
               "hash": "90c8259c",
@@ -4209,14 +4607,35 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "711aa048",
+              "author": "Jason",
+              "email": "31175216+thegoldenflow@users.noreply.github.com",
+              "date": "2026-11-16T03:39:33.000Z",
+              "message": "[CI] Give the CPU artifact workflow its own concurrency group (#6598)\n\nSigned-off-by: Jason Yao <wsyjh8@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 68.33333333333333,
-          "significance_ratio": 1,
+          "avg_score": 58.75,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 205,
+          "total_score": 235,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -4441,6 +4860,66 @@
           "total_score": 175,
           "tier": "T1",
           "tier_name": "Advanced"
+        },
+        {
+          "name": "Lin Sun",
+          "email": "linsun12@amd.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "a391b206",
+              "author": "Lin Sun",
+              "email": "linsun12@amd.com",
+              "date": "2026-11-16T22:01:32.000Z",
+              "message": "[MP][ROCm] Opt-in host-side wait for the engine's event (`--rocm-host-event-wait`) (#6212)\n\n* [MP] Affinity pool: let a handler answer later with a DeferredResponse\n\nA task may return a DeferredResponse (a concurrent.futures.Future) instead of\nits result. The worker thread is then free for the next task, and the future\nreturned by AffinityThreadPool.submit() completes with the deferred\nresponse's result or exception. Tasks returning anything else behave as\nbefore.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: opt-in host-side producer-event wait (ROCm workaround)\n\nOn MI3xx the command processor cannot keep an unsatisfied cross-queue\nbarrier resident: a stream wait on the engine's pending IPC event\n(hipStreamWaitEvent on an imported event) is offloaded and reconnected on a\ntimer, and those wakeups slow the engine's kernels on the same hardware pipe\nwhile the engine runs the step (about 30 % for prefill steps on MI355X).\n\nNew server flag --rocm-host-event-wait (default off; also\nLMCACHE_ROCM_HOST_EVENT_WAIT=1). When it is set on ROCm, LMCache-driven\nSTORE / RETRIEVE enqueue their copies only once the producer event has\ncompleted, checked with non-blocking query() calls:\n\n- a transfer whose event has completed, with nothing queued ahead of it for\n  the same instance, runs inline in the handler;\n- otherwise it joins a per-instance FIFO drained by one poller thread\n  (50 us backoff doubling to 1 ms) and the handler answers with a\n  DeferredResponse, so the affinity thread that serves every rank is never\n  blocked;\n- a transfer still waiting after 60 s or at shutdown submits no device work\n  and answers (b\"\", False); a waiting retrieve releases its lookup locks.\n\nThe store / retrieve bodies are unchanged: the waiter re-runs the same\nhandler, and inside that run the instance's event backend returns the event\nit polled and skips the stream wait on it. Counters (inline, deferred,\ntimeout, shutdown, device_waits, pending) are reported in the module status.\n\nOff (the default) on every platform, and on + not ROCm (one warning), no\nwaiter or thread is created and store / retrieve run the upstream code;\nthe only lines they execute that differ are the \"waiter is None\" checks.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: poller only checks events, transfers run on the affinity worker\n\n- The poller only checks events; a completed transfer is handed back to the\n  affinity worker that received it (current_worker_poster). This keeps the\n  affinity pool's existing design that all operations for an instance run on\n  one thread (no locks on its shared temporary GPU buffer, ordered with the\n  other affinity handlers such as CacheBlend), which running transfers on the\n  poller thread broke.\n- stop() vs the inline probe: the probe and inline run count as active work,\n  _stopped is re-checked before running or enqueueing, and stop() fails every\n  transfer not started yet and waits for the running ones.\n- A waiting transfer runs only against the registration that supplied its\n  event; otherwise the existing unregistered-instance path rejects it.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: drop the lock release on a failed waiting RETRIEVE\n\nAfter merging dev: dev now includes #6252, which removed\n_release_failed_retrieve_locks. This PR's _fail_waiting_retrieve still\ncalled it, so mypy failed (attr-defined). The tests in\ntest_rocm_host_event_wait.py failed too: their setup replaced the removed\nmethod with a function that only records the request ID, and that\nreplacement fails once the method no longer exists.\n\nChanges:\n- Remove _fail_waiting_retrieve. A RETRIEVE whose producer-event wait\n  timed out or was stopped now answers (b\"\", False) without releasing\n  locks, like #6252's rejection path: the unconsumed lookup read-lock\n  share expires with the L1 read-lock TTL.\n- Tests: remove that replacement and the three assertions that checked\n  its recorded request IDs; rename\n  test_timeout_fails_store_and_releases_retrieve_locks to\n  test_timeout_fails_store_and_retrieve.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: close the remaining registration and shutdown gaps\n\n1. A STORE / RETRIEVE for an instance that is not registered is rejected\n   right away.\n\n   An engine worker registers its KV cache once (REGISTER_KV_CACHE): the\n   server maps the worker's KV memory and keeps a ContextEntry under the\n   worker's instance ID. STORE / RETRIEVE look that entry up by instance\n   ID. There is none when the worker sends a transfer before it has\n   registered with this server (e.g. after a server restart), or after\n   it was unregistered or reaped for being silent.\n\n   Without this option the handler looks the instance up once and, if\n   there is no entry, answers (b\"\", False) without any device work. With\n   the option, submit_after_event instead ran the handler again, which\n   looked the instance up a second time. REGISTER runs on the MQ main\n   loop, not on the affinity worker, so the instance could be registered\n   between the two lookups, and the request then ran against a\n   registration it was not sent to, waiting on its event on the device.\n   Now, when that one lookup finds no entry, the waiter returns\n   (b\"\", False) directly and does not call the handler: no second\n   lookup, no event import, no device work, the same answer as without\n   the option.\n\n2. A waiting transfer keeps only a weak reference to its registration.\n\n   A weak reference (weakref.ref) does not keep the entry alive: once\n   the registry and the release path drop the entry, it is freed and the\n   reference returns None. Unregistering or reaping an instance passes\n   the entry to _release_entries, which relies on holding the last\n   reference: with the default CudaIPCWrapper, ipc_collect() unmaps the\n   worker's KV memory only after the last tensor reference is gone. A\n   waiting transfer held the entry, so the memory of an unregistered or\n   reaped worker stayed mapped while the transfer waited (up to the 60 s\n   event timeout), after _release_entries had already run ipc_collect().\n   Now the entry is freed when it is released, and the waiting transfer\n   is rejected as stale ((b\"\", False)) when its event completes.\n\n3. stop() handles only the waiter's own queue and poller.\n\n   close() (server shutdown) calls stop() before it releases the cache\n   contexts. The server's shutdown does not wait for its handlers: the\n   transport shuts the affinity pool down with wait=False, and then\n   engine.close() closes the modules. stop() instead also failed the\n   transfers it had handed to an affinity worker, and waited up to 10 s\n   for the running ones before it returned anyway. Now stop() fails only\n   the transfers still waiting for their event in its queue, which the\n   stopped poller would never run, and stops the poller. A transfer\n   already handed to its affinity worker, or running, is left to that\n   worker, as without the option; so is an inline transfer whose event\n   has completed. The 60 s timeout for a producer event that never\n   completes is unchanged.\n\nTests: a registration made right after a missing-entry lookup is not\nused (STORE and RETRIEVE); a re-registration before an inline run drops\nthe transfer; unregistering frees the entry of a waiting transfer (STORE\nand RETRIEVE); stop() neither waits for a running transfer nor fails one\nhanded to its worker; after stop(), an inline transfer runs if its event\ncompleted and fails if not.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: stop() fails hand-offs that have not started\n\nThe server shuts down in two steps: server.close() queues the affinity\npool's shutdown sentinel, then engine.close() closes the modules, which\nstops the waiter. The poller still runs until stop(): a transfer whose\nevent completes in between is handed to its affinity worker behind the\nsentinel, the worker exits first, and the transfer's response was never\nsettled.\n\nThe poller now records a hand-off until the worker starts it, and stop()\nfails the hand-offs that have not started along with the transfers still\nwaiting for their event. Whichever of the worker and stop() takes a\nhand-off first settles it. A running transfer is still left to its\nworker.\n\nTests: a hand-off queued after the worker shutdown sentinel is failed by\nstop(); so is one queued behind a busy worker.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n---------\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\nCo-authored-by: andyluo7 <43718156+andyluo7@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 1250,
+                "insertions": 1245,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4628ce8e",
+              "author": "Lin Sun",
+              "email": "linsun12@amd.com",
+              "date": "2026-11-16T03:34:03.000Z",
+              "message": "[MP][ROCm] VMM KV-cache IPC on ROCm through rocm.bindings (#6626)\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\nSigned-off-by: andyluo7 <andy.luo@amd.com>\nCo-authored-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 10,
+                "lines": 695,
+                "insertions": 566,
+                "deletions": 129
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "VincyZhang",
@@ -4941,6 +5420,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "1a95bad9",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-11-16T11:48:32.000Z",
+              "message": "[CI][RBLN] Add a nightly rbln-serve lane and promote its verified image to PR builds (#6157)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 11,
+                "lines": 568,
+                "insertions": 529,
+                "deletions": 39
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Lalithnarayan C",
           "email": "Lalithnarayan.C@amd.com",
           "total_commits": 1,
@@ -4976,8 +5494,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 80,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Ashwajit Tayade",
@@ -5115,6 +5633,45 @@
                 "lines": 205,
                 "insertions": 199,
                 "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 70,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Eric (Fengwei) Zhang",
+          "email": "42017768+Super262@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 70,
+          "commits": [
+            {
+              "hash": "61faa902",
+              "author": "Eric (Fengwei) Zhang",
+              "email": "42017768+Super262@users.noreply.github.com",
+              "date": "2026-11-16T06:07:59.000Z",
+              "message": "[Bugfix] Preserve chunk prefixes when touching prefetched keys (#6551)\n\nSigned-off-by: Super262 <fengweiz929@yahoo.com>",
+              "stats": {
+                "files": 3,
+                "lines": 364,
+                "insertions": 360,
+                "deletions": 4
               },
               "scores": {
                 "loc": 30,
@@ -5327,6 +5884,45 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 40,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 38,
+          "commits": [
+            {
+              "hash": "03ee5b82",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-11-16T12:53:25.000Z",
+              "message": "[Fix][XPU nightly] Fix XPU nightly failures on xpu-nightly branch (#6629)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 16,
+                "insertions": 16,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 38,
           "tier": "T3",
           "tier_name": "Contributing"
         },
@@ -5376,10 +5972,10 @@
         {
           "name": "maobaolong",
           "email": "baoloongmao@tensormesh.ai",
-          "total_commits": 15,
+          "total_commits": 16,
           "significant_commits": 9,
-          "simple_commits": 6,
-          "commit_score": 959,
+          "simple_commits": 7,
+          "commit_score": 987,
           "commits": [
             {
               "hash": "e733effd",
@@ -5695,14 +6291,35 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "2f3accd7",
+              "author": "maobaolong",
+              "email": "baoloongmao@tensormesh.ai",
+              "date": "2026-11-16T02:25:02.000Z",
+              "message": "[CI][SGLang] Preserve Kimi chunk checkpoints (#6645)\n\nci: preserve Kimi chunk checkpoints\n\nSigned-off-by: baoloongmao <307499405@qq.com>",
+              "stats": {
+                "files": 1,
+                "lines": 1,
+                "insertions": 1,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 10,
+                "ai": 10,
+                "total": 28
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 63.93333333333333,
-          "significance_ratio": 0.6,
+          "avg_score": 61.6875,
+          "significance_ratio": 0.5625,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 959,
+          "total_score": 987,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -5958,10 +6575,10 @@
         {
           "name": "weishu",
           "email": "838677410@qq.com",
-          "total_commits": 9,
-          "significant_commits": 8,
+          "total_commits": 10,
+          "significant_commits": 9,
           "simple_commits": 1,
-          "commit_score": 692,
+          "commit_score": 762,
           "commits": [
             {
               "hash": "115e09a4",
@@ -6151,36 +6768,18 @@
                 "total": 82
               },
               "classification": "significant"
-            }
-          ],
-          "avg_score": 76.88888888888889,
-          "significance_ratio": 0.8888888888888888,
-          "additional_contribution_score": 0,
-          "additional_contributions": [],
-          "additional_contribution_notes": "",
-          "total_score": 692,
-          "tier": "T0",
-          "tier_name": "Elite"
-        },
-        {
-          "name": "Xiao Liu",
-          "email": "liuxiao2103@qq.com",
-          "total_commits": 7,
-          "significant_commits": 6,
-          "simple_commits": 1,
-          "commit_score": 496,
-          "commits": [
+            },
             {
-              "hash": "d0959e00",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-09T09:31:32.000Z",
-              "message": "[MP][Refactor] Move the ZMQ client polling loop to client.transport (#6472)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "hash": "0cc57f64",
+              "author": "weishu",
+              "email": "838677410@qq.com",
+              "date": "2026-11-16T22:12:10.000Z",
+              "message": "[Coordinator][Blend] Drop a chunk's fingerprint entry once any of its rows is gone (#6632)\n\nSigned-off-by: deng451e <838677410@qq.com>",
               "stats": {
                 "files": 4,
-                "lines": 479,
-                "insertions": 278,
-                "deletions": 201
+                "lines": 141,
+                "insertions": 84,
+                "deletions": 57
               },
               "scores": {
                 "loc": 30,
@@ -6190,150 +6789,24 @@
                 "total": 70
               },
               "classification": "significant"
-            },
-            {
-              "hash": "cd29b563",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-09T05:02:45.000Z",
-              "message": "[MP][Refactor] Move the gRPC client to client.transport (#6426)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 20,
-                "lines": 507,
-                "insertions": 292,
-                "deletions": 215
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "e028a2bb",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-10T18:26:02.000Z",
-              "message": "[MP][Refactor] Move gRPC protos and generated bindings to transport (#6506)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 39,
-                "lines": 87,
-                "insertions": 41,
-                "deletions": 46
-              },
-              "scores": {
-                "loc": 15,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 65
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "d51d3e60",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-10T05:23:44.000Z",
-              "message": "[MP][Refactor] Move MessageQueueClient to client.transport (#6483)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 7,
-                "lines": 638,
-                "insertions": 332,
-                "deletions": 306
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "0b95bd82",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-11T05:38:45.000Z",
-              "message": "[MP][Refactor] Move the gRPC codecs to transport (#6515)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 19,
-                "lines": 102,
-                "insertions": 50,
-                "deletions": 52
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 18,
-                "total": 80
-              },
-              "classification": "significant"
-            },
-            {
-              "hash": "7fcde087",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-11T02:33:05.000Z",
-              "message": "[Test][MP] Keep the compressed-group roundtrip SHM name under the macOS limit (#6468)\n\ntest_single_compressed_group_worker_server_roundtrip named its L1 pool\nsegment lmcache_l1_pool_test_compressed_<uuid4 hex>, 65 bytes with the\nleading '/'. macOS caps POSIX shared-memory names at 31 bytes, so the\n[full-shm] and [sliding-shm] cases failed with ENAMETOOLONG there. Use\nlmcache_l1_pool_<12 hex> (29 bytes), keeping the prefix that the stale\nsegment cleanup recognises.\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>\nCo-authored-by: maobaolong <baoloongmao@tensormesh.ai>",
-              "stats": {
-                "files": 1,
-                "lines": 3,
-                "insertions": 2,
-                "deletions": 1
-              },
-              "scores": {
-                "loc": 3,
-                "files": 5,
-                "keyword": 12,
-                "ai": 15,
-                "total": 35
-              },
-              "classification": "simple"
-            },
-            {
-              "hash": "9f98811d",
-              "author": "Xiao Liu",
-              "email": "liuxiao2103@qq.com",
-              "date": "2026-11-08T04:52:46.000Z",
-              "message": "[Bugfix][MP] Skip unsupported FD channels during startup (#6387)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
-              "stats": {
-                "files": 9,
-                "lines": 207,
-                "insertions": 180,
-                "deletions": 27
-              },
-              "scores": {
-                "loc": 30,
-                "files": 20,
-                "keyword": 12,
-                "ai": 20,
-                "total": 82
-              },
-              "classification": "significant"
             }
           ],
-          "avg_score": 70.85714285714286,
-          "significance_ratio": 0.8571428571428571,
+          "avg_score": 76.2,
+          "significance_ratio": 0.9,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 496,
+          "total_score": 762,
           "tier": "T0",
           "tier_name": "Elite"
         },
         {
           "name": "chunxiaozheng",
           "email": "idellzheng@tencent.com",
-          "total_commits": 8,
-          "significant_commits": 5,
+          "total_commits": 9,
+          "significant_commits": 6,
           "simple_commits": 3,
-          "commit_score": 473,
+          "commit_score": 528,
           "commits": [
             {
               "hash": "7e4e7366",
@@ -6502,14 +6975,200 @@
                 "total": 67
               },
               "classification": "significant"
+            },
+            {
+              "hash": "c0572702",
+              "author": "chunxiaozheng",
+              "email": "idellzheng@tencent.com",
+              "date": "2026-11-16T19:23:46.000Z",
+              "message": "[Docker][SGLang] Fix SGLang image build with its native PyTorch version (#6658)\n\nSigned-off-by: chunxiaozheng <1179548172@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 92,
+                "insertions": 51,
+                "deletions": 41
+              },
+              "scores": {
+                "loc": 15,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 55
+              },
+              "classification": "significant"
             }
           ],
-          "avg_score": 59.125,
-          "significance_ratio": 0.625,
+          "avg_score": 58.666666666666664,
+          "significance_ratio": 0.6666666666666666,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 473,
+          "total_score": 528,
+          "tier": "T0",
+          "tier_name": "Elite"
+        },
+        {
+          "name": "Xiao Liu",
+          "email": "liuxiao2103@qq.com",
+          "total_commits": 7,
+          "significant_commits": 6,
+          "simple_commits": 1,
+          "commit_score": 496,
+          "commits": [
+            {
+              "hash": "d0959e00",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-09T09:31:32.000Z",
+              "message": "[MP][Refactor] Move the ZMQ client polling loop to client.transport (#6472)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 4,
+                "lines": 479,
+                "insertions": 278,
+                "deletions": 201
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "cd29b563",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-09T05:02:45.000Z",
+              "message": "[MP][Refactor] Move the gRPC client to client.transport (#6426)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 20,
+                "lines": 507,
+                "insertions": 292,
+                "deletions": 215
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "e028a2bb",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-10T18:26:02.000Z",
+              "message": "[MP][Refactor] Move gRPC protos and generated bindings to transport (#6506)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 39,
+                "lines": 87,
+                "insertions": 41,
+                "deletions": 46
+              },
+              "scores": {
+                "loc": 15,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 65
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "d51d3e60",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-10T05:23:44.000Z",
+              "message": "[MP][Refactor] Move MessageQueueClient to client.transport (#6483)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 7,
+                "lines": 638,
+                "insertions": 332,
+                "deletions": 306
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "0b95bd82",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-11T05:38:45.000Z",
+              "message": "[MP][Refactor] Move the gRPC codecs to transport (#6515)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 19,
+                "lines": 102,
+                "insertions": 50,
+                "deletions": 52
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 18,
+                "total": 80
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "7fcde087",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-11T02:33:05.000Z",
+              "message": "[Test][MP] Keep the compressed-group roundtrip SHM name under the macOS limit (#6468)\n\ntest_single_compressed_group_worker_server_roundtrip named its L1 pool\nsegment lmcache_l1_pool_test_compressed_<uuid4 hex>, 65 bytes with the\nleading '/'. macOS caps POSIX shared-memory names at 31 bytes, so the\n[full-shm] and [sliding-shm] cases failed with ENAMETOOLONG there. Use\nlmcache_l1_pool_<12 hex> (29 bytes), keeping the prefix that the stale\nsegment cleanup recognises.\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>\nCo-authored-by: maobaolong <baoloongmao@tensormesh.ai>",
+              "stats": {
+                "files": 1,
+                "lines": 3,
+                "insertions": 2,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 15,
+                "total": 35
+              },
+              "classification": "simple"
+            },
+            {
+              "hash": "9f98811d",
+              "author": "Xiao Liu",
+              "email": "liuxiao2103@qq.com",
+              "date": "2026-11-08T04:52:46.000Z",
+              "message": "[Bugfix][MP] Skip unsupported FD channels during startup (#6387)\n\nSigned-off-by: liuxiaocs7 <liuxiao2103@qq.com>",
+              "stats": {
+                "files": 9,
+                "lines": 207,
+                "insertions": 180,
+                "deletions": 27
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70.85714285714286,
+          "significance_ratio": 0.8571428571428571,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 496,
           "tier": "T0",
           "tier_name": "Elite"
         },
@@ -6780,10 +7439,10 @@
         {
           "name": "Jason",
           "email": "31175216+thegoldenflow@users.noreply.github.com",
-          "total_commits": 3,
+          "total_commits": 4,
           "significant_commits": 3,
-          "simple_commits": 0,
-          "commit_score": 205,
+          "simple_commits": 1,
+          "commit_score": 235,
           "commits": [
             {
               "hash": "90c8259c",
@@ -6847,14 +7506,35 @@
                 "total": 82
               },
               "classification": "significant"
+            },
+            {
+              "hash": "711aa048",
+              "author": "Jason",
+              "email": "31175216+thegoldenflow@users.noreply.github.com",
+              "date": "2026-11-16T03:39:33.000Z",
+              "message": "[CI] Give the CPU artifact workflow its own concurrency group (#6598)\n\nSigned-off-by: Jason Yao <wsyjh8@gmail.com>",
+              "stats": {
+                "files": 1,
+                "lines": 2,
+                "insertions": 1,
+                "deletions": 1
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 10,
+                "total": 30
+              },
+              "classification": "simple"
             }
           ],
-          "avg_score": 68.33333333333333,
-          "significance_ratio": 1,
+          "avg_score": 58.75,
+          "significance_ratio": 0.75,
           "additional_contribution_score": 0,
           "additional_contributions": [],
           "additional_contribution_notes": "",
-          "total_score": 205,
+          "total_score": 235,
           "tier": "T1",
           "tier_name": "Advanced"
         },
@@ -7079,6 +7759,66 @@
           "total_score": 175,
           "tier": "T1",
           "tier_name": "Advanced"
+        },
+        {
+          "name": "Lin Sun",
+          "email": "linsun12@amd.com",
+          "total_commits": 2,
+          "significant_commits": 2,
+          "simple_commits": 0,
+          "commit_score": 164,
+          "commits": [
+            {
+              "hash": "a391b206",
+              "author": "Lin Sun",
+              "email": "linsun12@amd.com",
+              "date": "2026-11-16T22:01:32.000Z",
+              "message": "[MP][ROCm] Opt-in host-side wait for the engine's event (`--rocm-host-event-wait`) (#6212)\n\n* [MP] Affinity pool: let a handler answer later with a DeferredResponse\n\nA task may return a DeferredResponse (a concurrent.futures.Future) instead of\nits result. The worker thread is then free for the next task, and the future\nreturned by AffinityThreadPool.submit() completes with the deferred\nresponse's result or exception. Tasks returning anything else behave as\nbefore.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: opt-in host-side producer-event wait (ROCm workaround)\n\nOn MI3xx the command processor cannot keep an unsatisfied cross-queue\nbarrier resident: a stream wait on the engine's pending IPC event\n(hipStreamWaitEvent on an imported event) is offloaded and reconnected on a\ntimer, and those wakeups slow the engine's kernels on the same hardware pipe\nwhile the engine runs the step (about 30 % for prefill steps on MI355X).\n\nNew server flag --rocm-host-event-wait (default off; also\nLMCACHE_ROCM_HOST_EVENT_WAIT=1). When it is set on ROCm, LMCache-driven\nSTORE / RETRIEVE enqueue their copies only once the producer event has\ncompleted, checked with non-blocking query() calls:\n\n- a transfer whose event has completed, with nothing queued ahead of it for\n  the same instance, runs inline in the handler;\n- otherwise it joins a per-instance FIFO drained by one poller thread\n  (50 us backoff doubling to 1 ms) and the handler answers with a\n  DeferredResponse, so the affinity thread that serves every rank is never\n  blocked;\n- a transfer still waiting after 60 s or at shutdown submits no device work\n  and answers (b\"\", False); a waiting retrieve releases its lookup locks.\n\nThe store / retrieve bodies are unchanged: the waiter re-runs the same\nhandler, and inside that run the instance's event backend returns the event\nit polled and skips the stream wait on it. Counters (inline, deferred,\ntimeout, shutdown, device_waits, pending) are reported in the module status.\n\nOff (the default) on every platform, and on + not ROCm (one warning), no\nwaiter or thread is created and store / retrieve run the upstream code;\nthe only lines they execute that differ are the \"waiter is None\" checks.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: poller only checks events, transfers run on the affinity worker\n\n- The poller only checks events; a completed transfer is handed back to the\n  affinity worker that received it (current_worker_poster). This keeps the\n  affinity pool's existing design that all operations for an instance run on\n  one thread (no locks on its shared temporary GPU buffer, ordered with the\n  other affinity handlers such as CacheBlend), which running transfers on the\n  poller thread broke.\n- stop() vs the inline probe: the probe and inline run count as active work,\n  _stopped is re-checked before running or enqueueing, and stop() fails every\n  transfer not started yet and waits for the running ones.\n- A waiting transfer runs only against the registration that supplied its\n  event; otherwise the existing unregistered-instance path rejects it.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: drop the lock release on a failed waiting RETRIEVE\n\nAfter merging dev: dev now includes #6252, which removed\n_release_failed_retrieve_locks. This PR's _fail_waiting_retrieve still\ncalled it, so mypy failed (attr-defined). The tests in\ntest_rocm_host_event_wait.py failed too: their setup replaced the removed\nmethod with a function that only records the request ID, and that\nreplacement fails once the method no longer exists.\n\nChanges:\n- Remove _fail_waiting_retrieve. A RETRIEVE whose producer-event wait\n  timed out or was stopped now answers (b\"\", False) without releasing\n  locks, like #6252's rejection path: the unconsumed lookup read-lock\n  share expires with the L1 read-lock TTL.\n- Tests: remove that replacement and the three assertions that checked\n  its recorded request IDs; rename\n  test_timeout_fails_store_and_releases_retrieve_locks to\n  test_timeout_fails_store_and_retrieve.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: close the remaining registration and shutdown gaps\n\n1. A STORE / RETRIEVE for an instance that is not registered is rejected\n   right away.\n\n   An engine worker registers its KV cache once (REGISTER_KV_CACHE): the\n   server maps the worker's KV memory and keeps a ContextEntry under the\n   worker's instance ID. STORE / RETRIEVE look that entry up by instance\n   ID. There is none when the worker sends a transfer before it has\n   registered with this server (e.g. after a server restart), or after\n   it was unregistered or reaped for being silent.\n\n   Without this option the handler looks the instance up once and, if\n   there is no entry, answers (b\"\", False) without any device work. With\n   the option, submit_after_event instead ran the handler again, which\n   looked the instance up a second time. REGISTER runs on the MQ main\n   loop, not on the affinity worker, so the instance could be registered\n   between the two lookups, and the request then ran against a\n   registration it was not sent to, waiting on its event on the device.\n   Now, when that one lookup finds no entry, the waiter returns\n   (b\"\", False) directly and does not call the handler: no second\n   lookup, no event import, no device work, the same answer as without\n   the option.\n\n2. A waiting transfer keeps only a weak reference to its registration.\n\n   A weak reference (weakref.ref) does not keep the entry alive: once\n   the registry and the release path drop the entry, it is freed and the\n   reference returns None. Unregistering or reaping an instance passes\n   the entry to _release_entries, which relies on holding the last\n   reference: with the default CudaIPCWrapper, ipc_collect() unmaps the\n   worker's KV memory only after the last tensor reference is gone. A\n   waiting transfer held the entry, so the memory of an unregistered or\n   reaped worker stayed mapped while the transfer waited (up to the 60 s\n   event timeout), after _release_entries had already run ipc_collect().\n   Now the entry is freed when it is released, and the waiting transfer\n   is rejected as stale ((b\"\", False)) when its event completes.\n\n3. stop() handles only the waiter's own queue and poller.\n\n   close() (server shutdown) calls stop() before it releases the cache\n   contexts. The server's shutdown does not wait for its handlers: the\n   transport shuts the affinity pool down with wait=False, and then\n   engine.close() closes the modules. stop() instead also failed the\n   transfers it had handed to an affinity worker, and waited up to 10 s\n   for the running ones before it returned anyway. Now stop() fails only\n   the transfers still waiting for their event in its queue, which the\n   stopped poller would never run, and stops the poller. A transfer\n   already handed to its affinity worker, or running, is left to that\n   worker, as without the option; so is an inline transfer whose event\n   has completed. The 60 s timeout for a producer event that never\n   completes is unchanged.\n\nTests: a registration made right after a missing-entry lookup is not\nused (STORE and RETRIEVE); a re-registration before an inline run drops\nthe transfer; unregistering frees the entry of a waiting transfer (STORE\nand RETRIEVE); stop() neither waits for a running transfer nor fails one\nhanded to its worker; after stop(), an inline transfer runs if its event\ncompleted and fails if not.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n* [MP] --rocm-host-event-wait: stop() fails hand-offs that have not started\n\nThe server shuts down in two steps: server.close() queues the affinity\npool's shutdown sentinel, then engine.close() closes the modules, which\nstops the waiter. The poller still runs until stop(): a transfer whose\nevent completes in between is handed to its affinity worker behind the\nsentinel, the worker exits first, and the transfer's response was never\nsettled.\n\nThe poller now records a hand-off until the worker starts it, and stop()\nfails the hand-offs that have not started along with the transfers still\nwaiting for their event. Whichever of the worker and stop() takes a\nhand-off first settles it. A running transfer is still left to its\nworker.\n\nTests: a hand-off queued after the worker shutdown sentinel is failed by\nstop(); so is one queued behind a busy worker.\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\n\n---------\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\nCo-authored-by: andyluo7 <43718156+andyluo7@users.noreply.github.com>",
+              "stats": {
+                "files": 5,
+                "lines": 1250,
+                "insertions": 1245,
+                "deletions": 5
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            },
+            {
+              "hash": "4628ce8e",
+              "author": "Lin Sun",
+              "email": "linsun12@amd.com",
+              "date": "2026-11-16T03:34:03.000Z",
+              "message": "[MP][ROCm] VMM KV-cache IPC on ROCm through rocm.bindings (#6626)\n\nSigned-off-by: Lin Sun <lin.sun@amd.com>\nSigned-off-by: andyluo7 <andy.luo@amd.com>\nCo-authored-by: andyluo7 <andy.luo@amd.com>",
+              "stats": {
+                "files": 10,
+                "lines": 695,
+                "insertions": 566,
+                "deletions": 129
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 164,
+          "tier": "T2",
+          "tier_name": "Intermediate"
         },
         {
           "name": "VincyZhang",
@@ -7579,6 +8319,45 @@
           "tier_name": "Intermediate"
         },
         {
+          "name": "Jinhwan Suk (석진환)",
+          "email": "jinhwan.suk@rebellions.ai",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 82,
+          "commits": [
+            {
+              "hash": "1a95bad9",
+              "author": "Jinhwan Suk (석진환)",
+              "email": "jinhwan.suk@rebellions.ai",
+              "date": "2026-11-16T11:48:32.000Z",
+              "message": "[CI][RBLN] Add a nightly rbln-serve lane and promote its verified image to PR builds (#6157)\n\nSigned-off-by: rebel-jinhwan <jinhwan.suk@rebellions.ai>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+              "stats": {
+                "files": 11,
+                "lines": 568,
+                "insertions": 529,
+                "deletions": 39
+              },
+              "scores": {
+                "loc": 30,
+                "files": 20,
+                "keyword": 12,
+                "ai": 20,
+                "total": 82
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 82,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 82,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "Lalithnarayan C",
           "email": "Lalithnarayan.C@amd.com",
           "total_commits": 1,
@@ -7614,8 +8393,8 @@
           "additional_contributions": [],
           "additional_contribution_notes": "",
           "total_score": 80,
-          "tier": "T2",
-          "tier_name": "Intermediate"
+          "tier": "T3",
+          "tier_name": "Contributing"
         },
         {
           "name": "Ashwajit Tayade",
@@ -7753,6 +8532,45 @@
                 "lines": 205,
                 "insertions": 199,
                 "deletions": 6
+              },
+              "scores": {
+                "loc": 30,
+                "files": 10,
+                "keyword": 12,
+                "ai": 18,
+                "total": 70
+              },
+              "classification": "significant"
+            }
+          ],
+          "avg_score": 70,
+          "significance_ratio": 1,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 70,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
+          "name": "Eric (Fengwei) Zhang",
+          "email": "42017768+Super262@users.noreply.github.com",
+          "total_commits": 1,
+          "significant_commits": 1,
+          "simple_commits": 0,
+          "commit_score": 70,
+          "commits": [
+            {
+              "hash": "61faa902",
+              "author": "Eric (Fengwei) Zhang",
+              "email": "42017768+Super262@users.noreply.github.com",
+              "date": "2026-11-16T06:07:59.000Z",
+              "message": "[Bugfix] Preserve chunk prefixes when touching prefetched keys (#6551)\n\nSigned-off-by: Super262 <fengweiz929@yahoo.com>",
+              "stats": {
+                "files": 3,
+                "lines": 364,
+                "insertions": 360,
+                "deletions": 4
               },
               "scores": {
                 "loc": 30,
@@ -7969,6 +8787,45 @@
           "tier_name": "Contributing"
         },
         {
+          "name": "Tony Lin",
+          "email": "tony.lin@intel.com",
+          "total_commits": 1,
+          "significant_commits": 0,
+          "simple_commits": 1,
+          "commit_score": 38,
+          "commits": [
+            {
+              "hash": "03ee5b82",
+              "author": "Tony Lin",
+              "email": "tony.lin@intel.com",
+              "date": "2026-11-16T12:53:25.000Z",
+              "message": "[Fix][XPU nightly] Fix XPU nightly failures on xpu-nightly branch (#6629)\n\nSigned-off-by: Tony Lin <tony.lin@intel.com>",
+              "stats": {
+                "files": 1,
+                "lines": 16,
+                "insertions": 16,
+                "deletions": 0
+              },
+              "scores": {
+                "loc": 3,
+                "files": 5,
+                "keyword": 12,
+                "ai": 18,
+                "total": 38
+              },
+              "classification": "simple"
+            }
+          ],
+          "avg_score": 38,
+          "significance_ratio": 0,
+          "additional_contribution_score": 0,
+          "additional_contributions": [],
+          "additional_contribution_notes": "",
+          "total_score": 38,
+          "tier": "T3",
+          "tier_name": "Contributing"
+        },
+        {
           "name": "github-actions[bot]",
           "email": "41898282+github-actions[bot]@users.noreply.github.com",
           "total_commits": 1,
@@ -8011,13 +8868,13 @@
     }
   },
   "metadata": {
-    "analyzedAt": "2026-11-16T00:30:02.023Z",
+    "analyzedAt": "2026-11-17T00:30:06.384Z",
     "daysBack": 2,
-    "totalCommits": 98,
-    "totalContributors": 32,
+    "totalCommits": 107,
+    "totalContributors": 36,
     "mergedFrom": {
       "existing": 98,
-      "new": 5
+      "new": 9
     }
   }
 }
